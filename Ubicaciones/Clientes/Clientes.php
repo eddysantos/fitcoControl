@@ -1,6 +1,6 @@
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/Fitco/Ubicaciones/barraNavegacion.php';
+  require $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
 
 ?>
 

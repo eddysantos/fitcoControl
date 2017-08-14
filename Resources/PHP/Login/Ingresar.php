@@ -3,7 +3,7 @@
 session_start();
 $root = $_SERVER['DOCUMENT_ROOT'];
 
-require $root . "/Fitco/Resources/PHP/DataBases/Conexion.php";
+require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
 
 $usuario = $conn->real_escape_string($_POST['lg_usuario']);
 $contra = $conn->real_escape_string($_POST['lg_password']);

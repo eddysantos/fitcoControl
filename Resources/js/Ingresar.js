@@ -6,7 +6,7 @@ $(document).ready(function(){
 
 		$.ajax({
 			method: 'POST',
-			url: "/Fitco/Resources/PHP/Login/Ingresar.php",
+			url: "/fitcoControl/Resources/PHP/Login/Ingresar.php",
 			data: {
 				lg_usuario: user,
 				lg_password: pwd
@@ -20,7 +20,7 @@ $(document).ready(function(){
 						break;
 
 					case "1":
-						window.location.replace("/Fitco/Ubicaciones/Bienvenido.php");
+						window.location.replace("/fitcoControl/Ubicaciones/Bienvenido.php");
 						return false;
 						break;
 

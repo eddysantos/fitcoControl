@@ -1,6 +1,6 @@
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/Fitco/Ubicaciones/barraNavegacion.php';
+  require $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
 ?>
 
 
@@ -22,7 +22,7 @@
       <tbody>
         <tr class="row bordelateral m0" id="item">
           <td class="col-md-1">
-            <img src="/Fitco/Resources/iconos/social.svg" class="icono">
+            <img src="/fitcoControl/Resources/iconos/social.svg" class="icono">
           </td>
           <td class="col-md-4">
             <h4><b>Azeneth Estefania Pinales Avalos</b></h4>
@@ -57,7 +57,7 @@
         </tr>
         <tr class="row bordelateral m0" id="item">
           <td class="col-md-1">
-            <img src="/Fitco/Resources/iconos/social.svg" class="icono">
+            <img src="/fitcoControl/Resources/iconos/social.svg" class="icono">
           </td>
           <td class="col-md-4">
             <h4><b>Juan Jesus Quintero Velazquez</b></h4>

@@ -52,11 +52,11 @@
     </div>
 
 
-    <script src="/Fitco/Resources/jqueryuery/jquery.min.js" charset="utf-8"></script>
+    <script src="/fitcoControl/Resources/jqueryuery/jquery.min.js" charset="utf-8"></script>
     <script src='http://cdnjs.cloudflare.com/ajax/libs/gsap/1.16.1/TweenMax.min.js'></script>
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-    <script src="/Fitco/Resources/js/login.js"></script>
-    <script src="/Fitco/Resources/js/Ingresar.js" charset="utf-8"></script>
+    <script src="/fitcoControl/Resources/js/login.js"></script>
+    <script src="/fitcoControl/Resources/js/Ingresar.js" charset="utf-8"></script>
 
   </body>
 </html>
