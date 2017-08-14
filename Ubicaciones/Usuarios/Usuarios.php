@@ -3,7 +3,7 @@
   require $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
 ?>
 
-  <div style="margin-top:120px;padding-right:50px">
+  <div style="margin-top:100px;padding-right:50px">
     <div class="functions">
       <div class="add">
         <div class="icon">
@@ -13,7 +13,7 @@
       </div>
     </div>
   </div>
-  <form class="container page p0">
+  <form class="container-fluid page p0">
     <table class="table table-hover">
       <tbody>
         <tr class="row bordelateral m0" id="item">
