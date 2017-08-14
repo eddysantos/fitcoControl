@@ -57,10 +57,10 @@ nav {
   transition: .5s;
 }
 
-nav a {
+nav a{
   display: inline-block;
   font-size: 21px;
-  text-decoration: none;
+  text-decoration: none!important;
   color: #505050;
   width: 24.44%;
   text-align: center;
@@ -84,6 +84,8 @@ nav a:nth-child(4) {
 nav a:hover {
   border-top: 5px solid #4a4a4a;
   transition: .4s;
+  letter-spacing: 4px;
+  background-color: rgb(201, 201, 201);
 }
 
 #test {

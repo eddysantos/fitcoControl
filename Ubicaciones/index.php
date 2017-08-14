@@ -52,11 +52,13 @@
     </div>
 
 
-    <script src="/fitcoControl/Resources/jquery/jquery.min.js" charset="utf-8"></script>
-    <script src='http://cdnjs.cloudflare.com/ajax/libs/gsap/1.16.1/TweenMax.min.js'></script>
-    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-    <script src="/fitcoControl/Resources/js/login.js"></script>
-    <script src="/fitcoControl/Resources/js/Ingresar.js" charset="utf-8"></script>
-
+    <script src="/fitcoControl/Resources/jquery/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="/fitcoControl/Resources/bootstrap/js/bootstrap.min.js"></script>
   </body>
 </html>
+
+<?php
+  $root = $_SERVER['DOCUMENT_ROOT'];
+  require $root . '/fitcoControl/Ubicaciones/footer.php';
+?>
