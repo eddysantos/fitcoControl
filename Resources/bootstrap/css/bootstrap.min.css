@@ -2044,7 +2044,7 @@ pre code {
 }
 
 .table-hover tbody tr:hover {
-  background-color: rgba(249, 226, 226, 0.29);
+  background-color: rgba(226, 235, 246, 0.37);
 }/*Estaba Comentado*/
 
 .table-active, .table-active>td, .table-active>th {

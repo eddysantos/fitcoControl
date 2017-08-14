@@ -16,7 +16,9 @@
     -webkit-flex-direction: row;
     flex-direction: row;
     overflow: hidden;
-    margin-top: 50px;
+    margin-top: 150px;
+    margin-left:-10px;
+    width: 1350px;
 }
 .functions {
   float: right;
@@ -79,7 +81,9 @@
 .m0{
   margin: 0px!important;
 }
-
+.p0{
+  padding: 0px!important;
+}
 
 
 #item .visibilidad{

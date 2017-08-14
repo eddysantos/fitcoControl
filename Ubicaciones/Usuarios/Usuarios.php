@@ -3,10 +3,6 @@
   require $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
 ?>
 
-
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-
-
   <div style="margin-top:120px;padding-right:50px">
     <div class="functions">
       <div class="add">
@@ -35,21 +31,20 @@
             <h4><b>Asistente de sistemas</b></h4>
             <p class="visibilidad">@stefpinales</p>
           </td>
-          <td class="col-md-1">
-            <div class="functions">
-              <div class="add">
-                <div class="icon">
-                  <i class="fa fa-trash fa-2x"></i>
-                </div>
-                <span>Eliminar</span>
-              </div>
-            </div>
-          </td>
-          <td class="col-md-1">
+          <td class="col-md-1 offset-md-1 text-center">
             <div class="funcion">
               <div class="add">
                 <div class="rotar">
-                  <i class="fa fa-trash fa-2x"></i>
+                  <i class="fa fa-trash fa-3x"></i>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td class="col-md-1 text-center">
+            <div class="funcion">
+              <div class="add">
+                <div class="rotar">
+                  <i class="fa fa-trash fa-3x"></i>
                 </div>
               </div>
             </div>
@@ -74,7 +69,7 @@
             <div class="funcion">
               <div class="add">
                 <div class="rotar">
-                  <i class="fa fa-trash fa-2x"></i>
+                  <i class="fa fa-trash fa-3x"></i>
                 </div>
               </div>
             </div>
@@ -83,7 +78,7 @@
             <div class="funcion">
               <div class="add">
                 <div class="rotar">
-                  <i class="fa fa-trash fa-2x"></i>
+                  <i class="fa fa-trash fa-3x"></i>
                 </div>
               </div>
             </div>
