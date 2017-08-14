@@ -13,7 +13,7 @@
       </div>
     </div>
   </div>
-  <form class="container page" style="padding:0px;width:1350px;margin-left:-10px">
+  <form class="container page p0">
     <table class="table table-hover">
       <tbody>
         <tr class="row bordelateral m0" id="item">

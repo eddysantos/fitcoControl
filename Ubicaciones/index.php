@@ -3,17 +3,17 @@
   <head>
     <meta charset="utf-8">
     <title>Fit&Co Solutions</title>
-    <link rel="stylesheet" href="/Fitco/Resources/css/login.css">
+    <link rel="stylesheet" href="/fitcoControlControl/Resources/css/login.css">
   </head>
   <body>
     <div id="login-button">
-      <img src="/Fitco/Resources/iconos/002-user.svg">
+      <img src="/fitcoControl/Resources/iconos/002-user.svg">
       </img>
     </div>
     <div id="container">
       <h1>Fit&Co</h1>
       <span class="close-btn">
-        <img src="/Fitco/Resources/iconos/001-cerrar.svg"></img>
+        <img src="/fitcoControl/Resources/iconos/001-cerrar.svg"></img>
       </span>
 
     <div class="text-center">
@@ -43,7 +43,7 @@
     <div id="forgotten-container">
       <h1>Ingresa</h1>
       <span class="close-btn">
-        <img src="/Fitco/Resources/iconos/001-cerrar.svg"></img>
+        <img src="/fitcoControl/Resources/iconos/001-cerrar.svg"></img>
       </span>
       <form>
         <input type="email" name="email" placeholder="E-Mail">
@@ -52,11 +52,11 @@
     </div>
 
 
-    <script src="/fitcoControl/Resources/jqueryuery/jquery.min.js" charset="utf-8"></script>
+    <script src="/fitcoControlControl/Resources/jqueryuery/jquery.min.js" charset="utf-8"></script>
     <script src='http://cdnjs.cloudflare.com/ajax/libs/gsap/1.16.1/TweenMax.min.js'></script>
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-    <script src="/fitcoControl/Resources/js/login.js"></script>
-    <script src="/fitcoControl/Resources/js/Ingresar.js" charset="utf-8"></script>
+    <script src="/fitcoControlControl/Resources/js/login.js"></script>
+    <script src="/fitcoControlControl/Resources/js/Ingresar.js" charset="utf-8"></script>
 
   </body>
 </html>
