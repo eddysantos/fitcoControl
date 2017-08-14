@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Fit&Co Solutions</title>
-    <link rel="stylesheet" href="/fitcoControlControl/Resources/css/login.css">
+    <link rel="stylesheet" href="/fitcoControl/Resources/css/login.css">
   </head>
   <body>
     <div id="login-button">
@@ -52,11 +52,10 @@
     </div>
 
 
-    <script src="/fitcoControlControl/Resources/jqueryuery/jquery.min.js" charset="utf-8"></script>
-    <script src='http://cdnjs.cloudflare.com/ajax/libs/gsap/1.16.1/TweenMax.min.js'></script>
+    <script src="/fitcoControl/Resources/jqueryuery/jquery.min.js" charset="utf-8"></script>
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-    <script src="/fitcoControlControl/Resources/js/login.js"></script>
-    <script src="/fitcoControlControl/Resources/js/Ingresar.js" charset="utf-8"></script>
+    <script src="/fitcoControl/Resources/js/login.js"></script>
+    <script src="/fitcoControl/Resources/js/Ingresar.js" charset="utf-8"></script>
 
   </body>
 </html>
