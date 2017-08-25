@@ -13,57 +13,57 @@
           <table class="table">
             <tbody>
               <tr class="row m20">
-                <td class="col-md-12 input-effect p0">
+                <td class="col-md-12 input-effect p-0">
                   <input class="modal-efecto-17 has-content " type="text" value="Azeneth Estefania">
                     <label>Nombre (s)</label>
                     <span class="focus-border"></span>
                 </td>
               </tr>
               <tr class="row m20">
-                <td class="col-md-12 input-effect p0">
+                <td class="col-md-12 input-effect p-0">
                   <input class="modal-efecto-17 has-content " type="text" value="Pinales Avalos">
                     <label>Apellidos</label>
                     <span class="focus-border"></span>
                 </td>
               </tr>
               <tr class="row m20">
-                <td class="col-md-12 input-effect p0">
+                <td class="col-md-12 input-effect p-0">
                   <input class="modal-efecto-17 has-content " type="text" value="ae_pinales@hotmail.com">
                     <label>Correo</label>
                     <span class="focus-border"></span>
                 </td>
               </tr>
               <tr class="row m20">
-                <td class="col-md-12 input-effect p0">
+                <td class="col-md-12 input-effect p-0">
                   <input class="modal-efecto-17 has-content " type="text" value="Sistemas">
                     <label>Departamento</label>
                     <span class="focus-border"></span>
                 </td>
               </tr>
               <tr class="row m20">
-                <td class="col-md-12 input-effect p0">
+                <td class="col-md-12 input-effect p-0">
                   <input class="modal-efecto-17 has-content " type="text" value="Auxiliar de Sistemas">
                     <label>Puesto</label>
                     <span class="focus-border"></span>
                 </td>
               </tr>
               <tr class="row m20">
-                <td class="col-md-12 input-effect p0">
+                <td class="col-md-12 input-effect p-0">
                   <input class="modal-efecto-17 has-content " type="text" value="Epinales">
                     <label>Usuario</label>
                     <span class="focus-border"></span>
                 </td>
               </tr>
               <tr class="row m20">
-                <td class="col-md-12 input-effect p0">
+                <td class="col-md-12 input-effect p-0">
                   <input class="modal-efecto-17 has-content " type="password" value="1234">
                     <label>Contraseña</label>
                     <span class="focus-border"></span>
                 </td>
               </tr>
               <tr class="row m20">
-                <td class="col-md-12 input-effect p0">
-                  <input class="modal-efecto-17 has-content " list="priv" style="width: -webkit-fill-available;" value="Administrador">
+                <td class="col-md-12 input-effect p-0">
+                  <input class="w-100 modal-efecto-17 has-content " list="priv" value="Administrador">
                   <datalist id="priv">
                     <option value="Usuario"></option>
                     <option value="Administrador"></option>
