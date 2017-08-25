@@ -6,4 +6,5 @@
   <script src="/fitcoControl/Resources/js/Ingresar.js"></script>
   <script src="/fitcoControl/Resources/js/Inputs.js"></script>
   <script src="/fitcoControl/Resources/js/Usuarios/AgregarUsuario.js"></script>
+  <script src="/fitcoControl/Resources/js/Clientes/AgregarClientes.js"></script>
 </footer>

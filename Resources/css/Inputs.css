@@ -17,6 +17,10 @@ input[type="text"]{
   border-box;
   letter-spacing: 4px;
 }
+input[type="date"]{
+  letter-spacing: 4px;
+    width: 100%;
+}
 
 .effect-1{
   border: 0;

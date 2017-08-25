@@ -46,10 +46,14 @@ section {
 }
 
 nav {
-  font-family: 'Monda';
+  font-family: 'Encode Sans Condensed', sans-serif;
+  font-weight: bolder;
   width: 100%;
   margin: 0 auto;
   transition: .5s;
+}
+nav:hover{
+
 }
 
 .nav_animate {
@@ -66,9 +70,10 @@ nav a{
   text-align: center;
   line-height: 65px;
   text-transform: uppercase;
+  border-top: 5px solid #0056b3;
 }
 
-nav a:nth-child(1) {
+/*nav a:nth-child(1) {
   border-top: 5px solid #80BB80;
 }
 nav a:nth-child(2) {
@@ -79,7 +84,7 @@ nav a:nth-child(3) {
 }
 nav a:nth-child(4) {
   border-top: 5px solid #aaa;
-}
+}*/
 
 nav a:hover {
   border-top: 5px solid #4a4a4a;

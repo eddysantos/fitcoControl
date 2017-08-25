@@ -3,7 +3,7 @@
   require $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
 ?>
 
-  <div style="margin-top:100px;padding-right:50px">
+  <div class="mt-100 pr-50" style="padding-right:50px">
     <div class="functions">
       <div class="add">
         <div class="icon">
@@ -12,17 +12,17 @@
         <a id="adduser" class="ancla"><span class="span">Agregar Usuario</span></a>
       </div>
     </div>
-    
+
   </div>
 
-  <form id="usuarios" class="container-fluid page p0">
+  <form id="usuarios" class="page p-0">
     <table class="table table-hover">
       <tbody>
-        <tr class="row bordelateral m0" id="item">
+        <tr class="row bordelateral m-0" id="item">
           <td class="col-md-1">
             <img src="/fitcoControl/Resources/iconos/social.svg" class="icono">
           </td>
-          <td class="col-md-5">
+          <td class="col-md-4">
             <h4><b>Azeneth Estefania Pinales Avalos</b></h4>
             <a class="visibilidad" href="mailto:ae_pinales@hotmail.com">ae_pinales@hotmail.com</a>
           </td>
@@ -30,7 +30,8 @@
             <h4><b>Sistemas</b></h4>
             <p class="visibilidad">Auxiliar Sistemas</p>
           </td>
-          <td class="col-md-1 offset-md-1 text-center">
+          <td class="col-md-2"></td>
+          <td class="col-md-1 text-center">
             <div class="funcion">
               <div class="add">
                 <div class="rotar">
@@ -49,11 +50,11 @@
             </div>
           </td>
         </tr>
-        <tr class="row bordelateral m0" id="item">
+        <tr class="row bordelateral m-0" id="item">
           <td class="col-md-1">
             <img src="/fitcoControl/Resources/iconos/social.svg" class="icono">
           </td>
-          <td class="col-md-5">
+          <td class="col-md-4">
             <h4><b>Claudia Ramos Colorado</b></h4>
             <a class="visibilidad" href="mailto:claudia@mail.com">claudia@mail.com</a>
           </td>
@@ -61,7 +62,8 @@
             <h4><b>Administración</b></h4>
             <p class="visibilidad">Auxliar Contable</p>
           </td>
-          <td class="col-md-1 offset-md-1 text-center">
+          <td class="col-md-2"></td>
+          <td class="col-md-1 text-center">
             <div class="funcion">
               <div class="add">
                 <div class="rotar">
@@ -84,61 +86,61 @@
     </table>
   </form>
 
-  <form id="NuevoUsuario" class="container-fluid agregarnuevo" style="display:none">
+  <form id="NuevoUsuario" class="agregarnuevo" style="display:none">
     <table class="table">
       <tbody>
         <tr class="row m20">
-          <td class="col-md-12 input-effect p0">
+          <td class="col-md-12 input-effect p-0">
             <input class="effect-17" type="text">
               <label>Nombre (s)</label>
               <span class="focus-border"></span>
           </td>
         </tr>
         <tr class="row m20">
-          <td class="col-md-12 input-effect p0">
+          <td class="col-md-12 input-effect p-0">
             <input class="effect-17" type="text">
               <label>Apellidos</label>
               <span class="focus-border"></span>
           </td>
         </tr>
         <tr class="row m20">
-          <td class="col-md-12 input-effect p0">
+          <td class="col-md-12 input-effect p-0">
             <input class="effect-17" type="text">
               <label>Correo</label>
               <span class="focus-border"></span>
           </td>
         </tr>
         <tr class="row m20">
-          <td class="col-md-12 input-effect p0">
+          <td class="col-md-12 input-effect p-0">
             <input class="effect-17" type="text">
               <label>Departamento</label>
               <span class="focus-border"></span>
           </td>
         </tr>
         <tr class="row m20">
-          <td class="col-md-12 input-effect p0">
+          <td class="col-md-12 input-effect p-0">
             <input class="effect-17" type="text">
               <label>Puesto</label>
               <span class="focus-border"></span>
           </td>
         </tr>
         <tr class="row m20">
-          <td class="col-md-12 input-effect p0">
+          <td class="col-md-12 input-effect p-0">
             <input class="effect-17" type="text">
               <label>Usuario</label>
               <span class="focus-border"></span>
           </td>
         </tr>
         <tr class="row m20">
-          <td class="col-md-12 input-effect p0">
+          <td class="col-md-12 input-effect p-0">
             <input class="effect-17" type="text">
               <label>Contraseña</label>
               <span class="focus-border"></span>
           </td>
         </tr>
         <tr class="row m20">
-          <td class="col-md-12 input-effect p0">
-            <input class="effect-17" list="priv" style="width: -webkit-fill-available;">
+          <td class="col-md-12 input-effect p-0">
+            <input class="w-100 effect-17" list="priv">
             <datalist id="priv">
               <option value="Usuario"></option>
               <option value="Administrador"></option>
@@ -146,15 +148,19 @@
               <label>Privilegios</label>
               <span class="focus-border"></span>
           </td>
+
         </tr>
-        <tr class="row">
-          <td class="col-md-4 offset-md-4">
+        <tr class="row justify-content-center">
+          <td class="col-md-4">
             <button type="button" name="button" class="btn boton btn-block">AGREGAR</button>
           </td>
         </tr>
       </tbody>
     </table>
   </form>
+
+
+
 
 
   <?php
