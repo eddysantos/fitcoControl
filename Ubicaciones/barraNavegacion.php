@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/fitcoControl/Resources/css/Usuarios.css">
     <link rel="stylesheet" href="/fitcoControl/Resources/css/Clientes.css">
     <link rel="stylesheet" href="/fitcoControl/Resources/css/Produccion.css">
+    <link rel="stylesheet" href="/fitcoControl/Resources/css/Cobranza.css">
     <link rel="stylesheet" href="/fitcoControl/Resources/css/Inputs.css">
     <link rel="stylesheet" href="/fitcoControl/Resources/css/modales.css">
     <link rel="stylesheet" href="/fitcoControl/Resources/bootstrap/css/bootstrap-toggle.css">

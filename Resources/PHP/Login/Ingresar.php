@@ -14,7 +14,7 @@ $response = array(
   "data"=>"",
 );
 
-  $query = $conn->query("SELECT * FROM sesiones WHERE usuario = '$usuario' AND password = '$contra'");
+  $query = $conn->query("SELECT * FROM usuarios WHERE usuario = '$usuario' AND contra = '$contra'");
 
   if ($result = mysqli_fetch_array($query)) {
     $_SESSION['u_usuario'] = $usuario;

@@ -14,7 +14,8 @@
             <tbody>
               <tr class="row m20">
                 <td class="col-md-12 input-effect p-0">
-                  <input class="modal-efecto-17 has-content" type="text" value="Liberty">
+                  <input type="hidden" name="clt_id">
+                  <input class="modal-efecto-17 has-content" type="text" value="">
                     <label>Nombre del Cliente</label>
                     <span class="focus-border"></span>
                 </td>
@@ -28,21 +29,21 @@
               </tr>
               <tr class="row m20">
                 <td class="col-md-12 input-effect p-0">
-                  <input class="modal-efecto-17 has-content " type="color">
+                  <input class="modal-efecto-17 has-content" type="color">
                     <label>Color Cliente</label>
                     <span class="focus-border"></span>
                 </td>
               </tr>
               <tr class="row m20">
                 <td class="col-md-12 input-effect p-0">
-                  <input class="modal-efecto-17 has-content " type="text" value="300 piezas">
+                  <input class="modal-efecto-17 has-content " type="text" value="">
                     <label>Prendas Solicitadas por Mes</label>
                     <span class="focus-border"></span>
                 </td>
               </tr>
               <tr class="row m20">
                 <td class="col-md-12 input-effect p-0">
-                  <input class="w-100 modal-efecto-17 has-content " list="priv" value="Medios Publicitarios">
+                  <input class="w-100 modal-efecto-17 has-content " list="priv" value="">
                   <datalist id="priv">
                     <option value="Referido"></option>
                     <option value="Asesor de Ventas"></option>

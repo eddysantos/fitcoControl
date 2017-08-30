@@ -1,0 +1,27 @@
+.consultarmes {
+    position: absolute;
+    left: 54%;
+    right: 4%;
+    top: 4%;
+    background-color: rgba(255, 255, 255, 0.4);
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    margin-top: 130px;
+}
+
+.card-header{
+  background-color: transparent!important;
+}
+
+.listames{
+  color: rgb(29, 79, 136);
+  letter-spacing: 3px
+}
+
+.semanas{
+  background-color: rgba(152, 24, 24, 0.14);
+}

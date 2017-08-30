@@ -1,3 +1,6 @@
+
+@import url('https://fonts.googleapis.com/css?family=Quicksand');
+
 .page {
     position: absolute;
     left: 4%;
@@ -32,10 +35,10 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
   margin-top: 130px;
 }
-.functions {
-  float: right;
+.links {
+  text-align: right;
 }
-.functions .add {
+.links .consultar {
   cursor: pointer;
   opacity: 0.6;
   -moz-transition: all 0.2s linear;
@@ -43,27 +46,20 @@
   -webkit-transition: all 0.2s linear;
   transition: all 0.2s linear;
 }
-.functions .add .icon {
+.links .consultar .icon {
   display: inline-block;
-  border: 2px solid gray;
-  border-radius: 100%;
-  width: 35px;
-  height: 35px;
   text-align: center;
   padding: 1px 0 0 0;
   font-size: 1.1rem;
-  -moz-transform: rotate(0deg);
-  -ms-transform: rotate(0deg);
-  -webkit-transform: rotate(0deg);
-  transform: rotate(0deg);
   -moz-transition: all 0.5s linear;
   -o-transition: all 0.5s linear;
   -webkit-transition: all 0.5s linear;
   transition: all 0.5s linear;
+  line-height: 0!important;
 }
-.functions .add span {
+.links .consultar span {
   overflow: hidden;
-  display: inline-block;
+  display: inline-flex;
   margin-left: 5px;
   font-size: 0.8rem;
   width: 0px;
@@ -75,21 +71,15 @@
   transition: all 0.2s ease;
   font-size: 20px;
 }
-.functions .add:hover {
+.links .consultar:hover {
   opacity: 1.0;
+
 }
-.functions .add:hover span {
-  width: 180px;
+
+.links .consultar:hover span{
+  width: 190px;
 }
-/*en hover rota y los colores se ponen inversos*/
-.functions .add:hover .icon {
-  -moz-transform: rotate(180deg);
-  -ms-transform: rotate(180deg);
-  -webkit-transform: rotate(180deg);
-  transform: rotate(180deg);
-  background: gray;
-  color: white;
-}
+
 
 .m20{
   margin:20px;
@@ -130,7 +120,7 @@
 
 
 
-/*  ICONOS  */
+/*  ICONOS
 
 .funcion .add {
   cursor: pointer;
@@ -162,8 +152,14 @@
   -webkit-transform: rotate(360deg);
   transform: rotate(360deg);
   color: #014c8c;
-}
+}*/
 
 a{
   color: black;
+}
+
+h4,h2{
+  font-family: 'Quicksand', sans-serif;
+  font-size: 18px;
+  letter-spacing: 1px
 }
