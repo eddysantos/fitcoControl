@@ -5,9 +5,9 @@
 
   <div class="mt-100 pr-50" style="padding-right:50px">
 
-  <div class="links  mr-5">
-    <a id="adduser" class="rotate-link consultar ancla" style="font-size: larger;">
-      <img src="/fitcoControl/Resources/iconos/003-add.svg" class="icon rotate-icon" style="width:30px;">
+  <div class="clt_usr  mr-5">
+    <a class="rotate-link consultar ancla" style="font-size: larger;" accion="ausuario" status="cerrado">
+      <img src="/fitcoControl/Resources/iconos/003-add.svg" class="icon1 rotate-icon" style="width:30px;">
       <span class="span">AGREGAR USUARIO</span>
     </a>
   </div>
@@ -29,17 +29,21 @@
             <img src="/fitcoControl/Resources/iconos/users.svg" class="icono">
           </td>
           <td class="col-md-4">
-            <h4><b><?php echo $row['nombre'];?>  <?php echo $row['apellidos']; ?></b></h4>
-            <a class="visibilidad"><?php echo $row['correo']; ?></a>
+            <h4><b><?php echo $row['nombreUsuario'];?>  <?php echo $row['apellidosUsuario']; ?></b></h4>
+            <a class="visibilidad" href="mailto:<?php echo $row['correoUsuario']; ?>"><?php echo $row['correoUsuario'];?></a>
           </td>
           <td class="col-md-3">
-            <h4><b><?php echo $row['puesto']; ?></b></h4>
-            <p class="visibilidad"><?php echo $row['departamento']; ?></p>
+            <h4><b><?php echo $row['puestoUsuario']; ?></b></h4>
+            <p class="visibilidad"><?php echo $row['departamentoUsuario']; ?></p>
           </td>
-          <td class="col-md-2"><?php echo $row['privilegios']; ?></td>
+          <td class="col-md-2">
+            <h4><b><?php echo $row['privilegiosUsuario']; ?></b></h4>
+          </td>
           <td class="col-md-2 text-center">
-            <a href="#EditarUsuario" class="rotate-link" data-toggle="modal"><img src="/fitcoControl/Resources/iconos/pencil1.svg" class="rotate-icon"   style="width:30px"></a>
-            <a class="rotate-link ml-5" onclick="return confirm('¿Estas seguro?');"  href="/fitcoControl/Resources/PHP/Usuarios/EliminarUsuario.php?id=<?php echo $row['id']; ?>"><img src="/fitcoControl/Resources/iconos/trash.svg" style="width:30px" class="rotate-icon"></a>
+            <a href="#" class="ml-8 spand-link" data-toggle="modal" data-target="#EditarUsuario"><img src="/fitcoControl/Resources/iconos/pencil1.svg" class="spand-icon"></a>
+
+
+            <a class="spand-link ml-5" onclick="return confirm('¿Estas seguro?');"  href="/fitcoControl/Resources/PHP/Usuarios/EliminarUsuario.php?pk_usuario=<?php echo $row['pk_usuario']; ?>"><img src="/fitcoControl/Resources/iconos/trash.svg" class="spand-icon"></a>
           </td>
         </tr>
         <?php
@@ -104,7 +108,7 @@
         </tr>
         <tr class="row m20">
           <td class="col-md-12 input-effect p-0">
-            <input name="usr_privilegios" class="w-100 effect-17" type="text" required>
+            <input name="usr_privilegios" class="w-100 effect-17" list="ingr" required>
             <datalist id="ingr">
               <option value="Administrador">Administrador</option>
               <option value="Usuario">Usuario</option>
@@ -124,10 +128,10 @@
 
 
 
-
+  <script src="/fitcoControl/Resources/js/alertas.js"></script>
 
   <?php
     $root = $_SERVER['DOCUMENT_ROOT'];
     require $root . '/fitcoControl/Ubicaciones/footer.php';
-    require $root . '/fitcoControl/Ubicaciones/Modales/Usuarios/Editar.php';
+    require $root . '/fitcoControl/Ubicaciones/Modales/Usuarios/EditarUsuario.php';
   ?>

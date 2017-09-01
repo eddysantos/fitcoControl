@@ -13,7 +13,7 @@ require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
   $usr_contra = $conn->real_escape_string($_POST['usr_contra']);
   $usr_privilegios = $conn->real_escape_string($_POST['usr_privilegios']);
 
-  $query = "INSERT INTO usuarios(id,nombre,apellidos,correo,departamento,puesto,usuario,contra,privilegios) VALUES('$usr_id','$usr_nombre','$usr_apellidos','$usr_correo','$usr_departamento','$usr_puesto','$usr_usuario','$usr_contra','$usr_privilegios')";
+  $query = "INSERT INTO usuarios(pk_usuario,nombreUsuario,apellidosUsuario,correoUsuario,departamentoUsuario,puestoUsuario,usrUsuario,contraUsuario,privilegiosUsuario) VALUES('$usr_id','$usr_nombre','$usr_apellidos','$usr_correo','$usr_departamento','$usr_puesto','$usr_usuario','$usr_contra','$usr_privilegios')";
 
 
   $resultado = $conn->query($query);

@@ -1,10 +1,10 @@
 <?php
 
 
-$query = "SELECT * FROM Cobranza INNER JOIN Clientes WHERE cliente = nombre";
+$query = "SELECT * FROM ct_cobranza INNER JOIN ct_cliente WHERE clienteCobranza = nombreCliente";
 $resulcobranza = $conn->query($query);
 
-$query = "SELECT * FROM Clientes";
+$query = "SELECT * FROM ct_cliente";
 $resulclientes = $conn->query($query);
 
 $query = "SELECT * FROM meses";

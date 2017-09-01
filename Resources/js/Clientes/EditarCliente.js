@@ -1,33 +1,10 @@
 $(document).ready(function(){
-  $('.consultar').click(function(){
-    var accion = $(this).attr('accion');
-    var status = $(this).attr('status');
 
-    switch (accion) {
-      case "acliente":
-      if (status == 'cerrado') {
-        $('.span').css('display', 'inherit');
-        $(this).attr('status', 'abierto');
-        $('#clientes').animate({"right": "36%"}, "slow");
-        $('#NuevoCliente').fadeIn(2500);
-      }else {
-        $('.span').css('display', '');
-        $(this).attr('status', 'cerrado');
-        $('#clientes').animate({"right": "4%"}, "slow");
-        $('#NuevoCliente').hide();
-      }
-      break;
-      default:
-        console.error("Something went terribly wrong...");
-    }
-  });
-
-
-  /*$('#btnEditarCliente').click(function(){
+  $('#btnEditarCliente').click(function(){
     var clienteId = $(this).attr('client-id');
     $.ajax({
       method: 'POST',
-      url: '/fitcoControl/Resources/PHP/Clientes/fetchClientData.php'
+      url: '/fitcoControl/Resources/PHP/Clientes/fetchClientData.php',
       data: {clienteId: clienteId},
       success: function(result){
         var rsp = JSON.parse(result);
@@ -50,6 +27,6 @@ $(document).ready(function(){
         console.error(exception);
       }
     })
-  });*/
+  });
 
 });

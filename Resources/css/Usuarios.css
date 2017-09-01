@@ -35,10 +35,10 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
   margin-top: 130px;
 }
-.links {
+.clt_usr {
   text-align: right;
 }
-.links .consultar {
+.clt_usr .consultar{
   cursor: pointer;
   opacity: 0.6;
   -moz-transition: all 0.2s linear;
@@ -46,7 +46,7 @@
   -webkit-transition: all 0.2s linear;
   transition: all 0.2s linear;
 }
-.links .consultar .icon {
+.clt_usr  .consultar  .icon {
   display: inline-block;
   text-align: center;
   padding: 1px 0 0 0;
@@ -57,7 +57,7 @@
   transition: all 0.5s linear;
   line-height: 0!important;
 }
-.links .consultar span {
+.clt_usr .consultar  span {
   overflow: hidden;
   display: inline-flex;
   margin-left: 5px;
@@ -71,12 +71,12 @@
   transition: all 0.2s ease;
   font-size: 20px;
 }
-.links .consultar:hover {
+.clt_usr .consultar:hover {
   opacity: 1.0;
 
 }
 
-.links .consultar:hover span{
+.clt_usr .consultar:hover span{
   width: 190px;
 }
 

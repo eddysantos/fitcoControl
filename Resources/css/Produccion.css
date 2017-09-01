@@ -1,15 +1,22 @@
 a{
   cursor: pointer;
 }
-a.iconos{
+a.icono4{
   letter-spacing: 6px;
 }
 
-a.iconos:hover{
+a.iconos4:hover{
   color: gray!important;
   text-decoration: none;
-  letter-spacing: 10px;
+
 }
+a img{
+  width: 150px;
+}
+a img:hover{
+  width: 200px;
+}
+
 
 /* LINKS REDIRECCION BOTONES*/
 a.linkboton{
@@ -144,17 +151,32 @@ a.boton-colapso{
 a.boton-colapso:hover{
   color: rgba(47, 89, 119, 0.63);
 }
+
+
 .mt-40{
   margin-top: 40px!important;
 }
-
-
 
 .rotate-icon {
   transition: transform 0.3s ease-out;
 }
 .rotate-link:hover .rotate-icon{
   transform: rotate(360deg);
+}
+
+.spand-icon {
+  width: 29px;
+}
+.spand-link:hover .spand-icon{
+  width: 32px;
+}
+
+a h2.icopro{
+  text-align: center;
+}
+
+a h2.icopro:hover{
+  letter-spacing: 5px
 }
 
 

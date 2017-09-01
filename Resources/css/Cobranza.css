@@ -25,3 +25,49 @@
 .semanas{
   background-color: rgba(152, 24, 24, 0.14);
 }
+
+
+.links {
+  text-align: right;
+}
+.links .ver{
+  cursor: pointer;
+  opacity: 0.6;
+  -moz-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+.links  .ver  .icon1 {
+  display: inline-block;
+  text-align: center;
+  padding: 1px 0 0 0;
+  font-size: 1.1rem;
+  -moz-transition: all 0.5s linear;
+  -o-transition: all 0.5s linear;
+  -webkit-transition: all 0.5s linear;
+  transition: all 0.5s linear;
+  line-height: 0!important;
+}
+.links .ver  span {
+  overflow: hidden;
+  display: inline-flex;
+  margin-left: 5px;
+  font-size: 0.8rem;
+  width: 0px;
+  font-weight: 600;
+  white-space: nowrap;
+  -moz-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  font-size: 20px;
+}
+.links .ver:hover {
+  opacity: 1.0;
+
+}
+
+.links .ver:hover span{
+  width: 190px;
+}

@@ -4,9 +4,9 @@ $root = $_SERVER['DOCUMENT_ROOT'];
 
 require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
 
-    $id = $_REQUEST['id'];
+    $id = $_REQUEST['pk_cliente'];
 
-    $query = "DELETE FROM Clientes WHERE id='$id'";
+    $query = "DELETE FROM ct_cliente WHERE pk_cliente='$id'";
     $resultado = $conn->query($query);
 
 

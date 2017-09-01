@@ -19,11 +19,8 @@
         <a href="/fitcoControl/Ubicaciones/Cobranza/cobranza.php" class="transicion">COBRANZA</a>
         <a href="/fitcoControl/Ubicaciones/Clientes/Clientes.php" class="transicion">CLIENTES</a>
         <a href="/fitcoControl/Ubicaciones/Usuarios/Usuarios.php" class="transicion">USUARIOS</a>
+        <a href="/fitcoControl/Ubicaciones/Usuarios/Usuarios.php" class="transicion">CERRAR SESION</a>
       </nav>
-      <div class="social">
-        <div class="icon-facebook-sign"></div>
-        <div class="icon-twitter-sign"></div>
-      </div>
     </div>
 
     <section id="homesec">

@@ -66,7 +66,7 @@ nav a{
   font-size: 21px;
   text-decoration: none!important;
   color: #505050;
-  width: 24.44%;
+  width: 19.59%;
   text-align: center;
   line-height: 65px;
   text-transform: uppercase;
@@ -195,7 +195,7 @@ img.right {
   font-size: 45px;
 }
 
-hoverblk {
+.hoverblk {
   transition: .3;
 }
 
