@@ -25,7 +25,7 @@ require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
   if ($resultado) {
     header("Location: /fitcoControl/Ubicaciones/Clientes/Clientes.php");
   }else {
-    echo "No se pudo Realizar el resistro";
+    echo "No se pudo Realizar el registro";
   }
 
 ?>

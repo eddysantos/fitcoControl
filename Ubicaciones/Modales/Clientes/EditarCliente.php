@@ -80,7 +80,7 @@
         </div><!--termina el Container-Fluid-->
       </div><!--termina el Cuerpo del Modal-->
       <div class="justify-content-center modal-footer">
-        <button type="submit" onclick="" class="w-50 btnsub btn boton btn-block ">ACTUALIZAR</button>
+        <button id="ActualizarCliente" type="submit" class="w-50 btnsub btn boton btn-block">ACTUALIZAR</button>
       </div>
     </div><!--termina el COntenido del Modal-->
   </div>
