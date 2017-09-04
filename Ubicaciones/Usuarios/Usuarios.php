@@ -40,7 +40,7 @@
             <h4><b><?php echo $row['privilegiosUsuario']; ?></b></h4>
           </td>
           <td class="col-md-2 text-center">
-            <a href="#" class="ml-8 spand-link" data-toggle="modal" data-target="#EditarUsuario"><img src="/fitcoControl/Resources/iconos/pencil1.svg" class="spand-icon"></a>
+            <a href="#" class="spand-link" data-toggle="modal" data-target="#EditarUsuario"><img src="/fitcoControl/Resources/iconos/pencil1.svg" class="spand-icon"></a>
 
 
             <a class="spand-link ml-5" onclick="return confirm('¿Estas seguro?');"  href="/fitcoControl/Resources/PHP/Usuarios/EliminarUsuario.php?pk_usuario=<?php echo $row['pk_usuario']; ?>"><img src="/fitcoControl/Resources/iconos/trash.svg" class="spand-icon"></a>

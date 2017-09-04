@@ -37,7 +37,7 @@
           </td>
           <td class="col-md-2"></td>
           <td class="col-md-2 text-center">
-            <a href="#"  class="ml-8 spand-link" data-toggle="modal" data-target="#EditarCliente" id="btnEditarCliente" client-id="<?php echo $row['pk_cliente']?>"><img src="/fitcoControl/Resources/iconos/pencil1.svg" class="spand-icon"></a>
+            <a href="#"  class="spand-link" data-toggle="modal" data-target="#EditarCliente" id="btnEditarCliente" client-id="<?php echo $row['pk_cliente']?>"><img src="/fitcoControl/Resources/iconos/pencil1.svg" class="spand-icon"></a>
 
 
             <a class="spand-link ml-5" onclick="return confirm('¿Estas seguro?');"  href="/fitcoControl/Resources/PHP/Clientes/EliminarCliente.php?pk_cliente=<?php echo $row['pk_cliente']; ?>"><img src="/fitcoControl/Resources/iconos/trash.svg"  class="spand-icon"></a>

@@ -6,7 +6,7 @@
         <button class="close" type="button" name="button" data-dismiss="modal" area-label="close">
           <i class="fa fa-times-circle-o fa-2x" aria-hidden="true"></i>
         </button>
-        <h5 class="modal-tittle">Editar Usuario</h5>
+        <h5 class="modal-tittle">EDITAR DATOS DE USUARIO</h5>
       </div>
       <div class="modal-body">
         <div class="container-fluid">
@@ -78,8 +78,8 @@
 
         </div><!--termina el Container-Fluid-->
       </div><!--termina el Cuerpo del Modal-->
-      <div class="modal-footer">
-        <a href="" id="btn">ACEPTAR <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+      <div class="justify-content-center modal-footer">
+        <button type="submit" onclick="" class="w-50 btnsub btn boton btn-block">ACTUALIZAR</button>
       </div>
     </div><!--termina el COntenido del Modal-->
   </div>

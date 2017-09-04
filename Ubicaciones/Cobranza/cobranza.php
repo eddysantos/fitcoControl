@@ -37,7 +37,7 @@
           <td class="col-md-2">
 
             <h4><b><input type="color" name="" value="<?php echo $row['colorCliente']; ?>"><?php echo $row['clienteCobranza']; ?></b></h4>
-            <a class="visibilidad"><?php echo $row['creditoCliente']; ?> Días</a>
+            <p><a class="visibilidad">Credito : <?php echo $row['creditoCliente']; ?> Días</a></p>
           </td>
           <td class="col-md-2">
             <h4><b>Factura : <?php echo $row['facturaCobranza']; ?></b></h4>
@@ -51,7 +51,7 @@
 
           <td class="col-md-2 text-center">
             <!--EDITAR EDITAR EDITAR EDITAR-->
-            <a href="" class="ml-8 spand-link" data-toggle="modal" data-target="#DetCobranza"><img src="/fitcoControl/Resources/iconos/pencil1.svg" class="spand-icon"></a>
+            <a href="" class="spand-link" data-toggle="modal" data-target="#DetCobranza"><img src="/fitcoControl/Resources/iconos/pencil1.svg" class="spand-icon"></a>
 
             <!--ELIMINAR ELIMINAR ELIMINAR ELIMINAR-->
             <a class="spand-link ml-5" onclick="return confirm('¿Estas seguro?');"  href="/fitcoControl/Resources/PHP/Cobranza/eliminarCobranza.php?pk_cobranza=<?php echo $row['pk_cobranza']; ?>"><img src="/fitcoControl/Resources/iconos/trash.svg" class="spand-icon"></a>

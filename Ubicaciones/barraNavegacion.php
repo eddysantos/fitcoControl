@@ -17,7 +17,7 @@
 
 
 
-    
+
     <script src="/fitcoControl/Resources/jquery/jquery.min.js"></script>
     <script src="/fitcoControl/Resources/jquery/popper.min.js"></script>
     <script src="/fitcoControl/Resources/bootstrap/js/bootstrap.min.js"></script>
@@ -44,7 +44,7 @@
         <a href="/fitcoControl/Ubicaciones/Usuarios/Usuarios.php" class="w-95">USUARIOS</a>
       </li>
       <li class="nav-item">
-        <a href="/fitcoControl/Ubicaciones/Sesion/Cerrar.php" class="w-95">CERRAR SESION</a>
+        <a href="/fitcoControl/Resources/PHP/Login/CerrarSesion.php" class="w-95">CERRAR SESION</a>
       </li>
     </ul>
     </nav>

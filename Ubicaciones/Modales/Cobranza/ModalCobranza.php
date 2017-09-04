@@ -6,7 +6,7 @@
         <button class="close" type="button" name="button" data-dismiss="modal" area-label="close">
           <i class="fa fa-times-circle-o fa-2x" aria-hidden="true"></i>
         </button>
-        <h5 class="modal-tittle">Detalle de Cobranza</h5>
+        <h5 class="modal-tittle">DETALLE DE COBRANZA</h5>
       </div>
       <div class="modal-body">
         <table class="table">
@@ -42,8 +42,8 @@
           </tbody>
         </table>
       </div><!--termina el Cuerpo del Modal-->
-      <div class="modal-footer">
-        <button type="submit" onclick="" class="btnsub btn boton btn-block ">ACTUALIZAR</button>
+      <div class="justify-content-center modal-footer">
+        <button type="submit" onclick="" class="w-50 btnsub btn boton btn-block ">ACTUALIZAR</button>
       </div>
     </div><!--termina el COntenido del Modal-->
   </div>
