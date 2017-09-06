@@ -28,6 +28,7 @@ $response = array(
   }else {
     $response['code']="200";
     $response['msg']="El usuario o contraseña es incorrecto";
+    $response['data'] = mysqli_error($conn);
   }
 
   $response = json_encode($response);

@@ -21,12 +21,7 @@
     <script src="/fitcoControl/Resources/jquery/popper.min.js"></script>
     <script src="/fitcoControl/Resources/bootstrap/js/bootstrap.min.js"></script>
     <script src="/fitcoControl/Resources/jquery/tether.min.js"></script>
-<<<<<<< HEAD
-=======
 
-
-
->>>>>>> origin/Dev
   </head>
 
   <body>

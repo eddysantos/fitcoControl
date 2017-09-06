@@ -22,7 +22,6 @@ $(document).ready(function(){
     }
   });
 
-<<<<<<< HEAD
   $('#submitNewClient').click(function(){
     var cn = $('#ncNombre').val();
     var fi = $('#ncFechaIngreso').val();
@@ -48,7 +47,7 @@ $(document).ready(function(){
       }
     })
   });
-=======
+
 
   /*$('#btnEditarCliente').click(function(){
     var clienteId = $(this).attr('client-id');
@@ -78,6 +77,6 @@ $(document).ready(function(){
       }
     })
   });*/
->>>>>>> origin/Dev
+
 
 });
