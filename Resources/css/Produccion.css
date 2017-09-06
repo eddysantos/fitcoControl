@@ -1,15 +1,22 @@
 a{
   cursor: pointer;
 }
-a.iconos{
+a.icono4{
   letter-spacing: 6px;
 }
 
-a.iconos:hover{
+a.iconos4:hover{
   color: gray!important;
   text-decoration: none;
-  letter-spacing: 10px;
+
 }
+a img{
+  width: 150px;
+}
+a img:hover{
+  width: 200px;
+}
+
 
 /* LINKS REDIRECCION BOTONES*/
 a.linkboton{
@@ -64,6 +71,29 @@ a.linkboton:hover span.top{
 	border-radius:0;
 }
 
+
+a.linkboton{
+	font-family: 'Montserrat', sans-serif;
+	text-transform:uppercase;
+	letter-spacing:3px;
+	display:inline-block;
+	text-decoration:none;
+	color:black;
+	padding: 10px 30px;
+	border: 2px solid black;
+	border-radius:5px;
+	position:relative;
+	overflow:hidden;
+	transition: all ease 400ms;
+  -webkit-transition: all ease 400ms;
+  -moz-transition: all ease 400ms;
+  -ms-transition: all ease 400ms;
+  font-size: 15px;
+  text-align: center!important;
+}
+
+
+
 /*PARA COLAPSO;*/
 
 .colapso {
@@ -95,7 +125,7 @@ a.linkboton:hover span.top{
   position:absolute;
   width:30px;
   opacity:0.5;
-  right:-730;
+  right:-710;
 }
 .colapso h2.dos::after{
   content: url("/fitcoControl/Resources/iconos/plus.svg");
@@ -103,7 +133,7 @@ a.linkboton:hover span.top{
   position:absolute;
   width:30px;
   opacity:0.5;
-  right:-840;
+  right:-826;
 }
 .colapso:hover h2::after{
   opacity:1
@@ -121,6 +151,35 @@ a.boton-colapso{
 a.boton-colapso:hover{
   color: rgba(47, 89, 119, 0.63);
 }
+
+
 .mt-40{
   margin-top: 40px!important;
 }
+
+.rotate-icon {
+  transition: transform 0.3s ease-out;
+}
+.rotate-link:hover .rotate-icon{
+  transform: rotate(360deg);
+}
+
+.spand-icon {
+  width: 29px;
+}
+.spand-link:hover .spand-icon{
+  width: 32px;
+}
+
+a h2.icopro{
+  text-align: center;
+}
+
+a h2.icopro:hover{
+  letter-spacing: 5px
+}
+
+
+
+
+/*BOTONES*/

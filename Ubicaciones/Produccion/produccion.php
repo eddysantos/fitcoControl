@@ -4,6 +4,7 @@
 ?>
 
 
+<<<<<<< HEAD
 <div class="container-fluid" style="display: -webkit-box;">
   <!--div class="row">
     <div class="col">
@@ -43,5 +44,22 @@
       </div>
     </div>
   </div>
+=======
+
+<div class="container mt-250">
+  <table class="table">
+    <tr class="row">
+      <td class="col-md-4 text-center">
+        <a href="/fitcoControl/Ubicaciones/Produccion/ProgramacionProduc.php" class="iconos4"><img src="/fitcoControl/Resources/iconos/002-shipping.svg"><h2>NUEVA PRODUCCIÓN</h2></a>
+      </td>
+      <td class="col-md-4 text-center">
+        <a href="/fitcoControl/Ubicaciones/Produccion/ProduccionDiaria.php" class="iconos4"><img  src="/fitcoControl/Resources/iconos/003-shirt.svg"><h2>PRODUCCIÓN DIARIA</h2></a>
+      </td>
+      <td class="col-md-4 text-center">
+        <a href="/fitcoControl/Ubicaciones/Produccion/ConsultarProgramacion.php" class="iconos4"><img  src="/fitcoControl/Resources/iconos/001-delivery.svg"><h2>CONSULTAR PROGRAMACIÓN</h2></a>
+      </td>
+    </tr>
+  </table>
+>>>>>>> origin/Dev
 </div>
 <div class="fixed-bottom">Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>

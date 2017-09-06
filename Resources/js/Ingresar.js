@@ -15,7 +15,7 @@ $(document).ready(function(){
 				response = jQuery.parseJSON(result);
 				switch (response.code) {
 					case "200":
-						$('#loginError').fadeIn();
+						swal("Usuario o contraseña incorrectos","Favor de Verificar","error");
 						return false;
 						break;
 

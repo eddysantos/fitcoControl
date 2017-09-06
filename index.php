@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <title>Fit&Co Solutions</title>
     <link rel="stylesheet" href="/fitcoControl/Resources/css/login.css">
+    <link rel="stylesheet" href="/fitcoControl/Resources/css/sweetalert.css">
+
   </head>
   <body>
     <div id="login-button">
@@ -17,12 +19,12 @@
       </span>
 
     <div class="text-center">
-      <div id="loginError" class="alert alert-danger alert-dismissible fade show" style="display: none" role="alert">
+      <!--div id="loginError" class="alert alert-danger alert-dismissible fade show" style="display: none" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
         Usuario o contraseña incorrectos!
-      </div>
+      </div-->
     </div>
     <div class="login-form-1">
       <form id="login-form" class="text-left" onsubmit="return false;" method="post">
@@ -51,8 +53,9 @@
       </form>
     </div>
 
-
+    
     <script src="/fitcoControl/Resources/jquery/jquery.min.js"></script>
+    <script src="/fitcoControl/Resources/jquery/sweetalert.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <script src="/fitcoControl/Resources/bootstrap/js/bootstrap.min.js"></script>
   </body>

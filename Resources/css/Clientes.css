@@ -1,6 +1,11 @@
 input[type="color"]{
-  border:0px;
-  background-color:transparent;
-  height:30px;
-  width: 50%
+  border: 0px!important;
+  background-color: transparent;
+  width: 10%;
+  padding: 0px!important;
+  margin: 0px!important;
+}
+
+p{
+  color:rgb(66, 125, 158);
 }
