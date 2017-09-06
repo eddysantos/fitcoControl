@@ -6,6 +6,7 @@
 ?>
 
 
+
 <div class="mt-100 pr-50">
   <div class="clt_usr mr-5">
     <a id="addcliente" class="rotate-link consultar ancla" accion="acliente" status="cerrado">
@@ -14,7 +15,28 @@
     </a>
   </div>
 
-  <form id="clientes" class="page p-0">
+
+  <form id="Eclientes" class="page p-0" style="margin-top:130px">
+    <table class="table table-hover">
+      <thead>
+        <tr class="row m-0 encabezado">
+          <td class="col-md-1"></td>
+          <td class="col-md-3 text-center">
+            <h3>CLIENTE</h3>
+          </td>
+          <td class="col-md-3 text-center">
+            <h3>CORREO/CONTACTO</h3>
+          </td>
+          <td class="col-md-3 text-center">
+            <h3>TELEFONO</h3>
+          </td>
+          <td class="col-md-2 text-center"></td>
+        </tr>
+      </thead>
+    </table>
+  </form>
+
+  <form id="clientes" class="page p-0" style="margin-top:180px">
     <table class="table table-hover">
       <tbody id="mostrarClientes">
 

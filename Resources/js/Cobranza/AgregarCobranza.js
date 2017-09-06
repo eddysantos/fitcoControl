@@ -11,18 +11,20 @@ $(document).ready(function(){
         $('.spanA').css('display', 'inherit');
         $('.spanD').css('display', '');
         $('#cobranza').animate({"right": "38%"}, "slow");
+        $('#Ecobranza').animate({"right": "38%"}, "slow");
         $('#Agregarcobranza').fadeIn(1000);
         $('#Detallecobranza').hide();
       }else {
         $('.spanA').css('display', '');
         $(this).attr('status', 'cerrado');
-        $('#cobranza').animate({"right": "5%"}, "slow");
+        $('#cobranza').animate({"right": "4%"}, "slow");
+        $('#Ecobranza').animate({"right": "4%"}, "slow");
         $('#Agregarcobranza').hide();
       }
       break;
 
 
-      case "dcobranza":
+      /*case "dcobranza":
       if (status == 'cerrado') {
         $(this).attr('status', 'abierto');
         $('.spanD').css('display', 'inherit');
@@ -34,10 +36,10 @@ $(document).ready(function(){
       }else {
         $('.spanD').css('display', '');
         $(this).attr('status', 'cerrado');
-        $('#cobranza').animate({"right": "5%"}, "slow");
+        $('#cobranza').animate({"right": "4%"}, "slow");
         $('#Detallecobranza').hide();
       }
-      break;
+      break;*/
 
       default:
       console.error("Something went terribly wrong...");

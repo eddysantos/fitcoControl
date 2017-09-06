@@ -12,103 +12,88 @@
     </a>
   </div>
 
-
-  <form id="usuarios" class="page p-0">
+  <form id="Eusuarios" class="page p-0" style="margin-top:130px">
     <table class="table table-hover">
-      <tbody>
-
-        <?php
-          require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
-          $query = "SELECT * FROM usuarios";
-          $resultado = $conn->query($query);
-          while($row = $resultado->fetch_assoc()){
-        ?>
-
-        <tr class="row bordelateral m-0" id="item">
-          <td class="col-md-1">
-            <img src="/fitcoControl/Resources/iconos/users.svg" class="icono">
+      <thead>
+        <tr class="row m-0 encabezado">
+          <td class="col-md-1"></td>
+          <td class="col-md-4 text-center">
+            <h3>EMPLEADO</h3>
           </td>
-          <td class="col-md-4">
-            <h4><b><?php echo $row['nombreUsuario'];?>  <?php echo $row['apellidosUsuario']; ?></b></h4>
-            <a class="visibilidad" href="mailto:<?php echo $row['correoUsuario']; ?>"><?php echo $row['correoUsuario'];?></a>
-          </td>
-          <td class="col-md-3">
-            <h4><b><?php echo $row['puestoUsuario']; ?></b></h4>
-            <p class="visibilidad"><?php echo $row['departamentoUsuario']; ?></p>
-          </td>
-          <td class="col-md-2">
-            <h4><b><?php echo $row['privilegiosUsuario']; ?></b></h4>
+          <td class="col-md-3 text-center">
+            <h3>DEPARTAMENTO</h3>
           </td>
           <td class="col-md-2 text-center">
-            <a href="#" class="spand-link" data-toggle="modal" data-target="#EditarUsuario"><img src="/fitcoControl/Resources/iconos/pencil1.svg" class="spand-icon"></a>
-
-
-            <a class="spand-link ml-5" onclick="return confirm('¿Estas seguro?');"  href="/fitcoControl/Resources/PHP/Usuarios/EliminarUsuario.php?pk_usuario=<?php echo $row['pk_usuario']; ?>"><img src="/fitcoControl/Resources/iconos/trash.svg" class="spand-icon"></a>
+            <h3>PRIVILEGIOS</h3>
           </td>
+          <td class="col-md-2"></td>
         </tr>
-        <?php
-          }
-        ?>
+      </thead>
+    </table>
+  </form>
+  <form id="usuarios" class="page p-0" style="margin-top:180px">
+    <table class="table table-hover">
+      <tbody id="mostrarUsuarios">
       </tbody>
     </table>
   </form>
 
-  <form action="/fitcoControl/Resources/PHP/Usuarios/Agregarusuario.php"  id="NuevoUsuario" class="agregarnuevo" style="display:none" method="POST">
+  <form id="NuevoUsuario" onsubmit="return false;" class="agregarnuevo" style="display:none">
     <table class="table">
       <tbody>
         <tr class="row m20">
           <td class="col-md-12 input-effect p-0">
-            <input type="text" name="usr_id" style="display:none">
-            <input name="usr_nombre" class="effect-17" type="text" required>
+            <input type="text" id="usr_id" style="display:none">
+            <input id="usr_nombre" class="effect-17" type="text" required>
               <label>Nombre (s)</label>
               <span class="focus-border"></span>
           </td>
         </tr>
         <tr class="row m20">
           <td class="col-md-12 input-effect p-0">
-            <input  name="usr_apellidos" class="effect-17" type="text" required>
+            <input  id="usr_apellidos" class="effect-17" type="text" required>
               <label>Apellidos</label>
               <span class="focus-border"></span>
           </td>
         </tr>
         <tr class="row m20">
           <td class="col-md-12 input-effect p-0">
-            <input name="usr_correo" class="effect-17" type="text" required>
+            <input id="usr_correo" class="effect-17" type="text" required>
               <label>Correo</label>
               <span class="focus-border"></span>
           </td>
         </tr>
         <tr class="row m20">
           <td class="col-md-12 input-effect p-0">
-            <input name="usr_departamento" class="effect-17" type="text" required>
+            <input id="usr_departamento" class="effect-17" type="text" required>
               <label>Departamento</label>
               <span class="focus-border"></span>
           </td>
         </tr>
         <tr class="row m20">
           <td class="col-md-12 input-effect p-0">
-            <input name="usr_puesto" class="effect-17" type="text" required>
+            <input id="usr_puesto" class="effect-17" type="text" required>
               <label>Puesto</label>
               <span class="focus-border"></span>
           </td>
         </tr>
         <tr class="row m20">
           <td class="col-md-12 input-effect p-0">
-            <input name="usr_usuario" class="effect-17" type="text" required>
+            <input id="usr_usuario" class="effect-17" type="text" required>
               <label>Usuario</label>
               <span class="focus-border"></span>
           </td>
         </tr>
         <tr class="row m20">
           <td class="col-md-12 input-effect p-0">
-            <input  name="usr_contra" class="effect-17" type="text" required>
+            <input  id="usr_contra" class="effect-17" type="text" required>
               <label>Contraseña</label>
               <span class="focus-border"></span>
           </td>
         </tr>
         <tr class="row m20">
           <td class="col-md-12 input-effect p-0">
-            <input name="usr_privilegios" class="w-100 effect-17" list="ingr" required>
+            <input id="usr_privilegios" class="w-100 effect-17" list="ingr" required>
             <datalist id="ingr">
               <option value="Administrador">Administrador</option>
               <option value="Usuario">Usuario</option>
@@ -119,7 +104,7 @@
         </tr>
         <tr class="row justify-content-center mb-3">
           <td class="col-md-4">
-            <button type="submit" name="usr_button" class="btnsub btn boton btn-block ">AGREGAR</button>
+            <button id="NuevoRegistroUsuario" class="btnsub btn boton btn-block ">AGREGAR</button>
           </td>
         </tr>
       </tbody>
@@ -127,11 +112,8 @@
   </form>
 
 
-
-  <script src="/fitcoControl/Resources/js/alertas.js"></script>
-
   <?php
     $root = $_SERVER['DOCUMENT_ROOT'];
-    require $root . '/fitcoControl/Ubicaciones/footer.php';
     require $root . '/fitcoControl/Ubicaciones/Modales/Usuarios/EditarUsuario.php';
+    require $root . '/fitcoControl/Resources/PHP/Usuarios/pieUsuario.php';
   ?>

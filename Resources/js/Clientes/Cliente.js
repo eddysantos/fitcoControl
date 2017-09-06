@@ -34,6 +34,7 @@ $(document).ready(function(){
         } else {
           fetchClients();
           $('#NuevoCliente').hide();
+          $('#Eclientes').animate({"right": "4%"}, "slow");
           $('#clientes').animate({"right": "4%"}, "slow");
         }
       },
@@ -44,6 +45,8 @@ $(document).ready(function(){
   });
 });
 
+
+//Muestra los registros en pantalla
 function fetchClients(){
   $.ajax({
     method: 'POST',
@@ -60,13 +63,21 @@ function fetchClients(){
   })
 }
 
+
 function ActivarBotones(){
-  $('#btnEditarCliente').click(function(){
+  // Asociar un evento al botón que muestra la ventana modal
+  $('.EditCliente').click(function(){
     var clienteId = $(this).attr('client-id');
     $.ajax({
+
+      // especifica si será una petición POST o GET
       method: 'POST',
+      // la URL para la petición
       url: '/fitcoControl/Resources/PHP/Clientes/fetchClientData.php',
+      // la información a enviar
       data: {clienteId: clienteId},
+
+      // código a ejecutar si la petición es satisfactoria
       success: function(result){
         var rsp = JSON.parse(result);
         console.log(rsp);
@@ -86,13 +97,14 @@ function ActivarBotones(){
           console.error(rsp.response);
         }
       },
+      // código a ejecutar si la petición falla;
       error: function(exception){
         console.error(exception);
       }
     })
   });
 
-  $('#ActualizarCliente').click(function(){
+  $('.ActualizarCliente').click(function(){
     var idCliente = $('#mclt_id').val();
     var nombreCliente = $('#mclt_cliente').val();
     var correoCliente = $('#mclt_correo').val();

@@ -13,28 +13,30 @@
           <tbody>
             <tr class="row m20">
               <td class="col-md-12 input-effect p-0">
-                <input class="modal-efecto-17 has-content " type="text" value="">
+                <input type="hidden" name="mcbz_id" id="mcbz_id">
+                <input class="modal-efecto-17 has-content w-100" name="mcbz_cliente" id="mcbz_cliente" list="clientes" required autocomplete="off">
+                <datalist id="clientes"></datalist>
                   <label>Cliente</label>
                   <span class="focus-border"></span>
               </td>
             </tr>
             <tr class="row m20">
               <td class="col-md-12 input-effect p-0">
-                <input class="modal-efecto-17 has-content " type="text" value="">
+                <input class="modal-efecto-17 has-content" name="mcbz_factura" id="mcbz_factura" type="text">
                   <label>Factura</label>
                   <span class="focus-border"></span>
               </td>
             </tr>
             <tr class="row m20">
               <td class="col-md-12 input-effect p-0">
-                <input class="modal-efecto-17 has-content " type="text" value="">
+                <input class="modal-efecto-17 has-content" name="mcbz_importe" id="mcbz_importe" type="text">
                   <label>Importe</label>
                   <span class="focus-border"></span>
               </td>
             </tr>
             <tr class="row m20">
               <td class="col-md-12 input-effect p-0">
-                <input class="modal-efecto-17 has-content " type="date" value="">
+                <input class="modal-efecto-17 has-content" name="mcbz_vencimiento" id="mcbz_vencimiento" type="date">
                   <label>Día Vencimiento</label>
                   <span class="focus-border"></span>
               </td>
@@ -43,7 +45,7 @@
         </table>
       </div><!--termina el Cuerpo del Modal-->
       <div class="justify-content-center modal-footer">
-        <button type="submit" onclick="" class="w-50 btnsub btn boton btn-block ">ACTUALIZAR</button>
+        <button   type="submit" class="ActualizarDcobranza w-50 btnsub btn boton btn-block ">ACTUALIZAR</button>
       </div>
     </div><!--termina el COntenido del Modal-->
   </div>

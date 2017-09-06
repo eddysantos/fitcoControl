@@ -71,3 +71,8 @@
 .links .ver:hover span{
   width: 190px;
 }
+
+.encabezado{
+  letter-spacing: 3px;
+  color: rgba(62, 109, 140, 0.85);
+}
