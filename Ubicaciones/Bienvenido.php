@@ -19,7 +19,7 @@
         <a href="/fitcoControl/Ubicaciones/Cobranza/cobranza.php" class="transicion">COBRANZA</a>
         <a href="/fitcoControl/Ubicaciones/Clientes/Clientes.php" class="transicion">CLIENTES</a>
         <a href="/fitcoControl/Ubicaciones/Usuarios/Usuarios.php" class="transicion">USUARIOS</a>
-        <a href="/fitcoControl/Ubicaciones/Usuarios/Usuarios.php" class="transicion">CERRAR SESION</a>
+        <a href="/fitcoControl/Resources/PHP/Login/CerrarSesion.php" class="transicion">CERRAR SESION</a>
       </nav>
     </div>
 

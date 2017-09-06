@@ -1,6 +1,13 @@
 
 @import url('https://fonts.googleapis.com/css?family=Quicksand');
 
+
+/* PARA QUITAR FONDO AMARILLO DE LOS INPUTS */
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px white inset;
+  -webkit-text-fill-color: rgba(47, 89, 119, 0.63)!important;
+}
+
 .page {
     position: absolute;
     left: 4%;

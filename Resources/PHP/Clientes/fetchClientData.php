@@ -12,18 +12,20 @@ $stmt = $conn->prepare($query);
 $stmt->bind_param('s', $_POST['clienteId']);
 $stmt->execute();
 
-$resultados = $stmt->get_results();
+$resultados = $stmt->get_result();
+$num_rows = $stmt->num_rows;
 
-$num_rows = $conn->num_rows;
-
-if ($num_rows > 1 || $num_rows == 0) {
+if (false) {
   $data['code'] = 2;
+  $data['response'] = $num_rows;
 } else {
   $data['code'] = 1;
-  while ($a = $resultados->fetch_assoc()) {
+  while ($a = mysqli_fetch_assoc($resultados)) {
     $data['response'] = $a;
   }
 }
+
+
 
 $json = json_encode($data);
 
