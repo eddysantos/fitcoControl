@@ -63,6 +63,7 @@ function fetchUsuario(){
 
 
 function ActivarBotonesUsuario(){
+  $('.EditUsuario').unbind();
   $('.EditUsuario').click(function(){
     var usuarioId = $(this).attr('usuario-id');
 
@@ -96,7 +97,7 @@ function ActivarBotonesUsuario(){
     })
   });
 
-
+  $('.ActualizarUsuario').unbind();
   $('.ActualizarUsuario').click(function(){
     var idUsuario = $('#musr_id').val();
     var nombreUsuario = $('#musr_nombre').val();
@@ -124,10 +125,14 @@ function ActivarBotonesUsuario(){
       },
       success:function(result){
         if (result != 1) {
-          alert("No se pudo modificar el registro");
+          alertify.error('NO SE MODIFICÓ NINGUN REGISTRO');
+          $('#EditarUsuario').modal('hide');
+          fetchUsuario();
+        }else {
+          $('#EditarUsuario').modal('hide');
+          fetchUsuario();
+          alertify.success('SE MODIFICÓ CORRECTAMENTE');
         }
-        $('#EditarUsuario').modal('hide');
-        fetchUsuario();
       },
       error:function(exception){
         console.error(exception)

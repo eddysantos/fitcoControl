@@ -43,7 +43,7 @@
   </form>
 
   <form id="cobranza" class="page p-0" style="margin-top:180px">
-    <table class="table table-hover">
+    <table class="table table-hover table-fixed">
       <tbody id="mostrarCobranza">
 
       </tbody>
@@ -152,7 +152,7 @@
         </tr>
         <tr class="row justify-content-center m-0 mb-2 mt-5">
           <td class="col-md-4">
-            <button id="NuevoRegistroCobranza" class="btnsub btn boton btn-block ">AGREGAR</button>
+            <button type="submit" id="NuevoRegistroCobranza" class="btnsub btn boton btn-block ">AGREGAR</button>
           </td>
         </tr>
       </tbody>

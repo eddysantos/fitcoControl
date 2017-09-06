@@ -66,6 +66,7 @@ function fetchClients(){
 
 function ActivarBotones(){
   // Asociar un evento al botón que muestra la ventana modal
+  $('.EditarCliente').unbind(); // EVITAMOS QUE SE DUPLIQUE NUESTRO SELECTOR
   $('.EditCliente').click(function(){
     var clienteId = $(this).attr('client-id');
     $.ajax({
@@ -103,7 +104,7 @@ function ActivarBotones(){
       }
     })
   });
-
+  $('.ActualizarCliente').unbind();//EVITAMOS QUE SE DUPLIQUE NUESTRO SELECTOR
   $('.ActualizarCliente').click(function(){
     var idCliente = $('#mclt_id').val();
     var nombreCliente = $('#mclt_cliente').val();
@@ -130,11 +131,16 @@ function ActivarBotones(){
         mclt_telefono: telefonoCliente
       },
       success:function(result){
+        console.log(result);
         if (result != 1) {
-          alert("No se pudo modificar el registro");
+          alertify.error('NO SE MODIFICÓ NINGUN REGISTRO');
+          $('#EditarCliente').modal('hide');
+          fetchClients();
+        }else {
+          $('#EditarCliente').modal('hide');
+          fetchClients();
+          alertify.success('SE MODIFICÓ CORRECTAMENTE');
         }
-        $('#EditarCliente').modal('hide');
-        fetchClients();
       },
       error:function(exception){
         console.error(exception)

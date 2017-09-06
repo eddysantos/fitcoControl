@@ -1,6 +1,7 @@
 $(document).ready(function(){
   fetchCobranza();
 
+
   $('#NuevoRegistroCobranza').click(function(){
 
     var fk_cliente = $('#cbz_cliente').val();
@@ -55,6 +56,7 @@ function fetchCobranza(){
 }
 
 function ActivarBotonesCobranza(){
+  $('.editarCobranza').unbind();
   $('.editarCobranza').click(function(){
     var cobranzaId = $(this).attr('cobranza-id');
     $.ajax({
@@ -82,6 +84,7 @@ function ActivarBotonesCobranza(){
     })
   });
 
+  $('.ActualizarDcobranza').unbind();
   $('.ActualizarDcobranza').click(function(){
     var idCobranza = $('#mcbz_id').val();
     var fk_cliente = $('#mcbz_cliente').val();
@@ -101,10 +104,14 @@ function ActivarBotonesCobranza(){
       },
       success:function(result){
         if (result != 1) {
-          alert("No se pudo modificar el registro");
+          alertify.error('NO SE MODIFICÓ NINGUN REGISTRO');
+          $('#EditarCliente').modal('hide');
+          fetchClients();
+        }else {
+          $('#DetCobranza').modal('hide');
+          fetchCobranza();
+          alertify.success('SE MODIFICÓ CORRECTAMENTE');
         }
-        $('#DetCobranza').modal('hide');
-        fetchCobranza();
       },
       error:function(exception){
         console.error(exception)

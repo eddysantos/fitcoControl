@@ -32,7 +32,7 @@
     </table>
   </form>
   <form id="usuarios" class="page p-0" style="margin-top:180px">
-    <table class="table table-hover">
+    <table class="table table-hover table-fixed">
       <tbody id="mostrarUsuarios">
       </tbody>
     </table>
@@ -104,7 +104,7 @@
         </tr>
         <tr class="row justify-content-center mb-3">
           <td class="col-md-4">
-            <button id="NuevoRegistroUsuario" class="btnsub btn boton btn-block ">AGREGAR</button>
+            <button type="submit" id="NuevoRegistroUsuario" class="btnsub btn boton btn-block ">AGREGAR</button>
           </td>
         </tr>
       </tbody>
