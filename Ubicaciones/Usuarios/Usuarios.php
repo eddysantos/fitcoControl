@@ -4,155 +4,122 @@
 ?>
 
   <div class="mt-100 pr-50" style="padding-right:50px">
-    <div class="functions">
-      <div class="add">
-        <div class="icon">
-          <i class="fa fa-plus fa-3x"></i>
-        </div>
-        <a id="adduser" class="ancla"><span class="span">Agregar Usuario</span></a>
-      </div>
-    </div>
 
+  <div class="clt_usr  mr-5">
+    <a class="rotate-link consultar ancla" style="font-size: larger;" accion="ausuario" status="cerrado">
+      <img src="/fitcoControl/Resources/iconos/003-add.svg" class="icon1 rotate-icon" style="width:30px;">
+      <span class="span">AGREGAR USUARIO</span>
+    </a>
   </div>
+
 
   <form id="usuarios" class="page p-0">
     <table class="table table-hover">
       <tbody>
+
+        <?php
+          require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
+          $query = "SELECT * FROM usuarios";
+          $resultado = $conn->query($query);
+          while($row = $resultado->fetch_assoc()){
+        ?>
+
         <tr class="row bordelateral m-0" id="item">
           <td class="col-md-1">
-            <img src="/fitcoControl/Resources/iconos/social.svg" class="icono">
+            <img src="/fitcoControl/Resources/iconos/users.svg" class="icono">
           </td>
           <td class="col-md-4">
-            <h4><b>Azeneth Estefania Pinales Avalos</b></h4>
-            <a class="visibilidad" href="mailto:ae_pinales@hotmail.com">ae_pinales@hotmail.com</a>
+            <h4><b><?php echo $row['nombreUsuario'];?>  <?php echo $row['apellidosUsuario']; ?></b></h4>
+            <a class="visibilidad" href="mailto:<?php echo $row['correoUsuario']; ?>"><?php echo $row['correoUsuario'];?></a>
           </td>
           <td class="col-md-3">
-            <h4><b>Sistemas</b></h4>
-            <p class="visibilidad">Auxiliar Sistemas</p>
+            <h4><b><?php echo $row['puestoUsuario']; ?></b></h4>
+            <p class="visibilidad"><?php echo $row['departamentoUsuario']; ?></p>
           </td>
-          <td class="col-md-2"></td>
-          <td class="col-md-1 text-center">
-            <div class="funcion">
-              <div class="add">
-                <div class="rotar">
-                  <a href="#EditarUsuario" data-toggle="modal"><i class="fa fa-pencil fa-3x"></i></a>
-                </div>
-              </div>
-            </div>
+          <td class="col-md-2">
+            <h4><b><?php echo $row['privilegiosUsuario']; ?></b></h4>
           </td>
-          <td class="col-md-1 text-center">
-            <div class="funcion">
-              <div class="add">
-                <div class="rotar">
-                  <a href="#"><i class="fa fa-trash fa-3x"></i></a>
-                </div>
-              </div>
-            </div>
+          <td class="col-md-2 text-center">
+            <a href="#" class="ml-8 spand-link" data-toggle="modal" data-target="#EditarUsuario"><img src="/fitcoControl/Resources/iconos/pencil1.svg" class="spand-icon"></a>
+
+
+            <a class="spand-link ml-5" onclick="return confirm('¿Estas seguro?');"  href="/fitcoControl/Resources/PHP/Usuarios/EliminarUsuario.php?pk_usuario=<?php echo $row['pk_usuario']; ?>"><img src="/fitcoControl/Resources/iconos/trash.svg" class="spand-icon"></a>
           </td>
         </tr>
-        <tr class="row bordelateral m-0" id="item">
-          <td class="col-md-1">
-            <img src="/fitcoControl/Resources/iconos/social.svg" class="icono">
-          </td>
-          <td class="col-md-4">
-            <h4><b>Claudia Ramos Colorado</b></h4>
-            <a class="visibilidad" href="mailto:claudia@mail.com">claudia@mail.com</a>
-          </td>
-          <td class="col-md-3">
-            <h4><b>Administración</b></h4>
-            <p class="visibilidad">Auxliar Contable</p>
-          </td>
-          <td class="col-md-2"></td>
-          <td class="col-md-1 text-center">
-            <div class="funcion">
-              <div class="add">
-                <div class="rotar">
-                  <a href="#EditarUsuario" data-toggle="modal"><i class="fa fa-pencil fa-3x"></i></a>
-                </div>
-              </div>
-            </div>
-          </td>
-          <td class="col-md-1 text-center">
-            <div class="funcion">
-              <div class="add">
-                <div class="rotar">
-                  <a href="#"><i class="fa fa-trash fa-3x"></i></a>
-                </div>
-              </div>
-            </div>
-          </td>
-        </tr>
+        <?php
+          }
+        ?>
       </tbody>
     </table>
   </form>
 
-  <form id="NuevoUsuario" class="agregarnuevo" style="display:none">
+  <form action="/fitcoControl/Resources/PHP/Usuarios/Agregarusuario.php"  id="NuevoUsuario" class="agregarnuevo" style="display:none" method="POST">
     <table class="table">
       <tbody>
         <tr class="row m20">
           <td class="col-md-12 input-effect p-0">
-            <input class="effect-17" type="text">
+            <input type="text" name="usr_id" style="display:none">
+            <input name="usr_nombre" class="effect-17" type="text" required>
               <label>Nombre (s)</label>
               <span class="focus-border"></span>
           </td>
         </tr>
         <tr class="row m20">
           <td class="col-md-12 input-effect p-0">
-            <input class="effect-17" type="text">
+            <input  name="usr_apellidos" class="effect-17" type="text" required>
               <label>Apellidos</label>
               <span class="focus-border"></span>
           </td>
         </tr>
         <tr class="row m20">
           <td class="col-md-12 input-effect p-0">
-            <input class="effect-17" type="text">
+            <input name="usr_correo" class="effect-17" type="text" required>
               <label>Correo</label>
               <span class="focus-border"></span>
           </td>
         </tr>
         <tr class="row m20">
           <td class="col-md-12 input-effect p-0">
-            <input class="effect-17" type="text">
+            <input name="usr_departamento" class="effect-17" type="text" required>
               <label>Departamento</label>
               <span class="focus-border"></span>
           </td>
         </tr>
         <tr class="row m20">
           <td class="col-md-12 input-effect p-0">
-            <input class="effect-17" type="text">
+            <input name="usr_puesto" class="effect-17" type="text" required>
               <label>Puesto</label>
               <span class="focus-border"></span>
           </td>
         </tr>
         <tr class="row m20">
           <td class="col-md-12 input-effect p-0">
-            <input class="effect-17" type="text">
+            <input name="usr_usuario" class="effect-17" type="text" required>
               <label>Usuario</label>
               <span class="focus-border"></span>
           </td>
         </tr>
         <tr class="row m20">
           <td class="col-md-12 input-effect p-0">
-            <input class="effect-17" type="text">
+            <input  name="usr_contra" class="effect-17" type="text" required>
               <label>Contraseña</label>
               <span class="focus-border"></span>
           </td>
         </tr>
         <tr class="row m20">
           <td class="col-md-12 input-effect p-0">
-            <input class="w-100 effect-17" list="priv">
-            <datalist id="priv">
-              <option value="Usuario"></option>
-              <option value="Administrador"></option>
+            <input name="usr_privilegios" class="w-100 effect-17" list="ingr" required>
+            <datalist id="ingr">
+              <option value="Administrador">Administrador</option>
+              <option value="Usuario">Usuario</option>
             </datalist>
-              <label>Privilegios</label>
-              <span class="focus-border"></span>
+            <label>Privilegios</label>
+            <span class="focus-border"></span>
           </td>
-
         </tr>
-        <tr class="row justify-content-center">
+        <tr class="row justify-content-center mb-3">
           <td class="col-md-4">
-            <button type="button" name="button" class="btn boton btn-block">AGREGAR</button>
+            <button type="submit" name="usr_button" class="btnsub btn boton btn-block ">AGREGAR</button>
           </td>
         </tr>
       </tbody>
@@ -161,10 +128,10 @@
 
 
 
-
+  <script src="/fitcoControl/Resources/js/alertas.js"></script>
 
   <?php
     $root = $_SERVER['DOCUMENT_ROOT'];
     require $root . '/fitcoControl/Ubicaciones/footer.php';
-    require $root . '/fitcoControl/Ubicaciones/Modales/Usuarios/Editar.php';
+    require $root . '/fitcoControl/Ubicaciones/Modales/Usuarios/EditarUsuario.php';
   ?>

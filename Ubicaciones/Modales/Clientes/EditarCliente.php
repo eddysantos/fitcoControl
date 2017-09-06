@@ -14,35 +14,57 @@
             <tbody>
               <tr class="row m20">
                 <td class="col-md-12 input-effect p-0">
-                  <input class="modal-efecto-17 has-content" type="text" value="Liberty">
+                  <input type="hidden" name="mclt_id" id="mclt_id">
+                  <input class="modal-efecto-17 has-content" name="mclt_cliente" id="mclt_cliente" type="text">
                     <label>Nombre del Cliente</label>
                     <span class="focus-border"></span>
                 </td>
               </tr>
               <tr class="row m20">
                 <td class="col-md-12 input-effect p-0">
-                  <input class="w-100 modal-efecto-17 has-content" type="date">
+                  <input class="w-100 modal-efecto-17 has-content" name="mclt_correo" id="mclt_correo" type="email">
+                    <label>Correo Cliente</label>
+                    <span class="focus-border"></span>
+                </td>
+              </tr>
+              <tr class="row m20">
+                <td class="col-md-12 input-effect p-0">
+                  <input class="w-100 modal-efecto-17 has-content" name="mclt_telefono" id="mclt_telefono" type="text">
+                    <label>Telefono Cliente</label>
+                    <span class="focus-border"></span>
+                </td>
+              </tr>
+              <tr class="row m20">
+                <td class="col-md-12 input-effect p-0">
+                  <input class="w-100 modal-efecto-17 has-content" name="mclt_credito" id="mclt_credito" type="text">
+                    <label>Credito Cliente</label>
+                    <span class="focus-border"></span>
+                </td>
+              </tr>
+              <tr class="row m20">
+                <td class="col-md-12 input-effect p-0">
+                  <input class="w-100 modal-efecto-17 has-content" name="mclt_fingreso" id="mclt_fingreso" type="date">
                     <label>Fecha Ingreso</label>
                     <span class="focus-border"></span>
                 </td>
               </tr>
               <tr class="row m20">
                 <td class="col-md-12 input-effect p-0">
-                  <input class="modal-efecto-17 has-content " type="color">
+                  <input class="modal-efecto-17 has-content" name="mclt_color" id="mclt_color" type="color">
                     <label>Color Cliente</label>
                     <span class="focus-border"></span>
                 </td>
               </tr>
               <tr class="row m20">
                 <td class="col-md-12 input-effect p-0">
-                  <input class="modal-efecto-17 has-content " type="text" value="300 piezas">
+                  <input class="modal-efecto-17 has-content"  type="text" name="mclt_prendas" id="mclt_prendas">
                     <label>Prendas Solicitadas por Mes</label>
                     <span class="focus-border"></span>
                 </td>
               </tr>
               <tr class="row m20">
                 <td class="col-md-12 input-effect p-0">
-                  <input class="w-100 modal-efecto-17 has-content " list="priv" value="Medios Publicitarios">
+                  <input class="w-100 modal-efecto-17 has-content " list="priv" name="mclt_nosotros" id="mclt_nosotros">
                   <datalist id="priv">
                     <option value="Referido"></option>
                     <option value="Asesor de Ventas"></option>
