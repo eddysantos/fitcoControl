@@ -1,4 +1,3 @@
-<header>
   <head>
     <meta charset="utf-8">
     <title>Fit&Co Solutions</title>
@@ -26,9 +25,9 @@
     <script src="/fitcoControl/Resources/bootstrap/js/bootstrap.min.js"></script>
     <script src="/fitcoControl/Resources/jquery/tether.min.js"></script>
 
-
-
   </head>
+
+  <body>
   <div id="nav_wrap" class="sticky">
     <h1 id="logo" style="left: 3%; transition: 0.5s;">FIT&CO</h1>
     <nav class="nav_animate">
@@ -52,4 +51,3 @@
     </ul>
     </nav>
   </div>
-</header>

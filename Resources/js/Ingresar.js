@@ -16,6 +16,7 @@ $(document).ready(function(){
 				switch (response.code) {
 					case "200":
 						swal("Usuario o contraseña incorrectos","Favor de Verificar","error");
+						console.log(response);
 						return false;
 						break;
 
