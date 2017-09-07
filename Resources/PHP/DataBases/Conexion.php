@@ -1,6 +1,6 @@
 <?php
 
-  $servername = "127.0.0.1";
+  $servername = "localhost";
   $db_user = "root";
   $db_pass = "root";
   $db = "fitcoControl";

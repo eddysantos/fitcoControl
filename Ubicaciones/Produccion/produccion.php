@@ -4,8 +4,8 @@
 ?>
 
 
-<<<<<<< HEAD
-<div class="container-fluid" style="display: -webkit-box;">
+
+<div class="container-fluid" style="display: -webkit-box; height: 100%">
   <!--div class="row">
     <div class="col">
       <a href="/fitcoControl/Ubicaciones/Produccion/ProgramacionProduc.php" class="iconos"><h2 class="text-center">Programar</h2><img src="/fitcoControl/Resources/iconos/007-box-1.svg"><h2 class="text-center">Producción</h2></a>
@@ -44,9 +44,9 @@
       </div>
     </div>
   </div>
-=======
 
-<div class="container mt-250">
+
+<!-- <div class="container mt-250">
   <table class="table">
     <tr class="row">
       <td class="col-md-4 text-center">
@@ -60,6 +60,6 @@
       </td>
     </tr>
   </table>
->>>>>>> origin/Dev
-</div>
+
+</div> -->
 <div class="fixed-bottom">Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
