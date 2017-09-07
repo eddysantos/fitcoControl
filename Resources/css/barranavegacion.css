@@ -4,7 +4,7 @@
 }
 
 html, body {
-  height: 100%;
+  /*height: 100%;*/
 }
 
 h1 {
@@ -202,4 +202,8 @@ img.right {
 .hoverblk:hover {
   color: #5656B3;
   transition: .3s;
+}
+
+.container-fluid{
+  /*height: 100%*/
 }

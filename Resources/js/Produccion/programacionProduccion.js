@@ -1,4 +1,5 @@
 $(document).ready(function(){
+
 $('#previewProgram').click(function(){
   var np = new Array();
 
@@ -14,7 +15,7 @@ $('#previewProgram').click(function(){
 
   np.push(["testClient", fi, ff]);
 
-  drawChart(test);
+  dibujarGrafica();
 
   console.log(np);
 })
@@ -32,13 +33,20 @@ $('#npClientName').keyup(function(){
     data:{txt: txt},
     success: function(result){
       rsp = JSON.parse(result);
-      console.log(result);
+      console.log(rsp);
 
       if (rsp.code != "1") {
         $('#npClientList').html("<p>Hubo un error al cargar la lista de clientes...</p>");
-        console.warn("Error en el query: " + rsp.data);
+        console.warn("Error en el query: " + rsp.response);
       } else {
-        $('#npClientList').html(rsp.data);
+        $('#npClientList').html(rsp.response);
+        $('#npClientList p').click(function(){
+          var cid = $(this).attr('client-id');
+          var nc = $(this).html();
+
+          $('#npClientName').val(nc).html(nc).attr('client-id', cid);
+          $('#npClientList').fadeOut();
+        });
       }
       $('#npClientList').fadeIn();
       clientSelector();
@@ -47,26 +55,39 @@ $('#npClientName').keyup(function(){
       console.error(exception);
     }
   });
+
 });
 
 $('.agregar-programacion').click(function(){
-  var cId = $('#npClientName').val();
+  var cId = $('#npClientName').attr('client-id');
   var fi = $('#produccionFI').val();
   var ff = $('#produccionFF').val();
   var md = $('#produccionMD').val();
 
-  $.ajax({
-    method: 'POST',
-    url: '/fitcoControl/Resources/PHP/Clientes/addProgramacion.php',
-    data: {cId: cId, fi: fi, ff:ff, md:md},
-    success: function(result){
-      drawChart(test);
-    },
-    error: function(exception){
-      console.error(exception);
-    }
-  })
+  validacion = $('#produccionFI').val() == ""
+      || $('#produccionFF').val() == ""
+      || $('#npClientName').val() == "";
+
+  if (validacion) {
+    alert("No puede continuar si no incluye fecha de inicio y fecha final.");
+  } else {
+    $.ajax({
+      method: 'POST',
+      url: '/fitcoControl/Resources/PHP/Programacion/addProgramacion.php',
+      data: {cId: cId, fi: fi, ff:ff, md:md},
+      success: function(result){
+        console.log(result);
+        dibujarGrafica();
+      },
+      error: function(exception){
+        console.error(exception);
+      }
+    })
+  }
 });
+
+//drawChart();
+
 
 });
 
