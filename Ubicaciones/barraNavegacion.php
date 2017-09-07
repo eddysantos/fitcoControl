@@ -19,6 +19,8 @@
     <link rel="stylesheet" href="/fitcoControl/Resources/bootstrap/alertifyjs/css/alertify.min.css">
     <link rel="stylesheet" href="/fitcoControl/Resources/bootstrap/alertifyjs/css/themes/default.css">
 
+
+    <script src="/fitcoControl/Resources/jquery/sweetalert.min.js"></script>
     <script src="/fitcoControl/Resources/jquery/jquery.min.js"></script>
     <script src="/fitcoControl/Resources/jquery/popper.min.js"></script>
     <script src="/fitcoControl/Resources/bootstrap/js/bootstrap.min.js"></script>
