@@ -22,13 +22,14 @@ $(document).ready(function(){
       success:function(result){
         var rsp = JSON.parse(result);
         if (rsp.code != 1) {
-          alert("No se pudo agregar el registro");
+          swal("FALLO AL REGISTRAR","No se agregó el registro","error");
           console.error(rsp.response);
         } else {
           fetchCobranza();
           $('#Agregarcobranza').hide();
           $('#cobranza').animate({"right": "4%"}, "slow");
           $('#Ecobranza').animate({"right": "4%"}, "slow");
+          alertify.success('SE AGREGÓ CORRECTAMENTE');
         }
       },
       error:function(exception){
@@ -105,7 +106,7 @@ function ActivarBotonesCobranza(){
       success:function(result){
         if (result != 1) {
           alertify.error('NO SE MODIFICÓ NINGUN REGISTRO');
-          $('#EditarCliente').modal('hide');
+          $('#DetCobranza').modal('hide');
           fetchClients();
         }else {
           $('#DetCobranza').modal('hide');

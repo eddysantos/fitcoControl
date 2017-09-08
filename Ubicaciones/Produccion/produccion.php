@@ -31,7 +31,7 @@
       <div class="card">
         <img class="card-img-top w-50 align-self-center m-5" src="/fitcoControl/Resources/iconos/shirt.svg" alt="Card image cap">
         <div class="card-body">
-          <a href="#" class="btn btn-outline-success w-100" style="font-size: 2em">Introducir Producción</a>
+          <a href="/fitcoControl/Ubicaciones/Produccion/ProduccionDiaria.php" class="btn btn-outline-success w-100" style="font-size: 2em">Introducir Producción</a>
         </div>
       </div>
     </div>
@@ -39,7 +39,7 @@
       <div class="card">
         <img class="card-img-top w-50 align-self-center m-5" src="/fitcoControl/Resources/iconos/boxes.svg" alt="Card image cap">
         <div class="card-body">
-          <a href="#" class="btn btn-outline-dark w-100" style="font-size: 2em">Programación Vs. Producción</a>
+          <a href="/fitcoControl/Ubicaciones/Produccion/programVSproduc.php" class="btn btn-outline-dark w-100" style="font-size: 2em">Programación Vs. Producción</a>
         </div>
       </div>
     </div>

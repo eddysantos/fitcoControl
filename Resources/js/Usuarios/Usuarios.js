@@ -1,6 +1,8 @@
 $(document).ready(function(){
   fetchUsuario();
 
+  
+
   $('#NuevoRegistroUsuario').click(function(){
 
     var nombreUsuario = $('#usr_nombre').val();
@@ -28,13 +30,14 @@ $(document).ready(function(){
       success:function(result){
         var rsp = JSON.parse(result);
         if (rsp.code != 1) {
-          alert("No se pudo agregar el registro");
+          swal("FALLO AL REGISTRAR","No se agregó el registro","error");
           console.error(rsp.response);
         } else {
           fetchUsuario();
           $('#NuevoUsuario').hide();
           $('#usuarios').animate({"right": "4%"}, "slow");
           $('#Eusuarios').animate({"right": "4%"}, "slow");
+          alertify.success('SE AGREGÓ CORRECTAMENTE');
         }
       },
       error:function(exception){
@@ -43,6 +46,8 @@ $(document).ready(function(){
     });
   });
 });
+
+
 
 //MOSTRAR LOS REGISTROS EN PANTALLA
 function fetchUsuario(){

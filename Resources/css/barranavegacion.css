@@ -3,8 +3,10 @@
   -mox-box-sizing: border-box;
 }
 
-html, body {
+body {
   /*height: 100%;*/
+  background-color: rgb(66, 98, 119);
+  margin: 0;
 }
 
 h1 {
@@ -66,7 +68,7 @@ nav a{
   font-size: 21px;
   text-decoration: none!important;
   color: #505050;
-  width: 19.59%;
+  width: 19.81%;
   text-align: center;
   line-height: 65px;
   text-transform: uppercase;

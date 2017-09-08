@@ -3,7 +3,8 @@
   require $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
 ?>
 
-  <div class="mt-100 pr-50" style="padding-right:50px">
+<div class="mt-100 pr-50" style="padding-right:50px">
+
 
   <div class="clt_usr  mr-5">
     <a class="rotate-link consultar ancla" style="font-size: larger;" accion="ausuario" status="cerrado">
@@ -31,7 +32,7 @@
       </thead>
     </table>
   </form>
-  <form id="usuarios" class="page p-0" style="margin-top:180px">
+  <form id="usuarios" class="usuarios page p-0" style="margin-top:180px">
     <table class="table table-hover table-fixed">
       <tbody id="mostrarUsuarios">
       </tbody>

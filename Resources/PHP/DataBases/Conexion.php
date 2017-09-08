@@ -1,9 +1,9 @@
 <?php
 
-  $servername = "localhost";
+  $servername = "127.0.0.1";
   $db_user = "root";
   $db_pass = "root";
-  $db = "fitcoControl";
+  $db = "Fitco";
   $port = 8889;
 
 //  $conn = mysqli_connect($servername,$db_user,$db_pass,$db,$port) or die("Conexion sin exito" . mysqli_error($conn));

@@ -1,5 +1,7 @@
 $(document).ready(function(){
 
+fetchProgramacion();
+fetchProProduccion();
 $('#previewProgram').click(function(){
   var np = new Array();
 
@@ -20,6 +22,8 @@ $('#previewProgram').click(function(){
   console.log(np);
 })
 
+
+//BUSCADOR TIEMPO REAL
 $('#npClientName').keyup(function(){
   var txt = $(this).val();
   if (txt == "") {
@@ -62,22 +66,31 @@ $('.agregar-programacion').click(function(){
   var cId = $('#npClientName').attr('client-id');
   var fi = $('#produccionFI').val();
   var ff = $('#produccionFF').val();
+  var pz = $('#produccionPZ').val();
   var md = $('#produccionMD').val();
 
   validacion = $('#produccionFI').val() == ""
       || $('#produccionFF').val() == ""
-      || $('#npClientName').val() == "";
+      || $('#npClientName').val() == ""
+      || $('#produccionPZ').val() == ""
+      || $('#produccionMD').val() == "";
+
+  validacionFecha = $('#produccionFI').val() > $('#produccionFF').val();
 
   if (validacion) {
-    alert("No puede continuar si no incluye fecha de inicio y fecha final.");
-  } else {
+    swal("NO PUEDE CONTINUAR","Nesesita llenar todos los campos","error");
+  } else if (validacionFecha) {
+    swal("NO PUEDE CONTINUAR","Su fecha inicio no puede ser mayor a su fecha final","error");
+  }else {
     $.ajax({
       method: 'POST',
       url: '/fitcoControl/Resources/PHP/Programacion/addProgramacion.php',
-      data: {cId: cId, fi: fi, ff:ff, md:md},
+      data: {cId: cId, fi: fi, ff:ff, pz:pz, md:md},
       success: function(result){
         console.log(result);
         dibujarGrafica();
+        $('#NuevaProg')[0].reset();
+        alertify.success('SE AGREGÓ CORRECTAMENTE');
       },
       error: function(exception){
         console.error(exception);
@@ -87,8 +100,6 @@ $('.agregar-programacion').click(function(){
 });
 
 //drawChart();
-
-
 });
 
 function clientSelector(){
@@ -100,4 +111,177 @@ function clientSelector(){
     $('#npClientName').html(clientName).val(clientName);
     $('#npClientList').fadeOut();
   });
+}
+
+//Mostrar Registros en pantalla
+function fetchProgramacion(){
+  $.ajax({
+    method: 'POST',
+    url:'/fitcoControl/Resources/PHP/Programacion/MostrarTablaProgramacion.php',
+    success:function(result){
+      var rsp = JSON.parse(result);
+      console.log(rsp);
+      $('#MostrartablaProduccion').html(rsp.infoTabla);
+      ActivarBotonProgram();
+    },
+    error:function(exception){
+      console.error(exception)
+    }
+  })
+}
+
+
+function ActivarBotonProgram(){
+  //PASAR VARIABLES AL MODAL
+  $('.EditarProduccion').unbind();
+  $('.EditarProduccion').click(function(){
+    var programId = $(this).attr('program-id');
+    $.ajax({
+
+      method: 'POST',
+      url: '/fitcoControl/Resources/PHP/Programacion/fetchProgramData.php',
+      data: {programId: programId},
+
+      success: function(result){
+        var rsp = JSON.parse(result);
+        console.log(rsp);
+        if (rsp.code == 1) {
+          $('#mpgr_id').val(rsp.response.pk_programacion);
+          $('#mpgr_cliente').val(rsp.response.fk_cliente);
+          $('#mpgr_fini').val(rsp.response.fechaInicio);
+          $('#mpgr_ffin').val(rsp.response.fechaFinal);
+          $('#mpgr_piezas').val(rsp.response.piezasRequeridas);
+          $('#mpgr_meta').val(rsp.response.metaDiaria);
+        } else {
+          console.error("Hubo un error al jalar la informacion del cliente.");
+          console.error(rsp.response);
+        }
+      },
+      error: function(exception){
+        console.error(exception);
+      }
+    })
+  });
+
+  $('.ActualizarProgram').unbind();
+  $('.ActualizarProgram').click(function(){
+    var idProgram = $('#mpgr_id').val();
+    var nombreCliente = $('#mpgr_cliente').val();
+    var fechaInicio = $('#mpgr_fini').val();
+    var fechaFinal = $('#mpgr_ffin').val();
+    var piezasRequeridas = $('#mpgr_piezas').val();
+    var metaDiaria = $('#mpgr_meta').val();
+
+    $.ajax({
+      method: 'POST',
+      url: '/fitcoControl/Resources/PHP/Programacion/EditProgramData.php',
+      data: {
+        mpgr_id: idProgram,
+        mpgr_cliente: nombreCliente,
+        mpgr_fini: fechaInicio,
+        mpgr_ffin: fechaFinal,
+        mpgr_piezas: piezasRequeridas,
+        mpgr_meta: metaDiaria
+      },
+      success:function(result){
+        console.log(result);
+        if (result != 1) {
+          alertify.error('NO SE MODIFICÓ NINGUN REGISTRO');
+          $('#EditarProduccion').modal('hide');
+          fetchProgramacion();
+        }else {
+          $('#EditarProduccion').modal('hide');
+          fetchProgramacion();
+          dibujarGrafica();
+          alertify.success('SE MODIFICÓ CORRECTAMENTE');
+        }
+      },
+      error:function(exception){
+        console.error(exception)
+      }
+    });
+  });
+}
+
+
+//PESTAÑA PRODUCCIÓN,, PESTAÑA PRODUCCIÓN
+function fetchProProduccion(){
+  $.ajax({
+    method: 'POST',
+    url:'/fitcoControl/Resources/PHP/Produccion/MostrarProduccion.php',
+    success:function(result){
+      var rsp = JSON.parse(result);
+      console.log(rsp);
+      $('#mostrarProduccion').html(rsp.infoTabla);
+      ActivarBotonProduc();
+    },
+    error:function(exception){
+      console.error(exception)
+    }
+  })
+}
+
+
+
+function ActivarBotonProduc(){
+  $('.agregarproduccion').unbind();
+  $('.agregarproduccion').click(function(){
+    var idProg = $(this).attr('program-id')
+    $('#mpro_idprog').val(idProg);
+
+    $('#AgregarProduccion').modal('show');
+  });
+
+  //AGREGAR PRODUCCION MODAL
+    $('.AgregarPro').unbind();
+    $('.AgregarPro').click(function(){
+
+      var fk_programacion = $('#mpro_idprog').val();
+      var fechaIntroduccion = $('#mpro_fint').val();
+      var cantidadProduccion = $('#mpro_cant').val();
+
+      $.ajax({
+        method: 'POST',
+        url: '/fitcoControl/Resources/PHP/Produccion/AgregarProduccion.php',
+        data: {
+
+          mpro_idprog: fk_programacion,
+          mpro_fint: fechaIntroduccion,
+          mpro_cant: cantidadProduccion
+        },
+        success:function(result){
+          var rsp = JSON.parse(result);
+          if (rsp.code != 1) {
+            swal("FALLO AL REGISTRAR","No se agregó el registro","error");
+            console.error(rsp.response);
+          } else {
+            $('#AgregarProduccion').modal('hide');
+            alertify.success('SE AGREGÓ CORRECTAMENTE');
+          }
+        },
+        error:function(exception){
+          console.error(exception)
+        }
+      });
+    });
+
+    //VISUALIZAR PRODUCCION EN MODAL
+    $('.visualizarproduccion').click(function(){
+      var idProg = $(this).attr('program-id');
+      $.ajax({
+        method: 'POST',
+        url:'/fitcoControl/Resources/PHP/Produccion/TablaProduccion.php',
+        data:{idProg:idProg},
+        success:function(result){
+          var rsp = JSON.parse(result);
+          console.log(rsp);
+          $('#visualizarProduccion').html(rsp.infoTabla);
+
+        },
+        error:function(exception){
+          console.error(exception)
+        }
+      })
+
+    });
 }

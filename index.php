@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Fit&Co Solutions</title>
+    <title>Fit&amp;Co Solutions</title>
     <link rel="stylesheet" href="/fitcoControl/Resources/css/login.css">
     <link rel="stylesheet" href="/fitcoControl/Resources/css/sweetalert.css">
 

@@ -7,15 +7,14 @@ $data = array(
 
 require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
 $query =
-"INSERT INTO ct_programacion(fk_cliente, fechaInicio, fechaFinal, piezasRequeridas, metaDiaria) VALUES(?,?,?,?,?)";
+"INSERT INTO ct_produccion(fk_programacion,fechaIntroduccion,cantidadProduccion) VALUES(?,?,?)";
 
 $stmt = $conn->prepare($query);
-$stmt->bind_param('sssss',
-  $_POST['cId'],
-  $_POST['fi'],
-  $_POST['ff'],
-  $_POST['pz'],
-  $_POST['md']
+$stmt->bind_param('sss',
+
+  $_POST['mpro_idprog'],
+  $_POST['mpro_fint'],
+  $_POST['mpro_cant']
 );
 $stmt->execute();
 
@@ -24,12 +23,12 @@ $aff_rows = $conn->affected_rows;
 if ($aff_rows != 1) {
   $data['code'] = 2;
   $data['response'] = $stmt->error;
-  $json = json_encode($data);
-  echo $json;
 } else {
   $data['code'] = 1;
-  require "fetchProgramacion.php";
 }
 
+$json = json_encode($data);
+
+echo $json;
 
 ?>

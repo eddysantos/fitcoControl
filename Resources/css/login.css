@@ -1,5 +1,12 @@
 
-
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px white inset;
+  -webkit-text-fill-color: rgba(47, 89, 119, 0.63)!important;
+}
+input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px white inset;
+  -webkit-text-fill-color: rgba(47, 89, 119, 0.63)!important;
+}
 img{
   display: block;
   margin: auto;
