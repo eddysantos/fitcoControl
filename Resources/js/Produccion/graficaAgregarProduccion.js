@@ -8,7 +8,7 @@ function dibujarGrafica(){
     url: '/fitcoControl/Resources/PHP/Programacion/fetchProgramacion.php',
     data: {},
     success: function(result){
-    //  console.log(result);
+    //console.log(result);
       response = JSON.parse(result)
       console.log(response);
       for (var i = 0; i < response.response.length; i++) {
@@ -51,7 +51,19 @@ function drawChart(data, options) {
   // Set chart options
 var options = {
    colors: options,
-   height: '300'
+   height: '300',
+   timeline: {
+     rowLabelStyle: {
+       fontName: 'Encode Sans Condensed, sans-serif',
+       fontSize: 20,
+       color: '#1d3a59'
+     },
+     barLabelStyle: {
+       fontName: 'Encode Sans Condensed, sans-serif',
+       fontSize: 14
+     },
+     colorByRowLabel: true },
+        backgroundColor: '#f2f8fc'
 };
 
   chart.draw(dataTable, options);

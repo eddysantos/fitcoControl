@@ -8,11 +8,13 @@ $(document).ready(function(){
       if (status == 'cerrado') {
         $('.span').css('display', 'inherit');
         $(this).attr('status', 'abierto');
+        $('#Eusuarios').animate({"right": "36%"}, "slow");
         $('#usuarios').animate({"right": "36%"}, "slow");
         $('#NuevoUsuario').fadeIn(2500);
       }else {
         $('.span').css('display', '');
         $(this).attr('status', 'cerrado');
+        $('#Eusuarios').animate({"right": "4%"}, "slow");
         $('#usuarios').animate({"right": "4%"}, "slow");
         $('#NuevoUsuario').hide();
       }

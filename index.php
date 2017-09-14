@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Fit&Co Solutions</title>
+    <title>Fit&amp;Co Solutions</title>
     <link rel="stylesheet" href="/fitcoControl/Resources/css/login.css">
     <link rel="stylesheet" href="/fitcoControl/Resources/css/sweetalert.css">
 
@@ -18,14 +18,6 @@
         <img src="/fitcoControl/Resources/iconos/001-cerrar.svg"></img>
       </span>
 
-    <div class="text-center">
-      <!--div id="loginError" class="alert alert-danger alert-dismissible fade show" style="display: none" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        Usuario o contraseña incorrectos!
-      </div-->
-    </div>
     <div class="login-form-1">
       <form id="login-form" class="text-left" onsubmit="return false;" method="post">
         <input type="text" name="lg_usuario" placeholder="Usuario" id="lg_usuario" required>

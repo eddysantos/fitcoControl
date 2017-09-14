@@ -14,9 +14,12 @@
     <link rel="stylesheet" href="/fitcoControl/Resources/css/sweetalert.css">
     <link rel="stylesheet" href="/fitcoControl/Resources/bootstrap/css/bootstrap-toggle.css">
 
+    <script src="/fitcoControl/Resources/bootstrap/alertifyjs/alertify.min.js"></script>
+    <link rel="stylesheet" href="/fitcoControl/Resources/bootstrap/alertifyjs/css/alertify.min.css">
+    <link rel="stylesheet" href="/fitcoControl/Resources/bootstrap/alertifyjs/css/themes/default.css">
 
 
-
+    <script src="/fitcoControl/Resources/jquery/sweetalert.min.js"></script>
     <script src="/fitcoControl/Resources/jquery/jquery.min.js"></script>
     <script src="/fitcoControl/Resources/jquery/popper.min.js"></script>
     <script src="/fitcoControl/Resources/bootstrap/js/bootstrap.min.js"></script>
@@ -25,6 +28,7 @@
   </head>
 
   <body>
+    <!-- -->
   <div id="nav_wrap" class="sticky">
     <h1 id="logo" style="left: 3%; transition: 0.5s;">FIT&CO</h1>
     <nav class="nav_animate">

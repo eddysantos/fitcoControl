@@ -19,6 +19,7 @@ a img:hover{
 
 
 /* LINKS REDIRECCION BOTONES*/
+
 a.linkboton{
 	font-family: 'Montserrat', sans-serif;
 	text-transform:uppercase;
@@ -49,6 +50,16 @@ a.linkboton span{
   -ms-transition: all ease 400ms;
 	z-index:-1;
 }
+a.linkboton span.a{
+	display:block;
+	position:absolute;
+	background: rgba(200, 28, 28, 0.63);
+	transition: all ease 400ms;
+  -webkit-transition: all ease 400ms;
+  -moz-transition: all ease 400ms;
+  -ms-transition: all ease 400ms;
+	z-index:-1;
+}
 
 a.linkboton span.top{
 	left:0;
@@ -70,28 +81,6 @@ a.linkboton:hover span.top{
 	bottom:0;
 	border-radius:0;
 }
-
-
-a.linkboton{
-	font-family: 'Montserrat', sans-serif;
-	text-transform:uppercase;
-	letter-spacing:3px;
-	display:inline-block;
-	text-decoration:none;
-	color:black;
-	padding: 10px 30px;
-	border: 2px solid black;
-	border-radius:5px;
-	position:relative;
-	overflow:hidden;
-	transition: all ease 400ms;
-  -webkit-transition: all ease 400ms;
-  -moz-transition: all ease 400ms;
-  -ms-transition: all ease 400ms;
-  font-size: 15px;
-  text-align: center!important;
-}
-
 
 
 /*PARA COLAPSO;*/
@@ -119,7 +108,7 @@ a.linkboton{
   position:relative;
   margin-top: -5;
 }
-.colapso h2::after{
+/*.colapso h2::after{
   content: url("/fitcoControl/Resources/iconos/plus.svg");
   text-align:center;
   position:absolute;
@@ -137,7 +126,7 @@ a.linkboton{
 }
 .colapso:hover h2::after{
   opacity:1
-}
+}*/
 
 .boton-colapso{
   font-size: 18px;
@@ -179,7 +168,54 @@ a h2.icopro:hover{
   letter-spacing: 5px
 }
 
+.fixed-program tbody{
+  display: block;
+  max-height: 280px;
+  overflow-y: auto;
 
+}
 
+.prod {
+  text-align: right;
+}
+.prod .consultar{
+  cursor: pointer;
+  opacity: 0.6;
+  -moz-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+.prod  .consultar  .icon {
+  display: inline-block;
+  text-align: center;
+  padding: 1px 0 0 0;
+  font-size: 1.1rem;
+  -moz-transition: all 0.5s linear;
+  -o-transition: all 0.5s linear;
+  -webkit-transition: all 0.5s linear;
+  transition: all 0.5s linear;
+  line-height: 0!important;
+}
+.prod .consultar  span {
+  overflow: hidden;
+  display: inline-flex;
+  margin-left: 5px;
+  font-size: 0.8rem;
+  width: 0px;
+  font-weight: 600;
+  white-space: nowrap;
+  -moz-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  font-size: 20px;
+}
+.prod .consultar:hover {
+  opacity: 1.0;
 
-/*BOTONES*/
+}
+
+.prod .consultar:hover span{
+  width: 220px;
+}

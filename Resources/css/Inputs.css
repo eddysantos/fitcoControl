@@ -40,6 +40,14 @@ button[type=submit].btnsub:hover{
   letter-spacing:5px;
 }
 
+input[type="color"]{
+  border: 0px!important;
+  background-color: transparent;
+  width: 10%;
+  padding: 0px!important;
+  margin: 0px!important;
+}
+
 .effect-1{
   border: 0;
   padding: 7px 0;

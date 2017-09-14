@@ -2,7 +2,6 @@ $(document).ready(function(){
   fetchClients();
 
   $('#NuevoRegistro').click(function(){
-    //var idCliente = $('#clt_id').val();
     var nombreCliente = $('#clt_nombre').val();
     var correoCliente = $('#clt_contacto').val();
     var telefonoCliente = $('#clt_telefono').val();
@@ -12,38 +11,56 @@ $(document).ready(function(){
     var prendasCliente = $('#clt_prendas').val();
     var nosotrosCliente = $('#clt_nosotros').val();
 
-    $.ajax({
-      method: 'POST',
-      url: '/fitcoControl/Resources/PHP/Clientes/AgregarClientes.php',
-      data: {
-        //clt_id: idCliente,
-        clt_nombre: nombreCliente,
-        clt_contacto: correoCliente,
-        clt_color: colorCliente,
-        clt_prendas: prendasCliente,
-        clt_fingreso: fingresoCliente,
-        clt_nosotros: nosotrosCliente,
-        clt_credito: creditoCliente,
-        clt_telefono: telefonoCliente
-      },
-      success:function(result){
-        var rsp = JSON.parse(result);
-        if (rsp.code != 1) {
-          alert("No se pudo agregar el registro");
-          console.error(rsp.response);
-        } else {
-          fetchClients();
-          $('#NuevoCliente').hide();
-          $('#clientes').animate({"right": "4%"}, "slow");
+    validacion = $('#clt_nombre').val() == "" ||
+    $('#clt_contacto').val() == "" ||
+    $('#clt_telefono').val() == "" ||
+    $('#clt_credito').val() == "" ||
+    $('#clt_fingreso').val() == "" ||
+    $('#clt_color').val() == "" ||
+    $('#clt_prendas').val() == ""||
+    $('#clt_nosotros').val() == "";
+
+    if (validacion) {
+      swal("NO PUEDE CONTINUAR","Nesesita llenar todos los campos","error");
+    }else {
+      $.ajax({
+        method: 'POST',
+        url: '/fitcoControl/Resources/PHP/Clientes/AgregarClientes.php',
+        data: {
+          //clt_id: idCliente,
+          clt_nombre: nombreCliente,
+          clt_contacto: correoCliente,
+          clt_color: colorCliente,
+          clt_prendas: prendasCliente,
+          clt_fingreso: fingresoCliente,
+          clt_nosotros: nosotrosCliente,
+          clt_credito: creditoCliente,
+          clt_telefono: telefonoCliente
+        },
+        success:function(result){
+          var rsp = JSON.parse(result);
+          if (rsp.code != 1) {
+            //alertify.error('NO SE AGREGÓ NINGUN REGISTRO');
+            swal("FALLO AL REGISTRAR","No se agregó el registro","error");
+            //alert("No se pudo agregar el registro");
+            console.error(rsp.response);
+          } else {
+            fetchClients();
+            $('#NuevoCliente').hide();
+            $('#Eclientes').animate({"right": "4%"}, "slow");
+            alertify.success('SE AGREGÓ CORRECTAMENTE');
+          }
+        },
+        error:function(exception){
+          console.error(exception)
         }
-      },
-      error:function(exception){
-        console.error(exception)
-      }
-    });
+      })
+    }
   });
 });
 
+
+//Muestra los registros en pantalla
 function fetchClients(){
   $.ajax({
     method: 'POST',
@@ -60,13 +77,22 @@ function fetchClients(){
   })
 }
 
+
 function ActivarBotones(){
-  $('#btnEditarCliente').click(function(){
+  // Asociar un evento al botón que muestra la ventana modal
+  $('.EditarCliente').unbind(); // EVITAMOS QUE SE DUPLIQUE NUESTRO SELECTOR
+  $('.EditCliente').click(function(){
     var clienteId = $(this).attr('client-id');
     $.ajax({
+
+      // especifica si será una petición POST o GET
       method: 'POST',
+      // la URL para la petición
       url: '/fitcoControl/Resources/PHP/Clientes/fetchClientData.php',
+      // la información a enviar
       data: {clienteId: clienteId},
+
+      // código a ejecutar si la petición es satisfactoria
       success: function(result){
         var rsp = JSON.parse(result);
         console.log(rsp);
@@ -86,13 +112,14 @@ function ActivarBotones(){
           console.error(rsp.response);
         }
       },
+      // código a ejecutar si la petición falla;
       error: function(exception){
         console.error(exception);
       }
     })
   });
-
-  $('#ActualizarCliente').click(function(){
+  $('.ActualizarCliente').unbind();//EVITAMOS QUE SE DUPLIQUE NUESTRO SELECTOR
+  $('.ActualizarCliente').click(function(){
     var idCliente = $('#mclt_id').val();
     var nombreCliente = $('#mclt_cliente').val();
     var correoCliente = $('#mclt_correo').val();
@@ -118,11 +145,16 @@ function ActivarBotones(){
         mclt_telefono: telefonoCliente
       },
       success:function(result){
+        console.log(result);
         if (result != 1) {
-          alert("No se pudo modificar el registro");
+          alertify.error('NO SE MODIFICÓ NINGUN REGISTRO');
+          $('#EditarCliente').modal('hide');
+          fetchClients();
+        }else {
+          $('#EditarCliente').modal('hide');
+          fetchClients();
+          alertify.success('SE MODIFICÓ CORRECTAMENTE');
         }
-        $('#EditarCliente').modal('hide');
-        fetchClients();
       },
       error:function(exception){
         console.error(exception)

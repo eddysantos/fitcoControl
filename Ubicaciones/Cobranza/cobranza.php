@@ -2,190 +2,120 @@
   $root = $_SERVER['DOCUMENT_ROOT'];
   require $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
   require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
-  require $root . "/fitcoControl/Resources/PHP/Cobranza/querysCobranza.php";
-
 ?>
 
-<div class="mt-100 pr-50" style="padding-right:50px">
+<div class="container">
 
-
-
-  <div class="links  mr-5">
+  <div class="links mt-5 mb-5">
     <a class="rotate-link  ver ancla" accion="acobranza" status="cerrado">
-      <img src="/fitcoControl/Resources/iconos/003-add.svg" class="icon rotate-icon"   style="width:30px">
+      <img src="/fitcoControl/Resources/iconos/003-key.svg" class="icon rotate-icon" style="width:30px">
       <span class="spanA">Agregar Cobranza</span>
     </a>
 
-    <a class="ml-3 rotate-link  ver ancla" accion="dcobranza" status="cerrado">
-      <img src="/fitcoControl/Resources/iconos/002-user-database.svg" class=" icon rotate-icon"   style="width:30px">
+    <a class="ml-3 rotate-link  ver ancla" accion="dcobranza" status="cerrado"  data-toggle='modal' data-target='#ModalGraficaCobranza'>
+      <img src="/fitcoControl/Resources/iconos/005-analytics.svg" class=" icon rotate-icon" style="width:30px">
       <span class="spanD">Detalle de Cobranza</span>
     </a>
+
+
+
+    <form id="Ecobranza" class="page p-0">
+      <table class="table table-hover table-fixed">
+        <thead>
+          <tr class="row m-0 encabezado">
+            <td class="col-md-1"></td>
+            <td class="col-md-3 text-center">
+              <h3>CLIENTE</h3>
+            </td>
+            <td class="col-md-2 text-center">
+              <h3>FACTURA</h3>
+            </td>
+            <td class="col-md-2 text-center">
+              <h3>IMPORTE</h3>
+            </td>
+            <td class="col-md-2 text-center">
+              <h3>VENCIMIENTO</h3>
+            </td>
+          </tr>
+        </thead>
+        <tbody id="mostrarCobranza"></tbody>
+      </table>
+    </form>
+
+    <!-- <form id="cobranza" class="page p-0" style="display:none">
+      <table class="table table-hover table-fixed">
+
+      </table>
+    </form> -->
+
+
+    <form  id="Agregarcobranza"  class="agregarnuevo" style="display:none">
+      <table class="table">
+        <tbody>
+          <tr class="row m20">
+            <td class="col-md-12 input-effect p-0">
+              <input type="text" id="cbz_id" style="display:none">
+              <input id="cbz_cliente" class="w-100 effect-17" list="clientes" required autocomplete="off">
+              <datalist id="clientes">
+                <?php
+                  $query = "SELECT * FROM ct_cliente";
+                  $resulclientes = $conn->query($query);
+                  while ($row = $resulclientes->fetch_array()) {
+                 ?>
+                <option value="<?php echo $row['pk_cliente']; ?> ">
+                  <?php echo $row['nombreCliente']; ?>
+                </option>
+
+                <?php } ?>
+
+              </datalist>
+                <label>Cliente</label>
+                <span class="focus-border"></span>
+            </td>
+          </tr>
+          <tr class="row m20">
+            <td class="col-md-12 input-effect p-0">
+              <input id="cbz_factura" class="effect-17" type="text" required>
+                <label>Factura</label>
+                <span class="focus-border"></span>
+            </td>
+          </tr>
+          <tr class="row m20">
+            <td class="col-md-12 input-effect p-0">
+              <input id="cbz_importe" class="effect-17" type="text" required>
+                <label>Importe</label>
+                <span class="focus-border"></span>
+            </td>
+          </tr>
+          <tr class="row m20">
+            <td class="col-md-12 input-effect p-0">
+              <input id="cbz_dvencimiento" class="effect-17 has-content" type="date" required>
+                <label>Día Vencimiento</label>
+                <span class="focus-border"></span>
+            </td>
+          </tr>
+          </tr>
+          <tr class="row justify-content-center m-0 mb-2 mt-5">
+            <td class="col-md-4">
+              <button type="submit" id="NuevoRegistroCobranza" class="btnsub btn boton btn-block ">AGREGAR</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
   </div>
 
-  <form id="cobranza" class="page p-0" style="margin-top:100pxw">
-    <table class="table table-hover">
-      <tbody>
-
-        <?php
-          while($row = $resulcobranza->fetch_assoc()){
-        ?>
-
-        <tr class="row  bordelateral m-0" id="item">
-          <td class="col-md-1">
-            <img src="/fitcoControl/Resources/iconos/dinero.svg" class="icono">
-          </td>
-          <td class="col-md-2">
-
-            <h4><b><input type="color" name="" value="<?php echo $row['colorCliente']; ?>"><?php echo $row['clienteCobranza']; ?></b></h4>
-            <p><a class="visibilidad">Credito : <?php echo $row['creditoCliente']; ?> Días</a></p>
-          </td>
-          <td class="col-md-2">
-            <h4><b>Factura : <?php echo $row['facturaCobranza']; ?></b></h4>
-          </td>
-          <td class="col-md-2">
-            <h4><b>Importe : $<?php echo number_format($row['importeCobranza'],2); ?></b></h4>
-          </td>
-          <td class="col-md-3">
-            <h4><b>Día Vencimiento : <?php echo $row['vencimientoCobranza']; ?></b></h4>
-          </td>
-
-          <td class="col-md-2 text-center">
-            <!--EDITAR EDITAR EDITAR EDITAR-->
-            <a href="" class="spand-link" data-toggle="modal" data-target="#DetCobranza"><img src="/fitcoControl/Resources/iconos/pencil1.svg" class="spand-icon"></a>
-
-            <!--ELIMINAR ELIMINAR ELIMINAR ELIMINAR-->
-            <a class="spand-link ml-5" onclick="return confirm('¿Estas seguro?');"  href="/fitcoControl/Resources/PHP/Cobranza/eliminarCobranza.php?pk_cobranza=<?php echo $row['pk_cobranza']; ?>"><img src="/fitcoControl/Resources/iconos/trash.svg" class="spand-icon"></a>
-          </td>
-        </tr>
-
-        <?php
-          $suma += $row['importeCobranza'];
-          }
-        ?>
-
-        <tr class="row m-0 mt-5">
-          <td class="col-md-12 text-center"><b>Total : $ <?php echo number_format($suma,2); ?></b></td>
-        </tr>
-      </tbody>
-    </table>
-  </form>
 
 
 
-
-
-
-  <form id="Detallecobranza" class="consultarmes" style="display:none">
-    <div>
-      <div class="card">
-        <div class="card-header">
-          <div class="mb-0 boton-colapso">
-
-            | <input name="meses" class="listames effect-17" list="meses" required>
-            <datalist id="meses">
-              <?php
-                while ($row = $resulmeses->fetch_array()) {
-               ?>
-              <option value="<?php echo $row['mes']; ?> ">
-                <?php echo $row['id']; ?>
-              </option>
-
-              <?php } ?>
-
-            </datalist>
-            <a class="boton-colapso" data-toggle="collapse" data-parent="#accordion" href="#colapsoAgosto">
-                ($Total del mes)
-
-            </a>
-          </div>
-        </div>
-        <div id="colapsoAgosto" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
-          <div class="card-block">
-            <table class="table">
-              <tr class="row m-0 semanas">
-                <td class="col-md-1"></td>
-                <td class="col-md-2">SEMANA 1</td>
-                <td class="col-md-2">SEMANA 2</td>
-                <td class="col-md-2">SEMANA 3</td>
-                <td class="col-md-2">SEMANA 4</td>
-                <td class="col-md-2">SEMANA 5</td>
-                <td class="col-md-1"></td>
-              </tr>
-              <tr class="row m-0">
-                <td class="col-md-1"></td>
-                <td class="col-md-2"><input type="color"> $</td>
-                <td class="col-md-2"><input type="color"> $</td>
-                <td class="col-md-2"><input type="color"> $</td>
-                <td class="col-md-2"><input type="color"> $</td>
-                <td class="col-md-2"><input type="color"> $</td>
-                <td class="col-md-1"></td>
-              </tr>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
-  </form>
-
-
-
-  <form action="/fitcoControl/Resources/PHP/Cobranza/operacion_agregar.php" id="Agregarcobranza" class="agregarnuevo" style="display:none" method="POST">
-    <table class="table">
-      <tbody>
-        <tr class="row m20">
-          <td class="col-md-12 input-effect p-0">
-            <input type="text" name="cbz_id" style="display:none">
-            <input name="cbz_cliente" class="w-100 effect-17" list="clientes" required>
-            <datalist id="clientes">
-              <?php
-                while ($row = $resulclientes->fetch_array()) {
-               ?>
-              <option value="<?php echo $row['nombreCliente']; ?> ">
-                <?php echo $row['nombreCliente']; ?>
-              </option>
-
-              <?php } ?>
-
-            </datalist>
-              <label>Cliente</label>
-              <span class="focus-border"></span>
-          </td>
-        </tr>
-        <tr class="row m20">
-          <td class="col-md-12 input-effect p-0">
-            <input name="cbz_factura" class="effect-17" type="text" required>
-              <label>Factura</label>
-              <span class="focus-border"></span>
-          </td>
-        </tr>
-        <tr class="row m20">
-          <td class="col-md-12 input-effect p-0">
-            <input name="cbz_importe" class="effect-17" type="text" required>
-              <label>Importe</label>
-              <span class="focus-border"></span>
-          </td>
-        </tr>
-        <tr class="row m20">
-          <td class="col-md-12 input-effect p-0">
-            <input name="cbz_dvencimiento" class="effect-17 has-content" type="date" required>
-              <label>Día Vencimiento</label>
-              <span class="focus-border"></span>
-          </td>
-        </tr>
-        </tr>
-        <tr class="row justify-content-center mb-3">
-          <td class="col-md-4">
-            <button type="submit" name="button" class="btnsub btn boton btn-block ">AGREGAR</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </form>
 </div>
+
+
 
 
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/fitcoControl/Ubicaciones/footer.php';
+  require $root . '/fitcoControl/Ubicaciones/Modales/Cobranza/ModalGraficaCobranza.php';
   require $root . '/fitcoControl/Ubicaciones/Modales/Cobranza/ModalCobranza.php';
+  require $root . '/fitcoControl/Resources/PHP/Cobranza/pieCobranza.php';
 ?>

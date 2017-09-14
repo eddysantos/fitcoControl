@@ -570,7 +570,9 @@ pre code {
 
 @media (min-width:1200px) {
   .container {
-    max-width: 1140px
+    /*max-width: 1140px*/
+    max-width: 1240px;
+
   }
 }
 
@@ -3437,7 +3439,7 @@ tbody.collapse.show {
   flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
-  background-color: #fff;
+  /*background-color: #fff;*/
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, .125);
   border-radius: .25rem
@@ -6137,6 +6139,12 @@ a.bg-dark:focus, a.bg-dark:hover {
 
 .mt-0 {
   margin-top: 0!important
+}
+.mt-10 {
+  margin-top: 10px!important
+}
+.mt-15 {
+  margin-top: 15px!important
 }
 .mt-100 {
   margin-top: 100px!important

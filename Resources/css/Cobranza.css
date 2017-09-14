@@ -71,3 +71,19 @@
 .links .ver:hover span{
   width: 190px;
 }
+
+.encabezado{
+  letter-spacing: 3px;
+  color: rgba(62, 109, 140, 0.85);
+  border-bottom:2px solid #ccc
+}
+
+
+.table-fixed tbody {
+  max-height: 520px;
+  overflow-y: auto;
+  width: 100%;
+}
+.table-fixed tbody {
+  display: block;
+}
