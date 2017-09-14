@@ -2,7 +2,6 @@ $(document).ready(function(){
   fetchClients();
 
   $('#NuevoRegistro').click(function(){
-    //var idCliente = $('#clt_id').val();
     var nombreCliente = $('#clt_nombre').val();
     var correoCliente = $('#clt_contacto').val();
     var telefonoCliente = $('#clt_telefono').val();
@@ -12,39 +11,51 @@ $(document).ready(function(){
     var prendasCliente = $('#clt_prendas').val();
     var nosotrosCliente = $('#clt_nosotros').val();
 
-    $.ajax({
-      method: 'POST',
-      url: '/fitcoControl/Resources/PHP/Clientes/AgregarClientes.php',
-      data: {
-        //clt_id: idCliente,
-        clt_nombre: nombreCliente,
-        clt_contacto: correoCliente,
-        clt_color: colorCliente,
-        clt_prendas: prendasCliente,
-        clt_fingreso: fingresoCliente,
-        clt_nosotros: nosotrosCliente,
-        clt_credito: creditoCliente,
-        clt_telefono: telefonoCliente
-      },
-      success:function(result){
-        var rsp = JSON.parse(result);
-        if (rsp.code != 1) {
-          //alertify.error('NO SE AGREGÓ NINGUN REGISTRO');
-          swal("FALLO AL REGISTRAR","No se agregó el registro","error");
-          //alert("No se pudo agregar el registro");
-          console.error(rsp.response);
-        } else {
-          fetchClients();
-          $('#NuevoCliente').hide();
-          $('#Eclientes').animate({"right": "4%"}, "slow");
-          $('#clientes').animate({"right": "4%"}, "slow");
-          alertify.success('SE AGREGÓ CORRECTAMENTE');
+    validacion = $('#clt_nombre').val() == "" ||
+    $('#clt_contacto').val() == "" ||
+    $('#clt_telefono').val() == "" ||
+    $('#clt_credito').val() == "" ||
+    $('#clt_fingreso').val() == "" ||
+    $('#clt_color').val() == "" ||
+    $('#clt_prendas').val() == ""||
+    $('#clt_nosotros').val() == "";
+
+    if (validacion) {
+      swal("NO PUEDE CONTINUAR","Nesesita llenar todos los campos","error");
+    }else {
+      $.ajax({
+        method: 'POST',
+        url: '/fitcoControl/Resources/PHP/Clientes/AgregarClientes.php',
+        data: {
+          //clt_id: idCliente,
+          clt_nombre: nombreCliente,
+          clt_contacto: correoCliente,
+          clt_color: colorCliente,
+          clt_prendas: prendasCliente,
+          clt_fingreso: fingresoCliente,
+          clt_nosotros: nosotrosCliente,
+          clt_credito: creditoCliente,
+          clt_telefono: telefonoCliente
+        },
+        success:function(result){
+          var rsp = JSON.parse(result);
+          if (rsp.code != 1) {
+            //alertify.error('NO SE AGREGÓ NINGUN REGISTRO');
+            swal("FALLO AL REGISTRAR","No se agregó el registro","error");
+            //alert("No se pudo agregar el registro");
+            console.error(rsp.response);
+          } else {
+            fetchClients();
+            $('#NuevoCliente').hide();
+            $('#Eclientes').animate({"right": "4%"}, "slow");
+            alertify.success('SE AGREGÓ CORRECTAMENTE');
+          }
+        },
+        error:function(exception){
+          console.error(exception)
         }
-      },
-      error:function(exception){
-        console.error(exception)
-      }
-    });
+      })
+    }
   });
 });
 

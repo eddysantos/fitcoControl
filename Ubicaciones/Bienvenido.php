@@ -13,7 +13,7 @@
 
   </head>
   <body>
-    <div id="nav_wrap">
+    <div id="bienvenida">
       <h1 id="logo">FIT&CO</h1>
       <nav>
         <a href="/fitcoControl/Ubicaciones/Produccion/produccion.php" class="transicion">PRODUCCIÓN</a>

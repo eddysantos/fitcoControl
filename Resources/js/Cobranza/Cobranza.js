@@ -1,5 +1,6 @@
 $(document).ready(function(){
   fetchCobranza();
+  fetchTablaCobranza();
 
 
   $('#NuevoRegistroCobranza').click(function(){
@@ -9,33 +10,42 @@ $(document).ready(function(){
     var importeCobranza = $('#cbz_importe').val();
     var vencimientoCobranza = $('#cbz_dvencimiento').val();
 
-    $.ajax({
-      method: 'POST',
-      url: '/fitcoControl/Resources/PHP/Cobranza/AgregarCobranza.php',
-      data: {
+    validacion = $('#cbz_cliente').val() == "" ||
+    $('#cbz_factura').val() == "" ||
+    $('#cbz_importe').val() == "" ||
+    $('#cbz_dvencimiento').val() == "";
 
-        cbz_cliente: fk_cliente,
-        cbz_factura: facturaCobranza,
-        cbz_importe: importeCobranza,
-        cbz_dvencimiento: vencimientoCobranza
-      },
-      success:function(result){
-        var rsp = JSON.parse(result);
-        if (rsp.code != 1) {
-          swal("FALLO AL REGISTRAR","No se agregó el registro","error");
-          console.error(rsp.response);
-        } else {
-          fetchCobranza();
-          $('#Agregarcobranza').hide();
-          $('#cobranza').animate({"right": "4%"}, "slow");
-          $('#Ecobranza').animate({"right": "4%"}, "slow");
-          alertify.success('SE AGREGÓ CORRECTAMENTE');
+    if (validacion) {
+      swal("NO PUEDE CONTINUAR","Nesesita llenar todos los campos","error");
+    }else {
+      $.ajax({
+        method: 'POST',
+        url: '/fitcoControl/Resources/PHP/Cobranza/AgregarCobranza.php',
+        data: {
+
+          cbz_cliente: fk_cliente,
+          cbz_factura: facturaCobranza,
+          cbz_importe: importeCobranza,
+          cbz_dvencimiento: vencimientoCobranza
+        },
+        success:function(result){
+          var rsp = JSON.parse(result);
+          if (rsp.code != 1) {
+            swal("FALLO AL REGISTRAR","No se agregó el registro","error");
+            console.error(rsp.response);
+          } else {
+            fetchCobranza();
+            $('#Agregarcobranza').hide();
+            $('#cobranza').animate({"right": "4%"}, "slow");
+            $('#Ecobranza').animate({"right": "4%"}, "slow");
+            alertify.success('SE AGREGÓ CORRECTAMENTE');
+          }
+        },
+        error:function(exception){
+          console.error(exception)
         }
-      },
-      error:function(exception){
-        console.error(exception)
-      }
-    });
+      })
+    }
   });
 });
 
@@ -48,6 +58,23 @@ function fetchCobranza(){
       console.log(result);
       var rsp = JSON.parse(result);
       $('#mostrarCobranza').html(rsp.infoTabla);
+      ActivarBotonesCobranza();
+    },
+    error:function(exception){
+      console.error(exception)
+    }
+  })
+}
+
+//TABLA PARA DATOS DE GRAFICA COBRANZA
+function fetchTablaCobranza(){
+  $.ajax({
+    method: 'POST',
+    url:'/fitcoControl/Resources/PHP/Cobranza/TablaGraficaCobranza.php',
+    success:function(result){
+      console.log(result);
+      var rsp = JSON.parse(result);
+      $('#mostrarTablaGrafica').html(rsp.infoTabla);
       ActivarBotonesCobranza();
     },
     error:function(exception){

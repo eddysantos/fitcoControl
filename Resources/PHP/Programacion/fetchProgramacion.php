@@ -23,7 +23,6 @@ FROM ct_programacion p
 LEFT JOIN ct_cliente c ON c.pk_cliente = p.fk_cliente";
 
 $stmt = $conn->prepare($query);
-//$stmt->bind_param('s', $_POST['clienteId']);
 $stmt->execute();
 
 $resultados = $stmt->get_result();
@@ -35,8 +34,6 @@ if (false) {
 } else {
   $data['code'] = 1;
   while ($a = mysqli_fetch_assoc($resultados)) {
-    // $fi = date('D M d Y H:i:s eO', strtotime($a['FechaInicio']));
-    // $ff = date('D M d Y H:i:s eO', strtotime($a['FechaFinal']));
     $fi =  strtotime($a['FechaInicio']);
     $ff =  strtotime($a['FechaFinal']);
     $data['response'][] = array(

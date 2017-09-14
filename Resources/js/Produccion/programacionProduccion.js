@@ -2,6 +2,7 @@ $(document).ready(function(){
 
 fetchProgramacion();
 fetchProProduccion();
+fetchTablaGrafica();
 $('#previewProgram').click(function(){
   var np = new Array();
 
@@ -59,7 +60,6 @@ $('#npClientName').keyup(function(){
       console.error(exception);
     }
   });
-
 });
 
 $('.agregar-programacion').click(function(){
@@ -122,6 +122,23 @@ function fetchProgramacion(){
       var rsp = JSON.parse(result);
       console.log(rsp);
       $('#MostrartablaProduccion').html(rsp.infoTabla);
+      ActivarBotonProgram();
+    },
+    error:function(exception){
+      console.error(exception)
+    }
+  })
+}
+
+//tabla para grafica produccion
+function fetchTablaGrafica(){
+  $.ajax({
+    method: 'POST',
+    url:'/fitcoControl/Resources/PHP/Produccion/ProduccionTablaGrafica.php',
+    success:function(result){
+      var rsp = JSON.parse(result);
+      console.log(rsp);
+      $('#tablaGrafica').html(rsp.infoTabla);
       ActivarBotonProgram();
     },
     error:function(exception){
@@ -240,29 +257,38 @@ function ActivarBotonProduc(){
       var fechaIntroduccion = $('#mpro_fint').val();
       var cantidadProduccion = $('#mpro_cant').val();
 
-      $.ajax({
-        method: 'POST',
-        url: '/fitcoControl/Resources/PHP/Produccion/AgregarProduccion.php',
-        data: {
+      validacion =  $('#mpro_idprog').val() == "" ||
+      $('#mpro_fint').val() == "" ||
+      $('#mpro_cant').val() == "";
 
-          mpro_idprog: fk_programacion,
-          mpro_fint: fechaIntroduccion,
-          mpro_cant: cantidadProduccion
-        },
-        success:function(result){
-          var rsp = JSON.parse(result);
-          if (rsp.code != 1) {
-            swal("FALLO AL REGISTRAR","No se agregó el registro","error");
-            console.error(rsp.response);
-          } else {
-            $('#AgregarProduccion').modal('hide');
-            alertify.success('SE AGREGÓ CORRECTAMENTE');
+      if (validacion) {
+          swal("NO PUEDE CONTINUAR","Necesita llenar todos los campos","error");
+      }else {
+        $.ajax({
+          method: 'POST',
+          url: '/fitcoControl/Resources/PHP/Produccion/AgregarProduccion.php',
+          data: {
+
+            mpro_idprog: fk_programacion,
+            mpro_fint: fechaIntroduccion,
+            mpro_cant: cantidadProduccion
+          },
+          success:function(result){
+            var rsp = JSON.parse(result);
+            if (rsp.code != 1) {
+              swal("FALLO AL REGISTRAR","No se agregó el registro","error");
+              console.error(rsp.response);
+            } else {
+              $('#AgregarProduccion').modal('hide');
+              alertify.success('SE AGREGÓ CORRECTAMENTE');
+              fetchProProduccion();
+            }
+          },
+          error:function(exception){
+            console.error(exception)
           }
-        },
-        error:function(exception){
-          console.error(exception)
-        }
-      });
+        })
+      }
     });
 
     //VISUALIZAR PRODUCCION EN MODAL

@@ -19,6 +19,7 @@ a img:hover{
 
 
 /* LINKS REDIRECCION BOTONES*/
+
 a.linkboton{
 	font-family: 'Montserrat', sans-serif;
 	text-transform:uppercase;
@@ -49,6 +50,16 @@ a.linkboton span{
   -ms-transition: all ease 400ms;
 	z-index:-1;
 }
+a.linkboton span.a{
+	display:block;
+	position:absolute;
+	background: rgba(200, 28, 28, 0.63);
+	transition: all ease 400ms;
+  -webkit-transition: all ease 400ms;
+  -moz-transition: all ease 400ms;
+  -ms-transition: all ease 400ms;
+	z-index:-1;
+}
 
 a.linkboton span.top{
 	left:0;
@@ -70,28 +81,6 @@ a.linkboton:hover span.top{
 	bottom:0;
 	border-radius:0;
 }
-
-
-a.linkboton{
-	font-family: 'Montserrat', sans-serif;
-	text-transform:uppercase;
-	letter-spacing:3px;
-	display:inline-block;
-	text-decoration:none;
-	color:black;
-	padding: 10px 30px;
-	border: 2px solid black;
-	border-radius:5px;
-	position:relative;
-	overflow:hidden;
-	transition: all ease 400ms;
-  -webkit-transition: all ease 400ms;
-  -moz-transition: all ease 400ms;
-  -ms-transition: all ease 400ms;
-  font-size: 15px;
-  text-align: center!important;
-}
-
 
 
 /*PARA COLAPSO;*/

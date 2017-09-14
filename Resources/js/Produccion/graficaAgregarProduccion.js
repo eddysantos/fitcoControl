@@ -8,7 +8,7 @@ function dibujarGrafica(){
     url: '/fitcoControl/Resources/PHP/Programacion/fetchProgramacion.php',
     data: {},
     success: function(result){
-    //  console.log(result);
+    //console.log(result);
       response = JSON.parse(result)
       console.log(response);
       for (var i = 0; i < response.response.length; i++) {

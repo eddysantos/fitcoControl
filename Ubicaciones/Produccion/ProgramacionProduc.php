@@ -7,10 +7,10 @@
 <link rel="stylesheet" href="/fitcoControl/Resources/css/agregarProduccion.css">
 
 
-<div class="prod  mr-5" style="margin-top: 80px">
+<div class="prod  mr-5 mt-5">
   <a class="rotate-link consultar ancla" style="font-size: larger;" accion="eproduccion" status="cerrado">
     <img src="/fitcoControl/Resources/iconos/pencil1.svg" class="icon1 rotate-icon" style="width:30px;">
-    <span class="span">EDITAR PRODUCCIÓN</span>
+    <span class="span">Editar Producción</span>
   </a>
 </div>
 
@@ -20,7 +20,7 @@
 </div>
 <div class="container align-items-center">
 
-  <div class="colapso mt-15 p-0" id="tablaProduccion" style="display:none">
+  <div class="colapso p-0" id="tablaProduccion" style="display:none">
     <a class="boton-colapso d-flex p-3" data-toggle="collapse" href="#colapsoTablaProduc">
       <h3>| Tabla de Programación</h3>
     </a>

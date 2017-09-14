@@ -1,7 +1,7 @@
 $(document).ready(function(){
   fetchUsuario();
 
-  
+
 
   $('#NuevoRegistroUsuario').click(function(){
 
@@ -14,36 +14,50 @@ $(document).ready(function(){
     var contraUsuario = $('#usr_contra').val();
     var privilegiosUsuario = $('#usr_privilegios').val();
 
-    $.ajax({
-      method: 'POST',
-      url: '/fitcoControl/Resources/PHP/Usuarios/AgregarUsuario.php',
-      data: {
-        usr_nombre: nombreUsuario,
-        usr_apellidos: apellidosUsuario,
-        usr_correo: correoUsuario,
-        usr_departamento: departamentoUsuario,
-        usr_puesto: puestoUsuario,
-        usr_usuario: usrUsuario,
-        usr_contra: contraUsuario,
-        usr_privilegios: privilegiosUsuario
-      },
-      success:function(result){
-        var rsp = JSON.parse(result);
-        if (rsp.code != 1) {
-          swal("FALLO AL REGISTRAR","No se agregó el registro","error");
-          console.error(rsp.response);
-        } else {
-          fetchUsuario();
-          $('#NuevoUsuario').hide();
-          $('#usuarios').animate({"right": "4%"}, "slow");
-          $('#Eusuarios').animate({"right": "4%"}, "slow");
-          alertify.success('SE AGREGÓ CORRECTAMENTE');
+
+    validacion =  $('#usr_nombre').val() == "" ||
+    $('#usr_apellidos').val() == "" ||
+    $('#usr_correo').val() == "" ||
+    $('#usr_departamento').val() == "" ||
+    $('#usr_puesto').val() == "" ||
+    $('#usr_usuario').val() == "" ||
+    $('#usr_contra').val() == "" ||
+    $('#usr_privilegios').val() == "";
+
+    if (validacion) {
+      swal("NO PUEDE CONTINUAR","Necesita llenar todos los campos","error");
+    }else {
+      $.ajax({
+        method: 'POST',
+        url: '/fitcoControl/Resources/PHP/Usuarios/AgregarUsuario.php',
+        data: {
+          usr_nombre: nombreUsuario,
+          usr_apellidos: apellidosUsuario,
+          usr_correo: correoUsuario,
+          usr_departamento: departamentoUsuario,
+          usr_puesto: puestoUsuario,
+          usr_usuario: usrUsuario,
+          usr_contra: contraUsuario,
+          usr_privilegios: privilegiosUsuario
+        },
+        success:function(result){
+          var rsp = JSON.parse(result);
+          if (rsp.code != 1) {
+            swal("FALLO AL REGISTRAR","No se agregó el registro","error");
+            console.error(rsp.response);
+          } else {
+            fetchUsuario();
+            $('#NuevoUsuario').hide();
+            $('#usuarios').animate({"right": "4%"}, "slow");
+            $('#Eusuarios').animate({"right": "4%"}, "slow");
+            alertify.success('SE AGREGÓ CORRECTAMENTE');
+          }
+        },
+        error:function(exception){
+          console.error(exception)
         }
-      },
-      error:function(exception){
-        console.error(exception)
-      }
-    });
+      })
+    }
   });
 });
 
