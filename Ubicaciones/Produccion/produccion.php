@@ -3,7 +3,7 @@
   require $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
 ?>
 
-<div class="container-fluid" style="display: -webkit-box; height: 100%">
+<div class="container-fluid" style="display: -webkit-box; height: 90%">
   <div class="row align-items-center w-100">
     <div class="col">
       <div class="card">
