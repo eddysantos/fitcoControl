@@ -25,20 +25,20 @@ $(document).ready(function(){
       break;
 
 
-      case "dcobranza":
-      if (status == 'cerrado') {
-        $(this).attr('status', 'abierto');
-        $('.spanD').css('display', 'inherit');
-        $('.spanA').css('display', '');
-        $('#TablaGrafica').fadeIn(1000);
-        $('#Agregarcobranza').hide();
-
-      }else {
-        $('.spanD').css('display', '');
-        $(this).attr('status', 'cerrado');
-        $('#TablaGrafica').hide();
-      }
-      break;
+      // case "dcobranza":
+      // if (status == 'cerrado') {
+      //   $(this).attr('status', 'abierto');
+      //   $('.spanD').css('display', 'inherit');
+      //   $('.spanA').css('display', '');
+      //   $('#TablaGrafica').fadeIn(1000);
+      //   $('#Agregarcobranza').hide();
+      //
+      // }else {
+      //   $('.spanD').css('display', '');
+      //   $(this).attr('status', 'cerrado');
+      //   $('#TablaGrafica').hide();
+      // }
+      // break;
 
       default:
       console.error("Something went terribly wrong...");
