@@ -6,13 +6,13 @@
 
 <div class="container">
 
-  <div class="links mt-5 mb-5">
-    <a class="rotate-link  ver ancla" accion="acobranza" status="cerrado">
+  <div class="clt_usr mt-5 mb-5">
+    <a class="rotate-link  consultar ancla" accion="acobranza" status="cerrado">
       <img src="/fitcoControl/Resources/iconos/003-analytics-2.svg" class="icon rotate-icon" style="width:30px">
       <span class="spanA">Agregar Cobranza</span>
     </a>
 
-    <a class="ml-3 rotate-link  ver ancla" accion="dcobranza" status="cerrado"  data-toggle='modal' data-target='#ModalGraficaCobranza'>
+    <a class="ml-3 rotate-link  consultar ancla" data-toggle='modal' data-target='#ModalGraficaCobranza'>
       <img src="/fitcoControl/Resources/iconos/grafica2.svg" class=" icon rotate-icon" style="width:30px">
       <span class="spanD">Detalle de Cobranza</span>
     </a>

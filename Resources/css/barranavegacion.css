@@ -19,22 +19,6 @@ body {
   font-family: helvetica, arial, sans-serif;
 }
 
-section {
-  height: 100%;
-  min-height: 250px;
-}
-
-/*.bodysec {
-  min-height: 700px;
-}*/
-
-/*#homesec {
-  background-size: cover;
-  background-color: rgb(66, 98, 119);
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-}*/
-
 #nav_wrap {
   background: white;
   width: 100%;
@@ -66,9 +50,6 @@ nav {
   margin: 0 auto;
   transition: .5s;
 }
-nav:hover{
-
-}
 
 .nav_animate {
   width: 70%;
@@ -87,19 +68,6 @@ nav a{
   border-top: 5px solid #0056b3;
 }
 
-/*nav a:nth-child(1) {
-  border-top: 5px solid #80BB80;
-}
-nav a:nth-child(2) {
-  border-top: 5px solid #9B5E5E;
-}
-nav a:nth-child(3) {
-  border-top: 5px solid #5656B3;
-}
-nav a:nth-child(4) {
-  border-top: 5px solid #aaa;
-}*/
-
 nav a:hover {
   border-top: 5px solid #4a4a4a;
   transition: .4s;
@@ -107,19 +75,12 @@ nav a:hover {
   background-color: rgb(201, 201, 201);
 }
 
-/*#test {
-  z-index: 99;
-  background: white;
-  position: fixed;
-  top: 0;
-}*/
-
 .sticky {
   /*position: sticky;*/
   top: 0;
 }
 
-#logo, #social {
+#logo{
   position: absolute;
   color: black;
   z-index: 100;
@@ -139,14 +100,6 @@ nav a:hover {
   cursor: pointer;
   font-weight: bolder;
 }
-
-/*#social {
-  top: -7px;
-  right: -150px;
-  font-size: 35px;
-  z-index: 100;
-  color: #4a4a4a;
-}*/
 
 #mainlogo {
   font-size: 150px;
@@ -172,6 +125,18 @@ nav a:hover {
   line-height: 80px;
 }
 
+.hoverblk {
+  transition: .3;
+}
+
+.hoverblk:hover {
+  color: #5656B3;
+  transition: .3s;
+}
+
+
+/*Eliminados*/
+
 /*.right {
   position: relative;
   float: right;
@@ -180,13 +145,13 @@ nav a:hover {
 img.right {
   margin: 0 0 0 40px;
   border-radius: 200px;
-}*/
+}
 
-/*#copy {
+#copy {
   padding: 20px 80px;
   font-size: 24px;
   text-align: justify;
-}*/
+}
 
 #iconrow {
   font-size: 130px;
@@ -209,11 +174,48 @@ img.right {
   font-size: 45px;
 }
 
-.hoverblk {
-  transition: .3;
+#social {
+  top: -7px;
+  right: -150px;
+  font-size: 35px;
+  z-index: 100;
+  color: #4a4a4a;
+}
+#test {
+  z-index: 99;
+  background: white;
+  position: fixed;
+  top: 0;
 }
 
-.hoverblk:hover {
-  color: #5656B3;
-  transition: .3s;
+nav a:nth-child(1) {
+  border-top: 5px solid #80BB80;
 }
+nav a:nth-child(2) {
+  border-top: 5px solid #9B5E5E;
+}
+nav a:nth-child(3) {
+  border-top: 5px solid #5656B3;
+}
+nav a:nth-child(4) {
+  border-top: 5px solid #aaa;
+}
+
+section {
+  height: 100%;
+  min-height: 250px;
+}
+
+.bodysec {
+  min-height: 700px;
+}
+
+#homesec {
+  background-size: cover;
+  background-color: rgb(66, 98, 119);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+nav:hover{
+
+}*/

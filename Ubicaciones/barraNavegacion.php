@@ -1,36 +1,39 @@
   <head>
     <meta charset="utf-8">
-    <title>Fit&Co Solutions</title>
+    <title>Fit&amp;Co Solutions</title>
     <link rel="stylesheet" href="/fitcoControl/Resources/bootstrap/css/reset.css">
     <link rel="stylesheet" href="/fitcoControl/Resources/css/barranavegacion.css">
     <link rel="stylesheet" href="/fitcoControl/Resources/fontAwesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="/fitcoControl/Resources/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/fitcoControl/Resources/css/Usuarios.css">
-    <link rel="stylesheet" href="/fitcoControl/Resources/css/Clientes.css">
-    <link rel="stylesheet" href="/fitcoControl/Resources/css/Produccion.css">
-    <link rel="stylesheet" href="/fitcoControl/Resources/css/Cobranza.css">
+    <link rel="stylesheet" href="/fitcoControl/Resources/css/Pagina.css">
     <link rel="stylesheet" href="/fitcoControl/Resources/css/Inputs.css">
     <link rel="stylesheet" href="/fitcoControl/Resources/css/modales.css">
     <link rel="stylesheet" href="/fitcoControl/Resources/css/sweetalert.css">
-    <link rel="stylesheet" href="/fitcoControl/Resources/bootstrap/css/bootstrap-toggle.css">
 
-    <script src="/fitcoControl/Resources/bootstrap/alertifyjs/alertify.min.js"></script>
+    <!-- <link rel="stylesheet" href="/fitcoControl/Resources/css/Usuarios.css"> -->
+    <!-- <link rel="stylesheet" href="/fitcoControl/Resources/css/Clientes.css"> -->
+    <!-- <link rel="stylesheet" href="/fitcoControl/Resources/css/agregarProduccion.css">
+    <link rel="stylesheet" href="/fitcoControl/Resources/css/Produccion.css">
+    <link rel="stylesheet" href="/fitcoControl/Resources/css/Cobranza.css"> -->
+    <!-- <link rel="stylesheet" href="/fitcoControl/Resources/bootstrap/css/bootstrap-toggle.css"> -->
+
+
     <link rel="stylesheet" href="/fitcoControl/Resources/bootstrap/alertifyjs/css/alertify.min.css">
     <link rel="stylesheet" href="/fitcoControl/Resources/bootstrap/alertifyjs/css/themes/default.css">
 
 
+    <script src="/fitcoControl/Resources/bootstrap/alertifyjs/alertify.min.js"></script>
     <script src="/fitcoControl/Resources/jquery/sweetalert.min.js"></script>
     <script src="/fitcoControl/Resources/jquery/jquery.min.js"></script>
     <script src="/fitcoControl/Resources/jquery/popper.min.js"></script>
     <script src="/fitcoControl/Resources/bootstrap/js/bootstrap.min.js"></script>
     <script src="/fitcoControl/Resources/jquery/tether.min.js"></script>
-
   </head>
 
   <body>
     <!-- -->
   <div id="nav_wrap" class="sticky">
-    <h1 id="logo" style="left: 3%; transition: 0.5s;">FIT&CO</h1>
+    <h1 id="logo" style="left: 3%; transition: 0.5s;">FIT&amp;CO</h1>
     <nav class="nav_animate">
 
     <ul class="nav nav-pills nav-fill" id="selecTipoPoliza">

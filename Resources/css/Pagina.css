@@ -7,6 +7,24 @@ input:-webkit-autofill {
   -webkit-box-shadow: 0 0 0px 1000px white inset;
   -webkit-text-fill-color: rgba(47, 89, 119, 0.63)!important;
 }
+.client-list{
+  border: solid 1px rgba(0, 0, 0, .1);
+  padding: 5px;
+}
+
+.client-list p:not(:last-child){
+  border-bottom: solid 1px black;
+}
+
+.client-list p{
+  padding:5px;
+  margin: 0px;
+}
+
+.client-list p:hover{
+  background-color: rgba(0, 0, 0, .16);
+  cursor: pointer;
+}
 
 .page {
     position: absolute;
@@ -28,6 +46,7 @@ input:-webkit-autofill {
     /*margin-left:-10px;
     width: 1350px;*/
 }
+
 .agregarnuevo{
   position: absolute;
   left: 65%;
@@ -42,9 +61,11 @@ input:-webkit-autofill {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
   margin-top: 130px;
 }
+
 .clt_usr {
   text-align: right;
 }
+
 .clt_usr .consultar{
   cursor: pointer;
   opacity: 0.6;
@@ -53,6 +74,7 @@ input:-webkit-autofill {
   -webkit-transition: all 0.2s linear;
   transition: all 0.2s linear;
 }
+
 .clt_usr  .consultar  .icon {
   display: inline-block;
   text-align: center;
@@ -64,6 +86,7 @@ input:-webkit-autofill {
   transition: all 0.5s linear;
   line-height: 0!important;
 }
+
 .clt_usr .consultar  span {
   overflow: hidden;
   display: inline-flex;
@@ -78,25 +101,23 @@ input:-webkit-autofill {
   transition: all 0.2s ease;
   font-size: 20px;
 }
+
 .clt_usr .consultar:hover {
   opacity: 1.0;
-
 }
 
 .clt_usr .consultar:hover span{
   width: 190px;
 }
 
-
 .m20{
   margin:20px;
 }
 
-
 #item .visibilidad{
   display: none;
-
 }
+
 #item:hover .visibilidad{
   display:block
 }
@@ -104,9 +125,11 @@ input:-webkit-autofill {
 .icono{
   width: 30px;
 }
+
 #item:hover .icono{
   width: 50px;
 }
+
 .bordelateral:hover{
   border-left: 8px solid #014c8c;
 }
@@ -114,16 +137,17 @@ input:-webkit-autofill {
 .ancla{
   color: #014c8c!important
 }
+
 .boton{
   color: white;
   background-color: #014c8c;
   font-size: 13px
 }
+
 .boton:hover{
   background-color: #2a608e;
   letter-spacing: 3px;
 }
-
 
 a{
   color: black;
@@ -133,4 +157,128 @@ h4,h2{
   font-family: 'Quicksand', sans-serif;
   font-size: 18px;
   letter-spacing: 1px
+}
+
+.encabezado{
+  letter-spacing: 3px;
+  color: rgba(62, 109, 140, 0.85);
+  border-bottom:2px solid #ccc
+}
+
+.table-fixed tbody {
+  max-height: 520px;
+  overflow-y: auto;
+  width: 100%;
+}
+
+.table-fixed tbody {
+  display: block;
+}
+
+p{
+  color:rgb(66, 125, 158);
+}
+
+a.linkboton{
+	font-family: 'Montserrat', sans-serif;
+	text-transform:uppercase;
+	letter-spacing:3px;
+	display:inline-block;
+	text-decoration:none;
+	color:black;
+	padding: 10px 30px;
+	border: 2px solid black;
+	border-radius:5px;
+	position:relative;
+	overflow:hidden;
+	transition: all ease 400ms;
+  -webkit-transition: all ease 400ms;
+  -moz-transition: all ease 400ms;
+  -ms-transition: all ease 400ms;
+  font-size: 15px;
+  text-align: center!important;
+}
+
+a.linkboton span{
+	display:block;
+	position:absolute;
+	background: rgba(47, 89, 119, 0.63);
+	transition: all ease 400ms;
+  -webkit-transition: all ease 400ms;
+  -moz-transition: all ease 400ms;
+  -ms-transition: all ease 400ms;
+	z-index:-1;
+}
+
+a.linkboton span.a{
+	display:block;
+	position:absolute;
+	background: rgba(200, 28, 28, 0.63);
+	transition: all ease 400ms;
+  -webkit-transition: all ease 400ms;
+  -moz-transition: all ease 400ms;
+  -ms-transition: all ease 400ms;
+	z-index:-1;
+}
+
+a.linkboton span.top{
+	left:0;
+	top:-50%;
+	right:0;
+	bottom:100%;
+	border-radius:50%;
+}
+
+a.linkboton:hover{
+	color:white!important;
+	border: 2px solid rgba(117, 117, 117, 0.49);
+  letter-spacing:5px;
+}
+
+a.linkboton:hover span.top{
+	top:0;
+	bottom:0;
+	border-radius:0;
+}
+
+
+/*PARA COLAPSO;*/
+.colapso {
+  color: blue;
+  padding: 10px;
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+a.boton-colapso{
+  text-decoration: none;
+}
+
+a.boton-colapso:hover{
+  color: rgba(47, 89, 119, 0.63);
+}
+
+.mt-40{
+  margin-top: 40px!important;
+}
+
+
+.rotate-icon {
+  transition: transform 0.3s ease-out;
+}
+.rotate-link:hover .rotate-icon{
+  transform: rotate(360deg);
+}
+
+.spand-icon {
+  width: 29px;
+}
+.spand-link:hover .spand-icon{
+  width: 32px;
+}
+
+.fixed-program tbody{
+  display: block;
+  max-height: 280px;
+  overflow-y: auto;
 }

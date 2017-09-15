@@ -4,8 +4,6 @@
 ?>
 
 <div class="container">
-
-
   <div class="clt_usr  mt-5 mb-5">
     <a class="rotate-link consultar ancla" style="font-size: larger;" accion="ausuario" status="cerrado">
       <img src="/fitcoControl/Resources/iconos/usuario.svg" class="icon1 rotate-icon" style="width:30px;">
@@ -112,12 +110,10 @@
       </table>
     </form>
   </div>
-
-
 </div>
 
-  <?php
-    $root = $_SERVER['DOCUMENT_ROOT'];
-    require $root . '/fitcoControl/Ubicaciones/Modales/Usuarios/EditarUsuario.php';
-    require $root . '/fitcoControl/Resources/PHP/Usuarios/pieUsuario.php';
-  ?>
+<?php
+  $root = $_SERVER['DOCUMENT_ROOT'];
+  require $root . '/fitcoControl/Ubicaciones/Modales/Usuarios/EditarUsuario.php';
+  require $root . '/fitcoControl/Resources/PHP/Usuarios/pieUsuario.php';
+?>

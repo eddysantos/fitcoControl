@@ -3,4 +3,5 @@
 <script type="text/javascript" src="/fitcoControl/Resources/js/Produccion/graficaAgregarProduccion.js"></script>
 
 <script type="text/javascript" src="/fitcoControl/Resources/js/Produccion/programacionProduccion.js"></script>
-<script type="text/javascript" src="/fitcoControl/Resources/js/Produccion/visualizarTablaProduc.js"></script>
+<!-- <script type="text/javascript" src="/fitcoControl/Resources/js/Produccion/visualizarTablaProduc.js"></script> -->
+<script type="text/javascript" src="/fitcoControl/Resources/js/MostrarDivsAgregar.js"></script>

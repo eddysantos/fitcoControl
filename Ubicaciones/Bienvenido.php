@@ -6,7 +6,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Fit&Co Solutions</title>
+    <title>Fit&amp;Co Solutions</title>
     <link rel="stylesheet" href="/fitcoControl/Resources/css/reset.css">
     <link rel="stylesheet" href="/fitcoControl/Resources/css/barranavegacion.css">
     <link rel='stylesheet prefetch' href='http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css'>
@@ -14,7 +14,7 @@
   </head>
   <body>
     <div id="bienvenida">
-      <h1 id="logo">FIT&CO</h1>
+      <h1 id="logo">FIT&amp;CO</h1>
       <nav>
         <a href="/fitcoControl/Ubicaciones/Produccion/produccion.php" class="transicion">PRODUCCIÓN</a>
         <a href="/fitcoControl/Ubicaciones/Cobranza/cobranza.php" class="transicion">COBRANZA</a>
@@ -25,7 +25,7 @@
     </div>
 
     <section id="homesec">
-      <div id="mainlogo">FIT&CO<br>
+      <div id="mainlogo">FIT&amp;CO<br>
         <div id="mainsocial">
           Bienvenido, <?php echo $_SESSION['u_usuario']; ?>
         </div>

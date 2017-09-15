@@ -4,20 +4,19 @@
   require $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
   require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
 ?>
-<link rel="stylesheet" href="/fitcoControl/Resources/css/agregarProduccion.css">
 
 
-<div class="prod  mr-5 mt-5">
+
+<div class="clt_usr  mr-5 mt-5">
   <a class="rotate-link consultar ancla" style="font-size: larger;" accion="eproduccion" status="cerrado">
-    <img src="/fitcoControl/Resources/iconos/pencil1.svg" class="icon1 rotate-icon" style="width:30px;">
+    <img src="/fitcoControl/Resources/iconos/pencil1.svg" class="icon rotate-icon" style="width:30px;">
     <span class="span">Editar Producción</span>
   </a>
 </div>
 
 
-<div class="p-5" id="visualizarProduccion">
+<div class="p-5" id="visualizarProduccion"></div>
 
-</div>
 <div class="container align-items-center">
 
   <div class="colapso p-0" id="tablaProduccion" style="display:none">
