@@ -8,7 +8,7 @@
 
   <div class="clt_usr  mt-5 mb-5">
     <a class="rotate-link consultar ancla" style="font-size: larger;" accion="ausuario" status="cerrado">
-      <img src="/fitcoControl/Resources/iconos/001-add-user.svg" class="icon1 rotate-icon" style="width:30px;">
+      <img src="/fitcoControl/Resources/iconos/usuario.svg" class="icon1 rotate-icon" style="width:30px;">
       <span class="span">Agregar Usuario</span>
     </a>
 

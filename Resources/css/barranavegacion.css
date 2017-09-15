@@ -24,16 +24,16 @@ section {
   min-height: 250px;
 }
 
-.bodysec {
+/*.bodysec {
   min-height: 700px;
-}
+}*/
 
-#homesec {
+/*#homesec {
   background-size: cover;
   background-color: rgb(66, 98, 119);
   background-repeat: no-repeat;
   background-attachment: fixed;
-}
+}*/
 
 #nav_wrap {
   background: white;
@@ -188,7 +188,7 @@ img.right {
   text-align: justify;
 }*/
 
-/*#iconrow {
+#iconrow {
   font-size: 130px;
   text-align: justify;
   margin-top: 50px;
@@ -199,7 +199,7 @@ img.right {
   content:'';
   display: inline-block;
   width: 100%;
-}*/
+}
 
 .center {
   text-align: center;
