@@ -282,3 +282,18 @@ a.boton-colapso:hover{
   max-height: 280px;
   overflow-y: auto;
 }
+
+.verde{
+  background-color: rgba(33, 255, 94, 0.1);
+}
+.rojo{
+  background-color: rgba(249, 133, 140, 0.15);
+}
+
+#bloqueo{
+  cursor: not-allowed!important;
+}
+
+.ocultar{
+  display: none!important;
+}

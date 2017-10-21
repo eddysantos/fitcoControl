@@ -7,10 +7,22 @@ $data = array(
 
 require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
 $query =
-"INSERT INTO ct_cliente(nombreCliente,correoCliente,telefonoCliente,creditoCliente,fingresoCliente,colorCliente,prendasCliente,nosotrosCliente) VALUES(?,?,?,?,?,?,?,?)";
+"INSERT INTO
+ct_cliente(
+  nombreCliente,
+  correoCliente,
+  telefonoCliente,
+  creditoCliente,
+  fingresoCliente,
+  colorCliente,
+  prendasCliente,
+  nosotrosCliente,
+  vendedorCliente)
+  VALUES(
+    ?,?,?,?,?,?,?,?,?)";
 
 $stmt = $conn->prepare($query);
-$stmt->bind_param('ssssssss',
+$stmt->bind_param('sssssssss',
   $_POST['clt_nombre'],
   $_POST['clt_contacto'],
   $_POST['clt_telefono'],
@@ -18,7 +30,8 @@ $stmt->bind_param('ssssssss',
   $_POST['clt_fingreso'],
   $_POST['clt_color'],
   $_POST['clt_prendas'],
-  $_POST['clt_nosotros']
+  $_POST['clt_nosotros'],
+  $_POST['clt_vendedor']
 );
 $stmt->execute();
 

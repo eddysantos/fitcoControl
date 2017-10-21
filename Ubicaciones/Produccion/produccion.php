@@ -1,7 +1,17 @@
 <?php
-  $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
+
+session_start();
+
+if (!isset($_SESSION['user'])) {
+  header("Location: /fitcoControl/index.php");
+}
+
+$root = $_SERVER['DOCUMENT_ROOT'];
+require  $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
+
 ?>
+
+
 
 <div class="container-fluid" style="display: -webkit-box; height: 90%">
   <div class="row align-items-center w-100">

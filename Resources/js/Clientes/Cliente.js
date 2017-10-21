@@ -10,6 +10,7 @@ $(document).ready(function(){
     var colorCliente = $('#clt_color').val();
     var prendasCliente = $('#clt_prendas').val();
     var nosotrosCliente = $('#clt_nosotros').val();
+    var vendedorCliente = $('#clt_nosotros').val();
 
     validacion = $('#clt_nombre').val() == "" ||
     $('#clt_contacto').val() == "" ||
@@ -35,7 +36,8 @@ $(document).ready(function(){
           clt_fingreso: fingresoCliente,
           clt_nosotros: nosotrosCliente,
           clt_credito: creditoCliente,
-          clt_telefono: telefonoCliente
+          clt_telefono: telefonoCliente,
+          clt_vendedor: vendedorCliente
         },
         success:function(result){
           var rsp = JSON.parse(result);
@@ -106,6 +108,7 @@ function ActivarBotones(){
           $('#mclt_color').val(rsp.response.colorCliente);
           $('#mclt_prendas').val(rsp.response.prendasCliente);
           $('#mclt_nosotros').val(rsp.response.nosotrosCliente);
+          $('#mclt_vendedor').val(rsp.response.vendedorCliente);
 
         } else {
           console.error("Hubo un error al jalar la informacion del cliente.");
@@ -129,6 +132,7 @@ function ActivarBotones(){
     var colorCliente = $('#mclt_color').val();
     var prendasCliente = $('#mclt_prendas').val();
     var nosotrosCliente = $('#mclt_nosotros').val();
+    var vendedorCliente = $('#mclt_vendedor').val();
 
     $.ajax({
       method: 'POST',
@@ -142,7 +146,8 @@ function ActivarBotones(){
         mclt_fingreso: fingresoCliente,
         mclt_nosotros: nosotrosCliente,
         mclt_credito: creditoCliente,
-        mclt_telefono: telefonoCliente
+        mclt_telefono: telefonoCliente,
+        mclt_vendedor: vendedorCliente
       },
       success:function(result){
         console.log(result);

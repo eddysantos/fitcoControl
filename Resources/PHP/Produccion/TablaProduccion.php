@@ -10,6 +10,7 @@ $data = array(
 );
 $query = "SELECT
 fechaIntroduccion AS fecha,
+metaProduccion AS meta,
 cantidadProduccion AS cant
 
 FROM ct_produccion
@@ -32,14 +33,20 @@ if (false) {
     $data["data"][]= $row;
 
     $fecha = $row['fecha'];
+    $meta = $row['meta'];
     $cantidad = $row['cant'];
 
 
-    $data["infoTabla"].= "<tr class='row bordelateral m-0' id='item'>
-      <td class='col-md-6 text-center'>
+
+    $data["infoTabla"].= "
+    <tr class='row bordelateral m-0' id='item'>
+      <td class='col-md-4 text-center'>
         <h4><b>$fecha</b></h4>
       </td>
-      <td class='col-md-6 text-center'>
+      <td class='col-md-4 text-center'>
+        <h4><b>$meta piezas</b></h4>
+      </td>
+      <td class='col-md-4 text-center'>
         <h4><b>$cantidad piezas</b></h4>
       </td>
     </tr>";

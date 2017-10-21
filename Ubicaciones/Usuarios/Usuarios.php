@@ -1,4 +1,10 @@
 <?php
+session_start();
+
+if (!isset($_SESSION['user'])) {
+  header("Location: /fitcoControl/index.php");
+}
+
   $root = $_SERVER['DOCUMENT_ROOT'];
   require $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
 ?>
@@ -99,6 +105,30 @@
               </datalist>
               <label>Privilegios</label>
               <span class="focus-border"></span>
+            </td>
+          </tr>
+          <tr class="row ">
+            <td class="col-md-6 text-center">
+              <input type="checkbox" id="verCobranza" name="verCobranza">Ver Cobranza
+            </td>
+            <td class="col-md-6 text-center">
+              <input type="checkbox" id="editCobranza" name="editCobranza">Editar Cobranza
+            </td>
+          </tr>
+          <tr class="row">
+            <td class="col-md-6 text-center">
+              <input type="checkbox" id="verProduccion" name="verProduccion">Ver Producción
+            </td>
+            <td class="col-md-6 text-center">
+              <input type="checkbox" id="editProduccion" name="editProduccion">Editar Producción
+            </td>
+          </tr>
+          <tr class="row">
+            <td class="col-md-6 text-center">
+              <input type="checkbox" id="verCliente" name="verCliente">Ver Cliente
+            </td>
+            <td class="col-md-6 text-center">
+              <input type="checkbox" id="editCliente" name="editCliente">Editar Cliente
             </td>
           </tr>
           <tr class="row justify-content-center mb-3">

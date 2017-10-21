@@ -84,6 +84,58 @@ function fetchTablaCobranza(){
 }
 
 function ActivarBotonesCobranza(){
+
+  $('.agregarPago').unbind();
+  $('.agregarPago').click(function(){
+    var cobranzaId = $(this).attr('cobranza-id');
+    $('#mpgo_id').val(cobranzaId);
+    $('#PagoFacturas').modal('show');
+  });
+
+  //AGREGAR PAGOS MODAL
+    $('.AgregarPgo').unbind();
+    $('.AgregarPgo').click(function(){
+
+      var fk_cobranza = $('#mpgo_id').val();
+      var fechaPago = $('#mpgo_fpago').val();
+      var importePago = $('#mpgo_importe').val();
+
+      validacion =
+      $('#mpgo_fpago').val() == "" ||
+      $('#mpgo_importe').val() == "" ;
+
+      if (validacion) {
+          swal("NO PUEDE CONTINUAR","Necesita llenar todos los campos","error");
+      }else {
+        $.ajax({
+          method: 'POST',
+          url: '/fitcoControl/Resources/PHP/Pagos/AgregarPago.php',
+          data: {
+
+            mpgo_id: fk_cobranza,
+            mpgo_fpago: fechaPago,
+            mpgo_importe: importePago
+          },
+          success:function(result){
+            var rsp = JSON.parse(result);
+            if (rsp.code != 1) {
+              swal("FALLO AL REGISTRAR","No se agregó el registro","error");
+              console.error(rsp.response);
+            } else {
+              $('#PagoFacturas').modal('hide');
+              alertify.success('SE AGREGÓ CORRECTAMENTE');
+              fetchCobranza();
+            }
+          },
+          error:function(exception){
+            console.error(exception)
+          }
+        })
+      }
+    });
+
+
+  //EDITAR COBRANZA EN MODAL
   $('.editarCobranza').unbind();
   $('.editarCobranza').click(function(){
     var cobranzaId = $(this).attr('cobranza-id');

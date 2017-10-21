@@ -245,7 +245,6 @@ function ActivarBotonProduc(){
   $('.agregarproduccion').click(function(){
     var idProg = $(this).attr('program-id')
     $('#mpro_idprog').val(idProg);
-
     $('#AgregarProduccion').modal('show');
   });
 
@@ -255,10 +254,12 @@ function ActivarBotonProduc(){
 
       var fk_programacion = $('#mpro_idprog').val();
       var fechaIntroduccion = $('#mpro_fint').val();
+      var metaProduccion = $('#mpro_meta').val();
       var cantidadProduccion = $('#mpro_cant').val();
 
       validacion =  $('#mpro_idprog').val() == "" ||
       $('#mpro_fint').val() == "" ||
+      $('#mpro_meta').val() == "" ||
       $('#mpro_cant').val() == "";
 
       if (validacion) {
@@ -271,6 +272,7 @@ function ActivarBotonProduc(){
 
             mpro_idprog: fk_programacion,
             mpro_fint: fechaIntroduccion,
+            mpro_meta: metaProduccion,
             mpro_cant: cantidadProduccion
           },
           success:function(result){

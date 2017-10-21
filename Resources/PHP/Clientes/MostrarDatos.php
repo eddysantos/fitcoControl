@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 $root = $_SERVER['DOCUMENT_ROOT'];
 require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
 
@@ -36,6 +38,21 @@ if (!$resultado) {
     $credito = $row['credito'];
     $fingreso = $row['ingreso'];
     $color = $row['color'];
+    $ocultar = "";
+    $pe = $_SESSION['user']['produccion_editar'];
+    $ce =  $_SESSION['user']['cobranza_editar'];
+    $cle = $_SESSION['user']['cliente_editar'];
+
+
+
+ya esta correcto solo seguir
+  // if ($pe == "1" && $ce == "0" && $cle == "0") {
+  //   $ocultar = "";
+  // }elseif ($cle == "1" && $pe == "0" && $ce == "0") {
+  //   # code...
+  // }
+
+
 
     $data["infoTabla"].= "
     <tr class='row bordelateral m-0' id='item'>
@@ -55,14 +72,11 @@ if (!$resultado) {
       </td>
       <td class='col-md-1'></td>
       <td class='col-md-1 text-center'>
-        <a class='EditCliente spand-link' data-toggle='modal' data-target='#EditarCliente' id='btnEditarCliente' client-id='$id'><img src='/fitcoControl/Resources/iconos/pencil1.svg' class='spand-icon'></a>
-
-
-        <!--a id='btnEliminarCliente' class='spand-link ml-5' onclick='return confirm('¿Estas seguro?');'><img src='/fitcoControl/Resources/iconos/trash.svg'  class='spand-icon'></a-->
+        <a class='EditCliente spand-link' data-toggle='modal' data-target='#EditarCliente' id='btnEditarCliente' client-id='$id'>
+        <img src='/fitcoControl/Resources/iconos/pencil1.svg' class='$ocultar spand-icon'>
+        </a>
       </td>
     </tr>";
-
-
   }
   echo json_encode($data);
 }

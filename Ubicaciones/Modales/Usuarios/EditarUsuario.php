@@ -73,6 +73,30 @@
                     <span class="focus-border"></span>
                 </td>
               </tr>
+              <tr class="row">
+                <td class="col-md-6 text-center">
+                  <input type="checkbox" id="musr_verCobranza" name="musr_verCobranza">Ver Cobranza
+                </td>
+                <td class="col-md-6 text-center">
+                  <input type="checkbox" id="musr_editCobranza" name="musr_editCobranza">Editar Cobranza
+                </td>
+              </tr>
+              <tr class="row">
+                <td class="col-md-6 text-center">
+                  <input type="checkbox" id="musr_verProduccion" name="musr_verProduccion">Ver Producción
+                </td>
+                <td class="col-md-6 text-center">
+                  <input type="checkbox" id="musr_editProduccion" name="musr_editProduccion">Editar Producción
+                </td>
+              </tr>
+              <tr class="row">
+                <td class="col-md-6 text-center">
+                  <input type="checkbox" id="musr_verCliente" name="musr_verCliente">Ver Cliente
+                </td>
+                <td class="col-md-6 text-center">
+                  <input type="checkbox" id="musr_editCliente" name="musr_editCliente">Editar Cliente
+                </td>
+              </tr>
             </tbody>
           </table>
 

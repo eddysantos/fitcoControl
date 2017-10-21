@@ -1,7 +1,14 @@
 <?php
+  session_start();
+
+  if (!isset($_SESSION['user'])) {
+    header("Location: /fitcoControl/index.php");
+  }
+
   $root = $_SERVER['DOCUMENT_ROOT'];
   require $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
   require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
+
 
 ?>
 
@@ -99,6 +106,13 @@
               <option value="Medios Publicitarios">Medios Publicitarios</option>
             </datalist>
               <label>Como supo de Nosotros?</label>
+              <span class="focus-border"></span>
+          </td>
+        </tr>
+        <tr class="row m20">
+          <td class="col-md-12 input-effect p-0">
+            <input id="clt_vendedor" class="effect-17" type="text" required>
+              <label>Nombre Vendedor</label>
               <span class="focus-border"></span>
           </td>
         </tr>
