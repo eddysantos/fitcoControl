@@ -15,7 +15,8 @@ p.pk_programacion AS idprogram,
 c.nombreCliente AS cliente,
 WEEK(p.fechaFinal) AS semana,
 c.colorCliente AS color,
-SUM(pr.cantidadProduccion) AS total
+SUM(pr.cantidadProduccion) AS total,
+p.piezasRequeridas AS fabricado
 
 FROM ct_programacion p
 
@@ -42,15 +43,19 @@ if (!$resultado) {
     $numerosemana = $row['semana'];
     $color = $row['color'];
     $total = $row['total'];
+    $fabricado = $row['fabricado'];
 
     $data["infoTabla"].= "<tr class='row bordelateral m-0' id='item'>
         <td class='col-md-4'>
           <h4><b><input type='color' value='$color'>$cliente</b></h4>
         </td>
-        <td class='col-md-4 text-center'>
+        <td class='col-md-2 text-center'>
           <h4><b>$numerosemana</b></h4>
         </td>
-        <td class='col-md-4 text-center'>
+        <td class='col-md-3 text-center'>
+          <h4><b>$fabricado</b></h4>
+        </td>
+        <td class='col-md-3 text-center'>
           <h4><b>$total</b></h4>
         </td>
       </tr>";

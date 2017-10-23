@@ -40,13 +40,6 @@ if (!isset($_SESSION['user'])) {
         </tbody>
       </table>
     </form>
-
-    <!-- <form id="produccion" class="page p-0" style="margin-top:180px">
-      <table class="table table-hover table-fixed">
-
-      </table>
-    </form> -->
-
   </div>
 
 

@@ -198,4 +198,23 @@ function ActivarBotonesCobranza(){
       }
     })
   });
+
+  $('.visualizarcobranza').click(function(){
+    var cobranzaId = $(this).attr('cobranza-id');
+    $.ajax({
+      method: 'POST',
+      url:'/fitcoControl/Resources/PHP/Cobranza/TablaPagos.php',
+      data:{cobranzaId:cobranzaId},
+      success:function(result){
+        var rsp = JSON.parse(result);
+        console.log(rsp);
+        $('#visualizarCobranza').html(rsp.infoTabla);
+
+      },
+      error:function(exception){
+        console.error(exception)
+      }
+    })
+
+  });
 }

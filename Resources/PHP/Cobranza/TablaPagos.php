@@ -9,16 +9,15 @@ $data = array(
   'infoTabla' => ""
 );
 $query = "SELECT
-fechaIntroduccion AS fecha,
-metaProduccion AS meta,
-cantidadProduccion AS cant
+p.fechaPago AS fecha,
+p.importePago As pagado
 
-FROM ct_produccion
+FROM ct_pagos p
 
-WHERE fk_programacion =?";
+WHERE fk_cobranza =?";
 
 $stmt = $conn->prepare($query);
-$stmt->bind_param('s', $_POST['idProg']);
+$stmt->bind_param('s', $_POST['cobranzaId']);
 $stmt->execute();
 
 $resultados = $stmt->get_result();
@@ -33,21 +32,17 @@ if (false) {
     $data["data"][]= $row;
 
     $fecha = $row['fecha'];
-    $meta = $row['meta'];
-    $cantidad = $row['cant'];
+    $importe = number_format($row['pagado'], 2);
 
 
 
     $data["infoTabla"].= "
     <tr class='row bordelateral m-0' id='item'>
-      <td class='col-md-4 text-center'>
+      <td class='col-md-6 text-center'>
         <h4><b>$fecha</b></h4>
       </td>
-      <td class='col-md-4 text-center'>
-        <h4><b>$meta piezas</b></h4>
-      </td>
-      <td class='col-md-4 text-center'>
-        <h4><b>$cantidad piezas</b></h4>
+      <td class='col-md-6 text-center'>
+        <h4><b>$ $importe</b></h4>
       </td>
     </tr>";
   }
