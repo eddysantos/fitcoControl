@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 $root = $_SERVER['DOCUMENT_ROOT'];
 require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
 $data = array(

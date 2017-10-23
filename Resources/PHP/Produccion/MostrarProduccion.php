@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 $root = $_SERVER['DOCUMENT_ROOT'];
 require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
 
@@ -47,6 +49,8 @@ if (!$resultado) {
     $iconocaja = "";
     $background = "";
     $numerosemana = date("W",strtotime($ffin));//sacar numero de la semana
+    $ocultar = "";
+    $pe = $_SESSION['user']['produccion_editar'];
 
 
 
@@ -63,6 +67,11 @@ if (!$resultado) {
     }else {
       $iconocaja = "002-delivery.svg";
     }
+
+
+    if ($pe == "0") {
+     $ocultar = "ocultar";
+   }
 
 
     $data["infoTabla"].= "<tr class='$background row bordelateral  m-0' id='item'>
@@ -87,7 +96,7 @@ if (!$resultado) {
         </td>
 
         <td class='col-md-1 text-center'>
-          <a href='#' class='visualizarproduccion spand-link' data-toggle='modal' data-target='#VisualizarTablaProduccion' program-id='$idprog'><img src='/fitcoControl/Resources/iconos/magnifier.svg' class='spand-icon'></a>
+          <a href='#' class='$ocultar visualizarproduccion spand-link' data-toggle='modal' data-target='#VisualizarTablaProduccion' program-id='$idprog'><img src='/fitcoControl/Resources/iconos/magnifier.svg' class='spand-icon'></a>
         </td>
       </tr>";
 

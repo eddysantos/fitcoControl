@@ -39,18 +39,16 @@ if (!$resultado) {
     $fingreso = $row['ingreso'];
     $color = $row['color'];
     $ocultar = "";
-    $pe = $_SESSION['user']['produccion_editar'];
-    $ce =  $_SESSION['user']['cobranza_editar'];
+    // $pe = $_SESSION['user']['produccion_editar'];
+    // $ce =  $_SESSION['user']['cobranza_editar'];
     $cle = $_SESSION['user']['cliente_editar'];
 
 
 
-ya esta correcto solo seguir
-  // if ($pe == "1" && $ce == "0" && $cle == "0") {
-  //   $ocultar = "";
-  // }elseif ($cle == "1" && $pe == "0" && $ce == "0") {
-  //   # code...
-  // }
+// ya esta correcto solo seguir
+  if ($cle == "0") {
+   $ocultar = "ocultar";
+ }
 
 
 
@@ -67,7 +65,7 @@ ya esta correcto solo seguir
         <h2><b><a href='mailto:$correo'>$correo</a></b></h2>
         <p class='visibilidad'>Credito : $credito Días</p>
       </td>
-      <td class='col-md-3 text-center'>
+      <td class='col-md-4 text-center'>
         <h2><b>$telefono</a></b></h2>
       </td>
       <td class='col-md-1'></td>
