@@ -15,11 +15,17 @@ departamentoUsuario =?,
 puestoUsuario =?,
 usrUsuario =?,
 contraUsuario =?,
-privilegiosUsuario = ?
+privilegiosUsuario = ?,
+cobranza_ver = ?,
+cobranza_editar = ?,
+produccion_ver = ?,
+produccion_editar = ?,
+cliente_ver = ?,
+cliente_editar = ?
 WHERE pk_usuario = ?";
 
 $stmt = $conn->prepare($query);
-$stmt->bind_param('sssssssss',
+$stmt->bind_param('sssssssssssssss',
   $_POST['musr_nombre'],
   $_POST['musr_apellidos'],
   $_POST['musr_correo'],
@@ -28,6 +34,12 @@ $stmt->bind_param('sssssssss',
   $_POST['musr_usuario'],
   $_POST['musr_contra'],
   $_POST['musr_privilegios'],
+  $_POST['musr_verCobranza'],
+  $_POST['musr_editCobranza'],
+  $_POST['musr_verProduccion'],
+  $_POST['musr_editProduccion'],
+  $_POST['musr_verCliente'],
+  $_POST['musr_editCliente'],
   $_POST['musr_id']
 );
 $stmt->execute();

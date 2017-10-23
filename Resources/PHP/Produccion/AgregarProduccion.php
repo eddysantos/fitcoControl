@@ -7,14 +7,16 @@ $data = array(
 
 require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
 $query =
-"INSERT INTO ct_produccion(fk_programacion,fechaIntroduccion,cantidadProduccion) VALUES(?,?,?)";
+"INSERT INTO ct_produccion(fk_programacion,fechaIntroduccion,metaProduccion,cantidadProduccion) VALUES(?,?,?,?)";
 
 $stmt = $conn->prepare($query);
-$stmt->bind_param('sss',
+$stmt->bind_param('ssss',
 
   $_POST['mpro_idprog'],
   $_POST['mpro_fint'],
+  $_POST['mpro_meta'],
   $_POST['mpro_cant']
+
 );
 $stmt->execute();
 

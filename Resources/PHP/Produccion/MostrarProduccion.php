@@ -24,7 +24,7 @@ LEFT JOIN ct_produccion pr ON p.pk_programacion = pr.fk_programacion
 
 GROUP BY p.pk_programacion
 
-ORDER BY cliente";
+ORDER BY cliente ASC,ffin";
 
 
 $resultado = mysqli_query($conn,$query);
@@ -45,6 +45,7 @@ if (!$resultado) {
     $total = $row['total'];
     $hoy = date("Y-m-d");
     $iconocaja = "";
+    $background = "";
     $numerosemana = date("W",strtotime($ffin));//sacar numero de la semana
 
 
@@ -52,16 +53,19 @@ if (!$resultado) {
     //si fecha vencimiento es mayor a la fecha de hoy y mis piezas requeridas son igual a
     if (($ffin > $hoy)  && ($piezas == $total)) {
       $iconocaja = "001-check.svg";
+      $background = "verde";
     } elseif (($ffin < $hoy) && ($piezas == $total)) {
       $iconocaja = "001-check.svg";
+      $background = "verde";
     }elseif (($ffin < $hoy) && ($piezas > $total)) {
       $iconocaja = "003-shipping.svg";
+      $background = "rojo";
     }else {
       $iconocaja = "002-delivery.svg";
     }
 
 
-    $data["infoTabla"].= "<tr class='row bordelateral m-0' id='item'>
+    $data["infoTabla"].= "<tr class='$background row bordelateral  m-0' id='item'>
       <td class='col-md-1'>
         <img src='/fitcoControl/Resources/iconos/$iconocaja' class='icono'>
       </td>
@@ -77,9 +81,11 @@ if (!$resultado) {
         <td class='col-md-2 text-center'>
           <h4><b>$ffin</b></h4>
         </td>
+
         <td class='col-md-1 text-right'>
           <a href='#' class='agregarproduccion spand-link' program-id='$idprog'><img src='/fitcoControl/Resources/iconos/003-add.svg' class='spand-icon'></a>
         </td>
+
         <td class='col-md-1 text-center'>
           <a href='#' class='visualizarproduccion spand-link' data-toggle='modal' data-target='#VisualizarTablaProduccion' program-id='$idprog'><img src='/fitcoControl/Resources/iconos/magnifier.svg' class='spand-icon'></a>
         </td>

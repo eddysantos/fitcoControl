@@ -15,11 +15,12 @@ creditoCliente =?,
 fingresoCliente = ?,
 colorCliente = ?,
 prendasCliente = ?,
-nosotrosCliente = ?
+nosotrosCliente = ?,
+vendedorCliente = ?
 WHERE pk_cliente = ?";
 
 $stmt = $conn->prepare($query);
-$stmt->bind_param('sssssssss',
+$stmt->bind_param('ssssssssss',
   $_POST['mclt_nombre'],
   $_POST['mclt_contacto'],
   $_POST['mclt_telefono'],
@@ -28,6 +29,7 @@ $stmt->bind_param('sssssssss',
   $_POST['mclt_color'],
   $_POST['mclt_prendas'],
   $_POST['mclt_nosotros'],
+  $_POST['mclt_vendedor'],
   $_POST['mclt_id']
 );
 $stmt->execute();

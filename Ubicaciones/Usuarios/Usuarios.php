@@ -1,11 +1,15 @@
 <?php
+session_start();
+
+if (!isset($_SESSION['user'])) {
+  header("Location: /fitcoControl/index.php");
+}
+
   $root = $_SERVER['DOCUMENT_ROOT'];
   require $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
 ?>
 
 <div class="container">
-
-
   <div class="clt_usr  mt-5 mb-5">
     <a class="rotate-link consultar ancla" style="font-size: larger;" accion="ausuario" status="cerrado">
       <img src="/fitcoControl/Resources/iconos/usuario.svg" class="icon1 rotate-icon" style="width:30px;">
@@ -103,6 +107,30 @@
               <span class="focus-border"></span>
             </td>
           </tr>
+          <tr class="row ">
+            <td class="col-md-6 text-center">
+              <input type="checkbox" id="verCobranza" name="verCobranza">Ver Cobranza
+            </td>
+            <td class="col-md-6 text-center">
+              <input type="checkbox" id="editCobranza" name="editCobranza">Editar Cobranza
+            </td>
+          </tr>
+          <tr class="row">
+            <td class="col-md-6 text-center">
+              <input type="checkbox" id="verProduccion" name="verProduccion">Ver Producción
+            </td>
+            <td class="col-md-6 text-center">
+              <input type="checkbox" id="editProduccion" name="editProduccion">Editar Producción
+            </td>
+          </tr>
+          <tr class="row">
+            <td class="col-md-6 text-center">
+              <input type="checkbox" id="verCliente" name="verCliente">Ver Cliente
+            </td>
+            <td class="col-md-6 text-center">
+              <input type="checkbox" id="editCliente" name="editCliente">Editar Cliente
+            </td>
+          </tr>
           <tr class="row justify-content-center mb-3">
             <td class="col-md-4">
               <button type="submit" id="NuevoRegistroUsuario" class="btnsub btn boton btn-block ">AGREGAR</button>
@@ -112,12 +140,10 @@
       </table>
     </form>
   </div>
-
-
 </div>
 
-  <?php
-    $root = $_SERVER['DOCUMENT_ROOT'];
-    require $root . '/fitcoControl/Ubicaciones/Modales/Usuarios/EditarUsuario.php';
-    require $root . '/fitcoControl/Resources/PHP/Usuarios/pieUsuario.php';
-  ?>
+<?php
+  $root = $_SERVER['DOCUMENT_ROOT'];
+  require $root . '/fitcoControl/Ubicaciones/Modales/Usuarios/EditarUsuario.php';
+  require $root . '/fitcoControl/Resources/PHP/Usuarios/pieUsuario.php';
+?>

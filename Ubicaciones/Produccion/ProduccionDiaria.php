@@ -1,12 +1,17 @@
 <?php
+session_start();
+
+if (!isset($_SESSION['user'])) {
+  header("Location: /fitcoControl/index.php");
+}
   $root = $_SERVER['DOCUMENT_ROOT'];
   require $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
   require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
 ?>
 
 <div class="container">
-  <div class="links mt-5 mb-5">
-    <a class="ml-3 rotate-link  ver ancla" accion="dcobranza" status="cerrado"  data-toggle='modal' data-target='#ModalGraficaPRO'>
+  <div class="clt_usr mt-5 mb-5">
+    <a class="ml-3 rotate-link  consultar ancla"  data-toggle='modal' data-target='#ModalGraficaPRO'>
       <img src="/fitcoControl/Resources/iconos/bars-chart.svg" class=" icon rotate-icon" style="width:30px">
       <span class="spanD">Detalle Producción</span>
     </a>

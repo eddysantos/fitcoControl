@@ -1,4 +1,9 @@
 <?php
+session_start();
+
+if (!isset($_SESSION['user'])) {
+  header("Location: /fitcoControl/index.php");
+}
   $root = $_SERVER['DOCUMENT_ROOT'];
   require $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
   require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
@@ -6,13 +11,12 @@
 
 <div class="container">
 
-  <div class="links mt-5 mb-5">
-    <a class="rotate-link  ver ancla" accion="acobranza" status="cerrado">
+  <div class="clt_usr mt-5 mb-5">
+    <a class="rotate-link  consultar ancla" accion="acobranza" status="cerrado">
       <img src="/fitcoControl/Resources/iconos/003-analytics-2.svg" class="icon rotate-icon" style="width:30px">
       <span class="spanA">Agregar Cobranza</span>
     </a>
-
-    <a class="ml-3 rotate-link  ver ancla" accion="dcobranza" status="cerrado"  data-toggle='modal' data-target='#ModalGraficaCobranza'>
+    <a class="ml-3 rotate-link  consultar ancla" data-toggle='modal' data-target='#ModalGraficaCobranza'>
       <img src="/fitcoControl/Resources/iconos/grafica2.svg" class=" icon rotate-icon" style="width:30px">
       <span class="spanD">Detalle de Cobranza</span>
     </a>
@@ -24,14 +28,17 @@
         <thead>
           <tr class="row m-0 encabezado">
             <td class="col-md-1"></td>
-            <td class="col-md-3 text-center">
+            <td class="col-md-2 text-center">
               <h3>CLIENTE</h3>
             </td>
-            <td class="col-md-2 text-center">
+            <td class="col-md-1 text-center">
               <h3>FACTURA</h3>
             </td>
             <td class="col-md-2 text-center">
               <h3>IMPORTE</h3>
+            </td>
+            <td class="col-md-2 text-center">
+              <h3>PAGADO</h3>
             </td>
             <td class="col-md-2 text-center">
               <h3>VENCIMIENTO</h3>
@@ -104,18 +111,13 @@
       </table>
     </form>
   </div>
-
-
-
-
 </div>
-
-
 
 
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
   require $root . '/fitcoControl/Ubicaciones/Modales/Cobranza/ModalGraficaCobranza.php';
   require $root . '/fitcoControl/Ubicaciones/Modales/Cobranza/ModalCobranza.php';
+  require $root . '/fitcoControl/Ubicaciones/Modales/Cobranza/ModalPagos.php';
   require $root . '/fitcoControl/Resources/PHP/Cobranza/pieCobranza.php';
 ?>

@@ -6,7 +6,7 @@
         <button class="close" type="button" name="button" data-dismiss="modal" area-label="close">
           <i class="fa fa-times-circle-o fa-2x" aria-hidden="true"></i>
         </button>
-        <h5 class="modal-tittle">DETALLE DE COBRANZA</h5>
+        <h5 class="modal-tittle">DETALLE Y GRAFICO DE COBRANZA</h5>
       </div>
       <div class="modal-body">
         <div id="chart_div" class=""></div>

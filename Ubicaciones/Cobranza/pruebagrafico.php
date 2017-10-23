@@ -1,5 +1,11 @@
 <?php
 
+session_start();
+
+if (!isset($_SESSION['user'])) {
+  header("Location: /fitcoControl/index.php");
+}
+
 $root = $_SERVER['DOCUMENT_ROOT'];
 require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
 $data = array(

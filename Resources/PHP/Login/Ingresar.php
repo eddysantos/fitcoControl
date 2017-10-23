@@ -7,7 +7,6 @@ require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
 
 $usuario = $conn->real_escape_string($_POST['lg_usuario']);
 $contra = $conn->real_escape_string($_POST['lg_password']);
-
 $response = array(
   "code"=>"",
   "msg"=>"",
@@ -16,20 +15,32 @@ $response = array(
 
   $query = $conn->query("SELECT * FROM usuarios WHERE usrUsuario = '$usuario' AND contraUsuario = '$contra'");
 
-  if ($result = mysqli_fetch_array($query)) {
-    $_SESSION['u_usuario'] = $usuario;
+  $results = $query->num_rows;
+
+  if ($results == 1) {
+    $_SESSION['user'] = $query->fetch_assoc();
     $response['code'] = "1";
     $response = json_encode($response);
     echo $response;
-    //$redirect = $root . "/ncplaa_cont/Ubicaciones/Bienvenida.php";
-    //header($redirect);
     die();
-
-  }else {
+  } else {
     $response['code']="200";
     $response['msg']="El usuario o contraseña es incorrecto";
     $response['data'] = mysqli_error($conn);
   }
+
+  // if ($result = mysqli_fetch_array($query)) {
+  //   $_SESSION['u_usuario'] = $usuario;
+  //   $response['code'] = "1";
+  //   $response = json_encode($response);
+  //   echo $response;
+  //   die();
+  //
+  // }else {
+  //   $response['code']="200";
+  //   $response['msg']="El usuario o contraseña es incorrecto";
+  //   $response['data'] = mysqli_error($conn);
+  // }
 
   $response = json_encode($response);
   echo $response;

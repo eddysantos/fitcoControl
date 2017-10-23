@@ -6,25 +6,30 @@ $data = array(
 );
 
 require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
-$query = "SELECT * FROM usuarios WHERE pk_usuario = ?";
+$query =
+"INSERT INTO ct_pagos(fk_cobranza,fechaPago,importePago) VALUES(?,?,?)";
 
 $stmt = $conn->prepare($query);
-$stmt->bind_param('s', $_POST['usuarioId']);
+$stmt->bind_param('sss',
+
+  $_POST['mpgo_id'],
+  $_POST['mpgo_fpago'],
+  $_POST['mpgo_importe']
+
+);
 $stmt->execute();
 
-$resultados = $stmt->get_result();
-$num_rows = $stmt->num_rows;
+$aff_rows = $conn->affected_rows;
 
-if (false) {
+if ($aff_rows != 1) {
   $data['code'] = 2;
-  $data['response'] = $num_rows;
+  $data['response'] = $stmt->error;
 } else {
   $data['code'] = 1;
-  while ($a = mysqli_fetch_assoc($resultados)) {
-    $data['response'] = $a;
-  }
 }
 
 $json = json_encode($data);
+
 echo $json;
+
 ?>

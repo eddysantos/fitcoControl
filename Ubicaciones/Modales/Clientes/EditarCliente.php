@@ -74,6 +74,13 @@
                     <span class="focus-border"></span>
                 </td>
               </tr>
+              <tr class="row m20">
+                <td class="col-md-12 input-effect p-0">
+                  <input class="modal-efecto-17 has-content" type="text" name="mclt_vendedor" id="mclt_vendedor">
+                    <label>Nombre del Vendedor</label>
+                    <span class="focus-border"></span>
+                </td>
+              </tr>
             </tbody>
           </table>
 
