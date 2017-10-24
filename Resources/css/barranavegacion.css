@@ -51,6 +51,9 @@ nav {
   transition: .5s;
 }
 
+
+
+
 .nav_animate {
   width: 70%;
   transition: .5s;
@@ -69,6 +72,32 @@ nav a{
 }
 
 nav a:hover {
+  border-top: 5px solid #4a4a4a;
+  transition: .4s;
+  letter-spacing: 4px;
+  background-color: rgb(201, 201, 201);
+}
+
+
+li{
+  font-family: 'Encode Sans Condensed', sans-serif;
+  font-weight: bolder;
+  /*width: 100%;*/
+  margin: 0 auto;
+  transition: .5s;
+}
+li a{
+  display: inline-block;
+  font-size: 21px;
+  text-decoration: none!important;
+  color: #505050;
+  width: 99%;
+  text-align: center;
+  line-height: 65px;
+  text-transform: uppercase;
+  border-top: 5px solid #0056b3;
+}
+li a:hover{
   border-top: 5px solid #4a4a4a;
   transition: .4s;
   letter-spacing: 4px;
