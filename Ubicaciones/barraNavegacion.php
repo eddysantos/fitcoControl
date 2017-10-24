@@ -1,6 +1,5 @@
 <?php
   $pv = $_SESSION['user']['produccion_ver'];
-  $pe = $_SESSION['user']['produccion_editar'];
   $cv =  $_SESSION['user']['cobranza_ver'];
   $clv = $_SESSION['user']['cliente_ver'];
   $admin = $_SESSION['user']['privilegiosUsuario'] == "Administrador";
@@ -16,19 +15,6 @@
 
   $priv_todos = true;
 
-
-  //
-  // $pe = $_SESSION['user']['produccion_editar'];
-  // $ce =  $_SESSION['user']['cobranza_editar'];
-  // $cle = $_SESSION['user']['cliente_editar'];
-  //
-  // $priv_pe = $pe == "1" && $ce == "0" && $cle == "0";
-  // $priv_cle =  $cle == "1" && $pe == "0" && $ce == "0";
-  // $priv_ce =  $ce == "1" && $cle == "0" && $pe == "0";
-  // $priv_pcle = $pe && $cle == "1"  && $ce == "0";
-  // $priv_cpe = $ce && $pe == "1" && $cle == "0";
-  // $priv_ccle = $cle && $ce == "1" && $pe == "0";
-  // $priv_todos = $cle && $ce && $pe == "1";
 ?>
   <head>
     <meta charset="utf-8">

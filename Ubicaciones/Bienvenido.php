@@ -10,13 +10,13 @@
   $clv = $_SESSION['user']['cliente_ver'];
   $admin = $_SESSION['user']['privilegiosUsuario'];
 
-  $priv_produccion = $pv == "1" && $cv == "0" && $clv == "0";
-  $priv_clientes =  $clv == "1" && $pv == "0" && $cv == "0";
-  $priv_cobranza =  $cv == "1" && $clv == "0" && $pv == "0";
-  $priv_pcl = $pv && $clv == "1"  && $cv == "0";
-  $priv_cp = $cv && $pv == "1" && $clv == "0";
-  $priv_ccl = $clv && $cv == "1" && $pv == "0";
-  $priv_todos = $clv && $cv && $pv == "1";
+  // $priv_produccion = $pv == "1" && $cv == "0" && $clv == "0";
+  // $priv_clientes =  $clv == "1" && $pv == "0" && $cv == "0";
+  // $priv_cobranza =  $cv == "1" && $clv == "0" && $pv == "0";
+  // $priv_pcl = $pv && $clv == "1"  && $cv == "0";
+  // $priv_cp = $cv && $pv == "1" && $clv == "0";
+  // $priv_ccl = $clv && $cv == "1" && $pv == "0";
+  // $priv_todos = $clv && $cv && $pv == "1";
 ?>
 
 <!DOCTYPE html>
@@ -31,63 +31,34 @@
     <div id="bienvenida">
       <h1 id="logo">FIT&amp;CO</h1>
       <nav>
-        <?php if ($priv_produccion): ?>
+        <?php if ($pv == 1): ?>
           <a href="/fitcoControl/Ubicaciones/Produccion/produccion.php" class="transicion">PRODUCCIÓN</a>
-          <a class="bloqueo">COBRANZA</a>
-          <a class="bloqueo">CLIENTES</a>
-          <a class="bloqueo">USUARIOS</a>
-
-        <?php elseif ($priv_cobranza):?>
+        <?php else: ?>
           <a class="bloqueo">PRODUCCION</a>
+        <?php endif; ?>
+
+
+        <?php if ($cv == 1): ?>
           <a href="/fitcoControl/Ubicaciones/Cobranza/cobranza.php" class="transicion">COBRANZA</a>
-          <a class="bloqueo">CLIENTES</a>
-          <a class="bloqueo">USUARIOS</a>
-
-        <?php elseif ($priv_clientes):?>
-          <a class="bloqueo">PRODUCCION</a>
+        <?php else: ?>
           <a class="bloqueo">COBRANZA</a>
+        <?php endif; ?>
+
+
+
+        <?php if ($clv == 1): ?>
           <a href="/fitcoControl/Ubicaciones/Clientes/Clientes.php" class="transicion">CLIENTES</a>
-          <a class="bloqueo">USUARIOS</a>
-
-        <?php elseif ($priv_pcl): ?>
-            <a href="/fitcoControl/Ubicaciones/Produccion/produccion.php" class="transicion">PRODUCCIÓN</a>
-            <a class="bloqueo">COBRANZA</a>
-            <a href="/fitcoControl/Ubicaciones/Clientes/Clientes.php" class="transicion">CLIENTES</a>
-            <a class="bloqueo">USUARIOS</a>
-
-          <?php elseif ($priv_cp):?>
-            <a href="/fitcoControl/Ubicaciones/Produccion/produccion.php" class="transicion">PRODUCCIÓN</a>
-            <a href="/fitcoControl/Ubicaciones/Cobranza/cobranza.php" class="transicion">COBRANZA</a>
-            <a class="bloqueo">CLIENTES</a>
-            <a class="bloqueo">USUARIOS</a>
+        <?php else: ?>
+          <a class="bloqueo">CLIENTES</a>
+        <?php endif; ?>
 
 
-          <?php elseif ($priv_ccl):?>
-            <a class="bloqueo">PRODUCCIÓN</a>
-            <a href="/fitcoControl/Ubicaciones/Cobranza/cobranza.php" class="transicion">COBRANZA</a>
-            <a href="/fitcoControl/Ubicaciones/Clientes/Clientes.php" class="transicion">CLIENTES</a>
-            <a class="bloqueo">USUARIOS</a>
-
-          <?php elseif ($priv_todos):?>
-            <a href="/fitcoControl/Ubicaciones/Produccion/produccion.php" class="transicion">PRODUCCIÓN</a>
-            <a href="/fitcoControl/Ubicaciones/Cobranza/cobranza.php" class="transicion">COBRANZA</a>
-            <a href="/fitcoControl/Ubicaciones/Clientes/Clientes.php" class="transicion">CLIENTES</a>
-            <a class="bloqueo">USUARIOS</a>
-
-
-          <?php elseif ($admin == "Administrador"):?>
-            <a href="/fitcoControl/Ubicaciones/Produccion/produccion.php" class="transicion">PRODUCCIÓN</a>
-            <a href="/fitcoControl/Ubicaciones/Cobranza/cobranza.php" class="transicion">COBRANZA</a>
-            <a href="/fitcoControl/Ubicaciones/Clientes/Clientes.php" class="transicion">CLIENTES</a>
+        <?php if ($admin): ?>
             <a href="/fitcoControl/Ubicaciones/Usuarios/Usuarios.php" class="transicion">USUARIOS</a>
+        <?php else: ?>
+          <a class="bloqueo">USUARIOS</a>
+        <?php endif; ?>
 
-
-          <?php else: ?>
-            <a class="bloqueo">PRODUCCIÓN</a>
-            <a class="bloqueo">COBRANZA</a>
-            <a class="bloqueo">CLIENTES</a>
-            <a class="bloqueo">USUARIOS</a>
-          <?php endif; ?>
         <a href="/fitcoControl/Resources/PHP/Login/CerrarSesion.php" class="transicion">CERRAR SESION</a>
       </nav>
     </div>
