@@ -8,7 +8,7 @@
   $pv = $_SESSION['user']['produccion_ver'];
   $cv =  $_SESSION['user']['cobranza_ver'];
   $clv = $_SESSION['user']['cliente_ver'];
-  $admin = $_SESSION['user']['privilegiosUsuario'];
+  $admin = $_SESSION['user']['privilegiosUsuario']== "Administrador";
 
   // $priv_produccion = $pv == "1" && $cv == "0" && $clv == "0";
   // $priv_clientes =  $clv == "1" && $pv == "0" && $cv == "0";
