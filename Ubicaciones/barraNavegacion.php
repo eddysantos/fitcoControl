@@ -5,16 +5,19 @@
   $clv = $_SESSION['user']['cliente_ver'];
   $admin = $_SESSION['user']['privilegiosUsuario'];
 
-  $priv_produccion = $pv == "1" && $cv == "0" && $clv == "0";
-  $priv_clientes =  $clv == "1" && $pv == "0" && $cv == "0";
-  $priv_cobranza =  $cv == "1" && $clv == "0" && $pv == "0";
-  $priv_pcl = $pv && $clv == "1"  && $cv == "0";
-  $priv_cp = $cv && $pv == "1" && $clv == "0";
-  $priv_ccl = $clv && $cv == "1" && $pv == "0";
-  $priv_todos = $clv && $cv && $pv == "1";
+  // $priv_produccion = $pv == "1" && $cv == "0" && $clv == "0";
+  // $priv_clientes =  $clv == "1" && $pv == "0" && $cv == "0";
+  // $priv_cobranza =  $cv == "1" && $clv == "0" && $pv == "0";
+  // $priv_pcl = $pv && $clv == "1"  && $cv == "0";
+  // $priv_cp = $cv && $pv == "1" && $clv == "0";
+  // $priv_ccl = $clv && $cv == "1" && $pv == "0";
+  // $priv_todos = $clv && $cv && $pv == "1";
+  //
+
+  $priv_todos = true;
 
 
-  // 
+  //
   // $pe = $_SESSION['user']['produccion_editar'];
   // $ce =  $_SESSION['user']['cobranza_editar'];
   // $cle = $_SESSION['user']['cliente_editar'];
@@ -98,7 +101,8 @@
       <li class="nav-item"><a href="/fitcoControl/Ubicaciones/Produccion/produccion.php" class="w-95">PRODUCCION</a></li>
       <li class="nav-item"><a href="/fitcoControl/Ubicaciones/Cobranza/cobranza.php" class="w-95">COBRANZA</a></li>
       <li class="nav-item"><a href="/fitcoControl/Ubicaciones/Clientes/Clientes.php" class="w-95">CLIENTES</a></li>
-      <li class="nav-item"><a class="w-95 bloqueo">USUARIOS</a></li>
+      <li class="nav-item"><a href="/fitcoControl/Ubicaciones/Usuarios/Usuarios.php" class="w-95">USUARIOS</a></li>
+      <!--li class="nav-item"><a class="w-95">USUARIOS</a></li-->
 
       <?php elseif ($admin == "Administrador"):?>
         <li class="nav-item"><a href="/fitcoControl/Ubicaciones/Produccion/produccion.php" class="w-95">PRODUCCION</a></li>

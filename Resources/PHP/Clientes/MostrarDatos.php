@@ -68,7 +68,6 @@ if (!$resultado) {
       <td class='col-md-4 text-center'>
         <h2><b>$telefono</a></b></h2>
       </td>
-      <td class='col-md-1'></td>
       <td class='col-md-1 text-center'>
         <a class='EditCliente spand-link' data-toggle='modal' data-target='#EditarCliente' id='btnEditarCliente' client-id='$id'>
         <img src='/fitcoControl/Resources/iconos/pencil1.svg' class='$ocultar spand-icon'>

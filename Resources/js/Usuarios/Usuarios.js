@@ -98,8 +98,8 @@ function fetchUsuario(){
     method: 'POST',
     url:'/fitcoControl/Resources/PHP/Usuarios/MostrarTablaUsuario.php',
     success:function(result){
+      console.log(result);
       var rsp = JSON.parse(result);
-      console.log(rsp);
       $('#mostrarUsuarios').html(rsp.infoTabla);
       ActivarBotonesUsuario();
     },
