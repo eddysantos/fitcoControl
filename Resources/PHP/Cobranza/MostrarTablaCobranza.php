@@ -51,6 +51,9 @@ if (!$resultado) {
     $colorCliente = $row['color'];
     $creditoCliente = $row['credito'];
     $background = "";
+    $ocultar = "";
+    $ce =  $_SESSION['user']['cobranza_editar'];
+    $admin = $_SESSION['user']['privilegiosUsuario'];
 
 
     if (($vencimientoCobranza > $hoy)  && ($importeCobranza == $pagado)) {
@@ -60,6 +63,13 @@ if (!$resultado) {
     }elseif (($vencimientoCobranza < $hoy) && ($importeCobranza > $pagado)) {
       $background = "rojo";
     }
+
+  if ($admin == "Administrador") {
+     $ocultar = "";
+   }elseif ($ce == "0") {
+     $ocultar = "ocultar";
+   }
+
 
     $data["infoTabla"].= "<tr class='$background row  bordelateral m-0' id='item'>
       <td class='col-md-1'>
@@ -81,14 +91,13 @@ if (!$resultado) {
       <td class='col-md-2 text-center'>
         <h4><b> $vencimientoCobranza </b></h4>
       </td>
-      <td class='col-md-1 text-right'>
+      <td class='col-md-2 text-right'>
         <!--AGREGAR PAGO DE FACTURA-->
+        <a href='' id='btnEditarCobranza' class='$ocultar editarCobranza spand-link' data-toggle='modal' data-target='#DetCobranza' cobranza-id='$idCobranza'><img src='/fitcoControl/Resources/iconos/pencil1.svg' class='mr-3 spand-icon'></a>
+
         <a href='' id='btnAgregarPago' class='agregarPago spand-link' data-toggle='modal' data-target='#PagoFacturas' cobranza-id='$idCobranza'><img src='/fitcoControl/Resources/iconos/003-add.svg' class='spand-icon'></a>
 
-      </td>
-      <td class='col-md-1 text-center'>
-        <!--EDITAR EDITAR EDITAR EDITAR-->
-        <a href='' id='btnEditarCobranza' class='editarCobranza spand-link' data-toggle='modal' data-target='#DetCobranza' cobranza-id='$idCobranza'><img src='/fitcoControl/Resources/iconos/pencil1.svg' class='spand-icon'></a>
+        <a href='' class='visualizarcobranza spand-link' data-toggle='modal' data-target='#VisualizarTablaCobranza' cobranza-id='$idCobranza'><img src='/fitcoControl/Resources/iconos/magnifier.svg' class='ml-3 spand-icon'></a>
       </td>
     </tr>";
 

@@ -40,7 +40,7 @@
       <h1 id="logo">FIT&amp;CO</h1>
 
       <ul class="nav nav-pills nav-fill">
-      <?php if ($pv == 1): ?>
+      <?php if ($pv == 1 || $admin): ?>
         <li class="nav-item">
           <a href="/fitcoControl/Ubicaciones/Produccion/produccion.php" class="transicion">PRODUCCIÓN</a>
         </li>
@@ -51,7 +51,7 @@
       <?php endif; ?>
 
 
-      <?php if ($cv == 1): ?>
+      <?php if ($cv == 1 || $admin): ?>
         <li class="nav-item">
           <a href="/fitcoControl/Ubicaciones/Cobranza/cobranza.php" class="transicion">COBRANZA</a>
         </li>
@@ -61,7 +61,7 @@
         </li>
       <?php endif; ?>
 
-      <?php if ($cv == 1): ?>
+      <?php if ($cv == 1 || $admin): ?>
         <li class="nav-item">
           <a href="/fitcoControl/Ubicaciones/Clientes/Clientes.php" class="transicion">CLIENTES</a>
         </li>
@@ -71,7 +71,7 @@
         </li>
       <?php endif; ?>
 
-      <?php if ($cv == 1): ?>
+      <?php if ($admin): ?>
         <li class="nav-item">
           <a href="/fitcoControl/Ubicaciones/Usuarios/Usuarios.php" class="transicion">USUARIOS</a>
         </li>

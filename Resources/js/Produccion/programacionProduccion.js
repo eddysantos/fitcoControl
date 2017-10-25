@@ -89,6 +89,8 @@ $('.agregar-programacion').click(function(){
       success: function(result){
         console.log(result);
         dibujarGrafica();
+        fetchProgramacion();  
+        fetchProProduccion();
         $('#NuevaProg')[0].reset();
         alertify.success('SE AGREGÓ CORRECTAMENTE');
       },

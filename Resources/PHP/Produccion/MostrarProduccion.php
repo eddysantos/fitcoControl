@@ -50,7 +50,8 @@ if (!$resultado) {
     $background = "";
     $numerosemana = date("W",strtotime($ffin));//sacar numero de la semana
     $ocultar = "";
-    $pe = $_SESSION['user']['produccion_editar'];
+    // $pe = $_SESSION['user']['produccion_editar'];
+    // $admin = $_SESSION['user']['privilegiosUsuario'];
 
 
 
@@ -69,9 +70,11 @@ if (!$resultado) {
     }
 
 
-    if ($pe == "0") {
-     $ocultar = "ocultar";
-   }
+  //   if ($admin == "Administrador") {
+  //    $ocultar = "";
+  //  }elseif ($pe == "0") {
+  //    $ocultar = "ocultar";
+  //  }
 
 
     $data["infoTabla"].= "<tr class='$background row bordelateral  m-0' id='item'>
@@ -96,7 +99,7 @@ if (!$resultado) {
         </td>
 
         <td class='col-md-1 text-center'>
-          <a href='#' class='$ocultar visualizarproduccion spand-link' data-toggle='modal' data-target='#VisualizarTablaProduccion' program-id='$idprog'><img src='/fitcoControl/Resources/iconos/magnifier.svg' class='spand-icon'></a>
+          <a href='#' class='visualizarproduccion spand-link' data-toggle='modal' data-target='#VisualizarTablaProduccion' program-id='$idprog'><img src='/fitcoControl/Resources/iconos/magnifier.svg' class='spand-icon'></a>
         </td>
       </tr>";
 

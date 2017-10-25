@@ -29,7 +29,7 @@ require  $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
         <img class="card-img-top w-50 align-self-center m-5" src="/fitcoControl/Resources/iconos/camisarojo.svg" alt="Card image cap">
         <div class="card-body">
           <!-- <a href="/fitcoControl/Ubicaciones/Produccion/ProduccionDiaria.php" class="btn btn-outline-success w-100" style="font-size: 2em">Introducir Producción</a> -->
-          <a href="/fitcoControl/Ubicaciones/Produccion/ProduccionDiaria.php" class="linkboton agregar-programacion btn-block">Introducir Producción<span class="top"></span></a>
+          <a href="/fitcoControl/Ubicaciones/Produccion/ProduccionDiaria.php" class="linkboton agregar-programacion btn-block">Introducir Producción Diaria<span class="top"></span></a>
         </div>
       </div>
     </div>

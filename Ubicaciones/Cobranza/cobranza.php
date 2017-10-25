@@ -32,7 +32,7 @@ if (!isset($_SESSION['user'])) {
               <h3>CLIENTE</h3>
             </td>
             <td class="col-md-1 text-center">
-              <h3>FACTURA</h3>
+              <h3>NO.FACTURA</h3>
             </td>
             <td class="col-md-2 text-center">
               <h3>IMPORTE</h3>

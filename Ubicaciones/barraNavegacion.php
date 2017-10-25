@@ -46,19 +46,19 @@
 
     <ul class="nav nav-pills nav-fill" id="selecTipoPoliza">
 
-      <?php if ($pv == 1): ?>
+      <?php if ($pv == 1 || $admin): ?>
         <li class="nav-item"><a href="/fitcoControl/Ubicaciones/Produccion/produccion.php" class="w-95">PRODUCCION</a></li>
       <?php else: ?>
         <li class="nav-item"><a class="bloqueo w-95">PRODUCCION</a></li>
       <?php endif; ?>
 
-      <?php if ($cv == 1): ?>
+      <?php if ($cv == 1 || $admin): ?>
         <li class="nav-item"><a href="/fitcoControl/Ubicaciones/Cobranza/cobranza.php" class="w-95">COBRANZA</a></li>
       <?php else: ?>
         <li class="nav-item"><a class="bloqueo w-95">COBRANZA</a></li>
       <?php endif; ?>
 
-      <?php if ($clv == 1): ?>
+      <?php if ($clv == 1 || $admin): ?>
         <li class="nav-item"><a href="/fitcoControl/Ubicaciones/Clientes/Clientes.php" class="w-95">CLIENTES</a></li>
       <?php else: ?>
         <li class="nav-item"><a class="bloqueo w-95">CLIENTES</a></li>

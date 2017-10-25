@@ -42,11 +42,14 @@ if (!$resultado) {
     // $pe = $_SESSION['user']['produccion_editar'];
     // $ce =  $_SESSION['user']['cobranza_editar'];
     $cle = $_SESSION['user']['cliente_editar'];
+    $admin = $_SESSION['user']['privilegiosUsuario'];
 
 
 
 // ya esta correcto solo seguir
-  if ($cle == "0") {
+  if ($admin == "Administrador") {
+   $ocultar = "";
+ }elseif ($cle == "0") {
    $ocultar = "ocultar";
  }
 
