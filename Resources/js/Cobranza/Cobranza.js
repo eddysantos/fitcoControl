@@ -4,7 +4,6 @@ $(document).ready(function(){
 
 
   $('#NuevoRegistroCobranza').click(function(){
-
     var fk_cliente = $('#cbz_cliente').val();
     var facturaCobranza = $('#cbz_factura').val();
     var importeCobranza = $('#cbz_importe').val();

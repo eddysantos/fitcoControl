@@ -15,12 +15,14 @@ ct.nombreCliente AS nombre,
 SUM(co.importeCobranza) AS totalcobranza,
 SUM(pgo.importePago) As totalpagado,
 WEEK(co.vencimientoCobranza) AS semana,
-ct.colorCliente AS color
+ct.colorCliente AS color,
+SUM(pgo.importePago) AS pagado
 
 FROM ct_cobranza co
 
 LEFT JOIN ct_cliente ct ON co.fk_cliente = ct.pk_cliente
-LEFT JOIN ct_pagos pgo ON pgo.fk_cobranza = co.pk_cobranza
+LEFT JOIN ct_pagos pgo ON  pgo.fk_cobranza = co.pk_cobranza
+
 
 
 GROUP BY nombre, semana
@@ -49,15 +51,16 @@ if (!$resultado) {
     $totalCobranza = number_format($row['totalcobranza'], 2);
     $semana = $row['semana'];
     $colorCliente = $row['color'];
-    $pagado = number_format($row['totalpagado'], 2);
+    $pagado = number_format($row['pagado'], 2);
 
 
 
     $data["infoTabla"].= "<tr class='row  bordelateral m-0' id='item'>
-      <td class='col-md-4'>
+      <td class='col-md-3'>
         <h4><b><input type='color' value='$colorCliente'>$clienteCobranza</b></h4>
       </td>
-      <td class='col-md-2 text-center'>
+      <td class='col-md-3 text-center'>
+
         <h4><b>Semana $semana</b></h4>
       </td>
       <td class='col-md-3 text-center'>

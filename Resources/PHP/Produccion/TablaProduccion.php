@@ -39,7 +39,7 @@ if (false) {
 
 
     $data["infoTabla"].= "
-    <tr class='row bordelateral m-0' id='item'>
+    <tr class='row bordelateral' id='item'>
       <td class='col-md-4 text-center'>
         <h4><b>$fecha</b></h4>
       </td>

@@ -7,7 +7,14 @@ $data = array(
 
 require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
 $query =
-"INSERT INTO ct_cobranza(fk_cliente,facturaCobranza,importeCobranza,vencimientoCobranza) VALUES(?,?,?,?)";
+"INSERT INTO
+ct_cobranza(
+  fk_cliente,
+  facturaCobranza,
+  importeCobranza,
+  vencimientoCobranza)
+  VALUES(
+    ?,?,?,?)";
 
 $stmt = $conn->prepare($query);
 $stmt->bind_param('ssss',

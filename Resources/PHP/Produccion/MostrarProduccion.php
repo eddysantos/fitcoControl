@@ -49,7 +49,9 @@ if (!$resultado) {
     $iconocaja = "";
     $background = "";
     $numerosemana = date("W",strtotime($ffin));//sacar numero de la semana
-    
+    $ocultar = "";
+    // $pe = $_SESSION['user']['produccion_editar'];
+    // $admin = $_SESSION['user']['privilegiosUsuario'];
 
     //si fecha vencimiento es mayor a la fecha de hoy y mis piezas requeridas son igual a
     if (($ffin > $hoy)  && ($piezas == $total)) {
@@ -66,7 +68,11 @@ if (!$resultado) {
     }
 
 
-
+  //   if ($admin == "Administrador") {
+  //    $ocultar = "";
+  //  }elseif ($pe == "0") {
+  //    $ocultar = "ocultar";
+  //  }
 
 
     $data["infoTabla"].= "<tr class='$background row bordelateral  m-0' id='item'>

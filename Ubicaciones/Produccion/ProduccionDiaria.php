@@ -47,6 +47,6 @@ if (!isset($_SESSION['user'])) {
   <?php
     $root = $_SERVER['DOCUMENT_ROOT'];
     require $root . '/fitcoControl/Ubicaciones/Modales/Produccion/ModalGraficaProduccion.php';
-    require $root . '/fitcoControl/Ubicaciones/Modales/Produccion/PestañaProduccion.php';
+    require $root . '/fitcoControl/Ubicaciones/Modales/Produccion/MostrarProduccion.php';
     require $root . '/fitcoControl/Resources/PHP/Produccion/pieProduccion.php';
   ?>

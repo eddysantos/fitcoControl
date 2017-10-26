@@ -51,8 +51,6 @@
   </div>
 </div>
 
-
-
 <!--VISUALIZAR TABLA PRODUCCION VISUALIZAR TABLA PRODUCCION-->
 
 <div class="modal fade" id="VisualizarTablaCobranza">

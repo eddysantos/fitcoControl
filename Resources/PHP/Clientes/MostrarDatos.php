@@ -43,6 +43,7 @@ if (!$resultado) {
     $admin = $_SESSION['user']['privilegiosUsuario'];
 
 
+
   if ($admin == "Administrador") {
    $ocultar = "";
  }elseif ($cle == "0") {
