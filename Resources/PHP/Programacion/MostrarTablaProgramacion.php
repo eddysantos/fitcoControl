@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 $root = $_SERVER['DOCUMENT_ROOT'];
 require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
 
@@ -42,6 +42,16 @@ if (!$resultado) {
     $piezas = $row['piezas'];
     $meta = $row['meta'];
     $color = $row['color'];
+    $ocultar = "";
+    $pe = $_SESSION['user']['produccion_editar'];
+    $admin = $_SESSION['user']['privilegiosUsuario'];
+
+
+    if ($admin == "Administrador") {
+     $ocultar = "";
+   }elseif ($pe == "0") {
+     $ocultar = "ocultar";
+   }
 
 
     $data["infoTabla"].= "<tr class='row bordelateral m-0' id='item'>
@@ -64,7 +74,7 @@ if (!$resultado) {
         <h4><b>$meta</b></h4>
       </td>
       <td class='col-md-1 text-center'>
-        <a href='#' class='EditarProduccion spand-link' data-toggle='modal' data-target='#EditarProduccion' program-id='$idprog'><img src='/fitcoControl/Resources/iconos/pencil1.svg' class='spand-icon'></a>
+        <a href='#' class='EditarProduccion spand-link' data-toggle='modal' data-target='#EditarProduccion' program-id='$idprog'><img src='/fitcoControl/Resources/iconos/pencil1.svg' class='$ocultar spand-icon'></a>
       </td>
     </tr>";
 

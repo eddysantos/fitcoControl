@@ -8,8 +8,6 @@
   $root = $_SERVER['DOCUMENT_ROOT'];
   require $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
   require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
-
-
 ?>
 
 
@@ -31,7 +29,7 @@
           <td class="col-md-3 text-center">
             <h3>CLIENTE</h3>
           </td>
-          <td class="col-md-3 text-center">
+          <td class="col-md-4 text-center">
             <h3>CORREO/CONTACTO</h3>
           </td>
           <td class="col-md-3 text-center">

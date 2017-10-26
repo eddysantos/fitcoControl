@@ -50,8 +50,6 @@ if (false) {
         <h4><b>$cantidad piezas</b></h4>
       </td>
     </tr>";
-
-
   }
 }
 

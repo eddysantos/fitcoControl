@@ -64,8 +64,7 @@ if (!$resultado) {
       $background = "rojo";
     }
 
-
-    if ($admin == "Administrador") {
+   if ($admin == "Administrador") {
      $ocultar = "";
    }elseif ($ce == "0") {
      $ocultar = "ocultar";
@@ -100,6 +99,7 @@ if (!$resultado) {
        <a href='' class='visualizarcobranza spand-link' data-toggle='modal' data-target='#VisualizarTablaCobranza' cobranza-id='$idCobranza'><img src='/fitcoControl/Resources/iconos/magnifier.svg' class='ml-3 spand-icon'></a>
      </td>
    </tr>";
+
 
 
   }

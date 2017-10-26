@@ -39,20 +39,16 @@ if (!$resultado) {
     $fingreso = $row['ingreso'];
     $color = $row['color'];
     $ocultar = "";
-    // $pe = $_SESSION['user']['produccion_editar'];
-    // $ce =  $_SESSION['user']['cobranza_editar'];
     $cle = $_SESSION['user']['cliente_editar'];
     $admin = $_SESSION['user']['privilegiosUsuario'];
 
 
 
-// ya esta correcto solo seguir
   if ($admin == "Administrador") {
    $ocultar = "";
  }elseif ($cle == "0") {
    $ocultar = "ocultar";
  }
-
 
 
     $data["infoTabla"].= "
@@ -64,11 +60,11 @@ if (!$resultado) {
         <h2><b><input type='color' value='$color'>$cliente</b></h2>
         <p class='visibilidad'>Ingreso : $fingreso</p>
       </td>
-      <td class='col-md-3 text-center'>
+      <td class='col-md-4 text-center'>
         <h2><b><a href='mailto:$correo'>$correo</a></b></h2>
         <p class='visibilidad'>Credito : $credito Días</p>
       </td>
-      <td class='col-md-4 text-center'>
+      <td class='col-md-3 text-center'>
         <h2><b>$telefono</a></b></h2>
       </td>
       <td class='col-md-1 text-center'>

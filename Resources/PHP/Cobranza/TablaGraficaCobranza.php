@@ -13,6 +13,7 @@ $query = "SELECT
 co.pk_cobranza AS idcobranza,
 ct.nombreCliente AS nombre,
 SUM(co.importeCobranza) AS totalcobranza,
+SUM(pgo.importePago) As totalpagado,
 WEEK(co.vencimientoCobranza) AS semana,
 ct.colorCliente AS color,
 SUM(pgo.importePago) AS pagado
@@ -21,6 +22,7 @@ FROM ct_cobranza co
 
 LEFT JOIN ct_cliente ct ON co.fk_cliente = ct.pk_cliente
 LEFT JOIN ct_pagos pgo ON  pgo.fk_cobranza = co.pk_cobranza
+
 
 
 GROUP BY nombre, semana
@@ -58,6 +60,7 @@ if (!$resultado) {
         <h4><b><input type='color' value='$colorCliente'>$clienteCobranza</b></h4>
       </td>
       <td class='col-md-3 text-center'>
+
         <h4><b>Semana $semana</b></h4>
       </td>
       <td class='col-md-3 text-center'>

@@ -53,8 +53,6 @@ if (!$resultado) {
     // $pe = $_SESSION['user']['produccion_editar'];
     // $admin = $_SESSION['user']['privilegiosUsuario'];
 
-
-
     //si fecha vencimiento es mayor a la fecha de hoy y mis piezas requeridas son igual a
     if (($ffin > $hoy)  && ($piezas == $total)) {
       $iconocaja = "001-check.svg";
