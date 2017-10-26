@@ -13,7 +13,6 @@ $query = "SELECT
 co.pk_cobranza AS idcobranza,
 ct.nombreCliente AS nombre,
 SUM(co.importeCobranza) AS totalcobranza,
--- sum() as TotalPagado
 WEEK(co.vencimientoCobranza) AS semana,
 ct.colorCliente AS color
 

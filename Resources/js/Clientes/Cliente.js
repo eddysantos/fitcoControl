@@ -117,7 +117,7 @@ function ActivarBotones(){
       },
       // código a ejecutar si la petición falla;
       error: function(exception){
-        console.error(exception);
+        console.error(exception)
       }
     })
   });

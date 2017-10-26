@@ -1,6 +1,6 @@
 <?php
 
-session_start();
+// session_start();
 
 $root = $_SERVER['DOCUMENT_ROOT'];
 require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
@@ -65,11 +65,11 @@ if (!$resultado) {
     }
 
 
-    if ($admin == "Administrador") {
-     $ocultar = "";
-   }elseif ($ce == "0") {
-     $ocultar = "ocultar";
-   }
+  //   if ($admin == "Administrador") {
+  //    $ocultar = "";
+  //  }elseif ($ce == "0") {
+  //    $ocultar = "ocultar";
+  //  }
 
    $data["infoTabla"].= "<tr class='$background row  bordelateral m-0' id='item'>
      <td class='col-md-1'>
