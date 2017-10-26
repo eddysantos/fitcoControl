@@ -2,13 +2,65 @@ $(document).ready(function(){
   fetchCobranza();
   fetchTablaCobranza();
 
+  //BUSCADOR TIEMPO REAL
+  $('#npClientName').keyup(function(){
+    var txt = $(this).val();
+    if (txt == "") {
+      $('#npClientList').fadeOut();
+      return false;
+    }
+
+    $.ajax({
+      method: 'POST',
+      url: '/fitcoControl/Resources/PHP/Clientes/fetchPopupClientList.php',
+      data:{txt: txt},
+      success: function(result){
+        rsp = JSON.parse(result);
+        console.log(rsp);
+
+        if (rsp.code != "1") {
+          $('#npClientList').html("<p>Hubo un error al cargar la lista de clientes...</p>");
+          console.warn("Error en el query: " + rsp.response);
+        } else {
+          $('#npClientList').html(rsp.response);
+          $('#npClientList p').click(function(){
+            var cid = $(this).attr('client-id');
+            var nc = $(this).html();
+
+            $('#npClientName').val(nc).html(nc).attr('client-id', cid);
+            $('#npClientList').fadeOut();
+          });
+        }
+        $('#npClientList').fadeIn();
+        clientSelector();
+      },
+      error: function(exception){
+        console.error(exception);
+      }
+    });
+  });
+
+  function clientSelector(){
+    $('.client-item').click(function(){
+      var clientId = $(this).attr('client-id');
+      var clientName = $(this).find('span').html();
+
+      $('#npClientName').attr('client-id', clientId);
+      $('#npClientName').html(clientName).val(clientName);
+      $('#npClientList').fadeOut();
+    });
+  }
+
+
   $('#NuevoRegistroCobranza').click(function(){
     var facturaCobranza = $('#cbz_factura').val();
     var importeCobranza = $('#cbz_importe').val();
     var vencimientoCobranza = $('#cbz_dvencimiento').val();
-    var fk_cliente = $('#cbz_cliente').val();
+    var fk_cliente = $('#npClientName').attr('client-id');
 
-    validacion = $('#cbz_cliente').val() == "" ||
+
+    validacion =
+    $('#npClientName').val() == "" ||
     $('#cbz_factura').val() == "" ||
     $('#cbz_importe').val() == "" ||
     $('#cbz_dvencimiento').val() == "";

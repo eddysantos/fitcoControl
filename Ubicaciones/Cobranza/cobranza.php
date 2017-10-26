@@ -57,22 +57,13 @@ if (!isset($_SESSION['user'])) {
           <tr class="row m20">
             <td class="col-md-12 input-effect p-0">
               <input type="text" id="cbz_id" style="display:none">
-              <input id="cbz_cliente" class="w-100 effect-17" list="clientes" required autocomplete="off">
-              <datalist id="clientes">
-                <?php
-                  $query = "SELECT * FROM ct_cliente";
-                  $resulclientes = $conn->query($query);
-                  while ($row = $resulclientes->fetch_array()) {
-                 ?>
-                <option value="<?php echo $row['pk_cliente']; ?> ">
-                  <?php echo $row['nombreCliente']; ?>
-                </option>
-
-                <?php } ?>
-
-              </datalist>
-                <label>Cliente</label>
-                <span class="focus-border"></span>
+              <td class="col-md-12 input-effect p-0">
+                <input class="effect-17" type="text" id="npClientName">
+                  <label>Cliente</label>
+                  <span class="focus-border"></span>
+                  <div class="client-list" id="npClientList" style="display: none">
+                  </div>
+              </td>
             </td>
           </tr>
           <tr class="row m20">
