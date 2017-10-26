@@ -89,7 +89,7 @@ $('.agregar-programacion').click(function(){
       success: function(result){
         console.log(result);
         dibujarGrafica();
-        fetchProgramacion();  
+        fetchProgramacion();
         fetchProProduccion();
         $('#NuevaProg')[0].reset();
         alertify.success('SE AGREGÓ CORRECTAMENTE');
@@ -286,6 +286,7 @@ function ActivarBotonProduc(){
               $('#AgregarProduccion').modal('hide');
               alertify.success('SE AGREGÓ CORRECTAMENTE');
               fetchProProduccion();
+              fetchTablaGrafica();
             }
           },
           error:function(exception){
