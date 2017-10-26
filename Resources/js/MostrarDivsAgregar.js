@@ -24,15 +24,12 @@ $(document).ready(function(){
         $(this).attr('status', 'abierto');
         $('.spanA').css('display', 'inherit');
         $('.spanD').css('display', '');
-
-        // $('#cobranza').animate({"right": "38%"}, "slow");
         $('#Ecobranza').animate({"right": "38%"}, "slow");
         $('#Agregarcobranza').fadeIn(1000);
         $('#Detallecobranza').hide();
       }else {
         $('.spanA').css('display', '');
         $(this).attr('status', 'cerrado');
-        // $('#cobranza').animate({"right": "4%"}, "slow");
         $('#Ecobranza').animate({"right": "4%"}, "slow");
         $('#Agregarcobranza').hide();
       }

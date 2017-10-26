@@ -2,12 +2,11 @@ $(document).ready(function(){
   fetchCobranza();
   fetchTablaCobranza();
 
-
   $('#NuevoRegistroCobranza').click(function(){
-    var fk_cliente = $('#cbz_cliente').val();
     var facturaCobranza = $('#cbz_factura').val();
     var importeCobranza = $('#cbz_importe').val();
     var vencimientoCobranza = $('#cbz_dvencimiento').val();
+    var fk_cliente = $('#cbz_cliente').val();
 
     validacion = $('#cbz_cliente').val() == "" ||
     $('#cbz_factura').val() == "" ||
@@ -16,24 +15,25 @@ $(document).ready(function(){
 
     if (validacion) {
       swal("NO PUEDE CONTINUAR","Nesesita llenar todos los campos","error");
-    }else {
+    }else{
       $.ajax({
         method: 'POST',
         url: '/fitcoControl/Resources/PHP/Cobranza/AgregarCobranza.php',
-        data: {
+        data:{
 
-          cbz_cliente: fk_cliente,
           cbz_factura: facturaCobranza,
           cbz_importe: importeCobranza,
-          cbz_dvencimiento: vencimientoCobranza
+          cbz_dvencimiento: vencimientoCobranza,
+          cbz_cliente: fk_cliente
         },
         success:function(result){
           var rsp = JSON.parse(result);
           if (rsp.code != 1) {
             swal("FALLO AL REGISTRAR","No se agregó el registro","error");
             console.error(rsp.response);
-          } else {
+          } else{
             fetchCobranza();
+            console.log(rsp);
             $('#Agregarcobranza').hide();
             $('#cobranza').animate({"right": "4%"}, "slow");
             $('#Ecobranza').animate({"right": "4%"}, "slow");
@@ -124,6 +124,7 @@ function ActivarBotonesCobranza(){
               $('#PagoFacturas').modal('hide');
               alertify.success('SE AGREGÓ CORRECTAMENTE');
               fetchCobranza();
+              fetchTablaCobranza();
             }
           },
           error:function(exception){

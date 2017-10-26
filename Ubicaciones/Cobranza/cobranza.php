@@ -6,7 +6,7 @@ if (!isset($_SESSION['user'])) {
 }
   $root = $_SERVER['DOCUMENT_ROOT'];
   require $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
-  require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
+  require $root . '/fitcoControl/Resources/PHP/DataBases/Conexion.php';
 ?>
 
 <div class="container">
@@ -49,11 +49,6 @@ if (!isset($_SESSION['user'])) {
       </table>
     </form>
 
-    <!-- <form id="cobranza" class="page p-0" style="display:none">
-      <table class="table table-hover table-fixed">
-
-      </table>
-    </form> -->
 
 
     <form  id="Agregarcobranza"  class="agregarnuevo" style="display:none">

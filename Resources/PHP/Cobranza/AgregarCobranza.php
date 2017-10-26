@@ -9,19 +9,18 @@ require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
 $query =
 "INSERT INTO
 ct_cobranza(
-  fk_cliente,
   facturaCobranza,
   importeCobranza,
-  vencimientoCobranza)
-  VALUES(
-    ?,?,?,?)";
+  vencimientoCobranza,
+  fk_cliente)
+  VALUES(?,?,?,?)";
 
 $stmt = $conn->prepare($query);
 $stmt->bind_param('ssss',
-  $_POST['cbz_cliente'],
   $_POST['cbz_factura'],
   $_POST['cbz_importe'],
-  $_POST['cbz_dvencimiento']
+  $_POST['cbz_dvencimiento'],
+  $_POST['cbz_cliente']
 );
 $stmt->execute();
 

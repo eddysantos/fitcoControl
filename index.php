@@ -13,7 +13,7 @@
       </img>
     </div>
     <div id="container">
-      <h1>Fit&Co</h1>
+      <h1>Fit&amp;Co</h1>
       <span class="close-btn">
         <img src="/fitcoControl/Resources/iconos/001-cerrar.svg"></img>
       </span>
