@@ -23,7 +23,7 @@ if (!isset($_SESSION['user'])) {
 
 
 
-    <form id="Ecobranza" class="page p-0">
+    <form id="Ecobranza" class="page p-0" onsubmit="return false;">
       <table class="table table-hover table-fixed">
         <thead>
           <tr class="row m-0 encabezado">
@@ -56,7 +56,7 @@ if (!isset($_SESSION['user'])) {
     </form> -->
 
 
-    <form  id="Agregarcobranza"  class="agregarnuevo" style="display:none">
+    <form  id="Agregarcobranza"  class="agregarnuevo" style="display:none" onsubmit="return false;">
       <table class="table">
         <tbody>
           <tr class="row m20">

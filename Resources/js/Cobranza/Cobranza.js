@@ -21,8 +21,10 @@ $(document).ready(function(){
       $.ajax({
         method: 'POST',
         url: '/fitcoControl/Resources/PHP/Cobranza/AgregarCobranza.php',
+        beforeSend: function(){
+          alert("Se enviará el ajax al servidor!");
+        },
         data: {
-
           cbz_cliente: fk_cliente,
           cbz_factura: facturaCobranza,
           cbz_importe: importeCobranza,
@@ -30,9 +32,11 @@ $(document).ready(function(){
         },
         success:function(result){
           var rsp = JSON.parse(result);
+          console.log(rsp);
           if (rsp.code != 1) {
+            console.error("Hubo un error al registrar la nueva factura!");
+            console.error("El error es: " + rsp.response);
             swal("FALLO AL REGISTRAR","No se agregó el registro","error");
-            console.error(rsp.response);
           } else {
             fetchCobranza();
             $('#Agregarcobranza').hide();
