@@ -14,22 +14,11 @@
             <tr class="row m20">
               <td class="col-md-12 input-effect p-0">
                 <input type="hidden" name="mcbz_id" id="mcbz_id">
-                <input class="modal-efecto-17 has-content w-100" name="mcbz_cliente" id="mcbz_cliente" list="clientes" required autocomplete="off">
-                <datalist id="clientes">
-                  <?php
-                    $query = "SELECT * FROM ct_cliente";
-                    $resulclientes = $conn->query($query);
-                    while ($row = $resulclientes->fetch_array()) {
-                   ?>
-                  <option value="<?php echo $row['pk_cliente']; ?> ">
-                    <?php echo $row['nombreCliente']; ?>
-                  </option>
-
-                  <?php } ?>
-
-                </datalist>
-                  <label>Cliente</label>
-                  <span class="focus-border"></span>
+                <input class="modal-efecto-17 has-content w-100" name="mcbz_cliente" id="mcbz_cliente"  required autocomplete="off">
+                <label>Cliente</label>
+                <span class="focus-border"></span>
+                <div class="client-list" id="mcbz_ClientList" style="display: none">
+                </div>
               </td>
             </tr>
             <tr class="row m20">

@@ -14,10 +14,10 @@
           <thead>
             <tr class="row m-0 encabezado">
               <td class="col-md-1"></td>
-              <td class="col-md-3 text-center">
+              <td class="col-md-2 text-center">
                 <h3>CLIENTE</h3>
               </td>
-              <td class="col-md-2 text-center">
+              <td class="col-md-3 text-center">
                 <h3>SEMANA</h3>
               </td>
               <td class="col-md-3 text-center">

@@ -22,14 +22,14 @@
               </tr>
               <tr class="row m20">
                 <td class="col-md-12 input-effect p-0">
-                  <input class="w-100 modal-efecto-17" name="mpro_meta" id="mpro_meta" type="text">
+                  <input class="w-100 modal-efecto-17 has-content" name="mpro_meta" id="mpro_meta" type="text">
                     <label>Meta Diaria</label>
                     <span class="focus-border"></span>
                 </td>
               </tr>
               <tr class="row m20">
                 <td class="col-md-12 input-effect p-0">
-                  <input class="w-100 modal-efecto-17" name="mpro_cant" id="mpro_cant" type="text">
+                  <input class="w-100 modal-efecto-17 has-content" name="mpro_cant" id="mpro_cant" type="text">
                     <label>Cantidad Elaborada</label>
                     <span class="focus-border"></span>
                 </td>

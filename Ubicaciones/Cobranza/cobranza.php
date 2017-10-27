@@ -25,23 +25,23 @@ if (!isset($_SESSION['user'])) {
 
     <form id="Ecobranza" class="page p-0">
       <table class="table table-hover table-fixed">
-        <thead>
+        <thead id="font">
           <tr class="row m-0 encabezado">
             <td class="col-md-1"></td>
             <td class="col-md-2 text-center">
-              <h3>CLIENTE</h3>
+              <p class="titulo">CLIENTE</p>
             </td>
             <td class="col-md-1 text-center">
-              <h3>FACTURA</h3>
+              <p class="titulo">FACTURA</p>
             </td>
             <td class="col-md-2 text-center">
-              <h3>IMPORTE</h3>
+              <p class="titulo">IMPORTE</p>
             </td>
             <td class="col-md-2 text-center">
-              <h3>PAGADO</h3>
+              <p class="titulo">PAGADO</p>
             </td>
             <td class="col-md-2 text-center">
-              <h3>VENCIMIENTO</h3>
+              <p class="titulo">VENCIMIENTO</p>
             </td>
           </tr>
         </thead>
@@ -58,7 +58,7 @@ if (!isset($_SESSION['user'])) {
             <td class="col-md-12 input-effect p-0">
               <input type="text" id="cbz_id" style="display:none">
               <td class="col-md-12 input-effect p-0">
-                <input class="effect-17" type="text" id="npClientName">
+                <input class="effect-17" type="text" id="npClientName" required autocomplete="off">
                   <label>Cliente</label>
                   <span class="focus-border"></span>
                   <div class="client-list" id="npClientList" style="display: none">
@@ -69,14 +69,14 @@ if (!isset($_SESSION['user'])) {
           <tr class="row m20">
             <td class="col-md-12 input-effect p-0">
               <input id="cbz_factura" class="effect-17" type="text" required>
-                <label>Factura</label>
+                <label>No. Factura</label>
                 <span class="focus-border"></span>
             </td>
           </tr>
           <tr class="row m20">
             <td class="col-md-12 input-effect p-0">
               <input id="cbz_importe" class="effect-17" type="text" required>
-                <label>Importe</label>
+                <label>$ Importe</label>
                 <span class="focus-border"></span>
             </td>
           </tr>

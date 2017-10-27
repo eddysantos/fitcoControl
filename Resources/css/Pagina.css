@@ -175,9 +175,13 @@ h4,h2{
 .table-fixed tbody {
   display: block;
 }
-
 p{
   color:rgb(66, 125, 158);
+}
+p.titulo{
+  color:rgb(66, 125, 158);
+  font-size: 1.75rem;
+  font-weight: 500;
 }
 
 a.linkboton{

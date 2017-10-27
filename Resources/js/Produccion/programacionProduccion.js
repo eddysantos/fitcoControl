@@ -150,6 +150,56 @@ function fetchTablaGrafica(){
 }
 
 
+//BUSCADOR TIEMPO REAL 2
+$('#mpgr_cliente').keyup(function(){
+  var txt = $(this).val();
+  if (txt == "") {
+    $('#mpgr_ClientList').fadeOut();
+    return false;
+  }
+
+  $.ajax({
+    method: 'POST',
+    url: '/fitcoControl/Resources/PHP/Clientes/fetchPopupClientList.php',
+    data:{txt: txt},
+    success: function(result){
+      rsp = JSON.parse(result);
+      console.log(rsp);
+
+      if (rsp.code != "1") {
+        $('#mpgr_ClientList').html("<p>Hubo un error al cargar la lista de clientes...</p>");
+        console.warn("Error en el query: " + rsp.response);
+      } else {
+        $('#mpgr_ClientList').html(rsp.response);
+        $('#mpgr_ClientList p').click(function(){
+          var cid = $(this).attr('client-id');
+          var nc = $(this).html();
+
+          $('#mpgr_cliente').val(nc).html(nc).attr('client-id', cid);
+          $('#mpgr_ClientList').fadeOut();
+        });
+      }
+      $('#mpgr_ClientList').fadeIn();
+      SelectorCliente();
+    },
+    error: function(exception){
+      console.error(exception);
+    }
+  });
+});
+
+function SelectorCliente(){
+  $('.client-item').click(function(){
+    var clientId = $(this).attr('client-id');
+    var clientName = $(this).find('span').html();
+
+    $('#mpgr_cliente').attr('client-id', clientId);
+    $('#mpgr_cliente').html(clientName).val(clientName);
+    $('#mpgr_ClientList').fadeOut();
+  });
+}
+
+
 function ActivarBotonProgram(){
   //PASAR VARIABLES AL MODAL
   $('.EditarProduccion').unbind();
@@ -166,7 +216,7 @@ function ActivarBotonProgram(){
         console.log(rsp);
         if (rsp.code == 1) {
           $('#mpgr_id').val(rsp.response.pk_programacion);
-          $('#mpgr_cliente').val(rsp.response.fk_cliente);
+          $('#mpgr_cliente').val(rsp.response.nombreCliente);
           $('#mpgr_fini').val(rsp.response.fechaInicio);
           $('#mpgr_ffin').val(rsp.response.fechaFinal);
           $('#mpgr_piezas').val(rsp.response.piezasRequeridas);
@@ -185,7 +235,7 @@ function ActivarBotonProgram(){
   $('.ActualizarProgram').unbind();
   $('.ActualizarProgram').click(function(){
     var idProgram = $('#mpgr_id').val();
-    var nombreCliente = $('#mpgr_cliente').val();
+    var nombreCliente = $('#mpgr_cliente').attr('client-id');
     var fechaInicio = $('#mpgr_fini').val();
     var fechaFinal = $('#mpgr_ffin').val();
     var piezasRequeridas = $('#mpgr_piezas').val();

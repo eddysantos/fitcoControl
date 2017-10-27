@@ -187,6 +187,57 @@ function ActivarBotonesCobranza(){
     });
 
 
+
+    //BUSCADOR TIEMPO REAL 2
+    $('#mcbz_cliente').keyup(function(){
+      var txt = $(this).val();
+      if (txt == "") {
+        $('#mcbz_ClientList').fadeOut();
+        return false;
+      }
+
+      $.ajax({
+        method: 'POST',
+        url: '/fitcoControl/Resources/PHP/Clientes/fetchPopupClientList.php',
+        data:{txt: txt},
+        success: function(result){
+          rsp = JSON.parse(result);
+          console.log(rsp);
+
+          if (rsp.code != "1") {
+            $('#mcbz_ClientList').html("<p>Hubo un error al cargar la lista de clientes...</p>");
+            console.warn("Error en el query: " + rsp.response);
+          } else {
+            $('#mcbz_ClientList').html(rsp.response);
+            $('#mcbz_ClientList p').click(function(){
+              var cid = $(this).attr('client-id');
+              var nc = $(this).html();
+
+              $('#mcbz_cliente').val(nc).html(nc).attr('client-id', cid);
+              $('#mcbz_ClientList').fadeOut();
+            });
+          }
+          $('#mcbz_ClientList').fadeIn();
+          SelectorCliente();
+        },
+        error: function(exception){
+          console.error(exception);
+        }
+      });
+    });
+
+    function SelectorCliente(){
+      $('.client-item').click(function(){
+        var clientId = $(this).attr('client-id');
+        var clientName = $(this).find('span').html();
+
+        $('#mcbz_cliente').attr('client-id', clientId);
+        $('#mcbz_cliente').html(clientName).val(clientName);
+        $('#mcbz_ClientList').fadeOut();
+      });
+    }
+
+
   //EDITAR COBRANZA EN MODAL
   $('.editarCobranza').unbind();
   $('.editarCobranza').click(function(){
@@ -201,7 +252,7 @@ function ActivarBotonesCobranza(){
         console.log(rsp);
         if (rsp.code == 1) {
           $('#mcbz_id').val(rsp.response.pk_cobranza);
-          $('#mcbz_cliente').val(rsp.response.fk_cliente);
+          $('#mcbz_cliente').val(rsp.response.nombreCliente);
           $('#mcbz_factura').val(rsp.response.facturaCobranza);
           $('#mcbz_importe').val(rsp.response.importeCobranza);
           $('#mcbz_vencimiento').val(rsp.response.vencimientoCobranza);
@@ -219,7 +270,7 @@ function ActivarBotonesCobranza(){
   $('.ActualizarDcobranza').unbind();
   $('.ActualizarDcobranza').click(function(){
     var idCobranza = $('#mcbz_id').val();
-    var fk_cliente = $('#mcbz_cliente').val();
+    var fk_cliente = $('#mcbz_cliente').attr('client-id');
     var facturaCobranza = $('#mcbz_factura').val();
     var importeCobranza = $('#mcbz_importe').val();
     var vencimientoCobranza = $('#mcbz_vencimiento').val();
@@ -238,7 +289,7 @@ function ActivarBotonesCobranza(){
         if (result != 1) {
           alertify.error('NO SE MODIFICÓ NINGUN REGISTRO');
           $('#DetCobranza').modal('hide');
-          fetchClients();
+          fetchCobranza();
         }else {
           $('#DetCobranza').modal('hide');
           fetchCobranza();

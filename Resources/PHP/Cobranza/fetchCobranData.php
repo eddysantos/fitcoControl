@@ -6,7 +6,14 @@ $data = array(
 );
 
 require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
-$query = "SELECT * FROM ct_cobranza WHERE pk_cobranza = ?";
+$query =
+"SELECT *
+
+FROM ct_cobranza co
+
+LEFT JOIN ct_cliente ct ON co.fk_cliente = ct.pk_cliente
+
+WHERE pk_cobranza = ?";
 
 $stmt = $conn->prepare($query);
 $stmt->bind_param('s', $_POST['cobranzaId']);

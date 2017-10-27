@@ -60,8 +60,7 @@ if (!$resultado) {
         <h4><b><input type='color' value='$colorCliente'>$clienteCobranza</b></h4>
       </td>
       <td class='col-md-3 text-center'>
-
-        <h4><b>Semana $semana</b></h4>
+        <h4><b>$semana</b></h4>
       </td>
       <td class='col-md-3 text-center'>
         <h4><b> $ $totalCobranza </b></h4>

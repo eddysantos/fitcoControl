@@ -27,10 +27,13 @@ $(document).ready(function(){
         $('#Ecobranza').animate({"right": "38%"}, "slow");
         $('#Agregarcobranza').fadeIn(1000);
         $('#Detallecobranza').hide();
+        $('p').css('font-size','13px')
       }else {
         $('.spanA').css('display', '');
         $(this).attr('status', 'cerrado');
         $('#Ecobranza').animate({"right": "4%"}, "slow");
+        $('p').css('font-size','1.75rem');
+        $('p').css('font-weight','500');
         $('#Agregarcobranza').hide();
       }
       break;

@@ -8,7 +8,9 @@ $data = array(
 
 $query ="SELECT *
 
-FROM ct_programacion
+FROM ct_programacion pr
+
+LEFT JOIN ct_cliente cl  ON pr.fk_cliente = cl.pk_cliente
 
 
 WHERE pk_programacion = ?";
