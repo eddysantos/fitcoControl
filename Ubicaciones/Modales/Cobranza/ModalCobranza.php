@@ -14,7 +14,7 @@
             <tr class="row m20">
               <td class="col-md-12 input-effect p-0">
                 <input type="hidden" name="mcbz_id" id="mcbz_id">
-                <input class="modal-efecto-17 has-content w-100" name="mcbz_cliente" id="mcbz_cliente"  required autocomplete="off">
+                <input class="modal-efecto-17 has-content w-100" name="mcbz_cliente" id="mcbz_cliente" required autocomplete="off">
                 <label>Cliente</label>
                 <span class="focus-border"></span>
                 <div class="client-list" id="mcbz_ClientList" style="display: none">

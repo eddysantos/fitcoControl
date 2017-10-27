@@ -11,17 +11,17 @@ $query =
 SET fk_cliente = ?,
 fechaInicio = ?,
 fechaFinal =?,
-piezasRequeridas =?,
-metaDiaria =?
+piezasRequeridas =?
+-- metaDiaria =?
 WHERE pk_programacion = ?";
 
 $stmt = $conn->prepare($query);
-$stmt->bind_param('ssssss',
+$stmt->bind_param('sssss',
   $_POST['mpgr_cliente'],
   $_POST['mpgr_fini'],
   $_POST['mpgr_ffin'],
   $_POST['mpgr_piezas'],
-  $_POST['mpgr_meta'],
+  // $_POST['mpgr_meta'],
   $_POST['mpgr_id']
 );
 $stmt->execute();

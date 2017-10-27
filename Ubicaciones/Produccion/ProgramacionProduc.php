@@ -40,7 +40,8 @@ if (!isset($_SESSION['user'])) {
               <td class="col-md-2">FECHA INICIO</td>
               <td class="col-md-2">FECHA FINAL</td>
               <td class="col-md-2">PIEZAS REQUERIDAS</td>
-              <td class="col-md-1">META</td>
+              <!-- <td class="col-md-1">META</td> -->
+              <td class="col-md-1"></td>
               <td class="col-md-1"></td>
               </tr>
             </thead>
@@ -93,11 +94,11 @@ if (!isset($_SESSION['user'])) {
                       <span class="focus-border"></span>
                   </td>
                   <td class="col-md-1"></td>
-                  <td class="col-md-1 input-effect p-0">
+                  <!-- <td class="col-md-1 input-effect p-0">
                     <input class="effect-17" type="text" id="produccionMD">
                       <label>Meta Diaria</label>
                       <span class="focus-border"></span>
-                  </td>
+                  </td> -->
                 </tr>
               </tbody>
             </table>

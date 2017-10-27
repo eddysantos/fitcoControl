@@ -44,7 +44,7 @@
     <h1 id="logo" style="left: 3%; transition: 0.5s;">FIT&amp;CO</h1>
     <nav class="nav_animate">
 
-    <ul class="nav nav-pills nav-fill" id="selecTipoPoliza">
+    <ul class="nav nav-pills nav-fill">
 
       <?php if ($pv == 1 || $admin): ?>
         <li class="nav-item"><a href="/fitcoControl/Ubicaciones/Produccion/produccion.php" class="w-95">PRODUCCION</a></li>

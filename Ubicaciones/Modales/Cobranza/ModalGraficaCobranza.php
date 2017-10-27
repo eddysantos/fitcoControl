@@ -9,7 +9,7 @@
         <h5 class="modal-tittle">DETALLE Y GRAFICO DE COBRANZA</h5>
       </div>
       <div class="modal-body">
-        <div id="chart_div" class=""></div>
+        <!-- <div id="chart_div" class=""></div> -->
         <table class="table table-hover table-fixed">
           <thead>
             <tr class="row m-0 encabezado">

@@ -42,13 +42,13 @@
                     <label>Piezas Requeridas</label>
                     <span class="focus-border"></span>
                 </td>
-              <tr class="row m20">
+              <!-- <tr class="row m20">
                 <td class="col-md-12 input-effect p-0">
                   <input class="w-100 modal-efecto-17 has-content" name="mpgr_meta" id="mpgr_meta" type="text">
                     <label>Meta Diaria</label>
                     <span class="focus-border"></span>
                 </td>
-              </tr>
+              </tr> -->
             </tbody>
           </table>
 

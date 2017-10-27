@@ -15,7 +15,7 @@ c.nombreCliente AS cliente,
 p.fechaInicio AS fini,
 p.fechaFinal AS ffin,
 p.piezasRequeridas AS piezas,
-p.metaDiaria AS meta,
+-- p.metaDiaria AS meta,
 c.colorCliente AS color
 
 FROM ct_programacion p
@@ -70,9 +70,7 @@ if (!$resultado) {
       <td class='col-md-2 text-center'>
         <h4><b>$piezas</b></h4>
       </td>
-      <td class='col-md-1 text-center'>
-        <h4><b>$meta</b></h4>
-      </td>
+      <td class='col-md-1 text-center'></td>
       <td class='col-md-1 text-center'>
         <a href='#' class='EditarProduccion spand-link' data-toggle='modal' data-target='#EditarProduccion' program-id='$idprog'><img src='/fitcoControl/Resources/iconos/pencil1.svg' class='$ocultar spand-icon'></a>
       </td>

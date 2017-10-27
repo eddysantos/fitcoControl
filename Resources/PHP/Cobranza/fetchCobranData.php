@@ -33,7 +33,6 @@ if (false) {
 }
 
 
-
 $json = json_encode($data);
 
 echo $json;

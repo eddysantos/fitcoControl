@@ -9,7 +9,7 @@
         <h5 class="modal-tittle">DETALLE PRODUCCION DIARIA</h5>
       </div>
       <div class="modal-body">
-        <div id="chart_div"></div>
+        <!-- <div id="chart_div"></div> -->
         <table class="table table-hover table-fixed">
           <thead>
             <tr class="row m-0 encabezado">

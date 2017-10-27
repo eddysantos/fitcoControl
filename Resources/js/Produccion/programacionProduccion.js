@@ -8,7 +8,7 @@ $('#previewProgram').click(function(){
 
   var fi = new Date( $('#produccionFI').val());
   var ff = new Date( $('#produccionFF').val());
-  var md = $('#produccionMD').val();
+  // var md = $('#produccionMD').val();
 
   var test = [
     [ 'Washington', new Date(1789, 3, 30), new Date(1797, 2, 4) ],
@@ -67,13 +67,13 @@ $('.agregar-programacion').click(function(){
   var fi = $('#produccionFI').val();
   var ff = $('#produccionFF').val();
   var pz = $('#produccionPZ').val();
-  var md = $('#produccionMD').val();
+  // var md = $('#produccionMD').val();
 
   validacion = $('#produccionFI').val() == ""
       || $('#produccionFF').val() == ""
       || $('#npClientName').val() == ""
       || $('#produccionPZ').val() == ""
-      || $('#produccionMD').val() == "";
+      // || $('#produccionMD').val() == "";
 
   validacionFecha = $('#produccionFI').val() > $('#produccionFF').val();
 
@@ -85,7 +85,7 @@ $('.agregar-programacion').click(function(){
     $.ajax({
       method: 'POST',
       url: '/fitcoControl/Resources/PHP/Programacion/addProgramacion.php',
-      data: {cId: cId, fi: fi, ff:ff, pz:pz, md:md},
+      data: {cId: cId, fi: fi, ff:ff, pz:pz},
       success: function(result){
         console.log(result);
         dibujarGrafica();
@@ -216,11 +216,12 @@ function ActivarBotonProgram(){
         console.log(rsp);
         if (rsp.code == 1) {
           $('#mpgr_id').val(rsp.response.pk_programacion);
-          $('#mpgr_cliente').val(rsp.response.nombreCliente);
+          // $('#mpgr_cliente').val(rsp.response.nombreCliente);
+          $('#mpgr_cliente').val(rsp.response.nombreCliente).attr('client-id', rsp.response.fk_cliente);
           $('#mpgr_fini').val(rsp.response.fechaInicio);
           $('#mpgr_ffin').val(rsp.response.fechaFinal);
           $('#mpgr_piezas').val(rsp.response.piezasRequeridas);
-          $('#mpgr_meta').val(rsp.response.metaDiaria);
+          // $('#mpgr_meta').val(rsp.response.metaDiaria);
         } else {
           console.error("Hubo un error al jalar la informacion del cliente.");
           console.error(rsp.response);
@@ -239,7 +240,7 @@ function ActivarBotonProgram(){
     var fechaInicio = $('#mpgr_fini').val();
     var fechaFinal = $('#mpgr_ffin').val();
     var piezasRequeridas = $('#mpgr_piezas').val();
-    var metaDiaria = $('#mpgr_meta').val();
+    // var metaDiaria = $('#mpgr_meta').val();
 
     $.ajax({
       method: 'POST',
@@ -250,7 +251,7 @@ function ActivarBotonProgram(){
         mpgr_fini: fechaInicio,
         mpgr_ffin: fechaFinal,
         mpgr_piezas: piezasRequeridas,
-        mpgr_meta: metaDiaria
+        // mpgr_meta: metaDiaria
       },
       success:function(result){
         console.log(result);
