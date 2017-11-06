@@ -14,11 +14,11 @@ if (!isset($_SESSION['user'])) {
   <div class="clt_usr mt-5 mb-5">
     <a class="rotate-link  consultar ancla" accion="acobranza" status="cerrado">
       <img src="/fitcoControl/Resources/iconos/003-analytics-2.svg" class="icon rotate-icon" style="width:30px">
-      <span class="spanA">Agregar Cobranza</span>
+      <span class="spanA">Agregar Factura</span>
     </a>
     <a class="ml-3 rotate-link  consultar ancla" data-toggle='modal' data-target='#ModalGraficaCobranza'>
       <img src="/fitcoControl/Resources/iconos/grafica2.svg" class=" icon rotate-icon" style="width:30px">
-      <span class="spanD">Detalle de Cobranza</span>
+      <span class="spanD">Detalle Cobranza</span>
     </a>
 
 

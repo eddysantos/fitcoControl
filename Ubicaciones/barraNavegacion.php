@@ -53,7 +53,7 @@
       <?php endif; ?>
 
       <?php if ($cv == 1 || $admin): ?>
-        <li class="nav-item"><a href="/fitcoControl/Ubicaciones/Cobranza/cobranza.php" class="w-95">COBRANZA</a></li>
+        <li class="nav-item"><a href="/fitcoControl/Ubicaciones/Cobranza/cobranza.php" class="w-95">TESORERÍA</a></li>
       <?php else: ?>
         <li class="nav-item"><a class="bloqueo w-95">COBRANZA</a></li>
       <?php endif; ?>

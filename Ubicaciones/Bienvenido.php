@@ -53,7 +53,7 @@
 
       <?php if ($cv == 1 || $admin): ?>
         <li class="nav-item">
-          <a href="/fitcoControl/Ubicaciones/Cobranza/cobranza.php" class="transicion">COBRANZA</a>
+          <a href="/fitcoControl/Ubicaciones/Cobranza/cobranza.php" class="transicion">TESORERÍA</a>
         </li>
       <?php else: ?>
         <li class="nav-item">
