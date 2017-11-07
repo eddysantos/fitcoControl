@@ -7,47 +7,29 @@ if (!isset($_SESSION['user'])) {
   $root = $_SERVER['DOCUMENT_ROOT'];
   require $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
   require $root . '/fitcoControl/Resources/PHP/DataBases/Conexion.php';
+
 ?>
 
 <div class="container">
 
   <div class="clt_usr mt-5 mb-5">
-    <a class="rotate-link  consultar ancla" accion="acobranza" status="cerrado">
+    <a class="rotate-link consultar ancla" accion="acobranza" status="cerrado">
       <img src="/fitcoControl/Resources/iconos/003-analytics-2.svg" class="icon rotate-icon" style="width:30px">
       <span class="spanA">Agregar Factura</span>
     </a>
-    <a class="ml-3 rotate-link  consultar ancla" data-toggle='modal' data-target='#ModalGraficaCobranza'>
+    <a class="ml-3 rotate-link consultar ancla" data-toggle='modal' data-target='#ModalGraficaCobranza'>
       <img src="/fitcoControl/Resources/iconos/grafica2.svg" class=" icon rotate-icon" style="width:30px">
       <span class="spanD">Detalle Cobranza</span>
     </a>
+    <a class="ml-3 rotate-link consultar ancla">
+      <img src="/fitcoControl/Resources/iconos/search.svg" class=" icon rotate-icon" style="width:30px">
+      <span class="spanB"><input class="buscar" type="text" name="busqueda"  id="busqueda"></span>
+    </a>
 
+    <div class="container-fluid mt-3" style="max-width:1300px">
+      <section id="mostrarCobranza"></section>
+    </div>
 
-
-    <form id="Ecobranza" class="page p-0">
-      <table class="table table-hover table-fixed">
-        <thead id="font">
-          <tr class="row m-0 encabezado">
-            <td class="col-md-1"></td>
-            <td class="col-md-2 text-center">
-              <p class="titulo">CLIENTE</p>
-            </td>
-            <td class="col-md-1 text-center">
-              <p class="titulo">FACTURA</p>
-            </td>
-            <td class="col-md-2 text-center">
-              <p class="titulo">IMPORTE</p>
-            </td>
-            <td class="col-md-2 text-center">
-              <p class="titulo">PAGADO</p>
-            </td>
-            <td class="col-md-2 text-center">
-              <p class="titulo">VENCIMIENTO</p>
-            </td>
-          </tr>
-        </thead>
-        <tbody id="mostrarCobranza"></tbody>
-      </table>
-    </form>
 
 
 
@@ -99,7 +81,11 @@ if (!isset($_SESSION['user'])) {
   </div>
 </div>
 
-
+<!-- <script type="text/javascript">
+  $(function(){
+    $('#cbz_dvencimiento').datetimepicker();
+  });
+</script> -->
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
   require $root . '/fitcoControl/Ubicaciones/Modales/Cobranza/ModalGraficaCobranza.php';

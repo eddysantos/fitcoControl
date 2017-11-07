@@ -23,6 +23,7 @@ $(document).ready(function(){
           console.warn("Error en el query: " + rsp.response);
         } else {
           $('#npClientList').html(rsp.response);
+
           $('#npClientList p').click(function(){
             var cid = $(this).attr('client-id');
             var nc = $(this).html();
@@ -58,7 +59,6 @@ $(document).ready(function(){
     var vencimientoCobranza = $('#cbz_dvencimiento').val();
     var fk_cliente = $('#npClientName').attr('client-id');
 
-
     validacion =
     $('#npClientName').val() == "" ||
     $('#cbz_factura').val() == "" ||
@@ -72,7 +72,6 @@ $(document).ready(function(){
         method: 'POST',
         url: '/fitcoControl/Resources/PHP/Cobranza/AgregarCobranza.php',
         data:{
-
           cbz_factura: facturaCobranza,
           cbz_importe: importeCobranza,
           cbz_dvencimiento: vencimientoCobranza,
@@ -100,22 +99,30 @@ $(document).ready(function(){
   });
 });
 
-//MOSTRAR LOS REGISTROS EN PANTALLA
-function fetchCobranza(){
+
+
+function fetchCobranza(cobranza){
   $.ajax({
+    url : '/fitcoControl/Resources/PHP/Cobranza/MostrarTesoreria.php',
     method: 'POST',
-    url:'/fitcoControl/Resources/PHP/Cobranza/MostrarTablaCobranza.php',
-    success:function(result){
-      console.log(result);
-      var rsp = JSON.parse(result);
-      $('#mostrarCobranza').html(rsp.infoTabla);
-      ActivarBotonesCobranza();
-    },
-    error:function(exception){
-      console.error(exception)
-    }
+    data:{cobranza:cobranza},
+  })
+  .done(function(resultado){
+    $('#mostrarCobranza').html(resultado);
+    ActivarBotonesCobranza();
   })
 }
+
+$(document).on('keyup', '#busqueda', function(){
+  var valorBusqueda = $(this).val();
+  if (valorBusqueda!= "") {
+    fetchCobranza(valorBusqueda);
+  }else {
+    fetchCobranza();
+  }
+});
+
+
 
 //TABLA PARA DATOS DE GRAFICA COBRANZA
 function fetchTablaCobranza(){

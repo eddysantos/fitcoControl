@@ -302,3 +302,8 @@ a.boton-colapso:hover{
 .ocultar{
   display: none!important;
 }
+
+.buscar{
+  border-radius: 8px;
+  background-color: rgba(74, 119, 152, 0.2);
+}

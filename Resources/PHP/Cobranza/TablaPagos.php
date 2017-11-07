@@ -9,7 +9,7 @@ $data = array(
   'infoTabla' => ""
 );
 $query = "SELECT
-p.fechaPago AS fecha,
+DATE_FORMAT(p.fechaPago,'%d-%m-%Y') AS fecha,
 p.importePago As pagado
 
 FROM ct_pagos p
