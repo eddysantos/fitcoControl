@@ -16,7 +16,7 @@
   <div class="clt_usr mt-5 ml-5">
     <a id="addcliente" class="rotate-link consultar ancla" accion="acliente" status="cerrado">
       <img src="/fitcoControl/Resources/iconos/clientes.svg" class="icon1 rotate-icon" style="width:30px">
-      <span class="span">Agregar Cliente</span>
+      <span class="spanc">Agregar Cliente</span>
     </a>
   </div>
 

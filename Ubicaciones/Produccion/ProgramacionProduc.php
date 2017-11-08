@@ -16,7 +16,7 @@ if (!isset($_SESSION['user'])) {
 <div class="clt_usr  mr-5 mt-5">
   <a class="rotate-link consultar ancla" style="font-size: larger;" accion="eproduccion" status="cerrado">
     <img src="/fitcoControl/Resources/iconos/pencil1.svg" class="icon rotate-icon" style="width:30px;">
-    <span class="span">Editar Producción</span>
+    <span class="spanP">Editar Producción</span>
   </a>
 </div>
 

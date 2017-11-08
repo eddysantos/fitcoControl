@@ -95,10 +95,6 @@ if (isset($_POST['cobranza'])) {
      $ce =  $_SESSION['user']['cobranza_editar'];
      $admin = $_SESSION['user']['privilegiosUsuario'];
 
-
-
-
-
      if (($importeCobranza == $pagado) && ($vencimientoCobranza == $hoy)) {
        $background = "verde";
      }elseif (($vencimientoCobranza < $hoy) && ($importeCobranza == $pagado)) {
@@ -106,7 +102,6 @@ if (isset($_POST['cobranza'])) {
      }elseif (($vencimientoCobranza < $hoy) && ($importeCobranza > $pagado)) {
        $background = "rojo";
      }
-
 
     if ($admin == "Administrador") {
       $ocultar = "";
@@ -116,35 +111,35 @@ if (isset($_POST['cobranza'])) {
 
      $tabla.= "
      <tbody id='mostrarCobranza'>
-     <tr class='$background row bordelateral m-0' id='item'>
-       <td class='col-md-1'>
-         <img src='/fitcoControl/Resources/iconos/dinero.svg' class='icono'>
-       </td>
-       <td class='col-md-2'>
-         <h4><b><input type='color' value='$colorCliente'>$clienteCobranza</b></h4>
-         <p><a class='visibilidad'>Credito : $creditoCliente Días</a></p>
-       </td>
-       <td class='col-md-1 text-center'>
-         <h4><b>$facturaCobranza</b></h4>
-       </td>
-       <td class='col-md-2 text-center'>
-         <h4><b> $ $importeCobranza </b></h4>
-       </td>
-       <td class='col-md-2 text-center'>
-         <h4><b> $ $pagado </b></h4>
-       </td>
-       <td class='col-md-2 text-center'>
-         <h4><b> $vencimientoCobranza </b></h4>
-       </td>
-       <td class='col-md-2 text-right'>
-         <!--AGREGAR PAGO DE FACTURA-->
-         <a href='' id='btnEditarCobranza' class='$ocultar editarCobranza spand-link' data-toggle='modal' data-target='#DetCobranza' cobranza-id='$idCobranza'><img src='/fitcoControl/Resources/iconos/pencil1.svg' class='mr-3 spand-icon'></a>
+       <tr class='$background row bordelateral m-0' id='item'>
+         <td class='col-md-1'>
+           <img src='/fitcoControl/Resources/iconos/dinero.svg' class='icono'>
+         </td>
+         <td class='col-md-2'>
+           <h4><b><input type='color' value='$colorCliente'>$clienteCobranza</b></h4>
+           <p><a class='visibilidad'>Credito : $creditoCliente Días</a></p>
+         </td>
+         <td class='col-md-1 text-center'>
+           <h4><b>$facturaCobranza</b></h4>
+         </td>
+         <td class='col-md-2 text-center'>
+           <h4><b> $ $importeCobranza </b></h4>
+         </td>
+         <td class='col-md-2 text-center'>
+           <h4><b> $ $pagado </b></h4>
+         </td>
+         <td class='col-md-2 text-center'>
+           <h4><b> $vencimientoCobranza </b></h4>
+         </td>
+         <td class='col-md-2 text-right'>
+           <!--AGREGAR PAGO DE FACTURA-->
+           <a href='' id='btnEditarCobranza' class='$ocultar editarCobranza spand-link' data-toggle='modal' data-target='#DetCobranza' cobranza-id='$idCobranza'><img src='/fitcoControl/Resources/iconos/pencil1.svg' class='mr-3 spand-icon'></a>
 
-         <a href='' id='btnAgregarPago' class='agregarPago spand-link' data-toggle='modal' data-target='#PagoFacturas' cobranza-id='$idCobranza'><img src='/fitcoControl/Resources/iconos/003-add.svg' class='spand-icon'></a>
+           <a href='' id='btnAgregarPago' class='agregarPago spand-link' data-toggle='modal' data-target='#PagoFacturas' cobranza-id='$idCobranza'><img src='/fitcoControl/Resources/iconos/003-add.svg' class='spand-icon'></a>
 
-         <a href='' class='visualizarcobranza spand-link' data-toggle='modal' data-target='#VisualizarTablaCobranza' cobranza-id='$idCobranza'><img src='/fitcoControl/Resources/iconos/magnifier.svg' class='ml-3 spand-icon'></a>
-       </td>
-     </tr>
+           <a href='' class='visualizarcobranza spand-link' data-toggle='modal' data-target='#VisualizarTablaCobranza' cobranza-id='$idCobranza'><img src='/fitcoControl/Resources/iconos/magnifier.svg' class='ml-3 spand-icon'></a>
+         </td>
+       </tr>
      </tbody>";
      $suma += $row['importe'];
      $total += $row['pagado'];
@@ -153,7 +148,7 @@ if (isset($_POST['cobranza'])) {
    }
    $tabla.="
      <tfoot>
-       <tr class='row m-0 mt-5'>
+       <tr class='row text-center piedetabla m-0'>
           <td class='col-md-4 text-center'><b>Facturado : $ $suma </b></td>
           <td class='col-md-4 text-center'><b>Pagado : $ $total </b></td>
           <td class='col-md-4 text-center'><b>Diferencia : $ $diferencia </b></td>

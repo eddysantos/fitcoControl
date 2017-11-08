@@ -1,5 +1,4 @@
 $(document).ready(function(){
-
   $('.consultar').click(function(){
     var accion = $(this).attr('accion');
     var status = $(this).attr('status');
@@ -7,12 +6,12 @@ $(document).ready(function(){
     switch (accion) {
       case "acliente":
       if (status == 'cerrado') {
-        $('.span').css('display', 'inherit');
+        $('.spanc').css('display', 'inherit');
         $(this).attr('status', 'abierto');
         $('#Eclientes').animate({"right": "36%"}, "slow");
         $('#NuevoCliente').fadeIn(2500);
       }else {
-        $('.span').css('display', '');
+        $('.spanc').css('display', '');
         $(this).attr('status', 'cerrado');
         $('#Eclientes').animate({"right": "4%"}, "slow");
         $('#NuevoCliente').hide();
@@ -28,7 +27,7 @@ $(document).ready(function(){
         $('#Agregarcobranza').fadeIn(1000);
         $('#Detallecobranza').hide();
         $('p').css('font-size','13px')
-      }else {
+      }else{
         $('.spanA').css('display', '');
         $(this).attr('status', 'cerrado');
         $('#Ecobranza').animate({"right": "4%"}, "slow");
@@ -38,14 +37,27 @@ $(document).ready(function(){
       }
       break;
 
+      case  "btesoreria":
+        if (status == 'cerrado') {
+          $(this).attr('status','abierto');
+          $('acobranza').attr('status','abierto');
+          $('.spanA').css('display', '');
+          $('.spanD').css('display', '');
+          $('#Ecobranza').animate({"right": "4%"}, "slow");
+          $('#Agregarcobranza').hide();
+        }else{
+          $(this).attr('status', 'cerrado');
+        }
+        break;
+
       case "eproduccion":
       if (status == 'cerrado') {
-        $('.span').css('display', 'inherit');
+        $('.spanP').css('display', 'inherit');
         $(this).attr('status', 'abierto');
         $('#tablaProduccion').fadeIn(2500);
         $('#colapsoNuevaProduc').removeClass("show");
       }else {
-        $('.span').css('display', '');
+        $('.spanP').css('display', '');
         $(this).attr('status', 'cerrado');
         $('#tablaProduccion').fadeOut();
         $('#colapsoNuevaProduc').addClass("show");
@@ -54,34 +66,19 @@ $(document).ready(function(){
 
       case "ausuario":
       if (status == 'cerrado') {
-        $('.span').css('display', 'inherit');
+        $('.spanU').css('display', 'inherit');
         $(this).attr('status', 'abierto');
         $('#Eusuarios').animate({"right": "36%"}, "slow");
         $('#usuarios').animate({"right": "36%"}, "slow");
         $('#NuevoUsuario').fadeIn(2500);
       }else {
-        $('.span').css('display', '');
+        $('.spanU').css('display', '');
         $(this).attr('status', 'cerrado');
         $('#Eusuarios').animate({"right": "4%"}, "slow");
         $('#usuarios').animate({"right": "4%"}, "slow");
         $('#NuevoUsuario').hide();
       }
       break;
-
-      case "eproduccion":
-      if (status == 'cerrado') {
-        $('.span').css('display', 'inherit');
-        $(this).attr('status', 'abierto');
-        $('#tablaProduccion').fadeIn(2500);
-        $('#colapsoNuevaProduc').removeClass("show");
-      }else {
-        $('.span').css('display', '');
-        $(this).attr('status', 'cerrado');
-        $('#tablaProduccion').fadeOut();
-        $('#colapsoNuevaProduc').addClass("show");
-      }
-      break;
-
       default:
         console.error("Something went terribly wrong...");
     }

@@ -13,7 +13,7 @@ if (!isset($_SESSION['user'])) {
   <div class="clt_usr  mt-5 mb-5">
     <a class="rotate-link consultar ancla" style="font-size: larger;" accion="ausuario" status="cerrado">
       <img src="/fitcoControl/Resources/iconos/usuario.svg" class="icon1 rotate-icon" style="width:30px;">
-      <span class="span">Agregar Usuario</span>
+      <span class="spanU">Agregar Usuario</span>
     </a>
 
     <form id="Eusuarios" class="page p-0">

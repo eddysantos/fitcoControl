@@ -21,7 +21,7 @@ if (!isset($_SESSION['user'])) {
       <img src="/fitcoControl/Resources/iconos/grafica2.svg" class=" icon rotate-icon" style="width:30px">
       <span class="spanD">Detalle Cobranza</span>
     </a>
-    <a class="ml-3 rotate-link consultar ancla">
+    <a class="ml-3 rotate-link consultar ancla" accion="btesoreria" status="cerrado">
       <img src="/fitcoControl/Resources/iconos/search.svg" class=" icon rotate-icon" style="width:30px">
       <span class="spanB"><input class="buscar" type="text" name="busqueda"  id="busqueda"></span>
     </a>
