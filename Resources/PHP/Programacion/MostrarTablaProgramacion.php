@@ -40,7 +40,7 @@ if (!$resultado) {
     $fini = $row['fini'];
     $ffin = $row['ffin'];
     $piezas = $row['piezas'];
-    $meta = $row['meta'];
+    // $meta = $row['meta'];
     $color = $row['color'];
     $ocultar = "";
     $pe = $_SESSION['user']['produccion_editar'];

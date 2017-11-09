@@ -62,3 +62,10 @@
 .close{
   color: dimgrey;
 }
+
+.spand-iconm {
+  width: 20px;
+}
+.spand-linkm:hover .spand-iconm{
+  width: 25px;
+}

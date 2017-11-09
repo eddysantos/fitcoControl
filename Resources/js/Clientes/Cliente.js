@@ -82,7 +82,7 @@ function fetchClients(){
 
 function ActivarBotones(){
   // Asociar un evento al botón que muestra la ventana modal
-  $('.EditarCliente').unbind(); // EVITAMOS QUE SE DUPLIQUE NUESTRO SELECTOR
+  $('.EditCliente').unbind(); // EVITAMOS QUE SE DUPLIQUE NUESTRO SELECTOR
   $('.EditCliente').click(function(){
     var clienteId = $(this).attr('client-id');
     $.ajax({

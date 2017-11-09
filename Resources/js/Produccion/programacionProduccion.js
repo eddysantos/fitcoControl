@@ -3,25 +3,25 @@ $(document).ready(function(){
 fetchProgramacion();
 fetchProProduccion();
 fetchTablaGrafica();
-$('#previewProgram').click(function(){
-  var np = new Array();
-
-  var fi = new Date( $('#produccionFI').val());
-  var ff = new Date( $('#produccionFF').val());
-  // var md = $('#produccionMD').val();
-
-  var test = [
-    [ 'Washington', new Date(1789, 3, 30), new Date(1797, 2, 4) ],
-    [ 'Adams',      new Date(1796, 2, 4),  new Date(1801, 2, 4) ],
-    [ 'Jefferson',  new Date(1801, 2, 4),  new Date(1809, 2, 4) ]
-  ];
-
-  np.push(["testClient", fi, ff]);
-
-  dibujarGrafica();
-
-  console.log(np);
-})
+// $('#previewProgram').click(function(){
+//   var np = new Array();
+//
+//   var fi = new Date( $('#produccionFI').val());
+//   var ff = new Date( $('#produccionFF').val());
+//   // var md = $('#produccionMD').val();
+//
+//   var test = [
+//     [ 'Washington', new Date(1789, 3, 30), new Date(1797, 2, 4) ],
+//     [ 'Adams',      new Date(1796, 2, 4),  new Date(1801, 2, 4) ],
+//     [ 'Jefferson',  new Date(1801, 2, 4),  new Date(1809, 2, 4) ]
+//   ];
+//
+//   np.push(["testClient", fi, ff]);
+//
+//   dibujarGrafica();
+//
+//   console.log(np);
+// })
 
 
 //BUSCADOR TIEMPO REAL
@@ -358,12 +358,102 @@ function ActivarBotonProduc(){
           var rsp = JSON.parse(result);
           console.log(rsp);
           $('#visualizarProduccion').html(rsp.infoTabla);
-
+          ActivarBotonProduc();
         },
         error:function(exception){
           console.error(exception)
         }
       })
+    });
 
+//PASAR VARIABLES A MODAL
+    $('.editarProduc').unbind();
+    $('.editarProduc').click(function(){
+      var IdProduc = $(this).attr('pro-id');
+      $.ajax({
+
+        method: 'POST',
+        url: '/fitcoControl/Resources/PHP/Produccion/fetchProducData.php',
+        data: {IdProduc: IdProduc},
+
+        success: function(result){
+          var rsp = JSON.parse(result);
+          console.log(rsp);
+          if (rsp.code == 1) {
+            $('#mpr_id').val(rsp.response.pk_produccion);
+            $('#mpr_fecha').val(rsp.response.fechaIntroduccion);
+            $('#mpr_meta').val(rsp.response.metaProduccion);
+            $('#mpr_elaborado').val(rsp.response.cantidadProduccion);
+
+          } else {
+            console.error("Hubo un error al jalar la informacion del cliente.");
+            console.error(rsp.response);
+          }
+        },
+        error: function(exception){
+          console.error(exception);
+        }
+      })
+    });
+
+    $('.ActualizarProd').unbind();//EVITAMOS QUE SE DUPLIQUE NUESTRO SELECTOR
+    $('.ActualizarProd').click(function(){
+      var id = $('#mpr_id').val();
+      var ff = $('#mpr_fecha').val();
+      var mm = $('#mpr_meta').val();
+      var ee = $('#mpr_elaborado').val();
+
+      $.ajax({
+        method: 'POST',
+        url: '/fitcoControl/Resources/PHP/Produccion/EditProdData.php',
+        data: {
+          id: id,
+          ff: ff,
+          mm: mm,
+          ee: ee
+        },
+        success:function(result){
+          console.log(result);
+          if (result != 1) {
+            alertify.error('NO SE MODIFICÓ NINGUN REGISTRO');
+            $('#EdProd').modal('hide');
+            $('#VisualizarTablaProduccion').modal('hide');
+            fetchProProduccion();
+            fetchTablaGrafica();
+          }else {
+            $('#EdProd').modal('hide');
+            $('#VisualizarTablaProduccion').modal('hide');
+            fetchProProduccion();
+            fetchTablaGrafica();
+            alertify.success('SE MODIFICÓ CORRECTAMENTE');
+          }
+        },
+        error:function(exception){
+          console.error(exception)
+        }
+      });
+    });
+
+
+    $('.eliminarProduc').unbind();
+    $('.eliminarProduc').click(function(){
+      var IdProduc = $(this).attr('pro-id');
+      $.ajax({
+        method: 'POST',
+        url: '/fitcoControl/Resources/PHP/Produccion/EliminarProducData.php',
+        data: {IdProduc: IdProduc},
+
+        success: function(result){
+          console.log(result);
+          if (result != 1) {
+            alertify.error('NO SE PUDO ELIMINAR');
+          }else {
+            alertify.success('SE ELIMINO REGISTRO');
+          }
+        },
+        error: function(exception){
+          console.error(exception)
+        }
+      });
     });
 }

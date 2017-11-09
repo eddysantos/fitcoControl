@@ -54,10 +54,10 @@ if (!$resultado) {
     // $admin = $_SESSION['user']['privilegiosUsuario'];
 
     //si fecha vencimiento es mayor a la fecha de hoy y mis piezas requeridas son igual a
-    if (($ffin > $hoy)  && ($piezas == $total)) {
+    if (($ffin >= $hoy)  && ($piezas == $total)) {
       $iconocaja = "001-check.svg";
       $background = "verde";
-    } elseif (($ffin < $hoy) && ($piezas == $total)) {
+    } elseif (($ffin <= $hoy) && ($piezas == $total)) {
       $iconocaja = "001-check.svg";
       $background = "verde";
     }elseif (($ffin < $hoy) && ($piezas > $total)) {

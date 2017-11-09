@@ -9,6 +9,7 @@ $data = array(
   'infoTabla' => ""
 );
 $query = "SELECT
+pk_produccion AS idProduc,
 fechaIntroduccion AS fecha,
 metaProduccion AS meta,
 cantidadProduccion AS cant
@@ -32,6 +33,7 @@ if (false) {
   while($row = mysqli_fetch_assoc($resultados)){
     $data["data"][]= $row;
 
+    $idProduc = $row['idProduc'];
     $fecha = $row['fecha'];
     $meta = $row['meta'];
     $cantidad = $row['cant'];
@@ -40,14 +42,19 @@ if (false) {
 
     $data["infoTabla"].= "
     <tr class='row bordelateral' id='item'>
-      <td class='col-md-4 text-center'>
+      <td class='col-md-3 text-center'>
         <h4><b>$fecha</b></h4>
       </td>
-      <td class='col-md-4 text-center'>
+      <td class='col-md-3 text-center'>
         <h4><b>$meta piezas</b></h4>
       </td>
-      <td class='col-md-4 text-center'>
+      <td class='col-md-3 text-center'>
         <h4><b>$cantidad piezas</b></h4>
+      </td>
+      <td class='col-md-3 text-center'>
+        <a href='' id='btnEditarProduc' class='editarProduc spand-linkm' data-toggle='modal' data-target='#EdProd' pro-id='$idProduc'><img src='/fitcoControl/Resources/iconos/001-edit.svg' class='ml-5 mr-4 spand-iconm'></a>
+
+        <a href='' id='EliminarProduc' class='eliminarProduc spand-linkm'  pro-id='$idProduc'><img src='/fitcoControl/Resources/iconos/002-delete.svg' class='ml-2 spand-iconm'></a>
       </td>
     </tr>";
   }
