@@ -1,3 +1,4 @@
+<!-- <script src="/fitcoControl/Resources/js/helperFunctions.js"></script> -->
 <script src="/fitcoControl/Resources/js/Cobranza/Cobranza.js"></script>
 <!-- <script src="/fitcoControl/Resources/bootstrap/js/bootstrap-datetimepicker.es.js"></script> -->
 <!-- <script src="/fitcoControl/Resources/js/fecha.js"></script> -->

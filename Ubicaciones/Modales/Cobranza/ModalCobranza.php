@@ -68,12 +68,13 @@
           <table class="table">
             <thead>
               <tr class="row encabezado">
-                <td class='col-md-6 text-center'>
+                <td class='col-md-5 text-center'>
                   <h4><b>FECHA</h4>
                 </td>
-                <td class='col-md-6 text-center'>
+                <td class='col-md-5 text-center'>
                   <h4><b>PAGADO</b></h4>
                 </td>
+                <td class='col-md-2 text-center'></td>
               </tr>
             </thead>
             <tbody id="visualizarCobranza">
@@ -82,6 +83,45 @@
           </table>
         </div><!--termina el Container-Fluid-->
       </div><!--termina el Cuerpo del Modal-->
+    </div><!--termina el COntenido del Modal-->
+  </div>
+</div>
+
+
+<!-- MODAL PARA EDITAR PAGOS -->
+<div class="modal fade" id="EdPago">
+  <div class="modal-dialog modal-med">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button class="close" type="button" name="button" data-dismiss="modal" area-label="close">
+          <i class="fa fa-times-circle-o fa-2x" aria-hidden="true"></i>
+        </button>
+        <h5 class="modal-tittle">EDITAR</h5>
+      </div>
+      <div class="modal-body">
+        <table class="table">
+          <tbody>
+            <tr class="row m20">
+              <td class="col-md-12 input-effect p-0">
+                <input type="hidden" name="pgo_id" id="pgo_id">
+                <input class="modal-efecto-17 has-content" name="pgo_fecha" id="pgo_fecha" type="date">
+                  <label>Fecha</label>
+                  <span class="focus-border"></span>
+              </td>
+            </tr>
+            <tr class="row m20">
+              <td class="col-md-12 input-effect p-0">
+                <input class="modal-efecto-17 has-content" name="pgo_pagado" id="pgo_pagado" type="text">
+                  <label>Pagado</label>
+                  <span class="focus-border"></span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div><!--termina el Cuerpo del Modal-->
+      <div class="justify-content-center modal-footer">
+        <button   type="submit" class="ActualizarPago w-50 btnsub btn boton btn-block ">ACTUALIZAR</button>
+      </div>
     </div><!--termina el COntenido del Modal-->
   </div>
 </div>

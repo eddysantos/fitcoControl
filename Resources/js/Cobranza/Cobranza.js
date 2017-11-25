@@ -58,12 +58,21 @@ $(document).ready(function(){
     var importeCobranza = $('#cbz_importe').val();
     var vencimientoCobranza = $('#cbz_dvencimiento').val();
     var fk_cliente = $('#npClientName').attr('client-id');
+    // var ffVencimiento = rip_date(vencimientoCobranza);
 
     validacion =
     $('#npClientName').val() == "" ||
     $('#cbz_factura').val() == "" ||
     $('#cbz_importe').val() == "" ||
     $('#cbz_dvencimiento').val() == "";
+
+    // if (1==1) {
+    //   console.log(ffVencimiento);
+    //   var ahora = new Date();
+    //   console.log("El dia de hoy es: " + ahora.getDate());
+    //
+    //   return false;
+    // }
 
     if (validacion) {
       swal("NO PUEDE CONTINUAR","Nesesita llenar todos los campos","error");
@@ -327,18 +336,106 @@ function ActivarBotonesCobranza(){
     var cobranzaId = $(this).attr('cobranza-id');
     $.ajax({
       method: 'POST',
-      url:'/fitcoControl/Resources/PHP/Cobranza/TablaPagos.php',
+      url:'/fitcoControl/Resources/PHP/Pagos/TablaPagos.php',
       data:{cobranzaId:cobranzaId},
       success:function(result){
         var rsp = JSON.parse(result);
         console.log(rsp);
         $('#visualizarCobranza').html(rsp.infoTabla);
-
+        ActivarBotonesCobranza();
       },
       error:function(exception){
         console.error(exception)
       }
     })
+  });
 
+
+  $('.editarPago').unbind();
+  $('.editarPago').click(function(){
+    var IdPagos = $(this).attr('pago-id');
+    $.ajax({
+
+      method: 'POST',
+      url: '/fitcoControl/Resources/PHP/Pagos/fetchPagoData.php',
+      data: {IdPagos: IdPagos},
+
+      success: function(result){
+        var rsp = JSON.parse(result);
+        console.log(rsp);
+        if (rsp.code == 1) {
+          $('#pgo_id').val(rsp.response.pk_pagos);
+          $('#pgo_fecha').val(rsp.response.fechaPago);
+          $('#pgo_pagado').val(rsp.response.importePago);
+
+        } else {
+          console.error("Hubo un error al jalar la informacion del cliente.");
+          console.error(rsp.response);
+        }
+      },
+      error: function(exception){
+        console.error(exception);
+      }
+    })
+  });
+
+
+
+  $('.ActualizarPago').unbind();//EVITAMOS QUE SE DUPLIQUE NUESTRO SELECTOR
+  $('.ActualizarPago').click(function(){
+    var id = $('#pgo_id').val();
+    var ff = $('#pgo_fecha').val();
+    var pp = $('#pgo_pagado').val();
+
+    $.ajax({
+      method: 'POST',
+      url: '/fitcoControl/Resources/PHP/Pagos/EditarModalPagos.php',
+      data: {
+        id: id,
+        ff: ff,
+        pp: pp
+      },
+      success:function(result){
+        console.log(result);
+        if (result != 1) {
+          alertify.error('NO SE MODIFICÓ NINGUN REGISTRO');
+          $('#EdPago').modal('hide');
+          $('#VisualizarTablaCobranza').modal('hide');
+          fetchCobranza();
+          fetchTablaCobranza();
+        }else {
+          $('#EdPago').modal('hide');
+          $('#VisualizarTablaCobranza').modal('hide');
+          fetchCobranza();
+          fetchTablaCobranza();
+          alertify.success('SE MODIFICÓ CORRECTAMENTE');
+        }
+      },
+      error:function(exception){
+        console.error(exception)
+      }
+    });
+  });
+
+  $('.eliminarPago').unbind();
+  $('.eliminarPago').click(function(){
+    var IdPagos = $(this).attr('pago-id');
+    $.ajax({
+      method: 'POST',
+      url: '/fitcoControl/Resources/PHP/Pagos/EliminarModalPagos.php',
+      data: {IdPagos: IdPagos},
+
+      success: function(result){
+        console.log(result);
+        if (result != 1) {
+          alertify.error('NO SE PUDO ELIMINAR');
+        }else {
+          alertify.success('SE ELIMINO REGISTRO');
+        }
+      },
+      error: function(exception){
+        console.error(exception)
+      }
+    });
   });
 }

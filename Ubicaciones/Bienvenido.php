@@ -9,14 +9,6 @@
   $cv =  $_SESSION['user']['cobranza_ver'];
   $clv = $_SESSION['user']['cliente_ver'];
   $admin = $_SESSION['user']['privilegiosUsuario']== "Administrador";
-
-  // $priv_produccion = $pv == "1" && $cv == "0" && $clv == "0";
-  // $priv_clientes =  $clv == "1" && $pv == "0" && $cv == "0";
-  // $priv_cobranza =  $cv == "1" && $clv == "0" && $pv == "0";
-  // $priv_pcl = $pv && $clv == "1"  && $cv == "0";
-  // $priv_cp = $cv && $pv == "1" && $clv == "0";
-  // $priv_ccl = $clv && $cv == "1" && $pv == "0";
-  // $priv_todos = $clv && $cv && $pv == "1";
 ?>
 
 <!DOCTYPE html>
@@ -57,11 +49,11 @@
         </li>
       <?php else: ?>
         <li class="nav-item">
-          <a class="bloqueo">COBRANZA</a>
+          <a class="bloqueo">TESORERÍA</a>
         </li>
       <?php endif; ?>
 
-      <?php if ($cv == 1 || $admin): ?>
+      <?php if ($clv == 1 || $admin): ?>
         <li class="nav-item">
           <a href="/fitcoControl/Ubicaciones/Clientes/Clientes.php" class="transicion">CLIENTES</a>
         </li>

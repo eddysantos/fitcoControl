@@ -70,9 +70,9 @@ if (!$resultado) {
       <td class='col-md-2 text-center'>
         <h4><b>$piezas</b></h4>
       </td>
-      <td class='col-md-1 text-center'></td>
-      <td class='col-md-1 text-center'>
-        <a href='#' class='EditarProduccion spand-link' data-toggle='modal' data-target='#EditarProduccion' program-id='$idprog'><img src='/fitcoControl/Resources/iconos/pencil1.svg' class='$ocultar spand-icon'></a>
+      <td class='col-md-2 text-center'>
+        <a href='#' class='EditarProduccion spand-link' data-toggle='modal' data-target='#EditarProduccion' program-id='$idprog'><img src='/fitcoControl/Resources/iconos/001-edit.svg' class='$ocultar ml-5  spand-icon'></a>
+        <a href='#' class='EliminarProgramacion spand-link' program-id='$idprog'><img  src='/fitcoControl/Resources/iconos/002-delete.svg' class='$ocultar ml-5 spand-icon'></a>
       </td>
     </tr>";
 

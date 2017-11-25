@@ -291,8 +291,6 @@ function fetchProProduccion(){
   })
 }
 
-
-
 function ActivarBotonProduc(){
   $('.agregarproduccion').unbind();
   $('.agregarproduccion').click(function(){
@@ -347,7 +345,49 @@ function ActivarBotonProduc(){
       }
     });
 
-    //VISUALIZAR PRODUCCION EN MODAL
+//Eliminar Programacion
+    $('.EliminarProgramacion').unbind();
+    $('.EliminarProgramacion').click(function(){
+      var Idprogram = $(this).attr('program-id');
+      swal({
+      title: "Estas Seguro?",
+      text: "Ya no se podra recuperar el registro!",
+      type: "warning",
+      showCancelButton: true,
+      confirmButtonClass: "btn-danger",
+      confirmButtonText: "Si, Eliminar",
+      cancelButtonText: "No, cancelar",
+      closeOnConfirm: false,
+      closeOnCancel: false
+    },
+    function(isConfirm) {
+      if (isConfirm) {
+        $.ajax({
+          method: 'POST',
+          url: '/fitcoControl/Resources/PHP/Programacion/EliminarProgramacion.php',
+          data: {Idprogram: Idprogram},
+
+          success: function(result){
+            console.log(result);
+            if (result != 1) {
+              alertify.error('NO SE PUDO ELIMINAR');
+            }else if (result == 1){
+              fetchProgramacion();
+              fetchTablaGrafica();
+            }
+          },
+          error: function(exception){
+            console.error(exception)
+          }
+        });
+        swal("Eliminado!", "Se elimino correctamente.", "success");
+      } else {
+        swal("Cancelado", "El registro esta a salvo :)", "error");
+      }
+    });
+  });
+
+//VISUALIZAR PRODUCCION EN MODAL
     $('.visualizarproduccion').click(function(){
       var idProg = $(this).attr('program-id');
       $.ajax({
@@ -433,7 +473,6 @@ function ActivarBotonProduc(){
         }
       });
     });
-
 
     $('.eliminarProduc').unbind();
     $('.eliminarProduc').click(function(){
