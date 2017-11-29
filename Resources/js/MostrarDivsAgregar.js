@@ -79,6 +79,23 @@ $(document).ready(function(){
         $('#NuevoUsuario').hide();
       }
       break;
+
+
+      case "aventas":
+      if (status == 'cerrado') {
+        $('.spanV').css('display', 'inherit');
+        $(this).attr('status', 'abierto');
+        $('#Eventas').animate({"right": "36%"}, "slow");
+        // $('#usuarios').animate({"right": "36%"}, "slow");
+        $('#NuevaVenta').fadeIn(2500);
+      }else {
+        $('.spanV').css('display', '');
+        $(this).attr('status', 'cerrado');
+        $('#Eventas').animate({"right": "4%"}, "slow");
+        // $('#usuarios').animate({"right": "4%"}, "slow");
+        $('#NuevaVenta').hide();
+      }
+      break;
       default:
         console.error("Something went terribly wrong...");
     }

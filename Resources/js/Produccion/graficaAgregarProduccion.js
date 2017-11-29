@@ -36,6 +36,8 @@ function drawChart(data, options) {
   // dataTable.addColumn({ type: 'string', id: 'piezas' });
   dataTable.addColumn({ type: 'date', id: 'Start' });
   dataTable.addColumn({ type: 'date', id: 'End' });
+  // dataTable.addColumn({ type: 'string', id: 'piezas' });
+
 
   //console.log(data);
   dataTable.addRows(data);

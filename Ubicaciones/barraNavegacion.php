@@ -3,16 +3,6 @@
   $cv =  $_SESSION['user']['cobranza_ver'];
   $clv = $_SESSION['user']['cliente_ver'];
   $admin = $_SESSION['user']['privilegiosUsuario'] == "Administrador";
-
-  // $priv_produccion = $pv == "1" && $cv == "0" && $clv == "0";
-  // $priv_clientes =  $clv == "1" && $pv == "0" && $cv == "0";
-  // $priv_cobranza =  $cv == "1" && $clv == "0" && $pv == "0";
-  // $priv_pcl = $pv && $clv == "1"  && $cv == "0";
-  // $priv_cp = $cv && $pv == "1" && $clv == "0";
-  // $priv_ccl = $clv && $cv == "1" && $pv == "0";
-  // $priv_todos = $clv && $cv && $pv == "1";
-
-
   $priv_todos = true;
 
 ?>
@@ -40,39 +30,41 @@
     <script src="/fitcoControl/Resources/jquery/tether.min.js"></script>
   </head>
 
-  <div id="nav_wrap" class="sticky">
-    <h1 id="logo" style="left: 3%; transition: 0.5s;">FIT&amp;CO</h1>
-    <nav class="nav_animate">
+<div id="nav_wrap" class="sticky">
+  <nav class="nav_animate">
 
     <ul class="nav nav-pills nav-fill">
+      <!-- <li class="nav-item">
+        <a class="noborder"><h1 id="logo" style="">FIT&amp;CO</h1></a>
+      </li> -->
 
-      <?php if ($pv == 1 || $admin): ?>
-        <li class="nav-item"><a href="/fitcoControl/Ubicaciones/Produccion/produccion.php" class="w-95">PRODUCCION</a></li>
+      <?php if ($admin): ?>
+        <li class="nav-item"><a href="/fitcoControl/Ubicaciones/Usuarios/Usuarios.php">USUARIOS <span class="barra">DIVISIÓN 1</span></a></li>
       <?php else: ?>
-        <li class="nav-item"><a class="bloqueo w-95">PRODUCCION</a></li>
-      <?php endif; ?>
-
-      <?php if ($cv == 1 || $admin): ?>
-        <li class="nav-item"><a href="/fitcoControl/Ubicaciones/Cobranza/cobranza.php" class="w-95">TESORERÍA</a></li>
-      <?php else: ?>
-        <li class="nav-item"><a class="bloqueo w-95">COBRANZA</a></li>
+        <li class="nav-item"><a class="bloqueo w-95">USUARIOS (DIV 1)</a></li>
       <?php endif; ?>
 
       <?php if ($clv == 1 || $admin): ?>
-        <li class="nav-item"><a href="/fitcoControl/Ubicaciones/Clientes/Clientes.php" class="w-95">CLIENTES</a></li>
+        <li class="nav-item"><a href="/fitcoControl/Ubicaciones/Clientes/Clientes.php" >CLIENTES <span class="barra">DIVISIÓN 2</span></a></li>
       <?php else: ?>
-        <li class="nav-item"><a class="bloqueo w-95">CLIENTES</a></li>
+        <li class="nav-item"><a class="bloqueo w-95">CLIENTES (DIV 2)</a></li>
       <?php endif; ?>
 
-      <?php if ($admin): ?>
-        <li class="nav-item"><a href="/fitcoControl/Ubicaciones/Usuarios/Usuarios.php" class="w-95">USUARIOS</a></li>
+      <?php if ($cv == 1 || $admin): ?>
+        <li class="nav-item"><a href="/fitcoControl/Ubicaciones/Cobranza/cobranza.php" >TESORERÍA <span class="barra">DIVISIÓN 3</span></a></li>
       <?php else: ?>
-        <li class="nav-item"><a class="bloqueo w-95">USUARIOS</a></li>
+        <li class="nav-item"><a class="bloqueo w-95">TESORERÍA (DIV 3)</a></li>
       <?php endif; ?>
 
+      <?php if ($pv == 1 || $admin): ?>
+        <li class="nav-item"><a href="/fitcoControl/Ubicaciones/Produccion/produccion.php">PRODUCCIÓN <span class="barra">DIVISIÓN 4</span></a></li>
+      <?php else: ?>
+        <li class="nav-item"><a class="bloqueo w-95">PRODUCCIÓN (DIV 4)</a></li>
+      <?php endif; ?>
 
-
-      <li class="nav-item"><a href="/fitcoControl/Resources/PHP/Login/CerrarSesion.php" class="w-95">CERRAR SESION</a></li>
+      <li class="nav-item"><a href="#" >CONTROL DE CALIDAD <span class="barra">DIVISIÓN 5</span></a></li>
+      <li class="nav-item"><a href="/fitcoControl/Ubicaciones/Ventas/Ventas.php" >VENTAS <span class="barra">DIVISIÓN 6</span></a></li>
+      <!-- <li class="nav-item"><a class="noborder" href="/fitcoControl/Resources/PHP/Login/CerrarSesion.php" ><img src="/fitcoControl/Resources/iconos/001-close-1.svg" alt="Cerrar Sesión"></a></li> -->
     </ul>
   </nav>
 </div>

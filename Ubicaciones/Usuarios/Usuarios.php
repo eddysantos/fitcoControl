@@ -37,11 +37,6 @@ if (!isset($_SESSION['user'])) {
         </tbody>
       </table>
     </form>
-    <!-- <form id="usuarios" class="usuarios page p-0" style="margin-top:180px">
-      <table class="table table-hover table-fixed">
-
-      </table>
-    </form> -->
 
     <form id="NuevoUsuario" class="agregarnuevo" style="display:none">
       <table class="table">

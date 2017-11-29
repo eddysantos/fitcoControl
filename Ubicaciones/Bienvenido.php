@@ -29,53 +29,64 @@
   </style>
   <body>
     <div id="bienvenida">
-      <h1 id="logo">FIT&amp;CO</h1>
+
 
       <ul class="nav nav-pills nav-fill">
-      <?php if ($pv == 1 || $admin): ?>
+
+        <!-- <li class="nav-item"><h1 id="logo">FIT&amp;CO</h1></li> -->
+      <?php if ($admin): ?>
         <li class="nav-item">
-          <a href="/fitcoControl/Ubicaciones/Produccion/produccion.php" class="transicion">PRODUCCIÓN</a>
+          <a href="/fitcoControl/Ubicaciones/Usuarios/Usuarios.php" class="transicion">USUARIOS<span class="barra gris">DIVISION 1</span></a>
         </li>
       <?php else: ?>
         <li class="nav-item">
-          <a class="bloqueo">PRODUCCION</a>
+          <a class="bloqueo">USUARIOS<span class="barra gris">DIVISION 1</span></a>
+        </li>
+      <?php endif; ?>
+
+
+      <?php if ($clv == 1 || $admin): ?>
+        <li class="nav-item">
+          <a href="/fitcoControl/Ubicaciones/Clientes/Clientes.php" class="transicion">CLIENTES<span class="barra gris">DIVISION 2</span></a>
+        </li>
+      <?php else: ?>
+        <li class="nav-item">
+          <a class="bloqueo">CLIENTES<span class="barra gris">DIVISION 2</span></a>
         </li>
       <?php endif; ?>
 
 
       <?php if ($cv == 1 || $admin): ?>
         <li class="nav-item">
-          <a href="/fitcoControl/Ubicaciones/Cobranza/cobranza.php" class="transicion">TESORERÍA</a>
+          <a href="/fitcoControl/Ubicaciones/Cobranza/cobranza.php" class="transicion">TESORERÍA<span class="barra gris">DIVISION 3</span></a>
         </li>
       <?php else: ?>
         <li class="nav-item">
-          <a class="bloqueo">TESORERÍA</a>
+          <a class="bloqueo">TESORERÍA<span class="barra gris">DIVISION 3</span></a>
         </li>
       <?php endif; ?>
 
-      <?php if ($clv == 1 || $admin): ?>
+
+      <?php if ($pv == 1 || $admin): ?>
         <li class="nav-item">
-          <a href="/fitcoControl/Ubicaciones/Clientes/Clientes.php" class="transicion">CLIENTES</a>
+          <a href="/fitcoControl/Ubicaciones/Produccion/produccion.php" class="transicion">PRODUCCIÓN<span class="barra gris">DIVISION 4</span></a>
         </li>
       <?php else: ?>
         <li class="nav-item">
-          <a class="bloqueo">CLIENTES</a>
+          <a class="bloqueo">PRODUCCIÓN<span class="barra gris">DIVISION 4</span></a>
         </li>
       <?php endif; ?>
 
-      <?php if ($admin): ?>
-        <li class="nav-item">
-          <a href="/fitcoControl/Ubicaciones/Usuarios/Usuarios.php" class="transicion">USUARIOS</a>
-        </li>
-      <?php else: ?>
-        <li class="nav-item">
-          <a class="bloqueo">USUARIOS</a>
-        </li>
-      <?php endif; ?>
 
+      <li class="nav-item">
+        <a href="/fitcoControl/Ubicaciones/Ventas/Ventas.php" class="transicion">CONTROL DE CALIDAD<span class="barra gris">DIVISION 5</span></a>
+      </li>
         <li class="nav-item">
+          <a href="/fitcoControl/Ubicaciones/Ventas/Ventas.php" class="transicion">VENTAS<span class="barra gris">DIVISION 6</span></a>
+        </li>
+        <!-- <li class="nav-item">
           <a href="/fitcoControl/Resources/PHP/Login/CerrarSesion.php" class="transicion">CERRAR SESION</a>
-        </li>
+        </li> -->
       </ul>
     </div>
 

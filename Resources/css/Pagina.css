@@ -110,6 +110,9 @@ input:-webkit-autofill {
 .clt_usr .consultar:hover span{
   width: 190px;
 }
+.clt_usr .vent:hover span{
+  width: 120px!important;
+}
 
 .m20{
   margin:20px;

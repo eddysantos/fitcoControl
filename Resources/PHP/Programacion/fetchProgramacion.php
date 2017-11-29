@@ -35,9 +35,10 @@ if (false) {
 } else {
   $data['code'] = 1;
   while ($a = mysqli_fetch_assoc($resultados)) {
+    $pi =  $a['piezas'];
     $fi =  strtotime($a['FechaInicio']);
     $ff =  strtotime($a['FechaFinal']);
-    $pi =  strtotime($a['piezas']);
+    // $pi =  strtotime($a['piezas']);
     $data['response'][] = array(
       $a['Cliente'], $fi, $ff
     );
