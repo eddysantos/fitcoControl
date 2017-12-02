@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="/fitcoControl/Resources/fontAwesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="/fitcoControl/Resources/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/fitcoControl/Resources/css/Pagina.css">
+    <link rel="stylesheet" href="/fitcoControl/Resources/css/clockface.css">
     <link rel="stylesheet" href="/fitcoControl/Resources/css/Inputs.css">
     <link rel="stylesheet" href="/fitcoControl/Resources/css/modales.css">
     <link rel="stylesheet" href="/fitcoControl/Resources/css/sweetalert.css">

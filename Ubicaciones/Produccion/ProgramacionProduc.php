@@ -8,7 +8,7 @@ if (!isset($_SESSION['user'])) {
 
   $root = $_SERVER['DOCUMENT_ROOT'];
   require $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
-  require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
+  // require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
 ?>
 
 
@@ -38,8 +38,8 @@ if (!isset($_SESSION['user'])) {
               <td class="col-md-1"></td>
               <td class="col-md-3">CLIENTE</td>
               <td class="col-md-2">FECHA INICIO</td>
-              <td class="col-md-2">FECHA FINAL</td>
-              <td class="col-md-2">PIEZAS REQUERIDAS</td>
+              <td class="col-md-2">ENTREGA</td>
+              <td class="col-md-2">REQUERIDO</td>
               <td class="col-md-1"></td>
               <td class="col-md-1"></td>
               </tr>
@@ -74,15 +74,21 @@ if (!isset($_SESSION['user'])) {
                   </td>
                 </tr>
                 <tr class="row m20 mt-40">
-                  <td class="col-md-3 input-effect p-0">
+                  <td class="col-md-2 input-effect p-0">
                     <input class="effect-17 has-content w-100" type="date" required id="produccionFI">
                       <label>Fecha de Inicio</label>
                       <span class="focus-border"></span>
                   </td>
                   <td class="col-md-1"></td>
-                  <td class="col-md-3 input-effect p-0">
+                  <td class="col-md-2 input-effect p-0">
                     <input class="effect-17 has-content w-100" type="date" required id="produccionFF">
                       <label>Fecha Final</label>
+                      <span class="focus-border"></span>
+                  </td>
+                  <td class="col-md-1"></td>
+                  <td class="col-md-2 input-effect p-0">
+                    <input class="effect-17 has-content w-100" type="time" required id="produccionHR">
+                      <label>Hora de Entrega</label>
                       <span class="focus-border"></span>
                   </td>
                   <td class="col-md-1"></td>

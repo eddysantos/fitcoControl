@@ -6,7 +6,7 @@ if (!isset($_SESSION['user'])) {
 }
   $root = $_SERVER['DOCUMENT_ROOT'];
   require $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
-  require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
+  // require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
 ?>
 
 <div class="container">

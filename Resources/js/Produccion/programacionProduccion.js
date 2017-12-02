@@ -66,26 +66,31 @@ $('.agregar-programacion').click(function(){
   var cId = $('#npClientName').attr('client-id');
   var fi = $('#produccionFI').val();
   var ff = $('#produccionFF').val();
+  var hr = $('#produccionHR').val();
   var pz = $('#produccionPZ').val();
-  // var md = $('#produccionMD').val();
 
   validacion = $('#produccionFI').val() == ""
       || $('#produccionFF').val() == ""
+      || $('#produccionHR').val() == ""
       || $('#npClientName').val() == ""
-      || $('#produccionPZ').val() == ""
-      // || $('#produccionMD').val() == "";
+      || $('#produccionPZ').val() == "";
 
   validacionFecha = $('#produccionFI').val() > $('#produccionFF').val();
+  validacionHora =
+  $('#produccionHR').val() > '20:00:00'
+  || $('#produccionHR').val() <  '07:59:00';
 
   if (validacion) {
     swal("NO PUEDE CONTINUAR","Nesesita llenar todos los campos","error");
   } else if (validacionFecha) {
     swal("NO PUEDE CONTINUAR","Su fecha inicio no puede ser mayor a su fecha final","error");
+  }else if (validacionHora) {
+    swal("NO PUEDE CONTINUAR","La hora tiene que ser mayor a 08:00 y menor a 20:00 horas","error");
   }else {
     $.ajax({
       method: 'POST',
       url: '/fitcoControl/Resources/PHP/Programacion/addProgramacion.php',
-      data: {cId: cId, fi: fi, ff:ff, pz:pz},
+      data: {cId: cId, fi: fi, ff:ff, hr:hr, pz:pz},
       success: function(result){
         console.log(result);
         dibujarGrafica();
@@ -201,6 +206,48 @@ function SelectorCliente(){
 
 
 function ActivarBotonProgram(){
+
+  //Eliminar Programacion
+      $('.EliminarProgramacion').unbind();
+      $('.EliminarProgramacion').click(function(){
+        var Idprogram = $(this).attr('program-id');
+        swal({
+        title: "Estas Seguro?",
+        text: "Ya no se podra recuperar el registro!",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonClass: "btn-danger",
+        confirmButtonText: "Si, Eliminar",
+        cancelButtonText: "No, cancelar",
+        closeOnConfirm: false,
+        closeOnCancel: false
+      },
+      function(isConfirm) {
+        if (isConfirm) {
+          $.ajax({
+            method: 'POST',
+            url: '/fitcoControl/Resources/PHP/Programacion/EliminarProgramacion.php',
+            data: {Idprogram: Idprogram},
+
+            success: function(result){
+              console.log(result);
+              if (result != 1) {
+                alertify.error('NO SE PUDO ELIMINAR');
+              }else if (result == 1){
+                fetchProgramacion();
+                fetchTablaGrafica();
+              }
+            },
+            error: function(exception){
+              console.error(exception)
+            }
+          });
+          swal("Eliminado!", "Se elimino correctamente.", "success");
+        } else {
+          swal("Cancelado", "El registro esta a salvo :)", "error");
+        }
+      });
+    });
   //PASAR VARIABLES AL MODAL
   $('.EditarProduccion').unbind();
   $('.EditarProduccion').click(function(){
@@ -216,12 +263,11 @@ function ActivarBotonProgram(){
         console.log(rsp);
         if (rsp.code == 1) {
           $('#mpgr_id').val(rsp.response.pk_programacion);
-          // $('#mpgr_cliente').val(rsp.response.nombreCliente);
           $('#mpgr_cliente').val(rsp.response.nombreCliente).attr('client-id', rsp.response.fk_cliente);
           $('#mpgr_fini').val(rsp.response.fechaInicio);
           $('#mpgr_ffin').val(rsp.response.fechaFinal);
+          $('#mpgr_hora').val(rsp.response.horaEntrega);
           $('#mpgr_piezas').val(rsp.response.piezasRequeridas);
-          // $('#mpgr_meta').val(rsp.response.metaDiaria);
         } else {
           console.error("Hubo un error al jalar la informacion del cliente.");
           console.error(rsp.response);
@@ -240,7 +286,7 @@ function ActivarBotonProgram(){
     var fechaInicio = $('#mpgr_fini').val();
     var fechaFinal = $('#mpgr_ffin').val();
     var piezasRequeridas = $('#mpgr_piezas').val();
-    // var metaDiaria = $('#mpgr_meta').val();
+    var hr = $('#mpgr_hora').val();
 
     $.ajax({
       method: 'POST',
@@ -251,7 +297,7 @@ function ActivarBotonProgram(){
         mpgr_fini: fechaInicio,
         mpgr_ffin: fechaFinal,
         mpgr_piezas: piezasRequeridas,
-        // mpgr_meta: metaDiaria
+        hr: hr
       },
       success:function(result){
         console.log(result);
@@ -345,47 +391,7 @@ function ActivarBotonProduc(){
       }
     });
 
-//Eliminar Programacion
-    $('.EliminarProgramacion').unbind();
-    $('.EliminarProgramacion').click(function(){
-      var Idprogram = $(this).attr('program-id');
-      swal({
-      title: "Estas Seguro?",
-      text: "Ya no se podra recuperar el registro!",
-      type: "warning",
-      showCancelButton: true,
-      confirmButtonClass: "btn-danger",
-      confirmButtonText: "Si, Eliminar",
-      cancelButtonText: "No, cancelar",
-      closeOnConfirm: false,
-      closeOnCancel: false
-    },
-    function(isConfirm) {
-      if (isConfirm) {
-        $.ajax({
-          method: 'POST',
-          url: '/fitcoControl/Resources/PHP/Programacion/EliminarProgramacion.php',
-          data: {Idprogram: Idprogram},
 
-          success: function(result){
-            console.log(result);
-            if (result != 1) {
-              alertify.error('NO SE PUDO ELIMINAR');
-            }else if (result == 1){
-              fetchProgramacion();
-              fetchTablaGrafica();
-            }
-          },
-          error: function(exception){
-            console.error(exception)
-          }
-        });
-        swal("Eliminado!", "Se elimino correctamente.", "success");
-      } else {
-        swal("Cancelado", "El registro esta a salvo :)", "error");
-      }
-    });
-  });
 
 //VISUALIZAR PRODUCCION EN MODAL
     $('.visualizarproduccion').click(function(){

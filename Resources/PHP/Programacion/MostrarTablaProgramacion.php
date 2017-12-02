@@ -12,10 +12,10 @@ $query = "SELECT
 
 p.pk_programacion AS idprogram,
 c.nombreCliente AS cliente,
-p.fechaInicio AS fini,
-p.fechaFinal AS ffin,
+DATE_FORMAT(p.fechaInicio, '%d-%m-%Y') AS fini,
+DATE_FORMAT(p.fechaFinal, '%d-%m-%y') AS ffin,
 p.piezasRequeridas AS piezas,
--- p.metaDiaria AS meta,
+p.horaEntrega AS entrega,
 c.colorCliente AS color
 
 FROM ct_programacion p
@@ -40,7 +40,7 @@ if (!$resultado) {
     $fini = $row['fini'];
     $ffin = $row['ffin'];
     $piezas = $row['piezas'];
-    // $meta = $row['meta'];
+    $entrega = $row['entrega'];
     $color = $row['color'];
     $ocultar = "";
     $pe = $_SESSION['user']['produccion_editar'];
@@ -65,10 +65,10 @@ if (!$resultado) {
         <h4><b>$fini</b></h4>
       </td>
       <td class='col-md-2 text-center'>
-        <h4><b>$ffin</b></h4>
+        <h4><b>$ffin  $entrega</b></h4>
       </td>
       <td class='col-md-2 text-center'>
-        <h4><b>$piezas</b></h4>
+        <h4><b>$piezas pzs</b></h4>
       </td>
       <td class='col-md-2 text-center'>
         <a href='#' class='EditarProduccion spand-link' data-toggle='modal' data-target='#EditarProduccion' program-id='$idprog'><img src='/fitcoControl/Resources/iconos/001-edit.svg' class='$ocultar ml-5  spand-icon'></a>
