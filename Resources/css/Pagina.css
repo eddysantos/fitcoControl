@@ -196,7 +196,7 @@ p.titulo{
 a.linkboton{
 	font-family: 'Montserrat', sans-serif;
 	text-transform:uppercase;
-	letter-spacing:3px;
+	/*letter-spacing:3px;*/
 	display:inline-block;
 	text-decoration:none;
 	color:black;
@@ -209,7 +209,7 @@ a.linkboton{
   -webkit-transition: all ease 400ms;
   -moz-transition: all ease 400ms;
   -ms-transition: all ease 400ms;
-  font-size: 15px;
+  font-size: 14px; /*estaba en 15 px*/
   text-align: center!important;
 }
 
@@ -315,4 +315,27 @@ a.boton-colapso:hover{
 .buscar{
   border-radius: 8px;
   background-color: rgba(74, 119, 152, 0.2);
+}
+.footer{
+
+  position: fixed;
+  bottom: 0px;
+  background-color: #fff;
+  list-style: none;
+  width: 100%;
+  float: right;
+  margin-top: 50px;
+  margin-bottom: 1px;
+}
+.footer li a{
+font-size: 18px;
+list-style: none;
+}
+.footer li a:hover{
+  transition: .4s;
+  letter-spacing: 4px;
+  background-color: transparent;
+  font-weight: normal;
+  list-style: none;
+
 }

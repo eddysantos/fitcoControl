@@ -50,7 +50,6 @@ if (!$resultado) {
     $idcorte = $row['idcorte'];
     $cliente = $row['cliente'];
     $ffin = $row['ffin'];
-    // $piezas = $row['piezas'];
     $color = $row['color'];
     $finalizado = $row['finalizado'];
     $notas = $row['notas'];
@@ -59,7 +58,7 @@ if (!$resultado) {
 
     $hoy = date("Y-m-d");
 
-    $diasProg = (strtotime($fini)-strtotime($ffin))/86400;
+    $diasProg = (strtotime($ffin)-strtotime($fini))/86400;
     $diasProg = abs($diasProg);
     $horasProg = $hrentrega - 8;
 

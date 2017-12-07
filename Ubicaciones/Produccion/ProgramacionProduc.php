@@ -54,7 +54,7 @@ if (!isset($_SESSION['user'])) {
   </div>
 
 
-  <div class="align-items-center">
+  <div class="align-items-center" style="margin-bottom:100px">
     <div class="colapso mt-3">
       <a class="boton-colapso d-flex p-2" data-toggle="collapse" href="#colapsoNuevaProduc">
         <h3>| Programar Nueva Producción</h3>
@@ -98,15 +98,15 @@ if (!isset($_SESSION['user'])) {
                       <span class="focus-border"></span>
                   </td>
                 </tr>
+                <tr class="mt-5 row justify-content-center">
+                  <td class="col-md-6 mt-3 mb-2">
+                    <a class="linkboton agregar-programacion btn-block">AGREGAR<span class="top"></span></a>
+                  </td>
+                </tr>
               </tbody>
             </table>
           </form>
         </div>
-      </div>
-    </div>
-    <div class="mt-5 row justify-content-center">
-      <div class="col-md-6 mt-3 mb-2">
-        <a class="linkboton agregar-programacion btn-block">AGREGAR<span class="top"></span></a>
       </div>
     </div>
   </div>

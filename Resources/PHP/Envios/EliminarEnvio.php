@@ -7,22 +7,12 @@ $data = array(
 
 require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
 $query =
-"UPDATE ct_programacion
-SET fk_cliente = ?,
-fechaInicio = ?,
-fechaFinal =?,
-piezasRequeridas =?,
-horaEntrega = ?
-WHERE pk_programacion = ?";
+"DELETE FROM  ct_envios
+WHERE pk_envios = ?";
 
 $stmt = $conn->prepare($query);
-$stmt->bind_param('ssssss',
-  $_POST['mpgr_cliente'],
-  $_POST['mpgr_fini'],
-  $_POST['mpgr_ffin'],
-  $_POST['mpgr_piezas'],
-  $_POST['hr'],
-  $_POST['mpgr_id']
+$stmt->bind_param('s',
+  $_POST['envioId']
 );
 $stmt->execute();
 

@@ -21,11 +21,13 @@ cobranza_editar = ?,
 produccion_ver = ?,
 produccion_editar = ?,
 cliente_ver = ?,
-cliente_editar = ?
+cliente_editar = ?,
+verVentas = ?,
+editarVentas = ?
 WHERE pk_usuario = ?";
 
 $stmt = $conn->prepare($query);
-$stmt->bind_param('sssssssssssssss',
+$stmt->bind_param('sssssssssssssssss',
   $_POST['musr_nombre'],
   $_POST['musr_apellidos'],
   $_POST['musr_correo'],
@@ -40,6 +42,8 @@ $stmt->bind_param('sssssssssssssss',
   $_POST['musr_editProduccion'],
   $_POST['musr_verCliente'],
   $_POST['musr_editCliente'],
+  $_POST['vv'],
+  $_POST['ev'],
   $_POST['musr_id']
 );
 $stmt->execute();

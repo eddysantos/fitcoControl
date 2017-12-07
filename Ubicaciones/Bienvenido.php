@@ -7,6 +7,7 @@
 
   $pv = $_SESSION['user']['produccion_ver'];
   $cv =  $_SESSION['user']['cobranza_ver'];
+  $vv = $_SESSION['user']['verVentas'];
   $clv = $_SESSION['user']['cliente_ver'];
   $admin = $_SESSION['user']['privilegiosUsuario']== "Administrador";
 ?>
@@ -18,7 +19,6 @@
     <title>Fit&amp;Co Solutions</title>
     <link rel="stylesheet" href="/fitcoControl/Resources/css/barranavegacion.css">
     <link rel="stylesheet" href="/fitcoControl/Resources/bootstrap/css/bootstrap.min.css">
-    <!-- <link rel='stylesheet prefetch' href='http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css'> -->
 
 
   </head>

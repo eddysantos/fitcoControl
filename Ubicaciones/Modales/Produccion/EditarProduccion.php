@@ -32,14 +32,14 @@
               <tr class="row m20">
                 <td class="col-md-12 input-effect p-0">
                   <input class="w-100 modal-efecto-17 has-content" name="mpgr_ffin" id="mpgr_ffin" type="date">
-                    <label>Fecha Final</label>
+                    <label>Fecha Entrega</label>
                     <span class="focus-border"></span>
                 </td>
               </tr>
               <tr class="row m20">
                 <td class="col-md-12 input-effect p-0">
                   <input class="w-100 modal-efecto-17 has-content" name="mpgr_hora" id="mpgr_hora" type="time">
-                    <label>Meta Diaria</label>
+                    <label>Hora Entrega</label>
                     <span class="focus-border"></span>
                 </td>
               </tr>

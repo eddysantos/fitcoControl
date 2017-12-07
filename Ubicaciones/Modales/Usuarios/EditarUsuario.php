@@ -97,6 +97,14 @@
                   <input type="checkbox" id="musr_editCliente" name="musr_editCliente">Editar Cliente
                 </td>
               </tr>
+              <tr class="row">
+                <td class="col-md-6 text-center">
+                  <input type="checkbox" id="musr_verVentas" name="musr_verCliente">Ver Ventas
+                </td>
+                <td class="col-md-6 text-center">
+                  <input type="checkbox" id="musr_editVentas" name="musr_editCliente">Editar Ventas
+                </td>
+              </tr>
             </tbody>
           </table>
 
