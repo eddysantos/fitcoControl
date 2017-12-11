@@ -4,6 +4,17 @@ $(document).ready(function(){
     var status = $(this).attr('status');
 
     switch (accion) {
+
+      case "produccionLink":
+      if (status == 'cerrado') {
+        $(this).attr('status', 'abierto');
+        $('#dropProduccion').fadeIn(2500);
+      }else {
+        $(this).attr('status', 'cerrado');
+        $('#dropProduccion').hide();
+      }
+      break;
+
       case "acliente":
       if (status == 'cerrado') {
         $('.spanc').css('display', 'inherit');
@@ -15,6 +26,20 @@ $(document).ready(function(){
         $(this).attr('status', 'cerrado');
         $('#Eclientes').animate({"right": "4%"}, "slow");
         $('#NuevoCliente').hide();
+      }
+      break;
+
+      case "amaterial":
+      if (status == 'cerrado') {
+        $('.spanM').css('display', 'inherit');
+        $(this).attr('status', 'abierto');
+        $('#MMaterial').animate({"right": "36%"}, "slow");
+        $('#NuevoMaterial').fadeIn(2500);
+      }else {
+        $('.spanM').css('display', '');
+        $(this).attr('status', 'cerrado');
+        $('#MMaterial').animate({"right": "4%"}, "slow");
+        $('#NuevoMaterial').hide();
       }
       break;
 

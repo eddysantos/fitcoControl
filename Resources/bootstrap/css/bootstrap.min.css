@@ -6224,6 +6224,10 @@ a.bg-dark:focus, a.bg-dark:hover {
   margin-bottom: .5rem!important
 }
 
+.mb-20 {
+  margin-bottom: 10rem!important
+}
+
 .ml-2 {
   margin-left: .5rem!important
 }

@@ -5,8 +5,8 @@
     <img class="m-3" style="width:30px" src="/fitcoControl/Resources/iconos/001-close-1.svg"> Sesión</a>
   </li>
 
+  <script src="/fitcoControl/Resources/js/Inputs.js"></script>
+  <script src="/fitcoControl/Resources/js/MostrarDivsAgregar.js"></script>
+  <script type="text/javascript" src="/fitcoControl/Resources/js/Materiales/Materiales.js"></script>
 
-    <script src="/fitcoControl/Resources/js/Clientes/Cliente.js"></script>
-    <script src="/fitcoControl/Resources/js/Inputs.js"></script>
-    <script src="/fitcoControl/Resources/js/MostrarDivsAgregar.js"></script>
 </footer>

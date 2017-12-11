@@ -246,7 +246,7 @@ a.linkboton span.top{
 a.linkboton:hover{
 	color:white!important;
 	border: 2px solid rgba(117, 117, 117, 0.49);
-  letter-spacing:5px;
+  letter-spacing:0.5px;
 }
 
 a.linkboton:hover span.top{

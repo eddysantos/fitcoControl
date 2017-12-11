@@ -216,4 +216,45 @@ function ActivarBotonesUsuario(){
       }
     });
   });
+
+
+  $('.eliminarUser').unbind();
+  $('.eliminarUser').click(function(){
+    var usuarioId = $(this).attr('usuario-id');
+    swal({
+    title: "Estas Seguro?",
+    text: "Ya no se podra recuperar el registro!",
+    type: "warning",
+    showCancelButton: true,
+    confirmButtonClass: "btn-danger",
+    confirmButtonText: "Si, Eliminar",
+    cancelButtonText: "No, cancelar",
+    closeOnConfirm: false,
+    closeOnCancel: false
+  },
+  function(isConfirm) {
+    if (isConfirm) {
+      $.ajax({
+        method: 'POST',
+        url: '/fitcoControl/Resources/PHP/Usuarios/EliminarUsuario.php',
+        data: {usuarioId: usuarioId},
+
+        success: function(result){
+          console.log(result);
+          if (result != 1) {
+            alertify.error('NO SE PUDO ELIMINAR');
+          }else if (result == 1){
+            fetchUsuario();
+          }
+        },
+        error: function(exception){
+          console.error(exception)
+        }
+      });
+      swal("Eliminado!", "Se elimino correctamente.", "success");
+    } else {
+      swal("Cancelado", "El registro esta a salvo :)", "error");
+    }
+  });
+});
 }

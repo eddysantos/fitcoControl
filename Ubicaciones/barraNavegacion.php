@@ -1,13 +1,10 @@
 <?php
-
-
   $pv = $_SESSION['user']['produccion_ver'];
   $cv =  $_SESSION['user']['cobranza_ver'];
   $clv = $_SESSION['user']['cliente_ver'];
   $vv = $_SESSION['user']['verVentas'];
   $admin = $_SESSION['user']['privilegiosUsuario'] == "Administrador";
   $priv_todos = true;
-
 ?>
   <head>
     <meta charset="utf-8">
@@ -34,7 +31,6 @@
 
 <div id="nav_wrap" class="sticky">
   <nav class="nav_animate">
-
     <ul class="nav nav-pills nav-fill">
 
       <?php if ($admin): ?>
@@ -50,7 +46,7 @@
       <?php endif; ?>
 
       <?php if ($cv == 1 || $admin): ?>
-        <li class="nav-item"><a href="/fitcoControl/Ubicaciones/Cobranza/cobranza.php">TESORERÍA <span class="barra">DIVISIÓN 3</span></a></li>
+        <li class="nav-item"><a href="/fitcoControl/Ubicaciones/Cobranza/tesoreria.php">TESORERÍA <span class="barra">DIVISIÓN 3</span></a></li>
       <?php else: ?>
         <li class="nav-item"><a class="bloqueo w-95">TESORERÍA <span class="barra">DIVISIÓN 3</span></a></li>
       <?php endif; ?>
@@ -61,7 +57,11 @@
         <li class="nav-item"><a class="bloqueo w-95">PRODUCCIÓN <span class="barra">DIVISIÓN 4</span></a></li>
       <?php endif; ?>
 
-      <li class="nav-item"><a class="bloqueo w-95">CONTROL DE CALIDAD <span class="barra">DIVISIÓN 5</span></a></li>
+      <li class="nav-item">
+        <a class="bloqueo w-95">CONTROL DE CALIDAD
+          <span class="barra">DIVISIÓN 5</span>
+        </a>
+      </li>
 
       <?php if ($vv == 1 || $admin): ?>
         <li class="nav-item"><a href="/fitcoControl/Ubicaciones/Ventas/Ventas.php">VENTAS <span class="barra">DIVISIÓN 6</span></a></li>

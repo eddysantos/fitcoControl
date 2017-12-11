@@ -1,6 +1,5 @@
 <?php
   session_start();
-
   if (!isset($_SESSION['user'])) {
     header("Location: /fitcoControl/index.php");
   }
@@ -58,7 +57,7 @@
 
       <?php if ($cv == 1 || $admin): ?>
         <li class="nav-item">
-          <a href="/fitcoControl/Ubicaciones/Cobranza/cobranza.php" class="transicion">TESORERÍA<span class="barra gris">DIVISION 3</span></a>
+          <a href="/fitcoControl/Ubicaciones/Cobranza/tesoreria.php" class="transicion">TESORERÍA<span class="barra gris">DIVISION 3</span></a>
         </li>
       <?php else: ?>
         <li class="nav-item">
@@ -79,14 +78,18 @@
 
 
       <li class="nav-item">
-        <a href="/fitcoControl/Ubicaciones/Ventas/Ventas.php" class="transicion">CONTROL DE CALIDAD<span class="barra gris">DIVISION 5</span></a>
+        <a href="#" class="bloqueo">CONTROL DE CALIDAD<span class="barra gris">DIVISION 5</span></a>
       </li>
+
+      <?php if ($pv == 1 || $admin): ?>
         <li class="nav-item">
           <a href="/fitcoControl/Ubicaciones/Ventas/Ventas.php" class="transicion">VENTAS<span class="barra gris">DIVISION 6</span></a>
         </li>
-        <!-- <li class="nav-item">
-          <a href="/fitcoControl/Resources/PHP/Login/CerrarSesion.php" class="transicion">CERRAR SESION</a>
-        </li> -->
+      <?php else: ?>
+        <li class="nav-item">
+          <a class="bloqueo">VENTAS<span class="barra gris">DIVISION 6</span></a>
+        </li>
+      <?php endif; ?>
       </ul>
     </div>
 
