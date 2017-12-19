@@ -99,8 +99,8 @@ if (!isset($_SESSION['user'])) {
                   </td>
                 </tr>
                 <tr class="mt-5 row justify-content-center">
-                  <td class="col-md-6 mt-3 mb-2">
-                    <a class="linkboton agregar-programacion btn-block">AGREGAR<span class="top"></span></a>
+                  <td class="col-md-3 mt-3 mb-2">
+                    <a href="#" class="linkboton agregar-programacion btn-block">AGREGAR<span class="top"></span></a>
                   </td>
                 </tr>
               </tbody>

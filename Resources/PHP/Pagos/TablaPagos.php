@@ -38,7 +38,6 @@ if (false) {
     $importe = number_format($row['pagado'], 2);
     $ce =  $_SESSION['user']['cobranza_editar'];
     $admin = $_SESSION['user']['privilegiosUsuario'] == "Administrador";
-    $ocultar = "";
 
 
     if ($ce == 1 || $admin) {
@@ -70,7 +69,7 @@ if (false) {
         <td class='col-md-2 text-center pr-0 pl-0'>
         <a class='bloqueo editarPago spand-linkm'><img src='/fitcoControl/Resources/iconos/001-edit.svg' class='mr-4 spand-iconm'></a>
 
-        <a class='bloqueo spand-linkm'  pago-id='$idpagos'><img src='/fitcoControl/Resources/iconos/002-delete.svg' class='spand-iconm'></a>
+        <a class='bloqueo spand-linkm'><img src='/fitcoControl/Resources/iconos/002-delete.svg' class='spand-iconm'></a>
         </td>
       </tr>";
     }

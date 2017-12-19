@@ -40,6 +40,8 @@ if (false) {
     $pe = $_SESSION['user']['produccion_editar'];
     $admin = $_SESSION['user']['privilegiosUsuario']== "Administrador";
 
+
+
     if ($pe == 1 || $admin) {
     $data["infoTabla"].= "
     <tr class='row bordelateral' id='item'>

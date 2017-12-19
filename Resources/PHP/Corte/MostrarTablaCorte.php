@@ -81,7 +81,6 @@ if (!$resultado) {
     }
 
 
-
     $data["infoTabla"].= "<tr class='row bordelateral  m-0' id='item'>
 
         <td class='col-md-2'>

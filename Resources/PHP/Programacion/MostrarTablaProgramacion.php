@@ -42,44 +42,60 @@ if (!$resultado) {
     $piezas = $row['piezas'];
     $entrega = $row['entrega'];
     $color = $row['color'];
-    $ocultar = "";
     $pe = $_SESSION['user']['produccion_editar'];
     $admin = $_SESSION['user']['privilegiosUsuario'];
 
 
-    if ($admin == "Administrador") {
-     $ocultar = "";
-   }elseif ($pe == "0") {
-     $ocultar = "ocultar";
-   }
+    if ($pe == 1 || $admin == "Administrador") {
+      $data["infoTabla"].= "<tr class='row bordelateral m-0' id='item'>
+        <td class='col-md-1'>
+          <img src='/fitcoControl/Resources/iconos/transport.svg' class='icono'>
+        </td>
+        <td class='col-md-3'>
+          <h4><b><input type='color' value='$color'>$cliente</b></h4>
+        </td>
+        <td class='col-md-2 text-center'>
+          <h4><b>$fini</b></h4>
+        </td>
+        <td class='col-md-2 text-center'>
+          <h4><b>$ffin  $entrega</b></h4>
+        </td>
+        <td class='col-md-2 text-center'>
+          <h4><b>$piezas pzs</b></h4>
+        </td>
+        <td class='col-md-2 text-center'>
+          <a href='#' class='EditarProduccion spand-link' data-toggle='modal' data-target='#EditarProduccion' program-id='$idprog'><img src='/fitcoControl/Resources/iconos/001-edit.svg' class='sml-5  spand-icon'></a>
 
+          <a href='#' class='EliminarProgramacion spand-link' program-id='$idprog'><img  src='/fitcoControl/Resources/iconos/002-delete.svg' class='ml-5 spand-icon'></a>
+        </td>
+      </tr>";
+    }elseif ($pe == 0) {
+      $data["infoTabla"].= "<tr class='row bordelateral m-0' id='item'>
+        <td class='col-md-1'>
+          <img src='/fitcoControl/Resources/iconos/transport.svg' class='icono'>
+        </td>
+        <td class='col-md-3'>
+          <h4><b><input type='color' value='$color'>$cliente</b></h4>
+        </td>
+        <td class='col-md-2 text-center'>
+          <h4><b>$fini</b></h4>
+        </td>
+        <td class='col-md-2 text-center'>
+          <h4><b>$ffin  $entrega</b></h4>
+        </td>
+        <td class='col-md-2 text-center'>
+          <h4><b>$piezas pzs</b></h4>
+        </td>
+        <td class='col-md-2 text-center'>
+          <a href='#' class='bloqueo EditarProduccion spand-link'><img src='/fitcoControl/Resources/iconos/001-edit.svg' class='ml-5  spand-icon'></a>
 
-    $data["infoTabla"].= "<tr class='row bordelateral m-0' id='item'>
-      <td class='col-md-1'>
-        <img src='/fitcoControl/Resources/iconos/transport.svg' class='icono'>
-      </td>
-      <td class='col-md-3'>
-        <h4><b><input type='color' value='$color'>$cliente</b></h4>
-      </td>
-      <td class='col-md-2 text-center'>
-        <h4><b>$fini</b></h4>
-      </td>
-      <td class='col-md-2 text-center'>
-        <h4><b>$ffin  $entrega</b></h4>
-      </td>
-      <td class='col-md-2 text-center'>
-        <h4><b>$piezas pzs</b></h4>
-      </td>
-      <td class='col-md-2 text-center'>
-        <a href='#' class='EditarProduccion spand-link' data-toggle='modal' data-target='#EditarProduccion' program-id='$idprog'><img src='/fitcoControl/Resources/iconos/001-edit.svg' class='$ocultar ml-5  spand-icon'></a>
-        <a href='#' class='EliminarProgramacion spand-link' program-id='$idprog'><img  src='/fitcoControl/Resources/iconos/002-delete.svg' class='$ocultar ml-5 spand-icon'></a>
-      </td>
-    </tr>";
-
-
+          <a href='#' class='bloqueo spand-link'><img  src='/fitcoControl/Resources/iconos/002-delete.svg' class='ml-5 spand-icon'></a>
+        </td>
+      </tr>";
+    }
   }
-  echo json_encode($data);
 }
+  echo json_encode($data);
 
 mysqli_free_result($resultado);
 mysqli_close($conn);

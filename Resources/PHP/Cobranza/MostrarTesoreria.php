@@ -144,7 +144,6 @@ if (isset($_POST['cobranza'])) {
      $suma += $row['importe'];
      $total += $row['pagado'];
      $diferencia += $row['importe']-$row['pagado'];
-
    }
    $tabla.="
      <tfoot>

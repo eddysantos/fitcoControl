@@ -1,6 +1,6 @@
 
 <div class="modal fade" id="EditarUsuario">
-  <div class="modal-dialog modal-med">
+  <div class="modal-dialog modal-med" style="margin-top:65px!important">
     <div class="modal-content">
       <div class="modal-header">
         <button class="close" type="button" name="button" data-dismiss="modal" area-label="close">

@@ -81,7 +81,7 @@
         <a href="#" class="bloqueo">CONTROL DE CALIDAD<span class="barra gris">DIVISION 5</span></a>
       </li>
 
-      <?php if ($pv == 1 || $admin): ?>
+      <?php if ($vv == 1 || $admin): ?>
         <li class="nav-item">
           <a href="/fitcoControl/Ubicaciones/Ventas/Ventas.php" class="transicion">VENTAS<span class="barra gris">DIVISION 6</span></a>
         </li>

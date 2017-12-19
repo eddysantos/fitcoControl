@@ -68,10 +68,12 @@ if (!$resultado) {
     }
 
 
+
+
     if ($admin == "Administrador") {
      $ocultar = "";
    }elseif ($pe == "0") {
-     $ocultar = "ocultar";
+     $ocultar = "bloqueo";
    }
 
 
@@ -92,19 +94,16 @@ if (!$resultado) {
           <h4><b>$ffin</b></h4>
         </td>
 
-        <td class='col-md-1 text-right'>
+        <td class='col-md-2 text-right'>
           <a href='#' class='agregarproduccion spand-link' program-id='$idprog'><img src='/fitcoControl/Resources/iconos/003-add.svg' class='spand-icon'></a>
-        </td>
-
-        <td class='col-md-1 text-center'>
-          <a href='#' class='visualizarproduccion spand-link' data-toggle='modal' data-target='#VisualizarTablaProduccion' program-id='$idprog'><img src='/fitcoControl/Resources/iconos/magnifier.svg' class='spand-icon'></a>
+          <a href='#' class='ml-3 visualizarproduccion spand-link' data-toggle='modal' data-target='#VisualizarTablaProduccion' program-id='$idprog'><img src='/fitcoControl/Resources/iconos/magnifier.svg' class='spand-icon'></a>
         </td>
       </tr>";
 
 
   }
   echo json_encode($data);
-}
+  
 mysqli_free_result($resultado);
 mysqli_close($conn);
 
