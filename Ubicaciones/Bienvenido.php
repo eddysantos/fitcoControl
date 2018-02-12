@@ -78,7 +78,7 @@
 
 
       <li class="nav-item">
-        <a href="#" class="bloqueo">CONTROL DE CALIDAD<span class="barra gris">DIVISION 5</span></a>
+        <a class="bloqueo">CONTROL DE CALIDAD<span class="barra gris">DIVISION 5</span></a>
       </li>
 
       <?php if ($vv == 1 || $admin): ?>

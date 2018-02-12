@@ -49,10 +49,10 @@ if (false) {
         <h4><b>$fecha</b></h4>
       </td>
       <td class='col-md-3 text-center'>
-        <h4><b>$meta piezas</b></h4>
+        <h4><b>$meta pzs</b></h4>
       </td>
       <td class='col-md-3 text-center'>
-        <h4><b>$cantidad piezas</b></h4>
+        <h4><b>$cantidad pzs</b></h4>
       </td>
       <td class='col-md-3 text-center'>
         <a href='' id='btnEditarProduc' class='editarProduc spand-linkm' data-toggle='modal' data-target='#EdProd' pro-id='$idProduc'><img src='/fitcoControl/Resources/iconos/001-edit.svg' class='ml-5 mr-4 spand-iconm'></a>
@@ -67,10 +67,10 @@ if (false) {
         <h4><b>$fecha</b></h4>
       </td>
       <td class='col-md-3 text-center'>
-        <h4><b>$meta piezas</b></h4>
+        <h4><b>$meta pzs</b></h4>
       </td>
       <td class='col-md-3 text-center'>
-        <h4><b>$cantidad piezas</b></h4>
+        <h4><b>$cantidad pzs</b></h4>
       </td>
       <td class='col-md-3 text-center'>
         <a class='bloqueo spand-linkm'><img src='/fitcoControl/Resources/iconos/001-edit.svg' class='ml-5 mr-4 spand-iconm'></a>

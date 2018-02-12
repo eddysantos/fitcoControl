@@ -1,4 +1,4 @@
-
+@import url('https://fonts.googleapis.com/css?family=Encode+Sans+Condensed');
 @import url('https://fonts.googleapis.com/css?family=Quicksand');
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 
@@ -112,6 +112,10 @@ input:-webkit-autofill {
 }
 .clt_usr .vent:hover span{
   width: 120px!important;
+}
+
+.clt_usr .ventGraf:hover span{
+  width: 135px!important;
 }
 
 .m20{

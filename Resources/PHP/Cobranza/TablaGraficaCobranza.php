@@ -1,4 +1,5 @@
 
+
 <?php
 
 $root = $_SERVER['DOCUMENT_ROOT'];
@@ -8,6 +9,7 @@ $data = array(
   'response' => "",
   'infoTabla' => ""
 );
+
 $query = "SELECT
 
 co.pk_cobranza AS idcobranza,

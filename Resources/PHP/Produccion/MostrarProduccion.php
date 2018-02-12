@@ -46,10 +46,7 @@ if (!$resultado) {
     $color = $row['color'];
     $total = $row['total'];
     $hoy = date("Y-m-d");
-    $iconocaja = "";
-    $background = "";
     $numerosemana = date("W",strtotime($ffin));//sacar numero de la semana
-    $ocultar = "";
     $pe = $_SESSION['user']['produccion_editar'];
     $admin = $_SESSION['user']['privilegiosUsuario'];
 
@@ -67,14 +64,6 @@ if (!$resultado) {
       $iconocaja = "002-delivery.svg";
     }
 
-
-
-
-    if ($admin == "Administrador") {
-     $ocultar = "";
-   }elseif ($pe == "0") {
-     $ocultar = "bloqueo";
-   }
 
 
     $data["infoTabla"].= "<tr class='$background row bordelateral  m-0' id='item'>
@@ -102,8 +91,8 @@ if (!$resultado) {
 
 
   }
-  echo json_encode($data);
-  
+echo json_encode($data);
+}
 mysqli_free_result($resultado);
 mysqli_close($conn);
 

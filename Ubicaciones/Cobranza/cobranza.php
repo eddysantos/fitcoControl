@@ -19,7 +19,7 @@ if (!isset($_SESSION['user'])) {
     </a>
     <a class="ml-3 rotate-link consultar ancla" data-toggle='modal' data-target='#ModalGraficaCobranza'>
       <img src="/fitcoControl/Resources/iconos/grafica2.svg" class=" icon rotate-icon" style="width:30px">
-      <span class="spanD">Detalle Cobranza</span>
+      <span class="spanD">Grafica Cobranza</span>
     </a>
     <a class="ml-3 rotate-link consultar ancla" accion="btesoreria" status="cerrado">
       <img src="/fitcoControl/Resources/iconos/search.svg" class=" icon rotate-icon" style="width:30px">
