@@ -36,7 +36,7 @@ $resultado = mysqli_query($conn,$query);
 if (!$resultado) {
   $data['code'] = 2;
   $data['response'] = mysqli_error($conn);
-  //echo json_encode($data);
+  echo json_encode($data);
 }else {
   while($row = mysqli_fetch_assoc($resultado)){
     $data["data"][]= $row;
@@ -76,8 +76,9 @@ if (!$resultado) {
   }
   // echo json_encode($data);
 }
-
-echo json_encode(utf8ize($data));
+// $data['infoTabla'] = utf8ize($data['infoTabla']);
+echo json_encode($data);
+// echo json_encode(utf8ize($data));
 
 mysqli_free_result($resultado);
 mysqli_close($conn);
