@@ -148,5 +148,7 @@ if (!isset($_SESSION['user'])) {
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
   require $root . '/fitcoControl/Ubicaciones/Modales/Usuarios/EditarUsuario.php';
-  require $root . '/fitcoControl/Resources/PHP/Usuarios/pieUsuario.php';
+  // require $root . '/fitcoControl/Resources/PHP/Usuarios/pieUsuario.php';
+  require $root . '/fitcoControl/Resources/PHP/UsuariosPrueba/pieUsuarios.php';
+
 ?>

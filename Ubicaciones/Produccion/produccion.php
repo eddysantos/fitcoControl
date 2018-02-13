@@ -21,7 +21,7 @@ require  $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
 
     <div class="col-md-4">
       <div class="card">
-        <img class="card-img-top w-35 align-self-center m-5" src="/fitcoControl/Resources/iconos/camisarojo.svg">
+        <img class="w-35 align-self-center m-5" src="/fitcoControl/Resources/iconos/camisarojo.svg">
         <div class="card-body">
           <a href="#" accion="produccionLink" status="cerrado" class="consultar linkboton btn-block">Departamento de Producción <img style="width:20px" src="/fitcoControl/Resources/iconos/arrowdown.svg">
             <span class="top"></span>
@@ -44,7 +44,7 @@ require  $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
 
     <div class="col-md-4">
       <div class="card">
-        <img class="card-img-top w-35 align-self-center m-5" src="/fitcoControl/Resources/iconos/010-delivery.svg">
+        <img class="w-35 align-self-center m-5" src="/fitcoControl/Resources/iconos/010-delivery.svg">
         <div class="card-body">
           <a href="/fitcoControl/Ubicaciones/Envios/Envios.php" class="linkboton btn-block">Departamento de Envios<span class="a top"></span></a>
         </div>

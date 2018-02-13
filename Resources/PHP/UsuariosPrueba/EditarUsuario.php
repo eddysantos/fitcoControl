@@ -26,13 +26,14 @@ verVentas = ?,
 editarVentas = ?
 WHERE pk_usuario = ?";
 
-$stmt = $conn->prepare($query);
 
+$stmt = $conn->prepare($query);
 error_log("Pase por editar usuario!");
 
 if (!($stmt)) {
   error_log($conn->$error);
   }
+
 $stmt->bind_param('sssssssssssssssss',
   $_POST['musr_nombre'],
   $_POST['musr_apellidos'],

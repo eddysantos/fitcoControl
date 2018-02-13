@@ -23,7 +23,7 @@ require  $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
 
     <div class="col-md-4">
       <div class="card">
-        <img class="card-img-top w-35 align-self-center m-5" src="/fitcoControl/Resources/iconos/002-cuentasxpagar.svg">
+        <img class="w-35 align-self-center m-5" src="/fitcoControl/Resources/iconos/002-cuentasxpagar.svg">
         <div class="card-body">
           <a href="#" class="bloqueo linkboton btn-block">Departamento Cuentas x pagar
             <span class="top"></span>
@@ -34,7 +34,7 @@ require  $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
 
     <div class="col-md-4">
       <div class="card">
-        <img class="card-img-top w-35 align-self-center m-5" src="/fitcoControl/Resources/iconos/006-materiales.svg">
+        <img class="w-35 align-self-center m-5" src="/fitcoControl/Resources/iconos/006-materiales.svg">
         <div class="card-body">
           <a href="/fitcoControl/Ubicaciones/Materiales/Materiales.php" class="linkboton btn-block">Departamento Materiales
             <span class="a top"></span>

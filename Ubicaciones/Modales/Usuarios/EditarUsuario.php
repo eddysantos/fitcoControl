@@ -99,10 +99,10 @@
               </tr>
               <tr class="row">
                 <td class="col-md-6 text-center">
-                  <input type="checkbox" id="musr_verVentas" name="musr_verCliente">Ver Ventas
+                  <input type="checkbox" id="musr_verVentas" name="musr_verVentas">Ver Ventas
                 </td>
                 <td class="col-md-6 text-center">
-                  <input type="checkbox" id="musr_editVentas" name="musr_editCliente">Editar Ventas
+                  <input type="checkbox" id="musr_editVentas" name="musr_editVentas">Editar Ventas
                 </td>
               </tr>
             </tbody>

@@ -1,18 +1,9 @@
 <?php
 
+session_start();
+
 $root = $_SERVER['DOCUMENT_ROOT'];
 require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
-
-function utf8ize($d) {
-    if (is_array($d)) {
-        foreach ($d as $k => $v) {
-            $d[$k] = utf8_encode($v);
-        }
-    } else if (is_string ($d)) {
-        return utf8_encode($d);
-    }
-    return $d;
-}
 
 $data = array(
   'code' => "",
@@ -34,9 +25,7 @@ ORDER BY nombreUsuario ASC";
 $resultado = mysqli_query($conn,$query);
 
 if (!$resultado) {
-  $data['code'] = 2;
-  $data['response'] = mysqli_error($conn);
-  //echo json_encode($data);
+  die("Error");
 }else {
   while($row = mysqli_fetch_assoc($resultado)){
     $data["data"][]= $row;
@@ -74,10 +63,8 @@ if (!$resultado) {
 
 
   }
-  // echo json_encode($data);
+  echo json_encode($data);
 }
-
-echo json_encode(utf8ize($data));
 
 mysqli_free_result($resultado);
 mysqli_close($conn);

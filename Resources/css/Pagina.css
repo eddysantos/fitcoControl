@@ -200,7 +200,7 @@ p.titulo{
 a.linkboton{
 	font-family: 'Montserrat', sans-serif;
 	text-transform:uppercase;
-	/*letter-spacing:3px;*/
+	letter-spacing:0px!important;
 	display:inline-block;
 	text-decoration:none;
 	color:black;
@@ -231,7 +231,7 @@ a.linkboton span{
 a.linkboton span.a{
 	display:block;
 	position:absolute;
-	background: rgba(200, 28, 28, 0.63);
+	background: rgba(200, 28, 28, 0.63)!important;
 	transition: all ease 400ms;
   -webkit-transition: all ease 400ms;
   -moz-transition: all ease 400ms;

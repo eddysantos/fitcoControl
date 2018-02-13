@@ -13,8 +13,6 @@ function markCheckbox(selector, value){
     selector.prop('checked', false);
   }
 }
-
-
 $(document).ready(function(){
   fetchUsuario();
 
@@ -51,7 +49,7 @@ $(document).ready(function(){
     }else {
       $.ajax({
         method: 'POST',
-        url: '/fitcoControl/Resources/PHP/Usuarios/Agregarusuario.php',
+        url: '/fitcoControl/Resources/PHP/UsuariosPrueba/Agregarusuario.php',
         data: {
           usr_nombre: nombreUsuario,
           usr_apellidos: apellidosUsuario,
@@ -89,18 +87,18 @@ $(document).ready(function(){
       })
     }
   });
-});
+  });
 
 
 
-//MOSTRAR LOS REGISTROS EN PANTALLA
+//Muestra los registros en pantalla
 function fetchUsuario(){
   $.ajax({
     method: 'POST',
-    url:'/fitcoControl/Resources/PHP/Usuarios/MostrarTablaUsuario.php',
+    url:'/fitcoControl/Resources/PHP/UsuariosPrueba/MostrarTablaUsuario.php',
     success:function(result){
-      console.log(result);
       var rsp = JSON.parse(result);
+      console.log(rsp);
       $('#mostrarUsuarios').html(rsp.infoTabla);
       ActivarBotonesUsuario();
     },
@@ -112,15 +110,14 @@ function fetchUsuario(){
 
 
 function ActivarBotonesUsuario(){
-
-  //PARA VISUALIZAR DATOS EN EL MODAL//
+  // Asociar un evento al botón que muestra la ventana modal
   $('.EditUsuario').unbind();
   $('.EditUsuario').click(function(){
     var usuarioId = $(this).attr('usuario-id');
 
     $.ajax({
       method: 'POST',
-      url: '/fitcoControl/Resources/PHP/Usuarios/fetchUsuarioData.php',
+      url: '/fitcoControl/Resources/PHP/UsuariosPrueba/fetchUsuarioData.php',
       data: {usuarioId: usuarioId},
 
       success: function(result){
@@ -177,7 +174,7 @@ function ActivarBotonesUsuario(){
 
     $.ajax({
       method: 'POST',
-      url: '/fitcoControl/Resources/PHP/Usuarios/EditarUsuario.php',
+      url: '/fitcoControl/Resources/PHP/UsuariosPrueba/EditarUsuario.php',
       data: {
         musr_id: idUsuario,
         musr_nombre: nombreUsuario,
