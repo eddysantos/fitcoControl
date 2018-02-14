@@ -1,6 +1,6 @@
 
 <div class="modal fade" id="EditarUsuario">
-  <div class="modal-dialog modal-med">
+  <div class="modal-dialog modal-med" style="margin-top:65px!important">
     <div class="modal-content">
       <div class="modal-header">
         <button class="close" type="button" name="button" data-dismiss="modal" area-label="close">
@@ -95,6 +95,14 @@
                 </td>
                 <td class="col-md-6 text-center">
                   <input type="checkbox" id="musr_editCliente" name="musr_editCliente">Editar Cliente
+                </td>
+              </tr>
+              <tr class="row">
+                <td class="col-md-6 text-center">
+                  <input type="checkbox" id="musr_verVentas" name="musr_verVentas">Ver Ventas
+                </td>
+                <td class="col-md-6 text-center">
+                  <input type="checkbox" id="musr_editVentas" name="musr_editVentas">Editar Ventas
                 </td>
               </tr>
             </tbody>

@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 $root = $_SERVER['DOCUMENT_ROOT'];
 require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
 
@@ -12,10 +12,10 @@ $query = "SELECT
 
 p.pk_programacion AS idprogram,
 c.nombreCliente AS cliente,
-p.fechaInicio AS fini,
-p.fechaFinal AS ffin,
+DATE_FORMAT(p.fechaInicio, '%d-%m-%Y') AS fini,
+DATE_FORMAT(p.fechaFinal, '%d-%m-%y') AS ffin,
 p.piezasRequeridas AS piezas,
-p.metaDiaria AS meta,
+p.horaEntrega AS entrega,
 c.colorCliente AS color
 
 FROM ct_programacion p
@@ -40,38 +40,62 @@ if (!$resultado) {
     $fini = $row['fini'];
     $ffin = $row['ffin'];
     $piezas = $row['piezas'];
-    $meta = $row['meta'];
+    $entrega = $row['entrega'];
     $color = $row['color'];
+    $pe = $_SESSION['user']['produccion_editar'];
+    $admin = $_SESSION['user']['privilegiosUsuario'];
 
 
-    $data["infoTabla"].= "<tr class='row bordelateral m-0' id='item'>
-      <td class='col-md-1'>
-        <img src='/fitcoControl/Resources/iconos/transport.svg' class='icono'>
-      </td>
-      <td class='col-md-3'>
-        <h4><b><input type='color' value='$color'>$cliente</b></h4>
-      </td>
-      <td class='col-md-2 text-center'>
-        <h4><b>$fini</b></h4>
-      </td>
-      <td class='col-md-2 text-center'>
-        <h4><b>$ffin</b></h4>
-      </td>
-      <td class='col-md-2 text-center'>
-        <h4><b>$piezas</b></h4>
-      </td>
-      <td class='col-md-1 text-center'>
-        <h4><b>$meta</b></h4>
-      </td>
-      <td class='col-md-1 text-center'>
-        <a href='#' class='EditarProduccion spand-link' data-toggle='modal' data-target='#EditarProduccion' program-id='$idprog'><img src='/fitcoControl/Resources/iconos/pencil1.svg' class='spand-icon'></a>
-      </td>
-    </tr>";
+    if ($pe == 1 || $admin == "Administrador") {
+      $data["infoTabla"].= "<tr class='row bordelateral m-0' id='item'>
+        <td class='col-md-1'>
+          <img src='/fitcoControl/Resources/iconos/transport.svg' class='icono'>
+        </td>
+        <td class='col-md-3'>
+          <h4><b><input type='color' value='$color'>$cliente</b></h4>
+        </td>
+        <td class='col-md-2 text-center'>
+          <h4><b>$fini</b></h4>
+        </td>
+        <td class='col-md-2 text-center'>
+          <h4><b>$ffin  $entrega</b></h4>
+        </td>
+        <td class='col-md-2 text-center'>
+          <h4><b>$piezas pzs</b></h4>
+        </td>
+        <td class='col-md-2 text-center'>
+          <a href='#' class='EditarProduccion spand-link' data-toggle='modal' data-target='#EditarProduccion' program-id='$idprog'><img src='/fitcoControl/Resources/iconos/001-edit.svg' class='sml-5  spand-icon'></a>
 
+          <a href='#' class='EliminarProgramacion spand-link' program-id='$idprog'><img  src='/fitcoControl/Resources/iconos/002-delete.svg' class='ml-5 spand-icon'></a>
+        </td>
+      </tr>";
+    }elseif ($pe == 0) {
+      $data["infoTabla"].= "<tr class='row bordelateral m-0' id='item'>
+        <td class='col-md-1'>
+          <img src='/fitcoControl/Resources/iconos/transport.svg' class='icono'>
+        </td>
+        <td class='col-md-3'>
+          <h4><b><input type='color' value='$color'>$cliente</b></h4>
+        </td>
+        <td class='col-md-2 text-center'>
+          <h4><b>$fini</b></h4>
+        </td>
+        <td class='col-md-2 text-center'>
+          <h4><b>$ffin  $entrega</b></h4>
+        </td>
+        <td class='col-md-2 text-center'>
+          <h4><b>$piezas pzs</b></h4>
+        </td>
+        <td class='col-md-2 text-center'>
+          <a href='#' class='bloqueo EditarProduccion spand-link'><img src='/fitcoControl/Resources/iconos/001-edit.svg' class='ml-5  spand-icon'></a>
 
+          <a href='#' class='bloqueo spand-link'><img  src='/fitcoControl/Resources/iconos/002-delete.svg' class='ml-5 spand-icon'></a>
+        </td>
+      </tr>";
+    }
   }
-  echo json_encode($data);
 }
+  echo json_encode($data);
 
 mysqli_free_result($resultado);
 mysqli_close($conn);

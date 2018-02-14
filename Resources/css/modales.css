@@ -20,6 +20,10 @@
   max-width: 500px!important;
   margin-top: 100px!important;
 }
+.modal-grande{
+  max-width: 1100px!important;
+  margin-top: 100px!important;
+}
 
 .modal-efecto-17{
   border: 0;
@@ -61,4 +65,11 @@
 }
 .close{
   color: dimgrey;
+}
+
+.spand-iconm {
+  width: 20px;
+}
+.spand-linkm:hover .spand-iconm{
+  width: 25px;
 }

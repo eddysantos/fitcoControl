@@ -8,8 +8,6 @@
   $root = $_SERVER['DOCUMENT_ROOT'];
   require $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
   require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
-
-
 ?>
 
 
@@ -18,7 +16,7 @@
   <div class="clt_usr mt-5 ml-5">
     <a id="addcliente" class="rotate-link consultar ancla" accion="acliente" status="cerrado">
       <img src="/fitcoControl/Resources/iconos/clientes.svg" class="icon1 rotate-icon" style="width:30px">
-      <span class="span">Agregar Cliente</span>
+      <span class="spanc">Agregar Cliente</span>
     </a>
   </div>
 
@@ -31,7 +29,7 @@
           <td class="col-md-3 text-center">
             <h3>CLIENTE</h3>
           </td>
-          <td class="col-md-3 text-center">
+          <td class="col-md-4 text-center">
             <h3>CORREO/CONTACTO</h3>
           </td>
           <td class="col-md-3 text-center">

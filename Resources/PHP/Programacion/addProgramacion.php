@@ -7,7 +7,7 @@ $data = array(
 
 require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
 $query =
-"INSERT INTO ct_programacion(fk_cliente, fechaInicio, fechaFinal, piezasRequeridas, metaDiaria) VALUES(?,?,?,?,?)";
+"INSERT INTO ct_programacion(fk_cliente, fechaInicio, fechaFinal, piezasRequeridas, horaEntrega,) VALUES(?,?,?,?,?)";
 
 $stmt = $conn->prepare($query);
 $stmt->bind_param('sssss',
@@ -15,7 +15,9 @@ $stmt->bind_param('sssss',
   $_POST['fi'],
   $_POST['ff'],
   $_POST['pz'],
-  $_POST['md']
+  $_POST['hr']
+
+  // $_POST['md']
 );
 $stmt->execute();
 

@@ -16,21 +16,10 @@
                 <td class="col-md-12 input-effect p-0">
                   <input type="hidden" name="mpgr_id" id="mpgr_id">
                   <input class="modal-efecto-17 w-100 has-content" name="mpgr_cliente" id="mpgr_cliente" list="clientes">
-                  <datalist id="clientes">
-                    <?php
-                      $query = "SELECT * FROM ct_cliente";
-                      $resulclientes = $conn->query($query);
-                      while ($row = $resulclientes->fetch_array()) {
-                     ?>
-                    <option value="<?php echo $row['pk_cliente']; ?> ">
-                      <?php echo $row['nombreCliente']; ?>
-                    </option>
-
-                    <?php } ?>
-
-                  </datalist>
-                    <label>Cliente</label>
-                    <span class="focus-border"></span>
+                  <label>Cliente</label>
+                  <span class="focus-border"></span>
+                  <div class="client-list" id="mpgr_ClientList" style="display: none">
+                  </div>
                 </td>
               </tr>
               <tr class="row m20">
@@ -43,7 +32,14 @@
               <tr class="row m20">
                 <td class="col-md-12 input-effect p-0">
                   <input class="w-100 modal-efecto-17 has-content" name="mpgr_ffin" id="mpgr_ffin" type="date">
-                    <label>Fecha Final</label>
+                    <label>Fecha Entrega</label>
+                    <span class="focus-border"></span>
+                </td>
+              </tr>
+              <tr class="row m20">
+                <td class="col-md-12 input-effect p-0">
+                  <input class="w-100 modal-efecto-17 has-content" name="mpgr_hora" id="mpgr_hora" type="time">
+                    <label>Hora Entrega</label>
                     <span class="focus-border"></span>
                 </td>
               </tr>
@@ -53,13 +49,6 @@
                     <label>Piezas Requeridas</label>
                     <span class="focus-border"></span>
                 </td>
-              <tr class="row m20">
-                <td class="col-md-12 input-effect p-0">
-                  <input class="w-100 modal-efecto-17 has-content" name="mpgr_meta" id="mpgr_meta" type="text">
-                    <label>Meta Diaria</label>
-                    <span class="focus-border"></span>
-                </td>
-              </tr>
             </tbody>
           </table>
 

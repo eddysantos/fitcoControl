@@ -16,6 +16,7 @@ $query = "SELECT
 c.nombreCliente AS Cliente,
 p.fechaInicio AS FechaInicio,
 p.fechaFinal AS FechaFinal,
+p.piezasRequeridas AS piezas,
 c.colorCliente AS ColorCliente
 
 FROM ct_programacion p
@@ -34,8 +35,10 @@ if (false) {
 } else {
   $data['code'] = 1;
   while ($a = mysqli_fetch_assoc($resultados)) {
+    $pi =  $a['piezas'];
     $fi =  strtotime($a['FechaInicio']);
     $ff =  strtotime($a['FechaFinal']);
+    // $pi =  strtotime($a['piezas']);
     $data['response'][] = array(
       $a['Cliente'], $fi, $ff
     );

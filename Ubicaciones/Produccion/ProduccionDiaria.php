@@ -6,14 +6,14 @@ if (!isset($_SESSION['user'])) {
 }
   $root = $_SERVER['DOCUMENT_ROOT'];
   require $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
-  require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
+  // require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
 ?>
 
 <div class="container">
   <div class="clt_usr mt-5 mb-5">
     <a class="ml-3 rotate-link  consultar ancla"  data-toggle='modal' data-target='#ModalGraficaPRO'>
-      <img src="/fitcoControl/Resources/iconos/bars-chart.svg" class=" icon rotate-icon" style="width:30px">
-      <span class="spanD">Detalle Producción</span>
+      <img src="/fitcoControl/Resources/iconos/bars-chart.svg" class="icon rotate-icon" style="width:30px">
+      <span>Detalle Producción</span>
     </a>
   </div>
     <form id="" class="page p-0" style="margin-top:130px">
@@ -36,24 +36,16 @@ if (!isset($_SESSION['user'])) {
             <td class="col-md-2 text-center"></td>
           </tr>
         </thead>
-        <tbody id="mostrarProduccion">
-        </tbody>
+        <tbody id="mostrarProduccion"></tbody>
       </table>
     </form>
-
-    <!-- <form id="produccion" class="page p-0" style="margin-top:180px">
-      <table class="table table-hover table-fixed">
-
-      </table>
-    </form> -->
-
   </div>
 
 
 
   <?php
     $root = $_SERVER['DOCUMENT_ROOT'];
-    require $root . '/fitcoControl/Ubicaciones/Modales/Produccion/ModalGraficaProduccion.php';
+    // require $root . '/fitcoControl/Ubicaciones/Modales/Produccion/ModalGraficaProduccion.php';
     require $root . '/fitcoControl/Ubicaciones/Modales/Produccion/MostrarProduccion.php';
     require $root . '/fitcoControl/Resources/PHP/Produccion/pieProduccion.php';
   ?>

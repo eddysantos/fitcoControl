@@ -1,33 +1,34 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
+
+require $root . "/fitcoControl/Resources/PHP/Util/helperFunctions.php";
+
 $data = array(
   'code'=>"",
   'response'=>array()
 );
 
 require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
-$query ="INSERT INTO ct_cobranza(fk_cliente,facturaCobranza,importeCobranza,vencimientoCobranza) VALUES(?,?,?,?)";
+$query =
+"INSERT INTO
+ct_cobranza(
+  facturaCobranza,
+  importeCobranza,
+  vencimientoCobranza,
+  fk_cliente)
+  VALUES(?,?,?,?)";
 
-// echo "<script>console.log(" . $_POST['cbz_cliente'] . ")</script>";
-// echo "<script>console.log(" . $_POST['cbz_factura'] . ")</script>";
-// echo "<script>console.log(" . $_POST['cbz_importe'] . ")</script>";
-// echo "<script>console.log(" . $_POST['cbz_dvencimiento'] . ")</script>";
-
+// $fechaVencimiento = standard_date($_POST['cbz_dvencimiento']);
 
 $stmt = $conn->prepare($query);
 $stmt->bind_param('ssss',
-  $_POST['cbz_cliente'],
   $_POST['cbz_factura'],
   $_POST['cbz_importe'],
-  $_POST['cbz_dvencimiento']
+  $_POST['cbz_dvencimiento'],
+  // $fechaVencimiento,
+  $_POST['cbz_cliente']
 );
 $stmt->execute();
-
-if (!($stmt)) {
-  error_log("Error en ejecución del query: " . $conn->error);
-}
-
-error_log("Se ejecutó el codigo de agregar cobranza!");
 
 $aff_rows = $conn->affected_rows;
 

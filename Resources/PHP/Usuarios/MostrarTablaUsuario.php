@@ -75,7 +75,8 @@ if (!$resultado) {
   }
   //echo json_encode($data);
 }
-
+// // $data['infoTabla'] = utf8ize($data['infoTabla']);
+// echo json_encode($data);
 echo json_encode(utf8ize($data));
 
 mysqli_free_result($resultado);

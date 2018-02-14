@@ -36,6 +36,8 @@ $(document).ready(function(){
     var editProduccion = checkPrivilege($('#editProduccion'));
     var verCliente = checkPrivilege($('#verCliente'));
     var editCliente = checkPrivilege($('#editCliente'));
+    var verVentas = checkPrivilege($('#verVentas'));
+    var editVentas = checkPrivilege($('#editVentas'));
 
     validacion =
     $('#usr_nombre').val() == "" ||
@@ -52,7 +54,7 @@ $(document).ready(function(){
     }else {
       $.ajax({
         method: 'POST',
-        url: '/fitcoControl/Resources/PHP/Usuarios/AgregarUsuario.php',
+        url: '/fitcoControl/Resources/PHP/Usuarios/Agregarusuario.php',
         data: {
           usr_nombre: nombreUsuario,
           usr_apellidos: apellidosUsuario,
@@ -67,7 +69,9 @@ $(document).ready(function(){
           verProduccion: verProduccion,
           editProduccion: editProduccion,
           verCliente: verCliente,
-          editCliente: editCliente
+          editCliente: editCliente,
+          verVentas: verVentas,
+          editVentas: editVentas
         },
         success:function(result){
           var rsp = JSON.parse(result);
@@ -141,6 +145,8 @@ function ActivarBotonesUsuario(){
           markCheckbox($('#musr_editProduccion'), rsp.response.produccion_editar);
           markCheckbox($('#musr_verCliente'), rsp.response.cliente_ver);
           markCheckbox($('#musr_editCliente'), rsp.response.cliente_editar);
+          markCheckbox($('#musr_verVentas'), rsp.response.verVentas);
+          markCheckbox($('#musr_editVentas'), rsp.response.editarVentas);
         }else {
           console.error("Hubo un error al jalar la informacion del usuario.");
           console.error(rsp.response);
@@ -169,6 +175,8 @@ function ActivarBotonesUsuario(){
     var produccion_editar = checkPrivilege($('#musr_editProduccion'));
     var cliente_ver = checkPrivilege($('#musr_verCliente'));
     var cliente_editar = checkPrivilege($('#musr_editCliente'));
+    var verVentas = checkPrivilege($('#musr_verVentas'));
+    var editarVentas = checkPrivilege($('#musr_editVentas'));
 
     $.ajax({
       method: 'POST',
@@ -188,7 +196,9 @@ function ActivarBotonesUsuario(){
         musr_verProduccion: produccion_ver,
         musr_editProduccion: produccion_editar,
         musr_verCliente: cliente_ver,
-        musr_editCliente: cliente_editar
+        musr_editCliente: cliente_editar,
+        musr_verVentas: verVentas,
+        musr_editVentas: editarVentas
       },
       success:function(result){
         if (result != 1) {
@@ -206,4 +216,45 @@ function ActivarBotonesUsuario(){
       }
     });
   });
+
+
+  $('.eliminarUser').unbind();
+  $('.eliminarUser').click(function(){
+    var usuarioId = $(this).attr('usuario-id');
+    swal({
+    title: "Estas Seguro?",
+    text: "Ya no se podra recuperar el registro!",
+    type: "warning",
+    showCancelButton: true,
+    confirmButtonClass: "btn-danger",
+    confirmButtonText: "Si, Eliminar",
+    cancelButtonText: "No, cancelar",
+    closeOnConfirm: false,
+    closeOnCancel: false
+  },
+  function(isConfirm) {
+    if (isConfirm) {
+      $.ajax({
+        method: 'POST',
+        url: '/fitcoControl/Resources/PHP/Usuarios/EliminarUsuario.php',
+        data: {usuarioId: usuarioId},
+
+        success: function(result){
+          console.log(result);
+          if (result != 1) {
+            alertify.error('NO SE PUDO ELIMINAR');
+          }else if (result == 1){
+            fetchUsuario();
+          }
+        },
+        error: function(exception){
+          console.error(exception)
+        }
+      });
+      swal("Eliminado!", "Se elimino correctamente.", "success");
+    } else {
+      swal("Cancelado", "El registro esta a salvo :)", "error");
+    }
+  });
+});
 }

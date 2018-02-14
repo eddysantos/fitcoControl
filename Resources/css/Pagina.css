@@ -1,4 +1,4 @@
-
+@import url('https://fonts.googleapis.com/css?family=Encode+Sans+Condensed');
 @import url('https://fonts.googleapis.com/css?family=Quicksand');
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 
@@ -110,6 +110,9 @@ input:-webkit-autofill {
 .clt_usr .consultar:hover span{
   width: 190px;
 }
+.clt_usr .vent:hover span{
+  width: 120px!important;
+}
 
 .m20{
   margin:20px;
@@ -166,6 +169,12 @@ h4,h2{
   border-bottom:2px solid #ccc
 }
 
+.piedetabla{
+  letter-spacing: 3px;
+  color: rgba(62, 109, 140, 0.85);
+  border-top:2px solid #ccc
+}
+
 .table-fixed tbody {
   max-height: 520px;
   overflow-y: auto;
@@ -175,15 +184,19 @@ h4,h2{
 .table-fixed tbody {
   display: block;
 }
-
 p{
   color:rgb(66, 125, 158);
+}
+p.titulo{
+  color:rgb(66, 125, 158);
+  font-size: 1.75rem;
+  font-weight: 500;
 }
 
 a.linkboton{
 	font-family: 'Montserrat', sans-serif;
 	text-transform:uppercase;
-	letter-spacing:3px;
+	/*letter-spacing:3px;*/
 	display:inline-block;
 	text-decoration:none;
 	color:black;
@@ -196,7 +209,7 @@ a.linkboton{
   -webkit-transition: all ease 400ms;
   -moz-transition: all ease 400ms;
   -ms-transition: all ease 400ms;
-  font-size: 15px;
+  font-size: 14px; /*estaba en 15 px*/
   text-align: center!important;
 }
 
@@ -233,7 +246,7 @@ a.linkboton span.top{
 a.linkboton:hover{
 	color:white!important;
 	border: 2px solid rgba(117, 117, 117, 0.49);
-  letter-spacing:5px;
+  letter-spacing:0.5px;
 }
 
 a.linkboton:hover span.top{
@@ -297,4 +310,32 @@ a.boton-colapso:hover{
 
 .ocultar{
   display: none!important;
+}
+
+.buscar{
+  border-radius: 8px;
+  background-color: rgba(74, 119, 152, 0.2);
+}
+.footer{
+
+  position: fixed;
+  bottom: 0px;
+  background-color: #fff;
+  list-style: none;
+  width: 100%;
+  float: right;
+  margin-top: 50px;
+  margin-bottom: 1px;
+}
+.footer li a{
+font-size: 18px;
+list-style: none;
+}
+.footer li a:hover{
+  transition: .4s;
+  letter-spacing: 4px;
+  background-color: transparent;
+  font-weight: normal;
+  list-style: none;
+
 }
