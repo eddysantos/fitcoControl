@@ -37,6 +37,13 @@
             </tr>
             <tr class="row m20">
               <td class="col-md-12 input-effect p-0">
+                <input class="modal-efecto-17 has-content" name="mcbz_entrega" id="mcbz_entrega" type="date">
+                  <label>Fecha Entrega</label>
+                  <span class="focus-border"></span>
+              </td>
+            </tr>
+            <tr class="row m20">
+              <td class="col-md-12 input-effect p-0">
                 <input class="modal-efecto-17 has-content" name="mcbz_vencimiento" id="mcbz_vencimiento" type="date">
                   <label>Día Vencimiento</label>
                   <span class="focus-border"></span>
@@ -77,9 +84,7 @@
                 <td class='col-md-2 text-center'></td>
               </tr>
             </thead>
-            <tbody id="visualizarCobranza">
-
-            </tbody>
+            <tbody id="visualizarCobranza"></tbody>
           </table>
         </div><!--termina el Container-Fluid-->
       </div><!--termina el Cuerpo del Modal-->

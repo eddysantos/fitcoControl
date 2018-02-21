@@ -6,7 +6,24 @@ $data = array(
 );
 
 require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
-$query = "INSERT INTO usuarios(nombreUsuario,apellidosUsuario,correoUsuario,departamentoUsuario,puestoUsuario,usrUsuario,contraUsuario,privilegiosUsuario,cobranza_ver,cobranza_editar,produccion_ver,produccion_editar,cliente_ver,cliente_editar) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+$query = "INSERT INTO usuarios(
+  nombreUsuario,
+  apellidosUsuario,
+  correoUsuario,
+  departamentoUsuario,
+  puestoUsuario,
+  usrUsuario,
+  contraUsuario,
+  privilegiosUsuario,
+  cobranza_ver,
+  cobranza_editar,
+  produccion_ver,
+  produccion_editar,
+  cliente_ver,
+  cliente_editar,
+  verVentas,
+  editarVentas)
+  VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
 $stmt = $conn->prepare($query);
 
@@ -16,7 +33,7 @@ if (!($stmt)) {
   error_log($conn->$error);
   }
 
-$stmt->bind_param('ssssssssssssss',
+$stmt->bind_param('ssssssssssssssss',
   $_POST['usr_nombre'],
   $_POST['usr_apellidos'],
   $_POST['usr_correo'],
@@ -30,7 +47,9 @@ $stmt->bind_param('ssssssssssssss',
   $_POST['verProduccion'],
   $_POST['editProduccion'],
   $_POST['verCliente'],
-  $_POST['editCliente']
+  $_POST['editCliente'],
+  $_POST['verVentas'],
+  $_POST['editVentas']
 );
 $stmt->execute();
 

@@ -1,8 +1,6 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
 
-require $root . "/fitcoControl/Resources/PHP/Util/helperFunctions.php";
-
 $data = array(
   'code'=>"",
   'response'=>array()
@@ -12,20 +10,22 @@ require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
 $query =
 "INSERT INTO
 ct_cobranza(
+  conceptoPago,
   facturaCobranza,
   importeCobranza,
   vencimientoCobranza,
+  fechaEntrega,
   fk_cliente)
-  VALUES(?,?,?,?)";
+  VALUES(?,?,?,?,?,?)";
 
-// $fechaVencimiento = standard_date($_POST['cbz_dvencimiento']);
 
 $stmt = $conn->prepare($query);
-$stmt->bind_param('ssss',
+$stmt->bind_param('ssssss',
+  $_POST['cbz_concepto'],
   $_POST['cbz_factura'],
   $_POST['cbz_importe'],
   $_POST['cbz_dvencimiento'],
-  // $fechaVencimiento,
+  $_POST['cbz_entrega'],
   $_POST['cbz_cliente']
 );
 $stmt->execute();

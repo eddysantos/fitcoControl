@@ -49,6 +49,7 @@ $(document).ready(function(){
         $('.spanA').css('display', 'inherit');
         $('.spanD').css('display', '');
         $('#Ecobranza').animate({"right": "38%"}, "slow");
+        $( "img" ).removeClass( "spand-icon" ).addClass( "spand-iconp");
         $('#Agregarcobranza').fadeIn(1000);
         $('#Detallecobranza').hide();
         $('p').css('font-size','13px')
@@ -56,24 +57,25 @@ $(document).ready(function(){
         $('.spanA').css('display', '');
         $(this).attr('status', 'cerrado');
         $('#Ecobranza').animate({"right": "4%"}, "slow");
+        $( "img" ).removeClass( "spand-iconp" ).addClass( "spand-icon");
         $('p').css('font-size','1.75rem');
         $('p').css('font-weight','500');
         $('#Agregarcobranza').hide();
       }
       break;
 
-      case  "btesoreria":
-        if (status == 'cerrado') {
-          $(this).attr('status','abierto');
-          $('acobranza').attr('status','abierto');
-          $('.spanA').css('display', '');
-          $('.spanD').css('display', '');
-          $('#Ecobranza').animate({"right": "4%"}, "slow");
-          $('#Agregarcobranza').hide();
-        }else{
-          $(this).attr('status', 'cerrado');
-        }
-        break;
+      // case  "btesoreria":
+      //   if (status == 'cerrado') {
+      //     $(this).attr('status','abierto');
+      //     $('acobranza').attr('status','abierto');
+      //     $('.spanA').css('display', '');
+      //     $('.spanD').css('display', '');
+      //     $('#Ecobranza').animate({"right": "4%"}, "slow");
+      //     $('#Agregarcobranza').hide();
+      //   }else{
+      //     $(this).attr('status', 'cerrado');
+      //   }
+      //   break;
 
       case "eproduccion":
       if (status == 'cerrado') {

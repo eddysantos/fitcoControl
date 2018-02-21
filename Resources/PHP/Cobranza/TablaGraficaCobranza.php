@@ -25,7 +25,7 @@ LEFT JOIN ct_pagos pgo ON  pgo.fk_cobranza = co.pk_cobranza
 
 
 
-GROUP BY nombre, semana
+GROUP BY semana
 
 ORDER BY semana,nombre ASC";
 
@@ -52,21 +52,23 @@ if (!$resultado) {
     $semana = $row['semana'];
     $colorCliente = $row['color'];
     $pagado = number_format($row['pagado'], 2);
+    // $pendiente = $row['totalcobranza']-$row['pagado'];
+    $pendientepago = number_format($row['totalcobranza']-$row['pagado'],2);
 
 
 
     $data["infoTabla"].= "<tr class='row  bordelateral m-0' id='item'>
-      <td class='col-md-3'>
-        <h4><b><input type='color' value='$colorCliente'>$clienteCobranza</b></h4>
+      <td class='col-md-3 text-center'>
+        <h5><b>$semana</b></h5>
       </td>
       <td class='col-md-3 text-center'>
-        <h4><b>$semana</b></h4>
+        <h5><b> $ $totalCobranza </b></h5>
       </td>
       <td class='col-md-3 text-center'>
-        <h4><b> $ $totalCobranza </b></h4>
+        <h5><b> $ $pagado </b></h5>
       </td>
       <td class='col-md-3 text-center'>
-        <h4><b> $ $pagado </b></h4>
+        <h5><b> $ $pendientepago </b></h5>
       </td>
     </tr>";
 

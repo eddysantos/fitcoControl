@@ -12,14 +12,16 @@ SET
 facturaCobranza = ?,
 importeCobranza = ?,
 vencimientoCobranza = ?,
+fechaEntrega = ?,
 fk_cliente = ?
 WHERE pk_cobranza = ?";
 
 $stmt = $conn->prepare($query);
-$stmt->bind_param('sssss',
+$stmt->bind_param('ssssss',
   $_POST['mcbz_factura'],
   $_POST['mcbz_importe'],
   $_POST['mcbz_vencimiento'],
+  $_POST['mcbz_fechaEntrega'],
   $_POST['mcbz_cliente'],
   $_POST['mcbz_id']
 );

@@ -131,7 +131,7 @@ input:-webkit-autofill {
 }
 
 #item:hover .icono{
-  width: 50px;
+  width: 35px;
 }
 
 .bordelateral:hover{
@@ -159,7 +159,7 @@ a{
 
 h4,h2{
   font-family: 'Quicksand', sans-serif;
-  font-size: 18px;
+  font-size: 17px;
   letter-spacing: 1px
 }
 
@@ -285,10 +285,17 @@ a.boton-colapso:hover{
 }
 
 .spand-icon {
-  width: 29px;
+  width: 25px;
 }
 .spand-link:hover .spand-icon{
-  width: 32px;
+  width: 30px;
+}
+
+.spand-iconp {
+  width: 18px;
+}
+.spand-link:hover .spand-iconp{
+  width: 20px;
 }
 
 .fixed-program tbody{
@@ -338,4 +345,18 @@ list-style: none;
   font-weight: normal;
   list-style: none;
 
+}
+
+/* MANTENIMINETO */
+.pantallaGris{
+  background-color: rgb(240, 240, 240);
+  height: 700px;
+}
+
+.tituloMantenimiento{
+  text-align: center;
+  margin-top: 260px;
+  letter-spacing: 8px;
+  color: rgb(210, 210, 210);
+  font-size: 100px
 }

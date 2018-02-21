@@ -17,6 +17,8 @@ co.facturaCobranza AS factura,
 co.importeCobranza AS importe,
 -- DATE_FORMAT(co.vencimientoCobranza,'%d-%m-%Y') AS vencimiento,
 co.vencimientoCobranza AS vencimiento,
+co.conceptoPago AS concepto,
+co.fechaEntrega AS entrega,
 ct.colorCliente AS color,
 ct.creditoCliente AS credito,
 SUM(pg.importePago) AS pagado
@@ -41,6 +43,8 @@ if (isset($_POST['cobranza'])) {
   co.facturaCobranza AS factura,
   co.importeCobranza AS importe,
   co.vencimientoCobranza AS vencimiento,
+  co.conceptoPago AS concepto,
+  co.fechaEntrega AS entrega,
   ct.colorCliente AS color,
   ct.creditoCliente AS credito,
   SUM(pg.importePago) AS pagado
@@ -54,6 +58,8 @@ if (isset($_POST['cobranza'])) {
   co.facturaCobranza LIKE '%$q%' OR
   co.importeCobranza LIKE '%$q%' OR
   co.vencimientoCobranza LIKE '%$q%' OR
+  co.conceptoPago LIKE '%$q%' OR
+  co.fechaEntrega LIKE '%$q%' OR
   ct.creditoCliente LIKE '%$q%' OR
   pg.importePago LIKE '%$q%'
 
@@ -69,13 +75,12 @@ if (isset($_POST['cobranza'])) {
    <form id='Ecobranza' class='page p-0'>
     <table class='table table-hover table-fixed'>
      <thead id='font'>
-       <tr class='row text-center encabezado m-0'>
+       <tr class='row text-center encabezado m-0' style='letter-spacing:1px'>
          <td class='col-md-1'></td>
          <td class='col-md-2'>CLIENTE</td>
-         <td class='col-md-1'>FACTURA</td>
-         <td class='col-md-2'>IMPORTE</td>
-         <td class='col-md-2'>PAGADO</td>
-         <td class='col-md-2'>VENCIMIENTO</td>
+         <td class='col-md-2'>CONCETO</td>
+         <td class='col-md-2'>TOTALES</td>
+         <td class='col-md-3'>ENTREGA</td>
        </tr>
      </thead>";
 
@@ -91,6 +96,8 @@ if (isset($_POST['cobranza'])) {
      $vencimientoCobranza = $row['vencimiento'];
      $colorCliente = $row['color'];
      $creditoCliente = $row['credito'];
+     $concepto = $row['concepto'];
+     $entrega = $row['entrega'];
      $background = "";
      $ocultar = "";
      $ce =  $_SESSION['user']['cobranza_editar'];
@@ -113,32 +120,35 @@ if (isset($_POST['cobranza'])) {
      $tabla.= "
      <tbody id='mostrarCobranza'>
        <tr class='$background row bordelateral m-0' id='item'>
-         <td class='col-md-1'>
-           <img src='/fitcoControl/Resources/iconos/dinero.svg' class='icono'>
-         </td>
+       <td class='col-md-1'>
+        <img src='/fitcoControl/Resources/iconos/dinero.svg' class='icono mr-5'>
+       </td>
          <td class='col-md-2'>
            <h4><b><input type='color' value='$colorCliente'>$clienteCobranza</b></h4>
            <p><a class='visibilidad'>Credito : $creditoCliente Días</a></p>
          </td>
-         <td class='col-md-1 text-center'>
-           <h4><b>$facturaCobranza</b></h4>
+         <td class='col-md-2 text-center'>
+           <h4><b>$concepto</b></h4>
+           <p><a class='visibilidad'>Fact : $facturaCobranza</a></p>
          </td>
+
          <td class='col-md-2 text-center'>
            <h4><b> $ $importeCobranza </b></h4>
+           <p><a class='visibilidad'>Pagado : $ $pagado</a></p>
          </td>
-         <td class='col-md-2 text-center'>
-           <h4><b> $ $pagado </b></h4>
-         </td>
-         <td class='col-md-2 text-center'>
-           <h4><b> $vencimientoCobranza </b></h4>
+         <td class='col-md-3 text-center'>
+           <h4><b>$entrega</b></h4>
+           <p><a class='visibilidad'>Vence : $vencimientoCobranza</a></p>
          </td>
          <td class='col-md-2 text-right'>
            <!--AGREGAR PAGO DE FACTURA-->
-           <a href='' id='btnEditarCobranza' class='$ocultar editarCobranza spand-link' data-toggle='modal' data-target='#DetCobranza' cobranza-id='$idCobranza'><img src='/fitcoControl/Resources/iconos/pencil1.svg' class='mr-3 spand-icon'></a>
-
            <a href='' id='btnAgregarPago' class='agregarPago spand-link' data-toggle='modal' data-target='#PagoFacturas' cobranza-id='$idCobranza'><img src='/fitcoControl/Resources/iconos/003-add.svg' class='spand-icon'></a>
 
            <a href='' class='visualizarcobranza spand-link' data-toggle='modal' data-target='#VisualizarTablaCobranza' cobranza-id='$idCobranza'><img src='/fitcoControl/Resources/iconos/magnifier.svg' class='ml-3 spand-icon'></a>
+
+           <a href='' id='btnEditarCobranza' class='$ocultar editarCobranza spand-link' data-toggle='modal' data-target='#DetCobranza' cobranza-id='$idCobranza'><img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='ml-3 spand-icon'></a>
+
+           <a href='#' class='eliminarCobranza spand-link ml-3 $ocultar' cobranza-id='$idCobranza'><img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='spand-icon'></a>
          </td>
        </tr>
      </tbody>";

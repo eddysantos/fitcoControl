@@ -43,7 +43,7 @@ if (!isset($_SESSION['user'])) {
       </table>
     </form> -->
 
-    <form id="NuevoUsuario" class="agregarnuevo" style="display:none">
+    <form id="NuevoUsuario" class="agregarnuevo mb-10" style="display:none">
       <table class="table">
         <tbody>
           <tr class="row m20">
@@ -71,7 +71,7 @@ if (!isset($_SESSION['user'])) {
           <tr class="row m20">
             <td class="col-md-12 input-effect p-0">
               <input id="usr_departamento" class="effect-17" type="text" required>
-                <label>Departamento</label>
+                <label>Division o Departamento</label>
                 <span class="focus-border"></span>
             </td>
           </tr>
@@ -109,27 +109,34 @@ if (!isset($_SESSION['user'])) {
           </tr>
           <tr class="row ">
             <td class="col-md-6 text-center">
-              <input type="checkbox" id="verCobranza" name="verCobranza">Ver Cobranza
+              <input type="checkbox" id="verCobranza">Ver Cobranza
             </td>
             <td class="col-md-6 text-center">
-              <input type="checkbox" id="editCobranza" name="editCobranza">Editar Cobranza
+              <input type="checkbox" id="editCobranza">Editar Cobranza
             </td>
           </tr>
           <tr class="row">
             <td class="col-md-6 text-center">
-              <input type="checkbox" id="verProduccion" name="verProduccion">Ver Producción
+              <input type="checkbox" id="verProduccion">Ver Producción
             </td>
             <td class="col-md-6 text-center">
-              <input type="checkbox" id="editProduccion" name="editProduccion">Editar Producción
+              <input type="checkbox" id="editProduccion">Editar Producción
             </td>
           </tr>
           <tr class="row">
             <td class="col-md-6 text-center">
-              <input type="checkbox" id="verCliente" name="verCliente">Ver Cliente
+              <input type="checkbox" id="verCliente">Ver Cliente
             </td>
             <td class="col-md-6 text-center">
-              <input type="checkbox" id="editCliente" name="editCliente">Editar Cliente
+              <input type="checkbox" id="editCliente">Editar Cliente
             </td>
+          </tr>
+          <tr class="row">
+            <td class="col-md-6 text-center">
+              <input type="checkbox" id="verVentas">Ver Ventas
+            </td>
+            <td class="col-md-6 text-center">
+              <input type="checkbox" id="editVentas">Editar Ventas
           </tr>
           <tr class="row justify-content-center mb-3">
             <td class="col-md-4">

@@ -54,25 +54,21 @@ $(document).ready(function(){
 
 
   $('#NuevoRegistroCobranza').click(function(){
+    var conceptoPago = $('#cbz_concepto').val();
     var facturaCobranza = $('#cbz_factura').val();
     var importeCobranza = $('#cbz_importe').val();
     var vencimientoCobranza = $('#cbz_dvencimiento').val();
+    var fechaEntrega = $('#cbz_entrega').val();
     var fk_cliente = $('#npClientName').attr('client-id');
-    // var ffVencimiento = rip_date(vencimientoCobranza);
 
     validacion =
     $('#npClientName').val() == "" ||
+    $('#cbz_concepto').val() == "" ||
     $('#cbz_factura').val() == "" ||
     $('#cbz_importe').val() == "" ||
+    $('#cbz_entrega').val() == "" ||
     $('#cbz_dvencimiento').val() == "";
 
-    // if (1==1) {
-    //   console.log(ffVencimiento);
-    //   var ahora = new Date();
-    //   console.log("El dia de hoy es: " + ahora.getDate());
-    //
-    //   return false;
-    // }
 
     if (validacion) {
       swal("NO PUEDE CONTINUAR","Nesesita llenar todos los campos","error");
@@ -81,9 +77,11 @@ $(document).ready(function(){
         method: 'POST',
         url: '/fitcoControl/Resources/PHP/Cobranza/AgregarCobranza.php',
         data:{
+          cbz_concepto: conceptoPago,
           cbz_factura: facturaCobranza,
           cbz_importe: importeCobranza,
           cbz_dvencimiento: vencimientoCobranza,
+          cbz_entrega: fechaEntrega,
           cbz_cliente: fk_cliente
         },
         success:function(result){
@@ -178,7 +176,6 @@ function ActivarBotonesCobranza(){
           method: 'POST',
           url: '/fitcoControl/Resources/PHP/Pagos/AgregarPago.php',
           data: {
-
             mpgo_id: fk_cobranza,
             mpgo_fpago: fechaPago,
             mpgo_importe: importePago
@@ -270,6 +267,7 @@ function ActivarBotonesCobranza(){
           $('#mcbz_id').val(rsp.response.pk_cobranza);
           $('#mcbz_cliente').val(rsp.response.nombreCliente).attr('client-id', rsp.response.fk_cliente);
           $('#mcbz_factura').val(rsp.response.facturaCobranza);
+          $('#mcbz_entrega').val(rsp.response.fechaEntrega);
           $('#mcbz_importe').val(rsp.response.importeCobranza);
           $('#mcbz_vencimiento').val(rsp.response.vencimientoCobranza);
       }else {
@@ -283,18 +281,60 @@ function ActivarBotonesCobranza(){
     })
   });
 
+  $('.eliminarCobranza').unbind();
+  $('.eliminarCobranza').click(function(){
+    var cobranzaId = $(this).attr('cobranza-id');
+    swal({
+    title: "Estas Seguro?",
+    text: "Ya no se podra recuperar el registro!",
+    type: "warning",
+    showCancelButton: true,
+    confirmButtonClass: "btn-danger",
+    confirmButtonText: "Si, Eliminar",
+    cancelButtonText: "No, cancelar",
+    closeOnConfirm: false,
+    closeOnCancel: false
+  },
+  function(isConfirm) {
+    if (isConfirm) {
+      $.ajax({
+        method: 'POST',
+        url: '/fitcoControl/Resources/PHP/Cobranza/EliminarCobranza.php',
+        data: {cobranzaId: cobranzaId},
+
+        success: function(result){
+          console.log(result);
+          if (result != 1) {
+            alertify.error('NO SE PUDO ELIMINAR');
+          }else if (result == 1){
+            fetchCobranza();
+          }
+        },
+        error: function(exception){
+          console.error(exception)
+        }
+      });
+      swal("Eliminado!", "Se elimino correctamente.", "success");
+    } else {
+      swal("Cancelado", "El registro esta a salvo :)", "error");
+    }
+  });
+});
+
   $('.ActualizarDcobranza').unbind();
   $('.ActualizarDcobranza').click(function(){
     var idCobranza = $('#mcbz_id').val();
     var fk_cliente = $('#mcbz_cliente').attr('client-id');
     var facturaCobranza = $('#mcbz_factura').val();
     var importeCobranza = $('#mcbz_importe').val();
+    var fechaEntrega = $('#mcbz_entrega').val();
     var vencimientoCobranza = $('#mcbz_vencimiento').val();
 
     validacion =
     $('#mcbz_cliente').val() == "" ||
     $('#mcbz_factura').val() == "" ||
     $('#mcbz_importe').val() == "" ||
+    $('#mcbz_entrega').val() == "" ||
     $('#mcbz_vencimiento').val() == "";
 
     if (validacion) {
@@ -308,7 +348,8 @@ function ActivarBotonesCobranza(){
         mcbz_cliente: fk_cliente,
         mcbz_factura: facturaCobranza,
         mcbz_importe: importeCobranza,
-        mcbz_vencimiento: vencimientoCobranza
+        mcbz_vencimiento: vencimientoCobranza,
+        mcbz_fechaEntrega: fechaEntrega
       },
       success:function(result){
         var rsp = JSON.parse(result);

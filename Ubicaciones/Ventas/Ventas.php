@@ -16,6 +16,12 @@ if (!isset($_SESSION['user'])) {
       <span class="spanV">Nueva Venta</span>
     </a>
 
+
+    <a class="rotate-link ventGraf consultar ancla" data-toggle='modal' data-target='#ModalGraficaVentas'>
+      <img src="/fitcoControl/Resources/iconos/grafica2.svg" class="icon1 rotate-icon" style="width:30px;">
+      <span class="spanVG">Grafica Ventas</span>
+    </a>
+
     <form id="Eventas" class="page p-0">
       <table class="table table-hover">
         <thead>

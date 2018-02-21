@@ -50,6 +50,18 @@ if (!isset($_SESSION['user'])) {
           </tr>
           <tr class="row m20">
             <td class="col-md-12 input-effect p-0">
+              <input id="cbz_concepto" class="w-100 effect-17" list="conc" required>
+              <datalist id="conc">
+                <option value="Maquila">Maquila</option>
+                <option value="Bordado">Bordado</option>
+                <option value="Flete">Flete</option>
+              </datalist>
+              <label>Concepto</label>
+              <span class="focus-border"></span>
+            </td>
+          </tr>
+          <tr class="row m20">
+            <td class="col-md-12 input-effect p-0">
               <input id="cbz_factura" class="effect-17" type="text" required>
                 <label>No. Factura</label>
                 <span class="focus-border"></span>
@@ -65,10 +77,16 @@ if (!isset($_SESSION['user'])) {
           <tr class="row m20">
             <td class="col-md-12 input-effect p-0">
               <input id="cbz_dvencimiento" class="effect-17 has-content" type="date" required>
-                <label>Día Vencimiento</label>
+                <label>Vencimiento de factura</label>
                 <span class="focus-border"></span>
             </td>
           </tr>
+          <tr class="row m20">
+            <td class="col-md-12 input-effect p-0">
+              <input id="cbz_entrega" class="effect-17 has-content" type="date" required>
+                <label>Fecha de Entrega</label>
+                <span class="focus-border"></span>
+            </td>
           </tr>
           <tr class="row justify-content-center m-0 mb-2 mt-5">
             <td class="col-md-4">
@@ -81,11 +99,6 @@ if (!isset($_SESSION['user'])) {
   </div>
 </div>
 
-<!-- <script type="text/javascript">
-  $(function(){
-    $('#cbz_dvencimiento').datetimepicker();
-  });
-</script> -->
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
   require $root . '/fitcoControl/Ubicaciones/Modales/Cobranza/ModalGraficaCobranza.php';

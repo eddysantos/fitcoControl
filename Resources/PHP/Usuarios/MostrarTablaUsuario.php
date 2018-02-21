@@ -65,9 +65,10 @@ if (!$resultado) {
       <td class='col-md-2 text-center'>
         <h4><b>$privilegiosUsuario</b></h4>
       </td>
-      <td class='col-md-1'></td>
-      <td class='col-md-1 text-center'>
+      <td class='col-md-2 text-right'>
         <a href='#' class='EditUsuario spand-link' data-toggle='modal' data-target='#EditarUsuario' usuario-id='$idusuario'><img src='/fitcoControl/Resources/iconos/pencil1.svg' class='spand-icon'></a>
+
+          <a href='#' class='eliminarUser spand-link ml-3'  usuario-id='$idusuario'><img src='/fitcoControl/Resources/iconos/002-delete.svg' class='spand-icon'></a>
       </td>
     </tr>";
 

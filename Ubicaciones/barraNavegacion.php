@@ -1,5 +1,5 @@
 <?php
-session_start();
+// session_start();
   $pv = $_SESSION['user']['produccion_ver'];
   $cv =  $_SESSION['user']['cobranza_ver'];
   $clv = $_SESSION['user']['cliente_ver'];
