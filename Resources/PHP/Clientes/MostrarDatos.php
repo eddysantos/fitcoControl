@@ -42,7 +42,6 @@ if (!$resultado) {
     $admin = $_SESSION['user']['privilegiosUsuario'];
 
 
-
   if ($cle == 1 || $admin == "Administrador") {
     $data["infoTabla"].= "
     <tr class='row bordelateral m-0' id='item'>
@@ -62,7 +61,7 @@ if (!$resultado) {
       </td>
       <td class='col-md-1 text-center'>
         <a href='#' class='EditCliente spand-link' data-toggle='modal' data-target='#EditarCliente' id='btnEditarCliente' client-id='$id'>
-        <img src='/fitcoControl/Resources/iconos/pencil1.svg' class='$ocultar spand-icon'>
+        <img src='/fitcoControl/Resources/iconos/pencil1.svg' class='spand-icon'>
         </a>
       </td>
     </tr>";

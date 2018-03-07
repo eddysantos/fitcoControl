@@ -3,7 +3,25 @@ $(document).ready(function(){
     var accion = $(this).attr('accion');
     var status = $(this).attr('status');
 
+    $('#selectGrafica').find('a').css('color', "");
+        $('#selectGrafica').find('a').css('font-size', "");
+        $(this).attr('status', 'abierto');
+        $(this).css('cssText', 'color: rgb(98, 98, 98) !important');
+        $(this).css('font-size', '20px');
+
     switch (accion) {
+
+      case "semanal":
+        $('#graficasemanal').fadeIn();
+        $('#mostrarTablaGrafica').fadeIn();
+        $('#graficamensual').hide();
+        break;
+
+      case "mensual":
+        $('#graficamensual').fadeIn();
+        $('#mostrarTablaGrafica').hide();
+        $('#graficasemanal').hide();
+        break;
 
       case "produccionLink":
       if (status == 'cerrado') {
@@ -53,12 +71,14 @@ $(document).ready(function(){
         $('#Agregarcobranza').fadeIn(1000);
         $('#Detallecobranza').hide();
         $('p').css('font-size','13px')
+        $('b').css('font-size','14px')
       }else{
         $('.spanA').css('display', '');
         $(this).attr('status', 'cerrado');
         $('#Ecobranza').animate({"right": "4%"}, "slow");
         $( "img" ).removeClass( "spand-iconp" ).addClass( "spand-icon");
         $('p').css('font-size','1.75rem');
+        $('b').css('font-size','1.75rem')
         $('p').css('font-weight','500');
         $('#Agregarcobranza').hide();
       }

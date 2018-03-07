@@ -10,18 +10,17 @@ $suma = 0;
 $total = 0;
 $diferencia = 0;
 $query = "SELECT
-
 co.pk_cobranza AS idcobranza,
 ct.nombreCliente AS nombre,
 co.facturaCobranza AS factura,
 co.importeCobranza AS importe,
--- DATE_FORMAT(co.vencimientoCobranza,'%d-%m-%Y') AS vencimiento,
 co.vencimientoCobranza AS vencimiento,
+WEEK(co.vencimientoCobranza) AS semana,
 co.conceptoPago AS concepto,
 co.fechaEntrega AS entrega,
 ct.colorCliente AS color,
 ct.creditoCliente AS credito,
-SUM(pg.importePago) AS pagado
+sum(pg.importePago) AS pagado
 
 
 FROM ct_cobranza co
@@ -31,23 +30,24 @@ LEFT JOIN ct_pagos pg ON co.pk_cobranza = pg.fk_cobranza
 
 GROUP BY co.pk_cobranza
 
-ORDER BY nombre ASC,vencimiento";
+ORDER BY semana ASC, vencimiento";
 
 
 if (isset($_POST['cobranza'])) {
   $q = $conn->real_escape_string($_POST['cobranza']);
   $query = "SELECT
-
   co.pk_cobranza AS idcobranza,
   ct.nombreCliente AS nombre,
   co.facturaCobranza AS factura,
   co.importeCobranza AS importe,
   co.vencimientoCobranza AS vencimiento,
+  WEEK(co.vencimientoCobranza) AS semana,
   co.conceptoPago AS concepto,
   co.fechaEntrega AS entrega,
   ct.colorCliente AS color,
   ct.creditoCliente AS credito,
-  SUM(pg.importePago) AS pagado
+  sum(pg.importePago) AS pagado
+
 
   FROM ct_cobranza co
 
@@ -65,7 +65,7 @@ if (isset($_POST['cobranza'])) {
 
   GROUP BY co.pk_cobranza
 
-  ORDER BY nombre ASC,vencimiento";
+  ORDER BY semana ASC,vencimiento";
 }
 
 
@@ -80,7 +80,7 @@ if (isset($_POST['cobranza'])) {
          <td class='col-md-2'>CLIENTE</td>
          <td class='col-md-2'>CONCETO</td>
          <td class='col-md-2'>TOTALES</td>
-         <td class='col-md-3'>ENTREGA</td>
+         <td class='col-md-3'>VENCIMIENTO</td>
        </tr>
      </thead>";
 
@@ -96,16 +96,40 @@ if (isset($_POST['cobranza'])) {
      $vencimientoCobranza = $row['vencimiento'];
      $colorCliente = $row['color'];
      $creditoCliente = $row['credito'];
+     $semana = $row['semana'];
      $concepto = $row['concepto'];
      $entrega = $row['entrega'];
+     $diasemana = $row['vencimiento'];
+     $dia = date('N',strtotime($diasemana));
      $background = "";
      $ocultar = "";
      $ce =  $_SESSION['user']['cobranza_editar'];
      $admin = $_SESSION['user']['privilegiosUsuario'];
+     // $suma = number_format($row['importe'], 2);
+     // $total = number_format($row['pagado'], 2);
+     // $diferencia = number_format($row['diferencia'], 2);
+
+     if ($dia == 1) {
+       $dia = "Lun";
+     }elseif ($dia == 2) {
+       $dia = "Mar";
+     }elseif ($dia == 3) {
+       $dia = "Mie";
+     }elseif ($dia == 4) {
+       $dia = "Jue";
+     }elseif ($dia == 5) {
+       $dia = "Vie";
+     }elseif ($dia == 6) {
+       $dia = "Sab";
+     }elseif ($dia == 7) {
+       $dia = "Dom";
+     }
 
      if (($importeCobranza == $pagado) && ($vencimientoCobranza == $hoy)) {
        $background = "verde";
      }elseif (($vencimientoCobranza < $hoy) && ($importeCobranza == $pagado)) {
+       $background = "verde";
+     }elseif (($vencimientoCobranza > $hoy) && ($importeCobranza == $pagado)) {
        $background = "verde";
      }elseif (($vencimientoCobranza < $hoy) && ($importeCobranza > $pagado)) {
        $background = "rojo";
@@ -125,7 +149,7 @@ if (isset($_POST['cobranza'])) {
        </td>
          <td class='col-md-2'>
            <h4><b><input type='color' value='$colorCliente'>$clienteCobranza</b></h4>
-           <p><a class='visibilidad'>Credito : $creditoCliente Días</a></p>
+           <p><a class='visibilidad'>Semana $semana</a></p>
          </td>
          <td class='col-md-2 text-center'>
            <h4><b>$concepto</b></h4>
@@ -137,8 +161,8 @@ if (isset($_POST['cobranza'])) {
            <p><a class='visibilidad'>Pagado : $ $pagado</a></p>
          </td>
          <td class='col-md-3 text-center'>
-           <h4><b>$entrega</b></h4>
-           <p><a class='visibilidad'>Vence : $vencimientoCobranza</a></p>
+           <h4><b>$dia $vencimientoCobranza</b></h4>
+           <p><a class='visibilidad'>Entrega: $entrega</a></p>
          </td>
          <td class='col-md-2 text-right'>
            <!--AGREGAR PAGO DE FACTURA-->
@@ -156,12 +180,17 @@ if (isset($_POST['cobranza'])) {
      $total += $row['pagado'];
      $diferencia += $row['importe']-$row['pagado'];
    }
+   setlocale(LC_MONETARY, 'en_US');
+   $suma1 =  money_format('%(#10n', $suma);
+   $total1 =  money_format('%(#10n', $total);
+   $diferencia1 =  money_format('%(#10n', $diferencia);
+
    $tabla.="
      <tfoot>
        <tr class='row text-center piedetabla m-0'>
-          <td class='col-md-4 text-center'><b>Facturado : $ $suma </b></td>
-          <td class='col-md-4 text-center'><b>Pagado : $ $total </b></td>
-          <td class='col-md-4 text-center'><b>Diferencia : $ $diferencia </b></td>
+          <td class='col-md-4 text-center'><b>Facturado :$ $suma1</b></td>
+          <td class='col-md-4 text-center'><b>Pagado :$ $total1</b></td>
+          <td class='col-md-4 text-center'><b>Diferencia :$ $diferencia1</b></td>
         </tr>
       </tfoot>
     </table>

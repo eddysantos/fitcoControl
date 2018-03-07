@@ -23,6 +23,18 @@
             </tr>
             <tr class="row m20">
               <td class="col-md-12 input-effect p-0">
+                <input name="mcbz_concepto" id="mcbz_concepto" class="w-100 effect-17" list="conc" required>
+                <datalist id="conc">
+                  <option value="Maquila">Maquila</option>
+                  <option value="Bordado">Bordado</option>
+                  <option value="Flete">Flete</option>
+                </datalist>
+                <label>Concepto</label>
+                <span class="focus-border"></span>
+              </td>
+            </tr>
+            <tr class="row m20">
+              <td class="col-md-12 input-effect p-0">
                 <input class="modal-efecto-17 has-content" name="mcbz_factura" id="mcbz_factura" type="text">
                   <label>Factura</label>
                   <span class="focus-border"></span>

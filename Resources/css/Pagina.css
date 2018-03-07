@@ -360,3 +360,28 @@ list-style: none;
   color: rgb(210, 210, 210);
   font-size: 100px
 }
+
+.submenuMed {
+  background-color: rgba(66, 125, 158, 0.21);
+  height: 50px;
+}
+.submenuch {
+  background-color: rgba(66, 125, 158, 0.21);
+  height: 20px;
+}
+div.submenuMed {
+  padding:10px;
+}
+
+#submenuchico{
+  cursor: pointer;
+  background-color: transparent!important;
+  color: rgb(66, 125, 158)!important;
+  font-size: 12px;
+  border-top: 0px !important;
+}
+#submenuchico:hover, #submenuchico:focus {
+  color: rgb(66, 125, 158)!important;
+  letter-spacing: 3px!important;
+  font-size: 13px;
+}

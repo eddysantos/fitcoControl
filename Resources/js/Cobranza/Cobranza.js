@@ -93,7 +93,6 @@ $(document).ready(function(){
             fetchCobranza();
             console.log(rsp);
             $('#Agregarcobranza').hide();
-            $('#cobranza').animate({"right": "4%"}, "slow");
             $('#Ecobranza').animate({"right": "4%"}, "slow");
             alertify.success('SE AGREGÓ CORRECTAMENTE');
           }
@@ -266,6 +265,7 @@ function ActivarBotonesCobranza(){
         if (rsp.code == 1) {
           $('#mcbz_id').val(rsp.response.pk_cobranza);
           $('#mcbz_cliente').val(rsp.response.nombreCliente).attr('client-id', rsp.response.fk_cliente);
+          $('#mcbz_concepto').val(rsp.response.conceptoPago);
           $('#mcbz_factura').val(rsp.response.facturaCobranza);
           $('#mcbz_entrega').val(rsp.response.fechaEntrega);
           $('#mcbz_importe').val(rsp.response.importeCobranza);
@@ -279,6 +279,61 @@ function ActivarBotonesCobranza(){
       console.error(exception);
       }
     })
+  });
+
+  $('.ActualizarDcobranza').unbind();
+  $('.ActualizarDcobranza').click(function(){
+    var idCobranza = $('#mcbz_id').val();
+    var fk_cliente = $('#mcbz_cliente').attr('client-id');
+    var concepto = $('#mcbz_concepto').val();
+    var facturaCobranza = $('#mcbz_factura').val();
+    var importeCobranza = $('#mcbz_importe').val();
+    var fechaEntrega = $('#mcbz_entrega').val();
+    var vencimientoCobranza = $('#mcbz_vencimiento').val();
+
+    validacion =
+    $('#mcbz_cliente').val() == "" ||
+    $('#mcbz_concepto').val() == "" ||
+    $('#mcbz_factura').val() == "" ||
+    $('#mcbz_importe').val() == "" ||
+    $('#mcbz_entrega').val() == "" ||
+    $('#mcbz_vencimiento').val() == "";
+
+    if (validacion) {
+      swal("NO PUEDE CONTINUAR","Nesesita llenar todos los campos","error");
+    }else{
+    $.ajax({
+      method:'POST',
+      url:'/fitcoControl/Resources/PHP/Cobranza/EditarDatosCobranza.php',
+      data: {
+        mcbz_id: idCobranza,
+        mcbz_cliente: fk_cliente,
+        mcbz_concepto: concepto,
+        mcbz_factura: facturaCobranza,
+        mcbz_importe: importeCobranza,
+        mcbz_vencimiento: vencimientoCobranza,
+        mcbz_fechaEntrega: fechaEntrega
+      },
+      success:function(result){
+        var rsp = JSON.parse(result);
+        console.log(rsp);
+        if (result != 1) {
+          alertify.error('NO SE MODIFICÓ NINGUN REGISTRO');
+          $('#DetCobranza').modal('hide');
+          fetchCobranza();
+          fetchTablaCobranza();
+        }else {
+          $('#DetCobranza').modal('hide');
+          fetchCobranza();
+          fetchTablaCobranza();
+          alertify.success('SE MODIFICÓ CORRECTAMENTE');
+        }
+      },
+      error:function(exception){
+        console.error(exception)
+      }
+    })
+    }
   });
 
   $('.eliminarCobranza').unbind();
@@ -321,58 +376,6 @@ function ActivarBotonesCobranza(){
   });
 });
 
-  $('.ActualizarDcobranza').unbind();
-  $('.ActualizarDcobranza').click(function(){
-    var idCobranza = $('#mcbz_id').val();
-    var fk_cliente = $('#mcbz_cliente').attr('client-id');
-    var facturaCobranza = $('#mcbz_factura').val();
-    var importeCobranza = $('#mcbz_importe').val();
-    var fechaEntrega = $('#mcbz_entrega').val();
-    var vencimientoCobranza = $('#mcbz_vencimiento').val();
-
-    validacion =
-    $('#mcbz_cliente').val() == "" ||
-    $('#mcbz_factura').val() == "" ||
-    $('#mcbz_importe').val() == "" ||
-    $('#mcbz_entrega').val() == "" ||
-    $('#mcbz_vencimiento').val() == "";
-
-    if (validacion) {
-      swal("NO PUEDE CONTINUAR","Nesesita llenar todos los campos","error");
-    }else{
-    $.ajax({
-      method:'POST',
-      url:'/fitcoControl/Resources/PHP/Cobranza/EditarDatosCobranza.php',
-      data: {
-        mcbz_id: idCobranza,
-        mcbz_cliente: fk_cliente,
-        mcbz_factura: facturaCobranza,
-        mcbz_importe: importeCobranza,
-        mcbz_vencimiento: vencimientoCobranza,
-        mcbz_fechaEntrega: fechaEntrega
-      },
-      success:function(result){
-        var rsp = JSON.parse(result);
-        console.log(rsp);
-        if (result != 1) {
-          alertify.error('NO SE MODIFICÓ NINGUN REGISTRO');
-          $('#DetCobranza').modal('hide');
-          fetchCobranza();
-          fetchTablaCobranza();
-        }else {
-          $('#DetCobranza').modal('hide');
-          fetchCobranza();
-          fetchTablaCobranza();
-          alertify.success('SE MODIFICÓ CORRECTAMENTE');
-        }
-      },
-      error:function(exception){
-        console.error(exception)
-      }
-    })
-    }
-  });
-
   $('.visualizarcobranza').click(function(){
     var cobranzaId = $(this).attr('cobranza-id');
     $.ajax({
@@ -390,7 +393,6 @@ function ActivarBotonesCobranza(){
       }
     })
   });
-
 
   $('.editarPago').unbind();
   $('.editarPago').click(function(){
@@ -419,8 +421,6 @@ function ActivarBotonesCobranza(){
       }
     })
   });
-
-
 
   $('.ActualizarPago').unbind();//EVITAMOS QUE SE DUPLIQUE NUESTRO SELECTOR
   $('.ActualizarPago').click(function(){

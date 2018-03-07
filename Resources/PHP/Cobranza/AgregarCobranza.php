@@ -18,8 +18,13 @@ ct_cobranza(
   fk_cliente)
   VALUES(?,?,?,?,?,?)";
 
-
 $stmt = $conn->prepare($query);
+
+error_log("Pase por aqui!");
+
+if (!($stmt)) {
+  error_log($conn->$error);
+  }
 $stmt->bind_param('ssssss',
   $_POST['cbz_concepto'],
   $_POST['cbz_factura'],

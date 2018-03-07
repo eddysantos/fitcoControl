@@ -8,6 +8,7 @@ if (!isset($_SESSION['user'])) {
   require $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
   require $root . '/fitcoControl/Resources/PHP/DataBases/Conexion.php';
 
+
 ?>
 
 <div class="container">
@@ -33,7 +34,7 @@ if (!isset($_SESSION['user'])) {
 
 
 
-    <form  id="Agregarcobranza"  class="agregarnuevo" style="display:none">
+    <form  id="Agregarcobranza" onsubmit="return false" class="agregarnuevo" style="display:none">
       <table class="table">
         <tbody>
           <tr class="row m20">
@@ -76,15 +77,15 @@ if (!isset($_SESSION['user'])) {
           </tr>
           <tr class="row m20">
             <td class="col-md-12 input-effect p-0">
-              <input id="cbz_dvencimiento" class="effect-17 has-content" type="date" required>
-                <label>Vencimiento de factura</label>
+              <input id="cbz_entrega" class="effect-17 has-content" type="date" required>
+                <label>Fecha de Entrega</label>
                 <span class="focus-border"></span>
             </td>
           </tr>
           <tr class="row m20">
             <td class="col-md-12 input-effect p-0">
-              <input id="cbz_entrega" class="effect-17 has-content" type="date" required>
-                <label>Fecha de Entrega</label>
+              <input id="cbz_dvencimiento" class="effect-17 has-content" type="date" required>
+                <label>Vencimiento de factura</label>
                 <span class="focus-border"></span>
             </td>
           </tr>
@@ -101,8 +102,9 @@ if (!isset($_SESSION['user'])) {
 
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
+    require $root . '/fitcoControl/Resources/PHP/Cobranza/pieCobranza.php';
   require $root . '/fitcoControl/Ubicaciones/Modales/Cobranza/ModalGraficaCobranza.php';
   require $root . '/fitcoControl/Ubicaciones/Modales/Cobranza/ModalCobranza.php';
   require $root . '/fitcoControl/Ubicaciones/Modales/Cobranza/ModalPagos.php';
-  require $root . '/fitcoControl/Resources/PHP/Cobranza/pieCobranza.php';
+
 ?>

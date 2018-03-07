@@ -9,6 +9,7 @@ require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
 $query =
 "UPDATE ct_cobranza
 SET
+conceptoPago = ?,
 facturaCobranza = ?,
 importeCobranza = ?,
 vencimientoCobranza = ?,
@@ -17,7 +18,8 @@ fk_cliente = ?
 WHERE pk_cobranza = ?";
 
 $stmt = $conn->prepare($query);
-$stmt->bind_param('ssssss',
+$stmt->bind_param('sssssss',
+  $_POST['mcbz_concepto'],
   $_POST['mcbz_factura'],
   $_POST['mcbz_importe'],
   $_POST['mcbz_vencimiento'],
