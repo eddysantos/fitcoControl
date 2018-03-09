@@ -17,9 +17,6 @@ function markCheckbox(selector, value){
 
 $(document).ready(function(){
   fetchUsuario();
-
-
-
   $('#NuevoRegistroUsuario').click(function(){
 
     var nombreUsuario = $('#usr_nombre').val();
@@ -97,21 +94,42 @@ $(document).ready(function(){
 
 
 //MOSTRAR LOS REGISTROS EN PANTALLA
-function fetchUsuario(){
+// function fetchUsuario(){
+//   $.ajax({
+//     method: 'POST',
+//     url:'/fitcoControl/Resources/PHP/Usuarios/MostrarTablaUsuario.php',
+//     success:function(result){
+//       console.log(result);
+//       var rsp = JSON.parse(result);
+//       $('#mostrarUsuarios').html(rsp.infoTabla);
+//       ActivarBotonesUsuario();
+//     },
+//     error:function(exception){
+//       console.error(exception)
+//     }
+//   })
+// }
+
+function fetchUsuario(usuario){
   $.ajax({
-    method: 'POST',
     url:'/fitcoControl/Resources/PHP/Usuarios/MostrarTablaUsuario.php',
-    success:function(result){
-      console.log(result);
-      var rsp = JSON.parse(result);
-      $('#mostrarUsuarios').html(rsp.infoTabla);
-      ActivarBotonesUsuario();
-    },
-    error:function(exception){
-      console.error(exception)
-    }
+    method: 'POST',
+    data:{usuario:usuario},
+  })
+  .done(function(resultado){
+    $('#mostrarUsuarios').html(resultado);
+    ActivarBotonesUsuario();
   })
 }
+
+$(document).on('keyup', '#busqueda', function(){
+  var valorBusqueda = $(this).val();
+  if (valorBusqueda!= "") {
+    fetchUsuario(valorBusqueda);
+  }else {
+    fetchUsuario();
+  }
+});
 
 
 function ActivarBotonesUsuario(){

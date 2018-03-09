@@ -9,39 +9,20 @@ if (!isset($_SESSION['user'])) {
   require $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
 ?>
 
-<div class="container">
+<div class="container-fluid pr-57">
   <div class="clt_usr  mt-5 mb-5">
     <a class="rotate-link consultar ancla" style="font-size: larger;" accion="ausuario" status="cerrado">
       <img src="/fitcoControl/Resources/iconos/usuario.svg" class="icon1 rotate-icon" style="width:30px;">
-      <span class="span">Agregar Usuario</span>
+      <span class="spanA">Agregar Usuario</span>
+    </a>
+    <a class="ml-3 rotate-link consultar ancla" accion="busuario" status="cerrado">
+      <img src="/fitcoControl/Resources/iconos/search.svg" class=" icon rotate-icon" style="width:30px">
+      <span class="spanB"><input class="buscar" type="text" name="busqueda"  id="busqueda" placeholder="Buscar"></span>
     </a>
 
-    <form id="Eusuarios" class="page p-0">
-      <table class="table table-hover">
-        <thead>
-          <tr class="row m-0 encabezado">
-            <td class="col-md-1"></td>
-            <td class="col-md-4 text-center">
-              <h3>EMPLEADO</h3>
-            </td>
-            <td class="col-md-3 text-center">
-              <h3>DEPARTAMENTO</h3>
-            </td>
-            <td class="col-md-2 text-center">
-              <h3>PRIVILEGIOS</h3>
-            </td>
-            <td class="col-md-2"></td>
-          </tr>
-        </thead>
-        <tbody id="mostrarUsuarios">
-        </tbody>
-      </table>
-    </form>
-    <!-- <form id="usuarios" class="usuarios page p-0" style="margin-top:180px">
-      <table class="table table-hover table-fixed">
-
-      </table>
-    </form> -->
+    <div class="container-fluid mt-3" style="max-width:1300px">
+      <section id="mostrarUsuarios"></section>
+    </div>
 
     <form id="NuevoUsuario" class="agregarnuevo mb-10" style="display:none">
       <table class="table">
@@ -153,6 +134,5 @@ if (!isset($_SESSION['user'])) {
   $root = $_SERVER['DOCUMENT_ROOT'];
   require $root . '/fitcoControl/Ubicaciones/Modales/Usuarios/EditarUsuario.php';
   require $root . '/fitcoControl/Resources/PHP/Usuarios/pieUsuario.php';
-  // require $root . '/fitcoControl/Resources/PHP/UsuariosPrueba/pieUsuarios.php';
 
 ?>
