@@ -18,7 +18,6 @@ function markCheckbox(selector, value){
 $(document).ready(function(){
   fetchUsuario();
   $('#NuevoRegistroUsuario').click(function(){
-
     var nombreUsuario = $('#usr_nombre').val();
     var apellidosUsuario = $('#usr_apellidos').val();
     var correoUsuario = $('#usr_correo').val();

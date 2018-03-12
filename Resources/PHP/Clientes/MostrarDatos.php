@@ -23,80 +23,122 @@ colorCliente AS color
 
  ORDER BY nombreCliente ASC";
 
-$resultado = mysqli_query($conn,$query);
 
-if (!$resultado) {
-  die("Error");
-}else {
-  while($row = mysqli_fetch_assoc($resultado)){
-    $data["data"][]= $row;
+ if (isset($_POST['clientes'])) {
+   $q = $conn->real_escape_string($_POST['clientes']);
+   $query = "SELECT
+   pk_cliente AS idCliente,
+   nombreCliente AS nombre,
+   correoCliente AS correo,
+   telefonoCliente AS telefono,
+   creditoCliente AS credito,
+   fingresoCliente AS ingreso,
+   colorCliente AS color
 
-    $id = $row['idCliente'];
-    $cliente = $row['nombre'];
-    $correo = $row['correo'];
-    $telefono = $row['telefono'];
-    $credito = $row['credito'];
-    $fingreso = $row['ingreso'];
-    $color = $row['color'];
-    $cle = $_SESSION['user']['cliente_editar'];
-    $admin = $_SESSION['user']['privilegiosUsuario'];
+    FROM ct_cliente
 
+    WHERE nombreCliente LIKE '%$q%' OR
+    correoCliente LIKE '%$q%' OR
+    telefonoCliente LIKE '%$q%' OR
+    creditoCliente LIKE '%$q%' OR
+    fingresoCliente LIKE '%$q%'
 
-  if ($cle == 1 || $admin == "Administrador") {
-    $data["infoTabla"].= "
-    <tr class='row bordelateral m-0' id='item'>
-      <td class='col-md-1'>
-        <img src='/fitcoControl/Resources/iconos/team.svg' class='icono'>
-      </td>
-      <td class='col-md-3'>
-        <h2><b><input type='color' value='$color'>$cliente</b></h2>
-        <p class='visibilidad'>Ingreso : $fingreso</p>
-      </td>
-      <td class='col-md-4 text-center'>
-        <h2><b><a href='mailto:$correo'>$correo</a></b></h2>
-        <p class='visibilidad'>Credito : $credito Días</p>
-      </td>
-      <td class='col-md-3 text-center'>
-        <h2><b>$telefono</a></b></h2>
-      </td>
-      <td class='col-md-1 text-center'>
-        <a href='#' class='EditCliente spand-link' data-toggle='modal' data-target='#EditarCliente' id='btnEditarCliente' client-id='$id'>
-        <img src='/fitcoControl/Resources/iconos/pencil1.svg' class='spand-icon'>
-        </a>
-      </td>
-    </tr>";
- }elseif ($cle == "0") {
-   $data["infoTabla"].= "
-   <tr class='row bordelateral m-0' id='item'>
-     <td class='col-md-1'>
-       <img src='/fitcoControl/Resources/iconos/team.svg' class='icono'>
-     </td>
-     <td class='col-md-3'>
-       <h2><b><input type='color' value='$color'>$cliente</b></h2>
-       <p class='visibilidad'>Ingreso : $fingreso</p>
-     </td>
-     <td class='col-md-4 text-center'>
-       <h2><b><a href='mailto:$correo'>$correo</a></b></h2>
-       <p class='visibilidad'>Credito : $credito Días</p>
-     </td>
-     <td class='col-md-3 text-center'>
-       <h2><b>$telefono</a></b></h2>
-     </td>
-     <td class='col-md-1 text-center'>
-       <a class='EditCliente spand-link' client-id='$id'>
-       <img src='/fitcoControl/Resources/iconos/pencil1.svg' class='bloqueo spand-icon'>
-       </a>
-     </td>
-   </tr>";
- }
-
-
-
-  }
-  echo json_encode($data);
+    ORDER BY nombreCliente ASC";
 }
+  $buscarDatos = $conn->query($query);
+  if ($buscarDatos->num_rows > 0) {
+    $tabla.="
+    <form id='Eclientes' class='page p-0'>
+      <table class='table table-hover'>
+        <thead>
+          <tr class='row m-0 encabezado'>
+            <td class='col-md-1'></td>
+            <td class='col-md-3 text-center'><h3>CLIENTE</h3></td>
+            <td class='col-md-4 text-center'><h3>CORREO / CONTACTO</h3></td>
+            <td class='col-md-2 text-center'><h3>TELEFONO</h3></td>
+            <td class='col-md-2'></td>
+          </tr>
+        </thead>";
 
-mysqli_free_result($resultado);
-mysqli_close($conn);
+        while ($row = $buscarDatos->fetch_assoc()) {
+          $id = $row['idCliente'];
+          $cliente = $row['nombre'];
+          $correo = $row['correo'];
+          $telefono = $row['telefono'];
+          $credito = $row['credito'];
+          $fingreso = $row['ingreso'];
+          $color = $row['color'];
+          $cle = $_SESSION['user']['cliente_editar'];
+          $admin = $_SESSION['user']['privilegiosUsuario'];
+
+        if ($cle == 1 || $admin == "Administrador") {
+          $tabla.= "
+          <tbody id='mostrarUsuarios'>
+            <tr class='row bordelateral m-0' id='item'>
+              <td class='col-md-1'>
+                <img src='/fitcoControl/Resources/iconos/team.svg' class='icono'>
+              </td>
+              <td class='col-md-3'>
+                <h2><b><input type='color' value='$color'>$cliente</b></h2>
+                <p class='visibilidad'>Ingreso : $fingreso</p>
+              </td>
+              <td class='col-md-4 text-center'>
+                <h2><b><a href='mailto:$correo'>$correo</a></b></h2>
+                <p class='visibilidad'>Credito : $credito Días</p>
+              </td>
+              <td class='col-md-2 text-center'>
+                <h2><b>$telefono</a></b></h2>
+              </td>
+              <td class='col-md-2 text-right'>
+                <a href='#' class='EditCliente spand-link' data-toggle='modal' data-target='#EditarCliente' id='btnEditarCliente' client-id='$id'>
+                  <img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='spand-icon'>
+                </a>
+
+                <a href='#' class='eliminarCliente spand-link ml-3' client-id='$id'>
+                  <img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='spand-icon'>
+                </a>
+              </td>
+
+            </tr>
+          </tbody>";
+        }elseif ($cle == "0") {
+         $tabla.= "
+         <tbody id='mostrarUsuarios'>
+           <tr class='row bordelateral m-0' id='item'>
+             <td class='col-md-1'>
+               <img src='/fitcoControl/Resources/iconos/team.svg' class='icono'>
+             </td>
+             <td class='col-md-3'>
+               <h2><b><input type='color' value='$color'>$cliente</b></h2>
+               <p class='visibilidad'>Ingreso : $fingreso</p>
+             </td>
+             <td class='col-md-4 text-center'>
+               <h2><b><a href='mailto:$correo'>$correo</a></b></h2>
+               <p class='visibilidad'>Credito : $credito Días</p>
+             </td>
+             <td class='col-md-3 text-center'>
+               <h2><b>$telefono</a></b></h2>
+             </td>
+             <td class='col-md-2 text-center'>
+               <a class='EditCliente spand-link' client-id='$id'>
+                 <img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='bloqueo spand-icon'>
+               </a>
+               <a class='spand-link' client-id='$id'>
+                 <img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='bloqueo spand-icon'>
+               </a>
+             </td>
+           </tr>
+         </tbody>";
+       }
+      }
+       $tabla.="
+      </table>
+     </form>";
+
+
+   }else {
+     $tabla="No se encontraron coincidencias";
+   }
+   echo $tabla;
 
 ?>

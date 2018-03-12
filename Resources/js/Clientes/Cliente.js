@@ -63,21 +63,42 @@ $(document).ready(function(){
 
 
 //Muestra los registros en pantalla
-function fetchClients(){
+// function fetchClients(){
+//   $.ajax({
+//     method: 'POST',
+//     url:'/fitcoControl/Resources/PHP/Clientes/MostrarDatos.php',
+//     success:function(result){
+//       var rsp = JSON.parse(result);
+//       console.log(rsp);
+//       $('#mostrarClientes').html(rsp.infoTabla);
+//       ActivarBotones();
+//     },
+//     error:function(exception){
+//       console.error(exception)
+//     }
+//   })
+// }
+
+function fetchClients(clientes){
   $.ajax({
-    method: 'POST',
     url:'/fitcoControl/Resources/PHP/Clientes/MostrarDatos.php',
-    success:function(result){
-      var rsp = JSON.parse(result);
-      console.log(rsp);
-      $('#mostrarClientes').html(rsp.infoTabla);
-      ActivarBotones();
-    },
-    error:function(exception){
-      console.error(exception)
-    }
+    method: 'POST',
+    data:{clientes:clientes},
+  })
+  .done(function(resultado){
+    $('#mostrarClientes').html(resultado);
+    ActivarBotones();
   })
 }
+
+$(document).on('keyup', '#busqueda', function(){
+  var valorBusqueda = $(this).val();
+  if (valorBusqueda!= "") {
+    fetchClients(valorBusqueda);
+  }else {
+    fetchClients();
+  }
+});
 
 
 function ActivarBotones(){
@@ -166,4 +187,44 @@ function ActivarBotones(){
       }
     });
   });
+
+  $('.eliminarCliente').unbind();
+  $('.eliminarCliente').click(function(){
+    var clienteId = $(this).attr('client-id');
+    swal({
+    title: "Estas Seguro?",
+    text: "Ya no se podra recuperar el registro!",
+    type: "warning",
+    showCancelButton: true,
+    confirmButtonClass: "btn-danger",
+    confirmButtonText: "Si, Eliminar",
+    cancelButtonText: "No, cancelar",
+    closeOnConfirm: false,
+    closeOnCancel: false
+  },
+  function(isConfirm) {
+    if (isConfirm) {
+      $.ajax({
+        method: 'POST',
+        url: '/fitcoControl/Resources/PHP/Clientes/EliminarCliente.php',
+        data: {clienteId: clienteId},
+
+        success: function(result){
+          console.log(result);
+          if (result != 1) {
+            alertify.error('NO SE PUDO ELIMINAR');
+          }else if (result == 1){
+            fetchClients();
+          }
+        },
+        error: function(exception){
+          console.error(exception)
+        }
+      });
+      swal("Eliminado!", "Se elimino correctamente.", "success");
+    } else {
+      swal("Cancelado", "El registro esta a salvo :)", "error");
+    }
+  });
+});
 }
