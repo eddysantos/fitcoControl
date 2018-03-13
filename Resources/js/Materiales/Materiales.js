@@ -1,35 +1,7 @@
 $(document).ready(function(){
 
 fetchMateriales();
-});
 
-
-
-  //MOSTRAR LOS REGISTROS EN PANTALLA
-  function fetchMateriales(materiales){
-    $.ajax({
-      url:'/fitcoControl/Resources/PHP/Materiales/MostrarTablaMaterial.php',
-      method: 'POST',
-      data:{materiales:materiales},
-    })
-    .done(function(resultado){
-      $('#MostrarMateriales').html(resultado);
-      ActivarBotonesMaterial();
-    })
-  }
-
-  $(document).on('keyup', '#busqueda', function(){
-    var valorBusqueda = $(this).val();
-    if (valorBusqueda!= "") {
-      fetchMateriales(valorBusqueda);
-    }else {
-      fetchMateriales();
-    }
-  });
-
-
-function ActivarBotonesMaterial(){
-  //AGREGAR PAGOS MODAL
   $('#NuevoRegistroMat').click(function(){
 
     var mm = $('#mat_material').val();
@@ -81,6 +53,36 @@ function ActivarBotonesMaterial(){
       })
     }
   });
+});
+
+
+
+  //MOSTRAR LOS REGISTROS EN PANTALLA
+  function fetchMateriales(materiales){
+    $.ajax({
+      url:'/fitcoControl/Resources/PHP/Materiales/MostrarTablaMaterial.php',
+      method: 'POST',
+      data:{materiales:materiales},
+    })
+    .done(function(resultado){
+      $('#MostrarMateriales').html(resultado);
+      ActivarBotonesMaterial();
+    })
+  }
+
+  $(document).on('keyup', '#busqueda', function(){
+    var valorBusqueda = $(this).val();
+    if (valorBusqueda!= "") {
+      fetchMateriales(valorBusqueda);
+    }else {
+      fetchMateriales();
+    }
+  });
+
+
+function ActivarBotonesMaterial(){
+  //AGREGAR PAGOS MODAL
+
 
   $('.editMat').unbind();
   $('.editMat').click(function(){

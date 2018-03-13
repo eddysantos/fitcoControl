@@ -1,8 +1,6 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
 
-// require $root . "/fitcoControl/Resources/PHP/Util/helperFunctions.php";
-
 $data = array(
   'code'=>"",
   'response'=>array()
