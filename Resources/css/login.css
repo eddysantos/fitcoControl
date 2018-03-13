@@ -61,7 +61,7 @@ h1{
 /* Inputs */
 a,input{
   font-family: 'Open Sans Condensed', sans-serif;
-  text-decoration: none;
+  text-decoration: none!important;
   position: relative;
   width: 90%;
   display: block;

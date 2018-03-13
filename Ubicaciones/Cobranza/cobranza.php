@@ -11,7 +11,7 @@ if (!isset($_SESSION['user'])) {
 
 ?>
 
-<div class="container">
+<div class="container-fluid pr-57">
 
   <div class="clt_usr mt-5 mb-5">
     <a class="rotate-link consultar ancla" accion="acobranza" status="cerrado">
@@ -20,11 +20,11 @@ if (!isset($_SESSION['user'])) {
     </a>
     <a class="ml-3 rotate-link consultar ancla" data-toggle='modal' data-target='#ModalGraficaCobranza'>
       <img src="/fitcoControl/Resources/iconos/grafica2.svg" class=" icon rotate-icon" style="width:30px">
-      <span class="spanD">Detalle Cobranza</span>
+      <span class="spanD">Graficas Cobranza</span>
     </a>
     <a class="ml-3 rotate-link consultar ancla" accion="btesoreria" status="cerrado">
       <img src="/fitcoControl/Resources/iconos/search.svg" class=" icon rotate-icon" style="width:30px">
-      <span class="spanB"><input class="buscar" type="text" name="busqueda"  id="busqueda"></span>
+      <span class="spanB"><input class="buscar" type="text" name="busqueda"  id="busqueda" placeholder="Buscar"></span>
     </a>
 
     <div class="container-fluid mt-3" style="max-width:1300px">

@@ -7,7 +7,7 @@
 
   $root = $_SERVER['DOCUMENT_ROOT'];
   require $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
-  require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
+  // require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
 ?>
 
 
@@ -16,7 +16,7 @@
   <div class="clt_usr mt-5 ml-5">
     <a id="addcliente" class="rotate-link consultar ancla" accion="acliente" status="cerrado">
       <img src="/fitcoControl/Resources/iconos/clientes.svg" class="icon1 rotate-icon" style="width:30px">
-      <span class="spanc">Agregar Cliente</span>
+      <span class="spanA">Agregar Cliente</span>
     </a>
 
     <a class="ml-3 rotate-link consultar ancla" accion="busuario" >
@@ -28,29 +28,6 @@
   <div class="container-fluid mt-3" style="max-width:1300px">
     <section id="mostrarClientes"></section>
   </div>
-
-
-  <!-- <form id="Eclientes" class="page p-0">
-    <table class="table table-hover table-fixed">
-      <thead>
-        <tr class="row m-0 encabezado">
-          <td class="col-md-1"></td>
-          <td class="col-md-3 text-center">
-            <h3>CLIENTE</h3>
-          </td>
-          <td class="col-md-4 text-center">
-            <h3>CORREO/CONTACTO</h3>
-          </td>
-          <td class="col-md-3 text-center">
-            <h3>TELEFONO</h3>
-          </td>
-          <td class="col-md-2 text-center"></td>
-        </tr>
-      </thead>
-      <tbody id="mostrarClientes"></tbody>
-    </table>
-  </form> -->
-
 
   <form  id="NuevoCliente"  class="agregarnuevo" style="display:none">
     <table class="table">

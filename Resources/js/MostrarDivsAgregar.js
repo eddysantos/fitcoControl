@@ -53,10 +53,17 @@ $(document).ready(function(){
         $(this).attr('status', 'abierto');
         $('#MMaterial').animate({"right": "36%"}, "slow");
         $('#NuevoMaterial').fadeIn(2500);
+        $( "img" ).removeClass( "spand-icon" ).addClass( "spand-iconp");
+        $('p').css('font-size','13px');
+        $('b').css('font-size','14px');
       }else {
         $('.spanM').css('display', '');
         $(this).attr('status', 'cerrado');
         $('#MMaterial').animate({"right": "4%"}, "slow");
+        $( "img" ).removeClass( "spand-iconp" ).addClass( "spand-icon");
+        $('p').css('font-size','1.75rem');
+        $('b').css('font-size','1.75rem');
+        $('p').css('font-weight','500');
         $('#NuevoMaterial').hide();
       }
       break;
@@ -70,32 +77,19 @@ $(document).ready(function(){
         $( "img" ).removeClass( "spand-icon" ).addClass( "spand-iconp");
         $('#Agregarcobranza').fadeIn(1000);
         $('#Detallecobranza').hide();
-        $('p').css('font-size','13px')
-        $('b').css('font-size','14px')
+        $('p').css('font-size','13px');
+        $('b').css('font-size','14px');
       }else{
         $('.spanA').css('display', '');
         $(this).attr('status', 'cerrado');
         $('#Ecobranza').animate({"right": "4%"}, "slow");
         $( "img" ).removeClass( "spand-iconp" ).addClass( "spand-icon");
         $('p').css('font-size','1.75rem');
-        $('b').css('font-size','1.75rem')
+        $('b').css('font-size','1.75rem');
         $('p').css('font-weight','500');
         $('#Agregarcobranza').hide();
       }
       break;
-
-      // case  "btesoreria":
-      //   if (status == 'cerrado') {
-      //     $(this).attr('status','abierto');
-      //     $('acobranza').attr('status','abierto');
-      //     $('.spanA').css('display', '');
-      //     $('.spanD').css('display', '');
-      //     $('#Ecobranza').animate({"right": "4%"}, "slow");
-      //     $('#Agregarcobranza').hide();
-      //   }else{
-      //     $(this).attr('status', 'cerrado');
-      //   }
-      //   break;
 
       case "eproduccion":
       if (status == 'cerrado') {

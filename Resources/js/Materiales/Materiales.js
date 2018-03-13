@@ -4,22 +4,29 @@ fetchMateriales();
 });
 
 
-//Mostrar Registros en pantalla
-function fetchMateriales(){
-  $.ajax({
-    method: 'POST',
-    url:'/fitcoControl/Resources/PHP/Materiales/MostrarTablaMaterial.php',
-    success:function(result){
-      var rsp = JSON.parse(result);
-      console.log(rsp);
-      $('#MostrarMateriales').html(rsp.infoTabla);
+
+  //MOSTRAR LOS REGISTROS EN PANTALLA
+  function fetchMateriales(materiales){
+    $.ajax({
+      url:'/fitcoControl/Resources/PHP/Materiales/MostrarTablaMaterial.php',
+      method: 'POST',
+      data:{materiales:materiales},
+    })
+    .done(function(resultado){
+      $('#MostrarMateriales').html(resultado);
       ActivarBotonesMaterial();
-    },
-    error:function(exception){
-      console.error(exception)
+    })
+  }
+
+  $(document).on('keyup', '#busqueda', function(){
+    var valorBusqueda = $(this).val();
+    if (valorBusqueda!= "") {
+      fetchMateriales(valorBusqueda);
+    }else {
+      fetchMateriales();
     }
-  })
-}
+  });
+
 
 function ActivarBotonesMaterial(){
   //AGREGAR PAGOS MODAL

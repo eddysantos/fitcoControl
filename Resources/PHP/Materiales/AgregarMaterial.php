@@ -1,7 +1,7 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
 
-require $root . "/fitcoControl/Resources/PHP/Util/helperFunctions.php";
+// require $root . "/fitcoControl/Resources/PHP/Util/helperFunctions.php";
 
 $data = array(
   'code'=>"",
@@ -31,7 +31,7 @@ $stmt->bind_param('sssssss',
   $_POST['fe'],
   $_POST['cc'],
   $_POST['pp']
-  
+
 );
 $stmt->execute();
 

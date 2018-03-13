@@ -93,22 +93,6 @@ $(document).ready(function(){
 
 
 //MOSTRAR LOS REGISTROS EN PANTALLA
-// function fetchUsuario(){
-//   $.ajax({
-//     method: 'POST',
-//     url:'/fitcoControl/Resources/PHP/Usuarios/MostrarTablaUsuario.php',
-//     success:function(result){
-//       console.log(result);
-//       var rsp = JSON.parse(result);
-//       $('#mostrarUsuarios').html(rsp.infoTabla);
-//       ActivarBotonesUsuario();
-//     },
-//     error:function(exception){
-//       console.error(exception)
-//     }
-//   })
-// }
-
 function fetchUsuario(usuario){
   $.ajax({
     url:'/fitcoControl/Resources/PHP/Usuarios/MostrarTablaUsuario.php',

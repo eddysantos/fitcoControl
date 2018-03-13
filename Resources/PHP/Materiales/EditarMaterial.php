@@ -22,10 +22,10 @@ $stmt->bind_param('ssssssss',
   $_POST['mm'],
   $_POST['fc'],
   $_POST['ns'],
-  $_POST['pr'],
+  $_POST['pe'],
   $_POST['fe'],
   $_POST['cc'],
-  $_POST['pe'],
+  $_POST['pr'],
   $_POST['id']
 );
 $stmt->execute();

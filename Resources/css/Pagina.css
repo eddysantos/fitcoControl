@@ -114,6 +114,9 @@ input:-webkit-autofill {
 .clt_usr .consultar:hover .spanA{
   width: 145px;
 }
+.clt_usr .consultar:hover .spanD{
+  width: 165px;
+}
 .clt_usr .vent:hover span{
   width: 120px!important;
 }
@@ -202,7 +205,7 @@ a.linkboton{
 	text-transform:uppercase;
 	/*letter-spacing:3px;*/
 	display:inline-block;
-	text-decoration:none;
+	text-decoration:none!important;
 	color:black;
 	padding: 10px 30px;
 	border: 2px solid black;
@@ -269,7 +272,7 @@ a.linkboton:hover span.top{
 }
 
 a.boton-colapso{
-  text-decoration: none;
+  text-decoration: none!important;
 }
 
 a.boton-colapso:hover{

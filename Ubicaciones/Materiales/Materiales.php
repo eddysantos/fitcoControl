@@ -9,35 +9,20 @@ require  $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
 ?>
 
 
-<div class="container">
+<div class="container-fluid pr-57">
   <div class="clt_usr  mt-5 mb-5">
     <a class="rotate-link consultar ancla" style="font-size: larger;" accion="amaterial" status="cerrado">
       <img src="/fitcoControl/Resources/iconos/001-computer.svg" class="icon1 rotate-icon" style="width:30px;">
-      <span class="spanM">Nuevo Registro</span>
+      <span class="spanA">Nuevo Registro</span>
+    </a>
+    <a class="ml-3 rotate-link consultar ancla" accion="busuario" status="cerrado">
+      <img src="/fitcoControl/Resources/iconos/search.svg" class=" icon rotate-icon" style="width:30px">
+      <span class="spanB"><input class="buscar" type="text" name="busqueda"  id="busqueda" placeholder="Buscar"></span>
     </a>
 
-    <form id="MMaterial" class="page p-0">
-      <table class="table table-hover">
-        <thead>
-          <tr class="row m-0 encabezado">
-            <td class="col-md-3 text-center">
-              <h3>Material</h3>
-            </td>
-            <td class="col-md-2 text-center">
-              <h3>Precio</h3>
-            </td>
-            <td class="col-md-3 text-center">
-              <h3>Se Entrego a:</h3>
-            </td>
-            <td class="col-md-3 text-center">
-              <h3>Condiciones</h3>
-            </td>
-          </tr>
-        </thead>
-        <tbody id="MostrarMateriales">
-        </tbody>
-      </table>
-    </form>
+    <div class="container-fluid mt-3" style="max-width:1300px">
+      <section id="MostrarMateriales"></section>
+    </div>
 
     <form id="NuevoMaterial" class="agregarnuevo" style="display:none">
       <table class="table">
