@@ -9,40 +9,28 @@ if (!isset($_SESSION['user'])) {
   require $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
 ?>
 
-<div class="container">
+<div class="container-fluid pr-57">
   <div class="clt_usr  mt-5 mb-5">
     <a class="rotate-link vent consultar ancla" style="font-size: larger;" accion="aventas" status="cerrado">
       <img src="/fitcoControl/Resources/iconos/venta.svg" class="icon1 rotate-icon" style="width:30px;">
       <span class="spanV">Nueva Venta</span>
     </a>
 
-
-    <a class="rotate-link ventGraf consultar ancla" data-toggle='modal' data-target='#ModalGraficaVentas'>
+    <a class="rotate-link consultar ancla" data-toggle='modal' data-target='#ModalGraficaVentas'>
       <img src="/fitcoControl/Resources/iconos/grafica2.svg" class="icon1 rotate-icon" style="width:30px;">
-      <span class="spanVG">Grafica Ventas</span>
+      <span class="spanA">Grafica Ventas</span>
     </a>
 
-    <form id="Eventas" class="page p-0">
-      <table class="table table-hover">
-        <thead>
-          <tr class="row m-0 encabezado">
-            <td class="col-md-1"></td>
-            <td class="col-md-3 text-center">
-              <h3>NUEVO CLIENTE</h3>
-            </td>
-            <td class="col-md-3 text-center">
-              <h3>VENDEDOR</h3>
-            </td>
-            <td class="col-md-2 text-center">
-              <h3>INGRESO</h3>
-            </td>
-            <td class="col-md-3"></td>
-          </tr>
-        </thead>
-        <tbody id="mostrarVentas">
-        </tbody>
-      </table>
-    </form>
+    <a class="rotate-link consultar ancla">
+      <img src="/fitcoControl/Resources/iconos/search.svg" class="icon1 rotate-icon" style="width:30px">
+      <span class="spanB"><input class="buscar" type="text" id="busquedaVenta" placeholder="Buscar"></span>
+    </a>
+
+    <div class="container-fluid mt-3" style="max-width:1300px">
+      <section id="mostrarVentas"></section>
+    </div>
+
+
 
     <form id="NuevaVenta" class="agregarnuevo" style="display:none">
       <table class="table">

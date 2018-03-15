@@ -10,9 +10,7 @@ $data = array(
   'response' => "",
   'infoTabla' => ""
 );
-
 $query ="SELECT
-
 m.pk_material AS idMaterial,
 m.material AS material,
 m.personaEntrega AS personaEntrega,
@@ -23,14 +21,11 @@ m.fechaCompra AS compra,
 m.condicionEntrega AS condicion
 
 FROM ct_materiales m
-
 ORDER BY fechaEntrega";
 
 if (isset($_POST['materiales'])) {
   $q = $conn->real_escape_string($_POST['materiales']);
-
   $query ="SELECT
-
   m.pk_material AS idMaterial,
   m.material AS material,
   m.personaEntrega AS personaEntrega,

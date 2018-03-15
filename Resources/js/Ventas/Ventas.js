@@ -53,22 +53,27 @@ fetchVentas();
   });
 });
 
-
-function fetchVentas(){
+//MOSTRAR LOS REGISTROS EN PANTALLA
+function fetchVentas(ventas){
   $.ajax({
-    method: 'POST',
     url:'/fitcoControl/Resources/PHP/Ventas/MostrarTablaVentas.php',
-    success:function(result){
-      console.log(result);
-      var rsp = JSON.parse(result);
-      $('#mostrarVentas').html(rsp.infoTabla);
-      ActivarBotonesVentas();
-    },
-    error:function(exception){
-      console.error(exception)
-    }
+    method: 'POST',
+    data:{ventas:ventas},
+  })
+  .done(function(resultado){
+    $('#mostrarVentas').html(resultado);
+    ActivarBotonesVentas();
   })
 }
+
+$(document).on('keyup', '#busquedaVenta', function(){
+  var valorBusqueda = $(this).val();
+  if (valorBusqueda!= "") {
+    fetchVentas(valorBusqueda);
+  }else {
+    fetchVentas();
+  }
+});
 
 function ActivarBotonesVentas(){
 

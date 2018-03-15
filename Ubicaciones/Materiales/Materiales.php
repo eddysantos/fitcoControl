@@ -13,9 +13,9 @@ require  $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
   <div class="clt_usr  mt-5 mb-5">
     <a class="rotate-link consultar ancla" style="font-size: larger;" accion="amaterial" status="cerrado">
       <img src="/fitcoControl/Resources/iconos/001-computer.svg" class="icon1 rotate-icon" style="width:30px;">
-      <span class="spanA">Nuevo Registro</span>
+      <span class="spanM">Nuevo Registro</span>
     </a>
-    <a class="ml-3 rotate-link consultar ancla" accion="busuario" status="cerrado">
+    <a class="ml-3 rotate-link consultar ancla">
       <img src="/fitcoControl/Resources/iconos/search.svg" class=" icon rotate-icon" style="width:30px">
       <span class="spanB"><input class="buscar" type="text" name="busqueda"  id="busqueda" placeholder="Buscar"></span>
     </a>

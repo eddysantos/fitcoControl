@@ -58,7 +58,7 @@ $r = mysqli_query($conn, $query);
               $gananciasPrueba = $row["total"];
               $anio = $row["anio"];
               $fecha = $row["mes"];
-              $mes = date('m',$fecha);
+              // $mes = date('m',$fecha);
 
               print "[
 

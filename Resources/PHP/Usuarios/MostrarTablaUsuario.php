@@ -45,7 +45,7 @@ if (isset($_POST['usuario'])) {
   ORDER BY nombreUsuario ASC";
 }
 
-$buscarDatos=$conn->query($query);
+$buscarDatos = $conn->query($query);
 if ($buscarDatos->num_rows > 0) {
   $tabla.="
   <form id='Eusuarios' class='page p-0'>

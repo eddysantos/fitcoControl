@@ -71,7 +71,7 @@ $(document).ready(function(){
       case "acobranza":
       if (status == 'cerrado') {
         $(this).attr('status', 'abierto');
-        $('.spanA').css('display', 'inherit');
+        // $('.spanA').css('display', 'inherit');
         $('.spanD').css('display', '');
         $('#Ecobranza').animate({"right": "38%"}, "slow");
         $( "img" ).removeClass( "spand-icon" ).addClass( "spand-iconp");
@@ -80,7 +80,7 @@ $(document).ready(function(){
         $('p').css('font-size','13px');
         $('b').css('font-size','14px');
       }else{
-        $('.spanA').css('display', '');
+        // $('.spanA').css('display', '');
         $(this).attr('status', 'cerrado');
         $('#Ecobranza').animate({"right": "4%"}, "slow");
         $( "img" ).removeClass( "spand-iconp" ).addClass( "spand-icon");
@@ -107,13 +107,13 @@ $(document).ready(function(){
 
       case "ausuario":
       if (status == 'cerrado') {
-        $('.spanU').css('display', 'inherit');
+        $('.spanA').css('display', 'inherit');
         $(this).attr('status', 'abierto');
         $('#Eusuarios').animate({"right": "36%"}, "slow");
         $('#usuarios').animate({"right": "36%"}, "slow");
         $('#NuevoUsuario').fadeIn(2500);
       }else {
-        $('.spanU').css('display', '');
+        $('.spanA').css('display', '');
         $(this).attr('status', 'cerrado');
         $('#Eusuarios').animate({"right": "4%"}, "slow");
         $('#usuarios').animate({"right": "4%"}, "slow");
@@ -124,11 +124,13 @@ $(document).ready(function(){
       case "aventas":
       if (status == 'cerrado') {
         $('.spanV').css('display', 'inherit');
+        // $('.spanA').css('display', 'inherit');
         $(this).attr('status', 'abierto');
         $('#Eventas').animate({"right": "36%"}, "slow");
         $('#NuevaVenta').fadeIn(2500);
       }else {
         $('.spanV').css('display', '');
+        // $('.spanA').css('display', '');
         $(this).attr('status', 'cerrado');
         $('#Eventas').animate({"right": "4%"}, "slow");
         $('#NuevaVenta').hide();

@@ -111,7 +111,7 @@ input:-webkit-autofill {
   width: 190px;
 }
 
-.clt_usr .consultar:hover .spanA{
+.clt_usr .consultar:hover .spanA, .clt_usr .consultar:hover .spanM{
   width: 145px;
 }
 .clt_usr .consultar:hover .spanD{
