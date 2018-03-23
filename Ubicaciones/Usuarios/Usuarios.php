@@ -15,6 +15,7 @@ if (!isset($_SESSION['user'])) {
       <img src="/fitcoControl/Resources/iconos/usuario.svg" class="icon1 rotate-icon" style="width:30px;">
       <span class="spanA">Agregar Usuario</span>
     </a>
+    
     <a class="ml-3 rotate-link consultar ancla">
       <img src="/fitcoControl/Resources/iconos/search.svg" class=" icon rotate-icon" style="width:30px">
       <span class="spanB"><input class="buscar" type="text" name="busqueda"  id="busqueda" placeholder="Buscar"></span>

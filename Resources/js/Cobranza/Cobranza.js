@@ -1,8 +1,8 @@
 $(document).ready(function(){
   fetchCobranza();
-  fetchTablaCobranza();
+  // fetchTablaCobranza();
 
-  //BUSCADOR TIEMPO REAL
+  //BUSCADOR TIEMPO REAL PARA CAMPO LISTA
   $('#npClientName').keyup(function(){
     var txt = $(this).val();
     if (txt == "") {
@@ -131,21 +131,21 @@ $(document).on('keyup', '#busqueda', function(){
 
 
 //TABLA PARA DATOS DE GRAFICA COBRANZA
-function fetchTablaCobranza(){
-  $.ajax({
-    method: 'POST',
-    url:'/fitcoControl/Resources/PHP/Cobranza/TablaGraficaCobranza.php',
-    success:function(result){
-      console.log(result);
-      var rsp = JSON.parse(result);
-      $('#mostrarTablaGrafica').html(rsp.infoTabla);
-      ActivarBotonesCobranza();
-    },
-    error:function(exception){
-      console.error(exception)
-    }
-  })
-}
+// function fetchTablaCobranza(){
+//   $.ajax({
+//     method: 'POST',
+//     url:'/fitcoControl/Resources/PHP/Cobranza/TablaGraficaCobranza.php',
+//     success:function(result){
+//       console.log(result);
+//       var rsp = JSON.parse(result);
+//       $('#mostrarTablaGrafica').html(rsp.infoTabla);
+//       ActivarBotonesCobranza();
+//     },
+//     error:function(exception){
+//       console.error(exception)
+//     }
+//   })
+// }
 
 function ActivarBotonesCobranza(){
 
@@ -188,7 +188,7 @@ function ActivarBotonesCobranza(){
               $('#PagoFacturas').modal('hide');
               alertify.success('SE AGREGÓ CORRECTAMENTE');
               fetchCobranza();
-              fetchTablaCobranza();
+              // fetchTablaCobranza();
             }
           },
           error:function(exception){
@@ -321,11 +321,11 @@ function ActivarBotonesCobranza(){
           alertify.error('NO SE MODIFICÓ NINGUN REGISTRO');
           $('#DetCobranza').modal('hide');
           fetchCobranza();
-          fetchTablaCobranza();
+          // fetchTablaCobranza();
         }else {
           $('#DetCobranza').modal('hide');
           fetchCobranza();
-          fetchTablaCobranza();
+          // fetchTablaCobranza();
           alertify.success('SE MODIFICÓ CORRECTAMENTE');
         }
       },
@@ -443,12 +443,12 @@ function ActivarBotonesCobranza(){
           $('#EdPago').modal('hide');
           $('#VisualizarTablaCobranza').modal('hide');
           fetchCobranza();
-          fetchTablaCobranza();
+          // fetchTablaCobranza();
         }else {
           $('#EdPago').modal('hide');
           $('#VisualizarTablaCobranza').modal('hide');
           fetchCobranza();
-          fetchTablaCobranza();
+          // fetchTablaCobranza();
           alertify.success('SE MODIFICÓ CORRECTAMENTE');
         }
       },

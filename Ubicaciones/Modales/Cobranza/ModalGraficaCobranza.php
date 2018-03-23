@@ -195,7 +195,7 @@ $data = array(
         <div class="mt-5" id="graficasemanal" style="display:none"></div>
         <div class="mt-5" id="graficamensual" style="display:none"></div>
 
-        <table class="table table-hover table-fixed" style="display:none">
+        <!-- <table class="table table-hover table-fixed" style="display:none">
           <thead>
             <tr class="row m-0 encabezado">
               <td class="col-md-3 text-center"><h5>SEMANA</h5></td>
@@ -217,7 +217,7 @@ $data = array(
             </tr>
           </thead>
           <tbody id="mostrarTablaGrafica"></tbody>
-        </table>
+        </table> -->
       </div>
     </div>
   </div>

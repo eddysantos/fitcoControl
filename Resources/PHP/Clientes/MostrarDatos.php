@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 
 $root = $_SERVER['DOCUMENT_ROOT'];
@@ -101,7 +100,7 @@ colorCliente AS color
 
             </tr>
           </tbody>";
-        }elseif ($cle == "0") {
+        }elseif ($cle == 0) {
          $tabla.= "
          <tbody id='mostrarUsuarios'>
            <tr class='row bordelateral m-0' id='item'>

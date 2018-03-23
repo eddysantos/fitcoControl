@@ -311,6 +311,12 @@ a.boton-colapso:hover{
   overflow-y: auto;
 }
 
+.fixed-table tbody{
+  display: block;
+  max-height: 540px;
+  overflow-y: auto;
+}
+
 .verde{
   background-color: rgba(33, 255, 94, 0.1);
 }

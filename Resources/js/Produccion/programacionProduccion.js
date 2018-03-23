@@ -3,110 +3,88 @@ $(document).ready(function(){
 fetchProgramacion();
 fetchProProduccion();
 fetchTablaGrafica();
-// $('#previewProgram').click(function(){
-//   var np = new Array();
-//
-//   var fi = new Date( $('#produccionFI').val());
-//   var ff = new Date( $('#produccionFF').val());
-//   // var md = $('#produccionMD').val();
-//
-//   var test = [
-//     [ 'Washington', new Date(1789, 3, 30), new Date(1797, 2, 4) ],
-//     [ 'Adams',      new Date(1796, 2, 4),  new Date(1801, 2, 4) ],
-//     [ 'Jefferson',  new Date(1801, 2, 4),  new Date(1809, 2, 4) ]
-//   ];
-//
-//   np.push(["testClient", fi, ff]);
-//
-//   dibujarGrafica();
-//
-//   console.log(np);
-// })
-
 
 //BUSCADOR TIEMPO REAL
-$('#npClientName').keyup(function(){
-  var txt = $(this).val();
-  if (txt == "") {
-    $('#npClientList').fadeOut();
-    return false;
-  }
-
-  $.ajax({
-    method: 'POST',
-    url: '/fitcoControl/Resources/PHP/Clientes/fetchPopupClientList.php',
-    data:{txt: txt},
-    success: function(result){
-      rsp = JSON.parse(result);
-      console.log(rsp);
-
-      if (rsp.code != "1") {
-        $('#npClientList').html("<p>Hubo un error al cargar la lista de clientes...</p>");
-        console.warn("Error en el query: " + rsp.response);
-      } else {
-        $('#npClientList').html(rsp.response);
-        $('#npClientList p').click(function(){
-          var cid = $(this).attr('client-id');
-          var nc = $(this).html();
-
-          $('#npClientName').val(nc).html(nc).attr('client-id', cid);
-          $('#npClientList').fadeOut();
-        });
-      }
-      $('#npClientList').fadeIn();
-      clientSelector();
-    },
-    error: function(exception){
-      console.error(exception);
+  $('#npClientName').keyup(function(){
+    var txt = $(this).val();
+    if (txt == "") {
+      $('#npClientList').fadeOut();
+      return false;
     }
-  });
-});
 
-$('.agregar-programacion').click(function(){
-  var cId = $('#npClientName').attr('client-id');
-  var fi = $('#produccionFI').val();
-  var ff = $('#produccionFF').val();
-  var hr = $('#produccionHR').val();
-  var pz = $('#produccionPZ').val();
-
-  validacion = $('#produccionFI').val() == ""
-      || $('#produccionFF').val() == ""
-      || $('#produccionHR').val() == ""
-      || $('#npClientName').val() == ""
-      || $('#produccionPZ').val() == "";
-
-  validacionFecha = $('#produccionFI').val() > $('#produccionFF').val();
-  validacionHora =
-  $('#produccionHR').val() > '20:00:00'
-  || $('#produccionHR').val() <  '07:59:00';
-
-  if (validacion) {
-    swal("NO PUEDE CONTINUAR","Nesesita llenar todos los campos","error");
-  } else if (validacionFecha) {
-    swal("NO PUEDE CONTINUAR","Su fecha inicio no puede ser mayor a su fecha final","error");
-  }else if (validacionHora) {
-    swal("NO PUEDE CONTINUAR","La hora tiene que ser mayor a 08:00 y menor a 20:00 horas","error");
-  }else {
     $.ajax({
       method: 'POST',
-      url: '/fitcoControl/Resources/PHP/Programacion/addProgramacion.php',
-      data: {cId: cId, fi: fi, ff:ff, hr:hr, pz:pz},
+      url: '/fitcoControl/Resources/PHP/Clientes/fetchPopupClientList.php',
+      data:{txt: txt},
       success: function(result){
-        console.log(result);
-        dibujarGrafica();
-        fetchProgramacion();
-        fetchProProduccion();
-        $('#NuevaProg')[0].reset();
-        alertify.success('SE AGREGÓ CORRECTAMENTE');
+        rsp = JSON.parse(result);
+        console.log(rsp);
+
+        if (rsp.code != "1") {
+          $('#npClientList').html("<p>Hubo un error al cargar la lista de clientes...</p>");
+          console.warn("Error en el query: " + rsp.response);
+        } else {
+          $('#npClientList').html(rsp.response);
+          $('#npClientList p').click(function(){
+            var cid = $(this).attr('client-id');
+            var nc = $(this).html();
+
+            $('#npClientName').val(nc).html(nc).attr('client-id', cid);
+            $('#npClientList').fadeOut();
+          });
+        }
+        $('#npClientList').fadeIn();
+        clientSelector();
       },
       error: function(exception){
         console.error(exception);
       }
-    })
-  }
-});
+    });
+  });
 
-//drawChart();
+  $('.agregar-programacion').click(function(){
+    var cId = $('#npClientName').attr('client-id');
+    var fi = $('#produccionFI').val();
+    var ff = $('#produccionFF').val();
+    var hr = $('#produccionHR').val();
+    var pz = $('#produccionPZ').val();
+
+    validacion = $('#produccionFI').val() == ""
+        || $('#produccionFF').val() == ""
+        || $('#produccionHR').val() == ""
+        || $('#npClientName').val() == ""
+        || $('#produccionPZ').val() == "";
+
+    validacionFecha = $('#produccionFI').val() > $('#produccionFF').val();
+    validacionHora =
+    $('#produccionHR').val() > '20:00:00'
+    || $('#produccionHR').val() <  '07:59:00';
+
+    if (validacion) {
+      swal("NO PUEDE CONTINUAR","Nesesita llenar todos los campos","error");
+    } else if (validacionFecha) {
+      swal("NO PUEDE CONTINUAR","Su fecha inicio no puede ser mayor a su fecha final","error");
+    }else if (validacionHora) {
+      swal("NO PUEDE CONTINUAR","La hora tiene que ser mayor a 08:00 y menor a 20:00 horas","error");
+    }else {
+      $.ajax({
+        method: 'POST',
+        url: '/fitcoControl/Resources/PHP/Programacion/addProgramacion.php',
+        data: {cId: cId, fi: fi, ff:ff, hr:hr, pz:pz},
+        success: function(result){
+          console.log(result);
+          dibujarGrafica();
+          fetchProgramacion();
+          fetchProProduccion();
+          $('#NuevaProg')[0].reset();
+          alertify.success('SE AGREGÓ CORRECTAMENTE');
+        },
+        error: function(exception){
+          console.error(exception);
+        }
+      })
+    }
+  });
 });
 
 function clientSelector(){
@@ -120,7 +98,7 @@ function clientSelector(){
   });
 }
 
-//Mostrar Registros en pantalla
+// Mostrar Registros en pantalla
 function fetchProgramacion(){
   $.ajax({
     method: 'POST',
@@ -136,6 +114,8 @@ function fetchProgramacion(){
     }
   })
 }
+
+
 
 //tabla para grafica produccion
 function fetchTablaGrafica(){
@@ -321,21 +301,42 @@ function ActivarBotonProgram(){
 
 
 //PESTAÑA PRODUCCIÓN,, PESTAÑA PRODUCCIÓN
-function fetchProProduccion(){
+// function fetchProProduccion(){
+//   $.ajax({
+//     method: 'POST',
+//     url:'/fitcoControl/Resources/PHP/Produccion/MostrarProduccion.php',
+//     success:function(result){
+//       var rsp = JSON.parse(result);
+//       console.log(rsp);
+//       $('#mostrarProduccion').html(rsp.infoTabla);
+//       ActivarBotonProduc();
+//     },
+//     error:function(exception){
+//       console.error(exception)
+//     }
+//   })
+// }
+
+function fetchProProduccion(produccion){
   $.ajax({
-    method: 'POST',
     url:'/fitcoControl/Resources/PHP/Produccion/MostrarProduccion.php',
-    success:function(result){
-      var rsp = JSON.parse(result);
-      console.log(rsp);
-      $('#mostrarProduccion').html(rsp.infoTabla);
-      ActivarBotonProduc();
-    },
-    error:function(exception){
-      console.error(exception)
-    }
+    method: 'POST',
+    data:{produccion:produccion},
+  })
+  .done(function(resultado){
+    $('#mostrarProduccion').html(resultado);
+    ActivarBotonProduc();
   })
 }
+
+$(document).on('keyup', '#busqueda', function(){
+  var valorBusqueda = $(this).val();
+  if (valorBusqueda!= "") {
+    fetchProProduccion(valorBusqueda);
+  }else {
+    fetchProProduccion();
+  }
+});
 
 function ActivarBotonProduc(){
   $('.agregarproduccion').unbind();
@@ -494,6 +495,8 @@ function ActivarBotonProduc(){
             alertify.error('NO SE PUDO ELIMINAR');
           }else {
             alertify.success('SE ELIMINO REGISTRO');
+            $('#VisualizarTablaProduccion').modal('hide');
+            fetchProProduccion();
           }
         },
         error: function(exception){

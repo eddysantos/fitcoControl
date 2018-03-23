@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 
 $root = $_SERVER['DOCUMENT_ROOT'];
@@ -10,8 +9,8 @@ $data = array(
   'response' => "",
   'infoTabla' => ""
 );
-$query = "SELECT
 
+$query = "SELECT
 p.pk_programacion AS idprogram,
 c.nombreCliente AS cliente,
 p.fechaFinal AS ffin,
@@ -28,83 +27,114 @@ GROUP BY p.pk_programacion
 
 ORDER BY cliente ASC,ffin";
 
+if (isset($_POST['produccion'])) {
+  $q = $conn->real_escape_string($_POST['produccion']);
+  $query = "SELECT
+  p.pk_programacion AS idprogram,
+  c.nombreCliente AS cliente,
+  p.fechaFinal AS ffin,
+  p.piezasRequeridas AS piezas,
+  c.colorCliente AS color,
+  SUM(pr.cantidadProduccion) AS total
 
-$resultado = mysqli_query($conn,$query);
+  FROM ct_programacion p
 
-if (!$resultado) {
-  $data['code'] = 2;
-  $data['response'] = mysqli_error($conn);
-  die();
-}else {
-  while($row = mysqli_fetch_assoc($resultado)){
-    $data["data"][]= $row;
+  LEFT JOIN ct_cliente c ON c.pk_cliente = p.fk_cliente
+  LEFT JOIN ct_produccion pr ON p.pk_programacion = pr.fk_programacion
 
-    $idprog = $row['idprogram'];
-    $cliente = $row['cliente'];
-    $ffin = $row['ffin'];
-    $piezas = $row['piezas'];
-    $color = $row['color'];
-    $total = $row['total'];
-    $hoy = date("Y-m-d");
-    $iconocaja = "";
-    $background = "";
-    $numerosemana = date("W",strtotime($ffin));//sacar numero de la semana
-    $ocultar = "";
-    $pe = $_SESSION['user']['produccion_editar'];
+  WHERE p.pk_programacion LIKE '%$q%' OR
+  c.nombreCliente LIKE '%$q%' OR
+  p.fechaFinal LIKE '%$q%' OR
+  p.piezasRequeridas LIKE '%$q%' OR
+  pr.cantidadProduccion LIKE '%$q%'
 
 
+  GROUP BY p.pk_programacion
 
-    //si fecha vencimiento es mayor a la fecha de hoy y mis piezas requeridas son igual a
-    if (($ffin > $hoy)  && ($piezas == $total)) {
-      $iconocaja = "001-check.svg";
-      $background = "verde";
-    } elseif (($ffin < $hoy) && ($piezas == $total)) {
-      $iconocaja = "001-check.svg";
-      $background = "verde";
-    }elseif (($ffin < $hoy) && ($piezas > $total)) {
-      $iconocaja = "003-shipping.svg";
-      $background = "rojo";
-    }else {
-      $iconocaja = "002-delivery.svg";
-    }
+  ORDER BY cliente ASC,ffin";
+}
+
+$buscarDatos = $conn->query($query);
+if ($buscarDatos->num_rows > 0) {
+  $tabla.="
+  <form class='page p-0'>
+    <table class='table table-hover fixed-table'>
+      <thead>
+        <tr class='row m-0 encabezado'>
+          <td class='col-md-1'></td>
+          <td class='col-md-3 text-center'><h3>PRODUCCIÓN</h3></td>
+          <td class='col-md-2 text-center'><h3>REQUERIDO</h3></td>
+          <td class='col-md-2 text-center'><h3>FABRICADO</h3></td>
+          <td class='col-md-2 text-center'><h3>FINALIZAR</h3></td>
+          <td class='col-md-2'></td>
+        </tr>
+      </thead>
+      <tbody id='mostrarProduccion'>";
+
+      while ($row = $buscarDatos->fetch_assoc()){
+        $idprog = $row['idprogram'];
+        $cliente = $row['cliente'];
+        $ffin = $row['ffin'];
+        $piezas = $row['piezas'];
+        $color = $row['color'];
+        $total = $row['total'];
+        $hoy = date("Y-m-d");
+        $iconocaja = "";
+        $background = "";
+        $numerosemana = date("W",strtotime($ffin));//sacar numero de la semana
+        // $ocultar = "";
+        $admin = $_SESSION['user']['privilegiosUsuario'];
+        $pe = $_SESSION['user']['produccion_editar'];
+
+  //si fecha vencimiento es mayor a la fecha de hoy y mis piezas requeridas son igual a
+        if (($ffin > $hoy)  && ($piezas == $total)) {
+          $iconocaja = "001-check.svg";
+          $background = "verde";
+        } elseif (($ffin < $hoy) && ($piezas == $total)) {
+          $iconocaja = "001-check.svg";
+          $background = "verde";
+        }elseif (($ffin < $hoy) && ($piezas > $total)) {
+          $iconocaja = "003-shipping.svg";
+          $background = "rojo";
+        }else {
+          $iconocaja = "002-delivery.svg";
+        }
 
 
-    if ($pe == "0") {
-     $ocultar = "ocultar";
-   }
+    $tabla.="
 
-
-    $data["infoTabla"].= "<tr class='$background row bordelateral  m-0' id='item'>
-      <td class='col-md-1'>
-        <img src='/fitcoControl/Resources/iconos/$iconocaja' class='icono'>
-      </td>
-        <td class='col-md-3'>
-          <h4><b><input type='color' value='$color'>$cliente</b></h4>
+      <tr class='$background row bordelateral  m-0' id='item'>
+        <td class='col-md-1'>
+          <img src='/fitcoControl/Resources/iconos/$iconocaja' class='icono'>
         </td>
-        <td class='col-md-2 text-center'>
-          <h4><b>$piezas</b></h4>
-        </td>
-        <td class='col-md-2 text-center'>
-          <h4><b>$total</b></h4>
-        </td>
-        <td class='col-md-2 text-center'>
-          <h4><b>$ffin</b></h4>
-        </td>
+          <td class='col-md-3'>
+            <h4><b><input type='color' value='$color'>$cliente</b></h4>
+          </td>
+          <td class='col-md-2 text-center'>
+            <h4><b>$piezas</b></h4>
+          </td>
+          <td class='col-md-2 text-center'>
+            <h4><b>$total</b></h4>
+          </td>
+          <td class='col-md-2 text-center'>
+            <h4><b>$ffin</b></h4>
+          </td>
 
-        <td class='col-md-1 text-right'>
-          <a href='#' class='agregarproduccion spand-link' program-id='$idprog'><img src='/fitcoControl/Resources/iconos/003-add.svg' class='spand-icon'></a>
-        </td>
+          <td class='col-md-2 text-right'>
+            <a href='#' class='agregarproduccion spand-link' program-id='$idprog'><img src='/fitcoControl/Resources/iconos/003-add.svg' class='spand-icon'></a>
 
-        <td class='col-md-1 text-center'>
-          <a href='#' class='$ocultar visualizarproduccion spand-link' data-toggle='modal' data-target='#VisualizarTablaProduccion' program-id='$idprog'><img src='/fitcoControl/Resources/iconos/magnifier.svg' class='spand-icon'></a>
-        </td>
-      </tr>";
-
+            <a href='#' class='visualizarproduccion spand-link ml-3' data-toggle='modal' data-target='#VisualizarTablaProduccion' program-id='$idprog'><img src='/fitcoControl/Resources/iconos/magnifier.svg' class='spand-icon'></a>
+          </td>
+        </tr>";
 
   }
-  echo json_encode($data);
+  $tabla.="
+  </tbody>
+ </table>
+</form>";
+}else {
+  $tabla="No se encontraron coincidencias";
 }
-mysqli_free_result($resultado);
-mysqli_close($conn);
+echo $tabla;
 
 ?>
