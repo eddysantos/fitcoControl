@@ -11,27 +11,35 @@ if (!isset($_SESSION['user'])) {
 
 ?>
 
-<div class="container-fluid pr-57">
+<div class="container-fluid pl-75 pr-57">
+    <div class="row clt_usr mt-5 mb-5">
 
-  <div class="clt_usr mt-5 mb-5">
-    <a class="rotate-link consultar ancla" accion="acobranza" status="cerrado">
-      <img src="/fitcoControl/Resources/iconos/003-analytics-2.svg" class="icon rotate-icon" style="width:30px">
-      <span class="spanA">Agregar Factura</span>
-    </a>
-    <a class="ml-3 rotate-link consultar ancla" data-toggle='modal' data-target='#ModalGraficaCobranza'>
-      <img src="/fitcoControl/Resources/iconos/grafica2.svg" class=" icon rotate-icon" style="width:30px">
-      <span class="spanD">Graficas Cobranza</span>
-    </a>
-    <a class="ml-3 rotate-link consultar ancla" accion="btesoreria" status="cerrado">
-      <img src="/fitcoControl/Resources/iconos/search.svg" class=" icon rotate-icon" style="width:30px">
-      <span class="spanB"><input class="buscar" type="text" name="busqueda"  id="busqueda" placeholder="Buscar"></span>
-    </a>
-
-    <div class="container-fluid mt-3" style="max-width:1300px">
-      <section id="mostrarCobranza"></section>
+    <div class="text-left alert alert-info w-65" role="alert" >
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <strong>Nota: </strong> En esta sección se podran registrar las facturas que nos van a pagar, se podra editar en <img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='iconoNota'> y eliminar registro en <img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='iconoNota'>. Adicional se podra agregar un pago completo de la factura o un abono  en el icono <img src='/fitcoControl/Resources/iconos/003-add.svg' class='iconoNota'> y se podra ver el desglose de pagos que nos ha realizado el cliente en este icono <img src='/fitcoControl/Resources/iconos/magnifier.svg' class='iconoNota'>
     </div>
 
+    <div class="col align-self-end">
+      <a class="rotate-link consultar ancla" accion="acobranza" status="cerrado">
+        <img src="/fitcoControl/Resources/iconos/003-analytics-2.svg" class="icon rotate-icon" style="width:30px">
+        <span class="spanA">Agregar Factura</span>
+      </a>
+      <a class="rotate-link consultar ancla" data-toggle='modal' data-target='#ModalGraficaCobranza'>
+        <img src="/fitcoControl/Resources/iconos/grafica2.svg" class=" icon rotate-icon" style="width:30px">
+        <span class="spanD">Graficas Cobranza</span>
+      </a>
+      <a class="rotate-link consultar ancla" accion="btesoreria" status="cerrado">
+        <img src="/fitcoControl/Resources/iconos/search.svg" class=" icon rotate-icon" style="width:30px">
+        <span class="spanB"><input class="buscar" type="text" name="busqueda"  id="busqueda" placeholder="Buscar"></span>
+      </a>
+    </div>
+  </div>
 
+
+
+  <div class="container-fluid mt-3" style="max-width:1300px">
+    <section id="mostrarCobranza"></section>
+  </div>
 
 
     <form  id="Agregarcobranza" onsubmit="return false" class="agregarnuevo" style="display:none">

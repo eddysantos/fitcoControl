@@ -5,6 +5,10 @@ $data = array(
   'response'=>array()
 );
 
+function parseDate($dv){
+  return date('Y-m-d', strtotime($dv));
+}
+
 require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
 $query =
 "UPDATE ct_cobranza
@@ -17,13 +21,17 @@ fechaEntrega = ?,
 fk_cliente = ?
 WHERE pk_cobranza = ?";
 
+
+$mfvencimiento = parseDate($_POST['mcbz_dvencimiento']);
+$mfentrega = parseDate($_POST['mcbz_entrega']);
+
 $stmt = $conn->prepare($query);
 $stmt->bind_param('sssssss',
   $_POST['mcbz_concepto'],
   $_POST['mcbz_factura'],
   $_POST['mcbz_importe'],
-  $_POST['mcbz_vencimiento'],
-  $_POST['mcbz_fechaEntrega'],
+  $mfvencimiento,
+  $mfentrega,
   $_POST['mcbz_cliente'],
   $_POST['mcbz_id']
 );

@@ -9,11 +9,13 @@ require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
 $query =
 "INSERT INTO ct_produccion(fk_programacion,fechaIntroduccion,metaProduccion,cantidadProduccion) VALUES(?,?,?,?)";
 
+$fintroduccion = parseDate($_POST['mpro_fint']);
+
 $stmt = $conn->prepare($query);
 $stmt->bind_param('ssss',
 
   $_POST['mpro_idprog'],
-  $_POST['mpro_fint'],
+  $fintroduccion,
   $_POST['mpro_meta'],
   $_POST['mpro_cant']
 

@@ -9,11 +9,15 @@ require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
 $query =
 "INSERT INTO ct_programacion(fk_cliente, fechaInicio, fechaFinal, piezasRequeridas, horaEntrega,) VALUES(?,?,?,?,?)";
 
+
+$finicio = parseDate($_POST['fi']);
+$ffinal = parseDate($_POST['ff']);
+
 $stmt = $conn->prepare($query);
 $stmt->bind_param('sssss',
   $_POST['cId'],
-  $_POST['fi'],
-  $_POST['ff'],
+  $finicio,
+  $ffinal,
   $_POST['pz'],
   $_POST['hr']
 

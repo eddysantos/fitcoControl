@@ -9,11 +9,15 @@ require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
 $query =
 "INSERT INTO ct_pagos(fk_cobranza,fechaPago,importePago) VALUES(?,?,?)";
 
+
+$fpago = parseDate($_POST['mpgo_fpago']);
+
+
 $stmt = $conn->prepare($query);
 $stmt->bind_param('sss',
 
   $_POST['mpgo_id'],
-  $_POST['mpgo_fpago'],
+  $fpago,
   $_POST['mpgo_importe']
 
 );

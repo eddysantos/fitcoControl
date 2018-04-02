@@ -5,6 +5,10 @@ $data = array(
   'response'=>array()
 );
 
+function parseDate($dv){
+  return date('Y-m-d', strtotime($dv));
+}
+
 require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
 $query =
 "UPDATE ct_materiales
@@ -17,13 +21,17 @@ condicionEntrega = ?,
 precioMaterial = ?
 WHERE pk_material = ?";
 
+
+$fcompra = parseDate($_POST['fc']);
+$fentrega = parseDate($_POST['fe']);
+
 $stmt = $conn->prepare($query);
 $stmt->bind_param('ssssssss',
   $_POST['mm'],
-  $_POST['fc'],
+  $fcompra,
   $_POST['ns'],
   $_POST['pe'],
-  $_POST['fe'],
+  $fentrega,
   $_POST['cc'],
   $_POST['pr'],
   $_POST['id']

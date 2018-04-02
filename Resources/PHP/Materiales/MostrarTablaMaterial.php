@@ -53,7 +53,7 @@ $buscarDatos = $conn->query($query);
 if ($buscarDatos->num_rows > 0) {
   $tabla.="
   <form id='MMaterial' class='page p-0'>
-    <table class='table table-hover'>
+    <table class='table table-hover fixed-table'>
       <thead>
         <tr class='row m-0 encabezado'>
           <td class='col-md-3 text-center'><h3>MATERIAL</h3></td>
@@ -61,7 +61,8 @@ if ($buscarDatos->num_rows > 0) {
           <td class='col-md-3 text-center'><h3>SE ENTREGO A:</h3></td>
           <td class='col-md-3 text-center'><h3>CONDICIONES</h3></td>
         </tr>
-      </thead>";
+      </thead>
+      <tbody id='MostrarMateriales'>";
 
       while ($row = $buscarDatos->fetch_assoc()) {
         $idMat = $row['idMaterial'];
@@ -77,7 +78,6 @@ if ($buscarDatos->num_rows > 0) {
 
         if ($ce == 1 || $admin) {
           $tabla.= "
-          <tbody id='MostrarMateriales'>
           <tr class='row bordelateral m-0' id='item'>
             <td class='col-md-3 text-center'>
               <h4><b>$material</b></h4>
@@ -92,7 +92,7 @@ if ($buscarDatos->num_rows > 0) {
               <h4><b>$persona</b></h4>
               <p class='visibilidad'>Entrega: $fechaEntrega</p>
             </td>
-            <td class='col-md-3 text-center'><h4><b>$condicion</h4></b></td>
+            <td class='col-md-3 text-center'><h4>$condicion</h4></td>
 
 
             <td class='col-md-1 text-right'>
@@ -100,11 +100,9 @@ if ($buscarDatos->num_rows > 0) {
 
               <a href='#' class='eliminarMat spand-link ml-3' mat-id='$idMat'><img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='spand-icon'></a>
             </td>
-          </tr>
-        </tbody>";
+          </tr>";
         }elseif ($ce == 0) {
           $tabla.= "
-          <tbody id='MostrarMateriales'>
             <tr class='row bordelateral m-0' id='item'>
               <td class='col-md-3 text-center'>
                 <h4><b>$material</b></h4>
@@ -119,7 +117,7 @@ if ($buscarDatos->num_rows > 0) {
                 <h4><b>$persona</b></h4>
                 <p class='visibilidad'>Fecha: $fechaEntrega</p>
               </td>
-              <td class='col-md-3 text-center'><b>$condicion</b></td>
+              <td class='col-md-3 text-center'><h4><b>$condicion</b></h4></td>
 
 
               <td class='col-md-1 text-right'>
@@ -127,12 +125,12 @@ if ($buscarDatos->num_rows > 0) {
 
               <a href='#' class='bloqueo spand-link ml-3'><img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='spand-icon'></a>
               </td>
-            </tr>
-          </tbody>";
+            </tr>";
         }
       }
 
       $tabla.="
+      </tbody>
      </table>
     </form>";
 

@@ -8,17 +8,25 @@ if (!isset($_SESSION['user'])) {
   require $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
 ?>
 
-<div class="container-fluid pr-57">
-  <div class="clt_usr mt-5 mb-5">
-    <a class="ml-3 rotate-link  consultar ancla"  data-toggle='modal' data-target='#ModalGraficaPRO'>
-      <img src="/fitcoControl/Resources/iconos/grafica2.svg" class="icon rotate-icon" style="width:30px">
-      <span>Grafica Producción</span>
-    </a>
+<div class="container-fluid pl-75 pr-57">
+  <div class="row clt_usr mt-5 mb-5">
+    <div class="text-left alert alert-info w-75" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <strong>Nota: </strong> La función de esta sección es llevar un control de lo fabricado real diario, en el icono <img src='/fitcoControl/Resources/iconos/003-add.svg' class='iconoNota'> se podra agregar la produccion real diaria.
+      En el icono <img src='/fitcoControl/Resources/iconos/magnifier.svg' class='iconoNota'> se podra visualizar el desglose de lo fabricado real por cada programación.
+    </div>
 
-    <a class="ml-3 rotate-link consultar ancla" accion="busuario">
-      <img src="/fitcoControl/Resources/iconos/search.svg" class="icon rotate-icon" style="width:30px">
-      <span class="spanB"><input class="buscar" type="text" name="busqueda"  id="busqueda" placeholder="Buscar"></span>
-    </a>
+    <div class="col align-self-end">
+      <a class="ml-3 rotate-link  consultar ancla"  data-toggle='modal' data-target='#ModalGraficaPRO'>
+        <img src="/fitcoControl/Resources/iconos/grafica2.svg" class="icon rotate-icon" style="width:30px">
+        <span>Grafica Producción</span>
+      </a>
+
+      <a class="rotate-link consultar ancla" accion="busuario">
+        <img src="/fitcoControl/Resources/iconos/search.svg" class="icon rotate-icon" style="width:30px">
+        <span class="spanB"><input class="buscar" type="text" name="busqueda"  id="busqueda" placeholder="Buscar"></span>
+      </a>
+    </div>
   </div>
 
   <div class="container-fluid mt-3" style="max-width:1300px">

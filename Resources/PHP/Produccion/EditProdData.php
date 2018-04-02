@@ -13,9 +13,11 @@ metaProduccion = ?,
 cantidadProduccion =?
 WHERE pk_produccion = ?";
 
+$fintro = parseDate($_POST['ff']);
+
 $stmt = $conn->prepare($query);
 $stmt->bind_param('ssss',
-  $_POST['ff'],
+  $fintro,
   $_POST['mm'],
   $_POST['ee'],
   $_POST['id']

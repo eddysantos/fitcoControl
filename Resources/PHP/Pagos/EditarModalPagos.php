@@ -12,9 +12,12 @@ SET fechaPago= ?,
 importePago = ?
 WHERE pk_pagos = ?";
 
+$fpago = parseDate($_POST['ff']);
+
+
 $stmt = $conn->prepare($query);
 $stmt->bind_param('sss',
-  $_POST['ff'],
+  $fpago,
   $_POST['pp'],
   $_POST['id']
 );

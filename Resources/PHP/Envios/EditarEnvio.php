@@ -5,6 +5,9 @@ $data = array(
   'response'=>array()
 );
 
+function parseDate($dv){
+  return date('Y-m-d', strtotime($dv));
+}
 require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
 $query =
 "UPDATE ct_envios
@@ -14,10 +17,13 @@ horaEnvio = ?,
 notas = ?
 WHERE pk_envios = ?";
 
+
+$ff = parseDate($_POST['ff']);
+
 $stmt = $conn->prepare($query);
 $stmt->bind_param('sssss',
   $_POST['st'],
-  $_POST['ff'],
+  $ff,
   $_POST['hr'],
   $_POST['nt'],
   $_POST['id']

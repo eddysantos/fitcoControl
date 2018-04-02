@@ -52,7 +52,7 @@ $buscarDatos = $conn->query($query);
 if ($buscarDatos->num_rows > 0) {
   $tabla.="
   <form id='Eventas' class='page p-0'>
-    <table class='table table-hover'>
+    <table class='table table-hover fixed-table'>
       <thead>
         <tr class='row m-0 encabezado'>
           <td class='col-md-1'></td>
@@ -61,7 +61,8 @@ if ($buscarDatos->num_rows > 0) {
           <td class='col-md-2 text-center'><h3>INGRESO</h3></td>
           <td class='col-md-3 text-center'><h3></h3></td>
         </tr>
-      </thead>";
+      </thead>
+      <tbody id='mostrarVentas'>";
 
       while ($row = $buscarDatos->fetch_assoc()) {
        $idVentas = $row['idVentas'];
@@ -78,7 +79,6 @@ if ($buscarDatos->num_rows > 0) {
 
         if ($ev == 1 || $admin) {
           $tabla.="
-          <tbody id='mostrarVentas'>
             <tr class='row bordelateral m-0' id='item'>
               <td class='col-md-1'>
                 <img src='/fitcoControl/Resources/iconos/users.svg' class='icono'>
@@ -100,11 +100,9 @@ if ($buscarDatos->num_rows > 0) {
 
                 <a href='#' class='EliminarVenta spand-link' ventas-id='$idVentas'><img  src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='ml-3 spand-icon'></a>
               </td>
-            </tr>
-          </tbody>";
+            </tr>";
         }elseif ($ev == 0) {
           $tabla.="
-          <tbody id='mostrarVentas'>
             <tr class='row bordelateral m-0' id='item'>
               <td class='col-md-1'>
                 <img src='/fitcoControl/Resources/iconos/users.svg' class='icono'>
@@ -126,12 +124,12 @@ if ($buscarDatos->num_rows > 0) {
 
                 <a href='#' class='spand-link' id='$bloqueo'><img  src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='ml-3 spand-icon'></a>
               </td>
-            </tr>
-          </tbody>";
+            </tr>";
         }
       }
 
       $tabla.="
+      </tbody>
      </table>
     </form>";
 

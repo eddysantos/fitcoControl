@@ -9,21 +9,30 @@
 ?>
 
 
-<div class="container-fluid pr-57">
+<div class="container-fluid pl-75 pr-57">
+  <div class="row clt_usr mt-5 mb-5">
+    <div class="text-left alert alert-info w-75" role="alert" >
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <strong>Nota: </strong> La función de esta sección es llevar el registro de los datos de nuestros clientes para mayor accesibilidad, en el icono <img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='iconoNota'> se podra editar la información del cliente en caso de que asi se requiera.
+      En el icono <img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='iconoNota'> se eliminaría la información del cliente de manera permanente.
+    </div>
 
-  <div class="clt_usr mt-5 ml-5">
-    <a id="addcliente" class="rotate-link consultar ancla" accion="acliente" status="cerrado">
-      <img src="/fitcoControl/Resources/iconos/clientes.svg" class="icon1 rotate-icon" style="width:30px">
-      <span class="spanA">Agregar Cliente</span>
-    </a>
 
-    <a class="ml-3 rotate-link consultar ancla" accion="busuario" >
-      <img src="/fitcoControl/Resources/iconos/search.svg" class=" icon rotate-icon" style="width:30px">
-      <span class="spanB"><input class="buscar" type="text" name="busqueda"  id="busqueda" placeholder="Buscar"></span>
-    </a>
+    <div class="col align-self-end">
+      <a id="addcliente" class="rotate-link consultar ancla" accion="acliente" status="cerrado">
+        <img src="/fitcoControl/Resources/iconos/clientes.svg" class="icon rotate-icon" style="width:30px">
+        <span class="spanA">Agregar Cliente</span>
+      </a>
+
+
+      <a class="rotate-link buscador ancla" accion="busc" status="cerrado">
+        <img src="/fitcoControl/Resources/iconos/search.svg" class="icon rotate-icon" style="width:30px">
+        <span class="spanB"><input class="buscar" type="text" name="busqueda"  id="busqueda" placeholder="Buscar"></span>
+      </a>
+    </div>
   </div>
 
-  <div class="container-fluid mt-3" style="max-width:1300px">
+  <div class="mt-3" style="max-width:1300px">
     <section id="mostrarClientes"></section>
   </div>
 

@@ -15,6 +15,10 @@ piezasRequeridas =?,
 horaEntrega = ?
 WHERE pk_programacion = ?";
 
+
+$finicio = parseDate($_POST['mpgr_fini']);
+$ffinal = parseDate($_POST['mpgr_ffin']);
+
 $stmt = $conn->prepare($query);
 $stmt->bind_param('ssssss',
   $_POST['mpgr_cliente'],

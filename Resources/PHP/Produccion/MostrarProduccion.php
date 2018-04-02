@@ -102,7 +102,6 @@ if ($buscarDatos->num_rows > 0) {
 
 
     $tabla.="
-
       <tr class='$background row bordelateral  m-0' id='item'>
         <td class='col-md-1'>
           <img src='/fitcoControl/Resources/iconos/$iconocaja' class='icono'>
@@ -126,15 +125,14 @@ if ($buscarDatos->num_rows > 0) {
             <a href='#' class='visualizarproduccion spand-link ml-3' data-toggle='modal' data-target='#VisualizarTablaProduccion' program-id='$idprog'><img src='/fitcoControl/Resources/iconos/magnifier.svg' class='spand-icon'></a>
           </td>
         </tr>";
-
+    }
+    $tabla.="
+    </tbody>
+   </table>
+  </form>";
+  }else {
+    $tabla="No se encontraron coincidencias";
   }
-  $tabla.="
-  </tbody>
- </table>
-</form>";
-}else {
-  $tabla="No se encontraron coincidencias";
-}
-echo $tabla;
+  echo $tabla;
 
 ?>

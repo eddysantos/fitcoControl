@@ -17,13 +17,16 @@ acuerdoPago =?,
 numeroPrendas =?
 WHERE pk_ventas = ?";
 
+$fingreso = parseDate($_POST['fingreso']);
+$fbaja = parseDate($_POST['fbaja']);
+
 $stmt = $conn->prepare($query);
 $stmt->bind_param('ssssssss',
 
   $_POST['nombreCliente'],
   $_POST['vendedor'],
-  $_POST['fingreso'],
-  $_POST['fbaja'],
+  $fingreso,
+  $fbaja,
   $_POST['precio'],
   $_POST['pago'],
   $_POST['prendas'],

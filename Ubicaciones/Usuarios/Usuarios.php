@@ -4,26 +4,37 @@ session_start();
 if (!isset($_SESSION['user'])) {
   header("Location: /fitcoControl/index.php");
 }
-
   $root = $_SERVER['DOCUMENT_ROOT'];
   require $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
 ?>
 
-<div class="container-fluid pr-57">
-  <div class="clt_usr  mt-5 mb-5">
-    <a class="rotate-link consultar ancla" style="font-size: larger;" accion="ausuario" status="cerrado">
-      <img src="/fitcoControl/Resources/iconos/usuario.svg" class="icon1 rotate-icon" style="width:30px;">
-      <span class="spanA">Agregar Usuario</span>
-    </a>
-    
-    <a class="ml-3 rotate-link consultar ancla">
-      <img src="/fitcoControl/Resources/iconos/search.svg" class=" icon rotate-icon" style="width:30px">
-      <span class="spanB"><input class="buscar" type="text" name="busqueda"  id="busqueda" placeholder="Buscar"></span>
-    </a>
+<div class="container-fluid pl-75 pr-57">
+  <div class="row clt_usr  mt-5 mb-5">
 
-    <div class="container-fluid mt-3" style="max-width:1300px">
+    <div class="text-left alert alert-info w-75" role="alert" >
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span></button>
+        <strong>Nota: </strong> En esta sección se podran agregar a los usuarios que utilizaran esta aplicacion, asi como sus privilegios dentro de esta, en el icono <img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='iconoNota'> se podra editar la información del usuario y privilegios.<br>
+        En el icono <img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='iconoNota'> se eliminaría la información del usuario de manera permanente.
+    </div>
+
+
+    <div class="col align-self-end">
+      <a class="rotate-link consultar ancla" accion="ausuario" status="cerrado">
+        <img src="/fitcoControl/Resources/iconos/usuario.svg" class="icon rotate-icon" style="width:30px;">
+        <span class="spanA">Agregar Usuario</span>
+      </a>
+
+      <a class="rotate-link buscador ancla" accion="busc" status="cerrado">
+        <img src="/fitcoControl/Resources/iconos/search.svg" class="icon rotate-icon" style="width:30px">
+        <span class="spanB"><input class="buscar" type="text" name="busqueda"  id="busqueda" placeholder="Buscar"></span>
+      </a>
+    </div>
+
+    <div class="mt-3" style="max-width:1300px">
       <section id="mostrarUsuarios"></section>
     </div>
+  </div>
 
     <form id="NuevoUsuario" class="agregarnuevo mb-10" style="display:none">
       <table class="table">

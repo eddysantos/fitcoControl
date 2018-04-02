@@ -6,30 +6,28 @@ if (!isset($_SESSION['user'])) {
 }
   $root = $_SERVER['DOCUMENT_ROOT'];
   require $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
-  // require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
 
 ?>
 
 
-<div class="container-fluid" style="width:1350px;margin-top:60px">
-  <div class="colapso p-0">
-    <div class="collapse show">
-      <div class="card-1 card-block mt-2">
-        <table class="table table-hover fixed-program">
-          <thead class="encabezado" style="letter-spacing:0px">
-            <tr class="row m-0 text-center">
-            <td class="col-md-2">Cliente</td>
-            <td class="col-md-1">Requerido</td>
-            <td class="col-md-3">Status</td>
-            <td class="col-md-2">Fecha y Hora de Arribos</td>
-            <td class="col-md-3">Notas</td>
-            <td class="col-md-1"></td>
-            </tr>
-          </thead>
-          <tbody id="MostrarEnvio"></tbody>
-        </table>
-      </div>
+<div class="container-fluid pl-80 pr-57">
+  <div class="row clt_usr mt-5 mb-5">
+    <div class="text-left alert alert-info w-75" role="alert" >
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <strong>Nota: </strong> La función de esta sección es llevar un control de status de la mercancia, en el icono <img src='/fitcoControl/Resources/iconos/003-add.svg' class="iconoNota"> se podra agregar un status, fecha, hora y notas de dicho status.<br>
+      En el icono <img src='/fitcoControl/Resources/iconos/magnifier.svg' class='iconoNota'> se podra visualizar el desglose de los diferentes status, los cuales se podran eliminar o editar.
     </div>
+
+    <div class="col align-self-end">
+      <a class="rotate-link consultar ancla" accion="busuario">
+        <img src="/fitcoControl/Resources/iconos/search.svg" class="icon rotate-icon" style="width:30px">
+        <span class="spanB"><input class="buscar" type="text" name="busqueda"  id="busqueda" placeholder="Buscar"></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="container-fluid mt-3" style="max-width:1300px">
+    <section id="MostrarEnvio"></section>
   </div>
 </div>
 

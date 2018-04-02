@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 
 $root = $_SERVER['DOCUMENT_ROOT'];
@@ -13,6 +12,7 @@ $data = array(
 $query = "SELECT
 
 p.pk_programacion AS idcorte,
+-- cor.pk_corte AS idcorte,
 DATE_FORMAT(p.fechaInicio,'%d-%m-%Y') AS fechaInicio,
 DATE_FORMAT(p.fechaFinal,'%d-%m-%Y') AS ffin,
 p.horaEntrega AS entrega,
@@ -30,86 +30,130 @@ LEFT JOIN ct_cliente c ON c.pk_cliente = p.fk_cliente
 LEFT JOIN ct_corte cor ON p.pk_programacion = cor.fk_programacion
 
 
-GROUP BY p.pk_programacion
+-- GROUP BY p.pk_programacion
 
 ORDER BY cliente ASC";
 
 
-$resultado = mysqli_query($conn,$query);
+if (isset($_POST['corte'])){
+ $q = $conn->real_escape_string($_POST['corte']);
+ $query = "SELECT
+ p.pk_programacion AS idcorte,
+ DATE_FORMAT(p.fechaInicio,'%d-%m-%Y') AS fechaInicio,
+ DATE_FORMAT(p.fechaFinal,'%d-%m-%Y') AS ffin,
+ p.horaEntrega AS entrega,
 
-if (!$resultado) {
-  $data['code'] = 2;
-  $data['response'] = mysqli_error($conn);
-  die();
-}else {
-  while($row = mysqli_fetch_assoc($resultado)){
-    $data["data"][]= $row;
+ c.nombreCliente AS cliente,
+ c.colorCliente AS color,
 
-    $fini = $row['fechaInicio'];
-    $hrentrega = $row['entrega'];
-    $idcorte = $row['idcorte'];
-    $cliente = $row['cliente'];
-    $ffin = $row['ffin'];
-    $color = $row['color'];
-    $finalizado = $row['finalizado'];
-    $notas = $row['notas'];
-    $horaFinal = $row['horaFinal'];
+ DATE_FORMAT(cor.tiempoActual,'%d-%m-%Y') AS finalizado,
+ cor.Notas AS notas,
+ cor.horaActual AS horaFinal
 
+ FROM ct_programacion p
 
-    $hoy = date("Y-m-d");
-
-    $diasProg = (strtotime($ffin)-strtotime($fini))/86400;
-    $diasProg = abs($diasProg);
-    $horasProg = $hrentrega - 8;
+ LEFT JOIN ct_cliente c ON c.pk_cliente = p.fk_cliente
+ LEFT JOIN ct_corte cor ON p.pk_programacion = cor.fk_programacion
 
 
-    if ($finalizado == "") {
-      $diasReal = "";
-      $horaReal = "";
-      $txtdias = "";
-      $txthoras = "";
-      $diag = "";
+ WHERE p.fechaInicio LIKE '%$q%' OR
+ p.fechaFinal LIKE '%$q%' OR
+ c.nombreCliente LIKE '%$q%' OR
+ cor.tiempoActual LIKE '%$q%' OR
+ cor.horaActual LIKE '%$q%' OR
+ cor.Notas LIKE '%$q%'
 
-    }else {
-      $diasReal = (strtotime($fini)-strtotime($finalizado))/86400;
-      $diasReal = abs($diasReal);
-      $horaReal = $horaFinal - 8;
+ ORDER BY cliente ASC";
+}
 
-      $txtdias = "días";
-      $diag = "y";
-      $txthoras = "hrs";
+$buscarDatos = $conn->query($query);
+if ($buscarDatos->num_rows > 0) {
+  $tabla.= "
+  <form class='page p-0'>
+  <table class='table table-hover fixed-table'>
+    <thead class='encabezado' style='letter-spacing:0px'>
+      <tr class='row m-0 text-center'>
+      <td class='col-md-2'>CLIENTE</td>
+      <td class='col-md-3'>DÍAS/ HRS PROYECTADOS</td>
+      <td class='col-md-2'>TIEMPO DE CORTE</td>
+      <td class='col-md-4'>NOTAS</td>
+      <td class='col-md-1'></td>
+      </tr>
+    </thead>
+    <tbody id='MostrarCorte'></tbody>";
+
+    while ($row = $buscarDatos->fetch_assoc()) {
+          $fini = $row['fechaInicio'];
+          $hrentrega = $row['entrega'];
+          $idcorte = $row['idcorte'];
+          $cliente = $row['cliente'];
+          $ffin = $row['ffin'];
+          $color = $row['color'];
+          $finalizado = $row['finalizado'];
+          $notas = $row['notas'];
+          $horaFinal = $row['horaFinal'];
+
+
+          // $hoy = date("Y-m-d");
+
+          $diasProg = (strtotime($ffin)-strtotime($fini))/86400;
+          $diasProg = abs($diasProg);
+          $horasProg = $hrentrega - 8;
+
+
+          if ($finalizado == "") {
+            $diasReal = "";
+            $horaReal = "";
+            $txtdias = "";
+            $txthoras = "";
+            $diag = "";
+
+          }else {
+            $diasReal = (strtotime($fini)-strtotime($finalizado))/86400;
+            $diasReal = abs($diasReal);
+            $horaReal = $horaFinal - 8;
+
+            $txtdias = "días";
+            $diag = "y";
+            $txthoras = "hrs";
+          }
+
+          $tabla.= "
+          <tr class='row bordelateral  m-0' id='item'>
+            <td class='col-md-2'>
+              <h4><b><input type='color' value='$color'>$cliente</b></h4>
+            </td>
+            <td class='col-md-3 text-center'>
+              <h4><b>$diasProg días y $horasProg hrs</b></h4>
+              <p class='visibilidad'>$fini al $ffin</p>
+
+            </td>
+
+            <td class='col-md-2 text-center'>
+              <h4><b>$diasReal $txtdias $diag $horaReal $txthoras</b></h4>
+              <p class='visibilidad'>$finalizado</p>
+
+            </td>
+            <td class='col-md-4 text-center'>
+              <h4><b>$notas</b></h4>
+            </td>
+
+            <td class='col-md-1 text-right'>
+              <a href='#' class='acorte spand-link mr-3' corte-id='$idcorte'><img src='/fitcoControl/Resources/iconos/003-add.svg' class='spand-icon'></a>
+
+              <a href='#' class='editarcorte spand-link mr-3' data-toggle='modal' data-target='#EditarCorte' corte-id='$idcorte'><img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='spand-icon'></a>
+            </td>
+          </tr>";
     }
 
+    $tabla.="
+    </tbody>
+   </table>
+  </form>";
+}else {
+  $tabla="No se encontraron coincidencias";
+ }
 
-    $data["infoTabla"].= "<tr class='row bordelateral  m-0' id='item'>
-
-        <td class='col-md-2'>
-          <h4><b><input type='color' value='$color'>$cliente</b></h4>
-        </td>
-        <td class='col-md-3 text-center'>
-          <h4><b>$diasProg días y $horasProg hrs</b></h4>
-          <p class='visibilidad'>$fini al $ffin</p>
-
-        </td>
-
-        <td class='col-md-2 text-center'>
-          <h4><b>$diasReal $txtdias $diag $horaReal $txthoras</b></h4>
-          <p class='visibilidad'>$finalizado</p>
-
-        </td>
-        <td class='col-md-4 text-center'>
-          <h4><b>$notas</b></h4>
-        </td>
-
-        <td class='col-md-1 text-right'>
-          <a href='#' class='acorte spand-link mr-3' data-toggle='modal' data-target='#AgregarCorte' corte-id='$idcorte'><img src='/fitcoControl/Resources/iconos/003-add.svg' class='spand-icon'></a>
-        </td>
-      </tr>";
-
-  }
-  echo json_encode($data);
-}
-mysqli_free_result($resultado);
-mysqli_close($conn);
+ echo $tabla;
 
 ?>

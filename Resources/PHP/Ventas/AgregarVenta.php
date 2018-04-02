@@ -8,13 +8,16 @@ $data = array(
 require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
 $query = "INSERT INTO ct_ventas(nombreCliente,nombreVendedor,fechaIngreso,fechaBaja,precioXprenda,acuerdoPago,numeroPrendas) VALUES(?,?,?,?,?,?,?)";
 
-$stmt = $conn->prepare($query);
 
+$fingreso = parseDate($_POST['fingreso']);
+$fbaja = parseDate($_POST['fbaja']);
+
+$stmt = $conn->prepare($query);
 $stmt->bind_param('sssssss',
   $_POST['cliente'],
   $_POST['vendedor'],
-  $_POST['fingreso'],
-  $_POST['fbaja'],
+  $fingreso,
+  $fbaja,
   $_POST['precio'],
   $_POST['acuerdo'],
   $_POST['nprendas']

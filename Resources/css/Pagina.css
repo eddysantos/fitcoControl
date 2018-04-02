@@ -67,7 +67,7 @@ input:-webkit-autofill {
   text-align: right;
 }
 
-.clt_usr .consultar{
+.clt_usr .consultar, .clt_usr .buscador{
   cursor: pointer;
   opacity: 0.6;
   -moz-transition: all 0.2s linear;
@@ -76,7 +76,7 @@ input:-webkit-autofill {
   transition: all 0.2s linear;
 }
 
-.clt_usr  .consultar  .icon {
+.clt_usr  .consultar  .icon,.clt_usr  .buscador  .icon {
   display: inline-block;
   text-align: center;
   padding: 1px 0 0 0;
@@ -88,7 +88,7 @@ input:-webkit-autofill {
   line-height: 0!important;
 }
 
-.clt_usr .consultar  span {
+.clt_usr .consultar  span,.clt_usr .buscador  span {
   overflow: hidden;
   display: inline-flex;
   margin-left: 5px;
@@ -103,15 +103,15 @@ input:-webkit-autofill {
   font-size: 20px;
 }
 
-.clt_usr .consultar:hover {
+.clt_usr .consultar:hover,.clt_usr .buscador:hover {
   opacity: 1.0;
 }
 
-.clt_usr .consultar:hover span{
+.clt_usr .consultar:hover span,.clt_usr .buscador:hover span{
   width: 190px;
 }
 
-.clt_usr .consultar:hover .spanA, .clt_usr .consultar:hover .spanM{
+.clt_usr .consultar:hover .spanA, .clt_usr .consultar:hover .spanM,.clt_usr .buscador:hover .spanB{
   width: 145px;
 }
 .clt_usr .consultar:hover .spanD{
@@ -135,6 +135,9 @@ input:-webkit-autofill {
 
 .icono{
   width: 30px;
+}
+.iconoNota{
+  width: 15px;
 }
 
 #item:hover .icono{

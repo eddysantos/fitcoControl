@@ -6,6 +6,10 @@ $data = array(
   'response'=>array()
 );
 
+function parseDate($dv){
+  return date('Y-m-d', strtotime($dv));
+}
+
 require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
 $query =
 "INSERT INTO
@@ -20,13 +24,17 @@ $query =
   VALUES(?,?,?,?,?,?,?)";
 
 
+
+$fcompra = parseDate($_POST['fc']);
+$fentrega = parseDate($_POST['fe']);
+
 $stmt = $conn->prepare($query);
 $stmt->bind_param('sssssss',
   $_POST['mm'],
-  $_POST['fc'],
+  $fcompra,
   $_POST['ss'],
   $_POST['pe'],
-  $_POST['fe'],
+  $fentrega,
   $_POST['cc'],
   $_POST['pp']
 

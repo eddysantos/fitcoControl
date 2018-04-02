@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 
 $root = $_SERVER['DOCUMENT_ROOT'];
@@ -11,101 +10,79 @@ $data = array(
   'infoTabla' => ""
 );
 
-$query ="SELECT
 
-p.pk_programacion AS idEnvio,
-p.piezasRequeridas AS piezas,
+if (isset($_POST['envios'])) {
+  $q = '"%' . $_POST['envios'] . '%"';
+  // $q = $conn->real_escape_string($q);
+} else {
+  $q = "'%%'";
+}
 
-c.nombreCliente AS cliente,
-c.colorCliente AS color,
+$query = "CALL pruebaEnvios($q)";
 
-(
-	SELECT CONCAT(DATE_FORMAT(fechaEnvio,'%d-%m-%Y'),'&nbsp&nbsp',env.horaEnvio)
-	FROM ct_envios env
-	WHERE p.pk_programacion = env.fk_programacion
-	ORDER BY env.fechaEnvio DESC, env.horaEnvio DESC
-	LIMIT 1
-) AS Ultimo_Envio,
+$buscarDatos = $conn->query($query);
+// if ($buscarDatos->num_rows > 0) {
+if (true) {
+  $tabla.="
+  <form class='page p-0'>
+  <table class='table table-hover fixed-table'>
+    <thead class='encabezado' style='letter-spacing:0px'>
+      <tr class='row m-0 text-center'>
+      <td class='col-md-2'>Cliente</td>
+      <td class='col-md-1'>Requerido</td>
+      <td class='col-md-3'>Status</td>
+      <td class='col-md-2'>Fecha y Hora de Arribos</td>
+      <td class='col-md-3'>Notas</td>
+      <td class='col-md-1'></td>
+      </tr>
+    </thead>
+    <tbody id='MostrarEnvio'>";
 
-(
-	SELECT env.descripcion
-	FROM ct_envios env
-	WHERE p.pk_programacion = env.fk_programacion
-	ORDER BY env.fechaEnvio DESC, env.horaEnvio DESC
-	LIMIT 1
-) AS status,
-
-(
-	SELECT env.notas
-	FROM ct_envios env
-	WHERE p.pk_programacion = env.fk_programacion
-	ORDER BY env.fechaEnvio DESC, env.horaEnvio DESC
-	LIMIT 1
-) AS notas
-
-FROM ct_programacion p
-
-LEFT JOIN ct_cliente c ON c.pk_cliente = p.fk_cliente
-
-GROUP BY p.pk_programacion
-
-
-ORDER BY cliente";
-
-
-
-
-$resultado = mysqli_query($conn,$query);
-
-if (!$resultado) {
-  $data['code'] = 2;
-  $data['response'] = mysqli_error($conn);
-  die();
-}else {
-  while($row = mysqli_fetch_assoc($resultado)){
-    $data["data"][]= $row;
-
-
-    $piezas = $row['piezas'];
-    $status = $row['status'];
-    $fechaEnvio = $row['Ultimo_Envio'];
-    $notas = $row['notas'];
-    $idEnvios = $row['idEnvio'];
-
-    $cliente = $row['cliente'];
-    $color = $row['color'];
-
-
-
-    if ($status == "Arribo con el Cliente") {
-      $background = "verde";
-    }else {
-      $background= "";
+    if (!$buscarDatos) {
+      echo $conn->error;
+      $conn->close();
+      die();
     }
 
+    while ($row = $buscarDatos->fetch_assoc()) {
+      $piezas = $row['piezas'];
+      $status = $row['status_envio'];
+      $fechaEnvio = $row['Ultimo_Envio'];
+      $notas = $row['notas'];
+      $idEnvios = $row['idEnvio'];
+
+      $cliente = $row['cliente'];
+      $color = $row['color'];
+
+      if ($status == "Arribo con el Cliente") {
+        $background = "verde";
+      }else {
+        $background= "";
+      }
+
+      $tabla.="
+      <tr class='$background row bordelateral m-0'>
+       <td class='col-md-2'><input type='color' value='$color'>$cliente</td>
+       <td class='col-md-1 text-center'>$piezas pzs</td>
+       <td class='col-md-3 text-center'>$status</td>
+       <td class='col-md-2 text-center'>$fechaEnvio</td>
+       <td class='col-md-3 text-center'>$notas</td>
 
 
+       <td class='col-md-1 text-right'>
+         <a href='#' class='aEnvio spand-link mr-3' envio-id='$idEnvios'><img src='/fitcoControl/Resources/iconos/003-add.svg' class='spand-icon'></a>
 
-    $data["infoTabla"].= "<tr class='$background row bordelateral m-0'>
-
-        <td class='col-md-2'><input type='color' value='$color'>$cliente</td>
-        <td class='col-md-1 text-center'>$piezas pzs</td>
-        <td class='col-md-3 text-center'>$status</td>
-        <td class='col-md-2 text-center'>$fechaEnvio</td>
-        <td class='col-md-3 text-center'>$notas</td>
-
-
-        <td class='col-md-1 text-right'>
-          <a href='#' class='aEnvio spand-link mr-3' envio-id='$idEnvios'><img src='/fitcoControl/Resources/iconos/003-add.svg' class='spand-icon'></a>
-
-          <a href='#' class='aVerTabla spand-link mr-3'  data-toggle='modal' data-target='#VisualizarEnvio' envio-id='$idEnvios'><img src='/fitcoControl/Resources/iconos/magnifier.svg' class='spand-icon'></a>
-        </td>
-      </tr>";
-
-  }
-  echo json_encode($data);
+         <a href='#' class='aVerTabla spand-link mr-3'  data-toggle='modal' data-target='#VisualizarEnvio' envio-id='$idEnvios'><img src='/fitcoControl/Resources/iconos/magnifier.svg' class='spand-icon'></a>
+       </td>
+     </tr>";
+    }
+    $tabla.="
+    </tbody>
+   </table>
+  </form>";
+}else {
+  $tabla= "No se encontraron coincidencias";
 }
-mysqli_free_result($resultado);
-mysqli_close($conn);
+echo $tabla;
 
 ?>

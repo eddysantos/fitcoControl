@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 $root = $_SERVER['DOCUMENT_ROOT'];
 require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
 
@@ -37,9 +37,11 @@ if (false) {
     $fecha = $row['fecha'];
     $meta = $row['meta'];
     $cantidad = $row['cant'];
+    $pe =  $_SESSION['user']['produccion_editar'];
+    $admin = $_SESSION['user']['privilegiosUsuario'] == "Administrador";
 
 
-
+  if ($pe == 1 || $admin){
     $data["infoTabla"].= "
     <tr class='row bordelateral' id='item'>
       <td class='col-md-3 text-center'>
@@ -57,13 +59,29 @@ if (false) {
         <a href='#' class='eliminarProduc spand-link ml-3' pro-id='$id'><img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='spand-iconm'></a>
       </td>
     </tr>";
+  }elseif ($pe == 0){
+    $data["infoTabla"].= "
+    <tr class='row bordelateral' id='item'>
+      <td class='col-md-3 text-center'>
+        <h4><b>$fecha</b></h4>
+      </td>
+      <td class='col-md-3 text-center'>
+        <h4><b>$meta pzs</b></h4>
+      </td>
+      <td class='col-md-3 text-center'>
+        <h4><b>$cantidad pzs</b></h4>
+      </td>
+      <td class='col-md-3 text-right'>
+        <a href='#' class='bloqueo spand-link' pro-id='$id'><img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='spand-iconm'></a>
 
-
+        <a href='#' class='bloqueo spand-link ml-3' pro-id='$id'><img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='spand-iconm'></a>
+      </td>
+    </tr>";
+    }
   }
 }
 
 $json = json_encode($data);
 
 echo $json;
-
 ?>

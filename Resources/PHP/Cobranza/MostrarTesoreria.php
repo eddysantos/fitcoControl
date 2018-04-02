@@ -82,7 +82,8 @@ if (isset($_POST['cobranza'])) {
          <td class='col-md-2'>TOTALES</td>
          <td class='col-md-3'>VENCIMIENTO</td>
        </tr>
-     </thead>";
+     </thead>
+     <tbody id='mostrarCobranza'>";
 
    while($row = $buscarDatos->fetch_assoc()){
 
@@ -105,9 +106,6 @@ if (isset($_POST['cobranza'])) {
      $ocultar = "";
      $ce =  $_SESSION['user']['cobranza_editar'];
      $admin = $_SESSION['user']['privilegiosUsuario'];
-     // $suma = number_format($row['importe'], 2);
-     // $total = number_format($row['pagado'], 2);
-     // $diferencia = number_format($row['diferencia'], 2);
 
      if ($dia == 1) {
        $dia = "Lun";
@@ -142,7 +140,6 @@ if (isset($_POST['cobranza'])) {
     }
 
      $tabla.= "
-     <tbody id='mostrarCobranza'>
        <tr class='$background row bordelateral m-0' id='item'>
        <td class='col-md-1'>
         <img src='/fitcoControl/Resources/iconos/dinero.svg' class='icono mr-5'>
@@ -174,8 +171,7 @@ if (isset($_POST['cobranza'])) {
 
            <a href='#' class='eliminarCobranza spand-link ml-3 $ocultar' cobranza-id='$idCobranza'><img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='spand-icon'></a>
          </td>
-       </tr>
-     </tbody>";
+       </tr>";
      $suma += $row['importe'];
      $total += $row['pagado'];
      $diferencia += $row['importe']-$row['pagado'];
@@ -186,6 +182,7 @@ if (isset($_POST['cobranza'])) {
    $diferencia1 =  money_format('%(#10n', $diferencia);
 
    $tabla.="
+     </tbody>
      <tfoot>
        <tr class='row text-center piedetabla m-0'>
           <td class='col-md-4 text-center'><b>Facturado :$ $suma1</b></td>

@@ -28,7 +28,6 @@ $(document).ready(function(){
         method: 'POST',
         url: '/fitcoControl/Resources/PHP/Clientes/AgregarClientes.php',
         data: {
-          //clt_id: idCliente,
           clt_nombre: nombreCliente,
           clt_contacto: correoCliente,
           clt_color: colorCliente,
@@ -62,23 +61,7 @@ $(document).ready(function(){
 });
 
 
-//Muestra los registros en pantalla
-// function fetchClients(){
-//   $.ajax({
-//     method: 'POST',
-//     url:'/fitcoControl/Resources/PHP/Clientes/MostrarDatos.php',
-//     success:function(result){
-//       var rsp = JSON.parse(result);
-//       console.log(rsp);
-//       $('#mostrarClientes').html(rsp.infoTabla);
-//       ActivarBotones();
-//     },
-//     error:function(exception){
-//       console.error(exception)
-//     }
-//   })
-// }
-
+//Muestra los registros en pantalla y los valores buscados
 function fetchClients(clientes){
   $.ajax({
     url:'/fitcoControl/Resources/PHP/Clientes/MostrarDatos.php',

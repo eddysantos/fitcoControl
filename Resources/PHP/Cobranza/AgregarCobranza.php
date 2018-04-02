@@ -6,6 +6,11 @@ $data = array(
   'response'=>array()
 );
 
+
+function parseDate($dv){
+  return date('Y-m-d', strtotime($dv));
+}
+
 require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
 $query =
 "INSERT INTO
@@ -18,19 +23,24 @@ ct_cobranza(
   fk_cliente)
   VALUES(?,?,?,?,?,?)";
 
+
+
+// error_log("Pase por aqui!");
+//
+// if (!($stmt)) {
+//   error_log($conn->$error);
+//   }
+
+$fvencimiento = parseDate($_POST['cbz_dvencimiento']);
+$fentrega = parseDate($_POST['cbz_entrega']);
+
 $stmt = $conn->prepare($query);
-
-error_log("Pase por aqui!");
-
-if (!($stmt)) {
-  error_log($conn->$error);
-  }
 $stmt->bind_param('ssssss',
   $_POST['cbz_concepto'],
   $_POST['cbz_factura'],
   $_POST['cbz_importe'],
-  $_POST['cbz_dvencimiento'],
-  $_POST['cbz_entrega'],
+  $fvencimiento,
+  $fentrega,
   $_POST['cbz_cliente']
 );
 $stmt->execute();

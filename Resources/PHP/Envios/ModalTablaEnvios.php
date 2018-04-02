@@ -65,9 +65,9 @@ if (false) {
 
           <td class='col-md-1 text-right'>
 
-            <a href='#' class='editarEnvio spand-linkm' data-toggle='modal' data-target='#EditarEnvio' envio-id='$idEnvios'><img src='/fitcoControl/Resources/iconos/001-edit.svg' class='spand-iconm'></a>
+            <a href='#' class='editarEnvio spand-linkm' data-toggle='modal' data-target='#EditarEnvio' envio-id='$idEnvios'><img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='spand-iconm'></a>
 
-            <a href='#' class='eliminarEnvio spand-linkm ml-4' envio-id='$idEnvios'><img src='/fitcoControl/Resources/iconos/002-delete.svg' class='spand-iconm'></a>
+            <a href='#' class='eliminarEnvio spand-linkm ml-4' envio-id='$idEnvios'><img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='spand-iconm'></a>
           </td>
         </tr>";
     }elseif ($pe == 0) {
@@ -88,10 +88,9 @@ if (false) {
           </td>
 
           <td class='col-md-1 text-right'>
+            <a href='#' class='bloqueo spand-linkm'><img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='spand-iconm'></a>
 
-            <a href='#' class='bloqueo spand-linkm'><img src='/fitcoControl/Resources/iconos/001-edit.svg' class='spand-iconm'></a>
-
-            <a href='#' class='bloqueo spand-linkm ml-4'><img src='/fitcoControl/Resources/iconos/002-delete.svg' class='spand-iconm'></a>
+            <a href='#' class='bloqueo spand-linkm ml-4'><img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='spand-iconm'></a>
           </td>
         </tr>";
     }

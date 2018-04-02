@@ -2,7 +2,7 @@ $(document).ready(function(){
 
 fetchProgramacion();
 fetchProProduccion();
-fetchTablaGrafica();
+// fetchTablaGrafica();
 
 //BUSCADOR TIEMPO REAL
   $('#npClientName').keyup(function(){
@@ -118,21 +118,21 @@ function fetchProgramacion(){
 
 
 //tabla para grafica produccion
-function fetchTablaGrafica(){
-  $.ajax({
-    method: 'POST',
-    url:'/fitcoControl/Resources/PHP/Produccion/ProduccionTablaGrafica.php',
-    success:function(result){
-      var rsp = JSON.parse(result);
-      console.log(rsp);
-      $('#tablaGrafica').html(rsp.infoTabla);
-      ActivarBotonProgram();
-    },
-    error:function(exception){
-      console.error(exception)
-    }
-  })
-}
+// function fetchTablaGrafica(){
+//   $.ajax({
+//     method: 'POST',
+//     url:'/fitcoControl/Resources/PHP/Produccion/ProduccionTablaGrafica.php',
+//     success:function(result){
+//       var rsp = JSON.parse(result);
+//       console.log(rsp);
+//       $('#tablaGrafica').html(rsp.infoTabla);
+//       ActivarBotonProgram();
+//     },
+//     error:function(exception){
+//       console.error(exception)
+//     }
+//   })
+// }
 
 
 //BUSCADOR TIEMPO REAL 2
@@ -215,7 +215,7 @@ function ActivarBotonProgram(){
                 alertify.error('NO SE PUDO ELIMINAR');
               }else if (result == 1){
                 fetchProgramacion();
-                fetchTablaGrafica();
+                // fetchTablaGrafica();
               }
             },
             error: function(exception){
@@ -300,23 +300,6 @@ function ActivarBotonProgram(){
 }
 
 
-//PESTAÑA PRODUCCIÓN,, PESTAÑA PRODUCCIÓN
-// function fetchProProduccion(){
-//   $.ajax({
-//     method: 'POST',
-//     url:'/fitcoControl/Resources/PHP/Produccion/MostrarProduccion.php',
-//     success:function(result){
-//       var rsp = JSON.parse(result);
-//       console.log(rsp);
-//       $('#mostrarProduccion').html(rsp.infoTabla);
-//       ActivarBotonProduc();
-//     },
-//     error:function(exception){
-//       console.error(exception)
-//     }
-//   })
-// }
-
 function fetchProProduccion(produccion){
   $.ajax({
     url:'/fitcoControl/Resources/PHP/Produccion/MostrarProduccion.php',
@@ -382,7 +365,7 @@ function ActivarBotonProduc(){
               $('#AgregarProduccion').modal('hide');
               alertify.success('SE AGREGÓ CORRECTAMENTE');
               fetchProProduccion();
-              fetchTablaGrafica();
+              // fetchTablaGrafica();
             }
           },
           error:function(exception){
@@ -466,12 +449,12 @@ function ActivarBotonProduc(){
             $('#EdProd').modal('hide');
             $('#VisualizarTablaProduccion').modal('hide');
             fetchProProduccion();
-            fetchTablaGrafica();
+            // fetchTablaGrafica();
           }else {
             $('#EdProd').modal('hide');
             $('#VisualizarTablaProduccion').modal('hide');
             fetchProProduccion();
-            fetchTablaGrafica();
+            // fetchTablaGrafica();
             alertify.success('SE MODIFICÓ CORRECTAMENTE');
           }
         },

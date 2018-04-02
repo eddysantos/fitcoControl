@@ -48,7 +48,7 @@ colorCliente AS color
   if ($buscarDatos->num_rows > 0) {
     $tabla.="
     <form id='Eclientes' class='page p-0'>
-      <table class='table table-hover'>
+      <table class='table table-hover fixed-table'>
         <thead>
           <tr class='row m-0 encabezado'>
             <td class='col-md-1'></td>
@@ -57,7 +57,8 @@ colorCliente AS color
             <td class='col-md-2 text-center'><h3>TELEFONO</h3></td>
             <td class='col-md-2'></td>
           </tr>
-        </thead>";
+        </thead>
+        <tbody id='mostrarUsuarios'>";
 
         while ($row = $buscarDatos->fetch_assoc()) {
           $id = $row['idCliente'];
@@ -72,7 +73,6 @@ colorCliente AS color
 
         if ($cle == 1 || $admin == "Administrador") {
           $tabla.= "
-          <tbody id='mostrarUsuarios'>
             <tr class='row bordelateral m-0' id='item'>
               <td class='col-md-1'>
                 <img src='/fitcoControl/Resources/iconos/team.svg' class='icono'>
@@ -98,11 +98,9 @@ colorCliente AS color
                 </a>
               </td>
 
-            </tr>
-          </tbody>";
+            </tr>";
         }elseif ($cle == 0) {
          $tabla.= "
-         <tbody id='mostrarUsuarios'>
            <tr class='row bordelateral m-0' id='item'>
              <td class='col-md-1'>
                <img src='/fitcoControl/Resources/iconos/team.svg' class='icono'>
@@ -115,22 +113,22 @@ colorCliente AS color
                <h2><b><a href='mailto:$correo'>$correo</a></b></h2>
                <p class='visibilidad'>Credito : $credito Días</p>
              </td>
-             <td class='col-md-3 text-center'>
+             <td class='col-md-2 text-center'>
                <h2><b>$telefono</a></b></h2>
              </td>
-             <td class='col-md-2 text-center'>
+             <td class='col-md-2 text-right'>
                <a class='EditCliente spand-link' client-id='$id'>
                  <img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='bloqueo spand-icon'>
                </a>
-               <a class='spand-link' client-id='$id'>
+               <a class='spand-link ml-3' client-id='$id'>
                  <img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='bloqueo spand-icon'>
                </a>
              </td>
-           </tr>
-         </tbody>";
+           </tr>";
        }
       }
        $tabla.="
+       </tbody>
       </table>
      </form>";
 

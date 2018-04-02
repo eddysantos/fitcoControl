@@ -5,6 +5,10 @@ $data = array(
   'response'=>array()
 );
 
+function parseDate($dv){
+  return date('Y-m-d', strtotime($dv));
+}
+
 require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
 $query =
 "INSERT INTO
@@ -21,13 +25,15 @@ ct_cliente(
   VALUES(
     ?,?,?,?,?,?,?,?,?)";
 
+$fingreso = parseDate($_POST['clt_fingreso']);
+
 $stmt = $conn->prepare($query);
 $stmt->bind_param('sssssssss',
   $_POST['clt_nombre'],
   $_POST['clt_contacto'],
   $_POST['clt_telefono'],
   $_POST['clt_credito'],
-  $_POST['clt_fingreso'],
+  $fingreso,
   $_POST['clt_color'],
   $_POST['clt_prendas'],
   $_POST['clt_nosotros'],

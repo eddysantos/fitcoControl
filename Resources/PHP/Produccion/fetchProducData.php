@@ -15,7 +15,7 @@ $stmt->execute();
 $resultados = $stmt->get_result();
 $num_rows = $stmt->num_rows;
 
-if (false) {
+if ($num_rows == 0) {
   $data['code'] = 2;
   $data['response'] = $num_rows;
 } else {

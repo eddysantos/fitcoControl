@@ -9,12 +9,7 @@
     </div>
   </li>
 
-  <div class="row justify-content-center">
-
-  </div>
-
-
-    <script src="/fitcoControl/Resources/js/Clientes/Cliente.js"></script>
-    <script src="/fitcoControl/Resources/js/Inputs.js"></script>
-    <script src="/fitcoControl/Resources/js/MostrarDivsAgregar.js"></script>
+  <script src="/fitcoControl/Resources/js/Clientes/Cliente.js"></script>
+  <script src="/fitcoControl/Resources/js/Inputs.js"></script>
+  <script src="/fitcoControl/Resources/js/MostrarDivsAgregar.js"></script>
 </footer>
