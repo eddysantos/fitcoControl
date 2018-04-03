@@ -9,15 +9,19 @@ $data = array(
   'response'=>array()
 );
 
+function parseDate($dv){
+  return date('Y-m-d', strtotime($dv));
+}
 
 $query =
 "INSERT INTO ct_corte(fk_programacion,tiempoActual,horaActual,Notas) VALUES(?,?,?,?)";
 
+$ff = parseDate($_POST['ff']);
 
 $stmt = $conn->prepare($query);
 $stmt->bind_param('ssss',
   $_POST['id'],
-  $_POST['ff'],
+  $ff,
   $_POST['hr'],
   $_POST['nt']
 

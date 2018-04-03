@@ -51,9 +51,9 @@ if (false) {
           <h4><b>$ $importe</b></h4>
         </td>
         <td class='col-md-2 text-center pr-0 pl-0'>
-        <a href='' id='btnEditarPago' class=' editarPago spand-linkm' data-toggle='modal' data-target='#EdPago' pago-id='$idpagos'><img src='/fitcoControl/Resources/iconos/001-edit.svg' class='mr-4 spand-iconm'></a>
+        <a href='' id='btnEditarPago' class=' editarPago spand-linkm' data-toggle='modal' data-target='#EdPago' pago-id='$idpagos'><img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='mr-4 spand-iconm'></a>
 
-        <a href='' id='EliminarPago' class=' eliminarPago spand-linkm'  pago-id='$idpagos'><img src='/fitcoControl/Resources/iconos/002-delete.svg' class='spand-iconm'></a>
+        <a href='' id='EliminarPago' class=' eliminarPago spand-linkm'  pago-id='$idpagos'><img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='spand-iconm'></a>
         </td>
       </tr>";
     }elseif ($ce == 0) {

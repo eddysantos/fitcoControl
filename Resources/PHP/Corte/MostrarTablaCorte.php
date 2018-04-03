@@ -11,8 +11,8 @@ $data = array(
 );
 $query = "SELECT
 
-p.pk_programacion AS idcorte,
--- cor.pk_corte AS idcorte,
+p.pk_programacion AS idprogram,
+cor.pk_corte AS idcorte,
 DATE_FORMAT(p.fechaInicio,'%d-%m-%Y') AS fechaInicio,
 DATE_FORMAT(p.fechaFinal,'%d-%m-%Y') AS ffin,
 p.horaEntrega AS entrega,
@@ -30,7 +30,7 @@ LEFT JOIN ct_cliente c ON c.pk_cliente = p.fk_cliente
 LEFT JOIN ct_corte cor ON p.pk_programacion = cor.fk_programacion
 
 
--- GROUP BY p.pk_programacion
+GROUP BY p.pk_programacion
 
 ORDER BY cliente ASC";
 
@@ -38,7 +38,8 @@ ORDER BY cliente ASC";
 if (isset($_POST['corte'])){
  $q = $conn->real_escape_string($_POST['corte']);
  $query = "SELECT
- p.pk_programacion AS idcorte,
+ cor.pk_corte AS idcorte,
+ p.pk_programacion AS idprogram,
  DATE_FORMAT(p.fechaInicio,'%d-%m-%Y') AS fechaInicio,
  DATE_FORMAT(p.fechaFinal,'%d-%m-%Y') AS ffin,
  p.horaEntrega AS entrega,
@@ -85,6 +86,7 @@ if ($buscarDatos->num_rows > 0) {
     while ($row = $buscarDatos->fetch_assoc()) {
           $fini = $row['fechaInicio'];
           $hrentrega = $row['entrega'];
+          $idprogram = $row['idprogram'];
           $idcorte = $row['idcorte'];
           $cliente = $row['cliente'];
           $ffin = $row['ffin'];
@@ -93,8 +95,6 @@ if ($buscarDatos->num_rows > 0) {
           $notas = $row['notas'];
           $horaFinal = $row['horaFinal'];
 
-
-          // $hoy = date("Y-m-d");
 
           $diasProg = (strtotime($ffin)-strtotime($fini))/86400;
           $diasProg = abs($diasProg);
@@ -139,9 +139,11 @@ if ($buscarDatos->num_rows > 0) {
             </td>
 
             <td class='col-md-1 text-right'>
-              <a href='#' class='acorte spand-link mr-3' corte-id='$idcorte'><img src='/fitcoControl/Resources/iconos/003-add.svg' class='spand-icon'></a>
+              <a href='#' class='acorte spand-link' corte-id='$idprogram'><img src='/fitcoControl/Resources/iconos/003-add.svg' class='spand-icon'></a>
 
-              <a href='#' class='editarcorte spand-link mr-3' data-toggle='modal' data-target='#EditarCorte' corte-id='$idcorte'><img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='spand-icon'></a>
+              <a href='#' class='editarcorte spand-link' data-toggle='modal' data-target='#EditarCorte' corteId='$idcorte'><img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='spand-icon'></a>
+
+              <a href='' class='eliminarCorte spand-link'  corteId='$idcorte'><img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='spand-icon'></a>
             </td>
           </tr>";
     }

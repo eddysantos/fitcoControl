@@ -130,23 +130,6 @@ $(document).on('keyup', '#busqueda', function(){
 
 
 
-//TABLA PARA DATOS DE GRAFICA COBRANZA
-// function fetchTablaCobranza(){
-//   $.ajax({
-//     method: 'POST',
-//     url:'/fitcoControl/Resources/PHP/Cobranza/TablaGraficaCobranza.php',
-//     success:function(result){
-//       console.log(result);
-//       var rsp = JSON.parse(result);
-//       $('#mostrarTablaGrafica').html(rsp.infoTabla);
-//       ActivarBotonesCobranza();
-//     },
-//     error:function(exception){
-//       console.error(exception)
-//     }
-//   })
-// }
-
 function ActivarBotonesCobranza(){
 
   $('.agregarPago').unbind();
