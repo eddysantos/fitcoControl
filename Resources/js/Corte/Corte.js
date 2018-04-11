@@ -3,24 +3,6 @@ $(document).ready(function(){
 fetchCorte();
 });
 
-
-//Mostrar Registros en pantalla
-// function fetchCorte(){
-//   $.ajax({
-//     method: 'POST',
-//     url:'/fitcoControl/Resources/PHP/Corte/MostrarTablaCorte.php',
-//     success:function(result){
-//       var rsp = JSON.parse(result);
-//       console.log(rsp);
-//       $('#MostrarCorte').html(rsp.infoTabla);
-//       ActivarBotonesCorte();
-//     },
-//     error:function(exception){
-//       console.error(exception)
-//     }
-//   })
-// }
-
 function fetchCorte(corte){
   $.ajax({
     url:'/fitcoControl/Resources/PHP/Corte/MostrarTablaCorte.php',
@@ -115,7 +97,7 @@ function ActivarBotonesCorte(){
             $('#emcor_notas').val(rsp.response.Notas);
 
           } else {
-            // console.error("Hubo un error al jalar la informacion de.");
+            console.error("Hubo un error al jalar la informacion de.");
             console.error(rsp.response);
             console.error(rsp.data)
           }
@@ -160,28 +142,43 @@ function ActivarBotonesCorte(){
       });
     });
 
-
   $('.eliminarCorte').unbind();
   $('.eliminarCorte').click(function(){
     var corteId = $(this).attr('corteId');
-    $.ajax({
-      method: 'POST',
-      url: '/fitcoControl/Resources/PHP/Corte/eliminarCorte.php',
-      data: {corteId: corteId},
+    swal({
+    title: "Estas Seguro?",
+    text: "Ya no se podra recuperar el registro!",
+    type: "warning",
+    showCancelButton: true,
+    confirmButtonClass: "btn-danger",
+    confirmButtonText: "Si, Eliminar",
+    cancelButtonText: "No, cancelar",
+    closeOnConfirm: false,
+    closeOnCancel: false
+  },
+  function(isConfirm) {
+    if (isConfirm) {
+      $.ajax({
+        method: 'POST',
+        url: '/fitcoControl/Resources/PHP/Corte/eliminarCorte.php',
+        data: {corteId: corteId},
 
-      success: function(result){
-        console.log(result);
-        if (result != 1) {
-          fetchCorte();
-          alertify.error('NO SE PUDO ELIMINAR');
-        }else {
-          fetchCorte();
-          alertify.success('SE MODIFICÓ CORRECTAMENTE');
+        success: function(result){
+          console.log(result);
+          if (result != 1) {
+            alertify.error('NO SE PUDO ELIMINAR');
+          }else if (result == 1){
+            fetchCorte();
+          }
+        },
+        error: function(exception){
+          console.error(exception)
         }
-      },
-      error: function(exception){
-        console.error(exception)
-      }
-    });
+      });
+      swal("Eliminado!", "Se elimino correctamente.", "success");
+    } else {
+      swal("Cancelado", "El registro esta a salvo :)", "error");
+    }
   });
+});
 }

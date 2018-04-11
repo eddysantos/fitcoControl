@@ -13,7 +13,7 @@ $data = array(
 $query = "SELECT
 p.pk_programacion AS idprogram,
 c.nombreCliente AS cliente,
-p.fechaFinal AS ffin,
+DATE_FORMAT(p.fechaFinal, '%d-%m-%Y') AS ffin,
 p.piezasRequeridas AS piezas,
 c.colorCliente AS color,
 SUM(pr.cantidadProduccion) AS total
@@ -32,7 +32,7 @@ if (isset($_POST['produccion'])) {
   $query = "SELECT
   p.pk_programacion AS idprogram,
   c.nombreCliente AS cliente,
-  p.fechaFinal AS ffin,
+  DATE_FORMAT(p.fechaFinal, '%d-%m-%Y') AS ffin,
   p.piezasRequeridas AS piezas,
   c.colorCliente AS color,
   SUM(pr.cantidadProduccion) AS total
@@ -78,7 +78,7 @@ if ($buscarDatos->num_rows > 0) {
         $piezas = $row['piezas'];
         $color = $row['color'];
         $total = $row['total'];
-        $hoy = date("Y-m-d");
+        $hoy = date("d-m-Y");
         $iconocaja = "";
         $background = "";
         $numerosemana = date("W",strtotime($ffin));//sacar numero de la semana

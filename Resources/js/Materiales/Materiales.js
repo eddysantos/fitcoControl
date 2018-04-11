@@ -1,9 +1,10 @@
 $(document).ready(function(){
 
 fetchMateriales();
+});
+
 
   $('#NuevoRegistroMat').click(function(){
-
     var mm = $('#mat_material').val();
     var fc = $('#mat_fcompra').val();
     var ss = $('#mat_serie').val();
@@ -42,8 +43,14 @@ fetchMateriales();
           if (rsp.code != 1) {
             swal("FALLO AL REGISTRAR","No se agregó el registro","error");
             console.error(rsp.response);
+            $('#NuevoMaterial').hide();
+            $('.spanA').css('display', '');
+            fetchMateriales();
           } else {
             alertify.success('SE AGREGÓ CORRECTAMENTE');
+            $('#NuevoMaterial')[0].reset();
+            $('#NuevoMaterial').hide();
+            $('.spanA').css('display', '');
             fetchMateriales();
           }
         },
@@ -53,7 +60,7 @@ fetchMateriales();
       })
     }
   });
-});
+
 
 
 
@@ -82,7 +89,6 @@ fetchMateriales();
 
 function ActivarBotonesMaterial(){
   //AGREGAR PAGOS MODAL
-
 
   $('.editMat').unbind();
   $('.editMat').click(function(){
@@ -144,9 +150,13 @@ function ActivarBotonesMaterial(){
         if (result != 1) {
           alertify.error('NO SE MODIFICÓ NINGUN REGISTRO');
           $('#EditarMaterial').modal('hide');
+          $('#NuevoMaterial').hide();
+          $('.spanA').css('display', '');
           fetchMateriales();
         }else {
           $('#EditarMaterial').modal('hide');
+          $('#NuevoMaterial').hide();
+          $('.spanA').css('display', '');
           fetchMateriales();
           alertify.success('SE MODIFICÓ CORRECTAMENTE');
         }
@@ -156,7 +166,6 @@ function ActivarBotonesMaterial(){
       }
     });
   });
-
 
 
   $('.eliminarMat').unbind();
@@ -184,7 +193,12 @@ function ActivarBotonesMaterial(){
           console.log(result);
           if (result != 1) {
             alertify.error('NO SE PUDO ELIMINAR');
+            $('#NuevoMaterial').hide();
+            $('.spanA').css('display', '');
+            fetchMateriales();
           }else if (result == 1){
+            $('#NuevoMaterial').hide();
+            $('.spanA').css('display', '');
             fetchMateriales();
           }
         },

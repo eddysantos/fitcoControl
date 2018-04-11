@@ -12,7 +12,7 @@ if (!isset($_SESSION['user'])) {
 ?>
 
 <div class="container-fluid pl-75 pr-57">
-    <div class="row clt_usr mt-5 mb-5">
+  <div class="row clt_usr mt-4">
 
     <div class="text-left alert alert-info w-65" role="alert" >
       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -21,23 +21,25 @@ if (!isset($_SESSION['user'])) {
 
     <div class="col align-self-end">
       <a class="rotate-link consultar ancla" accion="acobranza" status="cerrado">
-        <img src="/fitcoControl/Resources/iconos/003-analytics-2.svg" class="icon rotate-icon" style="width:30px">
+        <img  src="/fitcoControl/Resources/iconos/003-analytics-2.svg" class="icon rotate-icon" style="width:30px">
         <span class="spanA">Agregar Factura</span>
       </a>
       <a class="rotate-link consultar ancla" data-toggle='modal' data-target='#ModalGraficaCobranza'>
-        <img src="/fitcoControl/Resources/iconos/grafica2.svg" class=" icon rotate-icon" style="width:30px">
+        <img  src="/fitcoControl/Resources/iconos/grafica2.svg" class=" icon rotate-icon" style="width:30px">
         <span class="spanD">Graficas Cobranza</span>
       </a>
-      <a class="rotate-link consultar ancla" accion="btesoreria" status="cerrado">
-        <img src="/fitcoControl/Resources/iconos/search.svg" class=" icon rotate-icon" style="width:30px">
+
+      <a class="rotate-link buscador ancla" accion="busc" status="cerrado">
+        <img src="/fitcoControl/Resources/iconos/search.svg" class="icon rotate-icon" style="width:30px">
         <span class="spanB"><input class="buscar" type="text" name="busqueda"  id="busqueda" placeholder="Buscar"></span>
       </a>
     </div>
   </div>
+</div>
 
 
 
-  <div class="container-fluid mt-3" style="max-width:1300px">
+  <div class="container-fluid mt-4">
     <section id="mostrarCobranza"></section>
   </div>
 
@@ -105,8 +107,7 @@ if (!isset($_SESSION['user'])) {
         </tbody>
       </table>
     </form>
-  </div>
-</div>
+
 
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];

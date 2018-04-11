@@ -14,8 +14,8 @@ $query = "SELECT
 v.pk_ventas AS idVentas,
 v.nombreCliente AS cliente,
 v.nombreVendedor AS vendedor,
-v.fechaIngreso AS ingreso,
-v.fechaBaja AS baja,
+DATE_FORMAT(v.fechaIngreso, '%d-%m-%Y') AS ingreso,
+DATE_FORMAT(v.fechaBaja, '%d-%m-%Y') AS baja,
 v.precioXprenda AS precioXprenda,
 v.acuerdoPago AS acuerdo,
 v.numeroPrendas AS prendas
@@ -29,8 +29,8 @@ if (isset($_POST['ventas'])) {
   v.pk_ventas AS idVentas,
   v.nombreCliente AS cliente,
   v.nombreVendedor AS vendedor,
-  v.fechaIngreso AS ingreso,
-  v.fechaBaja AS baja,
+  DATE_FORMAT(v.fechaIngreso, '%d-%m-%Y') AS ingreso,
+  DATE_FORMAT(v.fechaBaja, '%d-%m-%Y') AS baja,
   v.precioXprenda AS precioXprenda,
   v.acuerdoPago AS acuerdo,
   v.numeroPrendas AS prendas
@@ -69,13 +69,18 @@ if ($buscarDatos->num_rows > 0) {
        $nombreCliente = $row['cliente'];
        $nombreVendedor = $row['vendedor'];
        $fechaIngreso = $row['ingreso'];
-       $fechaBaja = $row['baja'];
        $precioXprenda = $row['precioXprenda'];
        $numeroPrendas = $row['prendas'];
        $acuerdo = $row['acuerdo'];
        $ev =  $_SESSION['user']['editarVentas'];
        $admin = $_SESSION['user']['privilegiosUsuario'] == "Administrador";
        $bloqueo =  "bloqueo";
+
+       if ($fechaBaja == NULL) {
+         $fechaBaja = "N/A";
+       }else {
+        $fechaBaja = $row['baja'];
+       }
 
         if ($ev == 1 || $admin) {
           $tabla.="
@@ -93,6 +98,7 @@ if ($buscarDatos->num_rows > 0) {
               </td>
               <td class='col-md-2 text-center'>
                 <h4><b>$fechaIngreso</b></h4>
+                <p class='visibilidad'>Baja: $fechaBaja</p>
               </td>
               <td class='col-md-1'></td>
               <td class='col-md-2 text-right'>
@@ -134,7 +140,10 @@ if ($buscarDatos->num_rows > 0) {
     </form>";
 
     }else {
-      $tabla="No se encontraron coincidencias";
+      $tabla="
+      <div id='SinRegistros' class='container-fluid pantallaRegistros'>
+        <div class='tituloSinRegistros'>NO HAY REGISTROS</div>
+      </div>";
     }
     echo $tabla;
 

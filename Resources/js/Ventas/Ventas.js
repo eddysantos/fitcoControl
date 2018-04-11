@@ -1,6 +1,30 @@
 $(document).ready(function(){
 fetchVentas();
 
+});
+
+//MOSTRAR LOS REGISTROS EN PANTALLA BUSCADOR TIEMPO REAL
+function fetchVentas(ventas){
+  $.ajax({
+    url:'/fitcoControl/Resources/PHP/Ventas/MostrarTablaVentas.php',
+    method: 'POST',
+    data:{ventas:ventas},
+  })
+  .done(function(resultado){
+    $('#mostrarVentas').html(resultado);
+    ActivarBotonesVentas();
+  })
+}
+
+$(document).on('keyup', '#busquedaVenta', function(){
+  var valorBusqueda = $(this).val();
+  if (valorBusqueda!= "") {
+    fetchVentas(valorBusqueda);
+  }else {
+    fetchVentas();
+  }
+});
+
   $('#NuevoRegistroVentas').click(function(){
 
     var cliente = $('#vts_nombreCliente').val();
@@ -40,7 +64,13 @@ fetchVentas();
           if (rsp.code != 1) {
             swal("FALLO AL REGISTRAR","No se agregó el registro","error");
             console.error(rsp.response);
+            $('#NuevaVenta').hide();
+            $('.spanV').css('display', '');
+            fetchVentas();
           } else {
+            $('#NuevoVenta')[0].reset();
+            $('#NuevaVenta').hide();
+            $('.spanV').css('display', '');
             fetchVentas();
             alertify.success('SE AGREGÓ CORRECTAMENTE');
           }
@@ -51,29 +81,6 @@ fetchVentas();
       })
     }
   });
-});
-
-//MOSTRAR LOS REGISTROS EN PANTALLA
-function fetchVentas(ventas){
-  $.ajax({
-    url:'/fitcoControl/Resources/PHP/Ventas/MostrarTablaVentas.php',
-    method: 'POST',
-    data:{ventas:ventas},
-  })
-  .done(function(resultado){
-    $('#mostrarVentas').html(resultado);
-    ActivarBotonesVentas();
-  })
-}
-
-$(document).on('keyup', '#busquedaVenta', function(){
-  var valorBusqueda = $(this).val();
-  if (valorBusqueda!= "") {
-    fetchVentas(valorBusqueda);
-  }else {
-    fetchVentas();
-  }
-});
 
 function ActivarBotonesVentas(){
 
@@ -138,9 +145,13 @@ function ActivarBotonesVentas(){
         if (result != 1) {
           alertify.error('NO SE MODIFICÓ NINGUN REGISTRO');
           $('#EditarVentas').modal('hide');
+          $('#NuevaVenta').hide();
+          $('.spanV').css('display', '');
           fetchVentas();
         }else {
           $('#EditarVentas').modal('hide');
+          $('#NuevaVenta').hide();
+          $('.spanV').css('display', '');
           fetchVentas();
           alertify.success('SE MODIFICÓ CORRECTAMENTE');
         }
@@ -186,8 +197,14 @@ function ActivarBotonesVentas(){
         }
       });
       swal("Eliminado!", "Se elimino correctamente.", "success");
+      $('#NuevaVenta').hide();
+      $('.spanV').css('display', '');
+      fetchVentas();
     } else {
       swal("Cancelado", "El registro esta a salvo :)", "error");
+      $('#NuevaVenta').hide();
+      $('.spanV').css('display', '');
+      fetchVentas();
     }
   });
 });

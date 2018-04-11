@@ -12,7 +12,7 @@ require  $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
 <div class="container-fluid pl-75 pr-57">
   <div class="row clt_usr  mt-5 mb-5">
 
-    <div class="text-left alert alert-info w-75" role="alert" >
+    <div class="text-left alert alert-info w-65" role="alert" >
       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       <strong>Nota: </strong> La función de esta sección es llevar el control de los articulos electronicos entregados a los empleados, (ej.computadoras, laptops, celulares, etc). En el icono <img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='iconoNota'> se podra editar la información en caso de que asi se requiera.
       En el icono <img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='iconoNota'> se eliminaría la información de manera permanente.
@@ -21,16 +21,18 @@ require  $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
     <div class="col align-self-end">
       <a class="rotate-link consultar ancla" style="font-size: larger;" accion="amaterial" status="cerrado">
         <img src="/fitcoControl/Resources/iconos/001-computer.svg" class="icon1 rotate-icon" style="width:30px;">
-        <span class="spanM">Nuevo Registro</span>
+        <span class="spanA">Nuevo Registro</span>
       </a>
-      <a class="rotate-link consultar ancla">
-        <img src="/fitcoControl/Resources/iconos/search.svg" class=" icon rotate-icon" style="width:30px">
+
+      <a class="rotate-link buscador ancla" accion="busc" status="cerrado">
+        <img src="/fitcoControl/Resources/iconos/search.svg" class="icon rotate-icon" style="width:30px">
         <span class="spanB"><input class="buscar" type="text" name="busqueda"  id="busqueda" placeholder="Buscar"></span>
       </a>
     </div>
   </div>
+</div>
 
-  <div class="container-fluid mt-3" style="max-width:1300px">
+  <div class="container-fluid mt-3">
     <section id="MostrarMateriales"></section>
   </div>
 
@@ -95,7 +97,7 @@ require  $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
       </tbody>
     </table>
   </form>
-</div>
+
 
 
 

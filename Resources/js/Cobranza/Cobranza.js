@@ -2,6 +2,8 @@ $(document).ready(function(){
   fetchCobranza();
   // fetchTablaCobranza();
 
+  });
+
   //BUSCADOR TIEMPO REAL PARA CAMPO LISTA
   $('#npClientName').keyup(function(){
     var txt = $(this).val();
@@ -89,11 +91,14 @@ $(document).ready(function(){
           if (rsp.code != 1) {
             swal("FALLO AL REGISTRAR","No se agregó el registro","error");
             console.error(rsp.response);
-          } else{
-            fetchCobranza();
-            console.log(rsp);
             $('#Agregarcobranza').hide();
-            $('#Ecobranza').animate({"right": "4%"}, "slow");
+            $('.spanA').css('display', '');
+              fetchCobranza();
+          } else{
+            $('#Agregarcobranza')[0].reset();
+            $('#Agregarcobranza').hide();
+            $('.spanA').css('display', '');
+              fetchCobranza();
             alertify.success('SE AGREGÓ CORRECTAMENTE');
           }
         },
@@ -103,7 +108,7 @@ $(document).ready(function(){
       })
     }
   });
-});
+
 
 
 
@@ -302,13 +307,23 @@ function ActivarBotonesCobranza(){
         console.log(rsp);
         if (result != 1) {
           alertify.error('NO SE MODIFICÓ NINGUN REGISTRO');
+          $('#Agregarcobranza').hide();
+          $('.spanA').css('display', '');
           $('#DetCobranza').modal('hide');
+          $( "img" ).removeClass( "spand-iconp" ).addClass( "spand-icon");
+          $('p').css('font-size','1.75rem');
+          $('b').css('font-size','1.75rem');
+          $('p').css('font-weight','500');
           fetchCobranza();
-          // fetchTablaCobranza();
         }else {
+          $('#Agregarcobranza').hide();
+          $('.spanA').css('display', '');
           $('#DetCobranza').modal('hide');
+          $( "img" ).removeClass( "spand-iconp" ).addClass( "spand-icon");
+          $('p').css('font-size','1.75rem');
+          $('b').css('font-size','1.75rem');
+          $('p').css('font-weight','500');
           fetchCobranza();
-          // fetchTablaCobranza();
           alertify.success('SE MODIFICÓ CORRECTAMENTE');
         }
       },
@@ -344,7 +359,12 @@ function ActivarBotonesCobranza(){
           console.log(result);
           if (result != 1) {
             alertify.error('NO SE PUDO ELIMINAR');
+            $('#Agregarcobranza').hide();
+            $('.spanA').css('display', '');
+            fetchCobranza();
           }else if (result == 1){
+            $('#Agregarcobranza').hide();
+            $('.spanA').css('display', '');
             fetchCobranza();
           }
         },
@@ -358,6 +378,9 @@ function ActivarBotonesCobranza(){
     }
   });
 });
+
+
+//PAGOS
 
   $('.visualizarcobranza').click(function(){
     var cobranzaId = $(this).attr('cobranza-id');

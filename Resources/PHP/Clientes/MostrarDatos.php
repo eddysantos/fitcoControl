@@ -15,7 +15,7 @@ nombreCliente AS nombre,
 correoCliente AS correo,
 telefonoCliente AS telefono,
 creditoCliente AS credito,
-fingresoCliente AS ingreso,
+DATE_FORMAT(fingresoCliente, '%d-%m-%Y') AS ingreso,
 colorCliente AS color
 
  FROM ct_cliente
@@ -134,7 +134,9 @@ colorCliente AS color
 
 
    }else {
-     $tabla="No se encontraron coincidencias";
+     $tabla="<div id='SinRegistros' class='container-fluid pantallaRegistros'>
+       <div class='tituloSinRegistros'>NO HAY REGISTROS</div>
+     </div>";
    }
    echo $tabla;
 

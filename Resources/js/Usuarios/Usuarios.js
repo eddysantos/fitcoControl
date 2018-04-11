@@ -74,11 +74,14 @@ $(document).ready(function(){
           if (rsp.code != 1) {
             swal("FALLO AL REGISTRAR","No se agregó el registro","error");
             console.error(rsp.response);
-          } else {
-            fetchUsuario();
             $('#NuevoUsuario').hide();
-            $('#usuarios').animate({"right": "4%"}, "slow");
-            $('#Eusuarios').animate({"right": "4%"}, "slow");
+            $('.spanA').css('display', '');
+            fetchUsuario();
+          } else {
+            $('#NuevoUsuario')[0].reset();
+            $('#NuevoUsuario').hide();
+            $('.spanA').css('display', '');
+            fetchUsuario();
             alertify.success('SE AGREGÓ CORRECTAMENTE');
           }
         },
@@ -205,9 +208,13 @@ function ActivarBotonesUsuario(){
         if (result != 1) {
           alertify.error('NO SE MODIFICÓ NINGUN REGISTRO');
           $('#EditarUsuario').modal('hide');
+          $('#NuevoUsuario').hide();
+          $('.spanA').css('display', '');
           fetchUsuario();
         }else {
           $('#EditarUsuario').modal('hide');
+          $('#NuevoUsuario').hide();
+          $('.spanA').css('display', '');
           fetchUsuario();
           alertify.success('SE MODIFICÓ CORRECTAMENTE');
         }

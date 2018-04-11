@@ -1,6 +1,8 @@
 $(document).ready(function(){
   fetchClients();
 
+  });
+
   $('#NuevoRegistro').click(function(){
     var nombreCliente = $('#clt_nombre').val();
     var correoCliente = $('#clt_contacto').val();
@@ -10,7 +12,7 @@ $(document).ready(function(){
     var colorCliente = $('#clt_color').val();
     var prendasCliente = $('#clt_prendas').val();
     var nosotrosCliente = $('#clt_nosotros').val();
-    var vendedorCliente = $('#clt_nosotros').val();
+    var vendedorCliente = $('#clt_vendedor').val();
 
     validacion = $('#clt_nombre').val() == "" ||
     $('#clt_contacto').val() == "" ||
@@ -41,14 +43,14 @@ $(document).ready(function(){
         success:function(result){
           var rsp = JSON.parse(result);
           if (rsp.code != 1) {
-            //alertify.error('NO SE AGREGÓ NINGUN REGISTRO');
             swal("FALLO AL REGISTRAR","No se agregó el registro","error");
-            //alert("No se pudo agregar el registro");
             console.error(rsp.response);
-          } else {
             fetchClients();
+          } else {
+            $('#NuevoCliente')[0].reset();
             $('#NuevoCliente').hide();
-            $('#Eclientes').animate({"right": "4%"}, "slow");
+            $('.spanA').css('display', '');
+            fetchClients();
             alertify.success('SE AGREGÓ CORRECTAMENTE');
           }
         },
@@ -58,7 +60,7 @@ $(document).ready(function(){
       })
     }
   });
-});
+
 
 
 //Muestra los registros en pantalla y los valores buscados
@@ -158,9 +160,13 @@ function ActivarBotones(){
         if (result != 1) {
           alertify.error('NO SE MODIFICÓ NINGUN REGISTRO');
           $('#EditarCliente').modal('hide');
+          $('#NuevoCliente').hide();
+          $('.spanA').css('display', '');
           fetchClients();
         }else {
           $('#EditarCliente').modal('hide');
+          $('#NuevoCliente').hide();
+          $('.spanA').css('display', '');
           fetchClients();
           alertify.success('SE MODIFICÓ CORRECTAMENTE');
         }
@@ -197,6 +203,8 @@ function ActivarBotones(){
           if (result != 1) {
             alertify.error('NO SE PUDO ELIMINAR');
           }else if (result == 1){
+            $('#NuevoCliente').hide();
+            $('.spanA').css('display', '');
             fetchClients();
           }
         },

@@ -5,6 +5,10 @@ $data = array(
   'response'=>array()
 );
 
+
+function parseDate($dv){
+  return date('Y-m-d', strtotime($dv));
+}
 require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
 $query =
 "INSERT INTO ct_produccion(fk_programacion,fechaIntroduccion,metaProduccion,cantidadProduccion) VALUES(?,?,?,?)";

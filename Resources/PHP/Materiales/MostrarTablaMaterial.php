@@ -14,10 +14,10 @@ $query ="SELECT
 m.pk_material AS idMaterial,
 m.material AS material,
 m.personaEntrega AS personaEntrega,
-m.fechaEntrega AS fechaEntrega,
+DATE_FORMAT(m.fechaEntrega, '%d-%m-%Y') AS fechaEntrega,
 m.precioMaterial AS precio,
 m.numeroSerie AS serie,
-m.fechaCompra AS compra,
+DATE_FORMAT(m.fechaCompra, '%d-%m-%Y') AS compra,
 m.condicionEntrega AS condicion
 
 FROM ct_materiales m
@@ -29,10 +29,10 @@ if (isset($_POST['materiales'])) {
   m.pk_material AS idMaterial,
   m.material AS material,
   m.personaEntrega AS personaEntrega,
-  m.fechaEntrega AS fechaEntrega,
+  DATE_FORMAT(m.fechaEntrega, '%d-%m-%Y') AS fechaEntrega,
   m.precioMaterial AS precio,
   m.numeroSerie AS serie,
-  m.fechaCompra AS compra,
+  DATE_FORMAT(m.fechaCompra, '%d-%m-%Y') AS compra,
   m.condicionEntrega AS condicion
 
   FROM ct_materiales m
@@ -96,9 +96,9 @@ if ($buscarDatos->num_rows > 0) {
 
 
             <td class='col-md-1 text-right'>
-              <a href='#' class='editMat spand-link' data-toggle='modal' data-target='#EditarMaterial' mat-id='$idMat'><img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='spand-icon'></a>
+              <a href='#' class='editMat spand-link' data-toggle='modal' data-target='#EditarMaterial' mat-id='$idMat'><img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='img spand-icon'></a>
 
-              <a href='#' class='eliminarMat spand-link ml-3' mat-id='$idMat'><img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='spand-icon'></a>
+              <a href='#' class='eliminarMat spand-link ml-3' mat-id='$idMat'><img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='img spand-icon'></a>
             </td>
           </tr>";
         }elseif ($ce == 0) {
@@ -121,9 +121,9 @@ if ($buscarDatos->num_rows > 0) {
 
 
               <td class='col-md-1 text-right'>
-              <a href='#' class='bloqueo  editMat spand-link'><img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='spand-icon'></a>
+              <a href='#' class='bloqueo  editMat spand-link'><img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='img spand-icon'></a>
 
-              <a href='#' class='bloqueo spand-link ml-3'><img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='spand-icon'></a>
+              <a href='#' class='bloqueo spand-link ml-3'><img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='img spand-icon'></a>
               </td>
             </tr>";
         }
@@ -135,7 +135,10 @@ if ($buscarDatos->num_rows > 0) {
     </form>";
 
     }else {
-      $tabla="No se encontraron coincidencias";
+      $tabla="
+      <div id='SinRegistros' class='container-fluid pantallaRegistros'>
+        <div class='tituloSinRegistros'>NO HAY REGISTROS</div>
+      </div>";
     }
     echo $tabla;
 

@@ -10,7 +10,7 @@
 
 
 <div class="container-fluid pl-75 pr-57">
-  <div class="row clt_usr mt-5 mb-5">
+  <div class="row clt_usr mt-4">
     <div class="text-left alert alert-info w-75" role="alert" >
       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       <strong>Nota: </strong> La función de esta sección es llevar el registro de los datos de nuestros clientes para mayor accesibilidad, en el icono <img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='iconoNota'> se podra editar la información del cliente en caso de que asi se requiera.
@@ -24,19 +24,19 @@
         <span class="spanA">Agregar Cliente</span>
       </a>
 
-
       <a class="rotate-link buscador ancla" accion="busc" status="cerrado">
         <img src="/fitcoControl/Resources/iconos/search.svg" class="icon rotate-icon" style="width:30px">
         <span class="spanB"><input class="buscar" type="text" name="busqueda"  id="busqueda" placeholder="Buscar"></span>
       </a>
     </div>
   </div>
+</div>
 
-  <div class="mt-3" style="max-width:1300px">
+  <div class="container-fluid mt-4">
     <section id="mostrarClientes"></section>
   </div>
 
-  <form  id="NuevoCliente"  class="agregarnuevo" style="display:none">
+  <form  id="NuevoCliente" class="agregarnuevo" style="display:none">
     <table class="table">
       <tbody id="AgregarCliente">
         <tr class="row m20">
@@ -115,7 +115,6 @@
       </tbody>
     </table>
   </form>
-</div>
 
 
 

@@ -25,12 +25,6 @@ ct_cobranza(
 
 
 
-// error_log("Pase por aqui!");
-//
-// if (!($stmt)) {
-//   error_log($conn->$error);
-//   }
-
 $fvencimiento = parseDate($_POST['cbz_dvencimiento']);
 $fentrega = parseDate($_POST['cbz_entrega']);
 

@@ -22,8 +22,8 @@ fk_cliente = ?
 WHERE pk_cobranza = ?";
 
 
-$mfvencimiento = parseDate($_POST['mcbz_dvencimiento']);
-$mfentrega = parseDate($_POST['mcbz_entrega']);
+$mfvencimiento = parseDate($_POST['mcbz_vencimiento']);
+$mfentrega = parseDate($_POST['mcbz_fechaEntrega']);
 
 $stmt = $conn->prepare($query);
 $stmt->bind_param('sssssss',

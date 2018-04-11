@@ -10,7 +10,7 @@ $data = array(
 );
 $query = "SELECT
 pk_produccion AS id,
-fechaIntroduccion AS fecha,
+DATE_FORMAT(fechaIntroduccion,'%d-%m-%Y') AS fecha,
 metaProduccion AS meta,
 cantidadProduccion AS cant
 
@@ -54,9 +54,9 @@ if (false) {
         <h4><b>$cantidad pzs</b></h4>
       </td>
       <td class='col-md-3 text-right'>
-        <a href='#' class='editarProduc spand-link' data-toggle='modal' data-target='#EdProd' pro-id='$id'><img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='spand-iconm'></a>
+        <a href='#' class='editarProduc spand-linkm' data-toggle='modal' data-target='#EdProd' pro-id='$id'><img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='spand-iconm'></a>
 
-        <a href='#' class='eliminarProduc spand-link ml-3' pro-id='$id'><img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='spand-iconm'></a>
+        <a href='#' class='eliminarProduc spand-linkm ml-3' pro-id='$id'><img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='spand-iconm'></a>
       </td>
     </tr>";
   }elseif ($pe == 0){
@@ -72,9 +72,9 @@ if (false) {
         <h4><b>$cantidad pzs</b></h4>
       </td>
       <td class='col-md-3 text-right'>
-        <a href='#' class='bloqueo spand-link' pro-id='$id'><img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='spand-iconm'></a>
+        <a href='#' class='bloqueo spand-linkm'><img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='spand-iconm'></a>
 
-        <a href='#' class='bloqueo spand-link ml-3' pro-id='$id'><img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='spand-iconm'></a>
+        <a href='#' class='bloqueo spand-linkm ml-3'><img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='spand-iconm'></a>
       </td>
     </tr>";
     }

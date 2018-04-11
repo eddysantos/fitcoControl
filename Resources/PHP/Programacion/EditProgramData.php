@@ -5,6 +5,10 @@ $data = array(
   'response'=>array()
 );
 
+function parseDate($dv){
+  return date('Y-m-d', strtotime($dv));
+}
+
 require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
 $query =
 "UPDATE ct_programacion
@@ -22,8 +26,8 @@ $ffinal = parseDate($_POST['mpgr_ffin']);
 $stmt = $conn->prepare($query);
 $stmt->bind_param('ssssss',
   $_POST['mpgr_cliente'],
-  $_POST['mpgr_fini'],
-  $_POST['mpgr_ffin'],
+  $finicio,
+  $ffinal,
   $_POST['mpgr_piezas'],
   $_POST['hr'],
   $_POST['mpgr_id']

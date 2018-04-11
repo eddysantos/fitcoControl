@@ -1,13 +1,11 @@
 $(document).ready(function(){
 
-
   // Auto close de alertas
   window.setTimeout(function() {
       $(".alert").fadeTo(2500, 0).slideUp(2500, function(){
           $(this).remove();
       });
   }, 10400);
-
 
 
   //al hacer hover en algun buscador de tiempo real
@@ -22,10 +20,21 @@ $(document).ready(function(){
         $(this).attr('status', 'abierto');
         $('#Eclientes').animate({"right": "4%"}, "slow");
         $('#Eusuarios').animate({"right": "4%"}, "slow");
+        $('#MMaterial').animate({"right": "4%"}, "slow");
+        $('#Ecobranza').animate({"right": "4%"}, "slow");
+        $('#Eventas').animate({"right": "4%"}, "slow");
         $('#NuevoCliente').hide();
         $('#NuevoUsuario').hide();
+        $('#NuevoMaterial').hide();
+        $('#Agregarcobranza').hide();
+        $('#NuevaVenta').hide();
+
         $('.spanA').css('display', '');
-        $('.spanA').attr('status', 'cerrado');
+        $('.spanV').css('display', '');
+        $('p').css('font-size','1.75rem');
+        $('b').css('font-size','1.75rem');
+        $('p').css('font-weight','500');
+        $('.img').removeClass( "spand-iconp" ).addClass( "spand-icon");
       }else {
         $('.spanB').css('display', '');
         $(this).attr('status', 'cerrado');
@@ -34,7 +43,7 @@ $(document).ready(function(){
         default:
           console.error("Something went terribly wrong...");
       }
-});
+    });
 
 
   $('.consultar').click(function(){
@@ -45,7 +54,6 @@ $(document).ready(function(){
         $('#selectGrafica').find('a').css('font-size', "");
         $(this).attr('status', 'abierto');
         $(this).css('cssText', 'color: rgb(98, 98, 98) !important');
-        // $(this).css('font-size', '20px');
 
 
     switch (accion) {
@@ -56,17 +64,15 @@ $(document).ready(function(){
         $('.spanA').css('display', 'inherit');
         $(this).attr('status', 'abierto');
         $('#Eusuarios').animate({"right": "36%"}, "slow");
-        $('#usuarios').animate({"right": "36%"}, "slow");
         $('#NuevoUsuario').fadeIn(2500);
+        $('#SinRegistros').fadeOut();
       }else {
         $('.spanA').css('display', '');
         $(this).attr('status', 'cerrado');
         $('#Eusuarios').animate({"right": "4%"}, "slow");
-        $('#usuarios').animate({"right": "4%"}, "slow");
         $('#NuevoUsuario').hide();
       }
       break;
-
 
       //CLIENTES
       case "acliente":
@@ -75,7 +81,8 @@ $(document).ready(function(){
         $(this).attr('status', 'abierto');
         $('#Eclientes').animate({"right": "36%"}, "slow");
         $('#NuevoCliente').fadeIn(2500);
-      }else {
+        $('#SinRegistros').fadeOut();
+      }else if (status == 'abierto') {
         $('.spanA').css('display', '');
         $(this).attr('status', 'cerrado');
         $('#Eclientes').animate({"right": "4%"}, "slow");
@@ -83,23 +90,24 @@ $(document).ready(function(){
       }
       break;
 
+
       //TESORERIA
       case "acobranza":
       if (status == 'cerrado') {
         $(this).attr('status', 'abierto');
-        // $('.spanA').css('display', 'inherit');
-        $('.spanD').css('display', '');
-        $('#Ecobranza').animate({"right": "38%"}, "slow");
-        $( "img" ).removeClass( "spand-icon" ).addClass( "spand-iconp");
+        $('.spanA').css('display', 'inherit');
+        $('#Ecobranza').animate({"right": "36%"}, "slow");
+        $('.img').removeClass( "spand-icon" ).addClass( "spand-iconp");
         $('#Agregarcobranza').fadeIn(1000);
         $('#Detallecobranza').hide();
         $('p').css('font-size','13px');
         $('b').css('font-size','14px');
+        $('#SinRegistros').fadeOut();
       }else{
-        // $('.spanA').css('display', '');
         $(this).attr('status', 'cerrado');
+        $('.spanA').css('display', '');
         $('#Ecobranza').animate({"right": "4%"}, "slow");
-        $( "img" ).removeClass( "spand-iconp" ).addClass( "spand-icon");
+        $('.img').removeClass( "spand-iconp" ).addClass( "spand-icon");
         $('p').css('font-size','1.75rem');
         $('b').css('font-size','1.75rem');
         $('p').css('font-weight','500');
@@ -119,7 +127,44 @@ $(document).ready(function(){
         $('#graficasemanal').hide();
         break;
 
+// MATERIALES
+      case "amaterial":
+      if (status == 'cerrado') {
+        $('.spanA').css('display', 'inherit');
+        $(this).attr('status', 'abierto');
+        $('#MMaterial').animate({"right": "36%"}, "slow");
+        $('#NuevoMaterial').fadeIn(2500);
+        $( ".img" ).removeClass( "spand-icon" ).addClass( "spand-iconp");
+        $('p').css('font-size','13px');
+        $('b').css('font-size','14px');
+        $('#SinRegistros').fadeOut();
+      }else {
+        $('.spanA').css('display', '');
+        $(this).attr('status', 'cerrado');
+        $('#MMaterial').animate({"right": "4%"}, "slow");
+        $( ".img" ).removeClass( "spand-iconp" ).addClass( "spand-icon");
+        $('p').css('font-size','1.75rem');
+        $('b').css('font-size','1.75rem');
+        $('p').css('font-weight','500');
+        $('#NuevoMaterial').hide();
+      }
+      break;
 
+//VENTAS
+      case "aventas":
+      if (status == 'cerrado') {
+        $('.spanV').css('display', 'inherit');
+        $(this).attr('status', 'abierto');
+        $('#Eventas').animate({"right": "36%"}, "slow");
+        $('#NuevaVenta').fadeIn(2500);
+        $('#SinRegistros').fadeOut();
+      }else {
+        $('.spanV').css('display', '');
+        $(this).attr('status', 'cerrado');
+        $('#Eventas').animate({"right": "4%"}, "slow");
+        $('#NuevaVenta').hide();
+      }
+      break;
 
 
       case "produccionLink":
@@ -137,30 +182,7 @@ $(document).ready(function(){
 
 
 
-
-      case "amaterial":
-      if (status == 'cerrado') {
-        $('.spanM').css('display', 'inherit');
-        $(this).attr('status', 'abierto');
-        $('#MMaterial').animate({"right": "36%"}, "slow");
-        $('#NuevoMaterial').fadeIn(2500);
-        $( "img" ).removeClass( "spand-icon" ).addClass( "spand-iconp");
-        $('p').css('font-size','13px');
-        $('b').css('font-size','14px');
-      }else {
-        $('.spanM').css('display', '');
-        $(this).attr('status', 'cerrado');
-        $('#MMaterial').animate({"right": "4%"}, "slow");
-        $( "img" ).removeClass( "spand-iconp" ).addClass( "spand-icon");
-        $('p').css('font-size','1.75rem');
-        $('b').css('font-size','1.75rem');
-        $('p').css('font-weight','500');
-        $('#NuevoMaterial').hide();
-      }
-      break;
-
-
-
+//PRODUCCION
       case "eproduccion":
       if (status == 'cerrado') {
         $('.spanP').css('display', 'inherit');
@@ -172,24 +194,6 @@ $(document).ready(function(){
         $(this).attr('status', 'cerrado');
         $('#tablaProduccion').fadeOut();
         $('#colapsoNuevaProduc').addClass("show");
-      }
-      break;
-
-
-
-      case "aventas":
-      if (status == 'cerrado') {
-        $('.spanV').css('display', 'inherit');
-        // $('.spanA').css('display', 'inherit');
-        $(this).attr('status', 'abierto');
-        $('#Eventas').animate({"right": "36%"}, "slow");
-        $('#NuevaVenta').fadeIn(2500);
-      }else {
-        $('.spanV').css('display', '');
-        // $('.spanA').css('display', '');
-        $(this).attr('status', 'cerrado');
-        $('#Eventas').animate({"right": "4%"}, "slow");
-        $('#NuevaVenta').hide();
       }
       break;
       default:

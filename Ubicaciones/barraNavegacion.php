@@ -53,7 +53,7 @@
       <?php endif; ?>
 
       <?php if ($pv == 1 || $admin): ?>
-        <li class="nav-item"><a href="/fitcoControl/Ubicaciones/Produccion/produccion.php">PRODUCCIÓN <span class="barra">DIVISIÓN 4</span></a></li>
+        <li class="nav-item"><a href="/fitcoControl/Ubicaciones/Cobranza/Mantenimiento.php">PRODUCCIÓN <span class="barra">DIVISIÓN 4</span></a></li>
       <?php else: ?>
         <li class="nav-item"><a class="bloqueo w-95">PRODUCCIÓN <span class="barra">DIVISIÓN 4</span></a></li>
       <?php endif; ?>

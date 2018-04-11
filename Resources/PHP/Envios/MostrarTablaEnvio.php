@@ -13,7 +13,6 @@ $data = array(
 
 if (isset($_POST['envios'])) {
   $q = '"%' . $_POST['envios'] . '%"';
-  // $q = $conn->real_escape_string($q);
 } else {
   $q = "'%%'";
 }
@@ -21,7 +20,7 @@ if (isset($_POST['envios'])) {
 $query = "CALL pruebaEnvios($q)";
 
 $buscarDatos = $conn->query($query);
-// if ($buscarDatos->num_rows > 0) {
+
 if (true) {
   $tabla.="
   <form class='page p-0'>

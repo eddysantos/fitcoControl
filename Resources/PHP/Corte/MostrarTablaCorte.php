@@ -77,8 +77,8 @@ if ($buscarDatos->num_rows > 0) {
       <td class='col-md-2'>CLIENTE</td>
       <td class='col-md-3'>DÍAS/ HRS PROYECTADOS</td>
       <td class='col-md-2'>TIEMPO DE CORTE</td>
-      <td class='col-md-4'>NOTAS</td>
-      <td class='col-md-1'></td>
+      <td class='col-md-3'>NOTAS</td>
+      <td class='col-md-2'></td>
       </tr>
     </thead>
     <tbody id='MostrarCorte'></tbody>";
@@ -134,16 +134,16 @@ if ($buscarDatos->num_rows > 0) {
               <p class='visibilidad'>$finalizado</p>
 
             </td>
-            <td class='col-md-4 text-center'>
+            <td class='col-md-3 text-center'>
               <h4><b>$notas</b></h4>
             </td>
 
-            <td class='col-md-1 text-right'>
+            <td class='col-md-2 text-right'>
               <a href='#' class='acorte spand-link' corte-id='$idprogram'><img src='/fitcoControl/Resources/iconos/003-add.svg' class='spand-icon'></a>
 
-              <a href='#' class='editarcorte spand-link' data-toggle='modal' data-target='#EditarCorte' corteId='$idcorte'><img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='spand-icon'></a>
+              <a href='#' class='editarcorte spand-link ml-3' data-toggle='modal' data-target='#EditarCorte' corteId='$idcorte'><img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='spand-icon'></a>
 
-              <a href='' class='eliminarCorte spand-link'  corteId='$idcorte'><img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='spand-icon'></a>
+              <a href='#' class='eliminarCorte spand-link ml-3' corteId='$idcorte'><img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='spand-icon'></a>
             </td>
           </tr>";
     }

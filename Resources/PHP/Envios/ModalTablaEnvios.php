@@ -1,7 +1,5 @@
 <?php
-
 session_start();
-
 $root = $_SERVER['DOCUMENT_ROOT'];
 require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
 
@@ -11,7 +9,6 @@ $data = array(
   'infoTabla' => ""
 );
 $query = "SELECT
-
 pk_envios AS idEnvio,
 DATE_FORMAT(fechaEnvio,'%d-%m-%Y') AS fechaEnvio,
 notas AS notas,

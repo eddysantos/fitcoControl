@@ -111,9 +111,14 @@ input:-webkit-autofill {
   width: 190px;
 }
 
-.clt_usr .consultar:hover .spanA, .clt_usr .consultar:hover .spanM,.clt_usr .buscador:hover .spanB{
+.clt_usr .consultar:hover .spanA, .clt_usr .consultar:hover .spanM{
   width: 145px;
 }
+
+.clt_usr .buscador:hover .spanB{
+  width: 200px;
+}
+
 .clt_usr .consultar:hover .spanD{
   width: 165px;
 }
@@ -369,6 +374,8 @@ list-style: none;
   height: 700px;
 }
 
+
+
 .tituloMantenimiento{
   text-align: center;
   margin-top: 260px;
@@ -376,7 +383,22 @@ list-style: none;
   color: rgb(210, 210, 210);
   font-size: 100px
 }
+/*termina pantalla Mantenimiento*/
 
+/*SIN REGISTROS*/
+.pantallaRegistros{
+  background-color: rgba(240, 240, 240, 0.3);
+  height: 640px;
+}
+
+.tituloSinRegistros{
+  text-align: center;
+  margin-top: 260px;
+  letter-spacing: 8px;
+  color: rgb(210, 210, 210,0.8);
+  font-size: 50px
+}
+/*termina pantalla sin registros*/
 .submenuMed {
   background-color: rgba(66, 125, 158, 0.21);
   height: 50px;

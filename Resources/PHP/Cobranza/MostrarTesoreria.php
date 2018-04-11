@@ -14,10 +14,10 @@ co.pk_cobranza AS idcobranza,
 ct.nombreCliente AS nombre,
 co.facturaCobranza AS factura,
 co.importeCobranza AS importe,
-co.vencimientoCobranza AS vencimiento,
+DATE_FORMAT(co.vencimientoCobranza, '%d-%m-%Y') AS vencimiento,
 WEEK(co.vencimientoCobranza) AS semana,
 co.conceptoPago AS concepto,
-co.fechaEntrega AS entrega,
+DATE_FORMAT(co.fechaEntrega, '%d-%m-%Y') AS entrega,
 ct.colorCliente AS color,
 ct.creditoCliente AS credito,
 sum(pg.importePago) AS pagado
@@ -40,10 +40,10 @@ if (isset($_POST['cobranza'])) {
   ct.nombreCliente AS nombre,
   co.facturaCobranza AS factura,
   co.importeCobranza AS importe,
-  co.vencimientoCobranza AS vencimiento,
+  DATE_FORMAT(co.vencimientoCobranza, '%d-%m-%Y') AS vencimiento,
   WEEK(co.vencimientoCobranza) AS semana,
   co.conceptoPago AS concepto,
-  co.fechaEntrega AS entrega,
+  DATE_FORMAT(co.fechaEntrega, '%d-%m-%Y') AS entrega,
   ct.colorCliente AS color,
   ct.creditoCliente AS credito,
   sum(pg.importePago) AS pagado
@@ -92,7 +92,7 @@ if (isset($_POST['cobranza'])) {
      $clienteCobranza = $row['nombre'];
      $facturaCobranza = $row['factura'];
      $pagado = number_format($row['pagado'], 2);
-     $hoy = date("Y-m-d");
+     $hoy = date("d-m-Y");
      $importeCobranza = number_format($row['importe'], 2);
      $vencimientoCobranza = $row['vencimiento'];
      $colorCliente = $row['color'];
@@ -142,7 +142,7 @@ if (isset($_POST['cobranza'])) {
      $tabla.= "
        <tr class='$background row bordelateral m-0' id='item'>
        <td class='col-md-1'>
-        <img src='/fitcoControl/Resources/iconos/dinero.svg' class='icono mr-5'>
+        <img src='/fitcoControl/Resources/iconos/dinero.svg' class='img icono mr-5'>
        </td>
          <td class='col-md-2'>
            <h4><b><input type='color' value='$colorCliente'>$clienteCobranza</b></h4>
@@ -163,13 +163,13 @@ if (isset($_POST['cobranza'])) {
          </td>
          <td class='col-md-2 text-right'>
            <!--AGREGAR PAGO DE FACTURA-->
-           <a href='' id='btnAgregarPago' class='agregarPago spand-link' data-toggle='modal' data-target='#PagoFacturas' cobranza-id='$idCobranza'><img src='/fitcoControl/Resources/iconos/003-add.svg' class='spand-icon'></a>
+           <a href='' id='btnAgregarPago' class='agregarPago spand-link' data-toggle='modal' data-target='#PagoFacturas' cobranza-id='$idCobranza'><img  src='/fitcoControl/Resources/iconos/003-add.svg' class='img spand-icon'></a>
 
-           <a href='' class='visualizarcobranza spand-link' data-toggle='modal' data-target='#VisualizarTablaCobranza' cobranza-id='$idCobranza'><img src='/fitcoControl/Resources/iconos/magnifier.svg' class='ml-3 spand-icon'></a>
+           <a href='' class='visualizarcobranza spand-link' data-toggle='modal' data-target='#VisualizarTablaCobranza' cobranza-id='$idCobranza'><img  src='/fitcoControl/Resources/iconos/magnifier.svg' class='img ml-3 spand-icon'></a>
 
-           <a href='' class='$ocultar editarCobranza spand-link' data-toggle='modal' data-target='#DetCobranza' cobranza-id='$idCobranza'><img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='ml-3 spand-icon'></a>
+           <a href='' class='$ocultar editarCobranza spand-link' data-toggle='modal' data-target='#DetCobranza' cobranza-id='$idCobranza'><img  src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='img ml-3 spand-icon'></a>
 
-           <a href='#' class='eliminarCobranza spand-link ml-3 $ocultar' cobranza-id='$idCobranza'><img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='spand-icon'></a>
+           <a href='#' class='eliminarCobranza spand-link ml-3 $ocultar' cobranza-id='$idCobranza'><img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='img spand-icon'></a>
          </td>
        </tr>";
      $suma += $row['importe'];
@@ -193,7 +193,10 @@ if (isset($_POST['cobranza'])) {
     </table>
    </form>";
  }else {
-   $tabla="No se encontraron coincidencias";
+   $tabla="
+   <div id='SinRegistros' class='container-fluid pantallaRegistros'>
+     <div class='tituloSinRegistros'>NO HAY REGISTROS</div>
+   </div>";
  }
 
  echo $tabla;

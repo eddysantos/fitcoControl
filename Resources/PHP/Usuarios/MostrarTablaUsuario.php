@@ -102,7 +102,10 @@ if ($buscarDatos->num_rows > 0) {
 </form>";
 
 }else {
-  $tabla="No se encontraron coincidencias";
+  $tabla="
+  <div id='SinRegistros' class='container-fluid pantallaRegistros'>
+    <div class='tituloSinRegistros'>NO HAY REGISTROS</div>
+  </div>";
 }
 echo $tabla;
 
