@@ -26,12 +26,12 @@ $data = array(
 
           p.pk_programacion AS idprogram,
           c.nombreCliente AS cliente,
-          WEEK(p.fechaFinal) AS semana,
+          WEEK(p.end) AS semana,
           c.colorCliente AS color,
           SUM(pr.cantidadProduccion) AS produccion,
           SUM(p.piezasRequeridas) AS requerido
 
-          FROM ct_programacion p
+          FROM ct_program p
 
           LEFT JOIN ct_cliente c ON c.pk_cliente = p.fk_cliente
           LEFT JOIN ct_produccion pr ON p.pk_programacion = pr.fk_programacion

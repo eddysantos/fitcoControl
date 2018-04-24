@@ -12,7 +12,7 @@ if (!isset($_SESSION['user'])) {
 
 <div class="container-fluid pl-80 pr-57">
   <div class="row clt_usr mt-5 mb-5">
-    <div class="text-left alert alert-info w-75" role="alert" >
+    <div class="text-left alert alert-info w-75" role="alert">
       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       <strong>Nota: </strong> La función de esta sección es llevar un control de status de la mercancia, en el icono <img src='/fitcoControl/Resources/iconos/003-add.svg' class="iconoNota"> se podra agregar un status, fecha, hora y notas de dicho status.<br>
       En el icono <img src='/fitcoControl/Resources/iconos/magnifier.svg' class='iconoNota'> se podra visualizar el desglose de los diferentes status, los cuales se podran eliminar o editar.
@@ -26,7 +26,7 @@ if (!isset($_SESSION['user'])) {
     </div>
   </div>
 
-  <div class="container-fluid mt-3" style="max-width:1300px">
+  <div class="container-fluid mt-3">
     <section id="MostrarEnvio"></section>
   </div>
 </div>

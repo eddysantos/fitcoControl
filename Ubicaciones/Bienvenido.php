@@ -69,7 +69,7 @@
 
       <?php if ($pv == 1 || $admin): ?>
         <li class="nav-item">
-          <a href="/fitcoControl/Ubicaciones/Cobranza/Mantenimiento.php" class="transicion">PRODUCCIÓN<span class="barra gris">DIVISION 4</span></a>
+          <a href="/fitcoControl/Ubicaciones/Produccion/produccion.php" class="transicion">PRODUCCIÓN<span class="barra gris">DIVISION 4</span></a>
         </li>
       <?php else: ?>
         <li class="nav-item">

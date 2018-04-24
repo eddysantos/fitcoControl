@@ -1,4 +1,4 @@
-
+<!--
 <div class="modal fade" id="EditarProduccion">
   <div class="modal-dialog modal-med">
     <div class="modal-content">
@@ -49,14 +49,15 @@
                     <label>Piezas Requeridas</label>
                     <span class="focus-border"></span>
                 </td>
+              </tr>
             </tbody>
           </table>
 
-        </div><!--termina el Container-Fluid-->
-      </div><!--termina el Cuerpo del Modal-->
+        </div>
+      </div>
       <div class="justify-content-center modal-footer">
         <button id="ActualizarProgram" type="submit" class="ActualizarProgram w-50 btnsub btn boton btn-block">ACTUALIZAR</button>
       </div>
-    </div><!--termina el COntenido del Modal-->
+    </div>
   </div>
-</div>
+</div> -->

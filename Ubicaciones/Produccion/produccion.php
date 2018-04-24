@@ -14,7 +14,7 @@ require  $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
       <div class="card">
         <img class="w-35 align-self-center m-5" src="/fitcoControl/Resources/iconos/programar.svg">
         <div class="card-body">
-          <a href="/fitcoControl/Ubicaciones/Produccion/ProgramacionProduc.php" class="linkboton btn-block">Departamento de Programación<span class="a top"></span></a>
+          <a href="/fitcoControl/Ubicaciones/Produccion/calendarioProgram.php" class="linkboton btn-block">Departamento de Programación<span class="a top"></span></a>
         </div>
       </div>
     </div>

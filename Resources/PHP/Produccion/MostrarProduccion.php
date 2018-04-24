@@ -13,12 +13,12 @@ $data = array(
 $query = "SELECT
 p.pk_programacion AS idprogram,
 c.nombreCliente AS cliente,
-DATE_FORMAT(p.fechaFinal, '%d-%m-%Y') AS ffin,
+DATE_FORMAT(p.end, '%d-%m-%Y') AS ffin,
 p.piezasRequeridas AS piezas,
 c.colorCliente AS color,
 SUM(pr.cantidadProduccion) AS total
 
-FROM ct_programacion p
+FROM ct_program p
 
 LEFT JOIN ct_cliente c ON c.pk_cliente = p.fk_cliente
 LEFT JOIN ct_produccion pr ON p.pk_programacion = pr.fk_programacion
@@ -32,19 +32,19 @@ if (isset($_POST['produccion'])) {
   $query = "SELECT
   p.pk_programacion AS idprogram,
   c.nombreCliente AS cliente,
-  DATE_FORMAT(p.fechaFinal, '%d-%m-%Y') AS ffin,
+  DATE_FORMAT(p.end, '%d-%m-%Y') AS ffin,
   p.piezasRequeridas AS piezas,
   c.colorCliente AS color,
   SUM(pr.cantidadProduccion) AS total
 
-  FROM ct_programacion p
+  FROM ct_program p
 
   LEFT JOIN ct_cliente c ON c.pk_cliente = p.fk_cliente
   LEFT JOIN ct_produccion pr ON p.pk_programacion = pr.fk_programacion
 
   WHERE p.pk_programacion LIKE '%$q%' OR
   c.nombreCliente LIKE '%$q%' OR
-  p.fechaFinal LIKE '%$q%' OR
+  p.end LIKE '%$q%' OR
   p.piezasRequeridas LIKE '%$q%' OR
   pr.cantidadProduccion LIKE '%$q%'
 

@@ -1,4 +1,4 @@
-$('.colapso').on('click',function(e){
-  e.preventDefault();
-  $(this).toggleClass('active');
-});
+// $('.colapso').on('click',function(e){
+//   e.preventDefault();
+//   $(this).toggleClass('active');
+// });

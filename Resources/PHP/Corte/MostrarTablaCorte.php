@@ -13,9 +13,14 @@ $query = "SELECT
 
 p.pk_programacion AS idprogram,
 cor.pk_corte AS idcorte,
-DATE_FORMAT(p.fechaInicio,'%d-%m-%Y') AS fechaInicio,
-DATE_FORMAT(p.fechaFinal,'%d-%m-%Y') AS ffin,
-p.horaEntrega AS entrega,
+-- DATE_FORMAT(p.fechaInicio,'%d-%m-%Y') AS fechaInicio,
+-- DATE_FORMAT(p.fechaFinal,'%d-%m-%Y') AS ffin,
+-- p.horaEntrega AS entrega,
+
+DATE_FORMAT(p.start,'%d-%m-%Y') AS fechaInicio,
+DATE_FORMAT(p.end,'%d-%m-%Y') AS ffin,
+DATE_FORMAT(p.end,'%H:%i') AS entrega,
+
 
 c.nombreCliente AS cliente,
 c.colorCliente AS color,
@@ -24,7 +29,7 @@ DATE_FORMAT(cor.tiempoActual,'%d-%m-%Y') AS finalizado,
 cor.Notas AS notas,
 cor.horaActual AS horaFinal
 
-FROM ct_programacion p
+FROM ct_program p
 
 LEFT JOIN ct_cliente c ON c.pk_cliente = p.fk_cliente
 LEFT JOIN ct_corte cor ON p.pk_programacion = cor.fk_programacion
@@ -40,9 +45,9 @@ if (isset($_POST['corte'])){
  $query = "SELECT
  cor.pk_corte AS idcorte,
  p.pk_programacion AS idprogram,
- DATE_FORMAT(p.fechaInicio,'%d-%m-%Y') AS fechaInicio,
- DATE_FORMAT(p.fechaFinal,'%d-%m-%Y') AS ffin,
- p.horaEntrega AS entrega,
+ DATE_FORMAT(p.start,'%d-%m-%Y') AS fechaInicio,
+ DATE_FORMAT(p.end,'%d-%m-%Y') AS ffin,
+ DATE_FORMAT(p.end,'%H:%i') AS entrega,
 
  c.nombreCliente AS cliente,
  c.colorCliente AS color,
@@ -51,14 +56,14 @@ if (isset($_POST['corte'])){
  cor.Notas AS notas,
  cor.horaActual AS horaFinal
 
- FROM ct_programacion p
+ FROM ct_program p
 
  LEFT JOIN ct_cliente c ON c.pk_cliente = p.fk_cliente
  LEFT JOIN ct_corte cor ON p.pk_programacion = cor.fk_programacion
 
 
- WHERE p.fechaInicio LIKE '%$q%' OR
- p.fechaFinal LIKE '%$q%' OR
+ WHERE p.start LIKE '%$q%' OR
+ p.end LIKE '%$q%' OR
  c.nombreCliente LIKE '%$q%' OR
  cor.tiempoActual LIKE '%$q%' OR
  cor.horaActual LIKE '%$q%' OR

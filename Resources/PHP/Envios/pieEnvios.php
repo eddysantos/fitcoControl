@@ -10,5 +10,5 @@
 
   <script src="/fitcoControl/Resources/js/Inputs.js"></script>
   <script src="/fitcoControl/Resources/js/MostrarDivsAgregar.js"></script>
-  <script type="text/javascript" src="/fitcoControl/Resources/js/Envios/envios.js"></script>
+  <script src="/fitcoControl/Resources/js/Envios/envios.js"></script>
 </footer>

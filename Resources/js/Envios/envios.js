@@ -1,6 +1,8 @@
 $(document).ready(function(){
 fetchEnvio();
 
+});
+
 
   function fetchEnvio(envios){
     $.ajax({
@@ -213,5 +215,3 @@ fetchEnvio();
     });
   });
   }
-
-});

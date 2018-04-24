@@ -368,6 +368,28 @@ list-style: none;
 
 }
 
+.footerCalendar{
+  bottom: 0px;
+  background-color: #fff;
+  list-style: none;
+  width: 100%;
+  float: right;
+  /* margin-top: 50px; */
+  margin-bottom: 1px;
+}
+.footerCalendar li a{
+font-size: 18px;
+list-style: none;
+}
+.footerCalendar li a:hover{
+  transition: .4s;
+  letter-spacing: 4px;
+  background-color: transparent;
+  font-weight: normal;
+  list-style: none;
+
+}
+
 /* MANTENIMINETO */
 .pantallaGris{
   background-color: rgb(240, 240, 240);

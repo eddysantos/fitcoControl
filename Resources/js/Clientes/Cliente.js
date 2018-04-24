@@ -168,6 +168,7 @@ function ActivarBotones(){
           $('#NuevoCliente').hide();
           $('.spanA').css('display', '');
           fetchClients();
+          $('#CalendarioWeb').fullCalendar('refetchEvents');
           alertify.success('SE MODIFICÓ CORRECTAMENTE');
         }
       },
