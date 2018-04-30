@@ -110,8 +110,6 @@ $(document).ready(function(){
   });
 
 
-
-
 function fetchCobranza(cobranza){
   $.ajax({
     url : '/fitcoControl/Resources/PHP/Cobranza/MostrarTesoreria.php',

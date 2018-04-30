@@ -5,25 +5,29 @@ $data = array(
   'response'=>array()
 );
 
-function parseDate($dv){
-  return date('Y-m-d', strtotime($dv));
-}
-
 require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
 $query =
-"UPDATE ct_corte
-SET tiempoActual = ?,
-horaActual = ?,
+"UPDATE ct_seccionCorte
+
+SET clienteCorte = ?,
+fechaCorte = ?,
+fhinicio_prog = ?,
+fhfinal_prog = ?,
+fhinicio_real = ?,
+fhfinal_real = ?,
 Notas =?
 WHERE pk_corte = ?";
 
 
-$fc = parseDate($_POST['fc']);
 $stmt = $conn->prepare($query);
-$stmt->bind_param('ssss',
-  $fc,
-  $_POST['hc'],
-  $_POST['nc'],
+$stmt->bind_param('ssssssss',
+  $_POST['cc'],
+  $_POST['fc'],
+  $_POST['hpi'],
+  $_POST['hpf'],
+  $_POST['hri'],
+  $_POST['hrf'],
+  $_POST['nt'],
   $_POST['id']
 );
 $stmt->execute();

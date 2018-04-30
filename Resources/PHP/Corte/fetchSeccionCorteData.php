@@ -6,7 +6,7 @@ $data = array(
 );
 
 require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
-$query = "SELECT * FROM ct_corte WHERE pk_corte = ?";
+$query = "SELECT * FROM ct_seccionCorte WHERE pk_corte = ?";
 
 $stmt = $conn->prepare($query);
 $stmt->bind_param('s', $_POST['corteId']);

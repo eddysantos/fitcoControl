@@ -14,15 +14,18 @@ function parseDate($dv){
 }
 
 $query =
-"INSERT INTO ct_corte(fk_programacion,tiempoActual,horaActual,Notas) VALUES(?,?,?,?)";
+"INSERT INTO ct_seccionCorte(clienteCorte,fechaCorte,fhinicio_prog,fhfinal_prog,fhinicio_real,fhfinal_real,Notas) VALUES(?,?,?,?,?,?,?)";
 
-$ff = parseDate($_POST['ff']);
+$fc = parseDate($_POST['fcorte']);
 
 $stmt = $conn->prepare($query);
-$stmt->bind_param('ssss',
-  $_POST['id'],
-  $ff,
-  $_POST['hr'],
+$stmt->bind_param('sssssss',
+  $_POST['clienteCorte'],
+  $fc,
+  $_POST['fhInicioProg'],
+  $_POST['fhFinalProg'],
+  $_POST['fhInicioReal'],
+  $_POST['fhFinalReal'],
   $_POST['nt']
 
 );

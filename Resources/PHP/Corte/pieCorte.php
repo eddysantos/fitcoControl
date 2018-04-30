@@ -7,6 +7,7 @@
     </div>
   </li>
     <script src="/fitcoControl/Resources/js/Inputs.js"></script>
-    <script type="text/javascript" src="/fitcoControl/Resources/js/Corte/Corte.js"></script>
+    <!-- <script src="/fitcoControl/Resources/js/Corte/Corte.js"></script> -->
+    <script src="/fitcoControl/Resources/js/Corte/seccionCorte.js"></script>
     <script src="/fitcoControl/Resources/js/MostrarDivsAgregar.js"></script>
 </footer>

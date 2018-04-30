@@ -7,7 +7,7 @@ $data = array(
 
 require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
 $query =
-"DELETE FROM  ct_corte
+"DELETE FROM  ct_seccionCorte
 WHERE pk_corte = ?";
 
 $stmt = $conn->prepare($query);

@@ -58,7 +58,26 @@ $(document).ready(function(){
 
     switch (accion) {
 
-      //USUARIOS
+
+//CORTE
+      case "acorte":
+      if (status == 'cerrado') {
+        $('.spanA').css('display', 'inherit');
+        $(this).attr('status', 'abierto');
+        $('#tablacorte').animate({"right": "26%"}, "slow");
+        $('#Agregarcorte').fadeIn(2500);
+        $('#SinRegistros').fadeOut();
+        $('p').css('font-size','13px');
+      }else {
+        $('.spanA').css('display', '');
+        $(this).attr('status', 'cerrado');
+        $('#tablacorte').animate({"right": "4%"}, "slow");
+        $('#Agregarcorte').hide();
+        $('p').css('font-size','1.75rem');
+      }
+      break;
+
+//USUARIOS
       case "ausuario":
       if (status == 'cerrado') {
         $('.spanA').css('display', 'inherit');
@@ -74,7 +93,7 @@ $(document).ready(function(){
       }
       break;
 
-      //CLIENTES
+//CLIENTES
       case "acliente":
       if (status == 'cerrado') {
         $('.spanA').css('display', 'inherit');
@@ -91,7 +110,7 @@ $(document).ready(function(){
       break;
 
 
-      //TESORERIA
+//TESORERIA
       case "acobranza":
       if (status == 'cerrado') {
         $(this).attr('status', 'abierto');
@@ -119,11 +138,20 @@ $(document).ready(function(){
         $('#graficasemanal').fadeIn();
         $('#mostrarTablaGrafica').fadeIn();
         $('#graficamensual').hide();
+        $('#graficadiaria').hide();
         break;
 
       case "mensual":
         $('#graficamensual').fadeIn();
         $('#mostrarTablaGrafica').hide();
+        $('#graficasemanal').hide();
+        $('#graficadiaria').hide();
+        break;
+
+      case "diaria":
+      $('#graficadiaria').fadeIn();
+        $('#mostrarTablaGrafica').hide();
+        $('#graficamensual').hide();
         $('#graficasemanal').hide();
         break;
 
@@ -196,6 +224,8 @@ $(document).ready(function(){
         $('#colapsoNuevaProduc').addClass("show");
       }
       break;
+
+//CORTE
       default:
         console.error("Something went terribly wrong...");
     }

@@ -194,30 +194,6 @@ $data = array(
 
         <div class="mt-5" id="graficasemanal" style="display:none"></div>
         <div class="mt-5" id="graficamensual" style="display:none"></div>
-
-        <!-- <table class="table table-hover table-fixed" style="display:none">
-          <thead>
-            <tr class="row m-0 encabezado">
-              <td class="col-md-3 text-center"><h5>SEMANA</h5></td>
-              <td class="col-md-3 text-center"><h5>FACTURADO</h5></td>
-              <td class="col-md-3 text-center"><h5>PAGADO</h5></td>
-              <td class="col-md-3 text-center"><h5>PENDIENTE</h5></td>
-            </tr>
-          </thead>
-          <tbody id="mostrarTablaGrafica"></tbody>
-        </table>
-
-        <table class="table table-hover table-fixed" style="display:none">
-          <thead>
-            <tr class="row m-0 encabezado">
-              <td class="col-md-3 text-center"><h5>SEMANA</h5></td>
-              <td class="col-md-3 text-center"><h5>FACTURADO</h5></td>
-              <td class="col-md-3 text-center"><h5>PAGADO</h5></td>
-              <td class="col-md-3 text-center"><h5>PENDIENTE</h5></td>
-            </tr>
-          </thead>
-          <tbody id="mostrarTablaGrafica"></tbody>
-        </table> -->
       </div>
     </div>
   </div>

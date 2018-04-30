@@ -14,6 +14,7 @@ $query = "SELECT
 p.pk_programacion AS idprogram,
 c.nombreCliente AS cliente,
 DATE_FORMAT(p.end, '%d-%m-%Y') AS ffin,
+year(p.end) AS anio,
 p.piezasRequeridas AS piezas,
 c.colorCliente AS color,
 SUM(pr.cantidadProduccion) AS total
@@ -25,7 +26,7 @@ LEFT JOIN ct_produccion pr ON p.pk_programacion = pr.fk_programacion
 
 GROUP BY p.pk_programacion
 
-ORDER BY cliente ASC,ffin";
+ORDER BY anio DESC, ffin DESC";
 
 if (isset($_POST['produccion'])) {
   $q = $conn->real_escape_string($_POST['produccion']);
@@ -33,6 +34,7 @@ if (isset($_POST['produccion'])) {
   p.pk_programacion AS idprogram,
   c.nombreCliente AS cliente,
   DATE_FORMAT(p.end, '%d-%m-%Y') AS ffin,
+  year(p.end) AS anio,
   p.piezasRequeridas AS piezas,
   c.colorCliente AS color,
   SUM(pr.cantidadProduccion) AS total
@@ -51,7 +53,7 @@ if (isset($_POST['produccion'])) {
 
   GROUP BY p.pk_programacion
 
-  ORDER BY cliente ASC,ffin";
+  ORDER BY anio DESC, ffin DESC";
 }
 
 $buscarDatos = $conn->query($query);
