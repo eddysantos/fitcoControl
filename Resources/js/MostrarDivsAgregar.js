@@ -23,10 +23,12 @@ $(document).ready(function(){
         $('#MMaterial').animate({"right": "4%"}, "slow");
         $('#Ecobranza').animate({"right": "4%"}, "slow");
         $('#Eventas').animate({"right": "4%"}, "slow");
+        $('#Enomina').animate({"right": "4%"}, "slow");
         $('#NuevoCliente').hide();
         $('#NuevoUsuario').hide();
         $('#NuevoMaterial').hide();
         $('#Agregarcobranza').hide();
+        $('#NuevoNomina').hide();
         $('#NuevaVenta').hide();
 
         $('.spanA').css('display', '');
@@ -175,6 +177,31 @@ $(document).ready(function(){
         $('b').css('font-size','1.75rem');
         $('p').css('font-weight','500');
         $('#NuevoMaterial').hide();
+      }
+      break;
+
+
+
+// NOMINA
+      case "anomina":
+      if (status == 'cerrado') {
+        $('.spanA').css('display', 'inherit');
+        $(this).attr('status', 'abierto');
+        $('#Enomina').animate({"right": "36%"}, "slow");
+        $('#NuevoNomina').fadeIn(2500);
+        // $( ".img" ).removeClass( "spand-icon" ).addClass( "spand-iconp");
+        // $('p').css('font-size','13px');
+        // $('b').css('font-size','14px');
+        $('#SinRegistros').fadeOut();
+      }else {
+        $('.spanA').css('display', '');
+        $(this).attr('status', 'cerrado');
+        $('#Enomina').animate({"right": "4%"}, "slow");
+        // $( ".img" ).removeClass( "spand-iconp" ).addClass( "spand-icon");
+        // $('p').css('font-size','1.75rem');
+        // $('b').css('font-size','1.75rem');
+        // $('p').css('font-weight','500');
+        $('#NuevoNomina').hide();
       }
       break;
 

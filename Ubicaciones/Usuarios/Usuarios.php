@@ -103,10 +103,10 @@ if (!isset($_SESSION['user'])) {
           </tr>
           <tr class="row ">
             <td class="col-md-6 text-center">
-              <input type="checkbox" id="verCobranza">Ver Cobranza
+              <input type="checkbox" id="verCobranza">Ver Tesoreria
             </td>
             <td class="col-md-6 text-center">
-              <input type="checkbox" id="editCobranza">Editar Cobranza
+              <input type="checkbox" id="editCobranza">Editar Tesoreria
             </td>
           </tr>
           <tr class="row">

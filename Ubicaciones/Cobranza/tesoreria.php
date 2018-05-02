@@ -36,10 +36,22 @@ require  $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
       <div class="card">
         <img class="card-img-top w-35 align-self-center m-5" src="/fitcoControl/Resources/iconos/006-materiales.svg">
         <div class="card-body">
-          <a href="/fitcoControl/Ubicaciones/Materiales/Materiales.php" class="linkboton btn-block">Departamento Materiales
-            <span class="a top"></span>
+          <a href="#" accion="produccionLink" status="cerrado" class="consultar linkboton btn-block">Materiales y Records <img style="width:20px" src="/fitcoControl/Resources/iconos/arrowdown.svg">
+            <span class="top"></span>
           </a>
         </div>
+      </div>
+
+      <div id="dropProduccion" style="display:none" class="mt-3 text-left">
+        <a href="/fitcoControl/Ubicaciones/Materiales/Materiales.php" class="linkboton  btn-block">
+          <img style="width:30px" src="/fitcoControl/Resources/iconos/006-materiales.svg"> Materiales
+          <span class="a top"></span>
+        </a>
+
+        <a href="/fitcoControl/Ubicaciones/Nomina/nomina.php" class="linkboton  btn-block">
+          <img style="width:30px" src="/fitcoControl/Resources/iconos/money.svg"> Nomina
+          <span class="top"></span>
+        </a>
       </div>
     </div>
   </div>
