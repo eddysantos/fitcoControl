@@ -90,6 +90,13 @@
         </tr>
         <tr class="row m20">
           <td class="col-md-12 input-effect p-0">
+            <input id="clt_precio" class="effect-17" type="text" required>
+              <label>Precio por prendas sin tela</label>
+              <span class="focus-border"></span>
+          </td>
+        </tr>
+        <tr class="row m20">
+          <td class="col-md-12 input-effect p-0">
             <input id="clt_nosotros" class="w-100 effect-17" list="ingr" required>
             <datalist id="ingr">
               <option value="Referido">Referido</option>

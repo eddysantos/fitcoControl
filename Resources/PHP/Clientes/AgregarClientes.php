@@ -20,15 +20,16 @@ ct_cliente(
   fingresoCliente,
   colorCliente,
   prendasCliente,
+  precioPrenda,
   nosotrosCliente,
   vendedorCliente)
   VALUES(
-    ?,?,?,?,?,?,?,?,?)";
+    ?,?,?,?,?,?,?,?,?,?)";
 
 $fingreso = parseDate($_POST['clt_fingreso']);
 
 $stmt = $conn->prepare($query);
-$stmt->bind_param('sssssssss',
+$stmt->bind_param('ssssssssss',
   $_POST['clt_nombre'],
   $_POST['clt_contacto'],
   $_POST['clt_telefono'],
@@ -36,6 +37,7 @@ $stmt->bind_param('sssssssss',
   $fingreso,
   $_POST['clt_color'],
   $_POST['clt_prendas'],
+  $_POST['clt_precio'],
   $_POST['clt_nosotros'],
   $_POST['clt_vendedor']
 );

@@ -11,6 +11,7 @@ $(document).ready(function(){
     var fingresoCliente = $('#clt_fingreso').val();
     var colorCliente = $('#clt_color').val();
     var prendasCliente = $('#clt_prendas').val();
+    var precioPrenda = $('#clt_precio').val();
     var nosotrosCliente = $('#clt_nosotros').val();
     var vendedorCliente = $('#clt_vendedor').val();
 
@@ -21,6 +22,7 @@ $(document).ready(function(){
     $('#clt_fingreso').val() == "" ||
     $('#clt_color').val() == "" ||
     $('#clt_prendas').val() == ""||
+    $('#clt_precio').val() == ""||
     $('#clt_nosotros').val() == "";
 
     if (validacion) {
@@ -34,6 +36,7 @@ $(document).ready(function(){
           clt_contacto: correoCliente,
           clt_color: colorCliente,
           clt_prendas: prendasCliente,
+          clt_precio: precioPrenda,
           clt_fingreso: fingresoCliente,
           clt_nosotros: nosotrosCliente,
           clt_credito: creditoCliente,
@@ -113,6 +116,7 @@ function ActivarBotones(){
           $('#mclt_fingreso').val(rsp.response.fingresoCliente);
           $('#mclt_color').val(rsp.response.colorCliente);
           $('#mclt_prendas').val(rsp.response.prendasCliente);
+          $('#mclt_precio').val(rsp.response.precioPrenda);
           $('#mclt_nosotros').val(rsp.response.nosotrosCliente);
           $('#mclt_vendedor').val(rsp.response.vendedorCliente);
 
@@ -137,6 +141,7 @@ function ActivarBotones(){
     var fingresoCliente = $('#mclt_fingreso').val();
     var colorCliente = $('#mclt_color').val();
     var prendasCliente = $('#mclt_prendas').val();
+    var mclt_precio = $('#mclt_precio').val();
     var nosotrosCliente = $('#mclt_nosotros').val();
     var vendedorCliente = $('#mclt_vendedor').val();
 
@@ -149,6 +154,7 @@ function ActivarBotones(){
         mclt_contacto: correoCliente,
         mclt_color: colorCliente,
         mclt_prendas: prendasCliente,
+        mclt_precio: mclt_precio,
         mclt_fingreso: fingresoCliente,
         mclt_nosotros: nosotrosCliente,
         mclt_credito: creditoCliente,
@@ -164,12 +170,12 @@ function ActivarBotones(){
           $('.spanA').css('display', '');
           fetchClients();
         }else {
+          alertify.success('SE MODIFICÓ CORRECTAMENTE');
           $('#EditarCliente').modal('hide');
           $('#NuevoCliente').hide();
           $('.spanA').css('display', '');
           fetchClients();
-          $('#CalendarioWeb').fullCalendar('refetchEvents');
-          alertify.success('SE MODIFICÓ CORRECTAMENTE');
+          // $('#CalendarioWeb').fullCalendar('refetchEvents');
         }
       },
       error:function(exception){

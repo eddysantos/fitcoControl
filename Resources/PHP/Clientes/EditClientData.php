@@ -19,6 +19,7 @@ creditoCliente =?,
 fingresoCliente = ?,
 colorCliente = ?,
 prendasCliente = ?,
+precioPrenda = ?,
 nosotrosCliente = ?,
 vendedorCliente = ?
 WHERE pk_cliente = ?";
@@ -26,7 +27,7 @@ WHERE pk_cliente = ?";
 $fingreso = parseDate($_POST['mclt_fingreso']);
 
 $stmt = $conn->prepare($query);
-$stmt->bind_param('ssssssssss',
+$stmt->bind_param('sssssssssss',
   $_POST['mclt_nombre'],
   $_POST['mclt_contacto'],
   $_POST['mclt_telefono'],
@@ -34,6 +35,7 @@ $stmt->bind_param('ssssssssss',
   $fingreso,
   $_POST['mclt_color'],
   $_POST['mclt_prendas'],
+  $_POST['mclt_precio'],
   $_POST['mclt_nosotros'],
   $_POST['mclt_vendedor'],
   $_POST['mclt_id']

@@ -64,6 +64,13 @@
               </tr>
               <tr class="row m20">
                 <td class="col-md-12 input-effect p-0">
+                  <input id="mclt_precio" class="modal-efecto-17 has-content" type="text" required>
+                    <label>Precio por prendas sin tela</label>
+                    <span class="focus-border"></span>
+                </td>
+              </tr>
+              <tr class="row m20">
+                <td class="col-md-12 input-effect p-0">
                   <input class="w-100 modal-efecto-17 has-content " list="priv" name="mclt_nosotros" id="mclt_nosotros">
                   <datalist id="priv">
                     <option value="Referido"></option>
