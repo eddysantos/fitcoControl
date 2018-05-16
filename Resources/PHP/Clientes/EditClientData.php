@@ -13,6 +13,7 @@ require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
 $query =
 "UPDATE ct_cliente
 SET nombreCliente = ?,
+nombreContacto = ?,
 correoCliente = ?,
 telefonoCliente =?,
 creditoCliente =?,
@@ -27,8 +28,9 @@ WHERE pk_cliente = ?";
 $fingreso = parseDate($_POST['mclt_fingreso']);
 
 $stmt = $conn->prepare($query);
-$stmt->bind_param('sssssssssss',
+$stmt->bind_param('ssssssssssss',
   $_POST['mclt_nombre'],
+  $_POST['mclt_ncontacto'],
   $_POST['mclt_contacto'],
   $_POST['mclt_telefono'],
   $_POST['mclt_credito'],

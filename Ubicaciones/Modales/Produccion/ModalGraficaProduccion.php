@@ -12,7 +12,10 @@ $data = array(
 ?>
 <html>
   <head>
+
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<!-- GRAFICA ANUAL  -->
     <script type="text/javascript">
       google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(grafica);
@@ -33,7 +36,7 @@ $data = array(
           LEFT JOIN ct_cliente c ON c.pk_cliente = p.fk_cliente
           LEFT JOIN ct_produccion pr ON pr.fk_programacion = p.pk_programacion
 
-          GROUP BY anio ASC, semana ASC";
+          GROUP BY anio ASC, semana ASC LIMIT 15";
 
           $r = mysqli_query($conn, $query);
             $i = 0;
@@ -89,7 +92,7 @@ $data = array(
       }
 
     </script>
-
+<!-- GRAFICA MENSUAL -->
     <script type="text/javascript">
       google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(graficaMensual);
@@ -122,7 +125,7 @@ $data = array(
           LEFT JOIN ct_cliente c ON c.pk_cliente = p.fk_cliente
           LEFT JOIN ct_produccion pr ON pr.fk_programacion = p.pk_programacion
 
-          GROUP BY anio ASC, mes ASC";
+          GROUP BY anio ASC, mes ASC LIMIT 12";
 
           $r = mysqli_query($conn, $query);
             $i = 0;
@@ -179,15 +182,66 @@ $data = array(
 
     </script>
 
+  </head>
+</html>
+
+<div class="modal fade" id="ModalGraficaPRO">
+  <div class="modal-dialog modal-grande">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button class="close" type="button" name="button" data-dismiss="modal" area-label="close">
+          <i class="fa fa-times-circle-o fa-2x" aria-hidden="true"></i>
+        </button>
+        <h5 class="modal-tittle">GRAFICAS PRODUCCION</h5>
+      </div>
+      <div class="modal-body pt-0">
+        <div class="row submenuMed">
+
+          <ul class="nav nav-pills nav-fill w-100" id="selectGrafica">
+            <li class="nav-item">
+              <a class="nav-link consultar" id="submenuchico" accion="diaria" status="cerrado">Grafica Diario</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link consultar" id="submenuchico" accion="semanal" status="cerrado">Grafica Semanal</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link consultar" id="submenuchico" accion="mensual" status="cerrado">Grafica Mensual</a>
+            </li>
+          </ul>
+        </div>
+        <table class="table">
+          <div class="mt-5" id="graficadiaria" style="display:none">
+            <tr class="row">
+              <td class="col-md-4"><input type="date" id="start"></td>
+              <td class="col-md-4"><input type="date" id="end"></td>
+            </tr>
+          </div>
+        </table>
+        <div class="mt-5" id="graficasemanal" style="display:none"></div>
+        <div class="mt-5" id="graficamensual" style="display:none"></div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- GRAFICA DIARIA -->
     <script type="text/javascript">
+
+      $(function(){
+
+      })
       google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(graficaDiaria);
 
       function graficaDiaria() {
         var data = google.visualization.arrayToDataTable([
-          ["Mes","Fabricado","Meta"],
+          ["Dia","Fabricado","Meta"],
 
           <?php
+          $start = '2018/04/02';
+          $end = '2018/04/07';
+
           $query = "SELECT
           CASE WHEN DAYOFWEEK(pr.fechaIntroduccion) = 2 THEN 'Lun'
           WHEN DAYOFWEEK(pr.fechaIntroduccion) = 3 THEN 'Mar'
@@ -208,8 +262,8 @@ $data = array(
           LEFT JOIN ct_cliente c ON c.pk_cliente = p.fk_cliente
           LEFT JOIN ct_produccion pr ON pr.fk_programacion = p.pk_programacion
 
-          GROUP BY anio ASC,fecha ASC
-          limit 30";
+          WHERE pr.fechaIntroduccion BETWEEN '$start' AND '$end'
+          GROUP BY anio DESC, fecha ASC";
 
           $r = mysqli_query($conn, $query);
             $i = 0;
@@ -265,38 +319,3 @@ $data = array(
       }
 
     </script>
-  </head>
-</html>
-
-<div class="modal fade" id="ModalGraficaPRO">
-  <div class="modal-dialog modal-grande">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button class="close" type="button" name="button" data-dismiss="modal" area-label="close">
-          <i class="fa fa-times-circle-o fa-2x" aria-hidden="true"></i>
-        </button>
-        <h5 class="modal-tittle">GRAFICAS PRODUCCION</h5>
-      </div>
-      <div class="modal-body pt-0">
-        <div class="row submenuMed">
-          <ul class="nav nav-pills nav-fill" id="selectGrafica" style="width: 100%;">
-            <li class="nav-item">
-              <a class="nav-link consultar" id="submenuchico" accion="diaria" status="cerrado">Grafica Diario</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link consultar" id="submenuchico" accion="semanal" status="cerrado">Grafica Semanal</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link consultar" id="submenuchico" accion="mensual" status="cerrado">Grafica Mensual</a>
-            </li>
-
-          </ul>
-        </div>
-        <div class="mt-5" id="graficadiaria" style="display:none"></div>
-        <div class="mt-5" id="graficasemanal" style="display:none"></div>
-        <div class="mt-5" id="graficamensual" style="display:none"></div>
-
-      </div>
-    </div>
-  </div>
-</div>

@@ -12,6 +12,8 @@ $data = array(
 $query = "SELECT
 pk_cliente AS idCliente,
 nombreCliente AS nombre,
+nombreContacto AS contacto,
+precioPrenda AS precio,
 correoCliente AS correo,
 telefonoCliente AS telefono,
 creditoCliente AS credito,
@@ -28,6 +30,8 @@ colorCliente AS color
    $query = "SELECT
    pk_cliente AS idCliente,
    nombreCliente AS nombre,
+   nombreContacto AS contacto,
+   precioPrenda AS precio,
    correoCliente AS correo,
    telefonoCliente AS telefono,
    creditoCliente AS credito,
@@ -38,6 +42,7 @@ colorCliente AS color
 
     WHERE nombreCliente LIKE '%$q%' OR
     correoCliente LIKE '%$q%' OR
+    nombreContacto LIKE '%$q%' OR
     telefonoCliente LIKE '%$q%' OR
     creditoCliente LIKE '%$q%' OR
     fingresoCliente LIKE '%$q%'
@@ -63,6 +68,7 @@ colorCliente AS color
         while ($row = $buscarDatos->fetch_assoc()) {
           $id = $row['idCliente'];
           $cliente = $row['nombre'];
+          $contacto = $row['contacto'];
           $correo = $row['correo'];
           $telefono = $row['telefono'];
           $credito = $row['credito'];
@@ -81,20 +87,21 @@ colorCliente AS color
                 <h2><b><input type='color' value='$color'>$cliente</b></h2>
                 <p class='visibilidad'>Ingreso : $fingreso</p>
               </td>
-              <td class='col-md-4 text-center'>
+              <td class='col-md-4'>
                 <h2><b><a href='mailto:$correo'>$correo</a></b></h2>
-                <p class='visibilidad'>Credito : $credito Días</p>
+                <p class='visibilidad'>Contacto : $contacto</p>
               </td>
               <td class='col-md-2 text-center'>
                 <h2><b>$telefono</a></b></h2>
+                <p class='visibilidad'>Credito : $credito día (s)</p>
               </td>
               <td class='col-md-2 text-right'>
                 <a href='#' class='EditCliente spand-link' data-toggle='modal' data-target='#EditarCliente' id='btnEditarCliente' client-id='$id'>
-                  <img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='spand-icon'>
+                  <img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='img spand-icon'>
                 </a>
 
                 <a href='#' class='eliminarCliente spand-link ml-3' client-id='$id'>
-                  <img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='spand-icon'>
+                  <img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='img spand-icon'>
                 </a>
               </td>
 

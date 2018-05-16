@@ -5,6 +5,7 @@ $(document).ready(function(){
 
   $('#NuevoRegistro').click(function(){
     var nombreCliente = $('#clt_nombre').val();
+    var nombreContacto = $('#clt_ncontacto').val();
     var correoCliente = $('#clt_contacto').val();
     var telefonoCliente = $('#clt_telefono').val();
     var creditoCliente = $('#clt_credito').val();
@@ -33,6 +34,7 @@ $(document).ready(function(){
         url: '/fitcoControl/Resources/PHP/Clientes/AgregarClientes.php',
         data: {
           clt_nombre: nombreCliente,
+          clt_ncontacto: nombreContacto,
           clt_contacto: correoCliente,
           clt_color: colorCliente,
           clt_prendas: prendasCliente,
@@ -50,11 +52,11 @@ $(document).ready(function(){
             console.error(rsp.response);
             fetchClients();
           } else {
+            alertify.success('SE AGREGÓ CORRECTAMENTE');
             $('#NuevoCliente')[0].reset();
             $('#NuevoCliente').hide();
             $('.spanA').css('display', '');
             fetchClients();
-            alertify.success('SE AGREGÓ CORRECTAMENTE');
           }
         },
         error:function(exception){
@@ -110,6 +112,7 @@ function ActivarBotones(){
         if (rsp.code == 1) {
           $('#mclt_id').val(rsp.response.pk_cliente);
           $('#mclt_cliente').val(rsp.response.nombreCliente);
+          $('#mclt_ncontacto').val(rsp.response.nombreContacto);
           $('#mclt_correo').val(rsp.response.correoCliente);
           $('#mclt_telefono').val(rsp.response.telefonoCliente);
           $('#mclt_credito').val(rsp.response.creditoCliente);
@@ -135,6 +138,7 @@ function ActivarBotones(){
   $('.ActualizarCliente').click(function(){
     var idCliente = $('#mclt_id').val();
     var nombreCliente = $('#mclt_cliente').val();
+    var nombreContacto = $('#mclt_ncontacto').val();
     var correoCliente = $('#mclt_correo').val();
     var telefonoCliente = $('#mclt_telefono').val();
     var creditoCliente = $('#mclt_credito').val();
@@ -151,6 +155,7 @@ function ActivarBotones(){
       data: {
         mclt_id: idCliente,
         mclt_nombre: nombreCliente,
+        mclt_ncontacto: nombreContacto,
         mclt_contacto: correoCliente,
         mclt_color: colorCliente,
         mclt_prendas: prendasCliente,

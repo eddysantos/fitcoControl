@@ -14,6 +14,7 @@ $query =
 "INSERT INTO
 ct_cliente(
   nombreCliente,
+  nombreContacto,
   correoCliente,
   telefonoCliente,
   creditoCliente,
@@ -24,13 +25,14 @@ ct_cliente(
   nosotrosCliente,
   vendedorCliente)
   VALUES(
-    ?,?,?,?,?,?,?,?,?,?)";
+    ?,?,?,?,?,?,?,?,?,?,?)";
 
 $fingreso = parseDate($_POST['clt_fingreso']);
 
 $stmt = $conn->prepare($query);
-$stmt->bind_param('ssssssssss',
+$stmt->bind_param('sssssssssss',
   $_POST['clt_nombre'],
+  $_POST['clt_ncontacto'],
   $_POST['clt_contacto'],
   $_POST['clt_telefono'],
   $_POST['clt_credito'],

@@ -49,7 +49,7 @@ if (!isset($_SESSION['user'])) {
 
 
 
-  <form id="NuevaVenta" class="agregarnuevo" style="display:none">
+  <form id="NuevaVenta" class="agregarnuevo" style="display:none;margin-bottom:80px">
     <table class="table">
       <tbody>
         <tr class="row m20">

@@ -101,12 +101,19 @@ $(document).ready(function(){
         $('.spanA').css('display', 'inherit');
         $(this).attr('status', 'abierto');
         $('#Eclientes').animate({"right": "36%"}, "slow");
+        $('.img').removeClass( "spand-icon" ).addClass( "spand-iconp");
         $('#NuevoCliente').fadeIn(2500);
         $('#SinRegistros').fadeOut();
+        $('p').css('font-size','13px');
+        $('b').css('font-size','14px');
       }else if (status == 'abierto') {
         $('.spanA').css('display', '');
         $(this).attr('status', 'cerrado');
         $('#Eclientes').animate({"right": "4%"}, "slow");
+        $('.img').removeClass( "spand-iconp" ).addClass( "spand-icon");
+        $('p').css('font-size','1.75rem');
+        $('b').css('font-size','1.75rem');
+        $('p').css('font-weight','500');
         $('#NuevoCliente').hide();
       }
       break;
@@ -151,7 +158,7 @@ $(document).ready(function(){
         break;
 
       case "diaria":
-      $('#graficadiaria').fadeIn();
+        $('#graficadiaria').fadeIn();
         $('#mostrarTablaGrafica').hide();
         $('#graficamensual').hide();
         $('#graficasemanal').hide();

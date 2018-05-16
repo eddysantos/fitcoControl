@@ -42,7 +42,7 @@ if (!isset($_SESSION['user'])) {
   </div>
 
 
-    <form  id="Agregarcobranza" onsubmit="return false" class="agregarnuevo" style="display:none">
+    <form  id="Agregarcobranza" onsubmit="return false" class="agregarnuevo" style="display:none;margin-bottom:80px">
       <table class="table">
         <tbody>
           <tr class="row m20">

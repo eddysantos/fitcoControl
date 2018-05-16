@@ -36,7 +36,7 @@ require  $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
     <section id="MostrarMateriales"></section>
   </div>
 
-  <form id="NuevoMaterial" onsubmit="return false" class="agregarnuevo" style="display:none">
+  <form id="NuevoMaterial" onsubmit="return false" class="agregarnuevo" style="display:none;margin-bottom:80px">
     <table class="table">
       <tbody>
         <tr class="row m20">

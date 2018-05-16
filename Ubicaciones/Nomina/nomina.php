@@ -37,7 +37,7 @@ require  $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
 </div>
 
 
-<form id="NuevoNomina" class="agregarnuevo mb-10" style="display:none">
+<form id="NuevoNomina" class="agregarnuevo mb-10" style="display:none;margin-bottom:80px">
   <table class="table">
     <tbody>
       <tr class="row m20">

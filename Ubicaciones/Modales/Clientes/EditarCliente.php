@@ -22,35 +22,40 @@
               </tr>
               <tr class="row m20">
                 <td class="col-md-12 input-effect p-0">
-                  <input class="w-100 modal-efecto-17 has-content" name="mclt_correo" id="mclt_correo" type="email">
+                  <input class="modal-efecto-17 has-content" id="mclt_ncontacto" type="text">
+                    <label>Nombre de Contacto</label>
+                    <span class="focus-border"></span>
+                </td>
+              </tr>
+              <tr class="row m20">
+                <td class="col-md-12 input-effect p-0">
+                  <input class="w-100 modal-efecto-17 has-content" name="mclt_correo" id="mclt_correo" type="text">
                     <label>Correo Cliente</label>
                     <span class="focus-border"></span>
                 </td>
               </tr>
               <tr class="row m20">
-                <td class="col-md-12 input-effect p-0">
+                <td class="col-md-6 input-effect p-0">
                   <input class="w-100 modal-efecto-17 has-content" name="mclt_telefono" id="mclt_telefono" type="text">
                     <label>Telefono Cliente</label>
                     <span class="focus-border"></span>
                 </td>
-              </tr>
-              <tr class="row m20">
-                <td class="col-md-12 input-effect p-0">
+                <td class="col-md-1"></td>
+                <td class="col-md-5 input-effect p-0">
                   <input class="w-100 modal-efecto-17 has-content" name="mclt_credito" id="mclt_credito" type="text">
                     <label>Credito Cliente</label>
                     <span class="focus-border"></span>
                 </td>
               </tr>
               <tr class="row m20">
-                <td class="col-md-12 input-effect p-0">
+                <td class="col-md-6 input-effect p-0">
                   <input class="w-100 modal-efecto-17 has-content" name="mclt_fingreso" id="mclt_fingreso" type="date">
                     <label>Fecha Ingreso</label>
                     <span class="focus-border"></span>
                 </td>
-              </tr>
-              <tr class="row m20">
-                <td class="col-md-12 input-effect p-0">
-                  <input class="modal-efecto-17 has-content" name="mclt_color" id="mclt_color" type="color">
+                <td class="col-md-1"></td>
+                <td class="col-md-5 input-effect p-0">
+                  <input class="modal-efecto-17 has-content w-100" name="mclt_color" id="mclt_color" type="color">
                     <label>Color Cliente</label>
                     <span class="focus-border"></span>
                 </td>

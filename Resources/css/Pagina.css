@@ -44,6 +44,7 @@ input:-webkit-autofill {
     -webkit-flex-direction: row;
     flex-direction: row;
     margin-top: 130px;
+    margin-bottom: 80px;
     /*margin-left:-10px;
     width: 1350px;*/
 }
@@ -196,9 +197,9 @@ h4,h2{
   width: 100%;
 }
 
-.table-fixed tbody {
+/* .table-fixed tbody {
   display: block;
-}
+} */
 p{
   color:rgb(66, 125, 158);
 }
