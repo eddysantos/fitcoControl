@@ -14,10 +14,20 @@ co.pk_cobranza AS idcobranza,
 ct.nombreCliente AS nombre,
 co.facturaCobranza AS factura,
 co.importeCobranza AS importe,
-DATE_FORMAT(co.vencimientoCobranza, '%d-%m-%Y') AS vencimiento,
+
+co.vencimientoCobranza AS vencimiento,
+-- DATE_FORMAT(co.vencimientoCobranza, '%d-%m-%Y') AS vencimiento,
+
+
 WEEK(co.vencimientoCobranza) AS semana,
 co.conceptoPago AS concepto,
-DATE_FORMAT(co.fechaEntrega, '%d-%m-%Y') AS entrega,
+
+
+
+co.fechaEntrega AS entrega,
+-- DATE_FORMAT(co.fechaEntrega, '%d-%m-%Y') AS entrega,
+
+
 ct.colorCliente AS color,
 ct.creditoCliente AS credito,
 sum(pg.importePago) AS pagado
@@ -30,7 +40,7 @@ LEFT JOIN ct_pagos pg ON co.pk_cobranza = pg.fk_cobranza
 
 GROUP BY co.pk_cobranza
 
-ORDER BY semana ASC, vencimiento";
+ORDER BY semana DESC, vencimiento DESC limit 30";
 
 
 if (isset($_POST['cobranza'])) {
@@ -40,10 +50,16 @@ if (isset($_POST['cobranza'])) {
   ct.nombreCliente AS nombre,
   co.facturaCobranza AS factura,
   co.importeCobranza AS importe,
-  DATE_FORMAT(co.vencimientoCobranza, '%d-%m-%Y') AS vencimiento,
+
+  co.vencimientoCobranza AS vencimiento,
+  -- DATE_FORMAT(co.vencimientoCobranza, '%d-%m-%Y') AS vencimiento,
+
   WEEK(co.vencimientoCobranza) AS semana,
   co.conceptoPago AS concepto,
-  DATE_FORMAT(co.fechaEntrega, '%d-%m-%Y') AS entrega,
+
+  co.fechaEntrega AS entrega,
+  -- DATE_FORMAT(co.fechaEntrega, '%d-%m-%Y') AS entrega,
+
   ct.colorCliente AS color,
   ct.creditoCliente AS credito,
   sum(pg.importePago) AS pagado
@@ -65,7 +81,7 @@ if (isset($_POST['cobranza'])) {
 
   GROUP BY co.pk_cobranza
 
-  ORDER BY semana ASC,vencimiento";
+  ORDER BY semana DESC, vencimiento DESC limit 30";
 }
 
 
@@ -92,7 +108,7 @@ if (isset($_POST['cobranza'])) {
      $clienteCobranza = $row['nombre'];
      $facturaCobranza = $row['factura'];
      $pagado = number_format($row['pagado'], 2);
-     $hoy = date("d-m-Y");
+     $hoy = date('Y-m-d');
      $importeCobranza = number_format($row['importe'], 2);
      $vencimientoCobranza = $row['vencimiento'];
      $colorCliente = $row['color'];
@@ -129,9 +145,14 @@ if (isset($_POST['cobranza'])) {
        $background = "verde";
      }elseif (($vencimientoCobranza > $hoy) && ($importeCobranza == $pagado)) {
        $background = "verde";
-     }elseif (($vencimientoCobranza < $hoy) && ($importeCobranza > $pagado)) {
+     }
+     elseif (($vencimientoCobranza < $hoy) && ($importeCobranza > $pagado)) {
        $background = "rojo";
      }
+     // else {
+     //    $background = "";
+     // }
+
 
     if ($admin == "Administrador") {
       $ocultar = "";

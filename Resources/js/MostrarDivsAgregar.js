@@ -24,12 +24,14 @@ $(document).ready(function(){
         $('#Ecobranza').animate({"right": "4%"}, "slow");
         $('#Eventas').animate({"right": "4%"}, "slow");
         $('#Enomina').animate({"right": "4%"}, "slow");
+        $('#Ecuentas').animate({"right": "4%"}, "slow");
         $('#NuevoCliente').hide();
         $('#NuevoUsuario').hide();
         $('#NuevoMaterial').hide();
         $('#Agregarcobranza').hide();
         $('#NuevoNomina').hide();
         $('#NuevaVenta').hide();
+        $('#NuevaCuenta').hide();
 
         $('.spanA').css('display', '');
         $('.spanV').css('display', '');
@@ -187,6 +189,28 @@ $(document).ready(function(){
       }
       break;
 
+// CUENTAS POR PAGAR
+      case "acuentas":
+      if (status == 'cerrado') {
+        $('.spanA').css('display', 'inherit');
+        $(this).attr('status', 'abierto');
+        $('#Ecuentas').animate({"right": "36%"}, "slow"); //esta es el id del form en mostrar.php
+        $('#NuevaCuenta').fadeIn(2500);
+        $('#SinRegistros').fadeOut();
+        $( ".img" ).removeClass( "spand-icon" ).addClass( "spand-iconp");
+        $('p').css('font-size','13px');
+        $('b').css('font-size','14px');
+      }else {
+        $('.spanA').css('display', '');
+        $(this).attr('status', 'cerrado');
+        $('#Ecuentas').animate({"right": "4%"}, "slow");
+        $('#NuevaCuenta').hide();
+        $( ".img" ).removeClass( "spand-iconp" ).addClass( "spand-icon");
+        $('p').css('font-size','1.75rem');
+        $('b').css('font-size','1.75rem');
+        $('p').css('font-weight','500');
+      }
+      break;
 
 
 // NOMINA

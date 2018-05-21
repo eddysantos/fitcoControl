@@ -112,8 +112,11 @@ input:-webkit-autofill {
   width: 190px;
 }
 
-.clt_usr .consultar:hover .spanA, .clt_usr .consultar:hover .spanM{
+.clt_usr .consultar:hover .spanA {
   width: 145px;
+}
+.clt_usr .consultar:hover .spanM {
+  width: 80px;
 }
 
 .clt_usr .buscador:hover .spanB{
