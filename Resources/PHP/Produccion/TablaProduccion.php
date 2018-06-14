@@ -12,7 +12,8 @@ $query = "SELECT
 pk_produccion AS id,
 DATE_FORMAT(fechaIntroduccion,'%d-%m-%Y') AS fecha,
 metaProduccion AS meta,
-cantidadProduccion AS cant
+cantidadProduccion AS cant,
+notas
 
 FROM ct_produccion
 
@@ -34,6 +35,7 @@ if (false) {
     $data["data"][]= $row;
 
     $id = $row['id'];
+    $notas = $row['notas'];
     $fecha = $row['fecha'];
     $meta = $row['meta'];
     $cantidad = $row['cant'];
@@ -43,17 +45,20 @@ if (false) {
 
   if ($pe == 1 || $admin){
     $data["infoTabla"].= "
-    <tr class='row bordelateral' id='item'>
-      <td class='col-md-3 text-center'>
+    <tr class='row text-center bordelateral' id='item'>
+      <td class='col-md-3'>
         <h4><b>$fecha</b></h4>
       </td>
-      <td class='col-md-3 text-center'>
+      <td class='col-md-2'>
         <h4><b>$meta pzs</b></h4>
       </td>
-      <td class='col-md-3 text-center'>
+      <td class='col-md-2'>
         <h4><b>$cantidad pzs</b></h4>
       </td>
-      <td class='col-md-3 text-right'>
+      <td class='col-md-3'>
+        <h4><b>$notas</b></h4>
+      </td>
+      <td class='col-md-2 text-right'>
         <a href='#' class='editarProduc spand-linkm' data-toggle='modal' data-target='#EdProd' pro-id='$id'><img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='spand-iconm'></a>
 
         <a href='#' class='eliminarProduc spand-linkm ml-3' pro-id='$id'><img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='spand-iconm'></a>
@@ -61,17 +66,20 @@ if (false) {
     </tr>";
   }elseif ($pe == 0){
     $data["infoTabla"].= "
-    <tr class='row bordelateral' id='item'>
-      <td class='col-md-3 text-center'>
+    <tr class='row text-center bordelateral' id='item'>
+      <td class='col-md-3'>
         <h4><b>$fecha</b></h4>
       </td>
-      <td class='col-md-3 text-center'>
+      <td class='col-md-2'>
         <h4><b>$meta pzs</b></h4>
       </td>
-      <td class='col-md-3 text-center'>
+      <td class='col-md-2'>
         <h4><b>$cantidad pzs</b></h4>
       </td>
-      <td class='col-md-3 text-right'>
+      <td class='col-md-3'>
+        <h4><b>$notas</b></h4>
+      </td>
+      <td class='col-md-2 text-right'>
         <a href='#' class='bloqueo spand-linkm'><img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='spand-iconm'></a>
 
         <a href='#' class='bloqueo spand-linkm ml-3'><img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='spand-iconm'></a>

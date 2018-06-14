@@ -195,14 +195,14 @@ h4,h2{
 }
 
 .table-fixed tbody {
-  max-height: 520px;
+  max-height: 500px;
   overflow-y: auto;
   width: 100%;
 }
 
-/* .table-fixed tbody {
+.table-fixed tbody {
   display: block;
-} */
+}
 p{
   color:rgb(66, 125, 158);
 }

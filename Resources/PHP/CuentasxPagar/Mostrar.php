@@ -68,6 +68,8 @@ factura AS factura
         </thead>
         <tbody id='mostrarCuentas'>";
 
+
+
         while ($row = $buscarDatos->fetch_assoc()) {
           $id = $row['idCuentas'];
           $proveedor = $row['proveedor'];
@@ -76,12 +78,25 @@ factura AS factura
           $vencimiento = $row['vencimiento'];
           $pagado = $row['pagado'];
           $total = $row['total'];
-          $cle = $_SESSION['user']['cliente_editar'];
+          $ce = $_SESSION['user']['cobranza_editar'];
           $admin = $_SESSION['user']['privilegiosUsuario'];
+          // $hoy = date('Y-m-d');
 
           $pendiente = $total - $pagado;
 
-        if ($cle == 1 || $admin == "Administrador") {
+
+          // if (($total == $pagado) && ($vencimiento == $hoy)) {
+          //   $background = "verde";
+          // }elseif (($vencimientoCobranza < $hoy) && ($importeCobranza == $pagado)) {
+          //   $background = "verde";
+          // }elseif (($vencimientoCobranza > $hoy) && ($importeCobranza == $pagado)) {
+          //   $background = "verde";
+          // }
+          // elseif (($vencimientoCobranza < $hoy) && ($importeCobranza > $pagado)) {
+          //   $background = "rojo";
+          // }
+
+        if ($ce == 1 || $admin == "Administrador") {
           $tabla.= "
             <tr class='row bordelateral m-0' id='item'>
               <td class='col-md-1'>
@@ -112,7 +127,7 @@ factura AS factura
             $suma += $row['total'];
             $pago += $row['pagado'];
             $diferencia += $row['total']-$row['pagado'];
-        }elseif ($cle == 0) {
+        }elseif ($ce == 0) {
          $tabla.= "
          <tr class='row bordelateral m-0' id='item'>
            <td class='col-md-1'>

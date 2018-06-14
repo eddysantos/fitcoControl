@@ -25,6 +25,10 @@
   /* margin-top: 100px!important; */
 }
 
+.modal-grande{
+  max-width: 1300px!important;
+}
+
 .modal-efecto-17{
   border: 0;
   padding: 4px 0;

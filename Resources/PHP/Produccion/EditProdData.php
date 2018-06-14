@@ -14,16 +14,18 @@ $query =
 "UPDATE ct_produccion
 SET fechaIntroduccion = ?,
 metaProduccion = ?,
-cantidadProduccion =?
+cantidadProduccion =?,
+notas =?
 WHERE pk_produccion = ?";
 
 $fintro = parseDate($_POST['ff']);
 
 $stmt = $conn->prepare($query);
-$stmt->bind_param('ssss',
+$stmt->bind_param('sssss',
   $fintro,
   $_POST['mm'],
   $_POST['ee'],
+  $_POST['nt'],
   $_POST['id']
 );
 $stmt->execute();

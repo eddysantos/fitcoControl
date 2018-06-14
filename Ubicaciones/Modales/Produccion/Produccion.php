@@ -36,6 +36,14 @@
                     <span class="focus-border"></span>
                 </td>
               </tr>
+
+              <tr class="row m20">
+                <td class="col-md-12 input-effect p-0">
+                  <input class="w-100 modal-efecto-17 has-content" name="mpro_not" id="mpro_not" type="text">
+                    <label>Notas</label>
+                    <span class="focus-border"></span>
+                </td>
+              </tr>
             </tbody>
           </table>
         </div>
@@ -51,7 +59,7 @@
 
 <!--VISUALIZAR TABLA PRODUCCION VISUALIZAR TABLA PRODUCCION-->
 <div class="modal fade" id="VisualizarTablaProduccion">
-  <div class="modal-dialog modal-med">
+  <div class="modal-dialog modal-grande">
     <div class="modal-content">
       <div class="modal-header">
         <button class="close" type="button" name="button" data-dismiss="modal" area-label="close">
@@ -65,9 +73,10 @@
             <thead>
               <tr class="row encabezado">
                 <td class='col-md-3 text-center'><h4>FECHA</h4></td>
-                <td class='col-md-3 text-center'><h4>META</h4></td>
-                <td class='col-md-3 text-center'><h4>ELABORADO</h4></td>
-                <td class='col-md-3 text-center'></td>
+                <td class='col-md-2 text-center'><h4>META</h4></td>
+                <td class='col-md-2 text-center'><h4>ELABORADO</h4></td>
+                <td class='col-md-3 text-center'><h4>NOTA</h4></td>
+                <td class='col-md-2 text-center'></td>
               </tr>
             </thead>
             <tbody id="visualizarProduccion"></tbody>
@@ -113,6 +122,14 @@
               <td class="col-md-12 input-effect p-0">
                 <input class="modal-efecto-17 has-content" name="mpr_elaborado" id="mpr_elaborado" type="text">
                 <label>Elaborado</label>
+                <span class="focus-border"></span>
+              </td>
+            </tr>
+
+            <tr class="row m20">
+              <td class="col-md-12 input-effect p-0">
+                <input class="modal-efecto-17 has-content" name="mpr_not" id="mpr_not" type="text">
+                <label>Nota</label>
                 <span class="focus-border"></span>
               </td>
             </tr>

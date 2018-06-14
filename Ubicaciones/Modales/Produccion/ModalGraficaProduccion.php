@@ -1,5 +1,4 @@
 
-<!--GRAFICA PARA VENTAS-->
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
 require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
@@ -15,7 +14,7 @@ $data = array(
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
-<!-- GRAFICA ANUAL  -->
+<!-- GRAFICA SEMANAL -->
     <script type="text/javascript">
       google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(grafica);
@@ -76,6 +75,7 @@ $data = array(
           hAxis: {title: 'Semana',  titleTextStyle: {color: '#FF0000'},slantedText: true,
           slantedTextAngle:20},
           vAxis: {title: 'Piezas',  titleTextStyle: {color: '#FF0000'}, format : ""},
+
           width:1065,
           height: 500,
           legend:{
@@ -92,6 +92,8 @@ $data = array(
       }
 
     </script>
+
+
 <!-- GRAFICA MENSUAL -->
     <script type="text/javascript">
       google.charts.load('current', {'packages':['corechart']});
@@ -118,14 +120,16 @@ $data = array(
           ELSE '' END AS mes,
           year(pr.fechaIntroduccion) AS anio,
           SUM(pr.cantidadProduccion) AS produccion,
-          SUM(pr.metaProduccion) AS meta
+          SUM(pr.metaProduccion) AS meta,
+          pr.fechaIntroduccion AS fecha
 
           FROM ct_program p
 
           LEFT JOIN ct_cliente c ON c.pk_cliente = p.fk_cliente
           LEFT JOIN ct_produccion pr ON pr.fk_programacion = p.pk_programacion
 
-          GROUP BY anio ASC, mes ASC LIMIT 12";
+          GROUP BY  mes
+          ORDER BY fecha ASC LIMIT 6";
 
           $r = mysqli_query($conn, $query);
             $i = 0;
@@ -209,17 +213,10 @@ $data = array(
             </li>
           </ul>
         </div>
-        <table class="table">
-          <div class="mt-5" id="graficadiaria" style="display:none">
-            <tr class="row">
-              <td class="col-md-4"><input type="date" id="start"></td>
-              <td class="col-md-4"><input type="date" id="end"></td>
-            </tr>
-          </div>
-        </table>
+
+        <div class="mt-5" id="graficadiaria" style="display:none"></div>
         <div class="mt-5" id="graficasemanal" style="display:none"></div>
         <div class="mt-5" id="graficamensual" style="display:none"></div>
-
       </div>
     </div>
   </div>
@@ -239,9 +236,6 @@ $data = array(
           ["Dia","Fabricado","Meta"],
 
           <?php
-          $start = '2018/04/02';
-          $end = '2018/04/07';
-
           $query = "SELECT
           CASE WHEN DAYOFWEEK(pr.fechaIntroduccion) = 2 THEN 'Lun'
           WHEN DAYOFWEEK(pr.fechaIntroduccion) = 3 THEN 'Mar'
@@ -254,6 +248,7 @@ $data = array(
           pr.pk_produccion AS id,
           year(pr.fechaIntroduccion) AS anio,
           DATE_FORMAT(pr.fechaIntroduccion, '%d-%m-%Y') AS fecha,
+          pr.fechaIntroduccion AS fintroduc,
           SUM(pr.cantidadProduccion) AS produccion,
           SUM(pr.metaProduccion) AS meta
 
@@ -261,9 +256,7 @@ $data = array(
 
           LEFT JOIN ct_cliente c ON c.pk_cliente = p.fk_cliente
           LEFT JOIN ct_produccion pr ON pr.fk_programacion = p.pk_programacion
-
-          WHERE pr.fechaIntroduccion BETWEEN '$start' AND '$end'
-          GROUP BY anio DESC, fecha ASC";
+          GROUP BY fintroduc ASC";
 
           $r = mysqli_query($conn, $query);
             $i = 0;

@@ -17,10 +17,13 @@ if (!isset($_SESSION['user'])) {
     </div>
 
     <div class="col align-self-end">
-      <a class="ml-3 rotate-link  consultar ancla"  data-toggle='modal' data-target='#ModalGraficaPRO'>
+
+      <a class="ml-3 rotate-link  consultar ancla"  data-toggle='modal' data-target='#ModalGraficaC3'>
         <img src="/fitcoControl/Resources/iconos/grafica2.svg" class="icon rotate-icon" style="width:30px">
         <span>Grafica Producción</span>
       </a>
+
+
 
       <a class="rotate-link consultar ancla" accion="busuario">
         <img src="/fitcoControl/Resources/iconos/search.svg" class="icon rotate-icon" style="width:30px">
@@ -37,7 +40,16 @@ if (!isset($_SESSION['user'])) {
 
   <?php
     $root = $_SERVER['DOCUMENT_ROOT'];
-    require $root . '/fitcoControl/Ubicaciones/Modales/Produccion/ModalGraficaProduccion.php';
-    require $root . '/fitcoControl/Ubicaciones/Modales/Produccion/Produccion.php';
     require $root . '/fitcoControl/Resources/PHP/Produccion/pieProduccion.php';
+    require $root . '/fitcoControl/Ubicaciones/Modales/Produccion/ModalGradicaC3.php';
+    require $root . '/fitcoControl/Ubicaciones/Modales/Produccion/Produccion.php';
+
+
+
+
+
+    // require $root . '/fitcoControl/Ubicaciones/Modales/Produccion/PruebasGraficas/ModalPrueba.php';
+    // require $root . '/fitcoControl/Ubicaciones/Modales/Produccion/PruebasGraficas/Grafica1.php';
+    // require $root . '/fitcoControl/Ubicaciones/Modales/Produccion/PruebasGraficas/GraficaPruebaZoom.php';
+    // require $root . '/fitcoControl/Ubicaciones/Modales/Produccion/PruebasGraficas/ProduccionHighChart.php';
   ?>

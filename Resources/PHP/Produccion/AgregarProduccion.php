@@ -11,17 +11,18 @@ function parseDate($dv){
 }
 require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
 $query =
-"INSERT INTO ct_produccion(fk_programacion,fechaIntroduccion,metaProduccion,cantidadProduccion) VALUES(?,?,?,?)";
+"INSERT INTO ct_produccion(fk_programacion,fechaIntroduccion,metaProduccion,cantidadProduccion,notas) VALUES(?,?,?,?,?)";
 
 $fintroduccion = parseDate($_POST['mpro_fint']);
 
 $stmt = $conn->prepare($query);
-$stmt->bind_param('ssss',
+$stmt->bind_param('sssss',
 
   $_POST['mpro_idprog'],
   $fintroduccion,
   $_POST['mpro_meta'],
-  $_POST['mpro_cant']
+  $_POST['mpro_cant'],
+  $_POST['mpro_not']
 
 );
 $stmt->execute();
