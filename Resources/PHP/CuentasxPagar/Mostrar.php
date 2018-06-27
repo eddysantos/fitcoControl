@@ -4,11 +4,11 @@ session_start();
 $root = $_SERVER['DOCUMENT_ROOT'];
 require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
 
-$data = array(
-  'code' => "",
-  'response' => "",
-  'infoTabla' => ""
-);
+// $data = array(
+//   'code' => "",
+//   'response' => "",
+//   'infoTabla' => ""
+// );
 
 
 $tabla = "";
@@ -16,15 +16,18 @@ $suma = 0;
 $pago = 0;
 $diferencia = 0;
 $query = "SELECT
-pk_cuentasPagar AS idCuentas,
-proveedor AS proveedor,
-descripcion AS descripcion,
-montoPago AS total,
-fechaVencimiento AS vencimiento,
-pagado AS pagado,
-factura AS factura
+cxp.pk_cuentasPagar AS idCuentas,
+cxp.proveedor AS proveedor,
+cxp.descripcion AS descripcion,
+cxp.montoPago AS total,
+cxp.fechaVencimiento AS vencimiento,
+cxp.pagado AS pagado,
+cxp.factura AS factura
 
- FROM ct_CuentasxPagar
+ FROM ct_CuentasxPagar cxp
+
+ WHERE cxp.fechaVencimiento BETWEEN '2018-01-01' AND '2018-12-31'
+
 
  ORDER BY vencimiento DESC,proveedor ASC";
 
@@ -32,22 +35,24 @@ factura AS factura
  if (isset($_POST['cuentas'])) {
    $q = $conn->real_escape_string($_POST['cuentas']);
    $query = "SELECT
-   pk_cuentasPagar AS idCuentas,
-   proveedor AS proveedor,
-   descripcion AS descripcion,
-   montoPago AS total,
-   fechaVencimiento AS vencimiento,
-   pagado AS pagado,
-   factura AS factura
+   -- cxp.pk_cuentasPagar AS idCuentas,
+   cxp.proveedor AS proveedor,
+   cxp.descripcion AS descripcion,
+   cxp.montoPago AS total,
+   cxp.fechaVencimiento AS vencimiento,
+   cxp.pagado AS pagado,
+   cxp.factura AS factura
+   -- year(cxp.fechaVencimiento) AS anio
 
-    FROM ct_CuentasxPagar
+    FROM ct_CuentasxPagar cxp
 
-    WHERE proveedor LIKE '%$q%' OR
-    descripcion LIKE '%$q%' OR
-    montoPago LIKE '%$q%' OR
-    fechaVencimiento LIKE '%$q%' OR
-    pagado LIKE '%$q%' OR
-    factura LIKE '%$q%'
+    WHERE
+    -- year(cxp.fechaVencimiento) LIKE '%$q%' OR
+    cxp.proveedor LIKE '%$q%' OR
+    cxp.descripcion LIKE '%$q%' OR
+    cxp.montoPago LIKE '%$q%' OR
+    cxp.fechaVencimiento LIKE '%$q%' OR
+    cxp.factura LIKE '%$q%'
 
     ORDER BY vencimiento DESC,proveedor ASC";
 }
@@ -68,8 +73,6 @@ factura AS factura
         </thead>
         <tbody id='mostrarCuentas'>";
 
-
-
         while ($row = $buscarDatos->fetch_assoc()) {
           $id = $row['idCuentas'];
           $proveedor = $row['proveedor'];
@@ -80,25 +83,24 @@ factura AS factura
           $total = $row['total'];
           $ce = $_SESSION['user']['cobranza_editar'];
           $admin = $_SESSION['user']['privilegiosUsuario'];
-          // $hoy = date('Y-m-d');
-
+          $hoy = date('Y-m-d');
           $pendiente = $total - $pagado;
 
 
-          // if (($total == $pagado) && ($vencimiento == $hoy)) {
-          //   $background = "verde";
-          // }elseif (($vencimientoCobranza < $hoy) && ($importeCobranza == $pagado)) {
-          //   $background = "verde";
-          // }elseif (($vencimientoCobranza > $hoy) && ($importeCobranza == $pagado)) {
-          //   $background = "verde";
-          // }
-          // elseif (($vencimientoCobranza < $hoy) && ($importeCobranza > $pagado)) {
-          //   $background = "rojo";
-          // }
+          if (($total == $pagado) && ($vencimiento == $hoy)) {
+            $background = "verde";
+          }elseif (($vencimiento < $hoy) && ($total == $pagado)) {
+            $background = "verde";
+          }elseif (($vencimiento > $hoy) && ($total == $pagado)) {
+            $background = "verde";
+          }
+          elseif (($vencimiento < $hoy) && ($total > $pagado)) {
+            $background = "rojo";
+          }
 
         if ($ce == 1 || $admin == "Administrador") {
           $tabla.= "
-            <tr class='row bordelateral m-0' id='item'>
+            <tr class='$background row bordelateral m-0' id='item'>
               <td class='col-md-1'>
                 <img src='/fitcoControl/Resources/iconos/team.svg' class='icono'>
               </td>
