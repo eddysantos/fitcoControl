@@ -96,25 +96,25 @@ li a.noborder{
   border-top: 0px!important;
 }
 
-li{
+
+/*comentado por datatable   */
+li.bn{
   font-family: 'Encode Sans Condensed', sans-serif;
   font-weight: bolder;
-  /*width: 100%;*/
   margin: 0 auto;
   transition: .5s;
 }
-li a{
+li a.bn{
   display: inline-block;
   font-size: 21px;
   text-decoration: none!important;
   color: #505050;
   width: 97%;
   text-align: center;
-  /*line-height: 65px;*/
   text-transform: uppercase;
   border-top: 5px solid #0056b3;
 }
-li a:hover{
+li a.bn:hover{
   border-top: 5px solid #4a4a4a;
   transition: .4s;
   letter-spacing: 4px;

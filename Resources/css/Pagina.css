@@ -49,6 +49,17 @@ input:-webkit-autofill {
     width: 1350px;*/
 }
 
+
+.dt-page {
+    position: absolute;
+    left: 2%;
+    right: 2%;
+    top: 14%;
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 8px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.7);
+}
+
 .agregarnuevo{
   position: absolute;
   left: 65%;
@@ -305,6 +316,7 @@ a.boton-colapso:hover{
 
 .spand-icon {
   width: 25px;
+  cursor: pointer;
 }
 .spand-link:hover .spand-icon{
   width: 30px;
@@ -340,6 +352,7 @@ a.boton-colapso:hover{
   cursor: not-allowed!important;
 }
 
+
 .ocultar{
   display: none!important;
 }
@@ -347,6 +360,7 @@ a.boton-colapso:hover{
 .buscar{
   border-radius: 8px;
   background-color: rgba(74, 119, 152, 0.2);
+  font-size: 14px;
 }
 .footer{
 
@@ -449,3 +463,28 @@ div.submenuMed {
   letter-spacing: 3px!important;
   font-size: 13px;
 }
+
+
+/* PRUEBA DE CSS PARA DATATABLES */
+.pagination{
+  color: black!important;
+}
+
+.dataTables_info{
+  font-size: 18px;
+  color: red
+}
+
+.paginate_button{
+
+}
+
+ .page-item{
+   color: black;
+ }
+
+ .page-item.active .page-link{
+   color: black;
+   background-color: transparent;
+   border-color: #ccc;
+ }

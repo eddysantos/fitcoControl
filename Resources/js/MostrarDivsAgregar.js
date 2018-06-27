@@ -16,12 +16,13 @@ $(document).ready(function(){
     switch (accion) {
       case "busc":
       if (status == 'cerrado') {
-        $('.spanB').css('display', 'inline-table');
+        // $('.spanB').css('display', 'inline-table');
         $(this).attr('status', 'abierto');
         $('#Eclientes').animate({"right": "4%"}, "slow");
         $('#Eusuarios').animate({"right": "4%"}, "slow");
         $('#MMaterial').animate({"right": "4%"}, "slow");
-        $('#Ecobranza').animate({"right": "4%"}, "slow");
+        // $('#Ecobranza').animate({"right": "4%"}, "slow");
+        $('#Ecobranza').animate({"right": "2%"}, "slow");
         $('#Eventas').animate({"right": "4%"}, "slow");
         $('#Enomina').animate({"right": "4%"}, "slow");
         $('#Ecuentas').animate({"right": "4%"}, "slow");
