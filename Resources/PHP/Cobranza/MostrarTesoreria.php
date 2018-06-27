@@ -14,20 +14,13 @@ co.pk_cobranza AS idcobranza,
 ct.nombreCliente AS nombre,
 co.facturaCobranza AS factura,
 co.importeCobranza AS importe,
-
 co.vencimientoCobranza AS vencimiento,
 -- DATE_FORMAT(co.vencimientoCobranza, '%d-%m-%Y') AS vencimiento,
-
-
 WEEK(co.vencimientoCobranza) AS semana,
+year(co.vencimientoCobranza) AS anio,
 co.conceptoPago AS concepto,
-
-
-
 co.fechaEntrega AS entrega,
 -- DATE_FORMAT(co.fechaEntrega, '%d-%m-%Y') AS entrega,
-
-
 ct.colorCliente AS color,
 ct.creditoCliente AS credito,
 sum(pg.importePago) AS pagado
@@ -35,12 +28,14 @@ sum(pg.importePago) AS pagado
 
 FROM ct_cobranza co
 
+
 LEFT JOIN ct_cliente ct ON co.fk_cliente = ct.pk_cliente
 LEFT JOIN ct_pagos pg ON co.pk_cobranza = pg.fk_cobranza
+WHERE co.vencimientoCobranza BETWEEN '2018-01-01' AND '2018-12-31'
 
 GROUP BY co.pk_cobranza
 
-ORDER BY semana DESC, vencimiento DESC limit 30";
+ORDER BY  vencimiento DESC, factura ASC ";
 
 
 if (isset($_POST['cobranza'])) {
@@ -50,16 +45,13 @@ if (isset($_POST['cobranza'])) {
   ct.nombreCliente AS nombre,
   co.facturaCobranza AS factura,
   co.importeCobranza AS importe,
-
+  year(co.vencimientoCobranza) AS anio,
   co.vencimientoCobranza AS vencimiento,
   -- DATE_FORMAT(co.vencimientoCobranza, '%d-%m-%Y') AS vencimiento,
-
   WEEK(co.vencimientoCobranza) AS semana,
   co.conceptoPago AS concepto,
-
   co.fechaEntrega AS entrega,
   -- DATE_FORMAT(co.fechaEntrega, '%d-%m-%Y') AS entrega,
-
   ct.colorCliente AS color,
   ct.creditoCliente AS credito,
   sum(pg.importePago) AS pagado
@@ -77,11 +69,12 @@ if (isset($_POST['cobranza'])) {
   co.conceptoPago LIKE '%$q%' OR
   co.fechaEntrega LIKE '%$q%' OR
   ct.creditoCliente LIKE '%$q%' OR
-  pg.importePago LIKE '%$q%'
+  pg.importePago LIKE '%$q%' OR
+  year(co.vencimientoCobranza) LIKE '%$q%'
 
   GROUP BY co.pk_cobranza
 
-  ORDER BY semana DESC, vencimiento DESC limit 30";
+  ORDER BY semana DESC, vencimiento DESC";
 }
 
 

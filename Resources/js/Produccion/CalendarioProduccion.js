@@ -96,6 +96,8 @@ $(document).ready(function(){
 
 //agregar Evento
     dayClick: function(date,jsEvent,view){
+      // limpiarFormulario();
+
       $('#_txtFecha').val(date.format());
       $('#_txtFin').val(date.format());
 
@@ -169,6 +171,7 @@ $(document).ready(function(){
 
 var NuevoEvento;
   $('#btnAgregar').click(function(){
+      // limpiarFormulario();
       RecolectarDatos();
       AgregarInformacion('agregar',NuevoEvento);
       $('#ModalAgregar').modal('toggle');
@@ -273,6 +276,15 @@ var NuevoEvento;
         alert("hay un error..");
       }
     });
+  }
+
+  function limpiarFormulario(){
+    $('#tituloEvento').html('');
+    $('#txtID').val('');
+    $('#txtColor').val('');
+    $('#cliente').val('');
+    $('#fk_cliente').val('');
+    $('#txtDescripcion').val('');
   }
 
 });

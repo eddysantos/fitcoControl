@@ -142,7 +142,6 @@ function ActivarBotonesCobranza(){
     $('#PagoFacturas').modal('show');
   });
 
-  //AGREGAR PAGOS MODAL
     $('.AgregarPgo').unbind();
     $('.AgregarPgo').click(function(){
 
@@ -174,7 +173,6 @@ function ActivarBotonesCobranza(){
               $('#PagoFacturas').modal('hide');
               alertify.success('SE AGREGÓ CORRECTAMENTE');
               fetchCobranza();
-              // fetchTablaCobranza();
             }
           },
           error:function(exception){
@@ -183,6 +181,8 @@ function ActivarBotonesCobranza(){
         })
       }
     });
+
+
 
 
 
