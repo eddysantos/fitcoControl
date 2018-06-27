@@ -27,11 +27,14 @@ $data = array(
           WEEK(co.vencimientoCobranza) AS semana,
           MONTH(co.vencimientoCobranza) AS mes,
           ct.colorCliente AS color,
-          SUM(pgo.importePago) AS pagado
+          SUM(pgo.importePago) AS pagado,
+          year(co.vencimientoCobranza) AS anio,
+          co.vencimientoCobranza AS vencimiento
           FROM ct_cobranza co
           LEFT JOIN ct_cliente ct ON co.fk_cliente = ct.pk_cliente
           LEFT JOIN ct_pagos pgo ON  pgo.fk_cobranza = co.pk_cobranza
-          GROUP BY semana
+          WHERE co.vencimientoCobranza BETWEEN '2018-01-01' AND '2018-12-31'
+          GROUP BY semana,anio ORDER BY vencimiento ASC
           ";
           $r = mysqli_query($conn, $query);
             $i = 0;
@@ -39,6 +42,7 @@ $data = array(
             while ($row = mysqli_fetch_assoc($r)) {
               $facturado = $row["totalcobranza"];
               $semana = $row["semana"];
+              $anio = $row["anio"];
               $pagado = $row["pagado"];
               $pendientepago = $row['totalcobranza']-$row['pagado'];
               $numerosem = "Sem.";
@@ -48,7 +52,7 @@ $data = array(
               }
 
               print "[
-                '".$numerosem." ".$semana."', ".$facturado.", ".$pagado.", ".$pendientepago."
+                '".$numerosem." ".$semana." ".$anio."', ".$facturado.", ".$pagado.", ".$pendientepago."
                 ]";
 
               $i++;
@@ -112,11 +116,14 @@ $data = array(
         SUM(co.importeCobranza) AS totalcobranza,
         year(co.vencimientoCobranza) AS anio,
         ct.colorCliente AS color,
-        SUM(pgo.importePago) AS pagado
+        SUM(pgo.importePago) AS pagado,
+        co.vencimientoCobranza AS vencimiento
+
         FROM ct_cobranza co
         LEFT JOIN ct_cliente ct ON co.fk_cliente = ct.pk_cliente
         LEFT JOIN ct_pagos pgo ON  pgo.fk_cobranza = co.pk_cobranza
-        GROUP BY mes
+        WHERE co.vencimientoCobranza BETWEEN '2018-01-01' AND '2018-12-31'
+        GROUP BY mes ORDER BY vencimiento ASC
         ";
         $r = mysqli_query($conn, $query);
           $i = 0;
