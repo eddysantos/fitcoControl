@@ -44,12 +44,4 @@ if (!isset($_SESSION['user'])) {
     require $root . '/fitcoControl/Ubicaciones/Modales/Produccion/ModalGradicaC3.php';
     require $root . '/fitcoControl/Ubicaciones/Modales/Produccion/Produccion.php';
 
-
-
-
-
-    // require $root . '/fitcoControl/Ubicaciones/Modales/Produccion/PruebasGraficas/ModalPrueba.php';
-    // require $root . '/fitcoControl/Ubicaciones/Modales/Produccion/PruebasGraficas/Grafica1.php';
-    // require $root . '/fitcoControl/Ubicaciones/Modales/Produccion/PruebasGraficas/GraficaPruebaZoom.php';
-    // require $root . '/fitcoControl/Ubicaciones/Modales/Produccion/PruebasGraficas/ProduccionHighChart.php';
   ?>
