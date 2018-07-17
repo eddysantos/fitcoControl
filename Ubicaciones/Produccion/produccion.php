@@ -39,6 +39,11 @@ require  $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
           <img style="width:30px" src="/fitcoControl/Resources/iconos/002-calendar.svg"> Sección de Corte
           <span class="top"></span>
         </a>
+
+        <a href="/fitcoControl/Ubicaciones/Lineas/pantalla.php" class="linkboton  btn-block">
+          <img style="width:30px" src="/fitcoControl/Resources/iconos/002-calendar.svg"> Lineas
+          <span class="top"></span>
+        </a>
       </div>
     </div>
 

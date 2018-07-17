@@ -284,6 +284,23 @@ $(document).ready(function(){
       }
       break;
 
+
+  //PRODUCCION
+        case "aproduccion":
+        if (status == 'cerrado') {
+          $('.spanP').css('display', 'inherit');
+          $(this).attr('status', 'abierto');
+          $('#tablaLineas').animate({"right": "36%"}, "slow");
+          $('#NuevaProduccion').fadeIn(2500);
+          $('#SinRegistros').fadeOut();
+        }else {
+          $('.spanP').css('display', '');
+          $(this).attr('status', 'cerrado');
+          $('#tablaLineas').animate({"right": "4%"}, "slow");
+          $('#NuevaProduccion').hide();
+        }
+        break;
+
 //CORTE
       default:
         console.error("Something went terribly wrong...");
