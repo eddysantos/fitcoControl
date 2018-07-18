@@ -6,7 +6,7 @@ $(document).ready(function(){
     var display = $($(this).attr('id-display'));
     var text = $(this).val();
     var action = $(this).attr('action');
-    var url = '/fitcoControl/Resources/PHP/actions/popup_actions/' + action + '.php';
+    var url = '/fitcoControl/Resources/PHP/actions/popup-actions/' + action + '.php';
 
     $(this).attr('db-id', '');
 

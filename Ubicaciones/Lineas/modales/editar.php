@@ -28,16 +28,19 @@
               </tr>
               <tr class="row m20">
                 <td class="col-md-12 input-effect p-0">
-                  <input id="operacion" class="modal-efecto-17 has-content" type="text" required>
-                    <label>Operación</label>
-                    <span class="focus-border"></span>
+                  <input id="operacion" class="modal-efecto-17 has-content popup-input" type="text" id-display="#popup-display-listaOperacionm" action="listaOperacion" db-id="" autocomplete="new-password">
+                  <div class="popup-list" id="popup-display-listaOperacionm" style="display:none"></div>
+                  <label for="operacion">Operacion</label>
+                  <span class="focus-border"></span>
                 </td>
               </tr>
+
               <tr class="row m20">
                 <td class="col-md-12 input-effect p-0">
-                  <input  id="nombre" class="modal-efecto-17 has-content" type="text" required>
-                    <label>Empleado</label>
-                    <span class="focus-border"></span>
+                  <input class="modal-efecto-17 has-content popup-input" id="nombre" type="text" id-display="#popup-display-listaEmpleadosm" action="listaEmpleados" db-id="" autocomplete="new-password">
+                  <div class="popup-list" id="popup-display-listaEmpleadosm" style="display:none"></div>
+                  <label for="nombre">Nombre de Empleado</label>
+                  <span class="focus-border"></span>
                 </td>
               </tr>
               <tr class="row m20">

@@ -74,23 +74,26 @@ while ($row = $rslt->fetch_assoc()) {
     <td class='col-md-3'>$ope</td>
     <td class='col-md-1'>$linea</td>
     <td class='col-md-2 text-right'>
-      <a href='#' class='spand-link' db-id='$id'><img src='/fitcoControl/Resources/iconos/003-add.svg' class='spand-icon'></a>
+      <a href='#addProducc' data-toggle='modal' class='addProducc spand-link' db-id='$id'><img src='/fitcoControl/Resources/iconos/003-add.svg' class='spand-icon'></a>
 
       <a href='#EditarLinea' data-toggle='modal' class='editar-linea spand-link' db-id='$id'><img  src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='img ml-3 spand-icon'></a>
     </td>
 
-    <td class='col-md-2'><label class='visibilidad'>1 hra</label></td>
-    <td class='col-md-1'><label class='visibilidad'>2 hras</label></td>
-    <td class='col-md-1'><label class='visibilidad'>3 hras</label></td>
-    <td class='col-md-1'><label class='visibilidad'>4 hras</label></td>
-    <td class='col-md-1'><label class='visibilidad'>5 hras</label></td>
-    <td class='col-md-1'><label class='visibilidad'>6 hras</label></td>
-    <td class='col-md-1'><label class='visibilidad'>7 hras</label></td>
-    <td class='col-md-1'><label class='visibilidad'>8 hras</label></td>
-    <td class='col-md-1'><label class='visibilidad'>9 hras</label></td>
-    <td class='col-md-2'><label class='visibilidad'>10 hras</label></td>
+    <td class='col-md-1'><label class='visibilidad lin'></label></td>
+    <td class='col-md-1'><label class='visibilidad lin'>1 hra</label></td>
+    <td class='col-md-1'><label class='visibilidad lin'>2 hras</label></td>
+    <td class='col-md-1'><label class='visibilidad lin'>3 hras</label></td>
+    <td class='col-md-1'><label class='visibilidad lin'>4 hras</label></td>
+    <td class='col-md-1'><label class='visibilidad lin'>5 hras</label></td>
+    <td class='col-md-1'><label class='visibilidad lin'>6 hras</label></td>
+    <td class='col-md-1'><label class='visibilidad lin'>7 hras</label></td>
+    <td class='col-md-1'><label class='visibilidad lin'>8 hras</label></td>
+    <td class='col-md-1'><label class='visibilidad lin'>9 hras</label></td>
+    <td class='col-md-1'><label class='visibilidad lin'>10 hras</label></td>
+    <td class='col-md-1'><label class='visibilidad lin'></label></td>
 
-    <td class='col-md-2'><label class='visibilidad'>$prod1</label></td>
+    <td class='col-md-1'><label class='visibilidad'></label></td>
+    <td class='col-md-1'><label class='visibilidad'>$prod1</label></td>
     <td class='col-md-1'><label class='visibilidad'>$prod2</label></td>
     <td class='col-md-1'><label class='visibilidad'>$prod3</label></td>
     <td class='col-md-1'><label class='visibilidad'>$prod4</label></td>
@@ -99,7 +102,9 @@ while ($row = $rslt->fetch_assoc()) {
     <td class='col-md-1'><label class='visibilidad'>$prod7</label></td>
     <td class='col-md-1'><label class='visibilidad'>$prod8</label></td>
     <td class='col-md-1'><label class='visibilidad'>$prod9</label></td>
-    <td class='col-md-2'><label class='visibilidad'>$prod10</label></td>
+    <td class='col-md-1'><label class='visibilidad'>$prod10</label></td>
+    <td class='col-md-1'><label class='visibilidad'></label></td>
+
   </tr>";
 }
 

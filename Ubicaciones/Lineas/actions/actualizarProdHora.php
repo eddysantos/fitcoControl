@@ -4,21 +4,27 @@ $root = $_SERVER['DOCUMENT_ROOT'];
 require $root . '/fitcoControl/Resources/PHP/utilities/initialScript.php';
 
 $pk_id = trim($_POST['id']);
-$linea = trim($_POST['mlinea']);
-$fecha = trim($_POST['mfecha']);
-$ope = trim($_POST['mope']);
-$nombre = trim($_POST['mnombre']);
-$meta = trim($_POST['mmeta']);
-$mprod = trim($_POST['mprod']);
+$prod2 = trim($_POST['prod2']);
+$prod3 = trim($_POST['prod3']);
+$prod4 = trim($_POST['prod4']);
+$prod5 = trim($_POST['prod5']);
+$prod6 = trim($_POST['prod6']);
+$prod7 = trim($_POST['prod7']);
+$prod8 = trim($_POST['prod8']);
+$prod9 = trim($_POST['prod9']);
+$prod10 = trim($_POST['prod10']);
 
 
 $query = "UPDATE ct_linea
-SET linea = ?,
-operacion = ?,
-nombre = ?,
-fecha = ?,
-meta = ?,
-prod1 = ?
+SET prod2 = ?,
+prod3 = ?,
+prod4 = ?,
+prod5 = ?,
+prod6 = ?,
+prod7 = ?,
+prod8 = ?,
+prod9 = ?,
+prod10 = ?
 WHERE pk_linea = ?";
 
 
@@ -29,7 +35,7 @@ if (!($stmt)) {
   exit_script($system_callback);
 }
 
-$stmt->bind_param('sssssss',$linea,$ope,$nombre,$fecha,$meta,$mprod,$pk_id);
+$stmt->bind_param('ssssssssss',$prod2,$prod3,$prod4,$prod5,$prod6,$prod7,$prod8,$prod9,$prod10,$pk_id);
 if (!($stmt)) {
   $system_callback['code'] = "500";
   $system_callback['message'] = "Error during variables binding [$stmt->errno]: $stmt->error";

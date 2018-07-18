@@ -520,3 +520,40 @@ div.submenuMed {
   margin-bottom: 0px;
 }
 /* FINALIZA popup-list */
+
+.lin{
+  color: BLACK;
+  text-shadow: 1px 1px 8px rgba(62, 109, 140, 0.60);
+}
+
+.c-select {
+  display: inline-block;
+  max-width: 100%;
+  height: calc(3.25rem + 2px);
+  padding: .375rem 1.75rem .375rem .75rem;
+  line-height: 1.25;
+  color: #495057;
+  vertical-align: middle;
+  background: #fff url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23333' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E") no-repeat right .75rem center;
+  background-size: 8px 10px;
+  border: 1px solid rgba(0, 0, 0, .15);
+  border-radius: .85rem;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none
+}
+
+.c-select:focus {
+  border-color: #80bdff;
+  outline: 0
+}
+
+.c-select:focus::-ms-value {
+  color: #495057;
+  background-color: #fff
+}
+
+.c-select:disabled {
+  color: #868e96;
+  background-color: #e9ecef
+}

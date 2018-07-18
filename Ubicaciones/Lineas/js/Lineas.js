@@ -1,6 +1,31 @@
 $(document).ready(function(){
   lineas_Det();
 
+
+  $('#filter').click(function(){
+    var value = $('#fetchval').val();
+    var fe = $('#fechaval').val();
+    validacion = $('#fechaval').val() == "" ||
+    $('#fetchval').val() == "";
+
+    if (validacion) {
+      swal("NO PUEDE CONTINUAR","Los dos campos necesitan estar llenos","error");
+    }else {
+      $.ajax({
+        url: 'actions/fetchSelect.php',
+        method: 'POST',
+        data: {request:value, fe:fe},
+        success: function(r){
+          r = JSON.parse(r);
+          if (r.code == 1) {
+            $('#tabla_lineas').html(r.data);
+          } else {
+            console.error(r.message);
+          }
+        }
+      });
+    }
+  });
 });
 
 //MOSTRAR TABLA
@@ -19,7 +44,30 @@ function lineas_Det(){
   })
 }
 
+// mostrar divs en modal
+$('.lt-lin').click(function(){
+  var accion = $(this).attr('accion');
+  var status = $(this).attr('status');
 
+  switch (accion) {
+    case "empleado":
+      $('#lis-empleado').fadeIn();
+      $('#add-empleado').fadeIn();
+      $('#lis-operacion').hide();
+      $('#add-operacion').hide();
+      break;
+
+    case "operacion":
+      $('#lis-operacion').fadeIn();
+      $('#lis-empleado').hide();
+      $('#add-operacion').fadeIn();
+      $('#add-empleado').hide();
+
+      break;
+    default:
+      console.error("Something went terribly wrong...");
+  }
+});
 
 //AGREGAR NUEVO REGISTRO EN LINEA
 $('#NuevoRegistroLin').click(function(){
@@ -51,6 +99,60 @@ $('#NuevoRegistroLin').click(function(){
 		}
 	});
 });
+
+//ADD EMPLEADO
+$('#add-empleado').click(function(){
+  var data = {
+		nemp: $('#a-numEmp').val(),
+    nombre: $('#a-nombre').val(),
+    apellido: $('#a-apellido').val()
+  }
+
+	$.ajax({
+		type: "POST",
+		url: "/fitcoControl/Ubicaciones/Lineas/actions/addEmpleado.php",
+		data: data,
+		success: 	function(request){
+			r = JSON.parse(request);
+      if (r.code == 1) {
+        alertify.success('SE AGREGÓ CORRECTAMENTE');
+        $('.modal').modal('hide');
+        $('.spanA').css('display', '');
+        lineas_Det();
+
+			} else {
+        swal("FALLO AL REGISTRAR","No se agregó el registro","error");
+				console.error(r.message);
+			}
+		}
+	});
+});
+
+//ADD EMPLEADO
+$('#add-operacion').click(function(){
+  var data = {
+		oper: $('#a-operacion').val()
+  }
+
+	$.ajax({
+		type: "POST",
+		url: "/fitcoControl/Ubicaciones/Lineas/actions/addOperacion.php",
+		data: data,
+		success: 	function(request){
+			r = JSON.parse(request);
+      if (r.code == 1) {
+        alertify.success('SE AGREGÓ CORRECTAMENTE');
+        $('.modal').modal('hide');
+        $('.spanA').css('display', '');
+        lineas_Det();
+			} else {
+        swal("FALLO AL REGISTRAR","No se agregó el registro","error");
+				console.error(r.message);
+			}
+		}
+	});
+});
+
 
 
 
@@ -90,6 +192,79 @@ $('tbody').on('click', '.editar-linea', function(){
 
 })
 
+//ACTUALIZAR HORAS
+
+$('tbody').on('click', '.addProducc', function(){
+  var dbid = $(this).attr('db-id');
+  var tar_modal = $($(this).attr('href'));
+  var fetch_linea = $.ajax({
+    method: 'POST',
+    data: {dbid: dbid},
+    url: 'actions/fetchDetalleLineas.php'
+  });
+
+  fetch_linea.done(function(r){
+    r = JSON.parse(r);
+    if (r.code == 1) {
+
+    for (var key in r.data) {
+      if ($('#' + key).is('select')) {
+        continue;
+      }
+
+      if (r.data.hasOwnProperty(key)) {
+        $('#' + key).html(r['data'][key]).val(r['data'][key]).addClass('has-content');
+        if ( typeof($('#'+key).attr('db-id')) != 'undefined' && $('#'+key).attr('db-id') !== false) {
+          $('#' + key).attr('db-id', r['data'][key]);
+        }
+      }
+    }
+    $('#add-producc').attr('db-id', r.data.pk_linea);
+    tar_modal.modal('show');
+    } else {
+      console.error(r);
+    }
+  })
+})
+
+// EDITAR DATOS
+$('#add-producc').click(function(){
+  var data = {
+    id: $('#pk_linea').val(),
+    prod2: $('#prod2').val(),
+    prod3: $('#prod3').val(),
+    prod4: $('#prod4').val(),
+    prod5: $('#prod5').val(),
+    prod6: $('#prod6').val(),
+    prod7: $('#prod7').val(),
+    prod8: $('#prod8').val(),
+    prod9: $('#prod9').val(),
+    prod10: $('#prod10').val()
+  }
+
+  $.ajax({
+    type: "POST",
+    url:'/fitcoControl/Ubicaciones/Lineas/actions/actualizarProdHora.php',
+    data: data,
+    success: 	function(r){
+      console.log(r);
+      r = JSON.parse(r);
+      if (r.code == 1) {
+        lineas_Det();
+        swal("Exito", "Se agrego correctamente.", "success");
+        $('.modal').modal('hide');
+      } else {
+        console.error(r.message);
+        swal("Algo Fallo", "Favor de notificar a sistemas.", "error");
+      }
+    },
+    error: function(x){
+      console.error(x);
+    }
+  });
+$('.modal').modal('hide');
+});
+
 
 
 // EDITAR DATOS
@@ -106,7 +281,6 @@ $('#medit-linea').click(function(){
 
   $.ajax({
     type: "POST",
-    // url: 'actions/editar.php',
     url:'/fitcoControl/Ubicaciones/Lineas/actions/editar.php',
     data: data,
     success: 	function(r){
@@ -125,5 +299,5 @@ $('#medit-linea').click(function(){
       console.error(x);
     }
   });
-$('.modal').modal('hide');
+  $('.modal').modal('hide');
 });

@@ -6,6 +6,7 @@ require $root . '/fitcoControl/Resources/PHP/utilities/initialScript.php';
 $system_callback = [];
 $data = $_POST;
 
+
 $query = "SELECT * FROM ct_linea WHERE pk_linea = ?";
 
 $stmt = $conn->prepare($query);
