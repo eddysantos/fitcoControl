@@ -79,7 +79,7 @@ input:-webkit-autofill {
   text-align: right;
 }
 
-.clt_usr .consultar, .clt_usr .buscador{
+.clt_usr .consultar,.clt_usr .mod, .clt_usr .buscador, .clt_usr .search{
   cursor: pointer;
   opacity: 0.6;
   -moz-transition: all 0.2s linear;
@@ -88,7 +88,7 @@ input:-webkit-autofill {
   transition: all 0.2s linear;
 }
 
-.clt_usr  .consultar  .icon,.clt_usr  .buscador  .icon {
+.clt_usr  .consultar  .icon,.clt_usr .mod .icon,.clt_usr  .buscador  .icon,.clt_usr  .search  .icon {
   display: inline-block;
   text-align: center;
   padding: 1px 0 0 0;
@@ -100,7 +100,7 @@ input:-webkit-autofill {
   line-height: 0!important;
 }
 
-.clt_usr .consultar  span,.clt_usr .buscador  span {
+.clt_usr .consultar  span,.clt_usr .mod span,.clt_usr .buscador  span,.clt_usr .search  span  {
   overflow: hidden;
   display: inline-flex;
   margin-left: 5px;
@@ -115,22 +115,22 @@ input:-webkit-autofill {
   font-size: 20px;
 }
 
-.clt_usr .consultar:hover,.clt_usr .buscador:hover {
+.clt_usr .consultar:hover,.clt_usr .mod:hover,.clt_usr .buscador:hover,.clt_usr .search:hover{
   opacity: 1.0;
 }
 
-.clt_usr .consultar:hover span,.clt_usr .buscador:hover span{
+.clt_usr .consultar:hover span,.clt_usr .mod:hover span,.clt_usr .buscador:hover span,.clt_usr .search:hover span{
   width: 190px;
 }
 
-.clt_usr .consultar:hover .spanA {
+.clt_usr .consultar:hover .spanA,.clt_usr .mod:hover .spanA  {
   width: 145px;
 }
 .clt_usr .consultar:hover .spanM {
   width: 80px;
 }
 
-.clt_usr .buscador:hover .spanB{
+.clt_usr .buscador:hover .spanB, .clt_usr .search:hover .spanB{
   width: 200px;
 }
 
@@ -523,6 +523,10 @@ div.submenuMed {
 
 .lin{
   color: BLACK;
+  background-color: rgba(227, 227, 227, 0.68);
+}
+
+.ef{
   text-shadow: 1px 1px 8px rgba(62, 109, 140, 0.60);
 }
 
@@ -556,4 +560,12 @@ div.submenuMed {
 .c-select:disabled {
   color: #868e96;
   background-color: #e9ecef
+}
+
+.m{
+  text-align: center!important;
+}
+
+.bsha{
+      box-shadow: 0.2px 0.7px 1px;
 }

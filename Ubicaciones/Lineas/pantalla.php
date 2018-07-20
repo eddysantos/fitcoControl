@@ -14,9 +14,9 @@ if (!isset($_SESSION['user'])) {
     <thead>
       <tr class="row clt_usr mt-5 mb-5">
         <td class="col-md-2">
-          <input id="fechaval" class="effect-17" type="date" required>
+          <input id="fechaval" class="c-select" type="date" required style="letter-spacing:3px;color: rgba(62, 109, 140, 0.85);">
         </td>
-        <td class="col-md-2">
+        <td class="col-md-2 text-left">
           <select id="fetchval" class="c-select" style="letter-spacing: 3px;color: rgba(62, 109, 140, 0.85);">
             <option value="">Selecciona Linea</option>
             <option value="Linea 1">Linea 1</option>
@@ -27,26 +27,26 @@ if (!isset($_SESSION['user'])) {
             <option value="Linea 6">Linea 6</option>
           </select>
         </td>
-        <td class="col-md-1 text-left">
+        <td class="col-md-1 text-left pl-0">
           <a href="#" class="rotate-link ancla" id="filter">
             <img src="/fitcoControl/Resources/iconos/searchF.svg" class="icon1 rotate-icon" style="width:30px;">
           </a>
         </td>
         <td class="col-md-2"></td>
         <td class="col-md-5">
-          <a href="#AgregarLista" data-toggle="modal" class="rotate-link consultar ancla" style="font-size:larger;text-decoration:none;">
+          <a href="#AgregarLista" data-toggle="modal" class="rotate-link mod ancla" style="font-size:larger;text-decoration:none;">
             <img src="/fitcoControl/Resources/iconos/add.svg" class="icon1 rotate-icon" style="width:30px;">
             <span class="spanA">Agregar Lista</span>
           </a>
 
-          <a class="rotate-link consultar ancla" style="font-size: larger;" accion="aproduccion" status="cerrado">
+          <a class="rotate-link consultar ancla" style="font-size: larger;" accion="agproduccion" status="cerrado">
             <img src="/fitcoControl/Resources/iconos/001-computer.svg" class="icon1 rotate-icon" style="width:30px;">
             <span>Agregar Produccion</span>
           </a>
 
-          <a class="rotate-link buscador ancla" >
+          <a class="rotate-link buscador ancla"  accion="msearch" status="cerrado">
             <img src="/fitcoControl/Resources/iconos/search.svg" class="icon rotate-icon" style="width:30px">
-            <span class="spanB"><input class="effect-17 real-time-search" type="text" name="search" placeholder="Buscar..." table-body="#tabla_lineas"  action="mostrar"></span>
+            <span class="spanB"><input class="effect-17 real-time-search" type="text" name="search"  placeholder="Buscar..." table-body="#tabla_lineas" action="mostrar"></span>
           </a>
         </td>
       </tr>
@@ -59,7 +59,11 @@ if (!isset($_SESSION['user'])) {
   <table class="table table-hover fixed-table">
     <thead>
       <tr class='row m-0 encabezado text-center'>
-        <td class='col-md-2'><h3>Fecha</h3></td>
+        <td class='col-md-2'>
+          <h3><a class="consultar" accion="verEfi" status="cerrado">
+          <img  src='/fitcoControl/Resources/iconos/002-order.svg' class='img ml-3 spand-icon'>
+        </a>Fecha</h3>
+      </td>
         <td class='col-md-4'><h3>Nombre de Empleado</h3></td>
         <td class='col-md-3'><h3>Operación</h3></td>
         <td class='col-md-1'><h3>Linea</h3></td>
@@ -71,64 +75,6 @@ if (!isset($_SESSION['user'])) {
         <td colspan="9">No hay resultados</td>
       </tr>
     </tbody>
-    <!-- <tfoot>
-      <tr class="row m-0" style="border-top: 2px dotted;">
-        <td class="col-md-1"></td>
-        <td class="col-md-1">hora 1</td>
-        <td class="col-md-1">hora 2</td>
-        <td class="col-md-1">hora 3</td>
-        <td class="col-md-1">hora 4</td>
-        <td class="col-md-1">hora 5</td>
-        <td class="col-md-1">hora 6</td>
-        <td class="col-md-1">hora 7</td>
-        <td class="col-md-1">hora 8</td>
-        <td class="col-md-1">hora 9</td>
-        <td class="col-md-1">hora 10</td>
-        <td class="col-md-1"></td>
-      </tr>
-      <tr class="row m-0">
-        <td class="col-md-1">Avance</td>
-        <td class="col-md-1"></td>
-        <td class="col-md-1"></td>
-        <td class="col-md-1"></td>
-        <td class="col-md-1"></td>
-        <td class="col-md-1"></td>
-        <td class="col-md-1"></td>
-        <td class="col-md-1"></td>
-        <td class="col-md-1"></td>
-        <td class="col-md-1"></td>
-        <td class="col-md-1"></td>
-        <td class="col-md-1"></td>
-      </tr>
-      <tr class="row m-0">
-        <td class="col-md-1">Eficiencia</td>
-        <td class="col-md-1"></td>
-        <td class="col-md-1"></td>
-        <td class="col-md-1"></td>
-        <td class="col-md-1"></td>
-        <td class="col-md-1"></td>
-        <td class="col-md-1"></td>
-        <td class="col-md-1"></td>
-        <td class="col-md-1"></td>
-        <td class="col-md-1"></td>
-        <td class="col-md-1"></td>
-        <td class="col-md-1"></td>
-      </tr>
-      <tr class="row m-0">
-        <td class="col-md-1">Meta</td>
-        <td class="col-md-1"></td>
-        <td class="col-md-1"></td>
-        <td class="col-md-1"></td>
-        <td class="col-md-1"></td>
-        <td class="col-md-1"></td>
-        <td class="col-md-1"></td>
-        <td class="col-md-1"></td>
-        <td class="col-md-1"></td>
-        <td class="col-md-1"></td>
-        <td class="col-md-1"></td>
-        <td class="col-md-1"></td>
-      </tr>
-    </tfoot> -->
   </table>
 </form>
 

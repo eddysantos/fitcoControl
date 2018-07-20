@@ -44,6 +44,70 @@ function lineas_Det(){
   })
 }
 
+//DIV BUSCARDOR
+$('.buscador').hover(function(){
+  var accion = $(this).attr('accion');
+  var status = $(this).attr('status');
+
+  switch (accion) {
+    case "msearch":
+      if (status == 'cerrado') {
+        $(this).attr('status','abierto');
+        $('#tablaLineas').animate({"right": "4%"}, "slow");
+        $('#NuevaProduccion').hide();
+        $('.ef').css('font-size','16px');
+        
+
+      }else {
+        $('.spanB').css('display', '');
+        $(this).attr('status', 'cerrado');
+      }
+      break;
+
+    default:
+      console.error("Something went terribly wrong...");
+  }
+});
+
+$('.consultar').click(function(){
+  var accion = $(this).attr('accion');
+  var status = $(this).attr('status');
+
+  switch (accion) {
+    case "agproduccion":
+    if (status == 'cerrado') {
+      $(this).attr('status', 'abierto');
+      $('#tablaLineas').animate({"right": "36%"}, "slow");
+      $('.ef').css('font-size','14px');
+      $('#NuevaProduccion').fadeIn(2500);
+      $('#SinRegistros').fadeOut();
+    }else {
+      $(this).attr('status', 'cerrado');
+      $('#tablaLineas').animate({"right": "4%"}, "slow");
+      $('#NuevaProduccion').hide();
+      $('.ef').css('font-size','16px');
+
+    }
+    break;
+
+    case "verEfi":
+    if (status == 'cerrado') {
+      $(this).attr('status', 'abierto');
+      $('.m').css('display', 'inherit');
+      $('tr#item').addClass('bsha');
+    }else {
+      $(this).attr('status', 'cerrado');
+      $('.m').css('display', 'none');
+      $('tr#item').removeClass('bsha');
+    }
+    break;
+    default:
+      console.error("Something went terribly wrong...");
+  }
+});
+
+
+
 // mostrar divs en modal
 $('.lt-lin').click(function(){
   var accion = $(this).attr('accion');
@@ -71,6 +135,8 @@ $('.lt-lin').click(function(){
 
 //AGREGAR NUEVO REGISTRO EN LINEA
 $('#NuevoRegistroLin').click(function(){
+
+
   var data = {
 		linea: $('#lin_linea').val(),
     fecha: $('#lin_fecha').val(),
@@ -80,6 +146,16 @@ $('#NuevoRegistroLin').click(function(){
     produc: $('#lin_pro').val()
   }
 
+  validacion = $('#lin_linea').val() == "" ||
+  $('#lin_fecha').val() == "" ||
+  $('#lin_ope').val() == "" ||
+  $('#lin_empleado').val() == "" ||
+  $('#lin_pro').val() == "" ||
+  $('#lin_meta').val() == "";
+
+  if (validacion) {
+    swal("NO PUEDE CONTINUAR","Todos los campos necesitan estar llenos","error");
+  }else {
 	$.ajax({
 		type: "POST",
 		url: "/fitcoControl/Ubicaciones/Lineas/actions/agregar.php",
@@ -90,6 +166,7 @@ $('#NuevoRegistroLin').click(function(){
         alertify.success('SE AGREGÓ CORRECTAMENTE');
         $('#NuevaProduccion').hide();
         $('.spanA').css('display', '');
+        $('#tablaLineas').animate({"right": "4%"}, "slow");
         lineas_Det();
 			} else {
         swal("FALLO AL REGISTRAR","No se agregó el registro","error");
@@ -98,6 +175,7 @@ $('#NuevoRegistroLin').click(function(){
 			}
 		}
 	});
+  }
 });
 
 //ADD EMPLEADO
@@ -108,24 +186,33 @@ $('#add-empleado').click(function(){
     apellido: $('#a-apellido').val()
   }
 
-	$.ajax({
-		type: "POST",
-		url: "/fitcoControl/Ubicaciones/Lineas/actions/addEmpleado.php",
-		data: data,
-		success: 	function(request){
-			r = JSON.parse(request);
-      if (r.code == 1) {
-        alertify.success('SE AGREGÓ CORRECTAMENTE');
-        $('.modal').modal('hide');
-        $('.spanA').css('display', '');
-        lineas_Det();
+  validacion = $('#a-numEmp').val() == "" ||
+  $('#a-nombre').val() == "" ||
+  $('#a-apellido').val() == "";
 
-			} else {
-        swal("FALLO AL REGISTRAR","No se agregó el registro","error");
-				console.error(r.message);
-			}
-		}
-	});
+
+  if (validacion) {
+    swal("NO PUEDE CONTINUAR","Necesita llenar todos los campos","error");
+  }else {
+  	$.ajax({
+  		type: "POST",
+  		url: "/fitcoControl/Ubicaciones/Lineas/actions/addEmpleado.php",
+  		data: data,
+  		success: 	function(request){
+  			r = JSON.parse(request);
+        if (r.code == 1) {
+          alertify.success('SE AGREGÓ CORRECTAMENTE');
+          $('.modal').modal('hide');
+          $('.spanA').css('display', '');
+          lineas_Det();
+
+  			} else {
+          swal("FALLO AL REGISTRAR","No se agregó el registro","error");
+  				console.error(r.message);
+  			}
+  		}
+  	});
+  }
 });
 
 //ADD EMPLEADO
@@ -134,26 +221,30 @@ $('#add-operacion').click(function(){
 		oper: $('#a-operacion').val()
   }
 
-	$.ajax({
-		type: "POST",
-		url: "/fitcoControl/Ubicaciones/Lineas/actions/addOperacion.php",
-		data: data,
-		success: 	function(request){
-			r = JSON.parse(request);
-      if (r.code == 1) {
-        alertify.success('SE AGREGÓ CORRECTAMENTE');
-        $('.modal').modal('hide');
-        $('.spanA').css('display', '');
-        lineas_Det();
-			} else {
-        swal("FALLO AL REGISTRAR","No se agregó el registro","error");
-				console.error(r.message);
-			}
-		}
-	});
+  validacion =  $('#a-operacion').val() == "";
+
+  if (validacion) {
+    swal("NO PUEDE CONTINUAR","El Campo esta vacio","error");
+  }else {
+  	$.ajax({
+  		type: "POST",
+  		url: "/fitcoControl/Ubicaciones/Lineas/actions/addOperacion.php",
+  		data: data,
+  		success: 	function(request){
+  			r = JSON.parse(request);
+        if (r.code == 1) {
+          alertify.success('SE AGREGÓ CORRECTAMENTE');
+          $('.modal').modal('hide');
+          $('.spanA').css('display', '');
+          lineas_Det();
+  			} else {
+          swal("FALLO AL REGISTRAR","No se agregó el registro","error");
+  				console.error(r.message);
+  			}
+  		}
+  	});
+  }
 });
-
-
 
 
 //PASAR DATOS A MODAL
@@ -255,11 +346,13 @@ $('#add-producc').click(function(){
         $('.modal').modal('hide');
       } else {
         console.error(r.message);
-        swal("Algo Fallo", "Favor de notificar a sistemas.", "error");
+        alertify.error('NO SE MODIFICÓ NINGUN REGISTRO');
       }
     },
     error: function(x){
       console.error(x);
+      swal("Algo Fallo", "Favor de notificar a sistemas.", "error");
+
     }
   });
 $('.modal').modal('hide');
@@ -293,10 +386,14 @@ $('#medit-linea').click(function(){
 
       } else {
         console.error(r.message);
+        alertify.error('NO SE MODIFICÓ NINGUN REGISTRO');
+
       }
     },
     error: function(x){
       console.error(x);
+      swal("Algo Fallo", "Favor de notificar a sistemas.", "error");
+
     }
   });
   $('.modal').modal('hide');

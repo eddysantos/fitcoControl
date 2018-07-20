@@ -25,7 +25,7 @@ prod7 = ?,
 prod8 = ?,
 prod9 = ?,
 prod10 = ?
-WHERE pk_linea = ?";
+WHERE pk_linea = ?"; 
 
 
 $stmt = $conn->prepare($query);

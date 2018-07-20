@@ -61,8 +61,7 @@
         </div>
       </div>
       <div class="justify-content-center modal-footer">
-        <a href="#" id="medit-linea" class="editarlinea">ACTUALIZAR <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
-        <!-- <button id="medit-linea" type="submit" class="w-50 btnsub btn boton btn-block">ACTUALIZAR</button> -->
+        <button id="medit-linea" type="submit" class="editarlinea w-50 btnsub btn boton btn-block">ACTUALIZAR</button>
       </div>
     </div>
   </div>
