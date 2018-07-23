@@ -8,6 +8,18 @@
   $cv =  $_SESSION['user']['cobranza_ver'];
   $vv = $_SESSION['user']['verVentas'];
   $clv = $_SESSION['user']['cliente_ver'];
+
+  // cliente
+  $cliente = $_SESSION['user']['c_ver'];
+
+
+  // tesoreria
+
+
+  // produccion
+
+
+  // ventas
   $admin = $_SESSION['user']['privilegiosUsuario']== "Administrador";
 ?>
 
@@ -45,7 +57,7 @@
       <?php endif; ?>
 
 
-      <?php if ($clv == 1 || $admin): ?>
+      <?php if ($cliente == 1 || $admin): ?>
         <li class="nav-item">
           <a href="/fitcoControl/Ubicaciones/Clientes/Clientes.php" class="bn transicion">CLIENTES<span class="barra gris">DIVISION 2</span></a>
         </li>

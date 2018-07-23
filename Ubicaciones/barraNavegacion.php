@@ -4,6 +4,10 @@
   $cv =  $_SESSION['user']['cobranza_ver'];
   $clv = $_SESSION['user']['cliente_ver'];
   $vv = $_SESSION['user']['verVentas'];
+
+  // clientes
+  $cliente = $_SESSION['user']['c_ver'];
+
   $admin = $_SESSION['user']['privilegiosUsuario'] == "Administrador";
   $priv_todos = true;
 ?>
@@ -14,7 +18,6 @@
     <link rel="stylesheet" href="/fitcoControl/Resources/css/barranavegacion.css">
     <link rel="stylesheet" href="/fitcoControl/Resources/fontAwesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="/fitcoControl/Resources/bootstrap/css/bootstrap.min.css">
-    <!-- <link rel="stylesheet" href="/fitcoControl/Resources/librerias/bootstrap/bootstrap4.min.css"> -->
     <link rel="stylesheet" href="/fitcoControl/Resources/css/Pagina.css">
     <link rel="stylesheet" href="/fitcoControl/Resources/css/Inputs.css">
     <link rel="stylesheet" href="/fitcoControl/Resources/css/modales.css">
@@ -44,7 +47,7 @@
         <li class="nav-item"><a class="bn bloqueo w-95">USUARIOS <span class="barra">DIVISIÓN 1</span></a></li>
       <?php endif;?>
 
-      <?php if ($clv == 1 || $admin): ?>
+      <?php if ($cliente == 1 || $admin): ?>
         <li class="nav-item"><a class="bn" href="/fitcoControl/Ubicaciones/Clientes/Clientes.php">CLIENTES <span class="barra">DIVISIÓN 2</span></a></li>
       <?php else: ?>
         <li class="nav-item"><a class="bn bloqueo w-95">CLIENTES <span class="barra">DIVISIÓN 2</span></a></li>
