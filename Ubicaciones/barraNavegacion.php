@@ -39,9 +39,9 @@
     <ul class="nav nav-pills nav-fill">
 
       <?php if ($admin): ?>
-        <li class="nav-item"><a class="bn" href="/fitcoControl/Ubicaciones/Usuarios/Usuarios.php">USUARIOS <span class="barra">DIVISIÓN 1</span></a></li>
+        <li class="nav-item"><a class="bn" href="/fitcoControl/Ubicaciones/Comunicaciones/pagina.php">COMUNICACION <span class="barra">DIVISIÓN 1</span></a></li>
       <?php else: ?>
-        <li class="nav-item"><a class="bn bloqueo w-95">USUARIOS <span class="barra">DIVISIÓN 1</span></a></li>
+        <li class="nav-item"><a class="bn bloqueo w-95">COMUNICACION <span class="barra">DIVISIÓN 1</span></a></li>
       <?php endif;?>
 
       <?php if ($clv == 1 || $admin): ?>
