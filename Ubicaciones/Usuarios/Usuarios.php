@@ -32,118 +32,137 @@ if (!isset($_SESSION['user'])) {
   </div>
 </div>
 
-    <div class="container-fluid mt-4">
-      <section id="mostrarUsuarios"></section>
-    </div>
+<div class="container-fluid mt-4">
+  <section id="mostrarUsuarios"></section>
+</div>
 
 
-    <form id="NuevoUsuario" class="agregarnuevo mb-10" style="display:none;margin-bottom:80px">
-      <table class="table">
-        <tbody>
-          <tr class="row m20">
-            <td class="col-md-12 input-effect p-0">
-              <input type="text" id="usr_id" style="display:none">
-              <input id="usr_nombre" class="effect-17" type="text" required>
-                <label>Nombre (s)</label>
-                <span class="focus-border"></span>
-            </td>
-          </tr>
-          <tr class="row m20">
-            <td class="col-md-12 input-effect p-0">
-              <input  id="usr_apellidos" class="effect-17" type="text" required>
-                <label>Apellidos</label>
-                <span class="focus-border"></span>
-            </td>
-          </tr>
-          <tr class="row m20">
-            <td class="col-md-12 input-effect p-0">
-              <input id="usr_correo" class="effect-17" type="text" required>
-                <label>Correo</label>
-                <span class="focus-border"></span>
-            </td>
-          </tr>
-          <tr class="row m20">
-            <td class="col-md-12 input-effect p-0">
-              <input id="usr_departamento" class="effect-17" type="text" required>
-                <label>Division o Departamento</label>
-                <span class="focus-border"></span>
-            </td>
-          </tr>
-          <tr class="row m20">
-            <td class="col-md-12 input-effect p-0">
-              <input id="usr_puesto" class="effect-17" type="text" required>
-                <label>Puesto</label>
-                <span class="focus-border"></span>
-            </td>
-          </tr>
-          <tr class="row m20">
-            <td class="col-md-12 input-effect p-0">
-              <input id="usr_usuario" class="effect-17" type="text" required>
-                <label>Usuario</label>
-                <span class="focus-border"></span>
-            </td>
-          </tr>
-          <tr class="row m20">
-            <td class="col-md-12 input-effect p-0">
-              <input  id="usr_contra" class="effect-17" type="text" required>
-                <label>Contraseña</label>
-                <span class="focus-border"></span>
-            </td>
-          </tr>
-          <tr class="row m20">
-            <td class="col-md-12 input-effect p-0">
-              <input id="usr_privilegios" class="w-100 effect-17" list="ingr" required>
-              <datalist id="ingr">
-                <option value="Administrador">Administrador</option>
-                <option value="Usuario">Usuario</option>
-              </datalist>
-              <label>Privilegios</label>
-              <span class="focus-border"></span>
-            </td>
-          </tr>
-          <tr class="row ">
-            <td class="col-md-6 text-center">
-              <input type="checkbox" id="verCobranza">Ver Tesoreria
-            </td>
-            <td class="col-md-6 text-center">
-              <input type="checkbox" id="editCobranza">Editar Tesoreria
-            </td>
-          </tr>
-          <tr class="row">
-            <td class="col-md-6 text-center">
-              <input type="checkbox" id="verProduccion">Ver Producción
-            </td>
-            <td class="col-md-6 text-center">
-              <input type="checkbox" id="editProduccion">Editar Producción
-            </td>
-          </tr>
-          <tr class="row">
-            <td class="col-md-6 text-center">
-              <input type="checkbox" id="verCliente">Ver Cliente
-            </td>
-            <td class="col-md-6 text-center">
-              <input type="checkbox" id="editCliente">Editar Cliente
-            </td>
-          </tr>
-          <tr class="row">
-            <td class="col-md-6 text-center">
-              <input type="checkbox" id="verVentas">Ver Ventas
-            </td>
-            <td class="col-md-6 text-center">
-              <input type="checkbox" id="editVentas">Editar Ventas
-          </tr>
-          <tr class="row justify-content-center mb-3">
-            <td class="col-md-4">
-              <button type="submit" id="NuevoRegistroUsuario" class="btnsub btn boton btn-block ">AGREGAR</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </form>
+<form id="NuevoUsuario" class="agregarnuevo mb-10" style="display:none;margin-bottom:80px">
+  <table class="table">
+    <tbody>
+      <tr class="row m20">
+        <td class="col-md-12 input-effect p-0">
+          <input type="text" id="usr_id" style="display:none">
+          <input id="usr_nombre" class="effect-17" type="text" required>
+            <label>Nombre (s)</label>
+            <span class="focus-border"></span>
+        </td>
+      </tr>
+      <tr class="row m20">
+        <td class="col-md-12 input-effect p-0">
+          <input  id="usr_apellidos" class="effect-17" type="text" required>
+            <label>Apellidos</label>
+            <span class="focus-border"></span>
+        </td>
+      </tr>
+      <tr class="row m20">
+        <td class="col-md-12 input-effect p-0">
+          <input id="usr_correo" class="effect-17" type="text" required>
+            <label>Correo</label>
+            <span class="focus-border"></span>
+        </td>
+      </tr>
+      <tr class="row m20">
+        <td class="col-md-12 input-effect p-0">
+          <input id="usr_departamento" class="effect-17" type="text" required>
+            <label>Division o Departamento</label>
+            <span class="focus-border"></span>
+        </td>
+      </tr>
+      <tr class="row m20">
+        <td class="col-md-12 input-effect p-0">
+          <input id="usr_puesto" class="effect-17" type="text" required>
+            <label>Puesto</label>
+            <span class="focus-border"></span>
+        </td>
+      </tr>
+      <tr class="row m20">
+        <td class="col-md-12 input-effect p-0">
+          <input id="usr_usuario" class="effect-17" type="text" required>
+            <label>Usuario</label>
+            <span class="focus-border"></span>
+        </td>
+      </tr>
+      <tr class="row m20">
+        <td class="col-md-12 input-effect p-0">
+          <input  id="usr_contra" class="effect-17" type="text" required>
+            <label>Contraseña</label>
+            <span class="focus-border"></span>
+        </td>
+      </tr>
+      <tr class="row m20">
+        <td class="col-md-12 input-effect p-0">
+
+          <select id="usr_privilegios" class="w-100 effect-17" required>
+            <option value="">Seleccionar Priv</option>
+            <option value="Administrador">Administrador</option>
+            <option value="Usuario">Usuario</option>
+          </select>
+          <!-- <label>Privilegios</label>
+          <span class="focus-border"></span> -->
+
+
+          <!-- <input id="usr_privilegios" class="w-100 effect-17" list="ingr" required>
+          <datalist id="ingr">
+            <option value="Administrador">Administrador</option>
+            <option value="Usuario" id="userpriv">Usuario</option>
+          </datalist>
+          <label>Privilegios</label>
+          <span class="focus-border"></span> -->
+        </td>
+      </tr>
+
+      <tr class="row m20 privusuarios" style="display:none">
+        <td class="col-md-12"><a href="#privilegios" data-toggle="modal">Agregar Privilegios</a></td>
+      </tr>
+
+
+        <!-- <tr class="row privusuarios">
+          <td class="col-md-6 text-center">
+            <input type="checkbox" id="verCobranza">Ver Tesoreria
+          </td>
+          <td class="col-md-6 text-center">
+            <input type="checkbox" id="editCobranza">Editar Tesoreria
+          </td>
+        </tr>
+        <tr class="row privusuarios">
+          <td class="col-md-6 text-center">
+            <input type="checkbox" id="verProduccion">Ver Producción
+          </td>
+          <td class="col-md-6 text-center">
+            <input type="checkbox" id="editProduccion">Editar Producción
+          </td>
+        </tr>
+        <tr class="row privusuarios">
+          <td class="col-md-6 text-center">
+            <input type="checkbox" id="verCliente">Ver Cliente
+          </td>
+          <td class="col-md-6 text-center">
+            <input type="checkbox" id="editCliente">Editar Cliente
+          </td>
+        </tr>
+        <tr class="row privusuarios">
+          <td class="col-md-6 text-center">
+            <input type="checkbox" id="verVentas">Ver Ventas
+          </td>
+          <td class="col-md-6 text-center">
+            <input type="checkbox" id="editVentas">Editar Ventas
+        </tr> -->
+
+
+        <tr class="row justify-content-center mb-3 agregarNuevoRegistro" style="display:none">
+          <td class="col-md-4">
+            <button type="submit" id="NuevoRegistroUsuario" class="NuevoRegistroUsuario btnsub btn boton btn-block ">AGREGAR</button>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+</form>
 
 
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
+  require $root . '/fitcoControl/Ubicaciones/Usuarios/modales/privilegios.php';
   require $root . '/fitcoControl/Ubicaciones/Modales/Usuarios/EditarUsuario.php';
   require $root . '/fitcoControl/Resources/PHP/Usuarios/pieUsuario.php';
 

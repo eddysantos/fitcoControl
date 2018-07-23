@@ -15,9 +15,20 @@ function markCheckbox(selector, value){
 }
 
 
+$('#usr_privilegios').on('change', function() {
+  if (this.value == 'Administrador') {
+    $('.privusuarios').css('display', 'none');
+    $('.agregarNuevoRegistro').css('display', '');
+  }else {
+    $('.privusuarios').css('display', '');
+    $('.agregarNuevoRegistro').css('display', 'none');
+  }
+});
+
 $(document).ready(function(){
   fetchUsuario();
-  $('#NuevoRegistroUsuario').click(function(){
+  $('.NuevoRegistroUsuario').click(function(){
+
     var nombreUsuario = $('#usr_nombre').val();
     var apellidosUsuario = $('#usr_apellidos').val();
     var correoUsuario = $('#usr_correo').val();
@@ -81,6 +92,7 @@ $(document).ready(function(){
             $('#NuevoUsuario')[0].reset();
             $('#NuevoUsuario').hide();
             $('.spanA').css('display', '');
+            $('.modal').modal('hide');
             fetchUsuario();
             alertify.success('SE AGREGÓ CORRECTAMENTE');
           }

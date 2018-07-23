@@ -18,7 +18,8 @@ $data = array(
 );
 
 require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
-$query = "SELECT * FROM usuarios WHERE pk_usuario = ?";
+// $query = "SELECT * FROM usuarios WHERE pk_usuario = ?";
+$query = "SELECT * FROM usuarios_1 WHERE pk_usuario = ?";
 
 $stmt = $conn->prepare($query);
 $stmt->bind_param('s', $_POST['usuarioId']);

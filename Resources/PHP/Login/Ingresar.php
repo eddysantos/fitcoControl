@@ -13,7 +13,8 @@ $response = array(
   "data"=>"",
 );
 
-  $query = $conn->query("SELECT * FROM usuarios WHERE usrUsuario = '$usuario' AND contraUsuario = '$contra'");
+// $query = $conn->query("SELECT * FROM usuarios WHERE usrUsuario = '$usuario' AND contraUsuario = '$contra'");
+  $query = $conn->query("SELECT * FROM usuarios_1 WHERE usrUsuario = '$usuario' AND contraUsuario = '$contra'");
 
   $results = $query->num_rows;
 
@@ -28,20 +29,7 @@ $response = array(
     $response['msg']="El usuario o contraseña es incorrecto";
     $response['data'] = mysqli_error($conn);
   }
-
-  // if ($result = mysqli_fetch_array($query)) {
-  //   $_SESSION['u_usuario'] = $usuario;
-  //   $response['code'] = "1";
-  //   $response = json_encode($response);
-  //   echo $response;
-  //   die();
-  //
-  // }else {
-  //   $response['code']="200";
-  //   $response['msg']="El usuario o contraseña es incorrecto";
-  //   $response['data'] = mysqli_error($conn);
-  // }
-
+  
   $response = json_encode($response);
   echo $response;
 
