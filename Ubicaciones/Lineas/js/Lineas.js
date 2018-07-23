@@ -12,7 +12,7 @@ $(document).ready(function(){
       swal("NO PUEDE CONTINUAR","Los dos campos necesitan estar llenos","error");
     }else {
       $.ajax({
-        url: 'actions/fetchSelect.php',
+        url: 'actions/fetchselect.php',
         method: 'POST',
         data: {request:value, fe:fe},
         success: function(r){
@@ -56,7 +56,7 @@ $('.buscador').hover(function(){
         $('#tablaLineas').animate({"right": "4%"}, "slow");
         $('#NuevaProduccion').hide();
         $('.ef').css('font-size','16px');
-        
+
 
       }else {
         $('.spanB').css('display', '');
@@ -135,8 +135,6 @@ $('.lt-lin').click(function(){
 
 //AGREGAR NUEVO REGISTRO EN LINEA
 $('#NuevoRegistroLin').click(function(){
-
-
   var data = {
 		linea: $('#lin_linea').val(),
     fecha: $('#lin_fecha').val(),
@@ -333,29 +331,45 @@ $('#add-producc').click(function(){
     prod10: $('#prod10').val()
   }
 
-  $.ajax({
-    type: "POST",
-    url:'/fitcoControl/Ubicaciones/Lineas/actions/actualizarProdHora.php',
-    data: data,
-    success: 	function(r){
-      console.log(r);
-      r = JSON.parse(r);
-      if (r.code == 1) {
-        lineas_Det();
-        swal("Exito", "Se agrego correctamente.", "success");
-        $('.modal').modal('hide');
-      } else {
-        console.error(r.message);
-        alertify.error('NO SE MODIFICÓ NINGUN REGISTRO');
-      }
-    },
-    error: function(x){
-      console.error(x);
-      swal("Algo Fallo", "Favor de notificar a sistemas.", "error");
+  validacion = $('#prod2').val() == "" ||
+  $('#prod3').val() == "" ||
+  $('#prod4').val() == "" ||
+  $('#prod5').val() == "" ||
+  $('#prod6').val() == "" ||
+  $('#prod7').val() == "" ||
+  $('#prod8').val() == "" ||
+  $('#prod9').val() == "" ||
+  $('#prod10').val() == "" ;
 
-    }
-  });
-$('.modal').modal('hide');
+
+  if (validacion) {
+    swal("NO PUEDE CONTINUAR","Llene los demas campos con 0 para continuar","error");
+  }else {
+    $.ajax({
+      type: "POST",
+      url:'/fitcoControl/Ubicaciones/Lineas/actions/actualizarProdHora.php',
+      data: data,
+      success: 	function(r){
+        console.log(r);
+        r = JSON.parse(r);
+        if (r.code == 1) {
+          lineas_Det();
+          swal("Exito", "Se agrego correctamente.", "success");
+          $('.modal').modal('hide');
+        } else {
+          console.error(r.message);
+          alertify.error('NO SE MODIFICÓ NINGUN REGISTRO');
+          $('.modal').modal('hide');
+
+        }
+      },
+      error: function(x){
+        console.error(x);
+        swal("Algo Fallo", "Favor de notificar a sistemas.", "error");
+
+      }
+    });
+  }
 });
 
 

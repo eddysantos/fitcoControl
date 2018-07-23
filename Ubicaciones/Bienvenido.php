@@ -27,7 +27,6 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <!-- <meta charset="utf-8"> -->
     <title>Fit&amp;Co Solutions</title>
     <link rel="stylesheet" href="/fitcoControl/Resources/css/barranavegacion.css">
     <link rel="stylesheet" href="/fitcoControl/Resources/bootstrap/css/bootstrap.min.css">
@@ -48,11 +47,11 @@
         <!-- <li class="nav-item"><h1 id="logo">FIT&amp;CO</h1></li> -->
       <?php if ($admin): ?>
         <li class="nav-item">
-          <a href="/fitcoControl/Ubicaciones/Usuarios/Usuarios.php" class="bn transicion">USUARIOS<span class="barra gris">DIVISION 1</span></a>
+          <a href="/fitcoControl/Ubicaciones/Comunicaciones/pagina.php" class="bn transicion">COMUNICACION<span class="barra gris">DIVISION 1</span></a>
         </li>
       <?php else: ?>
         <li class="nav-item">
-          <a class="bn bloqueo">USUARIOS<span class="barra gris">DIVISION 1</span></a>
+          <a class="bn bloqueo">COMUNICACION<span class="barra gris">DIVISION 1</span></a>
         </li>
       <?php endif; ?>
 
