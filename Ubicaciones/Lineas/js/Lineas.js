@@ -26,7 +26,34 @@ $(document).ready(function(){
       });
     }
   });
+
+
+$('#filtroRepo').click(function(){
+  var fIni = $('#f-Ini').val();
+  var fFin = $('#f-Fin').val();
+  var linea = $('#lin-linea').val();
+  var emp = $('#lin-listaEmp').val();
+  var ope = $('#lin_listaOpe').val();
+
+
+    $.ajax({
+      url: '/fitcoControl/Ubicaciones/Lineas/actions/fetchRepo.php',
+      method: 'POST',
+      data: {request:fIni, ffin:fFin, linea:linea, emp:emp, ope:ope},
+      success: function(r){
+        r = JSON.parse(r);
+        if (r.code == 1) {
+          $('#tabla_Reportes').html(r.data);
+        } else {
+          console.error(r.message);
+        }
+      }
+    });
+  });
 });
+
+
+
 
 //MOSTRAR TABLA
 function lineas_Det(){
@@ -63,7 +90,6 @@ $('.buscador').hover(function(){
         $(this).attr('status', 'cerrado');
       }
       break;
-
     default:
       console.error("Something went terribly wrong...");
   }
@@ -99,6 +125,38 @@ $('.consultar').click(function(){
       $(this).attr('status', 'cerrado');
       $('.m').css('display', 'none');
       $('tr#item').removeClass('bsha');
+    }
+    break;
+
+    case "horaLin":
+    if (status == 'cerrado') {
+      $(this).attr('status', 'abierto');
+      $('#graficahoraLin').css('display', 'inherit');
+    }
+    break;
+
+    case "filtroRepo":
+    if (status == 'cerrado') {
+      $(this).attr('status', 'abierto');
+      $('#reportes').css('display', 'inherit');
+      $('#inputfiltros').hide();
+    }else {
+      $(this).attr('status', 'cerrado');
+      $('#reportes').css('display', 'none');
+      $('#inputfiltros').show();
+    }
+    break;
+
+    case "backRepo":
+    if (status == 'cerrado') {
+      $(this).attr('status', 'abierto');
+      $('#filtroRepo').attr('status', 'cerrado');
+      $('#reportes').css('display', 'none');
+      $('#inputfiltros').show();
+    }else {
+      $(this).attr('status', 'cerrado');
+      $('#reportes').css('display', 'inherit');
+      $('#inputfiltros').hide();
     }
     break;
     default:

@@ -168,6 +168,11 @@ input:-webkit-autofill {
   border-left: 8px solid #014c8c;
 }
 
+
+.bordeAbajo{
+  border-bottom: 2px solid #1b1b1b;
+}
+
 .ancla{
   color: #014c8c!important
 }
