@@ -44,6 +44,16 @@ if (!isset($_SESSION['user'])) {
             <span>Agregar Produccion</span>
           </a>
 
+          <a href="#graficasLineas" data-toggle="modal" class="rotate-link mod ancla" style="font-size:larger;text-decoration:none;">
+            <img src="/fitcoControl/Resources/iconos/grafica2.svg" class="icon1 rotate-icon" style="width:30px;">
+            <span class="spanA">Graficas</span>
+          </a>
+
+          <a href="/fitcoControl/Ubicaciones/Lineas/actions/reportes.php" class="rotate-link mod ancla" style="font-size:larger;text-decoration:none;">
+            <img src="/fitcoControl/Resources/iconos/003-analytics-2.svg" class="icon1 rotate-icon" style="width:30px;">
+            <span class="spanA">Reportes</span>
+          </a>
+
           <a class="rotate-link buscador ancla"  accion="msearch" status="cerrado">
             <img src="/fitcoControl/Resources/iconos/search.svg" class="icon rotate-icon" style="width:30px">
             <span class="spanB"><input class="effect-17 real-time-search" type="text" name="search"  placeholder="Buscar..." table-body="#tabla_lineas" action="mostrar"></span>
@@ -151,5 +161,6 @@ if (!isset($_SESSION['user'])) {
   require $root . '/fitcoControl/Ubicaciones/Lineas/modales/editar.php';
   require $root . '/fitcoControl/Ubicaciones/Lineas/modales/listas.php';
   require $root . '/fitcoControl/Ubicaciones/Lineas/modales/agregarProduccion.php';
+  require $root . '/fitcoControl/Ubicaciones/Lineas/modales/graficas.php';
   require $root . '/fitcoControl/Ubicaciones/Lineas/actions/footer.php';
  ?>

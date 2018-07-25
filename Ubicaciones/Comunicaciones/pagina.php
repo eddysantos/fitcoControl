@@ -36,7 +36,7 @@ require  $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
           <a href="/fitcoControl/Ubicaciones/Usuarios/Usuarios.php" class="linkboton btn-block">Usuarios<span class="a top"></span></a>
         </div>
       </div>
-    </div>
+    </div> 
   </div>
 </div>
 
