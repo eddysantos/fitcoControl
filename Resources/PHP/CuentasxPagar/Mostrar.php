@@ -4,12 +4,6 @@ session_start();
 $root = $_SERVER['DOCUMENT_ROOT'];
 require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
 
-// $data = array(
-//   'code' => "",
-//   'response' => "",
-//   'infoTabla' => ""
-// );
-
 
 $tabla = "";
 $suma = 0;
@@ -35,20 +29,16 @@ cxp.factura AS factura
  if (isset($_POST['cuentas'])) {
    $q = $conn->real_escape_string($_POST['cuentas']);
    $query = "SELECT
-   -- cxp.pk_cuentasPagar AS idCuentas,
    cxp.proveedor AS proveedor,
    cxp.descripcion AS descripcion,
    cxp.montoPago AS total,
    cxp.fechaVencimiento AS vencimiento,
    cxp.pagado AS pagado,
    cxp.factura AS factura
-   -- year(cxp.fechaVencimiento) AS anio
 
     FROM ct_CuentasxPagar cxp
 
-    WHERE
-    -- year(cxp.fechaVencimiento) LIKE '%$q%' OR
-    cxp.proveedor LIKE '%$q%' OR
+    WHERE cxp.proveedor LIKE '%$q%' OR
     cxp.descripcion LIKE '%$q%' OR
     cxp.montoPago LIKE '%$q%' OR
     cxp.fechaVencimiento LIKE '%$q%' OR
@@ -93,14 +83,12 @@ cxp.factura AS factura
             $background = "verde";
           }elseif (($vencimiento > $hoy) && ($total == $pagado)) {
             $background = "verde";
-          }
-          elseif (($vencimiento < $hoy) && ($total > $pagado)) {
+          }elseif (($vencimiento < $hoy) && ($total <> $pagado)) {
             $background = "rojo";
           }
 
         if ($ce == 1 || $admin == "Administrador") {
-          $tabla.= "
-            <tr class='$background row bordelateral m-0' id='item'>
+          $tabla.= "<tr class='$background row bordelateral m-0' id='item'>
               <td class='col-md-1'>
                 <img src='/fitcoControl/Resources/iconos/team.svg' class='icono'>
               </td>
@@ -121,7 +109,7 @@ cxp.factura AS factura
               </td>
 
               <td class='col-md-1 text-right'>
-                <a href='#' class='EditCuenta spand-link' data-toggle='modal' data-target='#EditarCuenta'  cuenta-id='$id'><img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='img spand-icon'></a>
+                <a href='#' class='EditCuenta spand-link' data-toggle='modal' data-target='#EditarCuenta' cuenta-id='$id'><img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='img spand-icon'></a>
 
                   <a href='#'  class='eliminarCuenta spand-link ml-3' cuenta-id='$id'><img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='img spand-icon'></a>
               </td>

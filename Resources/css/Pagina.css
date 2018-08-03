@@ -130,6 +130,10 @@ input:-webkit-autofill {
   width: 80px;
 }
 
+/* .clt_usr .consultar:hover .spanM {
+  width: 60px;
+} */
+
 .clt_usr .buscador:hover .spanB, .clt_usr .search:hover .spanB{
   width: 200px;
 }

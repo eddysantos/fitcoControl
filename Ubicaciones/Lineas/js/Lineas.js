@@ -28,14 +28,25 @@ $(document).ready(function(){
   });
 
 
-$('#filtroRepo').click(function(){
+$('.filtroRepo').click(function(){
   var fIni = $('#f-Ini').val();
   var fFin = $('#f-Fin').val();
   var linea = $('#lin-linea').val();
   var emp = $('#lin-listaEmp').val();
   var ope = $('#lin_listaOpe').val();
 
+  validacion = $('#f-Ini').val() == ""
+  && $('#f-Fin').val() == ""
+  && $('#lin-linea').val() == ""
+  && $('#lin-listaEmp').val() == ""
+  && $('#lin_listaOpe').val() == "";
 
+  if (validacion) {
+    swal("NO PUEDE CONTINUAR","Necesita elegir un filtro","error");
+    $('#inputfiltros').show();
+    $('#reportes').css('display', 'none');
+
+  }else {
     $.ajax({
       url: '/fitcoControl/Ubicaciones/Lineas/actions/fetchRepo.php',
       method: 'POST',
@@ -49,6 +60,7 @@ $('#filtroRepo').click(function(){
         }
       }
     });
+  }
   });
 });
 
@@ -128,10 +140,10 @@ $('.consultar').click(function(){
     }
     break;
 
-    case "horaLin":
+    case "diariaLin":
     if (status == 'cerrado') {
       $(this).attr('status', 'abierto');
-      $('#graficahoraLin').css('display', 'inherit');
+      $('#graficadiariaLin').css('display', 'inherit');
     }
     break;
 
@@ -239,12 +251,14 @@ $('#add-empleado').click(function(){
   var data = {
 		nemp: $('#a-numEmp').val(),
     nombre: $('#a-nombre').val(),
-    apellido: $('#a-apellido').val()
+    apellido: $('#a-apellido').val(),
+    area: $('#a-area').val()
   }
 
   validacion = $('#a-numEmp').val() == "" ||
   $('#a-nombre').val() == "" ||
-  $('#a-apellido').val() == "";
+  $('#a-apellido').val() == "" ||
+  $('#a-area').val() == "";
 
 
   if (validacion) {

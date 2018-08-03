@@ -1,7 +1,7 @@
 
 <?php
 
-session_start();
+// session_start();
 
 $root = $_SERVER['DOCUMENT_ROOT'];
 require $root . '/fitcoControl/Resources/PHP/utilities/initialScript.php';
@@ -17,7 +17,12 @@ if ($_POST['request'] || $_POST['linea'] || $_POST['emp'] || $_POST['ope']) {
   $emp = $data['emp'];
   $ope = $data['ope'];
   $query = "SELECT * FROM ct_linea
-  WHERE fecha BETWEEN '$fini' AND '$ffin' AND nombre = '$emp' OR nombre = '$emp' AND linea = '$linea' OR nombre = '$emp' OR linea = '$linea' AND operacion = '$ope'  OR operacion = '$ope' AND nombre = '$emp' OR operacion = '$ope'";
+
+WHERE (fecha BETWEEN '$fini' AND '$ffin' AND nombre = '$emp')
+  OR (nombre = '$emp')
+  OR (linea = '$linea')
+  OR (fecha BETWEEN '$fini' AND '$ffin' AND linea = '$linea' AND operacion = '$ope')
+  OR (operacion = '$ope')";
 
   $stmt = $conn->prepare($query);
   if (!($stmt)) {
@@ -60,7 +65,7 @@ if ($_POST['request'] || $_POST['linea'] || $_POST['emp'] || $_POST['ope']) {
     $prod9 = $row['prod9'];
     $prod10 = $row['prod10'];
 
-  // sumar progreso
+
     $sp2 = ($prod1 + $prod2);
     $sp3 = ($sp2 + $prod3);
     $sp4 = ($sp3 + $prod4);
@@ -71,9 +76,7 @@ if ($_POST['request'] || $_POST['linea'] || $_POST['emp'] || $_POST['ope']) {
     $sp9 = ($sp8 + $prod9);
     $sp10 = ($sp9 + $prod10);
 
-  //calcular avance
 
-  //calcular avance
     if ($prod1 == 0) {
       $av1 = 0;
     }else {
@@ -146,7 +149,7 @@ if ($_POST['request'] || $_POST['linea'] || $_POST['emp'] || $_POST['ope']) {
 
 
 
-    //calcular % EFICIENCIA
+
       $ef1 = ($av1/$meta);
       $efi1 = number_format($ef1 * 100, 2, ",", ".")." %";
       $ef2 = ($av2/$meta);
@@ -182,10 +185,8 @@ if ($_POST['request'] || $_POST['linea'] || $_POST['emp'] || $_POST['ope']) {
     "<p db-id='$idlinea'>$idlinea - $operacion</p>";
     $id = $idlinea;
 
-    $system_callback['data'] .="
-
-
-    <tr id='item' class='encabezado' style='letter-spacing: 0px;'>
+    $system_callback['data'] .=
+    "<tr id='item' class='encabezado' style='letter-spacing: 0px;'>
       <td width='5%' class='p-0 pt-2'></td>
       <td width='5%' class='p-0 pt-2'></td>
       <td width='5%' class='p-0 pt-2' style='text-align: right!important;''>fecha :</td>
@@ -200,73 +201,73 @@ if ($_POST['request'] || $_POST['linea'] || $_POST['emp'] || $_POST['ope']) {
     </tr>
 
     <tr>
-      <td width='5%' class='m lin'></td>
-      <td width='5%' class='m lin'>1 hra</td>
-      <td width='5%' class='m lin'>2 hras</td>
-      <td width='5%' class='m lin'>3 hras</td>
-      <td width='5%' class='m lin'>4 hras</td>
-      <td width='5%' class='m lin'>5 hras</td>
-      <td width='5%' class='m lin'>6 hras</td>
-      <td width='5%' class='m lin'>7 hras</td>
-      <td width='5%' class='m lin'>8 hras</td>
-      <td width='5%' class='m lin'>9 hras</td>
-      <td width='5%' class='m lin'>10 hras</td>
+      <td width='5%' class='m lin p-0'></td>
+      <td width='5%' class='m lin p-0'>1 hra</td>
+      <td width='5%' class='m lin p-0'>2 hras</td>
+      <td width='5%' class='m lin p-0'>3 hras</td>
+      <td width='5%' class='m lin p-0'>4 hras</td>
+      <td width='5%' class='m lin p-0'>5 hras</td>
+      <td width='5%' class='m lin p-0'>6 hras</td>
+      <td width='5%' class='m lin p-0'>7 hras</td>
+      <td width='5%' class='m lin p-0'>8 hras</td>
+      <td width='5%' class='m lin p-0'>9 hras</td>
+      <td width='5%' class='m lin p-0'>10 hras</td>
     </tr>
 
     <tr>
-      <td width='5%' class='m'></td>
-      <td width='5%' class='m'>$prod1</td>
-      <td width='5%' class='m'>$prod2/$sp2</td>
-      <td width='5%' class='m'>$prod3/$sp3</td>
-      <td width='5%' class='m'>$prod4/$sp4</td>
-      <td width='5%' class='m'>$prod5/$sp5</td>
-      <td width='5%' class='m'>$prod6/$sp6</td>
-      <td width='5%' class='m'>$prod7/$sp7</td>
-      <td width='5%' class='m'>$prod8/$sp8</td>
-      <td width='5%' class='m'>$prod9/$sp9</td>
-      <td width='5%' class='m'>$prod10/$sp10</td>
+      <td width='5%' class='m p-0'></td>
+      <td width='5%' class='m p-0'>$prod1</td>
+      <td width='5%' class='m p-0'>$prod2/$sp2</td>
+      <td width='5%' class='m p-0'>$prod3/$sp3</td>
+      <td width='5%' class='m p-0'>$prod4/$sp4</td>
+      <td width='5%' class='m p-0'>$prod5/$sp5</td>
+      <td width='5%' class='m p-0'>$prod6/$sp6</td>
+      <td width='5%' class='m p-0'>$prod7/$sp7</td>
+      <td width='5%' class='m p-0'>$prod8/$sp8</td>
+      <td width='5%' class='m p-0'>$prod9/$sp9</td>
+      <td width='5%' class='m p-0'>$prod10/$sp10</td>
     </tr>
 
     <tr>
-      <td width='5%' class='m' style='text-align: left!important;'>Avance</td>
-      <td width='5%' class='m'>$av1</td>
-      <td width='5%' class='m'>$av2</td>
-      <td width='5%' class='m'>$av3</td>
-      <td width='5%' class='m'>$av4</td>
-      <td width='5%' class='m'>$av5</td>
-      <td width='5%' class='m'>$av6</td>
-      <td width='5%' class='m'>$av7</td>
-      <td width='5%' class='m'>$av8</td>
-      <td width='5%' class='m'>$av9</td>
-      <td width='5%' class='m'>$av10</td>
+      <td width='5%' class='m p-0' style='text-align: left!important;'>Avance</td>
+      <td width='5%' class='m p-0'>$av1</td>
+      <td width='5%' class='m p-0'>$av2</td>
+      <td width='5%' class='m p-0'>$av3</td>
+      <td width='5%' class='m p-0'>$av4</td>
+      <td width='5%' class='m p-0'>$av5</td>
+      <td width='5%' class='m p-0'>$av6</td>
+      <td width='5%' class='m p-0'>$av7</td>
+      <td width='5%' class='m p-0'>$av8</td>
+      <td width='5%' class='m p-0'>$av9</td>
+      <td width='5%' class='m p-0'>$av10</td>
     </tr>
 
     <tr>
-      <td width='5%' class='m' style='text-align: left!important;'>Eficiencia</td>
-      <td width='5%' class='m ef'>$efi1</td>
-      <td width='5%' class='m ef'>$efi2</td>
-      <td width='5%' class='m ef'>$efi3</td>
-      <td width='5%' class='m ef'>$efi4</td>
-      <td width='5%' class='m ef'>$efi5</td>
-      <td width='5%' class='m ef'>$efi6</td>
-      <td width='5%' class='m ef'>$efi7</td>
-      <td width='5%' class='m ef'>$efi8</td>
-      <td width='5%' class='m ef'>$efi9</td>
-      <td width='5%' class='m ef'>$efi10</td>
+      <td width='5%' class='m p-0' style='text-align: left!important;'>Eficiencia</td>
+      <td width='5%' class='m p-0 ef'>$efi1</td>
+      <td width='5%' class='m p-0 ef'>$efi2</td>
+      <td width='5%' class='m p-0 ef'>$efi3</td>
+      <td width='5%' class='m p-0 ef'>$efi4</td>
+      <td width='5%' class='m p-0 ef'>$efi5</td>
+      <td width='5%' class='m p-0 ef'>$efi6</td>
+      <td width='5%' class='m p-0 ef'>$efi7</td>
+      <td width='5%' class='m p-0 ef'>$efi8</td>
+      <td width='5%' class='m p-0 ef'>$efi9</td>
+      <td width='5%' class='m p-0 ef'>$efi10</td>
     </tr>
 
     <tr class='bordeAbajo'>
-        <td width='5%' class='m' style='text-align: left!important;'>Meta</td>
-        <td width='5%' class='m'>$meta</td>
-        <td width='5%' class='m'></td>
-        <td width='5%' class='m'></td>
-        <td width='5%' class='m'></td>
-        <td width='5%' class='m'></td>
-        <td width='5%' class='m'></td>
-        <td width='5%' class='m'></td>
-        <td width='5%' class='m'></td>
-        <td width='5%' class='m'></td>
-        <td width='5%' class='m'></td>
+        <td width='5%' class='m p-0' style='text-align: left!important;'>Meta</td>
+        <td width='5%' class='m p-0'>$meta</td>
+        <td width='5%' class='m p-0'></td>
+        <td width='5%' class='m p-0'></td>
+        <td width='5%' class='m p-0'></td>
+        <td width='5%' class='m p-0'></td>
+        <td width='5%' class='m p-0'></td>
+        <td width='5%' class='m p-0'></td>
+        <td width='5%' class='m p-0'></td>
+        <td width='5%' class='m p-0'></td>
+        <td width='5%' class='m p-0'></td>
     </tr>";
   }
 

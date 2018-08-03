@@ -14,7 +14,7 @@ require  $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
       <div class="card">
         <img class="w-35 align-self-center m-5" src="/fitcoControl/Resources/iconos/003-graphic.svg">
         <div class="card-body">
-          <a href="#" class="linkboton btn-block">Estadisticas<span class="a top"></span></a>
+          <a href="/fitcoControl/Ubicaciones/Comunicaciones/Estadisticas/secciones.php" class="linkboton btn-block">Estadisticas<span class="a top"></span></a>
         </div>
       </div>
     </div>
@@ -28,7 +28,6 @@ require  $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
       </div>
     </div>
 
-
     <div class="col-md-4">
       <div class="card">
         <img class="card-img-top w-35 align-self-center m-5" src="/fitcoControl/Resources/iconos/usuario.svg">
@@ -36,13 +35,12 @@ require  $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
           <a href="/fitcoControl/Ubicaciones/Usuarios/Usuarios.php" class="linkboton btn-block">Usuarios<span class="a top"></span></a>
         </div>
       </div>
-    </div> 
+    </div>
   </div>
 </div>
 
-
 <footer class="footer">
-  <li class="nav-item"><a  class="bn noborder w-100" href="/fitcoControl/Resources/PHP/Login/CerrarSesion.php" >
+  <li class="nav-item"><a  class="bn noborder w-100" href="/fitcoControl/Resources/PHP/Login/CerrarSesion.php">
     <div class="row justify-content-center">
       <div class="col-md-3">
         Cerrar <img class="m-3" style="width:30px" src="/fitcoControl/Resources/iconos/001-close-1.svg"> Sesión</a>

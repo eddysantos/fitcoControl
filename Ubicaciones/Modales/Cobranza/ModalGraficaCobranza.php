@@ -98,41 +98,34 @@ $data = array(
         <?php
 
         $query = "SELECT
-        CASE WHEN MONTH(co.vencimientoCobranza) = 1 THEN 'Ene'
-        WHEN MONTH(co.vencimientoCobranza) = 2 THEN 'Feb'
-        WHEN MONTH(co.vencimientoCobranza) = 3 THEN 'Mar'
-        WHEN MONTH(co.vencimientoCobranza) = 4 THEN 'Abr'
-        WHEN MONTH(co.vencimientoCobranza) = 5 THEN 'May'
-        WHEN MONTH(co.vencimientoCobranza) = 6 THEN 'Jun'
-        WHEN MONTH(co.vencimientoCobranza) = 7 THEN 'Jul'
-        WHEN MONTH(co.vencimientoCobranza) = 8 THEN 'Ago'
-        WHEN MONTH(co.vencimientoCobranza) = 9 THEN 'Sep'
-        WHEN MONTH(co.vencimientoCobranza) = 10 THEN 'Oct'
-        WHEN MONTH(co.vencimientoCobranza) = 11 THEN 'Nov'
-        WHEN MONTH(co.vencimientoCobranza) = 12 THEN 'Dic'
-        ELSE 'Esto no es mes' END AS mes,
+        MONTH(co.vencimientoCobranza) AS mes,
         co.pk_cobranza AS idcobranza,
         ct.nombreCliente AS nombre,
         SUM(co.importeCobranza) AS totalcobranza,
-        year(co.vencimientoCobranza) AS anio,
+        -- co.importeCobranza AS totalcobranza,
+        -- year(co.vencimientoCobranza) AS anio,
         ct.colorCliente AS color,
         SUM(pgo.importePago) AS pagado,
+        -- pgo.importePago AS pagado,
         co.vencimientoCobranza AS vencimiento
 
         FROM ct_cobranza co
         LEFT JOIN ct_cliente ct ON co.fk_cliente = ct.pk_cliente
-        LEFT JOIN ct_pagos pgo ON  pgo.fk_cobranza = co.pk_cobranza
+        LEFT JOIN ct_pagos pgo ON  co.pk_cobranza = pgo.fk_cobranza
+
         WHERE co.vencimientoCobranza BETWEEN '2018-01-01' AND '2018-12-31'
-        GROUP BY mes ORDER BY vencimiento ASC
-        ";
+        GROUP BY mes  ORDER BY vencimiento ASC";
+
         $r = mysqli_query($conn, $query);
           $i = 0;
           $n = mysqli_num_rows($r);
           while ($row = mysqli_fetch_assoc($r)) {
+            $numeromes  = $row['vencimiento'];
+            $mes = strftime("%b %Y", strtotime($numeromes));
             $facturado = $row["totalcobranza"];
-            $mes = $row["mes"];
+            // $mes = $row["mes"];
             $pagado = $row["pagado"];
-            $anio = $row['anio'];
+            // $anio = $row['anio'];
             $pendientepago = $row['totalcobranza']-$row['pagado'];
             $numerosem = "mes";
 
@@ -141,7 +134,7 @@ $data = array(
             }
 
             print "[
-              ' ".$mes." ".$anio."', ".$facturado.", ".$pagado.", ".$pendientepago."
+              ' ".$mes."', ".$facturado.", ".$pagado.", ".$pendientepago."
               ]";
 
             $i++;

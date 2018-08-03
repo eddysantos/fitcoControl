@@ -1,12 +1,9 @@
 <link rel="stylesheet" href="/fitcoControl/Resources/css/Inputs.css">
 <link rel="stylesheet" href="/fitcoControl/Resources/css/Pagina.css">
 <link rel="stylesheet" href="/fitcoControl/Resources/bootstrap/css/bootstrap.min.css">
-<!-- <link rel="stylesheet" href="/fitcoControl/Resources/css/sweetalert.css">
+<link rel="stylesheet" href="/fitcoControl/Resources/css/sweetalert.css">
 
-<script src="/fitcoControl/Resources/jquery/sweetalert.min.js"></script> -->
-
-
-<!-- <script src="/fitcoControl/Resources/bootstrap/js/bootstrap.min.js"></script> -->
+<script src="/fitcoControl/Resources/jquery/sweetalert.min.js"></script>
 <script src="/fitcoControl/Resources/jquery/jquery.min.js"></script>
 
 
@@ -55,8 +52,13 @@
       </td>
 
       <td class="col-md-1 mt-4">
-        <a href="#" class="consultar rotate-link ancla" accion="filtroRepo" status="cerrado" id="filtroRepo">
+        <a class="filtroRepo consultar rotate-link ancla" accion="filtroRepo" status="cerrado" id="filtroRepo">
           <img src="/fitcoControl/Resources/iconos/searchF.svg" class="icon1 rotate-icon" style="width:30px;">
+        </a>
+
+
+        <a href="/fitcoControl/Ubicaciones/Lineas/pantalla.php" class="ml-4 consultar rotate-link ancla">
+          <img src="/fitcoControl/Resources/iconos/return.svg" class="icon1 rotate-icon" style="width:30px;">
         </a>
       </td>
     </tr>

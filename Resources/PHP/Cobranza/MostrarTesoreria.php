@@ -15,12 +15,10 @@ ct.nombreCliente AS nombre,
 co.facturaCobranza AS factura,
 co.importeCobranza AS importe,
 co.vencimientoCobranza AS vencimiento,
--- DATE_FORMAT(co.vencimientoCobranza, '%d-%m-%Y') AS vencimiento,
 WEEK(co.vencimientoCobranza) AS semana,
 year(co.vencimientoCobranza) AS anio,
 co.conceptoPago AS concepto,
 co.fechaEntrega AS entrega,
--- DATE_FORMAT(co.fechaEntrega, '%d-%m-%Y') AS entrega,
 ct.colorCliente AS color,
 ct.creditoCliente AS credito,
 sum(pg.importePago) AS pagado
@@ -47,11 +45,9 @@ if (isset($_POST['cobranza'])) {
   co.importeCobranza AS importe,
   year(co.vencimientoCobranza) AS anio,
   co.vencimientoCobranza AS vencimiento,
-  -- DATE_FORMAT(co.vencimientoCobranza, '%d-%m-%Y') AS vencimiento,
   WEEK(co.vencimientoCobranza) AS semana,
   co.conceptoPago AS concepto,
   co.fechaEntrega AS entrega,
-  -- DATE_FORMAT(co.fechaEntrega, '%d-%m-%Y') AS entrega,
   ct.colorCliente AS color,
   ct.creditoCliente AS credito,
   sum(pg.importePago) AS pagado
@@ -138,13 +134,9 @@ if (isset($_POST['cobranza'])) {
        $background = "verde";
      }elseif (($vencimientoCobranza > $hoy) && ($importeCobranza == $pagado)) {
        $background = "verde";
-     }
-     elseif (($vencimientoCobranza < $hoy) && ($importeCobranza > $pagado)) {
+     }elseif (($vencimientoCobranza < $hoy) && ($importeCobranza <> $pagado)) {
        $background = "rojo";
      }
-     // else {
-     //    $background = "";
-     // }
 
 
     if ($admin == "Administrador") {
@@ -153,39 +145,47 @@ if (isset($_POST['cobranza'])) {
       $ocultar = "ocultar";
     }
 
+
+// si funciona filtro de solo vencido
+    // if ($importeCobranza == $pagado) {
+    //   $vervencido = "display:none";
+    // }else {
+    //   $vervencido = "";
+    // }
+
      $tabla.= "
-       <tr class='$background row bordelateral m-0' id='item'>
-       <td class='col-md-1'>
-        <img src='/fitcoControl/Resources/iconos/dinero.svg' class='img icono mr-5'>
-       </td>
-         <td class='col-md-2'>
-           <h4><b><input type='color' value='$colorCliente'>$clienteCobranza</b></h4>
-           <p><a class='visibilidad'>Semana $semana</a></p>
+       <tr class='$background row bordelateral m-0' id='item' style=''>
+         <td class='col-md-1'>
+          <img src='/fitcoControl/Resources/iconos/dinero.svg' class='img icono mr-5'>
          </td>
-         <td class='col-md-2 text-center'>
-           <h4><b>$concepto</b></h4>
-           <p><a class='visibilidad'>Fact : $facturaCobranza</a></p>
-         </td>
+           <td class='col-md-2'>
+             <h4><b><input type='color' value='$colorCliente'>$clienteCobranza</b></h4>
+             <p><a class='visibilidad'>Semana $semana</a></p>
+           </td>
+           <td class='col-md-2 text-center'>
+             <h4><b>$concepto</b></h4>
+             <p><a class='visibilidad'>Fact : $facturaCobranza</a></p>
+           </td>
 
-         <td class='col-md-2 text-center'>
-           <h4><b> $ $importeCobranza </b></h4>
-           <p><a class='visibilidad'>Pagado : $ $pagado</a></p>
-         </td>
-         <td class='col-md-3 text-center'>
-           <h4><b>$dia $vencimientoCobranza</b></h4>
-           <p><a class='visibilidad'>Entrega: $entrega</a></p>
-         </td>
-         <td class='col-md-2 text-right'>
-           <!--AGREGAR PAGO DE FACTURA-->
-           <a href='' id='btnAgregarPago' class='agregarPago spand-link' data-toggle='modal' data-target='#PagoFacturas' cobranza-id='$idCobranza'><img  src='/fitcoControl/Resources/iconos/003-add.svg' class='img spand-icon'></a>
+           <td class='col-md-2 text-center'>
+             <h4><b> $ $importeCobranza </b></h4>
+             <p><a class='visibilidad'>Pagado : $ $pagado</a></p>
+           </td>
+           <td class='col-md-3 text-center'>
+             <h4><b>$dia $vencimientoCobranza</b></h4>
+             <p><a class='visibilidad'>Entrega: $entrega</a></p>
+           </td>
+           <td class='col-md-2 text-right'>
+             <!--AGREGAR PAGO DE FACTURA-->
+             <a href='' id='btnAgregarPago' class='agregarPago spand-link' data-toggle='modal' data-target='#PagoFacturas' cobranza-id='$idCobranza'><img  src='/fitcoControl/Resources/iconos/003-add.svg' class='img spand-icon'></a>
 
-           <a href='' class='visualizarcobranza spand-link' data-toggle='modal' data-target='#VisualizarTablaCobranza' cobranza-id='$idCobranza'><img  src='/fitcoControl/Resources/iconos/magnifier.svg' class='img ml-3 spand-icon'></a>
+             <a href='' class='visualizarcobranza spand-link' data-toggle='modal' data-target='#VisualizarTablaCobranza' cobranza-id='$idCobranza'><img  src='/fitcoControl/Resources/iconos/magnifier.svg' class='img ml-3 spand-icon'></a>
 
-           <a href='' class='$ocultar editarCobranza spand-link' data-toggle='modal' data-target='#DetCobranza' cobranza-id='$idCobranza'><img  src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='img ml-3 spand-icon'></a>
+             <a href='' class='$ocultar editarCobranza spand-link' data-toggle='modal' data-target='#DetCobranza' cobranza-id='$idCobranza'><img  src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='img ml-3 spand-icon'></a>
 
-           <a href='#' class='eliminarCobranza spand-link ml-3 $ocultar' cobranza-id='$idCobranza'><img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='img spand-icon'></a>
-         </td>
-       </tr>";
+             <a href='#' class='eliminarCobranza spand-link ml-3 $ocultar' cobranza-id='$idCobranza'><img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='img spand-icon'></a>
+           </td>
+         </tr>";
      $suma += $row['importe'];
      $total += $row['pagado'];
      $diferencia += $row['importe']-$row['pagado'];

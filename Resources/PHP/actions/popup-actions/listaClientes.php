@@ -8,7 +8,7 @@ $data = $_POST;
 
 $data['string'];
 $text = "%" . $data['string'] . "%";
-$query = "SELECT * FROM operacion WHERE operacion LIKE ? ";
+$query = "SELECT * FROM ct_cliente WHERE nombreCliente LIKE ?";
 
 $stmt = $conn->prepare($query);
 if (!($stmt)) {
@@ -42,12 +42,13 @@ if ($rslt->num_rows == 0) {
 
 while ($row = $rslt->fetch_assoc()) {
   $system_callback['data'] .=
-  "<p db-id='$row[pk_operacion]'>$row[operacion]</p>";
+  "<p db-id='$row[pk_cliente]'>$row[nombreCliente]</p>";
 }
 
 $system_callback['code'] = 1;
 $system_callback['message'] = "Script called successfully!";
 exit_script($system_callback);
+
 
 
  ?>

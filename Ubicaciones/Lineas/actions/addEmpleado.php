@@ -5,9 +5,10 @@ require $root . '/fitcoControl/Resources/PHP/utilities/initialScript.php';
 $nemp = trim($_POST['nemp']);
 $nombre = trim($_POST['nombre']);
 $apellido = trim($_POST['apellido']);
+$area = trim($_POST['area']);
 
 
-$query = "INSERT INTO empleados (nombre,apellido,numeroEmpleado) VALUES (?,?,?)";
+$query = "INSERT INTO empleados (nombre,apellido,numeroEmpleado,area) VALUES (?,?,?,?)";
 
 $stmt = $conn->prepare($query);
 if (!($stmt)) {
@@ -16,7 +17,7 @@ if (!($stmt)) {
   exit_script($system_callback);
 }
 
-$stmt->bind_param('sss',$nombre,$apellido,$nemp);
+$stmt->bind_param('ssss',$nombre,$apellido,$nemp,$area);
 if (!($stmt)) {
   $system_callback['code'] = "500";
   $system_callback['message'] = "Error during variables binding [$stmt->errno]: $stmt->error";

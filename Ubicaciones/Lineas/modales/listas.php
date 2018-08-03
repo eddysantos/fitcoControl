@@ -43,6 +43,13 @@
                     <span class="focus-border"></span>
                 </td>
               </tr>
+              <tr class="row m20">
+                <td class="col-md-12 input-effect p-0">
+                  <input id="a-area" class="modal-efecto-17" type="text" required>
+                    <label for="a-area">Area</label>
+                    <span class="focus-border"></span>
+                </td>
+              </tr>
             </tbody>
           </table>
         </div>
