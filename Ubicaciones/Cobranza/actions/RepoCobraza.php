@@ -80,7 +80,8 @@ while ($row = $rslt->fetch_assoc()) {
   $ocultar = "";
   $ce =  $_SESSION['user']['cobranza_editar'];
   $admin = $_SESSION['user']['privilegiosUsuario'];
-  $vencido = number_format($row['pagado'] - $row['importe'], 2);
+  $vencido = number_format($row['importe'] -$row['pagado'], 2);
+
 
 
   if ($dia == 1) {
@@ -129,9 +130,11 @@ while ($row = $rslt->fetch_assoc()) {
   $system_callback['data'] .=
   "<tr class='$background' id='item' style='$vervencido'>
     <td width='20%'>$clienteCobranza</td>
-    <td width='10%'>$facturaCobranza</td>
-    <td width='10%'>$concepto</td>
-    <td width='10%'> $ $vencido </td>
+    <td width='8%'>$facturaCobranza</td>
+    <td width='8%'>$concepto</td>
+    <td width='10%'> $ $importeCobranza </td>
+    <td width='10%'> $ $pagado </td>
+    <td width='10%' style='color:red'> $ $vencido </td>
     <td width='10%'>$dia $vencimientoCobranza</td>
   </tr>";
 }

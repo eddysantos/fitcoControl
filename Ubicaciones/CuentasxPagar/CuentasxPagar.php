@@ -22,7 +22,7 @@
         <span class="spanM">Agregar</span>
       </a>
 
-      <a href="/fitcoControl/Ubicaciones/CuentasxPagar/VencidoCtasxPagar.php" class="consultar rotate-link ancla" style="text-decoration:none;">
+      <a href="/fitcoControl/Ubicaciones/CuentasxPagar/CuentasVencidas.php" class="consultar rotate-link ancla" style="text-decoration:none;">
         <img  src="/fitcoControl/Resources/iconos/money.svg" class="icon rotate-icon" style="width:30px">
         <span class="spanM">Vencido</span>
       </a>

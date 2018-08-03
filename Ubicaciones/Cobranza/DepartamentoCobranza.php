@@ -25,9 +25,14 @@ if (!isset($_SESSION['user'])) {
     <table class="table table-bordered">
       <thead id='font'>
         <tr>
-          <td width='20%'>PROVEEDOR</td>
-          <td width='10%'>#FACT.</td>
-          <td width='10%'>CONCETO</td>
+          <td width='20%'>
+            <input class="effect-17 popup-input w-100 border-0" id="cob_cli" type="text" id-display="#popup-display-listaClientes" action="listaClientes" db-id="" autocomplete="off" placeholder="CLIENTES">
+            <div class="popup-list" id="popup-display-listaClientes" style="display:none"></div>
+          </td>
+          <td width='8%'>#FACT.</td>
+          <td width='8%'>CONCEPTO</td>
+          <td width='10%'>TOTAL DE FACT.</td>
+          <td width='10%'>ABONADO</td>
           <td width='10%'>VENCIDO</td>
           <td width='10%'>VENCIMIENTO</td>
         </tr>

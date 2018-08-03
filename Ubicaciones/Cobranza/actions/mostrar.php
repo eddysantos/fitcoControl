@@ -139,9 +139,11 @@ while ($row = $rslt->fetch_assoc()) {
   $system_callback['data'] .=
   "<tr class='$background' id='item' style='$vervencido'>
     <td with='20%'>$clienteCobranza</td>
-    <td with='10%'>$facturaCobranza</td>
-    <td with='10%'>$concepto</td>
-    <td with='10%'>$ $vencido</td>
+    <td with='8%'>$facturaCobranza</td>
+    <td with='8%'>$concepto</td>
+    <td width='10%'> $ $importeCobranza </td>
+    <td width='10%'> $ $pagado </td>
+    <td with='10%' style='color:red'>$ $vencido</td>
     <td with='10%'>$dia $vencimientoCobranza</td>
   </tr>";
   $suma += $row['importe'];
