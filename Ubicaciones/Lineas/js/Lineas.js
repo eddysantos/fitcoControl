@@ -350,7 +350,6 @@ $('tbody').on('click', '.editar-linea', function(){
       console.error(r);
     }
   })
-
 })
 
 //ACTUALIZAR HORAS

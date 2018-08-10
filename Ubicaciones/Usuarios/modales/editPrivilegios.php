@@ -1,4 +1,4 @@
-<div class="modal fade" id="priv_privilegios">
+<div class="modal fade" id="edit_priv_privilegios">
   <div class="modal-dialog modal-med1">
     <div class="modal-content">
       <div class="modal-header">
@@ -18,13 +18,13 @@
             </tr>
             <tr class="row">
               <td class="col-md-4">
-                <input type="checkbox" class="check" id="priv_e_ventas">Ver Ventas
+                <input type="checkbox" class="check" id="e_ventas">Ver Ventas
               </td>
               <td class="col-md-4">
-                <input type="checkbox" class="check" id="priv_e_tesoreria">Ver Cobranza
+                <input type="checkbox"  id="e_tesoreria">Ver Cobranza
               </td>
               <td class="col-md-4">
-                <input type="checkbox" class="check" id="priv_e_produc">Ver Producción
+                <input type="checkbox"  id="e_produc">Ver Producción
               </td>
             </tr>
 
@@ -34,10 +34,10 @@
             </tr>
             <tr class="row">
               <td class="col-md-6">
-                <input type="checkbox" class="check" id="priv_e_rhVer">Ver y Agregar Datos
+                <input type="checkbox"  id="e_rhVer">Ver y Agregar Datos
               </td>
               <td class="col-md-6">
-                <input type="checkbox" class="check" id="priv_e_rhEditar"> Editar / Eliminar
+                <input type="checkbox"  id="e_rhEditar">Editar / Eliminar
               </td>
             </tr>
 
@@ -46,10 +46,10 @@
             </tr>
             <tr class="row">
               <td class="col-md-6">
-                <input type="checkbox" class="check" id="priv_e_usVer">Ver y Agregar Datos
+                <input type="checkbox"  id="e_usVer">Ver y Agregar Datos
               </td>
               <td class="col-md-6">
-                <input type="checkbox" class="check" id="priv_e_usEditar"> Editar / Eliminar
+                <input type="checkbox"  id="e_usEditar">Editar / Eliminar
               </td>
             </tr>
 
@@ -59,10 +59,10 @@
             </tr>
             <tr class="row">
               <td class="col-md-6 text-center">
-                <input type="checkbox" class="check" id="priv_c_ver">Ver y Agregar Datos
+                <input type="checkbox"  id="c_ver">Ver y Agregar Datos
               </td>
               <td class="col-md-6 text-center">
-                <input type="checkbox" class="check" id="priv_c_editar">Editar / Eliminar
+                <input type="checkbox"  id="c_editar">Editar / Eliminar
               </td>
             </tr>
 

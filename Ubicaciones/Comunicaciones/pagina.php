@@ -32,7 +32,7 @@ require  $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
       <div class="card">
         <img class="card-img-top w-35 align-self-center m-5" src="/fitcoControl/Resources/iconos/usuario.svg">
         <div class="card-body">
-          <a href="/fitcoControl/Ubicaciones/Usuarios/Usuarios.php" class="linkboton btn-block">Usuarios<span class="a top"></span></a>
+          <a href="/fitcoControl/Ubicaciones/Usuarios/Usuarios1.php" class="linkboton btn-block">Usuarios<span class="a top"></span></a>
         </div>
       </div>
     </div>

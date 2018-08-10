@@ -24,25 +24,6 @@ cxp.factura AS factura
 
   $result = $conn->query($query);
   if ($result->num_rows > 0) {
-    $tabla.="
-    <div class='m-5'>
-      <a href='/fitcoControl/Ubicaciones/CuentasxPagar/CuentasxPagar.php' class='consultar'><img style='width: 100px;' src='/fitcoControl/Resources/iconos/logoFitco.png'></a>
-    </div>
-    <form class='page p-0'>
-     <table class='table table-bordered'>
-      <thead id='font'>
-        <tr>
-          <td width='20%'>PROVEEDOR</td>
-          <td width='10%'>#FACT.</td>
-          <td width='10%'>CONCETO</td>
-          <td width='8%'>TOTAL DE FACT</td>
-          <td width='8%'>PAGADO</td>
-          <td width='10%'>VENCIDO</td>
-          <td width='10%'>VENCIMIENTO</td>
-        </tr>
-        </thead>
-        <tbody id='mostrarCuentas'>";
-
       while ($row = $result->fetch_assoc()) {
         $id = $row['idCuentas'];
         $proveedor = $row['proveedor'];

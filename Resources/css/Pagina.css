@@ -581,3 +581,14 @@ div.submenuMed {
 .font12{
   font-size: 13px;
 }
+.priv{
+  background-color: rgba(47, 89, 119, 0.63);
+  color: white;
+  font-size: 18px;
+}
+.privsub{
+  background-color: rgba(213, 213, 213, 0.63);
+  color: black;
+  font-size: 16px;
+
+}
