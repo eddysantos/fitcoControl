@@ -156,7 +156,7 @@ if (isset($_POST['cobranza'])) {
      $tabla.= "
        <tr class='$background row bordelateral m-0' id='item' style=''>
          <td class='col-md-1'>
-          <img src='/fitcoControl/Resources/iconos/dinero.svg' class='img icono mr-5'>
+          <a href='#' class='eliminarCobranza spand-link ml-3 $ocultar' cobranza-id='$idCobranza'><img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='img spand-icon'></a>
          </td>
            <td class='col-md-2'>
              <h4><b><input type='color' value='$colorCliente'>$clienteCobranza</b></h4>
@@ -176,6 +176,9 @@ if (isset($_POST['cobranza'])) {
              <p><a class='visibilidad'>Entrega: $entrega</a></p>
            </td>
            <td class='col-md-2 text-right'>
+
+             <a href='' data-target='#coment' data-toggle='modal' class='comentCobranza spand-link mr-3' cobranza-id='$idCobranza'><img src='/fitcoControl/Resources/iconos/coment.svg' class='img spand-icon'></a>
+
              <!--AGREGAR PAGO DE FACTURA-->
              <a href='' id='btnAgregarPago' class='agregarPago spand-link' data-toggle='modal' data-target='#PagoFacturas' cobranza-id='$idCobranza'><img  src='/fitcoControl/Resources/iconos/003-add.svg' class='img spand-icon'></a>
 
@@ -183,7 +186,7 @@ if (isset($_POST['cobranza'])) {
 
              <a href='' class='$ocultar editarCobranza spand-link' data-toggle='modal' data-target='#DetCobranza' cobranza-id='$idCobranza'><img  src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='img ml-3 spand-icon'></a>
 
-             <a href='#' class='eliminarCobranza spand-link ml-3 $ocultar' cobranza-id='$idCobranza'><img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='img spand-icon'></a>
+
            </td>
          </tr>";
      $suma += $row['importe'];

@@ -135,6 +135,139 @@ $(document).on('keyup', '#busqueda', function(){
 
 function ActivarBotonesCobranza(){
 
+// COMENTARIOS comentarios
+
+$('.comentCobranza').unbind();
+$('.comentCobranza').click(function(){
+  var cobranzaId = $(this).attr('cobranza-id');
+  $('#com_id').val(cobranzaId);
+  $('#coment').modal('show');
+
+  $.ajax({
+    method: 'POST',
+    url:'/fitcoControl/Ubicaciones/Cobranza/actions/mostrarComentarios.php',
+    data:{cobranzaId:cobranzaId},
+    success:function(result){
+      var rsp = JSON.parse(result);
+      console.log(rsp);
+      $('#comentariosCobranza').html(rsp.infoTabla);
+      ActivarBotonesCobranza();
+    },
+    error:function(exception){
+      console.error(exception)
+    }
+  })
+});
+
+  $('.comCobranza').unbind();
+  $('.comCobranza').click(function(){
+
+    var fk_com = $('#com_id').val();
+    var fecha = $('#com_fecha').val();
+    var comentario = $('#com_comentario').val();
+
+    validacion =
+    $('#com_fecha').val() == "" ||
+    $('#com_comentario').val() == "" ;
+
+    if (validacion) {
+        swal("NO PUEDE CONTINUAR","Necesita llenar todos los campos","error");
+    }else {
+      $.ajax({
+        method: 'POST',
+        url: '/fitcoControl/Ubicaciones/Cobranza/actions/agregarComent.php',
+        data: {
+          id: fk_com,
+          fecha: fecha,
+          comentario: comentario
+        },
+        success:function(result){
+          var rsp = JSON.parse(result);
+          if (rsp.code != 1) {
+            swal("FALLO AL REGISTRAR","No se agregó el registro","error");
+            console.error(rsp.response);
+          } else {
+            $('#coment').modal('hide');
+            alertify.success('SE AGREGÓ CORRECTAMENTE');
+            fetchCobranza();
+          }
+        },
+        error:function(exception){
+          console.error(exception)
+        }
+      })
+    }
+  });
+
+
+  $('.EditComCobranza').unbind();//EVITAMOS QUE SE DUPLIQUE NUESTRO SELECTOR
+  $('.EditComCobranza').click(function(){
+
+    var data =  {
+      id : $('#ed_com_id').val(),
+      ff : $('#ed_com_fecha').val(),
+      cc : $('#ed_com_comentario').val()
+    }
+
+    $.ajax({
+      method: 'POST',
+      url: '/fitcoControl/Ubicaciones/Cobranza/actions/editarComent.php',
+      data: data,
+      success:function(result){
+        console.log(result);
+        if (result != 1) {
+          alertify.error('NO SE MODIFICÓ NINGUN REGISTRO');
+          $('#edit_coment').modal('hide');
+          $('#coment').modal('hide');
+          fetchCobranza();
+        }else {
+          $('#edit_coment').modal('hide');
+          $('#coment').modal('hide');
+          fetchCobranza();
+          alertify.success('SE MODIFICÓ CORRECTAMENTE');
+        }
+      },
+      error:function(exception){
+        console.error(exception)
+      }
+    });
+  });
+
+
+  //EDITAR COMENTARIO
+  $('.editarComen').unbind();
+  $('.editarComen').click(function(){
+    var IdComen = $(this).attr('comen-id');
+    $.ajax({
+
+      method: 'POST',
+      url: '/fitcoControl/Ubicaciones/Cobranza/actions/fetchComent.php',
+      data: {IdComen: IdComen},
+
+      success: function(result){
+        var rsp = JSON.parse(result);
+        console.log(rsp);
+        if (rsp.code == 1) {
+          $('#ed_com_id').val(rsp.response.pk_coment);
+          $('#ed_com_fecha').val(rsp.response.fecha);
+          $('#ed_com_comentario').val(rsp.response.comentario);
+
+        } else {
+          console.error("Hubo un error al jalar la informacion del cliente.");
+          console.error(rsp.response);
+        }
+      },
+      error: function(exception){
+        console.error(exception);
+      }
+    })
+  });
+
+
+
+
+
+
   $('.agregarPago').unbind();
   $('.agregarPago').click(function(){
     var cobranzaId = $(this).attr('cobranza-id');

@@ -134,6 +134,18 @@
             </tr>
 
             <tr class="row">
+              <td class="col-md-12 text-left privsub">---- Mantenimineto e Inversiones</td>
+            </tr>
+            <tr class="row">
+              <td class="col-md-6">
+                <input type="checkbox" class="check" id="priv_pro_miVer">Ver y Agregar
+              </td>
+              <td class="col-md-6">
+                <input type="checkbox" class="check" id="priv_pro_miEditar">Editar / Eliminar
+              </td>
+            </tr>
+
+            <tr class="row">
               <td class="col-md-12 text-left privsub">---- Producción</td>
             </tr>
             <tr class="row">
@@ -175,6 +187,19 @@
               </td>
             </tr>
 
+
+            <tr class="row text-center">
+              <td class="col-md-12 priv"> ** CONTROL DE CALIDAD ** </td>
+            </tr>
+            <tr class="row">
+              <td class="col-md-6">
+                <input type="checkbox" class="check" id="priv_cc_ver">Ver y Agregar Datos
+              </td>
+              <td class="col-md-6">
+                <input type="checkbox" class="check" id="priv_cc_editar">Editar / Eliminar
+              </td>
+            </tr>
+
             <tr class="row text-center">
               <td class="col-md-12 priv"> **V E N T A S** </td>
             </tr>
@@ -190,8 +215,11 @@
         </table>
       </div>
       </tr>
-      <div class="justify-content-center modal-footer">
-        <button type="submit" id="priv_NuevoRegistroUsuario" class=" NuevoRegistroUsuario btnsub btn boton btn-block ">AGREGAR</button>
+      <div class="row justify-content-center modal-footer">
+        <div class="col-md-4">
+          <button type="submit" id="priv_NuevoRegistroUsuario" class=" NuevoRegistroUsuario btnsub btn w-100">AGREGAR</button>
+
+        </div>
       </div>
     </div>
   </div>

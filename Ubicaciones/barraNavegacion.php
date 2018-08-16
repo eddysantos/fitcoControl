@@ -6,7 +6,7 @@
   $vv = $_SESSION['user']['verVentas'];
 
   // clientes
-  $cliente = $_SESSION['user']['c_ver'];
+  // $cliente = $_SESSION['user']['c_ver'];
 
   $admin = $_SESSION['user']['privilegiosUsuario'] == "Administrador";
   $priv_todos = true;
@@ -47,7 +47,7 @@
         <li class="nav-item"><a class="bn bloqueo w-95">COMUNICACION <span class="barra">DIVISIÓN 1</span></a></li>
       <?php endif;?>
 
-      <?php if ($cliente == 1 || $admin): ?>
+      <?php if ($clv == 1 || $admin): ?>
         <li class="nav-item"><a class="bn" href="/fitcoControl/Ubicaciones/Clientes/Clientes.php">CLIENTES <span class="barra">DIVISIÓN 2</span></a></li>
       <?php else: ?>
         <li class="nav-item"><a class="bn bloqueo w-95">CLIENTES <span class="barra">DIVISIÓN 2</span></a></li>

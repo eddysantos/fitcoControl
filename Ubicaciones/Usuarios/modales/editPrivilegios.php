@@ -29,6 +29,7 @@
             </tr>
 
 
+
             <tr class="row">
               <td class="col-md-12 text-left privsub">---- Recursos Humanos</td>
             </tr>
@@ -75,10 +76,10 @@
             </tr>
             <tr class="row">
               <td class="col-md-6">
-                <input type="checkbox" class="check" id="priv_tc_ver">Ver y Agregar Datos
+                <input type="checkbox" class="check" id="tc_ver">Ver y Agregar Datos
               </td>
               <td class="col-md-6">
-                <input type="checkbox" class="check" id="priv_tc_editar">Editar / Eliminar
+                <input type="checkbox" class="check" id="tc_editar">Editar / Eliminar
               </td>
             </tr>
 
@@ -88,10 +89,10 @@
             </tr>
             <tr class="row">
               <td class="col-md-6">
-                <input type="checkbox" class="check" id="priv_tcxp_ver">Ver y Agregar Datos
+                <input type="checkbox" class="check" id="tcxp_ver">Ver y Agregar Datos
               </td>
               <td class="col-md-6">
-                <input type="checkbox" class="check" id="priv_tcxp_editar">Editar / Eliminar
+                <input type="checkbox" class="check" id="tcxp_editar">Editar / Eliminar
               </td>
             </tr>
 
@@ -101,19 +102,19 @@
             </tr>
             <tr class="row">
               <td class="col-md-6">
-                <input type="checkbox" class="check" id="priv_tm_ver">Ver y Agregar Datos Materiales
+                <input type="checkbox" class="check" id="tm_ver">Ver y Agregar Datos Materiales
               </td>
               <td class="col-md-6">
-                <input type="checkbox" class="check" id="priv_tm_editar">Editar / Eliminar Materiales
+                <input type="checkbox" class="check" id="tm_editar">Editar / Eliminar Materiales
               </td>
             </tr>
 
             <tr class="row">
               <td class="col-md-6">
-                <input type="checkbox" class="check" id="priv_tr_ver">Ver y Agregar Datos Nomina
+                <input type="checkbox" class="check" id="tr_ver">Ver y Agregar Datos Nomina
               </td>
               <td class="col-md-6">
-                <input type="checkbox" class="check" id="priv_tr_editar">Editar / Eliminar Nomina
+                <input type="checkbox" class="check" id="tr_editar">Editar / Eliminar Nomina
               </td>
             </tr>
 
@@ -126,10 +127,23 @@
             </tr>
             <tr class="row">
               <td class="col-md-6">
-                <input type="checkbox" class="check" id="priv_pro_pgVer">Ver y Agregar
+                <input type="checkbox" class="check" id="pro_pgVer">Ver y Agregar
               </td>
               <td class="col-md-6">
-                <input type="checkbox" class="check" id="priv_pro_pgEditar">Editar / Eliminar
+                <input type="checkbox" class="check" id="pro_pgEditar">Editar / Eliminar
+              </td>
+            </tr>
+
+
+            <tr class="row">
+              <td class="col-md-12 text-left privsub">---- Mantenimineto e Inversiones</td>
+            </tr>
+            <tr class="row">
+              <td class="col-md-6">
+                <input type="checkbox" class="check" id="pro_miVer">Ver y Agregar
+              </td>
+              <td class="col-md-6">
+                <input type="checkbox" class="check" id="pro_miEditar">Editar / Eliminar
               </td>
             </tr>
 
@@ -138,28 +152,28 @@
             </tr>
             <tr class="row">
               <td class="col-md-6">
-                <input type="checkbox" class="check" id="priv_pro_pdVer">Ver y Agregar Datos Produc.Diaria
+                <input type="checkbox" class="check" id="pro_pdVer">Ver y Agregar Datos Produc.Diaria
               </td>
               <td class="col-md-6">
-                <input type="checkbox" class="check" id="priv_pro_pdEditar">Editar / Eliminar Produc.Diaria
-              </td>
-            </tr>
-
-            <tr class="row">
-              <td class="col-md-6">
-                <input type="checkbox" class="check" id="priv_pro_corVer">Ver y Agregar Datos Corte
-              </td>
-              <td class="col-md-6">
-                <input type="checkbox" class="check" id="priv_pro_corEditar">Editar / Eliminar Corte
+                <input type="checkbox" class="check" id="pro_pdEditar">Editar / Eliminar Produc.Diaria
               </td>
             </tr>
 
             <tr class="row">
               <td class="col-md-6">
-                <input type="checkbox" class="check" id="priv_pro_liVer">Ver y Agregar Datos Lineas
+                <input type="checkbox" class="check" id="pro_corVer">Ver y Agregar Datos Corte
               </td>
               <td class="col-md-6">
-                <input type="checkbox" class="check" id="priv_pro_liEditar">Editar / Eliminar Lineas
+                <input type="checkbox" class="check" id="pro_corEditar">Editar / Eliminar Corte
+              </td>
+            </tr>
+
+            <tr class="row">
+              <td class="col-md-6">
+                <input type="checkbox" class="check" id="pro_liVer">Ver y Agregar Datos Lineas
+              </td>
+              <td class="col-md-6">
+                <input type="checkbox" class="check" id="pro_liEditar">Editar / Eliminar Lineas
               </td>
             </tr>
 
@@ -168,10 +182,22 @@
             </tr>
             <tr class="row">
               <td class="col-md-6">
-                <input type="checkbox" class="check" id="priv_en_ver">Ver y Agregar Datos
+                <input type="checkbox" class="check" id="en_ver">Ver y Agregar Datos
               </td>
               <td class="col-md-6">
-                <input type="checkbox" class="check" id="priv_en_editar">Editar / Eliminar
+                <input type="checkbox" class="check" id="en_editar">Editar / Eliminar
+              </td>
+            </tr>
+
+            <tr class="row text-center">
+              <td class="col-md-12 priv"> ** CONTROL DE CALIDAD ** </td>
+            </tr>
+            <tr class="row">
+              <td class="col-md-6">
+                <input type="checkbox" class="check" id="cc_ver">Ver y Agregar Datos
+              </td>
+              <td class="col-md-6">
+                <input type="checkbox" class="check" id="cc_editar">Editar / Eliminar
               </td>
             </tr>
 
@@ -180,10 +206,10 @@
             </tr>
             <tr class="row">
               <td class="col-md-6">
-                <input type="checkbox" class="check" id="priv_ve_ver">Ver y Agregar Datos
+                <input type="checkbox" class="check" id="ve_ver">Ver y Agregar Datos
               </td>
               <td class="col-md-6">
-                <input type="checkbox" class="check" id="priv_ve_editar">Editar / Eliminar
+                <input type="checkbox" class="check" id="ve_editar">Editar / Eliminar
               </td>
             </tr>
           </tbody>
@@ -191,7 +217,7 @@
       </div>
       </tr>
       <div class="justify-content-center modal-footer">
-        <button type="submit" id="priv_NuevoRegistroUsuario" class=" NuevoRegistroUsuario btnsub btn boton btn-block ">AGREGAR</button>
+        <button type="submit" class="ActualizarUsuario btnsub btn boton btn-block ">ACTUALIZAR</button>
       </div>
     </div>
   </div>

@@ -5,14 +5,25 @@ $data = array(
   'response'=>array()
 );
 
+function parseDate($dv){
+  return date('Y-m-d', strtotime($dv));
+}
+
 require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
 $query =
-"DELETE FROM  usuarios_1
-WHERE pk_usuario = ?";
+"UPDATE comen_cobranza
+SET fecha= ?,
+comentario = ?
+WHERE pk_coment = ?";
+
+$fecha = parseDate($_POST['ff']);
+
 
 $stmt = $conn->prepare($query);
-$stmt->bind_param('s',
-  $_POST['usuarioId']
+$stmt->bind_param('sss',
+  $fecha,
+  $_POST['cc'],
+  $_POST['id']
 );
 $stmt->execute();
 

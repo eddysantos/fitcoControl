@@ -117,8 +117,9 @@ if (!isset($_SESSION['user'])) {
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
     require $root . '/fitcoControl/Resources/PHP/Cobranza/pieCobranza.php';
-  require $root . '/fitcoControl/Ubicaciones/Modales/Cobranza/ModalGraficaCobranza.php';
-  require $root . '/fitcoControl/Ubicaciones/Modales/Cobranza/ModalCobranza.php';
-  require $root . '/fitcoControl/Ubicaciones/Modales/Cobranza/ModalPagos.php';
+    require $root . '/fitcoControl/Ubicaciones/Cobranza/modales/comentarios.php';
+    require $root . '/fitcoControl/Ubicaciones/Modales/Cobranza/ModalGraficaCobranza.php';
+    require $root . '/fitcoControl/Ubicaciones/Modales/Cobranza/ModalCobranza.php';
+    require $root . '/fitcoControl/Ubicaciones/Modales/Cobranza/ModalPagos.php';
 
 ?>

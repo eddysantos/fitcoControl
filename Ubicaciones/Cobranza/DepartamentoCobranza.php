@@ -10,10 +10,31 @@ if (!isset($_SESSION['user'])) {
   $admin = $_SESSION['user']['privilegiosUsuario'] == "Administrador";
 ?>
 
-<link rel="stylesheet" href="/fitcoControl/Resources/bootstrap/css/reset.css">
-<link rel="stylesheet" href="/fitcoControl/Resources/css/Pagina.css">
-<link rel="stylesheet" href="/fitcoControl/Resources/bootstrap/css/bootstrap.min.css">
-<script src="/fitcoControl/Resources/jquery/jquery.min.js"></script>
+<head>
+  <meta charset="utf-8">
+  <title>Fit&amp;Co Solutions</title>
+  <link rel="stylesheet" href="/fitcoControl/Resources/bootstrap/css/reset.css">
+  <link rel="stylesheet" href="/fitcoControl/Resources/css/barranavegacion.css">
+  <link rel="stylesheet" href="/fitcoControl/Resources/fontAwesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/fitcoControl/Resources/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/fitcoControl/Resources/css/Pagina.css">
+  <link rel="stylesheet" href="/fitcoControl/Resources/css/Inputs.css">
+  <link rel="stylesheet" href="/fitcoControl/Resources/css/modales.css">
+  <link rel="stylesheet" href="/fitcoControl/Resources/css/sweetalert.css">
+  <link rel="stylesheet" href="/fitcoControl/Resources/bootstrap/alertifyjs/css/alertify.min.css">
+  <link rel="stylesheet" href="/fitcoControl/Resources/bootstrap/alertifyjs/css/themes/default.css">
+
+
+  <script src="/fitcoControl/Resources/bootstrap/alertifyjs/alertify.min.js"></script>
+  <script src="/fitcoControl/Resources/jquery/sweetalert.min.js"></script>
+  <script src="/fitcoControl/Resources/jquery/jquery.min.js"></script>
+  <script src="/fitcoControl/Resources/jquery/popper.min.js"></script>
+  <script src="/fitcoControl/Resources/bootstrap/js/bootstrap.min.js"></script>
+  <script src="/fitcoControl/Resources/jquery/tether.min.js"></script>
+  <script src="/fitcoControl/Resources/librerias/dataTables/jquery.DataTable.min.js"></script>
+  <script src="/fitcoControl/Resources/librerias/dataTables/dataTables.bootstrap4.min.js"></script>
+
+</head>
 
 
 <?php if ($cv == 1 || $admin): ?>
@@ -55,6 +76,7 @@ if (!isset($_SESSION['user'])) {
 
 <?php
   require $root . '/fitcoControl/Ubicaciones/Cobranza/actions/footer.php';
+  require $root . '/fitcoControl/Ubicaciones/Cobranza/modales/comentarios.php';
   require $root . '/fitcoControl/Ubicaciones/Modales/Cobranza/ModalGraficaCobranza.php';
   require $root . '/fitcoControl/Ubicaciones/Modales/Cobranza/ModalCobranza.php';
   require $root . '/fitcoControl/Ubicaciones/Modales/Cobranza/ModalPagos.php';

@@ -76,47 +76,11 @@
                 </td>
               </tr>
 
-                <!-- <tr class="row m20 edit_priv" style="">
-                  <td class="col-ma-12">
-                  </td>
-                </tr> -->
-
-
-              <!-- <tr class="row">
-                <td class="col-md-4 text-center">
-                    <input type="checkbox"  id="e_ventas">Ver Cobranza
-                </td>
-                <td class="col-md-4 text-center">
-                  <input type="checkbox"  id="e_tesoreria">Ver Tesoreria
-                </td>
-                <td class="col-md-4 text-center">
-                  <input type="checkbox"  id="e_produc">Ver Produccion
+              <tr class="row m20 edit_priv" style="">
+                <td class="col-md-12">
+                  <a href="#edit_priv_privilegios" data-toggle="modal" class="btn w-100 font12">Ver privilegios</a>
                 </td>
               </tr>
-              <tr class="row">
-                <td class="col-md-6 text-center">
-                  <input type="checkbox"  id="e_rhVer">Ver RH
-                </td>
-                <td class="col-md-6 text-center">
-                  <input type="checkbox"  id="e_rhEditar">Editar RH
-                </td>
-              </tr>
-              <tr class="row">
-                <td class="col-md-6 text-center">
-                  <input type="checkbox"  id="e_usVer">Ver Usuarios
-                </td>
-                <td class="col-md-6 text-center">
-                  <input type="checkbox"  id="e_usEditar">Editar Usuarios
-                </td>
-              </tr>
-              <tr class="row">
-                <td class="col-md-6 text-center">
-                  <input type="checkbox"  id="c_ver">Ver cobranza
-                </td>
-                <td class="col-md-6 text-center">
-                  <input type="checkbox"  id="c_editar">Editar cobranza
-                </td>
-              </tr> -->
             </tbody>
           </table>
 

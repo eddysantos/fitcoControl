@@ -17,24 +17,23 @@ if (!isset($_SESSION['user'])) {
         En el icono <img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='iconoNota'> se eliminaría la información del usuario de manera permanente.
     </div>
 
-
     <div class="col align-self-end">
       <a class="rotate-link consultar ancla" accion="ausuario" status="cerrado">
         <img src="/fitcoControl/Resources/iconos/usuario.svg" class="icon rotate-icon" style="width:30px;">
         <span class="spanA">Agregar Usuario</span>
       </a>
 
-      <a class="rotate-link buscador ancla" accion="busc" status="cerrado">
+      <a class="rotate-link buscador ancla">
         <img src="/fitcoControl/Resources/iconos/search.svg" class="icon rotate-icon" style="width:30px">
-        <span class="spanB"><input class="buscar" type="text" name="busqueda"  id="busqueda" placeholder="Buscar"></span>
+        <span class="spanB"><input class="effect-17 real-time-search" type="text" name="search"  placeholder="Buscar..." table-body="#mostrarUsuarios1" action="mostrar"></span>
       </a>
     </div>
   </div>
 </div>
 
-<!-- <form class="" action="index.html" method="post"> -->
-  <form id='Eusuarios' class='page p-0'>
-    <table class='table table-hover'>
+
+  <form id='Eusuarios' class='page p-0' onsubmit="return false">
+    <table class='table table-hover fixed-table'>
       <thead>
         <tr class='row m-0 encabezado'>
           <td class='col-md-1'></td>
@@ -44,7 +43,11 @@ if (!isset($_SESSION['user'])) {
           <td class='col-md-2'></td>
         </tr>
       </thead>
-      <tbody id="mostrarUsuarios"></tbody>
+      <tbody id="mostrarUsuarios1">
+        <tr>
+          <td colspan="9">No hay resultados</td>
+        </tr>
+      </tbody>
     </table>
   </form>
 
@@ -108,7 +111,6 @@ if (!isset($_SESSION['user'])) {
       </tr>
       <tr class="row m20">
         <td class="col-md-12 input-effect p-0">
-
           <select id="usr_privilegios" class="w-100 effect-17" required>
             <option value="">Seleccionar Priv</option>
             <option value="Administrador">Administrador</option>
@@ -117,13 +119,13 @@ if (!isset($_SESSION['user'])) {
         </td>
       </tr>
 
-      <tr class="row m20 privusuarios" style="display:none">
-        <td class="col-md-12"><a href="#privilegios" data-toggle="modal">Agregar Privilegios</a></td>
+      <tr class="row justify-content-center mb-3 privusuarios" style="display:none">
+        <td class="col-md-4"><a href="#priv_privilegios" data-toggle="modal" class="btnsub btn w-100">Agregar Privilegios</a></td>
       </tr>
 
         <tr class="row justify-content-center mb-3 agregarNuevoRegistro" style="display:none">
           <td class="col-md-4">
-            <button type="submit" id="NuevoRegistroUsuario" class="NuevoRegistroUsuario btnsub btn boton btn-block ">AGREGAR</button>
+            <button type="submit" id="NuevoRegistroUsuario" class="NuevoRegistroUsuario btnsub btn w-100">AGREGAR</button>
           </td>
         </tr>
     </tbody>
@@ -134,20 +136,8 @@ if (!isset($_SESSION['user'])) {
   $root = $_SERVER['DOCUMENT_ROOT'];
   require $root . '/fitcoControl/Ubicaciones/Usuarios/modales/privilegios.php';
   require $root . '/fitcoControl/Ubicaciones/Usuarios/modales/editarUsuario.php';
+  require $root . '/fitcoControl/Ubicaciones/Usuarios/modales/editPrivilegios.php';
+  require $root . '/fitcoControl/Ubicaciones/Usuarios/actions/footer.php';
+
 
 ?>
-<footer class="footer">
-  <li class="nav-item"><a  class="bn noborder w-100" href="/fitcoControl/Resources/PHP/Login/CerrarSesion.php" >
-    <div class="row justify-content-center">
-      <div class="col-md-3">
-        Cerrar <img class="m-3" style="width:30px" src="/fitcoControl/Resources/iconos/001-close-1.svg"> Sesión</a>
-      </div>
-    </div>
-  </li>
-
-
-
-  <script src="/fitcoControl/Ubicaciones/Usuarios/js/usuarios.js"></script>
-  <script src="/fitcoControl/Resources/js/Inputs.js"></script>
-  <script src="/fitcoControl/Resources/js/MostrarDivsAgregar.js"></script>
-</footer>

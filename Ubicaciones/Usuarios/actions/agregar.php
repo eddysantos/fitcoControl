@@ -29,6 +29,8 @@ $tr_ver = trim($_POST['tr_ver']);
 $tr_editar = trim($_POST['tr_editar']);
 $pro_pgVer = trim($_POST['pro_pgVer']);
 $pro_pgEditar = trim($_POST['pro_pgEditar']);
+$pro_miVer = trim($_POST['pro_miVer']);
+$pro_miEditar = trim($_POST['pro_miEditar']);
 $pro_pdVer = trim($_POST['pro_pdVer']);
 $pro_pdEditar = trim($_POST['pro_pdEditar']);
 $pro_corVer = trim($_POST['pro_corVer']);
@@ -37,6 +39,8 @@ $pro_liVer = trim($_POST['pro_liVer']);
 $pro_liEditar = trim($_POST['pro_liEditar']);
 $en_ver = trim($_POST['en_ver']);
 $en_editar = trim($_POST['en_editar']);
+$cc_ver = trim($_POST['cc_ver']);
+$cc_editar = trim($_POST['cc_editar']);
 $ve_ver = trim($_POST['ve_ver']);
 $ve_editar = trim($_POST['ve_editar']);
 
@@ -68,6 +72,8 @@ $query = "INSERT INTO usuarios_1 (nombreUsuario,
                                   tr_editar,
                                   pro_pgVer,
                                   pro_pgEditar,
+                                  pro_miVer,
+                                  pro_miEditar,
                                   pro_pdVer,
                                   pro_pdEditar,
                                   pro_corVer,
@@ -76,9 +82,11 @@ $query = "INSERT INTO usuarios_1 (nombreUsuario,
                                   pro_liEditar,
                                   en_ver,
                                   en_editar,
+                                  cc_ver,
+                                  cc_editar,
                                   ve_ver,
                                   ve_editar)
-                                  VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                                  VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
 $stmt = $conn->prepare($query);
 if (!($stmt)) {
@@ -87,7 +95,7 @@ if (!($stmt)) {
   exit_script($system_callback);
 }
 
-$stmt->bind_param('sssssssssssssssssssssssssssssssssssss',$nom,$ape,$correo,$dep,$puesto,$usr,$contra,$priv,$e_ventas,$e_tesoreria,$e_produc,$e_rhVer,$e_rhEditar,$e_usVer,$e_usEditar,$c_ver,$c_editar,$tc_ver,$tc_editar,$tcxp_ver,$tcxp_editar,$tm_ver,$tm_editar,$tr_ver,$tr_editar,$pro_pgVer,$pro_pgEditar,$pro_pdVer,$pro_pdEditar,$pro_corVer,$pro_corEditar,$pro_liVer,$pro_liEditar,$en_ver,$en_editar,$ve_ver,$ve_editar);
+$stmt->bind_param('sssssssssssssssssssssssssssssssssssssssss',$nom,$ape,$correo,$dep,$puesto,$usr,$contra,$priv,$e_ventas,$e_tesoreria,$e_produc,$e_rhVer,$e_rhEditar,$e_usVer,$e_usEditar,$c_ver,$c_editar,$tc_ver,$tc_editar,$tcxp_ver,$tcxp_editar,$tm_ver,$tm_editar,$tr_ver,$tr_editar,$pro_pgVer,$pro_pgEditar,$pro_miVer,$pro_miEditar,$pro_pdVer,$pro_pdEditar,$pro_corVer,$pro_corEditar,$pro_liVer,$pro_liEditar,$en_ver,$en_editar,$cc_ver,$cc_editar,$ve_ver,$ve_editar);
 if (!($stmt)) {
   $system_callback['code'] = "500";
   $system_callback['message'] = "Error during variables binding [$stmt->errno]: $stmt->error";

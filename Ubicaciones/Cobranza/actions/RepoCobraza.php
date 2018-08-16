@@ -128,14 +128,17 @@ while ($row = $rslt->fetch_assoc()) {
  $id = $idCobranza;
 
   $system_callback['data'] .=
-  "<tr class='$background' id='item' style='$vervencido'>
-    <td width='20%'>$clienteCobranza</td>
+
+  "
+  <tr class='$background' id='item' style='$vervencido'>
+    <td width='20%'><a href='#coment' data-toggle='modal' class='comentCobranza spand-link mr-3' cobranza-id='$id'>$clienteCobranza</a></td>
     <td width='8%'>$facturaCobranza</td>
     <td width='8%'>$concepto</td>
     <td width='10%'> $ $importeCobranza </td>
     <td width='10%'> $ $pagado </td>
     <td width='10%' style='color:red'> $ $vencido </td>
     <td width='10%'>$dia $vencimientoCobranza</td>
+    </a>
   </tr>";
 }
 

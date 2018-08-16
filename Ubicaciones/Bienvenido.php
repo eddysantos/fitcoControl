@@ -10,7 +10,7 @@
   $clv = $_SESSION['user']['cliente_ver'];
 
   // cliente
-  $cliente = $_SESSION['user']['c_ver'];
+  // $cliente = $_SESSION['user']['c_ver'];
 
 
   // tesoreria
@@ -56,7 +56,7 @@
       <?php endif; ?>
 
 
-      <?php if ($cliente == 1 || $admin): ?>
+      <?php if ($clv == 1 || $admin): ?>
         <li class="nav-item">
           <a href="/fitcoControl/Ubicaciones/Clientes/Clientes.php" class="bn transicion">CLIENTES<span class="barra gris">DIVISION 2</span></a>
         </li>

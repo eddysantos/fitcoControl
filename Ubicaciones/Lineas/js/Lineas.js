@@ -65,8 +65,6 @@ $('.filtroRepo').click(function(){
 });
 
 
-
-
 //MOSTRAR TABLA
 function lineas_Det(){
   $.ajax({
