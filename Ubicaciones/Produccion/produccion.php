@@ -39,6 +39,11 @@ require  $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
           <img style="width:30px" src="/fitcoControl/Resources/iconos/002-calendar.svg"> Sección de Corte
           <span class="top"></span>
         </a>
+
+        <a href="/fitcoControl/Ubicaciones/Lineas/pantalla.php" class="linkboton  btn-block">
+          <img style="width:30px" src="/fitcoControl/Resources/iconos/002-calendar.svg"> Lineas
+          <span class="top"></span>
+        </a>
       </div>
     </div>
 
@@ -55,7 +60,7 @@ require  $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
 
 
 <footer class="footer">
-  <li class="nav-item"><a  class="noborder w-100" href="/fitcoControl/Resources/PHP/Login/CerrarSesion.php" >
+  <li class="nav-item"><a  class="bn noborder w-100" href="/fitcoControl/Resources/PHP/Login/CerrarSesion.php" >
     <div class="row justify-content-center">
       <div class="col-md-3">
         Cerrar <img class="m-3" style="width:30px" src="/fitcoControl/Resources/iconos/001-close-1.svg"> Sesión</a>

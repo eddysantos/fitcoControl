@@ -74,10 +74,10 @@ colorCliente AS color
           $credito = $row['credito'];
           $fingreso = $row['ingreso'];
           $color = $row['color'];
-          $cle = $_SESSION['user']['cliente_editar'];
+          $c = $_SESSION['user']['c_editar'];
           $admin = $_SESSION['user']['privilegiosUsuario'];
 
-        if ($cle == 1 || $admin == "Administrador") {
+        if ($c == 1 || $admin == "Administrador") {
           $tabla.= "
             <tr class='row bordelateral m-0' id='item'>
               <td class='col-md-1'>
@@ -106,7 +106,7 @@ colorCliente AS color
               </td>
 
             </tr>";
-        }elseif ($cle == 0) {
+        }elseif ($c == 0) {
          $tabla.= "
            <tr class='row bordelateral m-0' id='item'>
              <td class='col-md-1'>

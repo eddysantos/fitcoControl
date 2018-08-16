@@ -43,6 +43,7 @@ if (false) {
     $admin = $_SESSION['user']['privilegiosUsuario'] == "Administrador";
 
 
+  // if ($pe == 1){
   if ($pe == 1 || $admin){
     $data["infoTabla"].= "
     <tr class='row text-center bordelateral' id='item'>
@@ -68,6 +69,7 @@ if (false) {
     $data["infoTabla"].= "
     <tr class='row text-center bordelateral' id='item'>
       <td class='col-md-3'>
+
         <h4><b>$fecha</b></h4>
       </td>
       <td class='col-md-2'>

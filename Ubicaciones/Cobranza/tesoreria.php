@@ -8,6 +8,8 @@ $root = $_SERVER['DOCUMENT_ROOT'];
 require  $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
 ?>
 
+
+<?php if ($cv == 1 || $admin): ?>
 <div class="container mt-100">
   <div class="row  mb-20 mt-5">
     <div class="col-md-4">
@@ -57,9 +59,16 @@ require  $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
   </div>
 </div>
 
+<?php else:?>
+
+  <div id='SinRegistros' class='container-fluid pantallaRegistros'>
+    <div class='tituloSinRegistros' style="font-size:25px; color:red">SOLICITA PERMISO PARA ENTRAR EN ESTA SECCIÓN</div>
+  </div>
+<?php endif; ?>
+
 
 <footer class="footer">
-  <li class="nav-item"><a  class="noborder w-100" href="/fitcoControl/Resources/PHP/Login/CerrarSesion.php" >
+  <li class="nav-item"><a  class="bn noborder w-100" href="/fitcoControl/Resources/PHP/Login/CerrarSesion.php" >
     <div class="row justify-content-center">
       <div class="col-md-3">
         Cerrar <img class="m-3" style="width:30px" src="/fitcoControl/Resources/iconos/001-close-1.svg"> Sesión</a>

@@ -15,7 +15,7 @@
               <tr class="row m20">
                 <td class="col-md-12 input-effect p-0">
                   <input type="hidden" id="mpro_idprog">
-                  <input class="w-100 modal-efecto-17 has-content" name="mpro_find" id="mpro_fint" type="date">
+                  <input class="w-100 modal-efecto-17 has-content" name="mpro_find" id="mpro_fint" type="date" required>
                   <label>Fecha</label>
                   <span class="focus-border"></span>
                 </td>
@@ -23,7 +23,7 @@
 
               <tr class="row m20">
                 <td class="col-md-12 input-effect p-0">
-                  <input class="w-100 modal-efecto-17 has-content" name="mpro_meta" id="mpro_meta" type="text">
+                  <input class="w-100 modal-efecto-17 has-content" name="mpro_meta" id="mpro_meta" type="text" required>
                   <label>Meta Diaria</label>
                   <span class="focus-border"></span>
                 </td>
@@ -31,7 +31,7 @@
 
               <tr class="row m20">
                 <td class="col-md-12 input-effect p-0">
-                  <input class="w-100 modal-efecto-17 has-content" name="mpro_cant" id="mpro_cant" type="text">
+                  <input class="w-100 modal-efecto-17 has-content" name="mpro_cant" id="mpro_cant" type="text" required>
                     <label>Cantidad Elaborada</label>
                     <span class="focus-border"></span>
                 </td>

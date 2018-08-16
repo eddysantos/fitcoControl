@@ -15,7 +15,7 @@ input[type="date"]{
     width: 100%;
 }
 
-button[type=submit].btnsub{
+.btnsub{
   border: 2px solid black;
   color:black;
   border-radius:5px;
@@ -26,11 +26,11 @@ button[type=submit].btnsub{
   font-size: 15px;
   background: white
 }
-button[type=submit].btnsub:hover{
+.btnsub:hover{
   background: rgba(47, 89, 119, 0.63);
   color:white!important;
 	border: 2px solid rgba(117, 117, 117, 0.49);
-  letter-spacing:5px;
+  /* letter-spacing:5px; */
 }
 
 input[type="color"]{
@@ -39,6 +39,15 @@ input[type="color"]{
   width: 10%;
   padding: 0px!important;
   margin: 0px!important;
+}
+
+
+input[type="color"].dt{
+  /* border: 0px!important;
+  background-color: transparent;
+  width: 10%;
+  padding: 0px!important; */
+  margin-left: 4rem!important;
 }
 
 
