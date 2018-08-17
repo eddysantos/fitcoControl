@@ -87,68 +87,50 @@ cxp.factura AS factura
             $background = "rojo";
           }
 
-        if ($ce == 1 || $admin == "Administrador") {
-          $tabla.= "<tr class='$background row bordelateral m-0' id='item'>
-              <td class='col-md-1'>
-                <img src='/fitcoControl/Resources/iconos/team.svg' class='icono'>
-              </td>
-              <td class='col-md-4'>
-                <h2><b>$proveedor</a></b></h2>
-                <p class='visibilidad'>Fact: $factura</p>
-              </td>
-              <td class='col-md-2'>
-              <h2><b>$descripcion</a></b></h2>
-              <p class='visibilidad'>$vencimiento</p>
-              </td>
-              <td class='col-md-2 text-center'>
-                <h2><b>$ $total</a></b></h2>
-              </td>
-              <td class='col-md-2 text-center'>
-                <h2><b>$ $pagado</a></b></h2>
-                <p class='visibilidad'>pendiente: $ $pendiente</p>
-              </td>
+          $txcp_editar = $_SESSION['user']['txcp_editar'];
+          $admin = $_SESSION['user']['privilegiosUsuario'] == 'Administrador';
 
-              <td class='col-md-1 text-right'>
-                <a href='#' class='EditCuenta spand-link' data-toggle='modal' data-target='#EditarCuenta' cuenta-id='$id'><img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='img spand-icon'></a>
 
-                  <a href='#'  class='eliminarCuenta spand-link ml-3' cuenta-id='$id'><img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='img spand-icon'></a>
-              </td>
-            </tr>";
-            $suma += $row['total'];
-            $pago += $row['pagado'];
-            $diferencia += $row['total']-$row['pagado'];
-        }elseif ($ce == 0) {
-         $tabla.= "
-         <tr class='row bordelateral m-0' id='item'>
-           <td class='col-md-1'>
-             <img src='/fitcoControl/Resources/iconos/team.svg' class='icono'>
-           </td>
-           <td class='col-md-3'>
-             <h2><b>$proveedor</a></b></h2>
-             <p class='visibilidad'>Fact: $factura</p>
+          if ($admin || $txcp_editar == 1) {
+            $editar = "href='#' class='EditCuenta spand-link' data-toggle='modal' data-target='#EditarCuenta'";
+            $eliminar = "href='#'  class='eliminarCuenta spand-link ml-3'";
+            $bloqueo="";
+          }else {
+            $editar = "href='#' class='bn bloqueo'";
+            $eliminar = "href='#' class='bn bloqueo'";
+            $bloqueo = "bn bloqueo";
+          }
 
-           </td>
-           <td class='col-md-3'>
-           <h2><b>$descripcion</a></b></h2>
-           <p class='visibilidad'>$vencimiento</p>
-           </td>
-           <td class='col-md-2 text-center'>
-             <h2><b>$ $total</a></b></h2>
-           </td>
-           <td class='col-md-2 text-center'>
-             <h2><b>$ $pagado</a></b></h2>
-             <p class='visibilidad'>pendiente: $ $pendiente</p>
-           </td>
-             <td class='col-md-1 text-right'>
-               <a href='#' class='spand-link'><img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='img bloqueo spand-icon'></a>
 
-               <a href='#' class='spand-link ml-3'><img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='img bloqueo spand-icon'></a>
-             </td>
-           </tr>";
-           $suma += $row['total'];
-           $pago += $row['pagado'];
-           $diferencia += $row['total']-$row['pagado'];
-       }
+        $tabla.= "<tr class='$background row bordelateral m-0' id='item'>
+          <td class='col-md-1'>
+            <img src='/fitcoControl/Resources/iconos/team.svg' class='icono'>
+          </td>
+          <td class='col-md-4'>
+            <h2><b>$proveedor</a></b></h2>
+            <p class='visibilidad'>Fact: $factura</p>
+          </td>
+          <td class='col-md-2'>
+          <h2><b>$descripcion</a></b></h2>
+          <p class='visibilidad'>$vencimiento</p>
+          </td>
+          <td class='col-md-2 text-center'>
+            <h2><b>$ $total</a></b></h2>
+          </td>
+          <td class='col-md-2 text-center'>
+            <h2><b>$ $pagado</a></b></h2>
+            <p class='visibilidad'>pendiente: $ $pendiente</p>
+          </td>
+
+          <td class='col-md-1 text-right'>
+            <a $editar cuenta-id='$id'><img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='$bloqueo img spand-icon'></a>
+
+              <a $eliminar cuenta-id='$id'><img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='$bloqueo img spand-icon'></a>
+          </td>
+        </tr>";
+        $suma += $row['total'];
+        $pago += $row['pagado'];
+        $diferencia += $row['total']-$row['pagado'];
       }
 
       setlocale(LC_MONETARY, 'en_US');

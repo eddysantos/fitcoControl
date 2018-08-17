@@ -7,7 +7,7 @@ if (!isset($_SESSION['user'])) {
   $root = $_SERVER['DOCUMENT_ROOT'];
   require $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
 ?>
-
+<?php if ($admin || $pro_liVer == 1): ?>
 <div class="container-fluid pl-75 pr-57">
 <!-- PRUEBA  -->
   <table class="table">
@@ -43,21 +43,6 @@ if (!isset($_SESSION['user'])) {
             <img src="/fitcoControl/Resources/iconos/001-computer.svg" class="icon1 rotate-icon" style="width:30px;">
             <span>Agregar Produccion</span>
           </a>
-
-          <!-- <a href="#graficasLineas" data-toggle="modal" class="rotate-link mod ancla" style="font-size:larger;text-decoration:none;">
-            <img src="/fitcoControl/Resources/iconos/grafica2.svg" class="icon1 rotate-icon" style="width:30px;">
-            <span class="spanA">Graficas</span>
-          </a> -->
-
-          <a href="/fitcoControl/Ubicaciones/Lineas/actions/reportes.php" class="vent rotate-link mod ancla" style="font-size:larger;text-decoration:none;">
-            <img src="/fitcoControl/Resources/iconos/003-analytics-2.svg" class="icon1 rotate-icon" style="width:30px;">
-            <span>Reportes</span>
-          </a>
-
-          <!-- <a href="#mostrarRepo" data-toggle="modal" class="rotate-link mod ancla" style="font-size:larger;text-decoration:none;">
-            <img src="/fitcoControl/Resources/iconos/003-analytics-2.svg" class="icon1 rotate-icon" style="width:30px;">
-            <span class="spanA">Reportes</span>
-          </a> -->
 
           <a class="rotate-link buscador ancla"  accion="msearch" status="cerrado">
             <img src="/fitcoControl/Resources/iconos/search.svg" class="icon rotate-icon" style="width:30px">
@@ -160,13 +145,17 @@ if (!isset($_SESSION['user'])) {
   </table>
 </form>
 
+<?php else: ?>
+  <div id='SinRegistros' class='container-fluid pantallaRegistros'>
+    <div class='tituloSinRegistros' style="font-size:25px; color:red">SOLICITA PERMISO PARA ENTRAR EN ESTA SECCIÓN</div>
+  </div>
+<?php endif;?>
+
 
 
 <?php
   require $root . '/fitcoControl/Ubicaciones/Lineas/modales/editar.php';
   require $root . '/fitcoControl/Ubicaciones/Lineas/modales/listas.php';
   require $root . '/fitcoControl/Ubicaciones/Lineas/modales/agregarProduccion.php';
-  // require $root . '/fitcoControl/Ubicaciones/Lineas/modales/graficas.php';
-  // require $root . '/fitcoControl/Ubicaciones/Lineas/modales/reportes.php';
   require $root . '/fitcoControl/Ubicaciones/Lineas/actions/footer.php';
  ?>

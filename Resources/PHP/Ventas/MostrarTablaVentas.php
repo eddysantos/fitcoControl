@@ -72,9 +72,23 @@ if ($buscarDatos->num_rows > 0) {
        $precioXprenda = $row['precioXprenda'];
        $numeroPrendas = $row['prendas'];
        $acuerdo = $row['acuerdo'];
-       $ev =  $_SESSION['user']['editarVentas'];
-       $admin = $_SESSION['user']['privilegiosUsuario'] == "Administrador";
-       $bloqueo =  "bloqueo";
+       // $ev =  $_SESSION['user']['editarVentas'];
+       // $admin = $_SESSION['user']['privilegiosUsuario'] == "Administrador";
+       // $bloqueo =  "bloqueo";
+
+       $ve_editar= $_SESSION['user']['ve_editar'];
+       $admin = $_SESSION['user']['privilegiosUsuario'] == 'Administrador';
+
+
+       if ($admin || $ve_editar == 1) {
+         $editar = "href='#' class='EditVentas spand-link' data-toggle='modal' data-target='#EditarVentas'";
+         $eliminar = "href='#' class='EliminarVenta spand-link'";
+         $bloqueo="";
+       }else {
+         $editar = "href='#' class='bn bloqueo'";
+         $eliminar = "href='#' class='bn bloqueo'";
+         $bloqueo = "bn bloqueo";
+       }
 
        if ($fechaBaja == NULL) {
          $fechaBaja = "N/A";
@@ -82,56 +96,31 @@ if ($buscarDatos->num_rows > 0) {
         $fechaBaja = $row['baja'];
        }
 
-        if ($ev == 1 || $admin) {
-          $tabla.="
-            <tr class='row bordelateral m-0' id='item'>
-              <td class='col-md-1'>
-                <img src='/fitcoControl/Resources/iconos/users.svg' class='icono'>
-              </td>
-              <td class='col-md-3'>
-                <h4><b>$nombreCliente</b></h4>
-                <p class='visibilidad'>Prendas x Mes: $numeroPrendas</p>
-              </td>
-              <td class='col-md-3 text-center'>
-                <h4><b>$nombreVendedor</b></h4>
-                <p class='visibilidad'>Acuerdo de Pago: $acuerdo</p>
-              </td>
-              <td class='col-md-2 text-center'>
-                <h4><b>$fechaIngreso</b></h4>
-                <p class='visibilidad'>Baja: $fechaBaja</p>
-              </td>
-              <td class='col-md-1'></td>
-              <td class='col-md-2 text-right'>
-                <a href='#' class='EditVentas spand-link' data-toggle='modal' data-target='#EditarVentas' ventas-id='$idVentas'><img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class=' spand-icon'></a>
 
-                <a href='#' class='EliminarVenta spand-link' ventas-id='$idVentas'><img  src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='ml-3 spand-icon'></a>
-              </td>
-            </tr>";
-        }elseif ($ev == 0) {
-          $tabla.="
-            <tr class='row bordelateral m-0' id='item'>
-              <td class='col-md-1'>
-                <img src='/fitcoControl/Resources/iconos/users.svg' class='icono'>
-              </td>
-              <td class='col-md-3'>
-                <h4><b>$nombreCliente</b></h4>
-                <p class='visibilidad'>Prendas x Mes: $numeroPrendas</p>
-              </td>
-              <td class='col-md-3 text-center'>
-                <h4><b>$nombreVendedor</b></h4>
-                <p class='visibilidad'>Acuerdo de Pago: $acuerdo</p>
-              </td>
-              <td class='col-md-2 text-center'>
-                <h4><b>$fechaIngreso</b></h4>
-              </td>
-              <td class='col-md-1'></td>
-              <td class='col-md-2 text-right'>
-                <a href='#' class='spand-link' id='$bloqueo'><img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='spand-icon'></a>
+      $tabla.="
+        <tr class='row bordelateral m-0' id='item'>
+          <td class='col-md-1'>
+            <img src='/fitcoControl/Resources/iconos/users.svg' class='icono'>
+          </td>
+          <td class='col-md-3'>
+            <h4><b>$nombreCliente</b></h4>
+            <p class='visibilidad'>Prendas x Mes: $numeroPrendas</p>
+          </td>
+          <td class='col-md-3 text-center'>
+            <h4><b>$nombreVendedor</b></h4>
+            <p class='visibilidad'>Acuerdo de Pago: $acuerdo</p>
+          </td>
+          <td class='col-md-2 text-center'>
+            <h4><b>$fechaIngreso</b></h4>
+            <p class='visibilidad'>Baja: $fechaBaja</p>
+          </td>
+          <td class='col-md-1'></td>
+          <td class='col-md-2 text-right'>
+            <a $editar ventas-id='$idVentas'><img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class=' spand-icon $bloqueo'></a>
 
-                <a href='#' class='spand-link' id='$bloqueo'><img  src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='ml-3 spand-icon'></a>
-              </td>
-            </tr>";
-        }
+            <a $eliminar ventas-id='$idVentas'><img  src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='ml-3 spand-icon $bloqueo'></a>
+          </td>
+        </tr>";
       }
 
       $tabla.="

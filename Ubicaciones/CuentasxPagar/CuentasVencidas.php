@@ -6,7 +6,7 @@ if (!isset($_SESSION['user'])) {
 }
   $root = $_SERVER['DOCUMENT_ROOT'];
   // require $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
-  $cv =  $_SESSION['user']['cobranza_ver'];
+  $tcxp_ver = $_SESSION['user']['tcxp_ver'];
   $admin = $_SESSION['user']['privilegiosUsuario'] == "Administrador";
 ?>
 
@@ -15,10 +15,8 @@ if (!isset($_SESSION['user'])) {
 <link rel="stylesheet" href="/fitcoControl/Resources/bootstrap/css/bootstrap.min.css">
 <script src="/fitcoControl/Resources/jquery/jquery.min.js"></script>
 
-<?php if ($cv == 1 || $admin): ?>
-
+<?php if ($tcxp_ver == 1 || $admin): ?>
   <div class="container-fluid mt-4">
-
     <div class='m-5'>
       <a href='/fitcoControl/Ubicaciones/CuentasxPagar/CuentasxPagar.php' class='consultar'><img style='width: 100px;' src='/fitcoControl/Resources/iconos/logoFitco.png'></a>
     </div>
@@ -31,20 +29,19 @@ if (!isset($_SESSION['user'])) {
             <div class='popup-list' id='popup-display-listaProveedor' style='display:none'></div>
           </td>
           <td width='10%'>#FACT.</td>
-          <td width='10%'>CONCETO</td>
+          <td width='10%'>CONCEPTO</td>
           <td width='8%'>TOTAL DE FACT</td>
           <td width='8%'>PAGADO</td>
           <td width='10%'>VENCIDO</td>
           <td width='10%'>VENCIMIENTO</td>
         </tr>
         </thead>
-        <tbody id='mostrarCuentasVencidas'>
-
-    <!-- <section id="mostrarCuentasVencidas"></section> -->
+        <tbody id='mostrarCuentasVencidas'></tbody>
+      </table>
+    </form>
   </div>
 
 <?php else:?>
-
   <div id='SinRegistros' class='container-fluid pantallaRegistros'>
     <div class='tituloSinRegistros' style="font-size:25px; color:red">SOLICITA PERMISO PARA ENTRAR EN ESTA SECCIÓN</div>
   </div>

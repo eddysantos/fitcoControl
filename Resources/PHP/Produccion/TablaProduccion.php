@@ -39,55 +39,41 @@ if (false) {
     $fecha = $row['fecha'];
     $meta = $row['meta'];
     $cantidad = $row['cant'];
-    $pe =  $_SESSION['user']['produccion_editar'];
-    $admin = $_SESSION['user']['privilegiosUsuario'] == "Administrador";
+    $pro_pdEditar = $_SESSION['user']['pro_pdEditar'];
+    $admin = $_SESSION['user']['privilegiosUsuario'] == 'Administrador';
 
 
-  // if ($pe == 1){
-  if ($pe == 1 || $admin){
-    $data["infoTabla"].= "
-    <tr class='row text-center bordelateral' id='item'>
-      <td class='col-md-3'>
-        <h4><b>$fecha</b></h4>
-      </td>
-      <td class='col-md-2'>
-        <h4><b>$meta pzs</b></h4>
-      </td>
-      <td class='col-md-2'>
-        <h4><b>$cantidad pzs</b></h4>
-      </td>
-      <td class='col-md-3'>
-        <h4><b>$notas</b></h4>
-      </td>
-      <td class='col-md-2 text-right'>
-        <a href='#' class='editarProduc spand-linkm' data-toggle='modal' data-target='#EdProd' pro-id='$id'><img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='spand-iconm'></a>
-
-        <a href='#' class='eliminarProduc spand-linkm ml-3' pro-id='$id'><img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='spand-iconm'></a>
-      </td>
-    </tr>";
-  }elseif ($pe == 0){
-    $data["infoTabla"].= "
-    <tr class='row text-center bordelateral' id='item'>
-      <td class='col-md-3'>
-
-        <h4><b>$fecha</b></h4>
-      </td>
-      <td class='col-md-2'>
-        <h4><b>$meta pzs</b></h4>
-      </td>
-      <td class='col-md-2'>
-        <h4><b>$cantidad pzs</b></h4>
-      </td>
-      <td class='col-md-3'>
-        <h4><b>$notas</b></h4>
-      </td>
-      <td class='col-md-2 text-right'>
-        <a href='#' class='bloqueo spand-linkm'><img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='spand-iconm'></a>
-
-        <a href='#' class='bloqueo spand-linkm ml-3'><img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='spand-iconm'></a>
-      </td>
-    </tr>";
+    if ($admin || $pro_pdEditar == 1) {
+      $editar = "href='#' class='editarProduc spand-linkm' data-toggle='modal' data-target='#EdProd'";
+      $eliminar = "href='#' class='eliminarProduc spand-linkm ml-3'";
+      $bloqueo="";
+    }else {
+      $editar = "href='#' class='bn bloqueo'";
+      $eliminar = "href='#' class='bn bloqueo'";
+      $bloqueo = "bn bloqueo";
     }
+
+
+    $data["infoTabla"].= "
+    <tr class='row text-center bordelateral' id='item'>
+      <td class='col-md-3'>
+        <h4><b>$fecha</b></h4>
+      </td>
+      <td class='col-md-2'>
+        <h4><b>$meta pzs</b></h4>
+      </td>
+      <td class='col-md-2'>
+        <h4><b>$cantidad pzs</b></h4>
+      </td>
+      <td class='col-md-3'>
+        <h4><b>$notas</b></h4>
+      </td>
+      <td class='col-md-2 text-right'>
+        <a $editar pro-id='$id'><img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='spand-iconm'></a>
+
+        <a $eliminar  pro-id='$id'><img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='spand-iconm'></a>
+      </td>
+    </tr>";
   }
 }
 

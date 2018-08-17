@@ -8,16 +8,10 @@ $root = $_SERVER['DOCUMENT_ROOT'];
 require  $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
 ?>
 
+
+<?php if ($tr_ver == 1 || $admin): ?>
 <div class="container-fluid pl-75 pr-57">
   <div class="row clt_usr  mt-4">
-    <!-- <div class="text-left alert alert-info w-75" role="alert" >
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span></button>
-        <strong>Nota: </strong> En esta sección se podran agregar a los usuarios que utilizaran esta aplicacion, asi como sus privilegios dentro de esta, en el icono <img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='iconoNota'> se podra editar la información del usuario y privilegios.<br>
-        En el icono <img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='iconoNota'> se eliminaría la información del usuario de manera permanente.
-    </div> -->
-
-
     <div class="col align-self-end">
       <a class="rotate-link consultar ancla" accion="anomina" status="cerrado">
         <img src="/fitcoControl/Resources/iconos/money.svg" class="icon rotate-icon" style="width:30px;">
@@ -35,7 +29,6 @@ require  $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
 <div class="container-fluid mt-4">
   <section id="MostrarNomina"></section>
 </div>
-
 
 <form id="NuevoNomina" class="agregarnuevo mb-10" style="display:none;margin-bottom:80px">
   <table class="table">
@@ -78,9 +71,14 @@ require  $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
 </form>
 
 
+<?php else:?>
+  <div id='SinRegistros' class='container-fluid pantallaRegistros'>
+    <div class='tituloSinRegistros' style="font-size:25px; color:red">SOLICITA PERMISO PARA ENTRAR EN ESTA SECCIÓN</div>
+  </div>
+<?php endif; ?>
+
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
   require $root . '/fitcoControl/Ubicaciones/Modales/Nomina/ModalNomina.php';
   require $root . '/fitcoControl/Resources/PHP/Nomina/pieNomina.php';
-
 ?>

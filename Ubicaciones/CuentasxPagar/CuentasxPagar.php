@@ -8,14 +8,9 @@
   require $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
 ?>
 
-
+<?php if ($tcxp_ver == 1 || $admin): ?>
 <div class="container-fluid pl-75 pr-57">
   <div class="row clt_usr mt-4">
-    <!-- <div class="text-left alert alert-info w-75" role="alert" >
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <strong>Nota: </strong> La función de esta sección es llevar el registro de los datos de nuestros clientes para mayor accesibilidad, en el icono <img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='iconoNota'> se podra editar la información del cliente en caso de que asi se requiera.
-      En el icono <img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='iconoNota'> se eliminaría la información del cliente de manera permanente.
-    </div> -->
     <div class="col align-self-end">
       <a id="addcliente" class="rotate-link consultar ancla" accion="acuentas" status="cerrado">
         <img src="/fitcoControl/Resources/iconos/004-pago.svg" class="icon rotate-icon" style="width:30px">
@@ -94,6 +89,13 @@
       </tbody>
     </table>
   </form>
+
+
+<?php else:?>
+  <div id='SinRegistros' class='container-fluid pantallaRegistros'>
+    <div class='tituloSinRegistros' style="font-size:25px; color:red">SOLICITA PERMISO PARA ENTRAR EN ESTA SECCIÓN</div>
+  </div>
+<?php endif; ?>
 
 
 

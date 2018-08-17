@@ -62,64 +62,46 @@ if ($buscarDatos->num_rows > 0) {
         $horasExtras = $row['horasExtras'];
         $dineroHoras = number_format($row['dineroHoras'],2);
         $fechaNomina = $row['fechaNomina'];
-        $ce =  $_SESSION['user']['cobranza_editar'];
-        $admin = $_SESSION['user']['privilegiosUsuario'] == "Administrador";
 
-        if ($ce == 1 || $admin) {
-          $tabla.= "
-          <tbody id='MostrarNomina'>
-            <tr class='row bordelateral m-0' id='item'>
-              <td class='col-md-2 text-center'>
-                <h4><b>Semana $semana</b></h4>
-                <p class='visibilidad'>fecha: $fechaNomina</p>
-              </td>
-
-              <td class='col-md-3 text-center pr-0 pl-0'>
-                <h4><b>$ $dineroNomina</b></h4>
-              </td>
-              <td class='col-md-2 text-center'>
-                <h4><b>$horasExtras horas</b></h4>
-              </td>
-              <td class='col-md-3 text-center'>
-                <h4><b>$ $dineroHoras</b></h4>
-              </td>
+        $tr_editar = $_SESSION['user']['tr_editar'];
+        $admin = $_SESSION['user']['privilegiosUsuario'] == 'Administrador';
 
 
-              <td class='col-md-2 text-right'>
-                <a href='#' class='editNom spand-link' data-toggle='modal' data-target='#EditarNomina' nom-id='$idNom'><img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='img spand-icon'></a>
-
-                <a href='#' class='eliminarNom spand-link ml-3' nom-id='$idNom'><img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='img spand-icon'></a>
-              </td>
-            </tr>
-          </tbody>";
-        }elseif ($ce == 0) {
-          $tabla.= "
-          <tbody id='MostrarNomina'>
-            <tr class='row bordelateral m-0' id='item'>
-              <td class='col-md-2 text-center'>
-                <h4><b>$semana</b></h4>
-                <p class='visibilidad'>fecha: $fechaNomina</p>
-              </td>
-
-              <td class='col-md-3 text-center pr-0 pl-0'>
-                <h4><b>$ $dineroNomina</b></h4>
-              </td>
-              <td class='col-md-2 text-center'>
-                <h4><b>$horasExtras</b></h4>
-              </td>
-              <td class='col-md-3 text-center'>
-                <h4><b>$ $dineroHoras</b></h4>
-              </td>
-
-
-              <td class='col-md-2 text-right'>
-              <a href='#' class='bloqueo  editMat spand-link'><img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='img spand-icon'></a>
-
-              <a href='#' class='bloqueo spand-link ml-3'><img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='img spand-icon'></a>
-              </td>
-            </tr>
-          </tbody>";
+        if ($admin || $tr_editar == 1) {
+          $editar = "href='#' class='editNom spand-link' data-toggle='modal' data-target='#EditarNomina'";
+          $eliminar = "href='#' class='eliminarNom spand-link ml-3'";
+          $bloqueo="";
+        }else {
+          $editar = "href='#' class='bn bloqueo'";
+          $eliminar = "href='#' class='bn bloqueo'";
+          $bloqueo = "bn bloqueo";
         }
+
+        $tabla.= "
+        <tbody id='MostrarNomina'>
+          <tr class='row bordelateral m-0' id='item'>
+            <td class='col-md-2 text-center'>
+              <h4><b>Semana $semana</b></h4>
+              <p class='visibilidad'>fecha: $fechaNomina</p>
+            </td>
+
+            <td class='col-md-3 text-center pr-0 pl-0'>
+              <h4><b>$ $dineroNomina</b></h4>
+            </td>
+            <td class='col-md-2 text-center'>
+              <h4><b>$horasExtras horas</b></h4>
+            </td>
+            <td class='col-md-3 text-center'>
+              <h4><b>$ $dineroHoras</b></h4>
+            </td>
+
+            <td class='col-md-2 text-right'>
+              <a $editar nom-id='$idNom'><img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='$bloqueo img spand-icon'></a>
+
+              <a $eliminar nom-id='$idNom'><img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='$bloqueo img spand-icon'></a>
+            </td>
+          </tr>
+        </tbody>";
       }
 
       $tabla.="

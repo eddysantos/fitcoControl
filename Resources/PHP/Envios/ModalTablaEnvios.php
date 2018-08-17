@@ -39,58 +39,45 @@ if (false) {
     $fechaEnvio = $row['fechaEnvio'];
     $horaEnvio = $row['horaEnvio'];
     $notas = $row['notas'];
-    $pe = $_SESSION['user']['produccion_editar'];
-    $admin = $_SESSION['user']['privilegiosUsuario'] == "Administrador";
+    $en_editar= $_SESSION['user']['en_editar'];
+    $admin = $_SESSION['user']['privilegiosUsuario'] == 'Administrador';
 
 
-    if ($pe == 1 || $admin) {
-      $data["infoTabla"].= "<tr class='row bordelateral m-0'>
-
-          <td class='col-md-4'>
-            <h4><b>$status</b></h4>
-          </td>
-          <td class='col-md-2 text-center'>
-            <h4><b>$fechaEnvio</b></h4>
-          </td>
-
-          <td class='col-md-2 text-center'>
-            <h4><b>$horaEnvio</b></h4>
-          </td>
-          <td class='col-md-3 text-center'>
-            <h4><b>$notas</b></h4>
-          </td>
-
-          <td class='col-md-1 text-right'>
-
-            <a href='#' class='editarEnvio spand-linkm' data-toggle='modal' data-target='#EditarEnvio' envio-id='$idEnvios'><img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='spand-iconm'></a>
-
-            <a href='#' class='eliminarEnvio spand-linkm ml-4' envio-id='$idEnvios'><img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='spand-iconm'></a>
-          </td>
-        </tr>";
-    }elseif ($pe == 0) {
-      $data["infoTabla"].= "<tr class='row bordelateral m-0'>
-
-          <td class='col-md-4'>
-            <h4><b>$status</b></h4>
-          </td>
-          <td class='col-md-2 text-center'>
-            <h4><b>$fechaEnvio</b></h4>
-          </td>
-
-          <td class='col-md-2 text-center'>
-            <h4><b>$horaEnvio</b></h4>
-          </td>
-          <td class='col-md-3 text-center'>
-            <h4><b>$notas</b></h4>
-          </td>
-
-          <td class='col-md-1 text-right'>
-            <a href='#' class='bloqueo spand-linkm'><img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='spand-iconm'></a>
-
-            <a href='#' class='bloqueo spand-linkm ml-4'><img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='spand-iconm'></a>
-          </td>
-        </tr>";
+    if ($admin || $en_editar == 1) {
+      $editar = "href='#' class='editarEnvio spand-linkm' data-toggle='modal' data-target='#EditarEnvio'";
+      $eliminar = "href='#' class='eliminarEnvio spand-linkm ml-4'";
+      $bloqueo="";
+    }else {
+      $editar = "href='#' class='bn bloqueo'";
+      $eliminar = "href='#' class='bn bloqueo'";
+      $bloqueo = "bn bloqueo";
     }
+
+
+
+    $data["infoTabla"].= "<tr class='row bordelateral m-0'>
+
+        <td class='col-md-4'>
+          <h4><b>$status</b></h4>
+        </td>
+        <td class='col-md-2 text-center'>
+          <h4><b>$fechaEnvio</b></h4>
+        </td>
+
+        <td class='col-md-2 text-center'>
+          <h4><b>$horaEnvio</b></h4>
+        </td>
+        <td class='col-md-3 text-center'>
+          <h4><b>$notas</b></h4>
+        </td>
+
+        <td class='col-md-1 text-right'>
+          <a $editar envio-id='$idEnvios'><img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='spand-iconm'></a>
+
+          <a $eliminar envio-id='$idEnvios'><img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='spand-iconm'></a>
+        </td>
+      </tr>";
+
   }
 }
 

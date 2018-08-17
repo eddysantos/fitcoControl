@@ -59,6 +59,8 @@ if (true) {
         $background= "";
       }
 
+
+
       $tabla.="
       <tr class='$background row bordelateral m-0'>
        <td class='col-md-2'><input type='color' value='$color'>$cliente</td>

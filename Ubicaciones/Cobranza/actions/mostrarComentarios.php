@@ -30,6 +30,18 @@ if (false) {
   while($row = mysqli_fetch_assoc($resultados)){
     $data["data"][]= $row;
 
+    $tc_editar = $_SESSION['user']['tc_editar'];
+    $admin = $_SESSION['user']['privilegiosUsuario'] == 'Administrador';
+
+
+    if ($admin || $tc_editar == 1) {
+      $editar = "href='' id='btnEditarCom' class='editarComen spand-linkm' data-toggle='modal' data-target='#edit_coment'";
+      $bloqueo="";
+    }else {
+      $editar = "href='#' class='bn bloqueo'";
+      $bloqueo = "bn bloqueo";
+    }
+
 
     $pk_coment = $row['pk_coment'];
     $fecha = $row['fecha'];
@@ -44,7 +56,7 @@ if (false) {
           <h4><b>$comentario</b></h4>
         </td>
         <td class='col-md-1 text-center pr-0 pl-0'>
-        <a href='' id='btnEditarCom' class='editarComen spand-linkm' data-toggle='modal' data-target='#edit_coment' comen-id='$pk_coment'><img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='mr-4 spand-iconm'></a>
+        <a $editar comen-id='$pk_coment'><img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='$bloqueo mr-4 spand-iconm'></a>
         </td>
       </tr>";
   }
