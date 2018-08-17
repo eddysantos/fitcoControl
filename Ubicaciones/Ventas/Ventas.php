@@ -9,9 +9,10 @@ if (!isset($_SESSION['user'])) {
   require $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
 ?>
 
+<?php if ($admin || $ve_ver == 1): ?>
+
 <div class="container-fluid pl-75 pr-57">
   <div class="row clt_usr mt-5 mb-5">
-
     <div class="text-left alert alert-info w-65" role="alert" >
       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       <strong>Nota: </strong> En esta sección se podran registrar las nuevas ventas, editar en el icono <img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='iconoNota'> y eliminar registro en <img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='iconoNota'>.
@@ -110,6 +111,12 @@ if (!isset($_SESSION['user'])) {
     </table>
   </form>
 
+
+<?php else: ?>
+  <div id='SinRegistros' class='container-fluid pantallaRegistros'>
+    <div class='tituloSinRegistros' style="font-size:25px; color:red">SOLICITA PERMISO PARA ENTRAR EN ESTA SECCIÓN</div>
+  </div>
+<?php endif;?>
 
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];

@@ -8,7 +8,7 @@ if (!isset($_SESSION['user'])) {
   require $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
 ?>
 
-<?php if ($cv == 1 || $admin): ?>
+<?php if ($tc_ver == 1 || $admin): ?>
   <div class="container-fluid pl-75 pr-57">
     <div class="row clt_usr mt-4">
       <div class="text-left alert alert-info w-65" role="alert" >
@@ -105,8 +105,8 @@ if (!isset($_SESSION['user'])) {
       </tbody>
     </table>
   </form>
-<?php else:?>
 
+<?php else:?>
   <div id='SinRegistros' class='container-fluid pantallaRegistros'>
     <div class='tituloSinRegistros' style="font-size:25px; color:red">SOLICITA PERMISO PARA ENTRAR EN ESTA SECCIÓN</div>
   </div>

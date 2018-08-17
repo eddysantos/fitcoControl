@@ -10,10 +10,26 @@ require  $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
 
 
 
+<?php if ($admin || $e_ventas == 1): ?>
 <a href="#GraficaVentas" data-toggle="modal"><h1>Grafica de Ventas</h1></a><br>
-<a href="#GraficaTesoreria" data-toggle="modal"><h1>Grafica de Tesoreria</h1></a>
-<!-- <a href="#GraficaPRUEBA" data-toggle="modal"><h1>Grafica de PRUEBA</h1></a> -->
+<?php else: ?>
+  <a href="#" class="bn bloqueo "><h1>Grafica de Ventas</h1></a><br>
+<?php endif;?>
 
+<?php if ($admin || $e_tesoreria == 1): ?>
+<a href="#GraficaTesoreria" data-toggle="modal"><h1>Grafica de Tesoreria</h1></a>
+<?php else: ?>
+  <a href="#" class="bn bloqueo "><h1>Grafica de Tesoreria</h1></a>
+<?php endif;?>
+
+
+
+
+<?php if ($admin || $e_produc == 1): ?>
+<a href="#GraficaPRUEBA" data-toggle="modal"><h1>Grafica de Produccion</h1></a>
+<?php else: ?>
+  <a href="#" class="bn bloqueo "><h1>Grafica de Produccion</h1></a>
+<?php endif;?>
 
 
 

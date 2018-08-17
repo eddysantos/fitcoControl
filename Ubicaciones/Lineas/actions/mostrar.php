@@ -176,12 +176,19 @@ while ($row = $rslt->fetch_assoc()) {
     $ef10 = ($av10/$meta);
     $efi10 = number_format($ef10 * 100, 2, ",", ".")." %";
 
-    $pe =  $_SESSION['user']['produccion_editar'];
-    $admin = $_SESSION['user']['privilegiosUsuario'];
+
+    $pro_liEditar= $_SESSION['user']['pro_liEditar'];
+    $admin = $_SESSION['user']['privilegiosUsuario'] == 'Administrador';
 
 
+    if ($admin || $pro_liEditar == 1) {
+      $editar = "href='#EditarLinea' data-toggle='modal' class='editar-linea spand-link'";
+      $bloqueo="";
+    }else {
+      $editar = "href='#' class='bn bloqueo'";
+      $bloqueo = "bn bloqueo";
+    }
 
-if ($pe == 1 || $admin == "Administrador") {
     $system_callback['data'] .=
     "<p db-id='$idlinea'>$idlinea - $operacion</p>";
     $id = $idlinea;
@@ -195,7 +202,7 @@ if ($pe == 1 || $admin == "Administrador") {
       <td class='col-md-2 text-right'>
         <a href='#addProducc' data-toggle='modal' class='addProducc spand-link' db-id='$id'><img src='/fitcoControl/Resources/iconos/003-add.svg' class='spand-icon'></a>
 
-        <a href='#EditarLinea' data-toggle='modal' class='editar-linea spand-link' db-id='$id'><img  src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='img ml-3 spand-icon'></a>
+        <a $editar db-id='$id'><img  src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='$bloqueo img ml-3 spand-icon'></a>
       </td>
 
       <td class='col-md-1 m lin' style='display:none'></td>
@@ -256,82 +263,6 @@ if ($pe == 1 || $admin == "Administrador") {
       <td class='col-md-10 m' style='display:none'>$meta</td>
       <td class='col-md-1 m' style='display:none'></td>
     </tr>";
-  }else {
-    $system_callback['data'] .=
-    "<p db-id='$idlinea'>$idlinea - $operacion</p>";
-    $id = $idlinea;
-
-    $system_callback['data'] .=
-    "<tr class='row bordelateral m-0 text-center' id='item'>
-      <td class='col-md-2'>$fecha</td>
-      <td class='col-md-4'>$nombre</td>
-      <td class='col-md-3'>$ope</td>
-      <td class='col-md-1'>$linea</td>
-      <td class='col-md-2 text-right'>
-        <a href='#addProducc' data-toggle='modal' class='addProducc spand-link' db-id='$id'><img src='/fitcoControl/Resources/iconos/003-add.svg' class='spand-icon'></a>
-
-        <a class='bloqueo spand-link'><img  src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='bloqueo img ml-3 spand-icon'></a>
-      </td>
-
-      <td class='col-md-1 m lin' style='display:none'></td>
-      <td class='col-md-1 m lin' style='display:none'>1 hra</td>
-      <td class='col-md-1 m lin' style='display:none'>2 hras</td>
-      <td class='col-md-1 m lin' style='display:none'>3 hras</td>
-      <td class='col-md-1 m lin' style='display:none'>4 hras</td>
-      <td class='col-md-1 m lin' style='display:none'>5 hras</td>
-      <td class='col-md-1 m lin' style='display:none'>6 hras</td>
-      <td class='col-md-1 m lin' style='display:none'>7 hras</td>
-      <td class='col-md-1 m lin' style='display:none'>8 hras</td>
-      <td class='col-md-1 m lin' style='display:none'>9 hras</td>
-      <td class='col-md-1 m lin' style='display:none'>10 hras</td>
-      <td class='col-md-1 m lin' style='display:none'></td>
-
-      <td class='col-md-1 m' style='display:none'></td>
-      <td class='col-md-1 m' style='display:none'>$prod1</td>
-      <td class='col-md-1 m' style='display:none'>$prod2/$sp2</td>
-      <td class='col-md-1 m' style='display:none'>$prod3/$sp3</td>
-      <td class='col-md-1 m' style='display:none'>$prod4/$sp4</td>
-      <td class='col-md-1 m' style='display:none'>$prod5/$sp5</td>
-      <td class='col-md-1 m' style='display:none'>$prod6/$sp6</td>
-      <td class='col-md-1 m' style='display:none'>$prod7/$sp7</td>
-      <td class='col-md-1 m' style='display:none'>$prod8/$sp8</td>
-      <td class='col-md-1 m' style='display:none'>$prod9/$sp9</td>
-      <td class='col-md-1 m' style='display:none'>$prod10/$sp10</td>
-      <td class='col-md-1 m' style='display:none'></td>
-
-
-      <td class='col-md-1 m' style='display:none'>Avance</td>
-      <td class='col-md-1 m' style='display:none'>$av1</td>
-      <td class='col-md-1 m' style='display:none'>$av2</td>
-      <td class='col-md-1 m' style='display:none'>$av3</td>
-      <td class='col-md-1 m' style='display:none'>$av4</td>
-      <td class='col-md-1 m' style='display:none'>$av5</td>
-      <td class='col-md-1 m' style='display:none'>$av6</td>
-      <td class='col-md-1 m' style='display:none'>$av7</td>
-      <td class='col-md-1 m' style='display:none'>$av8</td>
-      <td class='col-md-1 m' style='display:none'>$av9</td>
-      <td class='col-md-1 m' style='display:none'>$av10</td>
-      <td class='col-md-1 m' style='display:none'></td>
-
-
-      <td class='col-md-1 m' style='display:none'>Eficiencia</td>
-      <td class='col-md-1 m ef' style='display:none'>$efi1</td>
-      <td class='col-md-1 m ef' style='display:none'>$efi2</td>
-      <td class='col-md-1 m ef' style='display:none'>$efi3</td>
-      <td class='col-md-1 m ef' style='display:none'>$efi4</td>
-      <td class='col-md-1 m ef' style='display:none'>$efi5</td>
-      <td class='col-md-1 m ef' style='display:none'>$efi6</td>
-      <td class='col-md-1 m ef' style='display:none'>$efi7</td>
-      <td class='col-md-1 m ef' style='display:none'>$efi8</td>
-      <td class='col-md-1 m ef' style='display:none'>$efi9</td>
-      <td class='col-md-1 m ef' style='display:none'>$efi10</td>
-      <td class='col-md-1 m' style='display:none'></td>
-
-      <td class='col-md-1 m' style='display:none'>Meta</td>
-      <td class='col-md-10 m' style='display:none'>$meta</td>
-      <td class='col-md-1 m' style='display:none'></td>
-    </tr>";
-  }
 }
 
 

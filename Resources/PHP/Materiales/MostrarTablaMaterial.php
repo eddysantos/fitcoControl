@@ -73,60 +73,45 @@ if ($buscarDatos->num_rows > 0) {
         $persona = $row['personaEntrega'];
         $fechaEntrega = $row['fechaEntrega'];
         $precio = number_format($row['precio'], 2);
-        $ce =  $_SESSION['user']['cobranza_editar'];
-        $admin = $_SESSION['user']['privilegiosUsuario'] == "Administrador";
-
-        if ($ce == 1 || $admin) {
-          $tabla.= "
-          <tr class='row bordelateral m-0' id='item'>
-            <td class='col-md-3 text-center'>
-              <h4><b>$material</b></h4>
-              <p class='visibilidad'>Serie: $serie</p>
-            </td>
-
-            <td class='col-md-2 text-center pr-0 pl-0'>
-              <h4><b>$ $precio</b></h4>
-              <p class='visibilidad'>Compra: $fcompra</p>
-            </td>
-            <td class='col-md-3 text-center'>
-              <h4><b>$persona</b></h4>
-              <p class='visibilidad'>Entrega: $fechaEntrega</p>
-            </td>
-            <td class='col-md-3 text-center'><h4>$condicion</h4></td>
+        $tm_editar = $_SESSION['user']['tm_editar'];
+        $admin = $_SESSION['user']['privilegiosUsuario'] == 'Administrador';
 
 
-            <td class='col-md-1 text-right'>
-              <a href='#' class='editMat spand-link' data-toggle='modal' data-target='#EditarMaterial' mat-id='$idMat'><img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='img spand-icon'></a>
-
-              <a href='#' class='eliminarMat spand-link ml-3' mat-id='$idMat'><img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='img spand-icon'></a>
-            </td>
-          </tr>";
-        }elseif ($ce == 0) {
-          $tabla.= "
-            <tr class='row bordelateral m-0' id='item'>
-              <td class='col-md-3 text-center'>
-                <h4><b>$material</b></h4>
-                <p class='visibilidad'>Serie: $serie</p>
-              </td>
-
-              <td class='col-md-2 text-center pr-0 pl-0'>
-                <h4><b>$ $precio</b></h4>
-                <p class='visibilidad'>Fecha compra: $fcompra</p>
-              </td>
-              <td class='col-md-3 text-center'>
-                <h4><b>$persona</b></h4>
-                <p class='visibilidad'>Fecha: $fechaEntrega</p>
-              </td>
-              <td class='col-md-3 text-center'><h4><b>$condicion</b></h4></td>
-
-
-              <td class='col-md-1 text-right'>
-              <a href='#' class='bloqueo  editMat spand-link'><img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='img spand-icon'></a>
-
-              <a href='#' class='bloqueo spand-link ml-3'><img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='img spand-icon'></a>
-              </td>
-            </tr>";
+        if ($admin || $tm_editar == 1) {
+          $editar = "href='#' class='editMat spand-link' data-toggle='modal' data-target='#EditarMaterial'";
+          $eliminar = "href='#' class='eliminarMat spand-link ml-3'";
+          $bloqueo="";
+        }else {
+          $editar = "href='#' class='bn bloqueo'";
+          $eliminar = "href='#' class='bn bloqueo'";
+          $bloqueo = "bn bloqueo";
         }
+
+
+        $tabla.= "
+        <tr class='row bordelateral m-0' id='item'>
+          <td class='col-md-3 text-center'>
+            <h4><b>$material</b></h4>
+            <p class='visibilidad'>Serie: $serie</p>
+          </td>
+
+          <td class='col-md-2 text-center pr-0 pl-0'>
+            <h4><b>$ $precio</b></h4>
+            <p class='visibilidad'>Compra: $fcompra</p>
+          </td>
+          <td class='col-md-3 text-center'>
+            <h4><b>$persona</b></h4>
+            <p class='visibilidad'>Entrega: $fechaEntrega</p>
+          </td>
+          <td class='col-md-3 text-center'><h4>$condicion</h4></td>
+
+
+          <td class='col-md-1 text-right'>
+            <a $editar mat-id='$idMat'><img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='$bloqueo img spand-icon'></a>
+
+            <a $eliminar mat-id='$idMat'><img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='$bloqueo img spand-icon'></a>
+          </td>
+        </tr>";
       }
 
       $tabla.="

@@ -54,7 +54,19 @@ while ($row = $rslt->fetch_assoc()) {
   $correoUsuario = $row['correoUsuario'];
   $departamentoUsuario = $row['departamentoUsuario'];
   $puestoUsuario = $row['puestoUsuario'];
-  $privilegiosUsuario = $row['privilegiosUsuario'];
+  $e_usEditar = $_SESSION['user']['e_usEditar'];
+  $admin = $_SESSION['user']['privilegiosUsuario'] == 'Administrador';
+
+
+  if ($admin || $e_usEditar == 1) {
+    $editar = "href='#EditarUsuario' class='EditUsuario spand-link' data-toggle='modal' ";
+    $eliminar = "href='#' class='eliminarUser spand-link ml-3'";
+    $bloqueo="";
+  }else {
+    $editar = "href='#' class='bn bloqueo'";
+    $eliminar = "href='#' class='bn bloqueo'";
+    $bloqueo = "bn bloqueo";
+  }
 
 
     $system_callback['data'] .=
@@ -78,9 +90,9 @@ while ($row = $rslt->fetch_assoc()) {
           <h4><b>$privilegiosUsuario</b></h4>
         </td>
         <td class='col-md-2 text-right'>
-          <a href='#EditarUsuario' class='EditUsuario spand-link' data-toggle='modal' db-id='$id'><img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='spand-icon'></a>
+          <a $editar db-id='$id'><img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='$bloqueo spand-icon'></a>
 
-            <a href='#' class='eliminarUser spand-link ml-3'  db-id='$id'><img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='spand-icon'></a>
+            <a $eliminar db-id='$id'><img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='$bloqueo spand-icon'></a>
         </td>
       </tr>";
 }

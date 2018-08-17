@@ -74,10 +74,22 @@ colorCliente AS color
           $credito = $row['credito'];
           $fingreso = $row['ingreso'];
           $color = $row['color'];
-          $c = $_SESSION['user']['c_editar'];
-          $admin = $_SESSION['user']['privilegiosUsuario'];
+          
+          $c_editar= $_SESSION['user']['c_editar'];
+          $admin = $_SESSION['user']['privilegiosUsuario'] == 'Administrador';
 
-        if ($c == 1 || $admin == "Administrador") {
+
+          if ($admin || $c_editar == 1) {
+            $editar = "href='#' class='EditCliente spand-link' data-toggle='modal' data-target='#EditarCliente' id='btnEditarCliente'";
+            $eliminar = "href='#' class='eliminarCliente spand-link ml-3'";
+            $bloqueo="";
+          }else {
+            $editar = "href='#' class='bn bloqueo'";
+            $eliminar = "href='#' class='bn bloqueo'";
+            $bloqueo = "bn bloqueo";
+          }
+
+
           $tabla.= "
             <tr class='row bordelateral m-0' id='item'>
               <td class='col-md-1'>
@@ -96,43 +108,14 @@ colorCliente AS color
                 <p class='visibilidad'>Credito : $credito día (s)</p>
               </td>
               <td class='col-md-2 text-right'>
-                <a href='#' class='EditCliente spand-link' data-toggle='modal' data-target='#EditarCliente' id='btnEditarCliente' client-id='$id'>
-                  <img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='img spand-icon'>
+                <a $editar client-id='$id'>
+                  <img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='$bloqueo img spand-icon'>
                 </a>
-
-                <a href='#' class='eliminarCliente spand-link ml-3' client-id='$id'>
-                  <img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='img spand-icon'>
+                <a $eliminar client-id='$id'>
+                  <img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='$bloqueo img spand-icon'>
                 </a>
               </td>
-
             </tr>";
-        }elseif ($c == 0) {
-         $tabla.= "
-           <tr class='row bordelateral m-0' id='item'>
-             <td class='col-md-1'>
-               <img src='/fitcoControl/Resources/iconos/team.svg' class='icono'>
-             </td>
-             <td class='col-md-3'>
-               <h2><b><input type='color' value='$color'>$cliente</b></h2>
-               <p class='visibilidad'>Ingreso : $fingreso</p>
-             </td>
-             <td class='col-md-4 text-center'>
-               <h2><b><a href='mailto:$correo'>$correo</a></b></h2>
-               <p class='visibilidad'>Credito : $credito Días</p>
-             </td>
-             <td class='col-md-2 text-center'>
-               <h2><b>$telefono</a></b></h2>
-             </td>
-             <td class='col-md-2 text-right'>
-               <a class='EditCliente spand-link' client-id='$id'>
-                 <img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='bloqueo spand-icon'>
-               </a>
-               <a class='spand-link ml-3' client-id='$id'>
-                 <img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='bloqueo spand-icon'>
-               </a>
-             </td>
-           </tr>";
-       }
       }
        $tabla.="
        </tbody>

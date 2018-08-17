@@ -108,7 +108,7 @@ if (isset($_POST['cobranza'])) {
      $diasemana = $row['vencimiento'];
      $dia = date('N',strtotime($diasemana));
      $background = "";
-     $ocultar = "";
+     // $ocultar = "";
      $ce =  $_SESSION['user']['cobranza_editar'];
      $admin = $_SESSION['user']['privilegiosUsuario'];
 
@@ -139,10 +139,25 @@ if (isset($_POST['cobranza'])) {
      }
 
 
-    if ($admin == "Administrador") {
-      $ocultar = "";
-    }elseif ($ce == "0") {
-      $ocultar = "ocultar";
+    // if ($admin == "Administrador") {
+    //   $ocultar = "";
+    // }elseif ($ce == "0") {
+    //   $ocultar = "ocultar";
+    // }
+
+
+    $tc_editar = $_SESSION['user']['tc_editar'];
+    $admin = $_SESSION['user']['privilegiosUsuario'] == 'Administrador';
+
+
+    if ($admin || $tc_editar == 1) {
+      $editar = "href='' class=' editarCobranza spand-link' data-toggle='modal' data-target='#DetCobranza' ";
+      $eliminar = "href='#' class='eliminarCobranza spand-link ml-3'";
+      $bloqueo="";
+    }else {
+      $editar = "href='#' class='bn bloqueo'";
+      $eliminar = "href='#' class='bn bloqueo'";
+      $bloqueo = "bn bloqueo";
     }
 
 
@@ -156,7 +171,7 @@ if (isset($_POST['cobranza'])) {
      $tabla.= "
        <tr class='$background row bordelateral m-0' id='item' style=''>
          <td class='col-md-1'>
-          <a href='#' class='eliminarCobranza spand-link ml-3 $ocultar' cobranza-id='$idCobranza'><img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='img spand-icon'></a>
+          <a $eliminar cobranza-id='$idCobranza'><img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='$bloqueo img spand-icon'></a>
          </td>
            <td class='col-md-2'>
              <h4><b><input type='color' value='$colorCliente'>$clienteCobranza</b></h4>
@@ -184,7 +199,7 @@ if (isset($_POST['cobranza'])) {
 
              <a href='' class='visualizarcobranza spand-link' data-toggle='modal' data-target='#VisualizarTablaCobranza' cobranza-id='$idCobranza'><img  src='/fitcoControl/Resources/iconos/magnifier.svg' class='img ml-3 spand-icon'></a>
 
-             <a href='' class='$ocultar editarCobranza spand-link' data-toggle='modal' data-target='#DetCobranza' cobranza-id='$idCobranza'><img  src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='img ml-3 spand-icon'></a>
+             <a $editar cobranza-id='$idCobranza'><img  src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='$bloqueo img ml-3 spand-icon'></a>
 
 
            </td>

@@ -4,10 +4,56 @@
     header("Location: /fitcoControl/index.php");
   }
 
-  $pv = $_SESSION['user']['produccion_ver'];
-  $cv =  $_SESSION['user']['cobranza_ver'];
-  $vv = $_SESSION['user']['verVentas'];
-  $clv = $_SESSION['user']['cliente_ver'];
+// DIVISION 1 //
+//**************** ESTADISTICAS
+$e_ventas = $_SESSION['user']['e_ventas'];
+$e_tesoreria = $_SESSION['user']['e_tesoreria'];
+$e_produc = $_SESSION['user']['e_produc'];
+// *************** RECURSOS HUMANOS
+$e_rhVer = $_SESSION['user']['e_rhVer'];
+// *************** USUARIOS
+$e_usVer = $_SESSION['user']['e_usVer'];
+
+
+// DIVISION 2 //
+//**************** CLIENTES
+$c_ver = $_SESSION['user']['c_ver'];
+
+
+// DIVISION 3 //
+//**************** COBRANZA
+$tc_ver = $_SESSION['user']['tc_ver'];
+//**************** CUENTAS POR PAGAR
+$tcxp_ver = $_SESSION['user']['tcxp_ver'];
+//**************** MATERIALES
+$tm_ver = $_SESSION['user']['tm_ver'];
+//**************** RECORDS / NOMINAS
+$tr_ver = $_SESSION['user']['tr_ver'];
+
+
+// DIVISION 4 //
+//**************** PROGRAMACIÓN
+$pro_pgVer = $_SESSION['user']['pro_pgVer'];
+//**************** MANTENIMIENTO E INVERSIONES
+$pro_miVer = $_SESSION['user']['pro_miVer'];
+//**************** PRODUCCION DIARIA
+$pro_pdver = $_SESSION['user']['pro_pdVer'];
+//**************** CORTE
+$pro_corVer = $_SESSION['user']['pro_corVer'];
+//**************** LINEAS
+$pro_liVer = $_SESSION['user']['pro_liVer'];
+//**************** ENVIOS
+$en_ver = $_SESSION['user']['en_ver'];
+
+
+// DIVISION 5 //
+//**************** CONTROL DE CALIDAD
+$cc_ver = $_SESSION['user']['cc_ver'];
+
+// DIVISION 6 //
+//**************** VENTAS
+$ve_ver = $_SESSION['user']['ve_ver'];
+
 
   // cliente
   // $cliente = $_SESSION['user']['c_ver'];
@@ -45,7 +91,7 @@
       <ul class="nav nav-pills nav-fill">
 
         <!-- <li class="nav-item"><h1 id="logo">FIT&amp;CO</h1></li> -->
-      <?php if ($admin): ?>
+      <?php if ($admin || $e_ventas == 1 || $e_tesoreria == 1 || $e_produc == 1 || $e_rhVer == 1 || $e_usVer == 1): ?>
         <li class="nav-item">
           <a href="/fitcoControl/Ubicaciones/Comunicaciones/pagina.php" class="bn transicion">COMUNICACION<span class="barra gris">DIVISION 1</span></a>
         </li>
@@ -56,7 +102,7 @@
       <?php endif; ?>
 
 
-      <?php if ($clv == 1 || $admin): ?>
+      <?php if ($admin || $c_ver == 1): ?>
         <li class="nav-item">
           <a href="/fitcoControl/Ubicaciones/Clientes/Clientes.php" class="bn transicion">CLIENTES<span class="barra gris">DIVISION 2</span></a>
         </li>
@@ -67,7 +113,7 @@
       <?php endif; ?>
 
 
-      <?php if ($cv == 1 || $admin): ?>
+      <?php if ($admin || $tc_ver ==1 || $tcxp_ver == 1 || $tm_ver ==1 || $tr_ver ==1): ?>
         <li class="nav-item">
           <a href="/fitcoControl/Ubicaciones/Cobranza/tesoreria.php" class="bn transicion">TESORERÍA<span class="barra gris">DIVISION 3</span></a>
         </li>
@@ -78,7 +124,7 @@
       <?php endif; ?>
 
 
-      <?php if ($pv == 1 || $admin): ?>
+      <?php if ($admin || $pro_pgVer ==1 || $pro_miVer == 1 || $pro_pdver == 1 || $pro_corVer ==1 || $pro_liVer == 1  || $en_ver ==1): ?>
         <li class="nav-item">
           <a href="/fitcoControl/Ubicaciones/Produccion/produccion.php" class="bn transicion">PRODUCCIÓN<span class="barra gris">DIVISION 4</span></a>
         </li>
@@ -88,12 +134,14 @@
         </li>
       <?php endif; ?>
 
+      <?php if ($admin || $cc_ver == 1): ?>
+        <li class="nav-item">
+          <a class="bn bloqueo">CONTROL DE CALIDAD<span class="barra gris">DIVISION 5</span></a>
+        </li>
+      <?php endif; ?>
 
-      <li class="nav-item">
-        <a class="bn bloqueo">CONTROL DE CALIDAD<span class="barra gris">DIVISION 5</span></a>
-      </li>
 
-      <?php if ($vv == 1 || $admin): ?>
+      <?php if ($admin || $ve_ver == 1): ?>
         <li class="nav-item">
           <a href="/fitcoControl/Ubicaciones/Ventas/Ventas.php" class="bn transicion">VENTAS<span class="barra gris">DIVISION 6</span></a>
         </li>

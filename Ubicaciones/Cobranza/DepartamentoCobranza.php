@@ -6,7 +6,7 @@ if (!isset($_SESSION['user'])) {
 }
   $root = $_SERVER['DOCUMENT_ROOT'];
 
-  $cv =  $_SESSION['user']['cobranza_ver'];
+  $tc_ver = $_SESSION['user']['tc_ver'];
   $admin = $_SESSION['user']['privilegiosUsuario'] == "Administrador";
 ?>
 
@@ -37,7 +37,7 @@ if (!isset($_SESSION['user'])) {
 </head>
 
 
-<?php if ($cv == 1 || $admin): ?>
+<?php if ($tc_ver == 1 || $admin): ?>
   <div class="m-5">
     <a href="/fitcoControl/Ubicaciones/Cobranza/cobranza.php" class="consultar" accion="backRepo" status="cerrado" id="backRepo"><img style="width: 100px;" src='/fitcoControl/Resources/iconos/logoFitco.png'></a>
   </div>

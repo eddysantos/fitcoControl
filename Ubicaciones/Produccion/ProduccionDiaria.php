@@ -8,6 +8,8 @@ if (!isset($_SESSION['user'])) {
   require $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
 ?>
 
+
+<?php if ($admin || $pro_pdver == 1): ?>
 <div class="container-fluid pl-75 pr-57">
   <div class="row clt_usr mt-5 mb-5">
     <div class="text-left alert alert-info w-75" role="alert">
@@ -36,6 +38,13 @@ if (!isset($_SESSION['user'])) {
     <section id="mostrarProduccion"></section>
   </div>
 </div>
+
+
+<?php else: ?>
+  <div id='SinRegistros' class='container-fluid pantallaRegistros'>
+    <div class='tituloSinRegistros' style="font-size:25px; color:red">SOLICITA PERMISO PARA ENTRAR EN ESTA SECCIÓN</div>
+  </div>
+<?php endif;?>
 
 
   <?php

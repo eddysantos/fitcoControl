@@ -7,6 +7,8 @@ if (!isset($_SESSION['user'])) {
 
   $root = $_SERVER['DOCUMENT_ROOT'];
   require $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
+
+  if ($admin || $pro_corVer == 1):
 ?>
 
 
@@ -105,6 +107,12 @@ if (!isset($_SESSION['user'])) {
     </table>
   </form>
 </div>
+
+<?php else: ?>
+  <div id='SinRegistros' class='container-fluid pantallaRegistros'>
+    <div class='tituloSinRegistros' style="font-size:25px; color:red">SOLICITA PERMISO PARA ENTRAR EN ESTA SECCIÓN</div>
+  </div>
+<?php endif;?>
 
 
 <?php

@@ -36,43 +36,36 @@ if (false) {
     $idpagos = $row['idpagos'];
     $fecha = $row['fecha'];
     $importe = number_format($row['pagado'], 2);
-    $ce =  $_SESSION['user']['cobranza_editar'];
-    $admin = $_SESSION['user']['privilegiosUsuario'] == "Administrador";
+    $tc_editar = $_SESSION['user']['tc_editar'];
+    $admin = $_SESSION['user']['privilegiosUsuario'] == 'Administrador';
 
 
-    if ($ce == 1 || $admin) {
-      $data["infoTabla"].= "
-      <tr class='row bordelateral' id='item'>
-
-        <td class='col-md-5 text-center'>
-          <h4><b>$fecha</b></h4>
-        </td>
-        <td class='col-md-5 text-center'>
-          <h4><b>$ $importe</b></h4>
-        </td>
-        <td class='col-md-2 text-center pr-0 pl-0'>
-        <a href='' id='btnEditarPago' class=' editarPago spand-linkm' data-toggle='modal' data-target='#EdPago' pago-id='$idpagos'><img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='mr-4 spand-iconm'></a>
-
-        <a href='' id='EliminarPago' class=' eliminarPago spand-linkm'  pago-id='$idpagos'><img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='spand-iconm'></a>
-        </td>
-      </tr>";
-    }elseif ($ce == 0) {
-      $data["infoTabla"].= "
-      <tr class='row bordelateral' id='item'>
-
-        <td class='col-md-5 text-center'>
-          <h4><b>$fecha</b></h4>
-        </td>
-        <td class='col-md-5 text-center'>
-          <h4><b>$ $importe</b></h4>
-        </td>
-        <td class='col-md-2 text-center pr-0 pl-0'>
-        <a class='bloqueo editarPago spand-linkm'><img src='/fitcoControl/Resources/iconos/001-edit.svg' class='mr-4 spand-iconm'></a>
-
-        <a class='bloqueo spand-linkm'><img src='/fitcoControl/Resources/iconos/002-delete.svg' class='spand-iconm'></a>
-        </td>
-      </tr>";
+    if ($admin || $tc_editar == 1) {
+      $editar = "href='' id='btnEditarPago' class=' editarPago spand-linkm' data-toggle='modal' data-target='#EdPago'";
+      $eliminar = "href='' id='EliminarPago' class=' eliminarPago spand-linkm'";
+      $bloqueo="";
+    }else {
+      $editar = "href='#' class='bn bloqueo'";
+      $eliminar = "href='#' class='bn bloqueo'";
+      $bloqueo = "bn bloqueo";
     }
+
+      $data["infoTabla"].= "
+      <tr class='row bordelateral' id='item'>
+
+        <td class='col-md-5 text-center'>
+          <h4><b>$fecha</b></h4>
+        </td>
+        <td class='col-md-5 text-center'>
+          <h4><b>$ $importe</b></h4>
+        </td>
+        <td class='col-md-2 text-center pr-0 pl-0'>
+        <a $editar pago-id='$idpagos'><img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='$bloqueo mr-4 spand-iconm'></a>
+
+        <a $eliminar  pago-id='$idpagos'><img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='$bloqueo spand-iconm'></a>
+        </td>
+      </tr>";
+
   }
 }
 

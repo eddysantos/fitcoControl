@@ -8,6 +8,7 @@ $root = $_SERVER['DOCUMENT_ROOT'];
 require  $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
 ?>
 
+<?php if ($tm_ver == 1 || $admin): ?>
 
 <div class="container-fluid pl-75 pr-57">
   <div class="row clt_usr  mt-5 mb-5">
@@ -98,7 +99,11 @@ require  $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
     </table>
   </form>
 
-
+<?php else:?>
+  <div id='SinRegistros' class='container-fluid pantallaRegistros'>
+    <div class='tituloSinRegistros' style="font-size:25px; color:red">SOLICITA PERMISO PARA ENTRAR EN ESTA SECCIÓN</div>
+  </div>
+<?php endif; ?>
 
 
 <?php

@@ -99,7 +99,19 @@ if ($buscarDatos->num_rows > 0) {
       }else {
         $real =  $row['restaReal'];
         $horas = "horas";
+      }
 
+      $pro_corEditar = $_SESSION['user']['pro_corEditar'];
+      $admin = $_SESSION['user']['privilegiosUsuario'] == 'Administrador';
+
+      if ($admin || $pro_corEditar == 1) {
+        $editar = "href='#' class='editarcorte spand-link' data-toggle='modal' data-target='#EditarCorte'";
+        $eliminar = "href='#' class='eliminarCorte spand-link ml-1'";
+        $bloqueo="";
+      }else {
+        $editar = "href='#' class='bn bloqueo'";
+        $eliminar = "href='#' class='bn bloqueo'";
+        $bloqueo = "bn bloqueo";
       }
 
 
@@ -124,9 +136,9 @@ if ($buscarDatos->num_rows > 0) {
               </td>
 
               <td class='col-md-1 text-right'>
-                <a href='#' class='editarcorte spand-link' data-toggle='modal' data-target='#EditarCorte' corteId='$idcorte'><img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='spand-icon'></a>
+                <a $editar corteId='$idcorte'><img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='$bloqueo spand-icon'></a>
 
-                <a href='#' class='eliminarCorte spand-link ml-1' corteId='$idcorte'><img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='spand-icon'></a>
+                <a $eliminar corteId='$idcorte'><img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='$bloqueo spand-icon'></a>
               </td>
             </tr>
           </tbody>";
