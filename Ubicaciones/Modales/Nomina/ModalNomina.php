@@ -21,6 +21,20 @@
             </tr>
             <tr class="row m20">
               <td class="col-md-12 input-effect p-0">
+                <input id="mnom_serv" class="modal-efecto-17 has-content" type="text" required>
+                  <label>Servicio</label>
+                  <span class="focus-border"></span>
+              </td>
+            </tr>
+            <tr class="row m20">
+              <td class="col-md-12 input-effect p-0">
+                <input id="mnom_nom" class="modal-efecto-17 has-content" type="text" required>
+                  <label>Nomina</label>
+                  <span class="focus-border"></span>
+              </td>
+            </tr>
+            <tr class="row m20">
+              <td class="col-md-12 input-effect p-0">
                 <input id="mnom_cantNom" class="modal-efecto-17 has-content" type="text" required>
                   <label>Cantidad Nomina ($)</label>
                   <span class="focus-border"></span>

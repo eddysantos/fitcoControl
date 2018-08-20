@@ -17,19 +17,24 @@ $query =
   fechaNomina,
   dineroNomina,
   horasExtras,
-  dineroHoras)
-  VALUES(?,?,?,?)";
+  dineroHoras,
+  servicios,
+  nomina)
+  VALUES(?,?,?,?,?,?)";
 
 
 
 $ff = parseDate($_POST['ff']);
 
 $stmt = $conn->prepare($query);
-$stmt->bind_param('ssss',
+$stmt->bind_param('ssssss',
   $ff,
   $_POST['cn'],
   $_POST['he'],
-  $_POST['ch']
+  $_POST['ch'],
+  $_POST['ss'],
+  $_POST['nn']
+
 
 );
 $stmt->execute();

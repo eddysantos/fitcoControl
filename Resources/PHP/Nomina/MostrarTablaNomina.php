@@ -13,6 +13,8 @@ $query ="SELECT
 n.pk_nomina AS idNomina,
 WEEK(n.fechaNomina) AS semana,
 n.dineroNomina AS dineroNomina,
+n.servicios AS servicios,
+n.nomina AS nomina,
 n.horasExtras AS horasExtras,
 DATE_FORMAT(n.fechaNomina, '%d-%m-%Y') AS fechaNomina,
 n.dineroHoras AS dineroHoras
@@ -26,13 +28,17 @@ if (isset($_POST['nomina'])) {
   n.pk_nomina AS idNomina,
   WEEK(n.fechaNomina) AS semana,
   n.dineroNomina AS dineroNomina,
+  n.servicios AS servicios,
+  n.nomina AS nomina,
   n.horasExtras AS horasExtras,
   DATE_FORMAT(n.fechaNomina, '%d-%m-%Y') AS fechaNomina,
   n.dineroHoras AS dineroHoras
 
   FROM ct_nomina n
 
-  WHERE fechaNomina LIKE '%$q%' OR
+  WHERE servicios LIKE '%$q%' OR
+  nomina LIKE '%$q%' OR
+  fechaNomina LIKE '%$q%' OR
   dineroNomina LIKE '%$q%' OR
   dineroHoras LIKE '%$q%' OR
   horasExtras LIKE '%$q%'
@@ -43,20 +49,24 @@ if (isset($_POST['nomina'])) {
 
 $buscarDatos = $conn->query($query);
 if ($buscarDatos->num_rows > 0) {
-  $tabla.="
-  <form id='Enomina' class='page p-0'>
-    <table class='table table-hover fixed-table'>
+  $tabla.="<form id='Enomina' class='page p-0'>
+    <table class='table table-hover table-fixed'>
       <thead>
         <tr class='row m-0 encabezado'>
+          <td class='col-md-1 text-center'><h4>Sem</h4></td>
+          <td class='col-md-2 text-center'><h4>Servicios</h4></td>
           <td class='col-md-2 text-center'><h4>Nomina</h4></td>
-          <td class='col-md-3 text-center'><h4>Total de Nomina</b></td>
-          <td class='col-md-2 text-center'><h4>Hrs Extras</h4></td>
-          <td class='col-md-3 text-center'><h4>Total Horas Extras</h4></td>
+          <td class='col-md-2 text-center'><h4>Total de Nomina</b></td>
+          <td class='col-md-1 text-center'><h4>Hrs Extras</h4></td>
+          <td class='col-md-2 text-center'><h4>Total Horas Extras</h4></td>
         </tr>
-      </thead>";
+      </thead>
+      <tbody id='MostrarNomina'>";
 
       while ($row = $buscarDatos->fetch_assoc()) {
         $idNom = $row['idNomina'];
+        $servicio = $row['servicios'];
+        $nomina = $row['nomina'];
         $semana = $row['semana']+1;
         $dineroNomina = number_format($row['dineroNomina'],2);
         $horasExtras = $row['horasExtras'];
@@ -78,20 +88,26 @@ if ($buscarDatos->num_rows > 0) {
         }
 
         $tabla.= "
-        <tbody id='MostrarNomina'>
           <tr class='row bordelateral m-0' id='item'>
-            <td class='col-md-2 text-center'>
-              <h4><b>Semana $semana</b></h4>
-              <p class='visibilidad'>fecha: $fechaNomina</p>
+            <td class='col-md-1 text-center'>
+              <h4><b>Sem $semana</b></h4>
+              <p class='visibilidad'>$fechaNomina</p>
             </td>
 
-            <td class='col-md-3 text-center pr-0 pl-0'>
+            <td class='col-md-2 text-center pr-0 pl-0'>
+              <h4><b>$servicio</b></h4>
+            </td>
+            <td class='col-md-2 text-center pr-0 pl-0'>
+              <h4><b>$nomina</b></h4>
+            </td>
+
+            <td class='col-md-2 text-center pr-0 pl-0'>
               <h4><b>$ $dineroNomina</b></h4>
             </td>
-            <td class='col-md-2 text-center'>
+            <td class='col-md-1 text-center'>
               <h4><b>$horasExtras horas</b></h4>
             </td>
-            <td class='col-md-3 text-center'>
+            <td class='col-md-2 text-center'>
               <h4><b>$ $dineroHoras</b></h4>
             </td>
 
@@ -100,11 +116,11 @@ if ($buscarDatos->num_rows > 0) {
 
               <a $eliminar nom-id='$idNom'><img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='$bloqueo img spand-icon'></a>
             </td>
-          </tr>
-        </tbody>";
+          </tr>";
       }
 
       $tabla.="
+      </tbody>
      </table>
     </form>";
 

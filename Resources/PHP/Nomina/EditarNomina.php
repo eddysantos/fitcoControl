@@ -15,18 +15,22 @@ $query =
 SET fechaNomina = ?,
 dineroNomina = ?,
 horasExtras =?,
-dineroHoras =?
+dineroHoras =?,
+servicios =?,
+nomina =?
 WHERE pk_nomina = ?";
 
 
 $fnom = parseDate($_POST['ff']);
 
 $stmt = $conn->prepare($query);
-$stmt->bind_param('sssss',
+$stmt->bind_param('sssssss',
   $fnom,
   $_POST['cn'],
   $_POST['he'],
   $_POST['ch'],
+  $_POST['ss'],
+  $_POST['nn'],
   $_POST['id']
 );
 $stmt->execute();
