@@ -5,7 +5,7 @@
         <button class="close" type="button" name="button" data-dismiss="modal" area-label="close">
           <i class="fa fa-times-circle-o fa-2x" aria-hidden="true"></i>
         </button>
-        <h5 class="modal-tittle">EDITAR DATOS DE LA LINEA</h5>
+        <h5 class="modal-tittle">EDITAR PROVILEGIOS</h5>
       </div>
       <div class="modal-body p-0">
         <table class="table fixed-table text-center">

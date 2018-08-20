@@ -18,6 +18,11 @@ require  $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
         <span class="spanA">Agregar Nomina</span>
       </a>
 
+      <!-- <a class="rotate-link buscador ancla" accion="busc" status="cerrado">
+        <img src="/fitcoControl/Resources/iconos/search.svg" class="icon rotate-icon" style="width:30px">
+        <span class="spanB"><input class="buscar" type="text" name="busqueda"  id="busqueda" placeholder="Buscar"></span>
+      </a> -->
+      
       <a class="rotate-link buscador ancla" accion="busc" status="cerrado">
         <img src="/fitcoControl/Resources/iconos/search.svg" class="icon rotate-icon" style="width:30px">
         <span class="spanB"><input class="buscar" type="text" name="busqueda"  id="busqueda" placeholder="Buscar"></span>
@@ -37,6 +42,20 @@ require  $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
         <td class="col-md-12 input-effect p-0">
           <input  id="nom_fecha" class="effect-17 has-content" type="date" required>
             <label>Fecha Nomina</label>
+            <span class="focus-border"></span>
+        </td>
+      </tr>
+      <tr class="row m20">
+        <td class="col-md-12 input-effect p-0">
+          <input id="nom_serv" class="effect-17" type="text" required>
+            <label>Servicios</label>
+            <span class="focus-border"></span>
+        </td>
+      </tr>
+      <tr class="row m20">
+        <td class="col-md-12 input-effect p-0">
+          <input id="nom_nom" class="effect-17" type="text" required>
+            <label>Nomina</label>
             <span class="focus-border"></span>
         </td>
       </tr>
