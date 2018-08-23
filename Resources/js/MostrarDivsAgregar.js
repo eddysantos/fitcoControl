@@ -266,6 +266,18 @@ $(document).ready(function(){
       }
       break;
 
+      case "programLink":
+      if (status == 'cerrado') {
+        $(this).attr('status', 'abierto');
+        $(this).css('cssText', 'color: rgb(120, 153, 179) !important');
+        $(this).css('font-size', '14px');
+        $('#dropProgram').fadeIn(2500);
+      }else {
+        $(this).attr('status', 'cerrado');
+        $('#dropProgram').hide();
+      }
+      break;
+
 
 
 

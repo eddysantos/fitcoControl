@@ -52,9 +52,7 @@ if (!isset($_SESSION['user'])) {
     </table>
   </form>
 
-<!-- <div class="container-fluid mt-4">
-  <section id="mostrarUsuarios"></section>
-</div> -->
+
 
 
 <form id="NuevoUsuario" class="agregarnuevo mb-10" style="display:none;margin-bottom:80px">
@@ -62,7 +60,7 @@ if (!isset($_SESSION['user'])) {
     <tbody>
       <tr class="row m20">
         <td class="col-md-12 input-effect p-0">
-          <input type="text" id="usr_id" style="display:none">
+          <input type="hidden" id="usr_id">
           <input id="usr_nombre" class="effect-17" type="text" required>
             <label>Nombre (s)</label>
             <span class="focus-border"></span>

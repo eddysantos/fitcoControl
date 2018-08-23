@@ -18,6 +18,11 @@
             </tr>
             <tr class="row">
               <td class="col-md-4">
+
+                <!-- <label class='switch ml-3'>
+                  <input type='checkbox' class='success' id="e_ventas">Ver Ventas
+                  <span class='slider round'></span>
+                </label> -->
                 <input type="checkbox" class="check" id="e_ventas">Ver Ventas
               </td>
               <td class="col-md-4">

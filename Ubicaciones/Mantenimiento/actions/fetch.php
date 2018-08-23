@@ -18,11 +18,10 @@ $data = array(
 );
 
 require $root . '/fitcoControl/Resources/PHP/utilities/initialScript.php';
-// $query = "SELECT * FROM usuarios WHERE pk_usuario = ?";
-$query = "SELECT * FROM usuarios_1 WHERE pk_usuario = ?";
+$query = "SELECT * FROM ct_mantenimiento WHERE pk_mantenimiento = ?";
 
 $stmt = $conn->prepare($query);
-$stmt->bind_param('s', $_POST['usuarioId']);
+$stmt->bind_param('s', $_POST['mantId']);
 $stmt->execute();
 
 $resultados = $stmt->get_result();

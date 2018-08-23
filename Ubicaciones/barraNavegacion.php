@@ -56,6 +56,8 @@ $admin = $_SESSION['user']['privilegiosUsuario']== "Administrador";
     <meta charset="utf-8">
     <title>Fit&amp;Co Solutions</title>
     <link rel="stylesheet" href="/fitcoControl/Resources/bootstrap/css/reset.css">
+    <!-- <link rel="stylesheet" href="/fitcoControl/Resources/bootstrap/css/bootstrap-toggle.css"> -->
+
     <link rel="stylesheet" href="/fitcoControl/Resources/css/barranavegacion.css">
     <link rel="stylesheet" href="/fitcoControl/Resources/fontAwesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="/fitcoControl/Resources/bootstrap/css/bootstrap.min.css">
@@ -67,9 +69,12 @@ $admin = $_SESSION['user']['privilegiosUsuario']== "Administrador";
     <link rel="stylesheet" href="/fitcoControl/Resources/bootstrap/alertifyjs/css/themes/default.css">
 
 
+
+
     <script src="/fitcoControl/Resources/bootstrap/alertifyjs/alertify.min.js"></script>
     <script src="/fitcoControl/Resources/jquery/sweetalert.min.js"></script>
     <script src="/fitcoControl/Resources/jquery/jquery.min.js"></script>
+
     <script src="/fitcoControl/Resources/jquery/popper.min.js"></script>
     <script src="/fitcoControl/Resources/bootstrap/js/bootstrap.min.js"></script>
     <script src="/fitcoControl/Resources/jquery/tether.min.js"></script>
@@ -78,7 +83,7 @@ $admin = $_SESSION['user']['privilegiosUsuario']== "Administrador";
 
   </head>
 
-<div id="nav_wrap" class="sticky">
+<div id="nav_wrap" class="sticky" style="background-color:black">
   <nav class="nav_animate">
     <ul class="nav nav-pills nav-fill">
 

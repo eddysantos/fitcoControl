@@ -1,14 +1,14 @@
 <?php
-session_start();
-
-if (!isset($_SESSION['user'])) {
-  header("Location: /fitcoControl/index.php");
-}
-  $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
+// session_start();
+//
+// if (!isset($_SESSION['user'])) {
+//   header("Location: /fitcoControl/index.php");
+// }
+//   $root = $_SERVER['DOCUMENT_ROOT'];
+//   require $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
 ?>
 
-<div class="container-fluid pl-75 pr-57">
+<!-- <div class="container-fluid pl-75 pr-57">
   <div class="row clt_usr  mt-4">
     <div class="text-left alert alert-info w-75" role="alert" >
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -98,17 +98,7 @@ if (!isset($_SESSION['user'])) {
             <option value="Administrador">Administrador</option>
             <option value="Usuario">Usuario</option>
           </select>
-          <!-- <label>Privilegios</label>
-          <span class="focus-border"></span> -->
 
-
-          <!-- <input id="usr_privilegios" class="w-100 effect-17" list="ingr" required>
-          <datalist id="ingr">
-            <option value="Administrador">Administrador</option>
-            <option value="Usuario" id="userpriv">Usuario</option>
-          </datalist>
-          <label>Privilegios</label>
-          <span class="focus-border"></span> -->
         </td>
       </tr>
 
@@ -116,38 +106,6 @@ if (!isset($_SESSION['user'])) {
         <td class="col-md-12"><a href="#privilegios" data-toggle="modal">Agregar Privilegios</a></td>
       </tr>
 
-
-        <!-- <tr class="row privusuarios">
-          <td class="col-md-6 text-center">
-            <input type="checkbox" id="verCobranza">Ver Tesoreria
-          </td>
-          <td class="col-md-6 text-center">
-            <input type="checkbox" id="editCobranza">Editar Tesoreria
-          </td>
-        </tr>
-        <tr class="row privusuarios">
-          <td class="col-md-6 text-center">
-            <input type="checkbox" id="verProduccion">Ver Producción
-          </td>
-          <td class="col-md-6 text-center">
-            <input type="checkbox" id="editProduccion">Editar Producción
-          </td>
-        </tr>
-        <tr class="row privusuarios">
-          <td class="col-md-6 text-center">
-            <input type="checkbox" id="verCliente">Ver Cliente
-          </td>
-          <td class="col-md-6 text-center">
-            <input type="checkbox" id="editCliente">Editar Cliente
-          </td>
-        </tr>
-        <tr class="row privusuarios">
-          <td class="col-md-6 text-center">
-            <input type="checkbox" id="verVentas">Ver Ventas
-          </td>
-          <td class="col-md-6 text-center">
-            <input type="checkbox" id="editVentas">Editar Ventas
-        </tr> -->
 
 
         <tr class="row justify-content-center mb-3 agregarNuevoRegistro" style="display:none">
@@ -157,13 +115,13 @@ if (!isset($_SESSION['user'])) {
         </tr>
     </tbody>
   </table>
-</form>
+</form> -->
 
 
 <?php
-  $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/fitcoControl/Ubicaciones/Usuarios/modales/privilegios.php';
-  require $root . '/fitcoControl/Ubicaciones/Modales/Usuarios/EditarUsuario.php';
-  require $root . '/fitcoControl/Resources/PHP/Usuarios/pieUsuario.php';
+  // $root = $_SERVER['DOCUMENT_ROOT'];
+  // require $root . '/fitcoControl/Ubicaciones/Usuarios/modales/privilegios.php';
+  // require $root . '/fitcoControl/Ubicaciones/Modales/Usuarios/EditarUsuario.php';
+  // require $root . '/fitcoControl/Resources/PHP/Usuarios/pieUsuario.php';
 
 ?>

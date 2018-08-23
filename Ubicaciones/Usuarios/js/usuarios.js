@@ -1,6 +1,18 @@
 
 $(document).ready(function(){
   Usuarios_Det();
+
+
+  $('#usr_privilegios').on('change', function() {
+    if (this.value == 'Administrador') {
+      $('.privusuarios').css('display', 'none');
+      $('.agregarNuevoRegistro').css('display', '');
+    }else {
+      $('.privusuarios').css('display', '');
+      $('.agregarNuevoRegistro').css('display', 'none');
+    }
+  });
+
 });
 
 function checkPrivilege(privilege){
@@ -20,16 +32,6 @@ function markCheckbox(selector, value){
 }
 
 
-$('#usr_privilegios').on('change', function() {
-  if (this.value == 'Administrador') {
-    $('.privusuarios').css('display', 'none');
-    $('.agregarNuevoRegistro').css('display', '');
-  }else {
-    $('.privusuarios').css('display', '');
-    $('.agregarNuevoRegistro').css('display', 'none');
-  }
-});
-
 
 
 //MOSTRAR REGISTROS EN PANTALLA
@@ -38,6 +40,7 @@ function Usuarios_Det(){
     method: 'POST',
     url:'/fitcoControl/Ubicaciones/Usuarios/actions/mostrar.php',
     success: function(r){
+      console.log(r);
       r = JSON.parse(r);
       if (r.code == 1) {
         $('#mostrarUsuarios1').html(r.data);
@@ -146,7 +149,7 @@ function ActivarBotonesUsuario(){
 
       success: function(result){
         var rsp = JSON.parse(result);
-        console.log(rsp);
+        // console.log(rsp);
         if (rsp.code == 1) {
           $('#pk_usuario').val(rsp.response.pk_usuario);
           $('#nombreUsuario').val(rsp.response.nombreUsuario);

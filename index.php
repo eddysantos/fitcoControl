@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="/fitcoControl/Resources/css/login.css">
     <link rel="stylesheet" href="/fitcoControl/Resources/css/sweetalert.css">
     <link rel="icon" href="/fitcoControl/Resources/iconos/fit.ico">
-    
+
 
   </head>
   <body>

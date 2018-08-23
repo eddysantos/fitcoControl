@@ -7,28 +7,57 @@ if (!isset($_SESSION['user'])) {
 $root = $_SERVER['DOCUMENT_ROOT'];
 require  $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
 
+if ($admin || $pro_pgVer == 1  || $pro_miVer == 1 || $pro_pdver == 1 || $pro_corVer == 1 || $pro_liVer == 1 || $en_ver == 1):
 ?>
-
-
-<?php if ($admin || $pro_pgVer == 1  || $pro_miVer == 1 || $pro_pdver == 1 || $pro_corVer == 1 || $pro_liVer == 1 || $en_ver == 1): ?>
 
 <div class="container mt-100">
   <div class="row  mb-20 mt-5">
-  <?php if ($pro_pgVer == 1 || $admin): ?>
+  <?php if ($pro_pgVer == 1 || $pro_miVer == 1 || $admin): ?>
     <div class="col-md-4">
       <div class="card">
         <img class="w-35 align-self-center m-5" src="/fitcoControl/Resources/iconos/programar.svg">
         <div class="card-body">
-          <a href="/fitcoControl/Ubicaciones/Produccion/calendarioProgram.php" class="linkboton btn-block">Departamento de Programación<span class="a top"></span></a>
+          <a href="#" accion="programLink" status="cerrado" class="consultar linkboton btn-block pl-0 pr-0">Departamento de Programación <img style="width:20px" src="/fitcoControl/Resources/iconos/arrowdown.svg">
+            <span class="a top"></span>
+          </a>
         </div>
       </div>
+
+      <div id="dropProgram" class="mt-3 text-left">
+          <?php if ($pro_pgVer == 1 || $admin): ?>
+          <a href="/fitcoControl/Ubicaciones/Produccion/CalendarioProgram.php" class="linkboton btn-block"> Programación Calendario
+            <span class="a top"></span>
+          </a>
+        <?php else: ?>
+          <a href="#" class="bn bloqueo linkboton btn-block">Programación Calendario
+            <span class="a top"></span>
+          </a>
+        <?php endif; ?>
+
+
+        <?php if ($pro_miVer == 1 || $admin): ?>
+          <a href="/fitcoControl/Ubicaciones/Mantenimiento/Mantenimiento.php" class="linkboton  btn-block"> Mantenimiento e Inversiones
+            <span class="top"></span>
+          </a>
+          <!-- <a href="#" class="bn bloqueo linkboton btn-block">Mantenimiento e Inversiones
+            <span class="top"></span>
+          </a> -->
+        <?php else: ?>
+          <a href="#" class="bn bloqueo linkboton btn-block">Mantenimiento e Inversiones
+            <span class="top"></span>
+          </a>
+        <?php endif; ?>
+      </div>
     </div>
+
   <?php else: ?>
     <div class="col-md-4">
       <div class="card" style="background-color:rgba(190, 190, 190, 0.28);">
-        <img class="w-35 align-self-center m-5" src="/fitcoControl/Resources/iconos/programar.svg">
+        <img class="card-img-top w-35 align-self-center m-5" src="/fitcoControl/Resources/iconos/camisarojo.svg">
         <div class="card-body">
-          <a href="#" class="bn bloqueo linkboton btn-block">Departamento de Programación<span class="a top"></span></a>
+          <a href="#" class="bn bloqueo linkboton btn-block pl-0 pr-0">Departamento de Programación <img style="width:20px" src="/fitcoControl/Resources/iconos/arrowdown.svg">
+            <span class="top"></span>
+          </a>
         </div>
       </div>
     </div>
@@ -48,39 +77,33 @@ require  $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
 
       <div id="dropProduccion" style="display:none" class="mt-3 text-left">
         <?php if ($pro_pdver == 1 || $admin): ?>
-          <a href="/fitcoControl/Ubicaciones/Produccion/ProduccionDiaria.php" class="linkboton btn-block">
-            <img style="width:30px" src="/fitcoControl/Resources/iconos/clothes.svg"> Produccion Diaria
+          <a href="/fitcoControl/Ubicaciones/Produccion/ProduccionDiaria.php" class="linkboton btn-block">Produccion Diaria
             <span class="a top"></span>
           </a>
         <?php else: ?>
-          <a href="#" class="bn bloqueo linkboton btn-block">
-            <img style="width:30px" src="/fitcoControl/Resources/iconos/clothes.svg"> Produccion Diaria
+          <a href="#" class="bn bloqueo linkboton btn-block">Produccion Diaria
             <span class="a top"></span>
           </a>
         <?php endif; ?>
 
 
         <?php if ($pro_corVer == 1 || $admin): ?>
-          <a href="/fitcoControl/Ubicaciones/Corte/seccionCorte.php" class="linkboton  btn-block">
-            <img style="width:30px" src="/fitcoControl/Resources/iconos/002-calendar.svg"> Sección de Corte
+          <a href="/fitcoControl/Ubicaciones/Corte/seccionCorte.php" class="linkboton  btn-block">Sección de Corte
             <span class="top"></span>
           </a>
         <?php else: ?>
-          <a href="#" class="bn bloqueo linkboton btn-block">
-            <img style="width:30px" src="/fitcoControl/Resources/iconos/002-calendar.svg"> Sección de Corte
+          <a href="#" class="bn bloqueo linkboton btn-block">Sección de Corte
             <span class="top"></span>
           </a>
         <?php endif; ?>
 
 
         <?php if ($pro_liVer == 1 || $admin): ?>
-          <a href="/fitcoControl/Ubicaciones/Lineas/pantalla.php" class="linkboton  btn-block">
-            <img style="width:30px" src="/fitcoControl/Resources/iconos/clothes.svg"> Lineas
+          <a href="/fitcoControl/Ubicaciones/Lineas/pantalla.php" class="linkboton  btn-block">Lineas
             <span class="top"></span>
           </a>
         <?php else: ?>
-          <a href="#" class="bn bloqueo linkboton btn-block">
-            <img style="width:30px" src="/fitcoControl/Resources/iconos/clothes.svg"> Sección de Corte
+          <a href="#" class="bn bloqueo linkboton btn-block">Sección de Corte
             <span class="top"></span>
           </a>
         <?php endif; ?>
@@ -88,8 +111,8 @@ require  $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
     </div>
 
     <?php else: ?>
-      <div class="col-md-4" style="background-color:rgba(190, 190, 190, 0.28);">
-        <div class="card">
+      <div class="col-md-4">
+        <div class="card" style="background-color:rgba(190, 190, 190, 0.28);">
           <img class="card-img-top w-35 align-self-center m-5" src="/fitcoControl/Resources/iconos/camisarojo.svg">
           <div class="card-body">
             <a href="#" class="bn bloqueo linkboton btn-block">Departamento de Producción <img style="width:20px" src="/fitcoControl/Resources/iconos/arrowdown.svg">

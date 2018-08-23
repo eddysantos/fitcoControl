@@ -7,6 +7,7 @@ require $root . '/fitcoControl/Resources/PHP/utilities/initialScript.php';
 $system_callback = [];
 $data = $_POST;
 
+
 $data['string'];
 $text = "%" . $data['string'] . "%";
 $query = "SELECT
@@ -14,9 +15,7 @@ $query = "SELECT
 
 FROM usuarios_1
 
-WHERE (nombreUsuario LIKE ?)  OR (apellidosUsuario LIKE ?) OR (correoUsuario LIKE ?) OR (departamentoUsuario LIKE ?)
-
-ORDER BY nombreUsuario ASC";
+WHERE (nombreUsuario LIKE ?)  OR (apellidosUsuario LIKE ?) OR (correoUsuario LIKE ?) OR (departamentoUsuario LIKE ?)";
 
 $stmt = $conn->prepare($query);
 if (!($stmt)) {
@@ -47,14 +46,16 @@ if ($rslt->num_rows == 0) {
   exit_script($system_callback);
 }
 
+
 while ($row = $rslt->fetch_assoc()) {
-  $idusuario = $row['pk_usuario'];
-  $nombreUsuario = $row['nombreUsuario'];
-  $apellidosUsuario = $row['apellidosUsuario'];
-  $correoUsuario = $row['correoUsuario'];
-  $departamentoUsuario = $row['departamentoUsuario'];
-  $puestoUsuario = $row['puestoUsuario'];
-  $e_usEditar = $_SESSION['user']['e_usEditar'];
+  $idusuario = utf8_encode($row['pk_usuario']);
+  $nombreUsuario = utf8_encode($row['nombreUsuario']);
+  $apellidosUsuario = utf8_encode($row['apellidosUsuario']);
+  $correoUsuario = utf8_encode($row['correoUsuario']);
+  $departamentoUsuario = utf8_encode($row['departamentoUsuario']);
+  $puestoUsuario = utf8_encode($row['puestoUsuario']);
+  $privilegiosUsuario = utf8_encode($row['privilegiosUsuario']);
+  $e_usEditar = utf8_encode($_SESSION['user']['e_usEditar']);
   $admin = $_SESSION['user']['privilegiosUsuario'] == 'Administrador';
 
 
@@ -68,6 +69,7 @@ while ($row = $rslt->fetch_assoc()) {
     $bloqueo = "bn bloqueo";
   }
 
+ $system_callback['echo'][] = "This is a test.";
 
     $system_callback['data'] .=
     "<p db-id='$idusuario'>$idusuario - $nombreUsuario</p>";
@@ -96,6 +98,13 @@ while ($row = $rslt->fetch_assoc()) {
         </td>
       </tr>";
 }
+
+// var_dump($system_callback);
+// echo json_encode($system_callback);
+// $conn->close();
+// die();
+//
+// exit_script($system_callback);
 
 
 $system_callback['code'] = 1;

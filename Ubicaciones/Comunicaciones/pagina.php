@@ -14,11 +14,19 @@ require  $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
 <div class="container mt-100">
   <div class="row  mb-20 mt-5">
     <?php if ($admin || $e_ventas == 1 || $e_tesoreria == 1 || $e_produc == 1): ?>
-    <div class="col-md-4">
+    <!-- <div class="col-md-4">
       <div class="card">
         <img class="w-35 align-self-center m-5" src="/fitcoControl/Resources/iconos/003-graphic.svg">
         <div class="card-body">
           <a href="/fitcoControl/Ubicaciones/Comunicaciones/Estadisticas/secciones.php" class="linkboton btn-block">Estadisticas<span class="a top"></span></a>
+        </div>
+      </div>
+    </div> -->
+    <div class="col-md-4">
+      <div class="card" style="background-color:rgba(190, 190, 190, 0.28);">
+        <img class="w-35 align-self-center m-5" src="/fitcoControl/Resources/iconos/003-graphic.svg">
+        <div class="card-body">
+          <a href="#" class="bn bloqueo linkboton btn-block">Estadisticas<span class="a top"></span></a>
         </div>
       </div>
     </div>
@@ -35,11 +43,19 @@ require  $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
 
 
     <?php if ($admin || $e_rhVer == 1): ?>
-      <div class="col-md-4">
+      <!-- <div class="col-md-4">
         <div class="card">
           <img class="card-img-top w-35 align-self-center m-5" src="/fitcoControl/Resources/iconos/001-reunion.svg">
           <div class="card-body">
             <a href="/fitcoControl/Ubicaciones/Comunicaciones/RecursosHumanos/Rh.php" class="linkboton btn-block">Recursos Humanos<span class="top"></span></a>
+          </div>
+        </div>
+      </div> -->
+      <div class="col-md-4">
+        <div class="card" style="background-color:rgba(190, 190, 190, 0.28);">
+          <img class="card-img-top w-35 align-self-center m-5" src="/fitcoControl/Resources/iconos/001-reunion.svg">
+          <div class="card-body">
+            <a href="#" class="bn bloqueo linkboton btn-block">Recursos Humanos<span class="top"></span></a>
           </div>
         </div>
       </div>
