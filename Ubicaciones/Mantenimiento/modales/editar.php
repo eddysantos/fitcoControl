@@ -69,16 +69,20 @@
               </td>
               <td class="col-md-1">Pagado</td>
             </tr>
-            <tr class="row m20 justify-content-center ">
-              <td class="col-md-1  p-0 pt-2">
-                <label class='switch'>
-                  <input id="autorizacion" type='checkbox' class='success'>
-                  <span class='slider round'></span>
-                </label>
-              </td>
-              <td class="col-md-1">Autorizado</td>
+            <?php if ( $_SESSION['user']['correoUsuario'] == 'mariela@villaverde.com'  || $_SESSION['user']['correoUsuario'] == 'epinales@prolog-mex.com'): ?>
+              <tr class="row m20 justify-content-center ">
+                <td class="col-md-1  p-0 pt-2">
+                  <label class='switch'>
+                    <input id="autorizacion" type='checkbox' class='success'>
+                    <span class='slider round'></span>
+                  </label>
+                </td>
+                <td class="col-md-1">Autorizado</td>
+              </tr>
+              <?php else: ?>
+                <tr class="row"></tr>
+            <?php endif; ?>
 
-            </tr>
           </tbody>
         </table>
       </div>

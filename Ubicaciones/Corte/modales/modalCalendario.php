@@ -4,7 +4,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">AGREGAR PROGRAMACIÓN</h5>
+        <h5 class="modal-title">AGREGAR CORTE</h5>
         <button class="close" type="button" name="button" data-dismiss="modal" area-label="close">
           <i class="fa fa-times-circle-o fa-2x" aria-hidden="true"></i>
         </button>
@@ -12,32 +12,32 @@
       <div class="modal-body">
         <form id="formAgregar">
           <table class="table">
-            <tr class="row m20" style="display:none">
-              <td class="col-md-6 input-effect p-0">
+            <tr class="row m20" >
+              <td class="col-md-6 input-effect p-0" style="display:none">
                 <input class="modal-efecto-17 w-100 has-content" id="_txtID" type="hidden">
                 <label>ID</label>
                 <span class="focus-border"></span>
                 </div>
               </td>
-              <td class="col-md-1"></td>
-              <td class="col-md-5 input-effect p-0">
-                <input class="w-100 modal-efecto-17 has-content" id="_txtColor" type="color">
-                  <label>Color Cliente</label>
+              <!-- <td class="col-md-1"></td> -->
+              <td class="col-md-12 input-effect p-0">
+                <input class="w-100 modal-efecto-17 has-content" id="_txtColor" type="color" value="#4f8f00">
+                  <label>Color de Programación</label>
                   <span class="focus-border"></span>
               </td>
             </tr>
 
             <tr class="row m20">
               <td class="col-md-6 input-effect p-0">
-                <input class="modal-efecto-17 w-100 has-content" id="_cliente" type="text">
+                <!-- <input class="modal-efecto-17 w-100 has-content" id="_cliente" type="text">
                 <label for="_cliente">Cliente</label>
                 <span class="focus-border"></span>
-                <div class="client-list" id="mpgr_ClientList" style="display: none"></div>
-              </td>
-              <!-- <td class="col-md-1"></td> -->
-              <td class="col-md-1 input-effect p-0" style="display:none">
-                <input class="modal-efecto-17 w-100 has-content" id="_fk_cliente" type="text">
-                <label>fk_cliente</label>
+                <div class="client-list" id="mpgr_ClientList" style="display: none"></div> -->
+
+
+                <input class="modal-efecto-17 has-content popup-input w-100 border-0" id="_cliente" type="text" id-display="#popup-display-listaClientesCor" action="listaClientes" db-id="" autocomplete="off" >
+                <div class="popup-list" id="popup-display-listaClientesCor" style="display:none"></div>
+                <label for="txtDescripcion">Cliente</label>
                 <span class="focus-border"></span>
               </td>
               <td class="col-md-1"></td>
@@ -104,35 +104,34 @@
         <form>
           <table class="table">
 
-            <tr class="row m20" style="display:none">
-              <td class="col-md-6 input-effect p-0">
+            <tr class="row m20">
+              <td class="col-md-5 input-effect p-0" style="display:none">
                 <input class="modal-efecto-17 w-100 has-content" id="txtID" type="text">
                 <label>ID</label>
                 <span class="focus-border"></span>
                 </div>
               </td>
-              <td class="col-md-1"></td>
-              <td class="col-md-5 input-effect p-0">
+              <!-- <td class="col-md-1"></td> -->
+              <td class="col-md-12 input-effect p-0">
                 <input class="w-100 modal-efecto-17 has-content" id="txtColor" type="color">
-                  <label>Color Cliente</label>
+                  <label>Color de Programación</label>
                   <span class="focus-border"></span>
               </td>
             </tr>
 
             <tr class="row m20">
               <td class="col-md-6 input-effect p-0">
-                <input class="modal-efecto-17 w-100 has-content" id="cliente" type="text">
+                <!-- <input class="modal-efecto-17 w-100 has-content" id="cliente" type="text">
                 <label for="cliente">Cliente</label>
                 <span class="focus-border"></span>
                 <div class="client-list" id="Epgr_ClientList" style="display: none">
-                </div>
-              </td>
-              <!-- <td class="col-md-1"></td> -->
-              <td class="col-md-1 input-effect p-0" style="display:none">
-                <input class="modal-efecto-17 w-100 has-content" id="fk_cliente" type="text">
-                <label>fk_cliente</label>
+                </div> -->
+
+
+                <input class="modal-efecto-17 has-content popup-input w-100 border-0" id="cliente" type="text" id-display="#popup-display-listaClientesCorED" action="listaClientes" db-id="" autocomplete="off">
+                <div class="popup-list" id="popup-display-listaClientesCorED" style="display:none"></div>
+                <label for="txtDescripcion">Cliente</label>
                 <span class="focus-border"></span>
-                </div>
               </td>
               <td class="col-md-1"></td>
 
@@ -175,7 +174,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <?php if ($_SESSION['user']['pro_pgEditar'] ==  1 || $admin): ?>
+        <?php if ($_SESSION['user']['pro_corEditar'] ==  1 || $admin): ?>
           <button id="btnModificar" type="button" class="btn btn-primary">Modificar</button>
           <button id="btnEliminar" type="button" class="btn btn-danger">Borrar</button>
           <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>

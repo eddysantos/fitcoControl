@@ -7,9 +7,10 @@
     </div>
   </li>
 
-
-  <script src="/fitcoControl/Ubicaciones/Mantenimiento/js/inversiones.js"></script>
+  <script src="/fitcoControl/Ubicaciones/Corte/js/corteCalendario.js"></script>
   <script src="/fitcoControl/Resources/js/Inputs.js"></script>
+  <!-- <script src="/fitcoControl/Resources/js/MostrarDivsAgregar.js"></script> -->
+  <!-- <script src="/fitcoControl/Resources/js/Produccion/programacionProduccion.js"></script> -->
   <script src="/fitcoControl/Resources/js/popup-list-plugin.js"></script>
   <script src="/fitcoControl/Resources/js/table-fetch-plugin.js"></script>
 </footer>

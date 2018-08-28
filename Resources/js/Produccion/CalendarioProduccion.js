@@ -1,5 +1,7 @@
 $(document).ready(function(){
 
+  
+
   $('#_cliente').keyup(function(){
     var txt = $(this).val();
     if (txt == "") {

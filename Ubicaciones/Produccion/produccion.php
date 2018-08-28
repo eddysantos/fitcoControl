@@ -34,6 +34,16 @@ if ($admin || $pro_pgVer == 1  || $pro_miVer == 1 || $pro_pdver == 1 || $pro_cor
           </a>
         <?php endif; ?>
 
+        <?php if ($pro_corVer == 1 || $admin): ?>
+          <a href="/fitcoControl/Ubicaciones/Corte/CalendarioCorte.php" class="linkboton btn-block"> Calendario de Corte
+            <span class="a top"></span>
+          </a>
+        <?php else: ?>
+          <a href="#" class="bn bloqueo linkboton btn-block">Calendario de Corte
+            <span class="a top"></span>
+          </a>
+        <?php endif; ?>
+
 
         <?php if ($pro_miVer == 1 || $admin): ?>
           <a href="/fitcoControl/Ubicaciones/Mantenimiento/Mantenimiento.php" class="linkboton  btn-block"> Mantenimiento e Inversiones
@@ -47,6 +57,13 @@ if ($admin || $pro_pgVer == 1  || $pro_miVer == 1 || $pro_pdver == 1 || $pro_cor
             <span class="top"></span>
           </a>
         <?php endif; ?>
+
+
+
+<!-- CALENDARIO PRUEBA -->
+        <!-- <a href="/fitcoControl/Ubicaciones/Programacion/Programacion.php" class="linkboton  btn-block"> Calendario Prueba
+          <span class="top"></span>
+        </a> -->
       </div>
     </div>
 
@@ -86,16 +103,26 @@ if ($admin || $pro_pgVer == 1  || $pro_miVer == 1 || $pro_pdver == 1 || $pro_cor
           </a>
         <?php endif; ?>
 
-
         <?php if ($pro_corVer == 1 || $admin): ?>
-          <a href="/fitcoControl/Ubicaciones/Corte/seccionCorte.php" class="linkboton  btn-block">Sección de Corte
+          <a href="/fitcoControl/Ubicaciones/Corte/CorteDiario.php" class="linkboton btn-block">Corte Diario
             <span class="top"></span>
           </a>
         <?php else: ?>
-          <a href="#" class="bn bloqueo linkboton btn-block">Sección de Corte
+          <a href="#" class="bn bloqueo linkboton btn-block">Corte Diario
             <span class="top"></span>
           </a>
         <?php endif; ?>
+
+
+        <!-- <?php if ($pro_corVer == 1 || $admin): ?>
+          <a href="/fitcoControl/Ubicaciones/Corte/seccionCorte.php" class="linkboton  btn-block">Sección de Corte
+            <span class="a top"></span>
+          </a>
+        <?php else: ?>
+          <a href="#" class="bn bloqueo linkboton btn-block">Sección de Corte
+            <span class="a top"></span>
+          </a>
+        <?php endif; ?> -->
 
 
         <?php if ($pro_liVer == 1 || $admin): ?>
