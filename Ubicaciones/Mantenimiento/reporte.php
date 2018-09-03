@@ -10,10 +10,26 @@ if (!isset($_SESSION['user'])) {
   $admin = $_SESSION['user']['privilegiosUsuario'] == "Administrador";
 ?>
 
-<link rel="stylesheet" href="/fitcoControl/Resources/bootstrap/css/reset.css">
-<link rel="stylesheet" href="/fitcoControl/Resources/css/Pagina.css">
+<link rel="stylesheet" href="/fitcoControl/Resources/css/barranavegacion.css">
+<link rel="stylesheet" href="/fitcoControl/Resources/fontAwesome/css/font-awesome.min.css">
 <link rel="stylesheet" href="/fitcoControl/Resources/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="/fitcoControl/Resources/css/Pagina.css">
+<link rel="stylesheet" href="/fitcoControl/Resources/css/Inputs.css">
+<link rel="stylesheet" href="/fitcoControl/Resources/css/modales.css">
+<link rel="stylesheet" href="/fitcoControl/Resources/css/sweetalert.css">
+<link rel="stylesheet" href="/fitcoControl/Resources/bootstrap/alertifyjs/css/alertify.min.css">
+<link rel="stylesheet" href="/fitcoControl/Resources/bootstrap/alertifyjs/css/themes/default.css">
+
+
+
+
+<script src="/fitcoControl/Resources/bootstrap/alertifyjs/alertify.min.js"></script>
+<script src="/fitcoControl/Resources/jquery/sweetalert.min.js"></script>
 <script src="/fitcoControl/Resources/jquery/jquery.min.js"></script>
+
+<script src="/fitcoControl/Resources/jquery/popper.min.js"></script>
+<script src="/fitcoControl/Resources/bootstrap/js/bootstrap.min.js"></script>
+<script src="/fitcoControl/Resources/jquery/tether.min.js"></script>
 
 <?php if ($pro_miVer == 1 || $admin): ?>
   <div class="m-5">
@@ -42,10 +58,14 @@ if (!isset($_SESSION['user'])) {
   </div>
 <?php endif;
 
-
-// require $root . '/fitcoControl/Ubicaciones/Mantenimiento/actions/footer.php';
 ?>
 
 
 
 <script src="/fitcoControl/Ubicaciones/Mantenimiento/js/inversiones.js"></script>
+
+<?php
+  // $root = $_SERVER['DOCUMENT_ROOT'];
+  require $root . '/fitcoControl/Ubicaciones/Mantenimiento/modales/editar.php';
+  // require $root . '/fitcoControl/Ubicaciones/Mantenimiento/modales/editarRepo.php';
+?>

@@ -15,7 +15,7 @@ $query = "SELECT
 
 FROM ct_mantenimiento
 
-WHERE (mant_Inv LIKE ?)  OR (area LIKE ?) OR (proveedor LIKE ?) OR (fechaRequerido LIKE ?)";
+WHERE (mant_Inv LIKE ?)  OR (area LIKE ?) OR (proveedor LIKE ?) OR (fechaRequerido LIKE ?) ORDER BY orden ASC";
 
 $stmt = $conn->prepare($query);
 if (!($stmt)) {
@@ -91,7 +91,7 @@ while ($row = $rslt->fetch_assoc()) {
     $id = $idMant;
 
     $system_callback['data'] .=
-    "<div class='$color bordelateral m-0 font12 bordebottom' style='$display'>
+    "<div class='$color  bordelateral m-0 font12 bordebottom' style='$display'>
       <div class='row'>
         <div class='col-md-1 text-center'></div>
         <div class='text-right p-0 col-md-1 gris'>Mant / Inv: </div>
@@ -99,7 +99,6 @@ while ($row = $rslt->fetch_assoc()) {
         <div class='text-right p-0 col-md-1 gris'>Proveedor: </div>
         <div class='col-md-3'>$proveedor</div>
         <div class='col-md-2 text-center'></div>
-
       </div>
       <div class='row'>
         <div class='col-md-1 text-center'>$orden</div>
@@ -111,7 +110,6 @@ while ($row = $rslt->fetch_assoc()) {
           <a $editar db-id='$id'><img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='$bloqueo spand-icon'></a>
           <a $eliminar db-id='$id'><img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='$bloqueo spand-icon'></a>
         </div>
-
       </div>
       <div class='row'>
         <div class='col-md-1 text-center'></div>

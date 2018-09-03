@@ -12,17 +12,17 @@ $data = array(
 
 $query = "SELECT
 p.pk_programacion AS idprogram,
-c.nombreCliente AS cliente,
+p.title AS cliente,
 -- DATE_FORMAT(p.end, '%d-%m-%Y') AS ffin,
 p.end AS ffin,
 year(p.end) AS anio,
 p.piezasRequeridas AS piezas,
-c.colorCliente AS color,
+p.color AS color,
 SUM(pr.cantidadProduccion) AS total
 
 FROM ct_program p
 
-LEFT JOIN ct_cliente c ON c.pk_cliente = p.fk_cliente
+-- LEFT JOIN ct_cliente c ON c.pk_cliente = p.fk_cliente
 LEFT JOIN ct_produccion pr ON p.pk_programacion = pr.fk_programacion
 
 GROUP BY p.pk_programacion
@@ -33,17 +33,18 @@ if (isset($_POST['produccion'])) {
   $q = $conn->real_escape_string($_POST['produccion']);
   $query = "SELECT
   p.pk_programacion AS idprogram,
-  c.nombreCliente AS cliente,
+  p.title AS cliente,
+
   -- DATE_FORMAT(p.end, '%d-%m-%Y') AS ffin,
   p.end AS ffin,
   year(p.end) AS anio,
   p.piezasRequeridas AS piezas,
-  c.colorCliente AS color,
+  p.color AS color,
   SUM(pr.cantidadProduccion) AS total
 
   FROM ct_program p
 
-  LEFT JOIN ct_cliente c ON c.pk_cliente = p.fk_cliente
+  -- LEFT JOIN ct_cliente c ON c.pk_cliente = p.fk_cliente
   LEFT JOIN ct_produccion pr ON p.pk_programacion = pr.fk_programacion
 
   WHERE p.pk_programacion LIKE '%$q%' OR

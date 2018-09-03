@@ -27,9 +27,6 @@ require  $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
       </div>
     </div>
 
-
-
-
     <?php
       require $root . '/fitcoControl/Ubicaciones/Modales/Produccion/ModalCalendario.php';
      ?>
@@ -48,5 +45,7 @@ require  $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
     <script src="/fitcoControl/Resources/js/Inputs.js"></script>
     <script src="/fitcoControl/Resources/js/MostrarDivsAgregar.js"></script>
     <script src="/fitcoControl/Resources/js/Produccion/programacionProduccion.js"></script>
+    <script src="/fitcoControl/Resources/js/popup-list-plugin.js"></script>
+    <script src="/fitcoControl/Resources/js/table-fetch-plugin.js"></script>
   </footer>
 </html>

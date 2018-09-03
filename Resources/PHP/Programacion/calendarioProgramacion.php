@@ -9,10 +9,9 @@ switch ($accion) {
 
   // AGREGAR AGREGAR AGREGAR AGREGAR AGREGAR AGREGAR AGREGAR AGREGAR AGREGAR AGREGAR
   case 'agregar':
-    $sentenciaSQL = $pdo->prepare("INSERT INTO ct_program(fk_cliente,title,piezasRequeridas,color,textColor,start,end) VALUES(:fk_cliente,:title,:descripcion,:color,:textColor,:start,:end)");
+    $sentenciaSQL = $pdo->prepare("INSERT INTO ct_program(title,piezasRequeridas,color,textColor,start,end) VALUES(:title,:descripcion,:color,:textColor,:start,:end)");
 
     $respuesta = $sentenciaSQL->execute(array(
-      "fk_cliente"=>$_POST['fk_cliente'],
       "title"=>$_POST['title'],
       "descripcion"=>$_POST['descripcion'],
       "color"=>$_POST['color'],
@@ -38,25 +37,22 @@ switch ($accion) {
 // MODIFICAR MODIFICAR MODIFICAR MODIFICAR MODIFICAR MODIFICAR MODIFICAR MODIFICAR MODIFICAR MODIFICAR
   case 'modificar':
     $sentenciaSQL = $pdo->prepare("UPDATE ct_program SET
-    fk_cliente=:fk_cliente,
-    title=:title,
-    piezasRequeridas=:descripcion,
-    color=:color,
-    textColor=:textColor,
-    start=:start,
-    end=:end
-    WHERE  pk_programacion=:ID");
+      title=:title,
+      piezasRequeridas=:descripcion,
+      color=:color,
+      textColor=:textColor,
+      start=:start,
+      end=:end
+      WHERE  pk_programacion=:ID");
 
-    $respuesta = $sentenciaSQL->execute(array(
-
-      "fk_cliente"=>$_POST['fk_cliente'],
-      "title"=>$_POST['title'],
-      "descripcion"=>$_POST['descripcion'],
-      "color"=>$_POST['color'],
-      "textColor"=>$_POST['textColor'],
-      "start"=>$_POST['start'],
-      "end"=>$_POST['end'],
-      "ID" =>$_POST['id']
+      $respuesta = $sentenciaSQL->execute(array(
+        "title"=>$_POST['title'],
+        "descripcion"=>$_POST['descripcion'],
+        "color"=>$_POST['color'],
+        "textColor"=>$_POST['textColor'],
+        "start"=>$_POST['start'],
+        "end"=>$_POST['end'],
+        "ID" =>$_POST['id']
     ));
     echo json_encode($respuesta);
 
@@ -65,7 +61,7 @@ switch ($accion) {
   default:
 
 //MOSTRAR REGISTROS EN PANTALLA
-    $sentenciaSQL= $pdo->prepare("SELECT * FROM ct_program p INNER JOIN ct_cliente c WHERE c.pk_cliente = p.fk_cliente");
+    $sentenciaSQL= $pdo->prepare("SELECT * FROM ct_program");
     $sentenciaSQL->execute();
     $resultado= $sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
 

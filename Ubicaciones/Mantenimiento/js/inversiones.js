@@ -30,7 +30,13 @@ $(document).ready(function(){
         console.error("Something went terribly wrong...");
     }
   });
+
+
+
 });
+
+
+
 
 
 function checkPrivilege(privilege){
@@ -68,6 +74,23 @@ function Mantenimiento_Det(){
   })
 }
 
+// function fetchTerminado(){
+//   $.ajax({
+//     method: 'POST',
+//     url:'/fitcoControl/Ubicaciones/Mantenimiento/actions/RepoPagado.php',
+//     success: function(r){
+//       console.log(r);
+//       r = JSON.parse(r);
+//       if (r.code == 1) {
+//         $('#mostrarPagado').html(r.data);
+//         ActivarBotones();
+//       } else {
+//         console.error(r.message);
+//       }
+//     }
+//   })
+// }
+
 
 function fetchTerminado(){
   $.ajax({
@@ -77,7 +100,7 @@ function fetchTerminado(){
   })
   .done(function(resultado){
     $('#mostrarPagado').html(resultado);
-    // ActivarBotones();
+    ActivarBotones();
   })
 }
 
@@ -194,11 +217,15 @@ function ActivarBotones(){
           $('#NuevoMantenimiento').hide();
           $('.spanA').css('display', '');
           Mantenimiento_Det();
+          fetchTerminado();
+
         } else {
           $('.modal').modal('hide');
           $('#NuevoMantenimiento').hide();
           $('.spanA').css('display', '');
           Mantenimiento_Det();
+          fetchTerminado();
+
           alertify.error('NO SE MODIFICÓ NINGUN REGISTRO');
           console.error(r.message);
         }
@@ -235,7 +262,7 @@ function ActivarBotones(){
             }else if (result == 1){
               Mantenimiento_Det();
               fetchTerminado();
-              
+
             }
           },
           error: function(exception){

@@ -1,5 +1,85 @@
 $(document).ready(function(){
 
+
+
+  $('#_cliente').keyup(function(){
+    var txt = $(this).val();
+    if (txt == "") {
+      $('#mpgr_ClientList').fadeOut();
+      return false;
+    }
+
+    $.ajax({
+      method: 'POST',
+      url: '/fitcoControl/Resources/PHP/Clientes/fetchPopupClientList.php',
+      data:{txt: txt},
+      success: function(result){
+        rsp = JSON.parse(result);
+        console.log(rsp);
+
+        if (rsp.code != "1") {
+          $('#mpgr_ClientList').html("<p>Hubo un error al cargar la lista de clientes...</p>");
+          console.warn("Error en el query: " + rsp.response);
+        } else {
+          $('#mpgr_ClientList').html(rsp.response);
+          $('#mpgr_ClientList p').click(function(){
+            var cid = $(this).attr('client-id');
+            var col = $(this).attr('color');
+            var nc = $(this).html();
+
+            $('#_fk_cliente').val(cid).html(cid).attr('client-id', cid);
+            $('#_cliente').val(nc).html(nc).attr('client-id', cid);
+            $('#_txtColor').val(col).html(col).attr('color', col);
+            $('#mpgr_ClientList').fadeOut();
+          });
+        }
+        $('#mpgr_ClientList').fadeIn();
+      },
+      error: function(exception){
+        console.error(exception);
+      }
+    });
+  });
+
+  $('#cliente').keyup(function(){
+    var txt = $(this).val();
+    if (txt == "") {
+      $('#Epgr_ClientList').fadeOut();
+      return false;
+    }
+
+    $.ajax({
+      method: 'POST',
+      url: '/fitcoControl/Resources/PHP/Clientes/fetchPopupClientList.php',
+      data:{txt: txt},
+      success: function(result){
+        rsp = JSON.parse(result);
+        console.log(rsp);
+
+        if (rsp.code != "1") {
+          $('#Epgr_ClientList').html("<p>Hubo un error al cargar la lista de clientes...</p>");
+          console.warn("Error en el query: " + rsp.response);
+        } else {
+          $('#Epgr_ClientList').html(rsp.response);
+          $('#Epgr_ClientList p').click(function(){
+            var cid = $(this).attr('client-id');
+            var col = $(this).attr('color');
+            var nc = $(this).html();
+
+            $('#fk_cliente').val(cid).html(cid).attr('client-id', cid);
+            $('#cliente').val(nc).html(nc).attr('client-id', cid);
+            $('#txtColor').val(col).html(col).attr('color', col);
+            $('#Epgr_ClientList').fadeOut();
+          });
+        }
+        $('#Epgr_ClientList').fadeIn();
+      },
+      error: function(exception){
+        console.error(exception);
+      }
+    });
+  });
+
   $('#CalendarioWeb').fullCalendar({
     // defaultView: 'month',
     weekNumbers: true,
@@ -9,7 +89,11 @@ $(document).ready(function(){
       center: 'title',
       right: 'month,basicWeek,basicDay,listWeek'
     },
-    //agregar Evento
+    // String: 'No hay programaciones para mostrar',
+     //Finaliza el header
+
+
+//agregar Evento
     dayClick: function(date,jsEvent,view){
       // limpiarFormulario();
 
@@ -19,16 +103,17 @@ $(document).ready(function(){
       $('#ModalAgregar').modal();
     },
 
-    //Muestra todos los eventos que estan en la base de datos
-    events: '/fitcoControl/Resources/PHP/Programacion/calendarioProgramacion.php',
+//Muestra todos los eventos que estan en la base de datos
+    events: '/fitcoControl/Ubicaciones/Programacion/actions/acciones.php',
 
 
-    // solo ver informacion
+// solo ver informacion
     eventClick: function(calEvent,jsEvent,view){
-      $('#tituloEvento').html(calEvent.title);
+      $('#tituloEvento').html(calEvent.nombreCliente);
       $('#txtID').val(calEvent.pk_programacion);
-      $('#txtColor').val(calEvent.color);
-      $('#cliente').val(calEvent.title);
+      $('#txtColor').val(calEvent.colorCliente);
+      $('#cliente').val(calEvent.nombreCliente);
+      $('#fk_cliente').val(calEvent.fk_cliente);
       $('#txtDescripcion').val(calEvent.piezasRequeridas);
 
       FechaHora = calEvent.start._i.split(" ");
@@ -46,13 +131,16 @@ $(document).ready(function(){
 
     editable:true,
     eventLimit: true,
+    // selectable: true,
+		// selectHelper: true,
 
 
     eventDrop: function(calEvent){
-      $('#tituloEvento').html(calEvent.title);
+      $('#tituloEvento').html(calEvent.nombreCliente);
       $('#txtID').val(calEvent.pk_programacion);
-      $('#txtColor').val(calEvent.color);
-      $('#cliente').val(calEvent.title);
+      $('#txtColor').val(calEvent.colorCliente);
+      $('#cliente').val(calEvent.nombreCliente);
+      $('#fk_cliente').val(calEvent.fk_cliente);
       $('#txtDescripcion').val(calEvent.piezasRequeridas);
 
       var FechaHora=calEvent.start.format().split("T");
@@ -80,9 +168,7 @@ $(document).ready(function(){
 
   });
 
-
-
-  var NuevoEvento;
+var NuevoEvento;
   $('#btnAgregar').click(function(){
       // limpiarFormulario();
       RecolectarDatos();
@@ -125,6 +211,7 @@ $(document).ready(function(){
   function RecolectarDatosGUI(){
     NuevoEvento={
       id:$('#txtID').val(),
+      fk_cliente:$('#fk_cliente').val(),
       title:$('#cliente').val(),
       start:$('#txtFecha').val()+" "+$('#txtHora').val(),
       color:$('#txtColor').val(),
@@ -137,7 +224,7 @@ $(document).ready(function(){
   function EnviarInformacion(accion,objEvento,modal){
     $.ajax({
       type: 'POST',
-      url: '/fitcoControl/Resources/PHP/Programacion/calendarioProgramacion.php?accion='+accion,
+      url: '/fitcoControl/Ubicaciones/Programacion/actions/acciones.php?accion='+accion,
       data: objEvento,
       success:function(msg){
         if (msg) {
@@ -157,6 +244,7 @@ $(document).ready(function(){
 
   function RecolectarDatos(){
     NuevoEvento={
+      fk_cliente:$('#_fk_cliente').val(),
       title:$('#_cliente').val(),
       start:$('#_txtFecha').val()+" "+$('#_txtHora').val(),
       color:$('#_txtColor').val(),
@@ -169,13 +257,14 @@ $(document).ready(function(){
   function AgregarInformacion(accion,objEvento,modal){
     $.ajax({
       type: 'POST',
-      url: '/fitcoControl/Resources/PHP/Programacion/calendarioProgramacion.php?accion='+accion,
+      url: '/fitcoControl/Ubicaciones/Programacion/actions/acciones.php?accion='+accion,
       data: objEvento,
       success:function(msg){
         if (msg) {
           $('#CalendarioWeb').fullCalendar('refetchEvents');
 
           if (!modal) {
+            $('#ModalAgregar')[0].reset();
             $('#ModalAgregar').modal('toggle');
           }
 
@@ -192,9 +281,8 @@ $(document).ready(function(){
     $('#txtID').val('');
     $('#txtColor').val('');
     $('#cliente').val('');
+    $('#fk_cliente').val('');
     $('#txtDescripcion').val('');
   }
-
-
 
 });
