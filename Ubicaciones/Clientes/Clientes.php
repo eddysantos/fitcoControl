@@ -63,13 +63,13 @@
         </tr>
         <tr class="row m20">
           <td class="col-md-6 input-effect p-0">
-            <input id="clt_telefono" class="effect-17" type="text" required>
+            <input id="clt_telefono" class="effect-17 numeroClass" type="text" required>
               <label>Telefono del Cliente</label>
               <span class="focus-border"></span>
           </td>
           <td class="col-md-1"></td>
           <td class="col-md-5 input-effect p-0">
-            <input id="clt_credito" class="effect-17" type="text" required>
+            <input id="clt_credito" class="effect-17 numeroClass" type="text" required>
               <label>Credito</label>
               <span class="focus-border"></span>
           </td>
@@ -89,14 +89,14 @@
         </tr>
         <tr class="row m20">
           <td class="col-md-12 input-effect p-0">
-            <input id="clt_prendas" class="effect-17" type="text" required>
+            <input id="clt_prendas" class="effect-17 numeroClass" type="text" required>
               <label>Prendas Solicitadas por Mes</label>
               <span class="focus-border"></span>
           </td>
         </tr>
         <tr class="row m20">
           <td class="col-md-12 input-effect p-0">
-            <input id="clt_precio" class="effect-17" type="text" required>
+            <input id="clt_precio" class="effect-17 importeClass" type="text" required>
               <label>Precio por prendas sin tela</label>
               <span class="focus-border"></span>
           </td>
@@ -140,6 +140,6 @@
 
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/fitcoControl/Ubicaciones/Modales/Clientes/EditarCliente.php';
+  require $root . '/fitcoControl/Ubicaciones/Clientes/modales/EditarCliente.php';
   require $root . '/fitcoControl/Resources/PHP/Clientes/pieClientes.php';
 ?>

@@ -9,48 +9,62 @@ if (!isset($_SESSION['user'])) {
   require $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
 ?>
 
+
 <?php if ($admin || $ve_ver == 1): ?>
 
 <div class="container-fluid pl-75 pr-57">
   <div class="row clt_usr mt-5 mb-5">
-    <div class="text-left alert alert-info w-65" role="alert" >
+    <!-- <div class="text-left alert alert-info w-65" role="alert" >
       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       <strong>Nota: </strong> En esta sección se podran registrar las nuevas ventas, editar en el icono <img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='iconoNota'> y eliminar registro en <img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='iconoNota'>.
-    </div>
-
+    </div> -->
 
     <div class="col align-self-end">
+      <a href="#ModalAddVendedor" class="rotate-link consultar ancla" data-toggle='modal' style="text-decoration:none">
+        <img src="/fitcoControl/Resources/iconos/add.svg" class="icon rotate-icon" style="width:30px;">
+        <span class="spanE">Agregar Vendedor</span>
+      </a>
+
       <a class="rotate-link vent consultar ancla" style="font-size: larger;" accion="aventas" status="cerrado">
         <img src="/fitcoControl/Resources/iconos/venta.svg" class="icon rotate-icon" style="width:30px;">
         <span class="spanA">Nueva Venta</span>
       </a>
 
-      <a class="rotate-link consultar ancla" data-toggle='modal' data-target='#ModalGraficaVentas'>
+      <a href="#ModalGraficaVentas" class="rotate-link consultar ancla graficaVentas" data-toggle='modal' style="text-decoration:none">
         <img src="/fitcoControl/Resources/iconos/grafica2.svg" class="icon rotate-icon" style="width:30px;">
-        <span class="spanA">Grafica Ventas</span>
+        <span class="spanE">Grafica Ventas</span>
       </a>
 
-      <!-- <a class="rotate-link consultar ancla">
+      <a class="rotate-link buscador ancla"  accion="msearch" status="cerrado">
         <img src="/fitcoControl/Resources/iconos/search.svg" class="icon rotate-icon" style="width:30px">
-        <span class="spanB"><input class="buscar" type="text" id="busquedaVenta" placeholder="Buscar"></span>
-      </a> -->
-
-      <a class="rotate-link buscador ancla" accion="busc" status="cerrado">
-        <img src="/fitcoControl/Resources/iconos/search.svg" class="icon rotate-icon" style="width:30px">
-        <span class="spanB"><input class="buscar" type="text" name="busqueda"  id="busqueda" placeholder="Buscar"></span>
+        <span class="spanB"><input class="effect-17 real-time-search" type="text" name="search"  placeholder="Buscar..." table-body="#tabla_Ventas" action="mostrar"></span>
       </a>
     </div>
   </div>
 </div>
 
-<!-- <div class="container-fluid mt-3" style="max-width:1300px"> -->
-  <div class="container-fluid mt-3">
-    <section id="mostrarVentas"></section>
-  </div>
+  <!--MOSTRAR TABLA  -->
+  <form class="page p-0" id="tablaVentas">
+    <table class="table table-hover fixed-table">
+      <thead>
+        <tr class='row m-0 encabezado text-center'>
+          <td class="col-md-1"></td>
+          <td class='col-md-3'><h3>Nuevo Cliente</h3></td>
+          <td class='col-md-3'><h3>Vendedor</h3></td>
+          <td class='col-md-2'><h3>Ingreso</h3></td>
+          <td class='col-md-3'></td>
+        </tr>
+      </thead>
+      <tbody id="tabla_Ventas" class="font12">
+        <tr>
+          <td colspan="9">No hay resultados</td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
 
 
-
-  <form id="NuevaVenta" class="agregarnuevo" style="display:none;margin-bottom:80px">
+  <form id="NuevaVenta" class="agregarnuevo" style="display:none;margin-bottom:80px" >
     <table class="table">
       <tbody>
         <tr class="row m20">
@@ -61,13 +75,22 @@ if (!isset($_SESSION['user'])) {
               <span class="focus-border"></span>
           </td>
         </tr>
+
         <tr class="row m20">
+          <td class="col-md-12 input-effect p-0">
+            <input class="effect-17 popup-input" id="vts_vendedor" type="text" id-display="#popup-display-listaVendedor" action="listaVendedor" db-id="" autocomplete="off">
+            <div class="popup-list" id="popup-display-listaVendedor" style="display:none"></div>
+            <label for="vts_vendedor">Nombre Vendedor</label>
+          </td>
+        </tr>
+
+        <!-- <tr class="row m20">
           <td class="col-md-12 input-effect p-0">
             <input  id="vts_vendedor" class="effect-17" type="text" required>
               <label>Nombre del Vendedor</label>
               <span class="focus-border"></span>
           </td>
-        </tr>
+        </tr> -->
         <tr class="row m20">
           <td class="col-md-12 input-effect p-0">
             <input id="vts_nprendas" class="effect-17" type="text" required>
@@ -95,13 +118,6 @@ if (!isset($_SESSION['user'])) {
               <span class="focus-border"></span>
           </td>
         </tr>
-        <!-- <tr class="row m20">
-          <td class="col-md-12 input-effect p-0">
-            <input id="vts_fbaja" class="effect-17 has-content" type="date">
-              <label>Fecha de Baja</label>
-              <span class="focus-border"></span>
-          </td>
-        </tr> -->
         <tr class="row justify-content-center mb-3">
           <td class="col-md-4">
             <button type="submit" id="NuevoRegistroVentas" class="btnsub btn boton btn-block ">AGREGAR</button>
@@ -118,8 +134,13 @@ if (!isset($_SESSION['user'])) {
   </div>
 <?php endif;?>
 
+
+
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/fitcoControl/Ubicaciones/Modales/Ventas/Ventas.php';
-  require $root . '/fitcoControl/Resources/PHP/Ventas/pieVentas.php';
+
+  require $root . '/fitcoControl/Ubicaciones/Ventas/actions/pieVentas.php';
+  require $root . '/fitcoControl/Ubicaciones/Ventas/modales/Ventas.php';
+
+
 ?>

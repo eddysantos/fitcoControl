@@ -80,7 +80,17 @@ $admin = $_SESSION['user']['privilegiosUsuario']== "Administrador";
     <script src="/fitcoControl/Resources/jquery/tether.min.js"></script>
     <script src="/fitcoControl/Resources/librerias/dataTables/jquery.DataTable.min.js"></script>
     <script src="/fitcoControl/Resources/librerias/dataTables/dataTables.bootstrap4.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $('.importeClass').keyup(function (){
+          this.value = (this.value + '').replace(/[^0-9-.]/g, '');
+        });
 
+        $('.numeroClass').keyup(function (){
+          this.value = (this.value + '').replace(/[^0-9]/g, '');
+        });
+      })
+    </script>
   </head>
 
 <div id="nav_wrap" class="sticky" style="background-color:black">

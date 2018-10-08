@@ -45,19 +45,19 @@
               </tr>
               <tr class="row m20">
                 <td class="col-md-4 input-effect p-0">
-                  <input  id="meta" class="modal-efecto-17 has-content" type="text" required>
+                  <input  id="meta" class="modal-efecto-17 has-content numeroClass" type="text" required>
                     <label>Meta</label>
                     <span class="focus-border"></span>
                 </td>
                 <td class="col-md-1"></td>
                 <td class="col-md-7 input-effect p-0">
-                  <input id="prod1" class="modal-efecto-17 has-content" type="text" required>
+                  <input id="prod1" class="modal-efecto-17 has-content numeroClass" type="text" required>
                     <label>Produccion 1ra Hora</label>
                     <span class="focus-border"></span>
                 </td>
               </tr>
 
-              
+
             </tbody>
           </table>
         </div>

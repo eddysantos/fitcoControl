@@ -36,13 +36,13 @@
               </tr>
               <tr class="row m20">
                 <td class="col-md-6 input-effect p-0">
-                  <input class="w-100 modal-efecto-17 has-content" name="mclt_telefono" id="mclt_telefono" type="text">
+                  <input class="w-100 modal-efecto-17 has-content numeroClass" name="mclt_telefono" id="mclt_telefono" type="text">
                     <label>Telefono Cliente</label>
                     <span class="focus-border"></span>
                 </td>
                 <td class="col-md-1"></td>
                 <td class="col-md-5 input-effect p-0">
-                  <input class="w-100 modal-efecto-17 has-content" name="mclt_credito" id="mclt_credito" type="text">
+                  <input class="w-100 modal-efecto-17 has-content numeroClass" name="mclt_credito" id="mclt_credito" type="text">
                     <label>Credito Cliente</label>
                     <span class="focus-border"></span>
                 </td>
@@ -62,14 +62,14 @@
               </tr>
               <tr class="row m20">
                 <td class="col-md-12 input-effect p-0">
-                  <input class="modal-efecto-17 has-content"  type="text" name="mclt_prendas" id="mclt_prendas">
+                  <input class="modal-efecto-17 has-content numeroClass"  type="text" name="mclt_prendas" id="mclt_prendas">
                     <label>Prendas Solicitadas por Mes</label>
                     <span class="focus-border"></span>
                 </td>
               </tr>
               <tr class="row m20">
                 <td class="col-md-12 input-effect p-0">
-                  <input id="mclt_precio" class="modal-efecto-17 has-content" type="text" required>
+                  <input id="mclt_precio" class="modal-efecto-17 has-content importeClass" type="text" required>
                     <label>Precio por prendas sin tela</label>
                     <span class="focus-border"></span>
                 </td>

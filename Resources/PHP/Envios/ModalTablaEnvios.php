@@ -17,7 +17,7 @@ descripcion AS status
 
 FROM ct_envios
 
-WHERE fk_programacion = ?";
+WHERE fk_programacion = ?"; 
 
 $stmt = $conn->prepare($query);
 $stmt->bind_param('s', $_POST['envioId']);

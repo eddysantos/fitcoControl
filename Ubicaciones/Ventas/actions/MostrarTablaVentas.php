@@ -72,9 +72,7 @@ if ($buscarDatos->num_rows > 0) {
        $precioXprenda = $row['precioXprenda'];
        $numeroPrendas = $row['prendas'];
        $acuerdo = $row['acuerdo'];
-       // $ev =  $_SESSION['user']['editarVentas'];
-       // $admin = $_SESSION['user']['privilegiosUsuario'] == "Administrador";
-       // $bloqueo =  "bloqueo";
+
 
        $ve_editar= $_SESSION['user']['ve_editar'];
        $admin = $_SESSION['user']['privilegiosUsuario'] == 'Administrador';
@@ -90,10 +88,10 @@ if ($buscarDatos->num_rows > 0) {
          $bloqueo = "bn bloqueo";
        }
 
-       if ($fechaBaja == NULL) {
+       if ($fechaBaja == 'NULL') {
          $fechaBaja = "N/A";
        }else {
-        $fechaBaja = $row['baja'];
+         $fechaBaja = $row['baja'];
        }
 
 

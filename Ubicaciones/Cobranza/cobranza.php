@@ -78,7 +78,7 @@ if (!isset($_SESSION['user'])) {
         </tr>
         <tr class="row m20">
           <td class="col-md-12 input-effect p-0">
-            <input id="cbz_importe" class="effect-17" type="text" required>
+            <input id="cbz_importe" class="effect-17 importeClass" type="text" required>
               <label>$ Importe</label>
               <span class="focus-border"></span>
           </td>
@@ -112,14 +112,14 @@ if (!isset($_SESSION['user'])) {
   </div>
 <?php endif; ?>
 
-
+<link href="/fitcoControl/Resources/c3/c3.css" rel="stylesheet">
+<script src="/fitcoControl/Resources/c3/d3.v5.min.js"></script>
+<script src="/fitcoControl/Resources/c3/c3.min.js"></script>
 
 <?php
-  $root = $_SERVER['DOCUMENT_ROOT'];
-    require $root . '/fitcoControl/Resources/PHP/Cobranza/pieCobranza.php';
-    require $root . '/fitcoControl/Ubicaciones/Cobranza/modales/comentarios.php';
-    require $root . '/fitcoControl/Ubicaciones/Modales/Cobranza/ModalGraficaCobranza.php';
-    require $root . '/fitcoControl/Ubicaciones/Modales/Cobranza/ModalCobranza.php';
-    require $root . '/fitcoControl/Ubicaciones/Modales/Cobranza/ModalPagos.php';
-
+  require $root . '/fitcoControl/Resources/PHP/Cobranza/pieCobranza.php';
+  require $root . '/fitcoControl/Ubicaciones/Cobranza/modales/comentarios.php';
+  require $root . '/fitcoControl/Ubicaciones/Cobranza/modales/ModalGraficaC3.php';
+  require $root . '/fitcoControl/Ubicaciones/Cobranza/modales/ModalCobranza.php';
+  require $root . '/fitcoControl/Ubicaciones/Cobranza/modales/ModalPagos.php';
 ?>

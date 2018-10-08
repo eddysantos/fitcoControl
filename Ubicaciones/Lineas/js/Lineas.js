@@ -46,23 +46,24 @@ $('.filtroRepo').click(function(){
     $('#inputfiltros').show();
     $('#reportes').css('display', 'none');
 
-  }else {
-    $.ajax({
-      url: '/fitcoControl/Ubicaciones/Lineas/actions/fetchRepo.php',
-      method: 'POST',
-      data: {request:fIni, ffin:fFin, linea:linea, emp:emp, ope:ope},
-      success: function(r){
-        r = JSON.parse(r);
-        if (r.code == 1) {
-          $('#tabla_Reportes').html(r.data);
-        } else {
-          console.error(r.message);
+    }else {
+      $.ajax({
+        url: '/fitcoControl/Ubicaciones/Lineas/actions/fetchRepo.php',
+        method: 'POST',
+        data: {request:fIni, ffin:fFin, linea:linea, emp:emp, ope:ope},
+        success: function(r){
+          r = JSON.parse(r);
+          if (r.code == 1) {
+            $('#tabla_Reportes').html(r.data);
+          } else {
+            console.error(r.message);
+          }
         }
-      }
-    });
-  }
+      });
+    }
   });
 });
+
 
 
 //MOSTRAR TABLA
@@ -74,6 +75,7 @@ function lineas_Det(){
       r = JSON.parse(r);
       if (r.code == 1) {
         $('#tabla_lineas').html(r.data);
+        ActivarEliminar();
       } else {
         console.error(r.message);
       }
@@ -481,3 +483,46 @@ $('#medit-linea').click(function(){
   });
   $('.modal').modal('hide');
 });
+
+
+function ActivarEliminar(){
+    $('.EliminarLinea').unbind();
+    $('.EliminarLinea').click(function(){
+      var dbId = $(this).attr('db-id');
+      swal({
+      title: "Estas Seguro?",
+      text: "Ya no se podra recuperar el registro!",
+      type: "warning",
+      showCancelButton: true,
+      confirmButtonClass: "btn-danger",
+      confirmButtonText: "Si, Eliminar",
+      cancelButtonText: "No, cancelar",
+      closeOnConfirm: false,
+      closeOnCancel: false
+    },
+    function(isConfirm) {
+      if (isConfirm) {
+        $.ajax({
+          method: 'POST',
+          url: '/fitcoControl/Ubicaciones/Lineas/actions/eliminar.php',
+          data: {dbId: dbId},
+
+          success: function(result){
+            console.log(result);
+            if (result != 1) {
+              alertify.error('NO SE PUDO ELIMINAR');
+            }else if (result == 1){
+              lineas_Det();
+            }
+          },
+          error: function(exception){
+            console.error(exception)
+          }
+        });
+        swal("Eliminado!", "Se elimino correctamente.", "success");
+      } else {
+        swal("Cancelado", "El registro esta a salvo :)", "error");
+      }
+    });
+  });
+}

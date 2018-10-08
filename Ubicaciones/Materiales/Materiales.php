@@ -64,7 +64,7 @@ require  $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
         </tr>
         <tr class="row m20">
           <td class="col-md-12 input-effect p-0">
-            <input  id="mat_precio" class="effect-17" type="text" required>
+            <input  id="mat_precio" class="effect-17 importeClass" type="text" required>
               <label>Precio</label>
               <span class="focus-border"></span>
           </td>
@@ -72,7 +72,7 @@ require  $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
         <tr class="row m20">
           <td class="col-md-12 input-effect p-0">
             <input id="mat_persona" class="effect-17" type="text" required>
-              <label>Persona a la que s ele Entrega</label>
+              <label>Persona a la que se le Entrega</label>
               <span class="focus-border"></span>
           </td>
         </tr>
@@ -108,6 +108,6 @@ require  $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
 
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/fitcoControl/Ubicaciones/Modales/Materiales/ModalMateriales.php';
+  require $root . '/fitcoControl/Ubicaciones/Materiales/modales/ModalMateriales.php';
   require $root . '/fitcoControl/Resources/PHP/Materiales/pieMaterial.php';
 ?>

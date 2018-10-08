@@ -21,7 +21,7 @@ $query = "CALL pruebaEnvios($q)";
 
 $buscarDatos = $conn->query($query);
 
-if (true) {
+if (true) { 
   $tabla.="
   <form class='page p-0'>
   <table class='table table-hover fixed-table'>

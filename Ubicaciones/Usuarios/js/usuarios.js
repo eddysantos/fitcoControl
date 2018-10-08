@@ -177,10 +177,10 @@ function ActivarBotonesUsuario(){
           markCheckbox($('#tm_editar'), rsp.response.tm_editar);
           markCheckbox($('#tr_ver'), rsp.response.tr_ver);
           markCheckbox($('#tr_editar'), rsp.response.tr_editar);
-          markCheckbox($('#pro_pgVer'), rsp.response.pro_pgver);
-          markCheckbox($('#pro_pgEditar'), rsp.response.pro_pgeditar);
-          markCheckbox($('#pro_miVer'), rsp.response.pro_miver);
-          markCheckbox($('#pro_miEditar'), rsp.response.pro_mieditar);
+          markCheckbox($('#pro_pgVer'), rsp.response.pro_pgVer);
+          markCheckbox($('#pro_pgEditar'), rsp.response.pro_pgEditar);
+          markCheckbox($('#pro_miVer'), rsp.response.pro_miVer);
+          markCheckbox($('#pro_miEditar'), rsp.response.pro_miEditar);
           markCheckbox($('#pro_pdVer'), rsp.response.pro_pdVer);
           markCheckbox($('#pro_pdEditar'), rsp.response.pro_pdEditar);
           markCheckbox($('#pro_corVer'), rsp.response.pro_corVer);

@@ -167,6 +167,35 @@ $(document).ready(function(){
         $('#graficasemanal').hide();
         break;
 
+        case "semanalTes":
+          $('#graficasemanalTes').fadeIn();
+          $('#graficamensualTes').hide();
+          break;
+
+        case "mensualTes":
+          $('#graficamensualTes').fadeIn();
+          $('#graficasemanalTes').hide();
+          break;
+
+
+        case "diariaP":
+          $('#graficadiariaPRO').fadeIn();
+          $('#graficasemanalPRO').hide();
+          $('#graficamensualPRO').hide();
+          break;
+
+        case "semanalP":
+          $('#graficasemanalPRO').fadeIn();
+          $('#graficadiariaPRO').hide();
+          $('#graficamensualPRO').hide();
+          break;
+
+        case "mensualP":
+          $('#graficamensualPRO').fadeIn();
+          $('#graficasemanalPRO').hide();
+          $('#graficadiariaPRO').hide();
+          break;
+
 // MATERIALES
       case "amaterial":
       if (status == 'cerrado') {
@@ -221,38 +250,14 @@ $(document).ready(function(){
         $(this).attr('status', 'abierto');
         $('#Enomina').animate({"right": "36%"}, "slow");
         $('#NuevoNomina').fadeIn(2500);
-        // $( ".img" ).removeClass( "spand-icon" ).addClass( "spand-iconp");
-        // $('p').css('font-size','13px');
-        // $('b').css('font-size','14px');
         $('#SinRegistros').fadeOut();
       }else {
         $('.spanA').css('display', '');
         $(this).attr('status', 'cerrado');
         $('#Enomina').animate({"right": "4%"}, "slow");
-        // $( ".img" ).removeClass( "spand-iconp" ).addClass( "spand-icon");
-        // $('p').css('font-size','1.75rem');
-        // $('b').css('font-size','1.75rem');
-        // $('p').css('font-weight','500');
         $('#NuevoNomina').hide();
       }
       break;
-
-//VENTAS
-      case "aventas":
-      if (status == 'cerrado') {
-        $('.spanV').css('display', 'inherit');
-        $(this).attr('status', 'abierto');
-        $('#Eventas').animate({"right": "36%"}, "slow");
-        $('#NuevaVenta').fadeIn(2500);
-        $('#SinRegistros').fadeOut();
-      }else {
-        $('.spanV').css('display', '');
-        $(this).attr('status', 'cerrado');
-        $('#Eventas').animate({"right": "4%"}, "slow");
-        $('#NuevaVenta').hide();
-      }
-      break;
-
 
       case "produccionLink":
       if (status == 'cerrado') {
@@ -275,6 +280,19 @@ $(document).ready(function(){
       }else {
         $(this).attr('status', 'cerrado');
         $('#dropProgram').hide();
+      }
+      break;
+
+
+      case "estaLink":
+      if (status == 'cerrado') {
+        $(this).attr('status', 'abierto');
+        $(this).css('cssText', 'color: rgb(120, 153, 179) !important');
+        $(this).css('font-size', '14px');
+        $('#dropEst').fadeIn(2500);
+      }else {
+        $(this).attr('status', 'cerrado');
+        $('#dropEst').hide();
       }
       break;
 

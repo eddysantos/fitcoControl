@@ -14,13 +14,7 @@ if (!isset($_SESSION['user'])) {
 
 <div class="container-fluid pl-75 pr-57">
   <div class="row clt_usr mt-5 mb-5">
-    <!-- <div class="text-left alert alert-info w-75" role="alert" >
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <strong>Nota: </strong> En esta sección se podran registrar el tiempo de corte, se podra agregar fecha, hora y notas de finalización en este icono <img src='/fitcoControl/Resources/iconos/003-add.svg' class='iconoNota'>, tambien se podra editar en <img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='iconoNota'> y eliminar registro en el icono <img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='iconoNota'>.
-    </div> -->
-
     <div class="col align-self-end">
-
       <a class="rotate-link consultar ancla" accion="acorte" status="cerrado">
         <img  src="/fitcoControl/Resources/iconos/003-analytics-2.svg" class="icon rotate-icon" style="width:30px">
         <span class="spanA">Agregar Corte</span>
@@ -117,6 +111,6 @@ if (!isset($_SESSION['user'])) {
 
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/fitcoControl/Ubicaciones/Modales/Corte/editarCorte.php';
+  require $root . '/fitcoControl/Ubicaciones/Corte/modales/editarCorte.php';
   require $root . '/fitcoControl/Resources/PHP/Corte/pieCorte.php';
 ?>

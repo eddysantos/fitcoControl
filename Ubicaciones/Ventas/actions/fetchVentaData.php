@@ -21,7 +21,7 @@ require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
 $query = "SELECT * FROM ct_ventas WHERE pk_ventas = ?";
 
 $stmt = $conn->prepare($query);
-$stmt->bind_param('s', $_POST['ventasId']);
+$stmt->bind_param('s', $_POST['dbid']);
 $stmt->execute();
 
 $resultados = $stmt->get_result();

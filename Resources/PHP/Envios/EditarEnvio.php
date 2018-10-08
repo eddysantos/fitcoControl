@@ -15,7 +15,7 @@ SET descripcion = ?,
 fechaEnvio = ?,
 horaEnvio = ?,
 notas = ?
-WHERE pk_envios = ?";
+WHERE pk_envios = ?"; 
 
 
 $ff = parseDate($_POST['ff']);

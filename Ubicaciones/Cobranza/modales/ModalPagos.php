@@ -21,7 +21,7 @@
             </tr>
             <tr class="row m20">
               <td class="col-md-12 input-effect p-0">
-                <input class="modal-efecto-17 has-content" name="mpgo_importe" id="mpgo_importe" type="text">
+                <input class="modal-efecto-17 has-content importeClass" name="mpgo_importe" id="mpgo_importe" type="text">
                   <label>Importe</label>
                   <span class="focus-border"></span>
               </td>

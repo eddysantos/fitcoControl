@@ -34,7 +34,7 @@
               </td>
               <td class="col-md-2"></td>
               <td class="col-md-5 input-effect p-0">
-                <input class="modal-efecto-17 has-content" id="mmat_precio" type="text">
+                <input class="modal-efecto-17 has-content importeClass" id="mmat_precio" type="text">
                   <label>Precio</label>
                   <span class="focus-border"></span>
               </td>

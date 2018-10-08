@@ -183,9 +183,11 @@ while ($row = $rslt->fetch_assoc()) {
 
     if ($admin || $pro_liEditar == 1) {
       $editar = "href='#EditarLinea' data-toggle='modal' class='editar-linea spand-link'";
+      $eliminar = "href='#' class='EliminarLinea spand-link'";
       $bloqueo="";
     }else {
       $editar = "href='#' class='bn bloqueo'";
+      $eliminar = "href='#' class='bn bloqueo'";
       $bloqueo = "bn bloqueo";
     }
 
@@ -203,6 +205,8 @@ while ($row = $rslt->fetch_assoc()) {
         <a href='#addProducc' data-toggle='modal' class='addProducc spand-link' db-id='$id'><img src='/fitcoControl/Resources/iconos/003-add.svg' class='spand-icon'></a>
 
         <a $editar db-id='$id'><img  src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='$bloqueo img ml-3 spand-icon'></a>
+
+        <a $eliminar db-id='$id'><img  src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='$bloqueo img ml-3 spand-icon'></a>
       </td>
 
       <td class='col-md-1 m lin' style='display:none'></td>

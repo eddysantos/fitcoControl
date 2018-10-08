@@ -1,5 +1,7 @@
 $(document).ready(function(){
   fetchCobranza();
+  graficaTes();
+  graficaTesSem();
   // fetchTablaCobranza();
 
   });
@@ -63,6 +65,8 @@ $(document).ready(function(){
     var fechaEntrega = $('#cbz_entrega').val();
     var fk_cliente = $('#npClientName').attr('client-id');
 
+
+
     validacion =
     $('#npClientName').val() == "" ||
     $('#cbz_concepto').val() == "" ||
@@ -98,7 +102,7 @@ $(document).ready(function(){
             $('#Agregarcobranza')[0].reset();
             $('#Agregarcobranza').hide();
             $('.spanA').css('display', '');
-              fetchCobranza();
+            fetchCobranza();
             alertify.success('SE AGREGÓ CORRECTAMENTE');
           }
         },
@@ -615,5 +619,82 @@ $('.comentCobranza').click(function(){
         console.error(exception)
       }
     });
+  });
+}
+
+
+function graficaTes(){
+  var chart = c3.generate({
+    bindto: '#graficamensualTes',
+    data: {
+      x: 'x',
+
+      columns: [
+        Mes,
+        facturado,
+        pendientepago,
+        pagado
+      ],
+    },
+
+    size: {
+      width: 1280,
+      height: 480
+    },
+    axis: {
+      x: {
+       type: 'category'
+     },
+      y : {
+        tick: {
+          format: d3.format("$,")
+        }
+      }
+    },
+
+    legend: {
+        position: 'right'
+    },
+    subchart: {
+      show: true,
+    }
+  });
+}
+
+function graficaTesSem(){
+  var graficaSem = c3.generate({
+    bindto: '#graficasemanalTes',
+    data: {
+      x: 'x',
+
+      columns: [
+        Sem,
+        facturadoTSem,
+        pendienteTSem,
+        pagadoTSem
+      ],
+    },
+
+    size: {
+      width: 1280,
+      height: 480
+    },
+    axis: {
+      x: {
+       type: 'category'
+     },
+      y : {
+        tick: {
+          format: d3.format("$,")
+        }
+      }
+    },
+
+    legend: {
+        position: 'right'
+    },
+    subchart: {
+      show: true,
+    }
   });
 }

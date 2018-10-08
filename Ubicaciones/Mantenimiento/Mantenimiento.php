@@ -59,9 +59,9 @@ if ($admin || $pro_miVer == 1):
     <tbody>
       <tr class="row m20">
         <td class="col-md-12 input-effect p-0">
-          <input id="man_orden" class="effect-17" type="text" required>
           <input id="man_pagado" type="hidden" value="0">
-          <input id="man_aut" type="hidden" value="0">
+          <input id="man_aut" type="hidden" value="0" >
+          <input id="man_orden" class="effect-17 numeroClass" type="text" required>
             <label>Orden de Importancia</label>
             <span class="focus-border"></span>
         </td>
@@ -96,7 +96,7 @@ if ($admin || $pro_miVer == 1):
       </tr>
       <tr class="row m20">
         <td class="col-md-12 input-effect p-0">
-          <input id="man_costo" class="effect-17" type="text" required>
+          <input id="man_costo" class="effect-17 importeClass" type="text">
             <label>Costo con IVA</label>
             <span class="focus-border"></span>
         </td>

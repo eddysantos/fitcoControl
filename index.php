@@ -27,26 +27,8 @@
         <input type="password" name="lg_password" placeholder="Contraseña" id="lg_password" required>
 
         <input type="submit" value="Ingresar">
-
-        <!-- <div id="remember-container">
-          <input type="checkbox" class="checkbox" checked="checked" id="lg_recordar" name="lg_recordar">
-          <span id="remember">Recordar</span>
-          <span id="forgotten">Olvidaste tu Contraseña</span>
-        </div> -->
       </form>
     </div>
-
-    <!-- <div id="forgotten-container">
-      <h1>Ingresa</h1>
-      <span class="close-btn">
-        <img src="/fitcoControl/Resources/iconos/001-cerrar.svg"></img>
-      </span>
-      <form>
-        <input type="email" name="email" placeholder="E-Mail">
-        <a href="#" class="orange-btn">Nueva Contraseña</a>
-      </form>
-    </div> -->
-
 
     <script src="/fitcoControl/Resources/jquery/jquery.min.js"></script>
     <script src="/fitcoControl/Resources/jquery/sweetalert.min.js"></script>

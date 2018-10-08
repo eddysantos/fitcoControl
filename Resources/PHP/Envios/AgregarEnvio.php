@@ -13,8 +13,7 @@ function parseDate($dv){
 }
 
 
-$query =
-"INSERT INTO ct_envios(fk_programacion,descripcion,fechaEnvio,horaEnvio,notas) VALUES(?,?,?,?,?)";
+$query = "INSERT INTO ct_envios(fk_programacion,descripcion,fechaEnvio,horaEnvio,notas) VALUES(?,?,?,?,?)";
 
 $ff = parseDate($_POST['ff']);
 

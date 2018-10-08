@@ -62,7 +62,7 @@
         </tr>
         <tr class="row m20">
           <td class="col-md-12 input-effect p-0">
-            <input id="cxp_total" class="effect-17 w-100" type="text" required>
+            <input id="cxp_total" class="effect-17 w-100 importeClass" type="text" required>
               <label>Monto a Pagar</label>
               <span class="focus-border"></span>
           </td>
@@ -76,7 +76,7 @@
         </tr>
         <tr class="row m20">
           <td class="col-md-12 input-effect p-0">
-            <input id="cxp_pagado" class="effect-17 w-100" type="text" required>
+            <input id="cxp_pagado" class="effect-17 w-100 importeClass" type="text" required>
               <label>Pagado</label>
               <span class="focus-border"></span>
           </td>
@@ -101,6 +101,6 @@
 
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/fitcoControl/Ubicaciones/Modales/CuentasxPagar/modalCuentas.php';
+  require $root . '/fitcoControl/Ubicaciones/CuentasxPagar/modales/modalCuentas.php';
   require $root . '/fitcoControl/Resources/PHP/CuentasxPagar/pieCuentas.php';
 ?>
