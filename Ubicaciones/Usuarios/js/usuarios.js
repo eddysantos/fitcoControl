@@ -96,7 +96,13 @@ $('.NuevoRegistroUsuario').click(function(){
     cc_ver : checkPrivilege($('#priv_cc_ver')),
     cc_editar : checkPrivilege($('#priv_cc_editar')),
     ve_ver : checkPrivilege($('#priv_ve_ver')),
-    ve_editar : checkPrivilege($('#priv_ve_editar'))
+    ve_editar : checkPrivilege($('#priv_ve_editar')),
+    pro_corVerCal : checkPrivilege($('#priv_pro_corVerCal')),
+    pro_corEditarCal : checkPrivilege($('#priv_pro_corEditarCal')),
+    dis_ver : checkPrivilege($('#priv_dis_ver')),
+    dis_editar : checkPrivilege($('#priv_dis_editar')),
+    mat_ver : checkPrivilege($('#priv_mat_ver')),
+    mat_editar : checkPrivilege($('#priv_mat_editar'))
   }
 
   validacion = $('#usr_nombre').val() == "" ||
@@ -193,6 +199,12 @@ function ActivarBotonesUsuario(){
           markCheckbox($('#cc_editar'), rsp.response.cc_editar);
           markCheckbox($('#ve_ver'), rsp.response.ve_ver);
           markCheckbox($('#ve_editar'), rsp.response.ve_editar);
+          markCheckbox($('#pro_corVerCal'), rsp.response.pro_corVerCal);
+          markCheckbox($('#pro_corEditarCal'), rsp.response.pro_corEditarCal);
+          markCheckbox($('#dis_ver'), rsp.response.dis_ver);
+          markCheckbox($('#dis_editar'), rsp.response.dis_editar);
+          markCheckbox($('#mat_ver'), rsp.response.mat_ver);
+          markCheckbox($('#mat_editar'), rsp.response.mat_editar);
         }else {
           console.error("Hubo un error al jalar la informacion del usuario.");
           console.error(rsp.response);
@@ -248,7 +260,13 @@ function ActivarBotonesUsuario(){
       cc_ver : checkPrivilege($('#cc_ver')),
       cc_editar : checkPrivilege($('#cc_editar')),
       ve_ver : checkPrivilege($('#ve_ver')),
-      ve_editar : checkPrivilege($('#ve_editar'))
+      ve_editar : checkPrivilege($('#ve_editar')),
+      pro_corVerCal : checkPrivilege($('#pro_corVerCal')),
+      pro_corEditarCal : checkPrivilege($('#pro_corEditarCal')),
+      dis_ver : checkPrivilege($('#dis_ver')),
+      dis_editar : checkPrivilege($('#dis_editar')),
+      mat_ver : checkPrivilege($('#mat_ver')),
+      mat_editar : checkPrivilege($('#mat_editar'))
     }
     $.ajax({
       type: "POST",

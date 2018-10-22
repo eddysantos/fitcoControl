@@ -30,6 +30,7 @@ $tr_ver = $_SESSION['user']['tr_ver'];
 // DIVISION 4 //
 //**************** PROGRAMACIÓN
 $pro_pgVer = $_SESSION['user']['pro_pgVer'];
+$pro_corVerCal = $_SESSION['user']['pro_corVerCal'];
 //**************** MANTENIMIENTO E INVERSIONES
 $pro_miVer = $_SESSION['user']['pro_miVer'];
 //**************** PRODUCCION DIARIA
@@ -38,6 +39,10 @@ $pro_pdver = $_SESSION['user']['pro_pdVer'];
 $pro_corVer = $_SESSION['user']['pro_corVer'];
 //**************** LINEAS
 $pro_liVer = $_SESSION['user']['pro_liVer'];
+//**************** DISEÑO
+$dis_ver = $_SESSION['user']['dis_ver'];
+//**************** DISEÑO
+$mat_ver = $_SESSION['user']['mat_ver'];
 //**************** ENVIOS
 $en_ver = $_SESSION['user']['en_ver'];
 
@@ -93,7 +98,8 @@ $admin = $_SESSION['user']['privilegiosUsuario']== "Administrador";
     </script>
   </head>
 
-<div id="nav_wrap" class="sticky" style="background-color:black">
+  <!-- <div id="nav_wrap" class="sticky" style="background-color:black"> -->
+<div id="nav_wrap" class="sticky">
   <nav class="nav_animate">
     <ul class="nav nav-pills nav-fill">
 
@@ -115,7 +121,7 @@ $admin = $_SESSION['user']['privilegiosUsuario']== "Administrador";
         <li class="nav-item"><a class="bn bloqueo w-95">TESORERÍA <span class="barra">DIVISIÓN 3</span></a></li>
       <?php endif; ?>
 
-      <?php if ($admin || $pro_pgVer ==1 || $pro_miVer == 1 || $pro_pdver == 1 || $pro_corVer ==1 || $pro_liVer == 1  || $en_ver ==1): ?>
+      <?php if ($admin || $pro_pgVer ==1 || $pro_miVer == 1 || $pro_pdver == 1 || $pro_corVer ==1 || $pro_liVer == 1  || $en_ver ==1 || $dis_ver == 1 || $mat_ver == 1 || $pro_corVerCal == 1): ?>
         <li class="nav-item"><a class="bn" href="/fitcoControl/Ubicaciones/Produccion/produccion.php">PRODUCCIÓN <span class="barra">DIVISIÓN 4</span></a></li>
       <?php else: ?>
         <li class="nav-item"><a class="bn bloqueo w-95">PRODUCCIÓN <span class="barra">DIVISIÓN 4</span></a></li>

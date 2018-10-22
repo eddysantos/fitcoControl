@@ -126,26 +126,22 @@
               <td class="col-md-12 priv"> **P R O D U C C I O N** </td>
             </tr>
             <tr class="row">
-              <td class="col-md-12 text-left privsub">---- Programación</td>
+              <td class="col-md-12 text-left privsub">---- Departamento de Preparación</td>
             </tr>
             <tr class="row">
               <td class="col-md-6">
-                <input type="checkbox" class="check" id="priv_pro_pgVer">Ver y Agregar
+                <input type="checkbox" class="check" id="priv_pro_pgVer">Ver y Agregar Calendario Producción
               </td>
               <td class="col-md-6">
                 <input type="checkbox" class="check" id="priv_pro_pgEditar">Editar / Eliminar
               </td>
-            </tr>
 
-            <tr class="row">
-              <td class="col-md-12 text-left privsub">---- Mantenimineto e Inversiones</td>
-            </tr>
-            <tr class="row">
+<!--pendiente  -->
               <td class="col-md-6">
-                <input type="checkbox" class="check" id="priv_pro_miVer">Ver y Agregar
+                <input type="checkbox" class="check" id="priv_pro_corVerCal">Ver y Agregar Datos Calendario Corte
               </td>
               <td class="col-md-6">
-                <input type="checkbox" class="check" id="priv_pro_miEditar">Editar / Eliminar
+                <input type="checkbox" class="check" id="priv_pro_corEditarCal">Editar / Eliminar
               </td>
             </tr>
 
@@ -178,6 +174,46 @@
                 <input type="checkbox" class="check" id="priv_pro_liEditar">Editar / Eliminar Lineas
               </td>
             </tr>
+
+            <tr class="row">
+              <td class="col-md-12 text-left privsub">---- Mantenimineto e Inversiones</td>
+            </tr>
+            <tr class="row">
+              <td class="col-md-6">
+                <input type="checkbox" class="check" id="priv_pro_miVer">Ver y Agregar
+              </td>
+              <td class="col-md-6">
+                <input type="checkbox" class="check" id="priv_pro_miEditar">Editar / Eliminar
+              </td>
+            </tr>
+
+
+            <tr class="row">
+              <td class="col-md-12 text-left privsub">---- Diseño</td>
+            </tr>
+            <tr class="row">
+              <td class="col-md-6">
+                <input type="checkbox" class="check" id="priv_dis_ver">Ver y Agregar Datos
+              </td>
+              <td class="col-md-6">
+                <input type="checkbox" class="check" id="priv_dis_editar">Editar / Eliminar
+              </td>
+            </tr>
+
+
+            <tr class="row">
+              <td class="col-md-12 text-left privsub">---- Materia Prima</td>
+            </tr>
+            <tr class="row">
+              <td class="col-md-6">
+                <input type="checkbox" class="check" id="priv_mat_ver">Ver y Agregar Datos
+              </td>
+              <td class="col-md-6">
+                <input type="checkbox" class="check" id="priv_mat_editar">Editar / Eliminar
+              </td>
+            </tr>
+
+
 
             <tr class="row">
               <td class="col-md-12 text-left privsub">---- Envios</td>
