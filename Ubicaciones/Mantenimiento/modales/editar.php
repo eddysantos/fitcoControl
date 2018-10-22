@@ -13,7 +13,7 @@
             <tr class="row m20">
               <td class="col-md-12 input-effect p-0">
                 <input id="pk_mantenimiento" type="hidden">
-                <input id="orden" class="modal-efecto-17 has-content" type="text">
+                <input id="orden" class="modal-efecto-17 has-content numeroClass" type="text">
                   <label>Orden de Importancia</label>
                   <span class="focus-border"></span>
               </td>
@@ -48,7 +48,7 @@
             </tr>
             <tr class="row m20">
               <td class="col-md-12 input-effect p-0">
-                <input id="costo" class="modal-efecto-17 has-content" type="text">
+                <input id="costo" class="modal-efecto-17 has-content importeClass" type="text">
                   <label>Costo con IVA</label>
                   <span class="focus-border"></span>
               </td>

@@ -31,15 +31,15 @@ $query = "SELECT
         $fechaRequerido = utf8_encode($row['fechaRequerido']);
         $pagado = utf8_encode($row['pagado']);
         $autorizacion = utf8_encode($row['autorizacion']);
-        $pro_miVer = utf8_encode($_SESSION['user']['pro_miVer']);
+        $pro_miEditar = utf8_encode($_SESSION['user']['pro_miEditar']);
         $admin = $_SESSION['user']['privilegiosUsuario'] == 'Administrador';
 
 
-        if ($admin || $pro_miVer == 1) {
+        if ($admin || $pro_miEditar == 1) {
           $editar = "href='#EditarMantenimiento' class='EditMantenimiento spand-link mr-3' data-toggle='modal' ";
           $bloqueo="";
         }else {
-          $editar = "href='#' class='bn bloqueo'";
+          $editar = "href='#' class='mr-3 bn bloqueo'";
           $bloqueo = "bn bloqueo";
         }
 
@@ -53,7 +53,6 @@ $query = "SELECT
             <div class='col-md-4'>$mant_Inv</div>
             <div class='text-right p-0 col-md-2 gris'>Proveedor: </div>
             <div class='col-md-4'>$proveedor</div>
-
           </div>
           <div class='row'>
             <div class='text-right p-0 col-md-2 pt-1 gris'>Area : </div>
@@ -63,8 +62,6 @@ $query = "SELECT
             <div class='col-md-1 text-right'>
               <a $editar db-id='$id'><img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='$bloqueo spand-icon'></a>
             </div>
-
-
           </div>
           <div class='row'>
             <div class='text-right p-0 col-md-2 gris'>Descripcion: </div>

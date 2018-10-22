@@ -58,11 +58,12 @@ while ($row = $rslt->fetch_assoc()) {
   $fechaRequerido = utf8_encode($row['fechaRequerido']);
   $pagado = utf8_encode($row['pagado']);
   $autorizacion = utf8_encode($row['autorizacion']);
-  $pro_miVer = utf8_encode($_SESSION['user']['pro_miVer']);
+  $pro_miEditar = utf8_encode($_SESSION['user']['pro_miEditar']);
   $admin = $_SESSION['user']['privilegiosUsuario'] == 'Administrador';
 
 
-  if ($admin || $pro_miVer == 1) {
+
+  if ($admin || $pro_miEditar == 1) {
     $editar = "href='#EditarMantenimiento' class='EditMantenimiento spand-link' data-toggle='modal' ";
     $eliminar = "href='#' class='eliminarMant spand-link ml-3'";
     $bloqueo="";
@@ -83,12 +84,8 @@ while ($row = $rslt->fetch_assoc()) {
   }else {
     $display = "";
   }
-
- // $system_callback['echo'][] = "This is a test.";
- //
-    // $system_callback['data'] .=
-    // "<p db-id='$idMant'>$idMant - $mant_Inv</p>";
-    $id = $idMant;
+  $id = $idMant;
+  
 
     $system_callback['data'] .=
     "<div class='$color  bordelateral m-0 font12 bordebottom' style='$display'>
