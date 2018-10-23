@@ -46,7 +46,7 @@
               <td class="col-md-1"></td>
 
               <td class="col-md-5 input-effect p-0">
-                <input class="w-100 modal-efecto-17 has-content" id="_txtDescripcion" type="text">
+                <input class="w-100 modal-efecto-17 has-content numeroClass" id="_txtDescripcion" type="text">
                   <label for="_txtDescripcion">Requerido (Pzas)</label>
                   <span class="focus-border"></span>
               </td>
@@ -139,7 +139,7 @@
               <td class="col-md-1"></td>
 
               <td class="col-md-5 input-effect p-0">
-                <input class="w-100 modal-efecto-17 has-content"id="txtDescripcion" type="text">
+                <input class="w-100 modal-efecto-17 has-content numeroClass" id="txtDescripcion" type="text">
                   <label for="txtDescripcion">Requerido (Pzas)</label>
                   <span class="focus-border"></span>
               </td>
@@ -177,7 +177,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <?php if ($_SESSION['user']['pro_corEditar'] ==  1 || $admin): ?>
+        <?php if ($_SESSION['user']['pro_corEditarCal'] ==  1 || $admin): ?>
           <button id="btnModificar" type="button" class="btn btn-primary">Modificar</button>
           <button id="btnEliminar" type="button" class="btn btn-danger">Borrar</button>
           <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>

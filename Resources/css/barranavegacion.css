@@ -10,6 +10,7 @@ span.barra{
   letter-spacing: 4px;
   font-size: 15px;
   display: block;
+  
 }
 span.barra:hover{
   /*color: rgba(97, 97, 97, 0.62);*/

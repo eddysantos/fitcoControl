@@ -35,7 +35,7 @@
             </tr>
             <tr class="row m20">
               <td class="col-md-12 input-effect p-0">
-                <input id="mnom_cantNom" class="modal-efecto-17 has-content" type="text" required>
+                <input id="mnom_cantNom" class="modal-efecto-17 has-content importeClass" type="text" required>
                   <label>Cantidad Nomina ($)</label>
                   <span class="focus-border"></span>
               </td>
@@ -49,7 +49,7 @@
             </tr>
             <tr class="row m20">
               <td class="col-md-12 input-effect p-0">
-                <input id="mnom_cantHr" class="modal-efecto-17 has-content" type="text" required>
+                <input id="mnom_cantHr" class="modal-efecto-17 has-content importeClass" type="text" required>
                   <label>Cantidad de Dinero en horas extras</label>
                   <span class="focus-border"></span>
               </td>

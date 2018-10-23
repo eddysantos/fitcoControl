@@ -22,7 +22,7 @@ require  $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
         <img src="/fitcoControl/Resources/iconos/search.svg" class="icon rotate-icon" style="width:30px">
         <span class="spanB"><input class="buscar" type="text" name="busqueda"  id="busqueda" placeholder="Buscar"></span>
       </a> -->
-      
+
       <a class="rotate-link buscador ancla" accion="busc" status="cerrado">
         <img src="/fitcoControl/Resources/iconos/search.svg" class="icon rotate-icon" style="width:30px">
         <span class="spanB"><input class="buscar" type="text" name="busqueda"  id="busqueda" placeholder="Buscar"></span>
@@ -61,7 +61,7 @@ require  $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
       </tr>
       <tr class="row m20">
         <td class="col-md-12 input-effect p-0">
-          <input id="nom_cantNom" class="effect-17" type="text" required>
+          <input id="nom_cantNom" class="effect-17 importeClass" type="text" required>
             <label>Cantidad Nomina ($)</label>
             <span class="focus-border"></span>
         </td>
@@ -75,7 +75,7 @@ require  $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
       </tr>
       <tr class="row m20">
         <td class="col-md-12 input-effect p-0">
-          <input id="nom_cantHr" class="effect-17" type="text" required>
+          <input id="nom_cantHr" class="effect-17 importeClass" type="text" required>
             <label>Cantidad de Dinero en horas extras ($)</label>
             <span class="focus-border"></span>
         </td>
@@ -98,6 +98,6 @@ require  $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
 
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/fitcoControl/Ubicaciones/Modales/Nomina/ModalNomina.php';
+  require $root . '/fitcoControl/Ubicaciones/Nomina/modales/ModalNomina.php';
   require $root . '/fitcoControl/Resources/PHP/Nomina/pieNomina.php';
 ?>

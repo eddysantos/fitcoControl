@@ -23,7 +23,7 @@
             </tr>
             <tr class="row m20">
               <td class="col-md-12 input-effect p-0">
-                <input name="mcbz_concepto" id="mcbz_concepto" class="w-100 effect-17" list="conc" required>
+                <input name="mcbz_concepto" id="mcbz_concepto" class="w-100 effect-17 has-content" list="conc" required>
                 <datalist id="conc">
                   <option value="Maquila">Maquila</option>
                   <option value="Bordado">Bordado</option>
@@ -121,14 +121,14 @@
             <tr class="row m20">
               <td class="col-md-12 input-effect p-0">
                 <input type="hidden" name="pgo_id" id="pgo_id">
-                <input class="modal-efecto-17 has-content" name="pgo_fecha" id="pgo_fecha" type="date">
+                <input class="modal-efecto-17 has-content" id="pgo_fecha" type="date">
                   <label>Fecha</label>
                   <span class="focus-border"></span>
               </td>
             </tr>
             <tr class="row m20">
               <td class="col-md-12 input-effect p-0">
-                <input class="modal-efecto-17 has-content" name="pgo_pagado" id="pgo_pagado" type="text">
+                <input class="modal-efecto-17 has-content importeClass" id="pgo_pagado" type="text">
                   <label>Pagado</label>
                   <span class="focus-border"></span>
               </td>

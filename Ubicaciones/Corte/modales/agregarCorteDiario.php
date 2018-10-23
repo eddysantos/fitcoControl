@@ -23,7 +23,7 @@
 
             <tr class="row m20">
               <td class="col-md-12 input-effect p-0">
-                <input class="w-100 modal-efecto-17 has-content" id="mcor_meta" type="text" required>
+                <input class="w-100 modal-efecto-17 has-content numeroClass" id="mcor_meta" type="text" required>
                 <label>Meta Diaria</label>
                 <span class="focus-border"></span>
               </td>
@@ -31,7 +31,7 @@
 
             <tr class="row m20">
               <td class="col-md-12 input-effect p-0">
-                <input class="w-100 modal-efecto-17 has-content" id="mcor_cant" type="text" required>
+                <input class="w-100 modal-efecto-17 has-content numeroClass" id="mcor_cant" type="text" required>
                   <label>Cantidad Elaborada</label>
                   <span class="focus-border"></span>
               </td>
@@ -113,7 +113,7 @@
 
             <tr class="row m20">
               <td class="col-md-12 input-effect p-0">
-                <input class="modal-efecto-17 has-content" id="Emcor_meta" type="text">
+                <input class="modal-efecto-17 has-content numeroClass" id="Emcor_meta" type="text">
                 <label>Meta</label>
                 <span class="focus-border"></span>
               </td>
@@ -121,7 +121,7 @@
 
             <tr class="row m20">
               <td class="col-md-12 input-effect p-0">
-                <input class="modal-efecto-17 has-content" id="Emcor_cant" type="text">
+                <input class="modal-efecto-17 has-content numeroClass" id="Emcor_cant" type="text">
                 <label>Elaborado</label>
                 <span class="focus-border"></span>
               </td>

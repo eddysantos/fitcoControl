@@ -113,14 +113,14 @@ if ($rows > 0) {
               </tr>
               <tr class="row m20">
                 <td class="col-md-12 input-effect p-0">
-                  <input class="modal-efecto-17 has-content" id="numeroPrendas" type="text">
+                  <input class="modal-efecto-17 has-content numeroClass" id="numeroPrendas" type="text">
                     <label>No. de Prendas</label>
                     <span class="focus-border"></span>
                 </td>
               </tr>
               <tr class="row m20">
                 <td class="col-md-12 input-effect p-0">
-                  <input class="modal-efecto-17 has-content" id="precioXprenda" type="text">
+                  <input class="modal-efecto-17 has-content importeClass" id="precioXprenda" type="text">
                     <label>Precio por Prenda</label>
                     <span class="focus-border"></span>
                 </td>

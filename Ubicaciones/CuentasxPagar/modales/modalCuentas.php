@@ -36,7 +36,7 @@
               </tr>
               <tr class="row m20">
                 <td class="col-md-12 input-effect p-0">
-                  <input id="mcxp_total" class="modal-efecto-17 has-content" type="text" required>
+                  <input id="mcxp_total" class="modal-efecto-17 has-content importeClass" type="text" required>
                     <label>Monto a Pagar</label>
                     <span class="focus-border"></span>
                 </td>
@@ -50,7 +50,7 @@
               </tr>
               <tr class="row m20">
                 <td class="col-md-12 input-effect p-0">
-                  <input id="mcxp_pagado" class="modal-efecto-17 has-content" type="text" required>
+                  <input id="mcxp_pagado" class="modal-efecto-17 has-content importeClass" type="text" required>
                     <label>Pagado</label>
                     <span class="focus-border"></span>
                 </td>

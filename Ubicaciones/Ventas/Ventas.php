@@ -83,24 +83,16 @@ if (!isset($_SESSION['user'])) {
             <label for="vts_vendedor">Nombre Vendedor</label>
           </td>
         </tr>
-
-        <!-- <tr class="row m20">
-          <td class="col-md-12 input-effect p-0">
-            <input  id="vts_vendedor" class="effect-17" type="text" required>
-              <label>Nombre del Vendedor</label>
-              <span class="focus-border"></span>
-          </td>
-        </tr> -->
         <tr class="row m20">
           <td class="col-md-12 input-effect p-0">
-            <input id="vts_nprendas" class="effect-17" type="text" required>
+            <input id="vts_nprendas" class="effect-17 numeroClass" type="text" required>
               <label>Numero de Prendas</label>
               <span class="focus-border"></span>
           </td>
         </tr>
         <tr class="row m20">
           <td class="col-md-5 input-effect p-0">
-            <input id="vts_precio" class="effect-17" type="text" required>
+            <input id="vts_precio" class="effect-17 importeClass" type="text" required>
               <label>Precio por Prendas</label>
               <span class="focus-border"></span>
           </td>
