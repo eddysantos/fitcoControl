@@ -11,9 +11,17 @@ $(document).ready(function(){
       return false;
     }
 
+    data = {
+      string: text
+    }
+
+    $.each($(this).data(), function(i, v){
+      data[i] = v;
+    })
+
     var db_query = $.ajax({
       method: 'POST',
-      data: {string: text},
+      data: data,
       url: url
     });
 

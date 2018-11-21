@@ -60,9 +60,9 @@ if (false) {
           <h4><b>$ $importe</b></h4>
         </td>
         <td class='col-md-2 text-center pr-0 pl-0'>
-        <a $editar pago-id='$idpagos'><img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='$bloqueo mr-4 spand-iconm'></a>
+          <a $editar pago-id='$idpagos'><img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='$bloqueo mr-4 spand-iconm'></a>
 
-        <a $eliminar  pago-id='$idpagos'><img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='$bloqueo spand-iconm'></a>
+          <a $eliminar  pago-id='$idpagos'><img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='$bloqueo spand-iconm'></a>
         </td>
       </tr>";
 

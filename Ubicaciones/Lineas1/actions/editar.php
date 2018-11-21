@@ -3,12 +3,21 @@
 $root = $_SERVER['DOCUMENT_ROOT'];
 require $root . '/fitcoControl/Resources/PHP/utilities/initialScript.php';
 
-$system_callback = [];
-$data = $_POST;
+$pk_id = trim($_POST['id']);
+$linea = trim($_POST['mlinea']);
+$fecha = trim($_POST['mfecha']);
+// $ope = trim($_POST['mope']);
+$nombre = trim($_POST['mnombre']);
+// $meta = trim($_POST['mmeta']);
+// $mprod = trim($_POST['mprod']);
 
-$data['string'];
-$text = "%" . $data['string'] . "%";
-$query = "SELECT * FROM empleados WHERE nombre LIKE ? OR apellido LIKE ? ";
+
+$query = "UPDATE ct_linea_copy1
+SET linea = ?,
+nombre = ?,
+fecha = ?
+WHERE pk_linea = ?";
+
 
 $stmt = $conn->prepare($query);
 if (!($stmt)) {
@@ -17,7 +26,7 @@ if (!($stmt)) {
   exit_script($system_callback);
 }
 
-$stmt->bind_param('ss', $text,$text);
+$stmt->bind_param('ssss',$linea,$nombre,$fecha,$pk_id);
 if (!($stmt)) {
   $system_callback['code'] = "500";
   $system_callback['message'] = "Error during variables binding [$stmt->errno]: $stmt->error";
@@ -30,21 +39,14 @@ if (!($stmt->execute())) {
   exit_script($system_callback);
 }
 
-$rslt = $stmt->get_result();
+$affected = $stmt->affected_rows;
+$system_callback['affected'] = $affected;
+$system_callback['datos'] = $_POST;
 
-if ($rslt->num_rows == 0) {
-  $system_callback['code'] = 1;
-  $system_callback['data'] = "<p db-id=''>No se encontraron resultados</p>";
-  $system_callback['message'] = "Script called successfully but there are no rows to display.";
+if ($affected == 0) {
+  $system_callback['code'] = 2;
+  $system_callback['message'] = "El query no hizo ningún cambio a la base de datos";
   exit_script($system_callback);
-}
-
-while ($row = $rslt->fetch_assoc()) {
-  $pk_empleado = utf8_encode($row['pk_empleado']);
-  $nombre = utf8_encode($row['nombre']);
-  $apellido = utf8_encode($row['apellido']);
-  $system_callback['data'] .=
-  "<p db-id='$pk_empleado'>$nombre $apellido</p>";
 }
 
 $system_callback['code'] = 1;

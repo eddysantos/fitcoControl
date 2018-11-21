@@ -98,8 +98,8 @@ $admin = $_SESSION['user']['privilegiosUsuario']== "Administrador";
     </script>
   </head>
 
-  <!-- <div id="nav_wrap" class="sticky" style="background-color:black"> -->
-<div id="nav_wrap" class="sticky">
+  <div id="nav_wrap" class="sticky" style="background-color:black">
+<!-- <div id="nav_wrap" class="sticky"> -->
   <nav class="nav_animate">
     <ul class="nav nav-pills nav-fill">
 

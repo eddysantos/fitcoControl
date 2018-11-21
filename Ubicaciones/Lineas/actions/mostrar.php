@@ -13,7 +13,7 @@ $query = "SELECT
  *
  FROM
  ct_linea  li
- WHERE (linea LIKE ?)  OR (nombre LIKE ?) OR (fecha LIKE ?) OR (operacion LIKE ?)";
+ WHERE (linea LIKE ?)  OR (nombre LIKE ?) OR (fecha LIKE ?) OR (operacion LIKE ?) ORDER BY fecha DESC, nombre";
 
 $stmt = $conn->prepare($query);
 if (!($stmt)) {
