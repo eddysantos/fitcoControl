@@ -9,7 +9,7 @@ if (!isset($_SESSION['user'])) {
 
   $hoy = date("Y-m-d");
 ?>
-<?php if ($admin || $pro_liVer == 1): ?>
+<?php if ($adminGlobal): ?>
 <div class="container-fluid pl-75 pr-57">
 <!-- PRUEBA  -->
   <table class="table">

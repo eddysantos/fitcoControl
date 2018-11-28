@@ -22,19 +22,19 @@
               </tr>
               <tr class="row m20">
                 <td class="col-md-3 input-effect p-0">
-                  <input type="text" class="modal-efecto-17" id="add_meta">
+                  <input type="text" class="modal-efecto-17 numeroClass" id="add_meta" onkeypress="nextFocus('add_meta','add_prod1')">
                   <label for="add_meta">Meta</label>
                   <span class="focus-border"></span>
                 </td>
                 <td class="col-md-1"></td>
                 <td class="col-md-3 input-effect p-0">
-                  <input id="add_prod1" class="modal-efecto-17 numeroClass" type="text" required>
+                  <input id="add_prod1" class="modal-efecto-17 numeroClass" type="text" required onkeypress="nextFocus('add_prod1', 'add_prod2')">
                     <label for="add_prod1">1 hra</label>
                     <span class="focus-border"></span>
                 </td>
                 <td class="col-md-1"></td>
                 <td class="col-md-3 input-effect p-0">
-                  <input id="add_prod2" class="modal-efecto-17 numeroClass" type="text" required>
+                  <input id="add_prod2" class="modal-efecto-17 numeroClass" type="text" required onkeypress="nextFocus('add_prod2', 'add_prod3')">
                     <label for="add_prod2">2 hra</label>
                     <span class="focus-border"></span>
                 </td>
@@ -42,19 +42,19 @@
 
               <tr class="row m20">
                 <td class="col-md-3 input-effect p-0">
-                  <input id="add_prod3" class="modal-efecto-17 numeroClass" type="text" required>
+                  <input id="add_prod3" class="modal-efecto-17 numeroClass" type="text" required onkeypress="nextFocus('add_prod3', 'add_prod4')">
                     <label for="add_prod3">3 hras</label>
                     <span class="focus-border"></span>
                 </td>
                 <td class="col-md-1"></td>
                 <td class="col-md-3 input-effect p-0">
-                  <input id="add_prod4" class="modal-efecto-17 numeroClass" type="text" required>
+                  <input id="add_prod4" class="modal-efecto-17 numeroClass" type="text" required onkeypress="nextFocus('add_prod4', 'add_prod5')">
                     <label for="add_prod4">4 hras</label>
                     <span class="focus-border"></span>
                 </td>
                 <td class="col-md-1"></td>
                 <td class="col-md-3 input-effect p-0">
-                  <input id="add_prod5" class="modal-efecto-17 numeroClass" type="text" required>
+                  <input id="add_prod5" class="modal-efecto-17 numeroClass" type="text" required onkeypress="nextFocus('add_prod5', 'add_prod6')">
                     <label for="add_prod5">5 hras</label>
                     <span class="focus-border"></span>
                 </td>
@@ -62,32 +62,32 @@
 
               <tr class="row m20">
                 <td class="col-md-3 input-effect p-0">
-                  <input id="add_prod6" class="modal-efecto-17 numeroClass" type="text" required>
+                  <input id="add_prod6" class="modal-efecto-17 numeroClass" type="text" required onkeypress="nextFocus('add_prod6', 'add_prod7')">
                     <label for="add_prod6">6 hras</label>
                     <span class="focus-border"></span>
                 </td>
                 <td class="col-md-1"></td>
                 <td class="col-md-3 input-effect p-0">
-                  <input id="add_prod7" class="modal-efecto-17 numeroClass" type="text" required>
+                  <input id="add_prod7" class="modal-efecto-17 numeroClass" type="text" required onkeypress="nextFocus('add_prod7', 'add_prod8')">
                     <label for="add_prod7">7 hras</label>
                     <span class="focus-border"></span>
                 </td>
                 <td class="col-md-1"></td>
                 <td class="col-md-3 input-effect p-0">
-                  <input id="add_prod8" class="modal-efecto-17 numeroClass" type="text" required>
+                  <input id="add_prod8" class="modal-efecto-17 numeroClass" type="text" required onkeypress="nextFocus('add_prod8', 'add_prod9')">
                     <label for="add_prod8">8 hras</label>
                     <span class="focus-border"></span>
                 </td>
               </tr>
               <tr class="row m20">
                 <td class="col-md-3 input-effect p-0">
-                  <input id="add_prod9" class="modal-efecto-17 numeroClass" type="text" required>
+                  <input id="add_prod9" class="modal-efecto-17 numeroClass" type="text" required onkeypress="nextFocus('add_prod9', 'add_prod10')">
                     <label for="add_prod9">9 hras</label>
                     <span class="focus-border"></span>
                 </td>
                 <td class="col-md-1"></td>
                 <td class="col-md-3 input-effect p-0">
-                  <input id="add_prod10" class="modal-efecto-17 numeroClass" type="text" required>
+                  <input id="add_prod10" class="modal-efecto-17 numeroClass" type="text" required onkeypress="nextFocus('add_prod10', 'add-producc')">
                     <label for="add_prod10">10 hras</label>
                     <span class="focus-border"></span>
                 </td>

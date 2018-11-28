@@ -48,33 +48,19 @@ $('.filtroRepo').click(function(){
   var linea = $('#lin-linea').val();
   var emp = $('#lin-listaEmp').val();
   var ope = $('#lin_listaOpe').val();
-
-  // validacion = $('#f-Ini').val() == ""
-  // && $('#f-Fin').val() == ""
-  // && $('#lin-linea').val() == ""
-  // && $('#lin-listaEmp').val() == ""
-  // && $('#lin_listaOpe').val() == "";
-
-  // if (validacion) {
-  //   swal("NO PUEDE CONTINUAR","Necesita elegir un filtro","error");
-  //   $('#inputfiltros').show();
-  //   $('#reportes').css('display', 'none');
-
-    // }else {
-      $.ajax({
-        url: '/fitcoControl/Ubicaciones/Lineas1/actions/fetchRepo.php',
-        method: 'POST',
-        data: {request:fIni, ffin:fFin, linea:linea, emp:emp, ope:ope},
-        success: function(r){
-          r = JSON.parse(r);
-          if (r.code == 1) {
-            $('#tabla_Reportes').html(r.data);
-          } else {
-            console.error(r.message);
-          }
+    $.ajax({
+      url: '/fitcoControl/Ubicaciones/Lineas1/actions/fetchRepo.php',
+      method: 'POST',
+      data: {request:fIni, ffin:fFin, linea:linea, emp:emp, ope:ope},
+      success: function(r){
+        r = JSON.parse(r);
+        if (r.code == 1) {
+          $('#tabla_Reportes').html(r.data);
+        } else {
+          console.error(r.message);
         }
-      });
-    // }
+      }
+    });
   });
 });
 
@@ -238,10 +224,11 @@ $('#NuevoRegistroLin').click(function(){
 			r = JSON.parse(request);
       if (r.code == 1) {
         alertify.success('SE AGREGÓ CORRECTAMENTE');
-        $('#NuevaProduccion').hide();
-        $('.spanA').css('display', '');
-        $('#tablaLineas').animate({"right": "4%"}, "slow");
-        lineas_Det();
+        // $('#NuevaProduccion').hide();
+        // $('.spanA').css('display', '');
+        // $('#tablaLineas').animate({"right": "4%"}, "slow");
+        // lineas_Det();
+        setTimeout('document.location.reload()',800);
 			} else {
         swal("FALLO AL REGISTRAR","No se agregó el registro","error");
 
@@ -467,10 +454,12 @@ var data = {
         lineas_Det();
         swal("Exito", "Se agrego correctamente.", "success");
         $('.modal').modal('hide');
+        setTimeout('document.location.reload()',800);
       } else {
         console.error(r.message);
         alertify.error('NO SE MODIFICÓ NINGUN REGISTRO');
         $('.modal').modal('hide');
+        setTimeout('document.location.reload()',800);
       }
     },
     error: function(x){
@@ -623,5 +612,25 @@ function ActivarBotones(){
         swal("Cancelado", "El registro esta a salvo :)", "error");
       }
     });
+  });
+}
+
+$('#add_operacion').keyup(function(e){
+	if (e.keyCode === 13 || e.keyCode === 9) {
+		$('#add_meta').focus();
+	}
+});
+
+$('#operacion').keyup(function(e){
+	if (e.keyCode === 13 || e.keyCode === 9) {
+		$('#meta').focus();
+	}
+})
+
+function nextFocus(inputF, inputS) {
+  document.getElementById(inputF).addEventListener('keydown', function(event) {
+    if (event.keyCode == 13) {
+      document.getElementById(inputS).focus();
+    }
   });
 }
