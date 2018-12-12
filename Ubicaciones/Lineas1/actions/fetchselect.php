@@ -10,7 +10,7 @@ if ($_POST['fini']) {
   $data = $_POST;
   $ffin = $data['ffin'];
   $fini = $data['fini'];
-  $query = "SELECT * FROM ct_linea_copy1 WHERE fecha between '$fini' AND '$ffin'";
+  $query = "SELECT * FROM ct_linea_copy1 WHERE fecha between '$fini' AND '$ffin' ORDER BY fecha DESC, nombre";
 
   $stmt = $conn->prepare($query);
   if (!($stmt)) {

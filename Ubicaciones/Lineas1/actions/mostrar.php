@@ -8,7 +8,7 @@ $data = $_POST;
 
 $data['string'];
 $text = "%" . $data['string'] . "%";
-$query = "SELECT * FROM ct_linea_copy1 WHERE (linea LIKE ?)  OR (nombre LIKE ?) OR (fecha LIKE ?) ORDER BY fecha DESC, nombre";
+$query = "SELECT * FROM ct_linea_copy1 WHERE (linea LIKE ?)  OR (nombre LIKE ?) OR (fecha LIKE ?) ORDER BY fecha DESC, nombre LIMIT 60";
 
 $stmt = $conn->prepare($query);
 if (!($stmt)) {
@@ -44,11 +44,9 @@ while ($row = $rslt->fetch_assoc()) {
   $linea = utf8_encode($row['linea']);
   $fecha = $row['fecha'];
   $nombre = utf8_encode($row['nombre']);
-
-
+  $id = $idlinea;
   $pro_liEditar= $_SESSION['user']['pro_liEditar'];
   $admin = $_SESSION['user']['privilegiosUsuario'] == 'Administrador';
-
 
   if ($admin || $pro_liEditar == 1) {
     $editar = "href='#EditarLinea' data-toggle='modal' class='editar-linea spand-link'";
@@ -60,9 +58,6 @@ while ($row = $rslt->fetch_assoc()) {
     $bloqueo = "bn bloqueo";
   }
 
-  // $system_callback['data'] .=
-  // "<p db-id='$idlinea'>$idlinea - $operacion</p>";
-  $id = $idlinea;
 
   $system_callback['data'] .=
   "<tr class='row bordelateral m-0 text-center' id='item'>
@@ -71,14 +66,9 @@ while ($row = $rslt->fetch_assoc()) {
     <td class='col-md-1'>$linea</td>
     <td class='col-md-3 text-right'>
       <a href='' data-target='#addProducc' data-toggle='modal' class='addProducc spand-link' db-id='$id'><img src='/fitcoControl/Resources/iconos/003-add.svg' class='spand-icon'></a>
-
       <a href='' class='visualizarProd spand-link' data-toggle='modal' data-target='#VerProdLineas' db-id='$id'><img  src='/fitcoControl/Resources/iconos/magnifier.svg' class='img ml-3 spand-icon'></a>
-
       <a $editar db-id='$id'><img  src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='$bloqueo img ml-3 spand-icon'></a>
-
       <a $eliminar db-id='$id'><img  src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='$bloqueo img ml-3 spand-icon'></a>
-
-
     </td>
   </tr>";
 }

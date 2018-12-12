@@ -9,11 +9,11 @@ if (!isset($_SESSION['user'])) {
 
   $hoy = date("Y-m-d");
 ?>
-<?php if ($adminGlobal): ?>
+<?php if ($adminGlobal || $pro_liVer == 1 || $admin): ?>
 <div class="container-fluid pl-75 pr-57">
 <!-- PRUEBA  -->
   <table class="table">
-    <thead>
+    <tbody>
       <tr class="row clt_usr mt-5 mb-5">
         <td class="col-md-2">
           <input id="fechaini" class="c-select" type="date" required style="letter-spacing:3px;color: rgba(62, 109, 140, 0.85);" value="<?php echo $hoy; ?>">
@@ -33,9 +33,14 @@ if (!isset($_SESSION['user'])) {
             <span class="spanA">Agregar Lista</span>
           </a>
 
-          <a class="rotate-link consultar ancla" style="font-size: larger;" accion="agproduccion" status="cerrado">
+          <!-- <a class="rotate-link consultar ancla" style="font-size: larger;" accion="agproduccion" status="cerrado">
             <img src="/fitcoControl/Resources/iconos/001-computer.svg" class="icon1 rotate-icon" style="width:30px;">
             <span>Agregar Produccion</span>
+          </a> -->
+
+          <a href="#agregarMultiple" class="addMult rotate-link consultar ancla" style="font-size:larger;text-decoration:none;" data-toggle="modal">
+            <img src="/fitcoControl/Resources/iconos/001-computer.svg" class="icon1 rotate-icon" style="width:30px;">
+            <span class="spanM">Agregar</span>
           </a>
 
           <a href="/fitcoControl/Ubicaciones/Lineas1/actions/reportes.php" class="vent rotate-link mod ancla" style="font-size:larger;text-decoration:none;">
@@ -49,7 +54,7 @@ if (!isset($_SESSION['user'])) {
           </a>
         </td>
       </tr>
-    </thead>
+    </tbody>
   </table>
 </div>
 
@@ -127,6 +132,7 @@ if (!isset($_SESSION['user'])) {
 
 
 <?php
+  require $root . '/fitcoControl/Ubicaciones/Lineas1/modales/agregarMultiple.php';
   require $root . '/fitcoControl/Ubicaciones/Lineas1/modales/editar.php';
   require $root . '/fitcoControl/Ubicaciones/Lineas1/modales/mostrarProduccion.php';
   require $root . '/fitcoControl/Ubicaciones/Lineas1/modales/listas.php';

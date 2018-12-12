@@ -2,23 +2,20 @@
 $root = $_SERVER['DOCUMENT_ROOT'];
 require $root . '/fitcoControl/Resources/PHP/utilities/initialScript.php';
 
-$linea = trim($_POST['linea']);
-$fecha = trim($_POST['fecha']);
-$emp = trim($_POST['emp']);
+$fecha = $_POST['fecha'];
 
 
+$query = "UPDATE lst_EmpleadosProduc SET fecha = ?";
 
-$query = "INSERT INTO ct_linea_copy1 (linea,nombre,fecha)
- VALUES (?,?,?)";
 
 $stmt = $conn->prepare($query);
 if (!($stmt)) {
   $system_callback['code'] = "500";
-  $system_callback['message'] = "Error durante la ejecucion del query [$conn->errno]: $conn->error";
+  $system_callback['message'] = "Error during query prepare [$conn->errno]: $conn->error";
   exit_script($system_callback);
 }
 
-$stmt->bind_param('sss',$linea,$emp,$fecha);
+$stmt->bind_param('s',$fecha);
 if (!($stmt)) {
   $system_callback['code'] = "500";
   $system_callback['message'] = "Error during variables binding [$stmt->errno]: $stmt->error";
@@ -27,7 +24,7 @@ if (!($stmt)) {
 
 if (!($stmt->execute())) {
   $system_callback['code'] = "500";
-  $system_callback['message'] = "Error durante la ejecucion [$stmt->errno]: $stmt->error";
+  $system_callback['message'] = "Error during query execution [$stmt->errno]: $stmt->error";
   exit_script($system_callback);
 }
 
@@ -45,4 +42,4 @@ $system_callback['code'] = 1;
 $system_callback['message'] = "Script called successfully!";
 exit_script($system_callback);
 
-?>
+ ?>

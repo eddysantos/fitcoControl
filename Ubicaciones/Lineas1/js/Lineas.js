@@ -1,5 +1,69 @@
 $(document).ready(function(){
   lineas_Det();
+  lst_EmpProduc();
+  // EmpPro_Det();
+
+  // Agregar Multiple
+
+// $(function(){
+//   $.ajax({
+//     method: 'POST',
+//     url:'actions/fetchAddMultiple.php',
+//     success: function(r){
+//       console.log(fecha);
+//       r = JSON.parse(r);
+//       if (r.code == 1) {
+//         $('#Emp_produc').html(r.data);
+//       } else {
+//         console.error(r.message);
+//       }
+//     }
+//   })
+// })
+
+$('#updateFecha').click(function(){
+  var data = {
+    fecha: $('#fechaSelect').val()
+  }
+  var ajaxCall = $.ajax({
+      method: 'POST',
+      data: data,
+      url: 'actions/modificarFechaMultiple.php'
+  });
+
+  ajaxCall.done(function(r) {
+    r = JSON.parse(r);
+    if (r.code == 1) {
+      lst_EmpProduc();
+      swal("Exito", "Se actualizo la Fecha.", "success");
+    } else {
+      console.error(r.message);
+    }
+  });
+})
+
+
+jQuery(document).on('submit', '#insertMultiple', function(event){
+  event.preventDefault();
+  $.ajax({
+    url: 'actions/addMultiple.php',
+    type: 'POST',
+    dataType: 'json',
+    data: $(this).serialize(),
+  })
+  .done(function(r){
+    if (!r.error) {
+      alertify.success('Los Datos se ingresaron correctamente');
+      lineas_Det();
+      $('.modal').modal('hide');
+    }else {
+      alertify.error('NO SE PUDO ELIMINAR');
+    }
+  })
+  .fail(function(resp){
+    console.log(resp.responseText);
+  })
+})
 
 
   $('#filter').click(function(){
@@ -28,41 +92,41 @@ $(document).ready(function(){
     }
   });
 
-$("#seleccionarFiltros").change(function(){
-  if ($(this).val() == 2) {
-    $('#filtroEmpleado').show();
-    $('#filtroOper').hide();
-  }else if ($(this).val() == 1) {
-    $('#filtroOper').hide();
-    $('#filtroEmpleado').hide();
-  }else if ($(this).val() == 3) {
-    $('#filtroOper').show();
-    $('#filtroEmpleado').hide();
-  }
-});
+  $("#seleccionarFiltros").change(function(){
+    if ($(this).val() == 2) {
+      $('#filtroEmpleado').show();
+      $('#filtroOper').hide();
+    }else if ($(this).val() == 1) {
+      $('#filtroOper').hide();
+      $('#filtroEmpleado').hide();
+    }else if ($(this).val() == 3) {
+      $('#filtroOper').show();
+      $('#filtroEmpleado').hide();
+    }
+  });
 
 
-$('.filtroRepo').click(function(){
-  var fIni = $('#f-Ini').val();
-  var fFin = $('#f-Fin').val();
-  var linea = $('#lin-linea').val();
-  var emp = $('#lin-listaEmp').val();
-  var ope = $('#lin_listaOpe').val();
-    $.ajax({
-      url: '/fitcoControl/Ubicaciones/Lineas1/actions/fetchRepo.php',
-      method: 'POST',
-      data: {request:fIni, ffin:fFin, linea:linea, emp:emp, ope:ope},
-      success: function(r){
-        r = JSON.parse(r);
-        if (r.code == 1) {
-          $('#tabla_Reportes').html(r.data);
-        } else {
-          console.error(r.message);
+  $('.filtroRepo').click(function(){
+    var fIni = $('#f-Ini').val();
+    var fFin = $('#f-Fin').val();
+    var linea = $('#lin-linea').val();
+    var emp = $('#lin-listaEmp').val();
+    var ope = $('#lin_listaOpe').val();
+      $.ajax({
+        url: '/fitcoControl/Ubicaciones/Lineas1/actions/fetchRepo.php',
+        method: 'POST',
+        data: {request:fIni, ffin:fFin, linea:linea, emp:emp, ope:ope},
+        success: function(r){
+          r = JSON.parse(r);
+          if (r.code == 1) {
+            $('#tabla_Reportes').html(r.data);
+          } else {
+            console.error(r.message);
+          }
         }
-      }
+      });
     });
   });
-});
 
 
 
@@ -82,6 +146,8 @@ function lineas_Det(){
     }
   })
 }
+
+
 
 //DIV BUSCARDOR
 $('.buscador').hover(function(){
@@ -239,6 +305,16 @@ $('#NuevoRegistroLin').click(function(){
   }
 });
 
+
+$("#agregarMult").click(function(){
+  $('#agregarMultiple1').modal('show');
+  // $('#agregarMultiple').attr("name", "insertar");
+});
+
+// $('#agregarMultiple').click(function(){
+// });
+
+
 //ADD EMPLEADO
 $('#add-empleado').click(function(){
   var data = {
@@ -285,7 +361,6 @@ $('#add-operacion').click(function(){
   }
 
   validacion =  $('#a-operacion').val() == "";
-
   if (validacion) {
     swal("NO PUEDE CONTINUAR","El Campo esta vacio","error");
   }else {
@@ -633,4 +708,20 @@ function nextFocus(inputF, inputS) {
       document.getElementById(inputS).focus();
     }
   });
+}
+
+function lst_EmpProduc(){
+  $.ajax({
+    method: 'POST',
+    url:'actions/fetchAddMultiple.php',
+    success: function(r){
+      console.log(fecha);
+      r = JSON.parse(r);
+      if (r.code == 1) {
+        $('#Emp_produc').html(r.data);
+      } else {
+        console.error(r.message);
+      }
+    }
+  })
 }
