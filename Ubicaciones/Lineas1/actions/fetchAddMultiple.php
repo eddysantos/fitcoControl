@@ -31,7 +31,7 @@ if ($rslt->num_rows == 0) {
 
 while ($row = $rslt->fetch_assoc()) {
   // $fecha = date("Y-m-d");
-  $fecha = $row['fecha'];
+  $fecha = utf8_encode($row['fecha']);
   $linea = utf8_encode($row['linea']);
   $nombre = utf8_encode($row['nombre']);
 

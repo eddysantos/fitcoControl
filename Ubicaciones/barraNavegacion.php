@@ -56,6 +56,7 @@ $cc_ver = $_SESSION['user']['cc_ver'];
 $ve_ver = $_SESSION['user']['ve_ver'];
 
 $admin = $_SESSION['user']['privilegiosUsuario']== "Administrador";
+$adminGlobal = $_SESSION['user']['correoUsuario']== "epinales@prolog-mex.com";
 ?>
   <head>
     <meta charset="utf-8">

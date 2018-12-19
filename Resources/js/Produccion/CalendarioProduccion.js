@@ -84,11 +84,9 @@ $(document).ready(function(){
 
   var NuevoEvento;
   $('#btnAgregar').click(function(){
-      // limpiarFormulario();
       RecolectarDatos();
-      AgregarInformacion('agregar',NuevoEvento);
+      Validacion();
       $('#ModalAgregar').modal('toggle');
-      alertify.success('SE AGREGÓ CORRECTAMENTE');
   });
 
   $('#btnEliminar').click(function(){
@@ -116,10 +114,7 @@ $(document).ready(function(){
 
   $('#btnModificar').click(function(){
       RecolectarDatosGUI();
-      EnviarInformacion('modificar',NuevoEvento);
-      alertify.success('SE MODIFICO CORRECTAMENTE');
-
-
+      ValidarModificar();
   });
 
   function RecolectarDatosGUI(){
@@ -132,6 +127,17 @@ $(document).ready(function(){
       textColor:"#FFFFFF",
       end:$('#txtFin').val()+" "+$('#txtHoraFin').val()
     };
+  }
+
+  function ValidarModificar(){
+    if ($('#txtFecha').val() > $('#txtFin').val()) {
+      swal("NO PUEDE CONTINUAR","La fecha de inicio no puede ser mayor a la fecha final","error");
+    }else if ($('#cliente').val() == "" || $('#txtFecha').val() == "" || $('#txtDescripcion').val() == "" || $('#txtFin').val() == "") {
+      swal("NO PUEDE CONTINUAR","Todos los datos necesitan estar llenos","error");
+    }else {
+      EnviarInformacion('modificar',NuevoEvento);
+      alertify.success('SE MODIFICO CORRECTAMENTE');
+    }
   }
 
   function EnviarInformacion(accion,objEvento,modal){
@@ -166,6 +172,18 @@ $(document).ready(function(){
     };
   }
 
+  function Validacion(){
+    if ($('#_txtFecha').val() > $('#_txtFin').val()) {
+      swal("NO PUEDE CONTINUAR","La fecha de inicio no puede ser mayor a la fecha final","error");
+    }else if ($('#_cliente').val() == "" || $('#_txtFecha').val() == "" || $('#_txtDescripcion').val() == "" || $('#_txtFin').val() == "") {
+      swal("NO PUEDE CONTINUAR","Todos los datos necesitan estar llenos","error");
+    }else {
+      AgregarInformacion('agregar',NuevoEvento);
+      alertify.success('SE AGREGÓ CORRECTAMENTE');
+    }
+  }
+
+
   function AgregarInformacion(accion,objEvento,modal){
     $.ajax({
       type: 'POST',
@@ -194,7 +212,4 @@ $(document).ready(function(){
     $('#cliente').val('');
     $('#txtDescripcion').val('');
   }
-
-
-
 });

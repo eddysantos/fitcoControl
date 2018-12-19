@@ -1,25 +1,7 @@
 $(document).ready(function(){
   lineas_Det();
   lst_EmpProduc();
-  // EmpPro_Det();
 
-  // Agregar Multiple
-
-// $(function(){
-//   $.ajax({
-//     method: 'POST',
-//     url:'actions/fetchAddMultiple.php',
-//     success: function(r){
-//       console.log(fecha);
-//       r = JSON.parse(r);
-//       if (r.code == 1) {
-//         $('#Emp_produc').html(r.data);
-//       } else {
-//         console.error(r.message);
-//       }
-//     }
-//   })
-// })
 
 $('#updateFecha').click(function(){
   var data = {
