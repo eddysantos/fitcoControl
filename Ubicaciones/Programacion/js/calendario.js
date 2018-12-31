@@ -1,84 +1,17 @@
 $(document).ready(function(){
+Program_Det();
 
-
-
-  $('#_cliente').keyup(function(){
-    var txt = $(this).val();
-    if (txt == "") {
-      $('#mpgr_ClientList').fadeOut();
-      return false;
-    }
-
-    $.ajax({
-      method: 'POST',
-      url: '/fitcoControl/Resources/PHP/Clientes/fetchPopupClientList.php',
-      data:{txt: txt},
-      success: function(result){
-        rsp = JSON.parse(result);
-        console.log(rsp);
-
-        if (rsp.code != "1") {
-          $('#mpgr_ClientList').html("<p>Hubo un error al cargar la lista de clientes...</p>");
-          console.warn("Error en el query: " + rsp.response);
-        } else {
-          $('#mpgr_ClientList').html(rsp.response);
-          $('#mpgr_ClientList p').click(function(){
-            var cid = $(this).attr('client-id');
-            var col = $(this).attr('color');
-            var nc = $(this).html();
-
-            $('#_fk_cliente').val(cid).html(cid).attr('client-id', cid);
-            $('#_cliente').val(nc).html(nc).attr('client-id', cid);
-            $('#_txtColor').val(col).html(col).attr('color', col);
-            $('#mpgr_ClientList').fadeOut();
-          });
-        }
-        $('#mpgr_ClientList').fadeIn();
-      },
-      error: function(exception){
-        console.error(exception);
-      }
-    });
+  $('#proReg').click(function(){
+    $('#registrarProg').fadeIn();
+    $('#calendarioProgram').fadeOut();
   });
 
-  $('#cliente').keyup(function(){
-    var txt = $(this).val();
-    if (txt == "") {
-      $('#Epgr_ClientList').fadeOut();
-      return false;
-    }
-
-    $.ajax({
-      method: 'POST',
-      url: '/fitcoControl/Resources/PHP/Clientes/fetchPopupClientList.php',
-      data:{txt: txt},
-      success: function(result){
-        rsp = JSON.parse(result);
-        console.log(rsp);
-
-        if (rsp.code != "1") {
-          $('#Epgr_ClientList').html("<p>Hubo un error al cargar la lista de clientes...</p>");
-          console.warn("Error en el query: " + rsp.response);
-        } else {
-          $('#Epgr_ClientList').html(rsp.response);
-          $('#Epgr_ClientList p').click(function(){
-            var cid = $(this).attr('client-id');
-            var col = $(this).attr('color');
-            var nc = $(this).html();
-
-            $('#fk_cliente').val(cid).html(cid).attr('client-id', cid);
-            $('#cliente').val(nc).html(nc).attr('client-id', cid);
-            $('#txtColor').val(col).html(col).attr('color', col);
-            $('#Epgr_ClientList').fadeOut();
-          });
-        }
-        $('#Epgr_ClientList').fadeIn();
-      },
-      error: function(exception){
-        console.error(exception);
-      }
-    });
+  $('#proCal').click(function(){
+    $('#registrarProg').fadeOut();
+    $('#calendarioProgram').fadeIn();
   });
+
+
 
   $('#CalendarioWeb').fullCalendar({
     // defaultView: 'month',
@@ -89,11 +22,7 @@ $(document).ready(function(){
       center: 'title',
       right: 'month,basicWeek,basicDay,listWeek'
     },
-    // String: 'No hay programaciones para mostrar',
-     //Finaliza el header
-
-
-//agregar Evento
+    //agregar Evento
     dayClick: function(date,jsEvent,view){
       // limpiarFormulario();
 
@@ -103,18 +32,21 @@ $(document).ready(function(){
       $('#ModalAgregar').modal();
     },
 
-//Muestra todos los eventos que estan en la base de datos
+    //Muestra todos los eventos que estan en la base de datos
     events: '/fitcoControl/Ubicaciones/Programacion/actions/acciones.php',
 
 
-// solo ver informacion
+    // solo ver informacion
     eventClick: function(calEvent,jsEvent,view){
-      $('#tituloEvento').html(calEvent.nombreCliente);
+      $('#tituloEvento').html(calEvent.title);
       $('#txtID').val(calEvent.pk_programacion);
-      $('#txtColor').val(calEvent.colorCliente);
-      $('#cliente').val(calEvent.nombreCliente);
-      $('#fk_cliente').val(calEvent.fk_cliente);
+      $('#txtColor').val(calEvent.color);
+      $('#cliente').val(calEvent.title);
+      $('#corte').val(calEvent.corte);
       $('#txtDescripcion').val(calEvent.piezasRequeridas);
+      $('#piezasDiarias').val(calEvent.piezasDiarias);
+      $('#piezasHora').val(calEvent.piezasHora);
+      $('#horasNecesarias').val(calEvent.horasNecesarias);
 
       FechaHora = calEvent.start._i.split(" ");
       $('#txtFecha').val(FechaHora[0]);
@@ -131,17 +63,18 @@ $(document).ready(function(){
 
     editable:true,
     eventLimit: true,
-    // selectable: true,
-		// selectHelper: true,
 
 
     eventDrop: function(calEvent){
-      $('#tituloEvento').html(calEvent.nombreCliente);
+      $('#tituloEvento').html(calEvent.title);
       $('#txtID').val(calEvent.pk_programacion);
-      $('#txtColor').val(calEvent.colorCliente);
-      $('#cliente').val(calEvent.nombreCliente);
-      $('#fk_cliente').val(calEvent.fk_cliente);
+      $('#txtColor').val(calEvent.color);
+      $('#cliente').val(calEvent.title);
+      $('#corte').val(calEvent.corte);
       $('#txtDescripcion').val(calEvent.piezasRequeridas);
+      $('#piezasDiarias').val(calEvent.piezasDiarias);
+      $('#piezasHora').val(calEvent.piezasHora);
+      $('#horasNecesarias').val(calEvent.horasNecesarias);
 
       var FechaHora=calEvent.start.format().split("T");
       $('#txtFecha').val(FechaHora[0]);
@@ -168,14 +101,10 @@ $(document).ready(function(){
 
   });
 
-var NuevoEvento;
-  $('#btnAgregar').click(function(){
-      // limpiarFormulario();
-      RecolectarDatos();
-      AgregarInformacion('agregar',NuevoEvento);
-      $('#ModalAgregar').modal('toggle');
-      alertify.success('SE AGREGÓ CORRECTAMENTE');
-  });
+
+
+  var NuevoEvento;
+
 
   $('#btnEliminar').click(function(){
     RecolectarDatosGUI();
@@ -204,18 +133,19 @@ var NuevoEvento;
       RecolectarDatosGUI();
       EnviarInformacion('modificar',NuevoEvento);
       alertify.success('SE MODIFICO CORRECTAMENTE');
-
-
   });
 
   function RecolectarDatosGUI(){
     NuevoEvento={
       id:$('#txtID').val(),
-      fk_cliente:$('#fk_cliente').val(),
       title:$('#cliente').val(),
       start:$('#txtFecha').val()+" "+$('#txtHora').val(),
       color:$('#txtColor').val(),
       descripcion:$('#txtDescripcion').val(),
+      corte:$('#corte').val(),
+      piezasDiarias:$('#piezasDiarias').val(),
+      piezasHora:$('#piezasHora').val(),
+      horasNecesarias:$('#horasNecesarias').val(),
       textColor:"#FFFFFF",
       end:$('#txtFin').val()+" "+$('#txtHoraFin').val()
     };
@@ -242,13 +172,25 @@ var NuevoEvento;
     });
   }
 
+
+
+  $('#btnAgregar').click(function(){
+      RecolectarDatos();
+      AgregarInformacion('agregar',NuevoEvento);
+      $('#ModalAgregar').modal('toggle');
+      alertify.success('SE AGREGÓ CORRECTAMENTE');
+  });
+
   function RecolectarDatos(){
     NuevoEvento={
-      fk_cliente:$('#_fk_cliente').val(),
       title:$('#_cliente').val(),
       start:$('#_txtFecha').val()+" "+$('#_txtHora').val(),
       color:$('#_txtColor').val(),
       descripcion:$('#_txtDescripcion').val(),
+      corte:$('#_corte').val(),
+      piezasDiarias:$('#_piezasDiarias').val(),
+      piezasHora:$('#_piezasHora').val(),
+      horasNecesarias:$('#_horasNecesarias').val(),
       textColor:"#FFFFFF",
       end:$('#_txtFin').val()+" "+$('#_txtHoraFin').val()
     };
@@ -264,7 +206,6 @@ var NuevoEvento;
           $('#CalendarioWeb').fullCalendar('refetchEvents');
 
           if (!modal) {
-            $('#ModalAgregar')[0].reset();
             $('#ModalAgregar').modal('toggle');
           }
 
@@ -281,8 +222,132 @@ var NuevoEvento;
     $('#txtID').val('');
     $('#txtColor').val('');
     $('#cliente').val('');
-    $('#fk_cliente').val('');
     $('#txtDescripcion').val('');
   }
 
 });
+
+
+//MOSTRAR TABLA
+function Program_Det(){
+  $.ajax({
+    method: 'POST',
+    url:'/fitcoControl/Ubicaciones/Programacion/actions/mostrar.php',
+    success: function(r){
+      r = JSON.parse(r);
+      if (r.code == 1) {
+        $('#tabla_Programacion').html(r.data);
+      } else {
+        console.error(r.message);
+      }
+    }
+  })
+}
+
+
+//AGREGAR NUEVO REGISTRO EN LINEA
+$('#AgregarProgram').click(function(){
+  var data = {
+		color: $('#add_color').val(),
+    title: $('#add_title').val(),
+    piezasRequeridas: $('#add_piezasRequeridas').val(),
+    corte: $('#add_corte').val(),
+    piezasDiarias : $('#add_piezasDiarias').val(),
+    piezasHora : $('#add_piezasHora').val(),
+    horasNecesarias : $('#add_horasNecesarias').val(),
+    start:$('#add_start').val()+" "+$('#add_HoraStart').val(),
+    textColor:"#FFFFFF",
+    end:$('#add_end').val()+" "+$('#add_HoraEnd').val()
+  }
+
+	$.ajax({
+		type: "POST",
+		url: "/fitcoControl/Ubicaciones/Programacion/actions/agregar.php",
+		data: data,
+		success: 	function(r){
+      console.log(r);
+			r = JSON.parse(r);
+      if (r.code == 1) {
+        alertify.success('SE AGREGÓ CORRECTAMENTE');
+        $('.modal').modal('hide');
+        Program_Det();
+			} else {
+        swal("FALLO AL REGISTRAR","No se agregó el registro","error");
+				console.error(r.message);
+			}
+		}
+	});
+});
+
+
+function fechadias(){
+    fecha_inicio = $('#add_start').val();
+    date = fecha_inicio.split("-").join("-");
+
+    dias = Math.round($('#add_horasNecesarias').val() / 9);
+
+    dateparts = date.split('-').map(d => parseInt(d));
+    if (dateparts.length !== 3 || !dateparts.every(d => !isNaN(d))){
+      alert('La fecha no tiene un formato correcto');
+      return;
+    }
+
+    fechaDate = new Date(dateparts[0], dateparts[1]-1, dateparts[2]);
+
+
+    // var fechaDate = new Date(dateparts[2], dateparts[1]-1, dateparts[0]);
+
+
+    diasNum = parseInt(dias);
+    if (isNaN(diasNum)){
+      alert('El numero de dias no tiene un formato correcto');
+    }
+
+
+    fechaDate.setDate(fechaDate.getDate() + diasNum);
+    console.log(fechaDate.toLocaleDateString());
+
+    console.log('El resultado de sumar ' + dias + ' días a la fecha ' + date + ' es ' + fechaDate.toLocaleDateString());
+
+    // $('#add_end').val(fechaDate.toLocaleDateString());
+}
+
+
+// calculos
+function calculo(){
+  prendasxhora = $('#_piezasDiarias').val() / 9;
+  $('#_piezasHora').val(prendasxhora);
+
+  horasRequeridas =  $('#_txtDescripcion').val() / $('#_piezasHora').val() + 3;
+  $('#_horasNecesarias').val(horasRequeridas);
+
+  prendasxhora_m = $('#piezasDiarias').val() / 9;
+  $('#piezasHora').val(prendasxhora_m);
+
+  horasRequeridas_m =  $('#txtDescripcion').val() / $('#piezasHora').val() + 3;
+  $('#horasNecesarias').val(horasRequeridas_m);
+
+
+  prendasxhora_add = $('#add_piezasDiarias').val() / 9;
+  $('#add_piezasHora').val(prendasxhora_add);
+
+  horasRequeridas_add =  $('#add_piezasRequeridas').val() / $('#add_piezasHora').val() + 3;
+  $('#add_horasNecesarias').val(horasRequeridas_add);
+  diasNecesarios = Math.round($('#add_horasNecesarias').val() / 9);
+
+
+    hoy = $('#add_start').val();
+    devolucion = new Date();
+    devolucion.setDate(hoy + 1);
+
+    console.log("Fecha actual: ", hoy);
+    console.log("Fecha devolucion: ", devolucion);
+
+  // fecha = $('#add_start').val();
+  // fecha.setDate(fecha.getDate() + diasNecesarios);
+  // diaNuevo =  + horasNecesarias_add;
+
+  // $('#add_end').val($('#add_start').val() + horasNecesarias_add);
+  // console.log(fecha);
+
+}
