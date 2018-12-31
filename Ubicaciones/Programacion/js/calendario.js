@@ -294,7 +294,9 @@ function fechadias(){
 
     fechaDate = new Date(dateparts[0], dateparts[1]-1, dateparts[2]);
 
-
+    console.log('fechaDate' + fechaDate);
+    console.log('dateparts' + dateparts);
+    console.log('Date' + date);
     // var fechaDate = new Date(dateparts[2], dateparts[1]-1, dateparts[0]);
 
 
@@ -304,12 +306,31 @@ function fechadias(){
     }
 
 
+
+
     fechaDate.setDate(fechaDate.getDate() + diasNum);
-    console.log(fechaDate.toLocaleDateString());
+    ultimafecha = fechaDate.toLocaleDateString();
 
-    console.log('El resultado de sumar ' + dias + ' días a la fecha ' + date + ' es ' + fechaDate.toLocaleDateString());
+    date2 = ultimafecha.split("/").reverse().join("-");
+    dateparts2 = date2.split('-').map(d => parseInt(d));
+    fechaDate2 = new Date(dateparts2[0], dateparts2[1]-1, dateparts2[2]);
+    console.log('ultima fecha' + date2);
 
-    // $('#add_end').val(fechaDate.toLocaleDateString());
+
+    var d = new Date(fechaDate2),
+            month = '' + (d.getMonth() + 1),
+            day = '' + d.getDate(),
+            year = d.getFullYear();
+
+        if (month.length < 2) month = '0' + month;
+        if (day.length < 2) day = '0' + day;
+
+      date3 =  [year, month, day].join('-');
+      console.log('soy fecha 3 ' + date3);
+
+    console.log('El resultado de sumar ' + dias + ' días a la fecha ' + date + ' es ' + fechaDate.toLocaleDateString("es-ES"));
+
+    $('#add_end').val(date3);
 }
 
 
