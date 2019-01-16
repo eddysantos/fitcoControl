@@ -11,22 +11,25 @@ if (!isset($_SESSION['user'])) {
 <?php if ($tc_ver == 1 || $admin): ?>
   <div class="container-fluid pl-75 pr-57">
     <div class="row clt_usr mt-4">
-      <div class="text-left alert alert-info w-65" role="alert" >
+      <!-- <div class="text-left alert alert-info w-65" role="alert" >
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <strong>Nota: </strong> En esta sección se podran registrar las facturas que nos van a pagar, se podra editar en <img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='iconoNota'> y eliminar registro en <img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='iconoNota'>. Adicional se podra agregar un pago completo de la factura o un abono  en el icono <img src='/fitcoControl/Resources/iconos/003-add.svg' class='iconoNota'> y se podra ver el desglose de pagos que nos ha realizado el cliente en este icono <img src='/fitcoControl/Resources/iconos/magnifier.svg' class='iconoNota'>
-      </div>
+      </div> -->
 
       <div class="col align-self-end">
         <a class="rotate-link consultar ancla" accion="acobranza" status="cerrado">
           <img  src="/fitcoControl/Resources/iconos/003-analytics-2.svg" class="icon rotate-icon" style="width:30px">
           <span class="spanA">Agregar Factura</span>
         </a>
-        <a class="rotate-link consultar ancla" data-toggle='modal' data-target='#ModalGraficaCobranza'>
+        <!-- <a class="rotate-link consultar ancla" data-toggle='modal' data-target='#ModalGraficaCobranza'>
+          <img  src="/fitcoControl/Resources/iconos/grafica2.svg" class=" icon rotate-icon" style="width:30px">
+          <span class="spanD">Graficas Cobranza</span>
+        </a> -->
+        <a class="rotate-link consultar ancla" data-toggle='modal' data-target='#graficaCobranza'>
           <img  src="/fitcoControl/Resources/iconos/grafica2.svg" class=" icon rotate-icon" style="width:30px">
           <span class="spanD">Graficas Cobranza</span>
         </a>
-
-        <a href="/fitcoControl/Ubicaciones/Cobranza/DepartamentoCobranza.php" class="rotate-link consultar ancla" style="text-decoration:none; ">
+        <a href="/fitcoControl/Ubicaciones/Cobranza/vencidoCobranza.php" class="rotate-link consultar ancla" style="text-decoration:none; ">
           <img  src="/fitcoControl/Resources/iconos/money.svg" class="icon rotate-icon" style="width:30px">
           <span class="spanM">Vencido</span>
         </a>
@@ -112,14 +115,13 @@ if (!isset($_SESSION['user'])) {
   </div>
 <?php endif; ?>
 
-<link href="/fitcoControl/Resources/c3/c3.css" rel="stylesheet">
-<script src="/fitcoControl/Resources/c3/d3.v5.min.js"></script>
-<script src="/fitcoControl/Resources/c3/c3.min.js"></script>
+
 
 <?php
   require $root . '/fitcoControl/Resources/PHP/Cobranza/pieCobranza.php';
+  // require $root . '/fitcoControl/Ubicaciones/Cobranza/actions/footer.php';
   require $root . '/fitcoControl/Ubicaciones/Cobranza/modales/comentarios.php';
-  require $root . '/fitcoControl/Ubicaciones/Cobranza/modales/ModalGraficaC3.php';
+  require $root . '/fitcoControl/Ubicaciones/Cobranza/modales/grafica.php';
   require $root . '/fitcoControl/Ubicaciones/Cobranza/modales/ModalCobranza.php';
   require $root . '/fitcoControl/Ubicaciones/Cobranza/modales/ModalPagos.php';
 ?>

@@ -77,7 +77,7 @@ if (!isset($_SESSION['user'])) {
 <?php
   require $root . '/fitcoControl/Ubicaciones/Cobranza/actions/footer.php';
   require $root . '/fitcoControl/Ubicaciones/Cobranza/modales/comentarios.php';
-  require $root . '/fitcoControl/Ubicaciones/Modales/Cobranza/ModalGraficaCobranza.php';
-  require $root . '/fitcoControl/Ubicaciones/Modales/Cobranza/ModalCobranza.php';
-  require $root . '/fitcoControl/Ubicaciones/Modales/Cobranza/ModalPagos.php';
+  // require $root . '/fitcoControl/Ubicaciones/Modales/Cobranza/ModalGraficaCobranza.php';
+  // require $root . '/fitcoControl/Ubicaciones/Modales/Cobranza/ModalCobranza.php';
+  // require $root . '/fitcoControl/Ubicaciones/Modales/Cobranza/ModalPagos.php';
 ?>

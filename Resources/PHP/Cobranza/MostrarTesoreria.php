@@ -29,7 +29,7 @@ FROM ct_cobranza co
 
 LEFT JOIN ct_cliente ct ON co.fk_cliente = ct.pk_cliente
 LEFT JOIN ct_pagos pg ON co.pk_cobranza = pg.fk_cobranza
-WHERE co.vencimientoCobranza BETWEEN '2018-01-01' AND '2018-12-31'
+-- WHERE co.vencimientoCobranza BETWEEN '2018-01-01' AND '2018-12-31'
 
 GROUP BY co.pk_cobranza
 

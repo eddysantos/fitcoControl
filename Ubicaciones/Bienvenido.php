@@ -121,7 +121,7 @@ $ve_ver = $_SESSION['user']['ve_ver'];
 
       <?php if ($admin || $tc_ver ==1 || $tcxp_ver == 1 || $tm_ver ==1 || $tr_ver ==1): ?>
         <li class="nav-item">
-          <a href="/fitcoControl/Ubicaciones/Cobranza/tesoreria.php" class="bn transicion">TESORERÍA<span class="barra gris">DIVISION 3</span></a>
+          <a href="/fitcoControl/Ubicaciones/Cobranza/menuTesoreria.php" class="bn transicion">TESORERÍA<span class="barra gris">DIVISION 3</span></a>
         </li>
       <?php else: ?>
         <li class="nav-item">
@@ -130,9 +130,11 @@ $ve_ver = $_SESSION['user']['ve_ver'];
       <?php endif; ?>
 
 
-      <?php if ($admin || $pro_pgVer ==1 || $pro_miVer == 1 || $pro_pdver == 1 || $pro_corVer ==1 || $pro_liVer == 1  || $en_ver ==1 || $dis_ver == 1 || $mat_ver == 1 || $pro_corVerCal == 1): ?>
+      <?php if ($admin || $pro_pgVer ==1 || $pro_miVer == 1 || $pro_pdver == 1 || $pro_corVer == 1 || $pro_liVer == 1  || $en_ver == 1 || $dis_ver == 1 || $mat_ver == 1 || $pro_corVerCal == 1): ?>
+
         <li class="nav-item">
           <a href="/fitcoControl/Ubicaciones/Produccion/produccion.php" class="bn transicion">PRODUCCIÓN<span class="barra gris">DIVISION 4</span></a>
+          <!-- <a href="/fitcoControl/Ubicaciones/Produccion/menuProduccion.php" class="bn transicion">PRODUCCIÓN<span class="barra gris">DIVISION 4</span></a> -->
         </li>
       <?php else: ?>
         <li class="nav-item">

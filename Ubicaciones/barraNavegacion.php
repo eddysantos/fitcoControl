@@ -86,7 +86,9 @@ $adminGlobal = $_SESSION['user']['correoUsuario']== "epinales@prolog-mex.com";
     <script src="/fitcoControl/Resources/jquery/tether.min.js"></script>
     <script src="/fitcoControl/Resources/librerias/dataTables/jquery.DataTable.min.js"></script>
     <script src="/fitcoControl/Resources/librerias/dataTables/dataTables.bootstrap4.min.js"></script>
+
     <script type="text/javascript">
+
       $(document).ready(function(){
         $('.importeClass').keyup(function (){
           this.value = (this.value + '').replace(/[^0-9-.]/g, '');
@@ -99,8 +101,8 @@ $adminGlobal = $_SESSION['user']['correoUsuario']== "epinales@prolog-mex.com";
     </script>
   </head>
 
-  <div id="nav_wrap" class="sticky" style="background-color:black">
-<!-- <div id="nav_wrap" class="sticky"> -->
+  <!-- <div id="nav_wrap" class="sticky" style="background-color:black"> -->
+<div id="nav_wrap" class="sticky">
   <nav class="nav_animate">
     <ul class="nav nav-pills nav-fill">
 
@@ -117,13 +119,17 @@ $adminGlobal = $_SESSION['user']['correoUsuario']== "epinales@prolog-mex.com";
       <?php endif; ?>
 
       <?php if ($admin || $tc_ver ==1 || $tcxp_ver == 1 || $tm_ver ==1 || $tr_ver ==1): ?>
-        <li class="nav-item"><a class="bn" href="/fitcoControl/Ubicaciones/Cobranza/tesoreria.php">TESORERÍA <span class="barra">DIVISIÓN 3</span></a></li>
+        <li class="nav-item"><a class="bn" href="/fitcoControl/Ubicaciones/Cobranza/menuTesoreria.php">TESORERÍA <span class="barra">DIVISIÓN 3</span></a></li>
       <?php else: ?>
         <li class="nav-item"><a class="bn bloqueo w-95">TESORERÍA <span class="barra">DIVISIÓN 3</span></a></li>
       <?php endif; ?>
 
       <?php if ($admin || $pro_pgVer ==1 || $pro_miVer == 1 || $pro_pdver == 1 || $pro_corVer ==1 || $pro_liVer == 1  || $en_ver ==1 || $dis_ver == 1 || $mat_ver == 1 || $pro_corVerCal == 1): ?>
-        <li class="nav-item"><a class="bn" href="/fitcoControl/Ubicaciones/Produccion/produccion.php">PRODUCCIÓN <span class="barra">DIVISIÓN 4</span></a></li>
+        <li class="nav-item">
+          <a class="bn" href="/fitcoControl/Ubicaciones/Produccion/produccion.php">PRODUCCIÓN <span class="barra">DIVISIÓN 4</span>
+          </a>
+        </li>
+        <!-- <li class="nav-item"><a class="bn" href="/fitcoControl/Ubicaciones/Produccion/menuProduccion.php">PRODUCCIÓN <span class="barra">DIVISIÓN 4</span></a></li> -->
       <?php else: ?>
         <li class="nav-item"><a class="bn bloqueo w-95">PRODUCCIÓN <span class="barra">DIVISIÓN 4</span></a></li>
       <?php endif; ?>

@@ -757,3 +757,7 @@ input:checked + .slider:before {
   letter-spacing:3px;
   color: rgba(62, 109, 140, 0.85);
 }
+
+.read-only{
+ background: #ccc!important;
+}
