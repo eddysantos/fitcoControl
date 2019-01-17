@@ -107,7 +107,7 @@ $adminGlobal = $_SESSION['user']['correoUsuario']== "epinales@prolog-mex.com";
     <ul class="nav nav-pills nav-fill">
 
       <?php if ($admin || $e_ventas == 1 || $e_tesoreria == 1 || $e_produc == 1 || $e_rhVer == 1 || $e_usVer == 1): ?>
-        <li class="nav-item"><a class="bn" href="/fitcoControl/Ubicaciones/Comunicaciones/pagina.php">COMUNICACION <span class="barra">DIVISIÓN 1</span></a></li>
+        <li class="nav-item"><a class="bn" href="/fitcoControl/Ubicaciones/Comunicaciones/menuComunicaciones.php">COMUNICACION <span class="barra">DIVISIÓN 1</span></a></li>
       <?php else: ?>
         <li class="nav-item"><a class="bn bloqueo w-95">COMUNICACION <span class="barra">DIVISIÓN 1</span></a></li>
       <?php endif;?>
@@ -125,11 +125,11 @@ $adminGlobal = $_SESSION['user']['correoUsuario']== "epinales@prolog-mex.com";
       <?php endif; ?>
 
       <?php if ($admin || $pro_pgVer ==1 || $pro_miVer == 1 || $pro_pdver == 1 || $pro_corVer ==1 || $pro_liVer == 1  || $en_ver ==1 || $dis_ver == 1 || $mat_ver == 1 || $pro_corVerCal == 1): ?>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="bn" href="/fitcoControl/Ubicaciones/Produccion/produccion.php">PRODUCCIÓN <span class="barra">DIVISIÓN 4</span>
           </a>
-        </li>
-        <!-- <li class="nav-item"><a class="bn" href="/fitcoControl/Ubicaciones/Produccion/menuProduccion.php">PRODUCCIÓN <span class="barra">DIVISIÓN 4</span></a></li> -->
+        </li> -->
+        <li class="nav-item"><a class="bn" href="/fitcoControl/Ubicaciones/Produccion/menuProduccion.php">PRODUCCIÓN <span class="barra">DIVISIÓN 4</span></a></li>
       <?php else: ?>
         <li class="nav-item"><a class="bn bloqueo w-95">PRODUCCIÓN <span class="barra">DIVISIÓN 4</span></a></li>
       <?php endif; ?>

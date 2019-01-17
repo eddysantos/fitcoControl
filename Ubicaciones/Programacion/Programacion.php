@@ -10,20 +10,17 @@ require  $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
 
 <link rel="stylesheet" href="/fitcoControl/Resources/fullcalendar/fullcalendar.min.css">
 
-
-<nav class="w-100 mb-3">
-  <ul class="nav nav-pills nav-fill mt-3">
-    <li class="nav-item">
-      <a href="/fitcoControl/Ubicaciones/Programacion/Calendario.php" class="nav-link pills w-100 border-0 bt">Calendario</a>
-    </li>
-  </ul>
-</nav>
-
 <div id="registrarProg">
-  <div class="pl-75 pr-57">
+  <div class="mt-5 mr-5">
     <div class="row clt_usr">
-      <div class="col align-self-end">
-        <a href="#ModalAgregarProgram" data-toggle="modal" class="rotate-link ancla" style="font-size: larger;text-decoration: none!important;">
+      <div class="col align-self-end mt-5 mr-5">
+        <a href="/fitcoControl/Ubicaciones/Programacion/Calendario.php" class="rotate-link mod ancla" style="font-size:larger;text-decoration:none;">
+          <img src="/fitcoControl/Resources/iconos/002-calendar.svg" class="icon1 rotate-icon" style="width:30px;">
+          <span class="spanA">Calendario</span>
+        </a>
+
+
+        <a href="#ModalAgregarProgram" data-toggle="modal" class="rotate-link mod ancla" style="font-size:larger;text-decoration:none;">
           <img src="/fitcoControl/Resources/iconos/add.svg" class="icon1 rotate-icon" style="width:30px;">
           <span class="spanA">Agregar</span>
         </a>
@@ -57,6 +54,6 @@ require  $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
 
 <?php
   require $root . '/fitcoControl/Ubicaciones/Programacion/modales/modalCalendario.php';
-  require $root . '/fitcoControl/Ubicaciones/Programacion/modales/agregarProgram.php';
+  require $root . '/fitcoControl/Ubicaciones/Programacion/modales/modalReporte.php';
   require $root . '/fitcoControl/Ubicaciones/Programacion/actions/footer.php';
 ?>

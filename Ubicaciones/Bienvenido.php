@@ -99,7 +99,7 @@ $ve_ver = $_SESSION['user']['ve_ver'];
         <!-- <li class="nav-item"><h1 id="logo">FIT&amp;CO</h1></li> -->
       <?php if ($admin || $e_ventas == 1 || $e_tesoreria == 1 || $e_produc == 1 || $e_rhVer == 1 || $e_usVer == 1): ?>
         <li class="nav-item">
-          <a href="/fitcoControl/Ubicaciones/Comunicaciones/pagina.php" class="bn transicion">COMUNICACION<span class="barra gris">DIVISION 1</span></a>
+          <a href="/fitcoControl/Ubicaciones/Comunicaciones/menuComunicaciones.php" class="bn transicion">COMUNICACION<span class="barra gris">DIVISION 1</span></a>
         </li>
       <?php else: ?>
         <li class="nav-item">
@@ -133,8 +133,8 @@ $ve_ver = $_SESSION['user']['ve_ver'];
       <?php if ($admin || $pro_pgVer ==1 || $pro_miVer == 1 || $pro_pdver == 1 || $pro_corVer == 1 || $pro_liVer == 1  || $en_ver == 1 || $dis_ver == 1 || $mat_ver == 1 || $pro_corVerCal == 1): ?>
 
         <li class="nav-item">
-          <a href="/fitcoControl/Ubicaciones/Produccion/produccion.php" class="bn transicion">PRODUCCIÓN<span class="barra gris">DIVISION 4</span></a>
-          <!-- <a href="/fitcoControl/Ubicaciones/Produccion/menuProduccion.php" class="bn transicion">PRODUCCIÓN<span class="barra gris">DIVISION 4</span></a> -->
+          <!-- <a href="/fitcoControl/Ubicaciones/Produccion/produccion.php" class="bn transicion">PRODUCCIÓN<span class="barra gris">DIVISION 4</span></a> -->
+          <a href="/fitcoControl/Ubicaciones/Produccion/menuProduccion.php" class="bn transicion">PRODUCCIÓN<span class="barra gris">DIVISION 4</span></a>
         </li>
       <?php else: ?>
         <li class="nav-item">

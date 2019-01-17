@@ -34,7 +34,7 @@ if (!($stmt)) {
   exit_script($system_callback);
 }
 
-$stmt->bind_param('ssssssssss',$title,$piezasRequeridas,$color,$$textColor,$start,$end,$corte,$piezasDiarias,$piezasHora,$horasNecesarias);
+$stmt->bind_param('ssssssssss',$title,$piezasRequeridas,$color,$textColor,$start,$end,$corte,$piezasDiarias,$piezasHora,$horasNecesarias);
 if (!($stmt)) {
   $system_callback['code'] = "500";
   $system_callback['message'] = "Error during variables binding [$stmt->errno]: $stmt->error";

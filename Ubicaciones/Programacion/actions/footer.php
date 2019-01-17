@@ -14,7 +14,8 @@
   <script src="/fitcoControl/Ubicaciones/Programacion/js/calendario.js"></script>
   <script src="/fitcoControl/Resources/js/Inputs.js"></script>
   <script src="/fitcoControl/Resources/js/MostrarDivsAgregar.js"></script>
-  <script src="/fitcoControl/Resources/js/Produccion/programacionProduccion.js"></script>
+  <!-- <script src="/fitcoControl/Resources/js/Produccion/programacionProduccion.js"></script> -->
+  <!-- <script src="/fitcoControl/Ubicaciones/Produccion/js/programacionProduccion.js"></script> -->
   <script src="/fitcoControl/Resources/js/popup-list-plugin.js"></script>
   <script src="/fitcoControl/Resources/js/table-fetch-plugin.js"></script>
 </footer>

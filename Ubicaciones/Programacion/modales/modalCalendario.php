@@ -37,7 +37,7 @@
               </td>
               <td class="col-md-1"></td>
               <td class="col-md-5 input-effect p-0">
-                <input class="w-100 modal-efecto-17 has-content" id="_txtDescripcion" type="text">
+                <input class="w-100 modal-efecto-17 has-content numeroClass" id="_txtDescripcion" type="text">
                   <label for="_txtDescripcion">Requerido (Pzas)</label>
                   <span class="focus-border"></span>
               </td>
@@ -45,26 +45,26 @@
 
             <tr class="row m20">
               <td class="col-md-6">
-                <input class="w-100 modal-efecto-17 has-content border-0" id="_corte" type="text">
+                <input class="w-100 modal-efecto-17 has-content border-0 numeroClass" id="_corte" type="text">
                   <label>Corte</label>
                   <span class="focus-border"></span>
               </td>
               <td class="col-md-1"></td>
               <td class="col-md-5">
-                <input class="w-100 modal-efecto-17 has-content border-0" id="_piezasDiarias" type="text" onblur="calculo()">
+                <input class="w-100 modal-efecto-17 has-content border-0 numeroClass" id="_piezasDiarias" type="text" onblur="calculo()">
                   <label>Piezas Diarias</label>
                   <span class="focus-border"></span>
               </td>
             </tr>
             <tr class="row m20">
-              <td class="col-md-6">
-                <input class="w-100 modal-efecto-17 has-content border-0" id="_piezasHora" type="text">
+              <td class="col-md-6 pr-0 pl-0">
+                <input class="w-100 modal-efecto-17 has-content border-0 read-only" id="_piezasHora" type="text" readonly>
                   <label>Piezas x hora</label>
                   <span class="focus-border"></span>
               </td>
               <td class="col-md-1"></td>
-              <td class="col-md-5">
-                <input class="w-100 modal-efecto-17 has-content border-0" id="_horasNecesarias" type="text">
+              <td class="col-md-5 pr-0 pl-0">
+                <input class="w-100 modal-efecto-17 has-content border-0 read-only" id="_horasNecesarias" type="text" readonly>
                 <label>Horas necesarias</label>
                 <span class="focus-border"></span>
               </td>
@@ -72,7 +72,7 @@
 
             <tr class="row m20">
               <td class="col-md-6 input-effect p-0">
-                <input class="w-100 modal-efecto-17 has-content" id="_txtFecha" type="date">
+                <input class="w-100 modal-efecto-17 has-content" id="_txtFecha" type="date" onblur="fechadias_madd()">
                   <label for="_txtFecha">Fecha de Inicio</label>
                   <span class="focus-border"></span>
               </td>
@@ -144,14 +144,14 @@
 
             <tr class="row m20">
               <td class="col-md-6 input-effect p-0">
-                <input class="modal-efecto-17 has-content popup-input w-100 border-0" id="cliente" type="text" id-display="#popup-display-listaClientesProEd" action="listaClientes" db-id="" autocomplete="off" >
+                <input class="modal-efecto-17 has-content popup-input w-100 border-0" id="txtCliente" type="text" id-display="#popup-display-listaClientesProEd" action="listaClientes" db-id="" autocomplete="off" >
                 <div class="popup-list" id="popup-display-listaClientesProEd" style="display:none"></div>
-                <label for="txtDescripcion">Cliente</label>
+                <label for="txtCliente">Cliente</label>
                 <span class="focus-border"></span>
               </td>
               <td class="col-md-1"></td>
               <td class="col-md-5 input-effect p-0">
-                <input class="w-100 modal-efecto-17 has-content"id="txtDescripcion" type="text">
+                <input class="w-100 modal-efecto-17 has-content numeroClass" id="txtDescripcion" type="text">
                   <label for="txtDescripcion">Requerido (Pzas)</label>
                   <span class="focus-border"></span>
               </td>
@@ -159,26 +159,26 @@
 
             <tr class="row m20">
               <td class="col-md-6">
-                <input class="w-100 modal-efecto-17 has-content border-0" id="corte" type="text">
+                <input class="w-100 modal-efecto-17 has-content border-0 numeroClass" id="txtCorte" type="text">
                   <label>Corte</label>
                   <span class="focus-border"></span>
               </td>
               <td class="col-md-1"></td>
               <td class="col-md-5">
-                <input class="w-100 modal-efecto-17 has-content border-0" id="piezasDiarias" type="text"  onblur="calculo()">
+                <input class="w-100 modal-efecto-17 has-content border-0 numeroClass" id="txtpiezasDiarias" type="text"  onblur="calculo()">
                   <label>Piezas Diarias</label>
                   <span class="focus-border"></span>
               </td>
             </tr>
             <tr class="row m20">
-              <td class="col-md-6">
-                <input class="w-100 modal-efecto-17 has-content border-0" id="piezasHora" type="text">
+              <td class="col-md-6 pr-0 pl-0">
+                <input class="w-100 modal-efecto-17 has-content border-0 read-only" id="txtpiezasHora" type="text" readonly>
                   <label>Piezas x hora</label>
                   <span class="focus-border"></span>
               </td>
               <td class="col-md-1"></td>
-              <td class="col-md-5">
-                <input class="w-100 modal-efecto-17 has-content border-0" id="horasNecesarias" type="text">
+              <td class="col-md-5 pr-0 pl-0">
+                <input class="w-100 modal-efecto-17 has-content border-0 read-only" id="txthorasNecesarias" type="text" readonly>
                 <label>Horas necesarias</label>
                 <span class="focus-border"></span>
               </td>
@@ -186,7 +186,7 @@
 
             <tr class="row m20">
               <td class="col-md-6 input-effect p-0">
-                <input class="w-100 modal-efecto-17 has-content" id="txtFecha" type="date">
+                <input class="w-100 modal-efecto-17 has-content" id="txtFecha" type="date" onblur="fechadias_medit()">
                   <label for="txtFecha">Fecha de Inicio</label>
                   <span class="focus-border"></span>
               </td>
