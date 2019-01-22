@@ -19,6 +19,9 @@ $(function(){
   pull_chart.done(function(r){
     r = JSON.parse(r);
     console.log(r);
+    if (r.code == '2') {
+      r.to_chart = {};
+    }
     ven_chart = c3.generate({
       bindto: '#g-ventas',
       data:{
