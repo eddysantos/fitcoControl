@@ -761,3 +761,11 @@ input:checked + .slider:before {
 .read-only{
  background: #ccc!important;
 }
+
+.sub-grafica{
+  margin-top: 8rem!important;
+  text-align: center;
+  margin: 20px;
+  background: rgba(62, 109, 140, 0.25);
+  padding: 5px;
+}
