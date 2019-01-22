@@ -59,8 +59,6 @@ $cc_ver = $_SESSION['user']['cc_ver'];
 // DIVISION 6 //
 //**************** VENTAS
 $ve_ver = $_SESSION['user']['ve_ver'];
-
-
   // cliente
   // $cliente = $_SESSION['user']['c_ver'];
 
@@ -73,6 +71,8 @@ $ve_ver = $_SESSION['user']['ve_ver'];
 
   // ventas
   $admin = $_SESSION['user']['privilegiosUsuario']== "Administrador";
+  $admonGlobal = $_SESSION['user']['admonGlobal'];
+  $dejecutivo = $_SESSION['user']['dejecutivo'];
 ?>
 
 <!DOCTYPE html>
@@ -151,7 +151,8 @@ $ve_ver = $_SESSION['user']['ve_ver'];
 
       <?php if ($admin || $ve_ver == 1): ?>
         <li class="nav-item">
-          <a href="/fitcoControl/Ubicaciones/Ventas/Ventas.php" class="bn transicion">VENTAS<span class="barra gris">DIVISION 6</span></a>
+          <a href="/fitcoControl/Ubicaciones/Ventas1/Ventas.php" class="bn transicion">VENTAS<span class="barra gris">DIVISION 6</span></a>
+          <!-- <a href="/fitcoControl/Ubicaciones/Ventas/Ventas.php" class="bn transicion">VENTAS<span class="barra gris">DIVISION 6</span></a> -->
         </li>
       <?php else: ?>
         <li class="nav-item">

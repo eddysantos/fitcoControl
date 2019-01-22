@@ -57,6 +57,9 @@ $ve_ver = $_SESSION['user']['ve_ver'];
 
 $admin = $_SESSION['user']['privilegiosUsuario']== "Administrador";
 $adminGlobal = $_SESSION['user']['correoUsuario']== "epinales@prolog-mex.com";
+
+$admonGlobal = $_SESSION['user']['admonGlobal'];
+$dejecutivo = $_SESSION['user']['dejecutivo'];
 ?>
   <head>
     <meta charset="utf-8">
@@ -143,7 +146,8 @@ $adminGlobal = $_SESSION['user']['correoUsuario']== "epinales@prolog-mex.com";
       <?php endif; ?>
 
       <?php if ($admin || $ve_ver == 1): ?>
-        <li class="nav-item"><a class="bn" href="/fitcoControl/Ubicaciones/Ventas/Ventas.php">VENTAS <span class="barra">DIVISIÓN 6</span></a></li>
+        <li class="nav-item"><a class="bn" href="/fitcoControl/Ubicaciones/Ventas1/Ventas.php">VENTAS <span class="barra">DIVISIÓN 6</span></a></li>
+        <!-- <li class="nav-item"><a class="bn" href="/fitcoControl/Ubicaciones/Ventas/Ventas.php">VENTAS <span class="barra">DIVISIÓN 6</span></a></li> -->
       <?php else: ?>
         <li class="nav-item"><a class="bn bloqueo w-95">VENTAS <span class="barra">DIVISIÓN 6</span></a></li>
       <?php endif; ?>
