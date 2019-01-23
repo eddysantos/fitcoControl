@@ -1,21 +1,85 @@
 $(document).ready(function(){
 fetchProProduccion();
 
+$(function(){
+  data = {
+    period: $('#pro_periodo').val(),
+    date_from: $('#dates_pro_chart').find('.date-from').val(),
+    date_to: $('#dates_pro_chart').find('.date-to').val(),
+  };
+
+console.log('hola');
+  var pull_chart = $.ajax({
+    method: 'POST',
+    data: data,
+    url: 'actions/grafica.php'
+  });
+
+  pull_chart.done(function(r){
+    r = JSON.parse(r);
+    console.log(r);
+    if (r.code == '2') {
+      r.to_chart = {};
+    }
+    pro_chart = c3.generate({
+      bindto: '#g-produccion',
+      data:{
+        x: "x",
+        columns: r.to_chart,
+        labels: true,
+      },
+      axis: {
+        x: {
+          type: 'category',
+          tick: {
+            format: '%Y-%m-%d',
+          }
+        }
+      },
+    });
+  });
+});
+
+
+$('#pro_load').click(function(){
+  // alert("presiono pro_load");
+  data = {
+    period: $('#pro_periodo').val(),
+    date_from: $('#dates_pro_chart').find('.date-from').val(),
+    date_to: $('#dates_pro_chart').find('.date-to').val(),
+  };
+
+  var pull_chart = $.ajax({
+    method: 'POST',
+    data: data,
+    url: 'actions/grafica.php'
+  });
+
+  pull_chart.done(function(r){
+    r = JSON.parse(r);
+    console.log(r);
+    pro_chart.load({columns: r.to_chart});
+  });
+});
 });
 
 
 
-function fetchProProduccion(produccion){
+function fetchProProduccion(){
   $.ajax({
-    url:'/fitcoControl/Resources/PHP/Produccion/MostrarProduccion.php',
     method: 'POST',
-    data:{produccion:produccion},
-  })
-  .done(function(resultado){
-    $('#mostrarProduccion').html(resultado);
-    ActivarBotonProduc();
-  })
+    url:'actions/mostrar.php',
+  }).done(function(r) {
+    r = JSON.parse(r);
+    if (r.code == 1) {
+      $('#mostrarProduccion').html(r.data);
+          ActivarBotonProduc();
+    } else {
+      console.error(r.message);
+    }
+  });
 }
+
 
 $(document).on('keyup', '#busqueda', function(){
   var valorBusqueda = $(this).val();
@@ -54,7 +118,7 @@ function ActivarBotonProduc(){
       }else {
         $.ajax({
           method: 'POST',
-          url: '/fitcoControl/Resources/PHP/Produccion/AgregarProduccion.php',
+          url: 'actions/AgregarProduccion.php',
           data: {
 
             mpro_idprog: fk_programacion,
@@ -89,7 +153,7 @@ function ActivarBotonProduc(){
       var idProg = $(this).attr('program-id');
       $.ajax({
         method: 'POST',
-        url:'/fitcoControl/Resources/PHP/Produccion/TablaProduccion.php',
+        url:'actions/TablaProduccion.php',
         data:{idProg:idProg},
         success:function(result){
           var rsp = JSON.parse(result);
@@ -110,7 +174,7 @@ function ActivarBotonProduc(){
       $.ajax({
 
         method: 'POST',
-        url: '/fitcoControl/Resources/PHP/Produccion/fetchProducData.php',
+        url: 'actions/fetchProducData.php',
         data: {IdProduc: IdProduc},
 
         success: function(result){
@@ -144,7 +208,7 @@ function ActivarBotonProduc(){
 
       $.ajax({
         method: 'POST',
-        url: '/fitcoControl/Resources/PHP/Produccion/EditProdData.php',
+        url: 'actions/EditProdData.php',
         data: {
           id: id,
           ff: ff,
@@ -177,7 +241,7 @@ function ActivarBotonProduc(){
       var IdProduc = $(this).attr('pro-id');
       $.ajax({
         method: 'POST',
-        url: '/fitcoControl/Resources/PHP/Produccion/EliminarProducData.php',
+        url: 'actions/EliminarProducData.php',
         data: {IdProduc: IdProduc},
 
         success: function(result){

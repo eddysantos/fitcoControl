@@ -1,121 +1,121 @@
 <?php
-$root = $_SERVER['DOCUMENT_ROOT'];
-require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
-$data = array(
-  'code' => "",
-  'response' => "",
-  'infoTabla' => ""
-);
+// $root = $_SERVER['DOCUMENT_ROOT'];
+// require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
+// $data = array(
+//   'code' => "",
+//   'response' => "",
+//   'infoTabla' => ""
+// );
 
 // ********************************//
 //  G R A F I C A     D I A R I A  //
 // ********************************//
-$queryDiaria = "SELECT
-CASE WHEN DAYOFWEEK(pr.fechaIntroduccion) = 2 THEN 'Lun'
-WHEN DAYOFWEEK(pr.fechaIntroduccion) = 3 THEN 'Mar'
-WHEN DAYOFWEEK(pr.fechaIntroduccion) = 4 THEN 'Mie'
-WHEN DAYOFWEEK(pr.fechaIntroduccion) = 5 THEN 'Jue'
-WHEN DAYOFWEEK(pr.fechaIntroduccion) = 6 THEN 'Vie'
-WHEN DAYOFWEEK(pr.fechaIntroduccion) = 7 THEN 'Sab'
-WHEN DAYOFWEEK(pr.fechaIntroduccion) = 1 THEN 'Dom'
-ELSE '' END AS dia,
-DATE_FORMAT(pr.fechaIntroduccion, ' %d/%m') AS fechaX,
-pr.cantidadProduccion AS produccion,
-pr.metaProduccion AS meta,
-pr.fechaIntroduccion AS fecha
-
-FROM ct_program p LEFT JOIN ct_produccion pr ON pr.fk_programacion = p.pk_programacion
-
-GROUP BY fecha
-ORDER BY fecha ASC limit 25";
-
-
-$result = mysqli_query($conn, $queryDiaria);
-
-$valuesArray[] = 'Produccion';
-$valuesArray2[] = 'Meta';
-$fechaDia[] = 'x';
-
-while ($row = $result->fetch_assoc()) {
- $fechaDia[] = $row['dia'].' '.$row['fechaX'];
- $valuesArray[] = $row['produccion'];
- $valuesArray2[] = $row['meta'];
-}
+// $queryDiaria = "SELECT
+// CASE WHEN DAYOFWEEK(pr.fechaIntroduccion) = 2 THEN 'Lun'
+// WHEN DAYOFWEEK(pr.fechaIntroduccion) = 3 THEN 'Mar'
+// WHEN DAYOFWEEK(pr.fechaIntroduccion) = 4 THEN 'Mie'
+// WHEN DAYOFWEEK(pr.fechaIntroduccion) = 5 THEN 'Jue'
+// WHEN DAYOFWEEK(pr.fechaIntroduccion) = 6 THEN 'Vie'
+// WHEN DAYOFWEEK(pr.fechaIntroduccion) = 7 THEN 'Sab'
+// WHEN DAYOFWEEK(pr.fechaIntroduccion) = 1 THEN 'Dom'
+// ELSE '' END AS dia,
+// DATE_FORMAT(pr.fechaIntroduccion, ' %d/%m') AS fechaX,
+// pr.cantidadProduccion AS produccion,
+// pr.metaProduccion AS meta,
+// pr.fechaIntroduccion AS fecha
+//
+// FROM ct_program p LEFT JOIN ct_produccion pr ON pr.fk_programacion = p.pk_programacion
+//
+// GROUP BY fecha ORDER BY fecha DESC limit 25";
+// // ORDER BY fecha, fk_programacion ASC limit 30";
+//
+//
+// $result = mysqli_query($conn, $queryDiaria);
+//
+// $valuesArray[] = 'Produccion';
+// $valuesArray2[] = 'Meta';
+// $fechaDia[] = 'x';
+//
+// while ($row = $result->fetch_assoc()) {
+//  $fechaDia[] = $row['dia'].' '.$row['fechaX'];
+//  $valuesArray[] = $row['produccion'];
+//  $valuesArray2[] = $row['meta'];
+// }
 
 // **********************************//
 //  G R A F I C A     S E M A N A L  //
 // **********************************//
 
-$querySemanal = "SELECT
-WEEK(pr.fechaIntroduccion) AS semana,
-year(pr.fechaIntroduccion) AS anio,
-SUM(pr.cantidadProduccion) AS produccion,
-SUM(pr.metaProduccion) AS meta,
-pr.fechaIntroduccion AS fecha
-
-FROM ct_program p
-
-LEFT JOIN ct_produccion pr ON pr.fk_programacion = p.pk_programacion
-
-GROUP BY  semana
-ORDER BY fecha ASC LIMIT 12";
-
-
-$result = mysqli_query($conn, $querySemanal);
-
-$producSemanal[] = 'Produccion';
-$metaSemanal[] = 'Meta';
-$semana[] = 'x';
-
-while ($row = $result->fetch_assoc()) {
- $semana[] = 'Sem '.$row['semana'].'/'.$row['anio'];
- $producSemanal[] = $row['produccion'];
- $metaSemanal[] = $row['meta'];
-}
+// $querySemanal = "SELECT
+// WEEK(pr.fechaIntroduccion) AS semana,
+// year(pr.fechaIntroduccion) AS anio,
+// SUM(pr.cantidadProduccion) AS produccion,
+// SUM(pr.metaProduccion) AS meta,
+// pr.fechaIntroduccion AS fecha
+//
+// FROM ct_program p
+//
+// LEFT JOIN ct_produccion pr ON pr.fk_programacion = p.pk_programacion
+//
+// GROUP BY  semana
+// ORDER BY fecha ASC LIMIT 45";
+//
+//
+// $result = mysqli_query($conn, $querySemanal);
+//
+// $producSemanal[] = 'Produccion';
+// $metaSemanal[] = 'Meta';
+// $semana[] = 'x';
+//
+// while ($row = $result->fetch_assoc()) {
+//  $semana[] = 'Sem '.$row['semana'].'/'.$row['anio'];
+//  $producSemanal[] = $row['produccion'];
+//  $metaSemanal[] = $row['meta'];
+// }
 
 // **********************************//
 //  G R A F I C A     M E N S U A L  //
 // **********************************//
-$queryMensual = "SELECT
-CASE WHEN MONTH(pr.fechaIntroduccion) = 1 THEN 'Ene'
-WHEN MONTH(pr.fechaIntroduccion) = 2 THEN 'Feb'
-WHEN MONTH(pr.fechaIntroduccion) = 3 THEN 'Mar'
-WHEN MONTH(pr.fechaIntroduccion) = 4 THEN 'Abr'
-WHEN MONTH(pr.fechaIntroduccion) = 5 THEN 'May'
-WHEN MONTH(pr.fechaIntroduccion) = 6 THEN 'Jun'
-WHEN MONTH(pr.fechaIntroduccion) = 7 THEN 'Jul'
-WHEN MONTH(pr.fechaIntroduccion) = 8 THEN 'Ago'
-WHEN MONTH(pr.fechaIntroduccion) = 9 THEN 'Sep'
-WHEN MONTH(pr.fechaIntroduccion) = 10 THEN 'Oct'
-WHEN MONTH(pr.fechaIntroduccion) = 11 THEN 'Nov'
-WHEN MONTH(pr.fechaIntroduccion) = 12 THEN 'Dic'
-ELSE '' END AS mes,
-year(pr.fechaIntroduccion) AS anio,
-SUM(pr.cantidadProduccion) AS produccion,
-SUM(pr.metaProduccion) AS meta,
-pr.fechaIntroduccion AS fecha
-
-FROM ct_program p
-
-LEFT JOIN ct_produccion pr ON pr.fk_programacion = p.pk_programacion
-
-GROUP BY  mes
-ORDER BY fecha ASC LIMIT 12";
-$result = mysqli_query($conn, $queryMensual);
-
-$producMensual[] = 'Produccion';
-$metaMensual[] = 'Meta';
-$mes[] = 'x';
-
-while ($row = $result->fetch_assoc()) {
- $mes[] = $row['mes'].' '.$row['anio'];
- $producMensual[] = $row['produccion'];
- $metaMensual[] = $row['meta'];
-}
+// $queryMensual = "SELECT
+// CASE WHEN MONTH(pr.fechaIntroduccion) = 1 THEN 'Ene'
+// WHEN MONTH(pr.fechaIntroduccion) = 2 THEN 'Feb'
+// WHEN MONTH(pr.fechaIntroduccion) = 3 THEN 'Mar'
+// WHEN MONTH(pr.fechaIntroduccion) = 4 THEN 'Abr'
+// WHEN MONTH(pr.fechaIntroduccion) = 5 THEN 'May'
+// WHEN MONTH(pr.fechaIntroduccion) = 6 THEN 'Jun'
+// WHEN MONTH(pr.fechaIntroduccion) = 7 THEN 'Jul'
+// WHEN MONTH(pr.fechaIntroduccion) = 8 THEN 'Ago'
+// WHEN MONTH(pr.fechaIntroduccion) = 9 THEN 'Sep'
+// WHEN MONTH(pr.fechaIntroduccion) = 10 THEN 'Oct'
+// WHEN MONTH(pr.fechaIntroduccion) = 11 THEN 'Nov'
+// WHEN MONTH(pr.fechaIntroduccion) = 12 THEN 'Dic'
+// ELSE '' END AS mes,
+// year(pr.fechaIntroduccion) AS anio,
+// SUM(pr.cantidadProduccion) AS produccion,
+// SUM(pr.metaProduccion) AS meta,
+// pr.fechaIntroduccion AS fecha
+//
+// FROM ct_program p
+//
+// LEFT JOIN ct_produccion pr ON pr.fk_programacion = p.pk_programacion
+//
+// GROUP BY  mes
+// ORDER BY fecha ASC LIMIT 12";
+// $result = mysqli_query($conn, $queryMensual);
+//
+// $producMensual[] = 'Produccion';
+// $metaMensual[] = 'Meta';
+// $mes[] = 'x';
+//
+// while ($row = $result->fetch_assoc()) {
+//  $mes[] = $row['mes'].' '.$row['anio'];
+//  $producMensual[] = $row['produccion'];
+//  $metaMensual[] = $row['meta'];
+// }
 
 ?>
 
-<link href="/fitcoControl/Resources/c3/c3.css" rel="stylesheet">
+<!-- <link href="/fitcoControl/Resources/c3/c3.css" rel="stylesheet">
 <script src="/fitcoControl/Resources/c3/d3.v5.min.js"></script>
 <script src="/fitcoControl/Resources/c3/c3.min.js"></script>
 
@@ -149,12 +149,12 @@ while ($row = $result->fetch_assoc()) {
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
 <!-- // ********************************//
     //  G R A F I C A     D I A R I A  //
    // ********************************// -->
-<script>
+<!-- <script>
   var xAxisArr = <?php echo json_encode($fechaDia); ?>;
   var dataArr = <?php echo json_encode($valuesArray, JSON_NUMERIC_CHECK); ?>;
   var dataArr2 = <?php echo json_encode($valuesArray2, JSON_NUMERIC_CHECK); ?>;
@@ -182,23 +182,18 @@ while ($row = $result->fetch_assoc()) {
     axis: {
       x: {
         type: 'category',
-       // type: 'timeseries',
-       //
-       // tick: {
-       //   format: '%Y-%m-%d'
-       // }
       }
     },
     subchart: {
       show: true,
     }
   });
-</script>
+</script> -->
 
 <!-- // **********************************//
     //  G R A F I C A     M E N S U A L  //
    // **********************************// -->
-<script>
+<!-- <script>
     var Mes = <?php echo json_encode($mes); ?>;
     var produccion = <?php echo json_encode($producMensual, JSON_NUMERIC_CHECK); ?>;
     var meta = <?php echo json_encode($metaMensual, JSON_NUMERIC_CHECK); ?>;
@@ -232,12 +227,12 @@ while ($row = $result->fetch_assoc()) {
         show: true,
       }
     });
-</script>
+</script> -->
 
 <!-- // **********************************//
     //  G R A F I C A     M E N S U A L  //
    // **********************************// -->
-<script>
+<!-- <script>
     var semana = <?php echo json_encode($semana); ?>;
     var producSemanal = <?php echo json_encode($producSemanal, JSON_NUMERIC_CHECK); ?>;
     var metaSemanal = <?php echo json_encode($metaSemanal, JSON_NUMERIC_CHECK); ?>;
@@ -271,4 +266,4 @@ while ($row = $result->fetch_assoc()) {
         show: true,
       }
     });
-</script>
+</script> -->

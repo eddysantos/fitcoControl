@@ -1,19 +1,19 @@
 
 <?php
-session_start();
-
-if (!isset($_SESSION['user'])) {
-  header("Location: /fitcoControl/index.php");
-}
-
-  $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
+// session_start();
+//
+// if (!isset($_SESSION['user'])) {
+//   header("Location: /fitcoControl/index.php");
+// }
+//
+//   $root = $_SERVER['DOCUMENT_ROOT'];
+//   require $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
   // require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
 ?>
 
 
 
-<div class="clt_usr  mr-5 mt-5">
+<!-- <div class="clt_usr  mr-5 mt-5">
   <a class="rotate-link consultar ancla" style="font-size: larger;" accion="eproduccion" status="cerrado">
     <img src="/fitcoControl/Resources/iconos/pencil1.svg" class="icon rotate-icon" style="width:30px;">
     <span class="spanP">Editar Producción</span>
@@ -110,11 +110,11 @@ if (!isset($_SESSION['user'])) {
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
 
 <?php
-  $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/fitcoControl/Ubicaciones/Modales/Produccion/EditarProduccion.php';
-  require $root . '/fitcoControl/Resources/PHP/Programacion/pieProgramacion.php';
+  // $root = $_SERVER['DOCUMENT_ROOT'];
+  // require $root . '/fitcoControl/Ubicaciones/Modales/Produccion/EditarProduccion.php';
+  // require $root . '/fitcoControl/Resources/PHP/Programacion/pieProgramacion.php';
 ?>

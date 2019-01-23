@@ -11,7 +11,7 @@ if ($admin || $pro_pgVer == 1  || $pro_miVer == 1 || $pro_pdver == 1 || $pro_cor
 ?>
 
 <div class="container mt-100">
-  <div class="row  mb-5 mt-5">
+  <div class="row  mb-5 mt-5" style="margin-bottom:100px!important">
   <?php if ($pro_pgVer == 1 || $pro_corVerCal == 1 || $pro_miVer == 1 || $mat_ver == 1 || $dis_ver == 1 ||  $admin): ?>
     <div class="col-md-4">
       <div class="card">
@@ -25,7 +25,7 @@ if ($admin || $pro_pgVer == 1  || $pro_miVer == 1 || $pro_pdver == 1 || $pro_cor
 
       <div id="dropProgram" class="mt-3 text-left" style="display:none">
           <?php if ($pro_pgVer == 1 || $admin): ?>
-          <a href="/fitcoControl/Ubicaciones/Produccion/CalendarioProgram.php" class="linkboton btn-block p-2">Calendario de Producción
+          <a href="/fitcoControl/Ubicaciones/Programacion/Calendario.php" class="linkboton btn-block p-2">Calendario de Producción
             <span class="a top"></span>
           </a>
         <?php else: ?>
@@ -125,7 +125,7 @@ if ($admin || $pro_pgVer == 1  || $pro_miVer == 1 || $pro_pdver == 1 || $pro_cor
 
 
         <?php if ($pro_liVer == 1 || $admin): ?>
-          <a href="/fitcoControl/Ubicaciones/Lineas/pantalla.php" class="linkboton btn-block p-2">Lineas
+          <a href="/fitcoControl/Ubicaciones/Lineas1/lineas.php" class="linkboton btn-block p-2">Lineas
             <span class="a top"></span>
           </a>
         <?php else: ?>
@@ -171,20 +171,26 @@ if ($admin || $pro_pgVer == 1  || $pro_miVer == 1 || $pro_pdver == 1 || $pro_cor
     <?php endif; ?>
 
 
-<?php else: ?>
-  <div id='SinRegistros' class='container-fluid pantallaRegistros'>
-    <div class='tituloSinRegistros' style="font-size:25px; color:red">SOLICITA PERMISO PARA ENTRAR EN ESTA SECCIÓN</div>
+    <?php else: ?>
+      <div id='SinRegistros' class='container-fluid pantallaRegistros'>
+        <div class='tituloSinRegistros' style="font-size:25px; color:red">SOLICITA PERMISO PARA ENTRAR EN ESTA SECCIÓN</div>
+      </div>
+    <?php endif;?>
+
   </div>
-<?php endif;?>
+</div>
 
 
 <footer class="footer">
-  <li class="nav-item"><a  class="bn noborder w-100" href="/fitcoControl/Resources/PHP/Login/CerrarSesion.php" >
+  <li class="nav-item"><a  class="bn noborder w-100" href="/fitcoControl/Resources/PHP/Login/CerrarSesion.php">
     <div class="row justify-content-center">
       <div class="col-md-3">
         Cerrar <img class="m-3" style="width:30px" src="/fitcoControl/Resources/iconos/001-close-1.svg"> Sesión</a>
       </div>
     </div>
   </li>
-  <script type="text/javascript" src="/fitcoControl/Resources/js/MostrarDivsAgregar.js"></script>
+
+
+  <script src="/fitcoControl/Resources/js/MostrarDivsAgregar.js"></script>
+
 </footer>

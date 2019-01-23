@@ -1,3 +1,5 @@
+
+
 <footer class="footer">
   <li class="nav-item">
     <a  class="bn noborder w-100" href="/fitcoControl/Resources/PHP/Login/CerrarSesion.php" >
@@ -11,5 +13,13 @@
 
   <script src="/fitcoControl/Resources/js/Inputs.js"></script>
   <script src="/fitcoControl/Resources/js/MostrarDivsAgregar.js"></script>
-  <script src="/fitcoControl/Resources/js/Produccion/programacionProduccion.js"></script>
+  
+  <script src="/fitcoControl/Ubicaciones/Cobranza/js/depCobranza.js"></script>
+  <link href="/fitcoControl/Resources/c3/c3.css" rel="stylesheet">
+  <script src="/fitcoControl/Resources/c3/d3.v5.min.js"></script>
+  <script src="/fitcoControl/Resources/c3/c3.min.js"></script>
+  <script src="/fitcoControl/Resources/js/table-fetch-plugin.js"></script>
+  <script src="/fitcoControl/Resources/js/popup-list-plugin.js"></script>
+  <script src="/fitcoControl/Resources/js/table-fetch-plugin.js"></script>
+
 </footer>

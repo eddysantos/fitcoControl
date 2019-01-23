@@ -1,14 +1,14 @@
 <?php
-session_start();
-
-if (!isset($_SESSION['user'])) {
-  header("Location: /fitcoControl/index.php");
-}
-$root = $_SERVER['DOCUMENT_ROOT'];
-require  $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
+// session_start();
+//
+// if (!isset($_SESSION['user'])) {
+//   header("Location: /fitcoControl/index.php");
+// }
+// $root = $_SERVER['DOCUMENT_ROOT'];
+// require  $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
 ?>
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
@@ -25,12 +25,12 @@ require  $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
         <div class="col-9"><div id="CalendarioWeb"></div></div>
         <div class="col"></div>
       </div>
-    </div>
+    </div> -->
 
     <?php
-      require $root . '/fitcoControl/Ubicaciones/Modales/Produccion/ModalCalendario.php';
+      // require $root . '/fitcoControl/Ubicaciones/Produccion/modales/ModalCalendario.php';
      ?>
-  </body>
+  <!-- </body>
   <footer class="footerCalendar">
     <li class="nav-item">
       <a  class="bn noborder w-100" href="/fitcoControl/Resources/PHP/Login/CerrarSesion.php" >
@@ -41,11 +41,11 @@ require  $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
       </div>
     </li>
 
-    <script src="/fitcoControl/Resources/js/Produccion/CalendarioProduccion.js"></script>
+    <script src="/fitcoControl/Ubicaciones/Produccion/js/CalendarioProduccion.js"></script>
     <script src="/fitcoControl/Resources/js/Inputs.js"></script>
     <script src="/fitcoControl/Resources/js/MostrarDivsAgregar.js"></script>
-    <script src="/fitcoControl/Resources/js/Produccion/programacionProduccion.js"></script>
+    <script src="/fitcoControl/Ubicaciones/Produccion/js/programacionProduccion.js"></script>
     <script src="/fitcoControl/Resources/js/popup-list-plugin.js"></script>
     <script src="/fitcoControl/Resources/js/table-fetch-plugin.js"></script>
   </footer>
-</html>
+</html> -->
