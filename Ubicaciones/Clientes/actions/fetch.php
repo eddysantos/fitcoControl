@@ -6,13 +6,12 @@ require $root . '/fitcoControl/Resources/PHP/utilities/initialScript.php';
 $system_callback = [];
 $data = $_POST;
 
-
-$query = "SELECT * FROM ct_linea WHERE pk_linea = ?";
+$query = "SELECT * FROM ct_cliente WHERE pk_cliente = ?";
 
 $stmt = $conn->prepare($query);
 if (!($stmt)) {
   $system_callback['code'] = "500";
-  $system_callback['message'] = "Error en la preparacion del query [$conn->errno]: $conn->error";
+  $system_callback['message'] = "Error during query prepare [$conn->errno]: $conn->error";
   exit_script($system_callback);
 }
 
@@ -25,7 +24,7 @@ if (!($stmt)) {
 
 if (!($stmt->execute())) {
   $system_callback['code'] = "500";
-  $system_callback['message'] = "Error en la ejecucion [$stmt->errno]: $stmt->error";
+  $system_callback['message'] = "Error during query execution [$stmt->errno]: $stmt->error";
   exit_script($system_callback);
 }
 
