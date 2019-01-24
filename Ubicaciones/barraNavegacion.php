@@ -76,7 +76,7 @@ $dejecutivo = $_SESSION['user']['dejecutivo'];
     <link rel="stylesheet" href="/fitcoControl/Resources/css/sweetalert.css">
     <link rel="stylesheet" href="/fitcoControl/Resources/bootstrap/alertifyjs/css/alertify.min.css">
     <link rel="stylesheet" href="/fitcoControl/Resources/bootstrap/alertifyjs/css/themes/default.css">
-
+    <link rel="icon" href="/fitcoControl/Resources/iconos/fit.ico">
 
 
 

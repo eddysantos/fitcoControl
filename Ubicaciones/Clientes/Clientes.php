@@ -11,11 +11,11 @@
 <?php if ($c_ver == 1 || $admin): ?>
 <div class="container-fluid pl-75 pr-57">
   <div class="row clt_usr mt-4">
-    <div class="text-left alert alert-info w-75" role="alert" >
+    <!-- <div class="text-left alert alert-info w-75" role="alert" >
       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       <strong>Nota: </strong> La función de esta sección es llevar el registro de los datos de nuestros clientes para mayor accesibilidad, en el icono <img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='iconoNota'> se podra editar la información del cliente en caso de que asi se requiera.
       En el icono <img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='iconoNota'> se eliminaría la información del cliente de manera permanente.
-    </div>
+    </div> -->
 
 
     <div class="col align-self-end">
@@ -24,24 +24,51 @@
         <span class="spanA">Agregar Cliente</span>
       </a>
 
-      <a class="rotate-link buscador ancla" accion="busc" status="cerrado">
+      <!-- <a class="rotate-link buscador ancla" accion="busc" status="cerrado">
         <img src="/fitcoControl/Resources/iconos/search.svg" class="icon rotate-icon" style="width:30px">
         <span class="spanB"><input class="buscar" type="text" name="busqueda"  id="busqueda" placeholder="Buscar"></span>
+      </a> -->
+
+
+      <a class="rotate-link buscador ancla"  accion="busc" status="cerrado">
+        <img src="/fitcoControl/Resources/iconos/search.svg" class="icon rotate-icon" style="width:30px">
+        <span class="spanB"><input class="effect-17 real-time-search" type="text" id="busqueda" name="search"  placeholder="Buscar..." table-body="#tablaClientes" action="mostrar"></span>
       </a>
     </div>
   </div>
 </div>
 
-  <div class="container-fluid mt-4">
+  <!-- <div class="container-fluid mt-4">
     <section id="mostrarClientes"></section>
-  </div>
+  </div> -->
+
+
+  <!--MOSTRAR TABLA  -->
+  <form id='Eclientes' class='page p-0'>
+    <table class='table table-hover fixed-table'>
+      <thead>
+        <tr class='row m-0 encabezado'>
+          <td class='col-md-1'></td>
+          <td class='col-md-3 text-center'><h3>CLIENTE</h3></td>
+          <td class='col-md-4 text-center'><h3>CORREO / CONTACTO</h3></td>
+          <td class='col-md-2 text-center'><h3>TELEFONO</h3></td>
+          <td class='col-md-2'></td>
+        </tr>
+      </thead>
+      <tbody id="tablaClientes" class="font12">
+        <tr>
+          <td colspan="9">No hay resultados</td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
 
   <form  id="NuevoCliente" class="agregarnuevo" style="display:none;margin-bottom:80px">
     <table class="table">
       <tbody id="AgregarCliente">
         <tr class="row m20">
           <td class="col-md-12 input-effect p-0">
-            <input type="hidden" name="clt_id">
+            <!-- <input type="hidden" name="clt_id"> -->
             <input id="clt_nombre" class="effect-17" type="text" required>
               <label>Nombre Cliente</label>
               <span class="focus-border"></span>
@@ -122,7 +149,7 @@
         </tr>
         <tr class="row justify-content-center">
           <td class="col-md-4">
-            <button type="submit" id="NuevoRegistro" class="btnsub btn boton btn-block">AGREGAR</button>
+            <button type="submit" id="agregar" class="btnsub btn boton btn-block">AGREGAR</button>
           </td>
         </tr>
       </tbody>
@@ -141,5 +168,5 @@
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
   require $root . '/fitcoControl/Ubicaciones/Clientes/modales/EditarCliente.php';
-  require $root . '/fitcoControl/Resources/PHP/Clientes/pieClientes.php';
+  require $root . '/fitcoControl/Ubicaciones/Clientes/actions/pieClientes.php';
 ?>

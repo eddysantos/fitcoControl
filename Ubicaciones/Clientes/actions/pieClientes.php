@@ -9,7 +9,10 @@
     </div>
   </li>
 
-  <script src="/fitcoControl/Resources/js/Clientes/Cliente.js"></script>
+  <script src="/fitcoControl/Ubicaciones/Clientes/js/Cliente.js"></script>
+  <script src="/fitcoControl/Resources/js/table-fetch-plugin.js"></script>
+  <script src="/fitcoControl/Resources/js/popup-list-plugin.js"></script>
+  <script src="/fitcoControl/Resources/js/table-fetch-plugin.js"></script>
   <script src="/fitcoControl/Resources/js/Inputs.js"></script>
   <script src="/fitcoControl/Resources/js/MostrarDivsAgregar.js"></script>
 </footer>
