@@ -136,7 +136,7 @@
                 <input type="checkbox" class="check" id="priv_pro_pgEditar">Editar / Eliminar
               </td>
 
-<!--pendiente  -->
+
               <td class="col-md-6">
                 <input type="checkbox" class="check" id="priv_pro_corVerCal">Ver y Agregar Datos Calendario Corte
               </td>
@@ -172,6 +172,15 @@
               </td>
               <td class="col-md-6">
                 <input type="checkbox" class="check" id="priv_pro_liEditar">Editar / Eliminar Lineas
+              </td>
+            </tr>
+
+            <tr class="row">
+              <td class="col-md-6">
+                <input type="checkbox" class="check" id="priv_pro_invVer">Ver y Agregar Datos Inventario
+              </td>
+              <td class="col-md-6">
+                <input type="checkbox" class="check" id="priv_pro_invEditar">Editar Inventario
               </td>
             </tr>
 

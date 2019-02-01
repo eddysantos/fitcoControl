@@ -39,6 +39,9 @@ $pro_pdver = $_SESSION['user']['pro_pdVer'];
 $pro_corVer = $_SESSION['user']['pro_corVer'];
 //**************** LINEAS
 $pro_liVer = $_SESSION['user']['pro_liVer'];
+//**************** INVENTARIO
+$pro_invVer = $_SESSION['user']['pro_invVer'];
+
 //**************** DISEÑO
 $dis_ver = $_SESSION['user']['dis_ver'];
 //**************** DISEÑO
@@ -60,6 +63,8 @@ $adminGlobal = $_SESSION['user']['correoUsuario']== "epinales@prolog-mex.com";
 
 $admonGlobal = $_SESSION['user']['admonGlobal'];
 $dejecutivo = $_SESSION['user']['dejecutivo'];
+date_default_timezone_set('America/Mexico_City');
+
 ?>
   <head>
     <meta charset="utf-8">
@@ -127,7 +132,7 @@ $dejecutivo = $_SESSION['user']['dejecutivo'];
         <li class="nav-item"><a class="bn bloqueo w-95">TESORERÍA <span class="barra">DIVISIÓN 3</span></a></li>
       <?php endif; ?>
 
-      <?php if ($admin || $pro_pgVer ==1 || $pro_miVer == 1 || $pro_pdver == 1 || $pro_corVer ==1 || $pro_liVer == 1  || $en_ver ==1 || $dis_ver == 1 || $mat_ver == 1 || $pro_corVerCal == 1): ?>
+      <?php if ($admin || $pro_pgVer ==1 || $pro_miVer == 1 || $pro_pdver == 1 || $pro_corVer ==1 || $pro_liVer == 1  || $en_ver ==1 || $dis_ver == 1 || $mat_ver == 1 || $pro_corVerCal == 1 || $pro_invVer == 1): ?>
         <!-- <li class="nav-item">
           <a class="bn" href="/fitcoControl/Ubicaciones/Produccion/produccion.php">PRODUCCIÓN <span class="barra">DIVISIÓN 4</span>
           </a>

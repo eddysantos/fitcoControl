@@ -33,7 +33,6 @@ $tr_ver = $_SESSION['user']['tr_ver'];
 
 // DIVISION 4 //
 //**************** PROGRAMACIÓN
-//**************** PROGRAMACIÓN
 $pro_pgVer = $_SESSION['user']['pro_pgVer'];
 $pro_corVerCal = $_SESSION['user']['pro_corVerCal'];
 //**************** MANTENIMIENTO E INVERSIONES
@@ -44,6 +43,9 @@ $pro_pdver = $_SESSION['user']['pro_pdVer'];
 $pro_corVer = $_SESSION['user']['pro_corVer'];
 //**************** LINEAS
 $pro_liVer = $_SESSION['user']['pro_liVer'];
+
+//**************** INVENTARIO
+$pro_invVer = $_SESSION['user']['pro_invVer'];
 //**************** DISEÑO
 $dis_ver = $_SESSION['user']['dis_ver'];
 //**************** DISEÑO
@@ -73,6 +75,8 @@ $ve_ver = $_SESSION['user']['ve_ver'];
   $admin = $_SESSION['user']['privilegiosUsuario']== "Administrador";
   $admonGlobal = $_SESSION['user']['admonGlobal'];
   $dejecutivo = $_SESSION['user']['dejecutivo'];
+  date_default_timezone_set('America/Mexico_City');
+
 ?>
 
 <!DOCTYPE html>
@@ -130,7 +134,7 @@ $ve_ver = $_SESSION['user']['ve_ver'];
       <?php endif; ?>
 
 
-      <?php if ($admin || $pro_pgVer ==1 || $pro_miVer == 1 || $pro_pdver == 1 || $pro_corVer == 1 || $pro_liVer == 1  || $en_ver == 1 || $dis_ver == 1 || $mat_ver == 1 || $pro_corVerCal == 1): ?>
+      <?php if ($admin || $pro_pgVer ==1 || $pro_miVer == 1 || $pro_pdver == 1 || $pro_corVer == 1 || $pro_liVer == 1  || $en_ver == 1 || $dis_ver == 1 || $mat_ver == 1 || $pro_corVerCal == 1 || $pro_invVer == 1): ?>
 
         <li class="nav-item">
           <!-- <a href="/fitcoControl/Ubicaciones/Produccion/produccion.php" class="bn transicion">PRODUCCIÓN<span class="barra gris">DIVISION 4</span></a> -->

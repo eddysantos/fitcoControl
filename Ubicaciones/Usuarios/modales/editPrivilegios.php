@@ -180,6 +180,15 @@
               </td>
             </tr>
 
+            <tr class="row">
+              <td class="col-md-6">
+                <input type="checkbox" class="check" id="pro_invVer">Ver y Agregar Datos Inventario
+              </td>
+              <td class="col-md-6">
+                <input type="checkbox" class="check" id="pro_invEditar">Editar Inventario
+              </td>
+            </tr>
+
 
             <tr class="row">
               <td class="col-md-12 text-left privsub">---- Mantenimineto e Inversiones</td>

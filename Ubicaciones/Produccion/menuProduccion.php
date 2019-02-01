@@ -7,7 +7,7 @@ if (!isset($_SESSION['user'])) {
 $root = $_SERVER['DOCUMENT_ROOT'];
 require  $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
 
-if ($admin || $pro_pgVer == 1  || $pro_miVer == 1 || $pro_pdver == 1 || $pro_corVer == 1 || $pro_liVer == 1 || $en_ver == 1 || $dis_ver == 1 || $mat_ver == 1 || $pro_corVerCal == 1):
+if ($admin || $pro_pgVer == 1  || $pro_miVer == 1 || $pro_pdver == 1 || $pro_corVer == 1 || $pro_liVer == 1 || $en_ver == 1 || $dis_ver == 1 || $mat_ver == 1 || $pro_corVerCal == 1 || $pro_invVer == 1):
 ?>
 
 <div class="container mt-100">
@@ -91,7 +91,7 @@ if ($admin || $pro_pgVer == 1  || $pro_miVer == 1 || $pro_pdver == 1 || $pro_cor
   <?php endif; ?>
 
 
-  <?php if ($pro_pdver == 1 || $pro_corVer == 1 || $pro_liVer == 1 || $admin): ?>
+  <?php if ($pro_pdver == 1 || $pro_corVer == 1 || $pro_liVer == 1 || $admin || $pro_invVer == 1): ?>
     <div class="col-md-4">
       <div class="card">
         <img class="card-img-top w-25 align-self-center m-5" src="/fitcoControl/Resources/iconos/camisarojo.svg">
@@ -129,10 +129,22 @@ if ($admin || $pro_pgVer == 1  || $pro_miVer == 1 || $pro_pdver == 1 || $pro_cor
             <span class="a top"></span>
           </a>
         <?php else: ?>
-          <a href="#" class="bn bloqueo linkboton btn-block p-2">Sección de Corte
+          <a href="#" class="bn bloqueo linkboton btn-block p-2">Lineas
             <span class="a top"></span>
           </a>
         <?php endif; ?>
+
+        <?php if ($admin || $pro_invVer == 1): ?>
+          <a href="/fitcoControl/Ubicaciones/inventario/inventario.php" class="linkboton btn-block p-2">Inventario
+            <span class="top"></span>
+          </a>
+        <?php else: ?>
+          <a href="#" class="bn bloqueo linkboton btn-block p-2">Inventario
+            <span class="top"></span>
+          </a>
+        <?php endif; ?>
+
+
       </div>
     </div>
 

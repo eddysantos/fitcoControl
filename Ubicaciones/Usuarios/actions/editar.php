@@ -51,6 +51,8 @@ $dis_ver = trim($_POST['dis_ver']);
 $dis_editar = trim($_POST['dis_editar']);
 $mat_ver = trim($_POST['mat_ver']);
 $mat_editar = trim($_POST['mat_editar']);
+$pro_invVer = trim($_POST['pro_invVer']);
+$pro_invEditar = trim($_POST['pro_invEditar']);
 
 
 $query = "UPDATE usuarios_1
@@ -100,7 +102,9 @@ pro_corEditarCal =?,
 dis_ver = ?,
 dis_editar = ?,
 mat_ver =?,
-mat_editar = ?
+mat_editar = ?,
+pro_invVer =?,
+pro_invEditar = ?
 WHERE pk_usuario = ?";
 
 
@@ -111,7 +115,7 @@ if (!($stmt)) {
   exit_script($system_callback);
 }
 
-$stmt->bind_param('ssssssssssssssssssssssssssssssssssssssssssssssss',$nom,
+$stmt->bind_param('ssssssssssssssssssssssssssssssssssssssssssssssssss',$nom,
                                                                      $ape,
                                                                      $correo,
                                                                      $dep,
@@ -158,6 +162,8 @@ $stmt->bind_param('ssssssssssssssssssssssssssssssssssssssssssssssss',$nom,
                                                                      $dis_editar,
                                                                      $mat_ver,
                                                                      $mat_editar,
+                                                                     $pro_invVer,
+                                                                     $pro_invEditar,
                                                                      $id);
 if (!($stmt)) {
   $system_callback['code'] = "500";

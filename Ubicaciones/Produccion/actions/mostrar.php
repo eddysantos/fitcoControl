@@ -19,7 +19,7 @@ p.piezasRequeridas AS piezas,
 p.color AS color,
 SUM(pr.cantidadProduccion) AS total
 
-FROM ct_program p
+FROM ct_program_copy1 p
 
 LEFT JOIN ct_produccion pr ON p.pk_programacion = pr.fk_programacion
 WHERE (title LIKE ?)  OR (end LIKE ?)
