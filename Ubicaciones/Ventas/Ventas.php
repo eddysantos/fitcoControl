@@ -139,6 +139,6 @@ if (!isset($_SESSION['user'])) {
 
 <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/fitcoControl/Ubicaciones/Ventas1/actions/pieVentas.php';
-  require $root . '/fitcoControl/Ubicaciones/Ventas1/modales/Ventas.php';
+  require $root . '/fitcoControl/Ubicaciones/Ventas/actions/pieVentas.php';
+  require $root . '/fitcoControl/Ubicaciones/Ventas/modales/Ventas.php';
 ?>

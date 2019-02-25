@@ -70,7 +70,7 @@ date_default_timezone_set('America/Mexico_City');
     <meta charset="utf-8">
     <title>Fit&amp;Co Solutions</title>
     <link rel="stylesheet" href="/fitcoControl/Resources/bootstrap/css/reset.css">
-    <!-- <link rel="stylesheet" href="/fitcoControl/Resources/bootstrap/css/bootstrap-toggle.css"> -->
+    <link rel="stylesheet" href="/fitcoControl/Resources/bootstrap/css/bootstrap-toggle.css">
 
     <link rel="stylesheet" href="/fitcoControl/Resources/css/barranavegacion.css">
     <link rel="stylesheet" href="/fitcoControl/Resources/fontAwesome/css/font-awesome.min.css">
@@ -109,8 +109,8 @@ date_default_timezone_set('America/Mexico_City');
     </script>
   </head>
 
-  <!-- <div id="nav_wrap" class="sticky" style="background-color:black"> -->
-<div id="nav_wrap" class="sticky">
+  <div id="nav_wrap" class="sticky" style="background-color:black">
+<!-- <div id="nav_wrap" class="sticky"> -->
   <nav class="nav_animate">
     <ul class="nav nav-pills nav-fill">
 
@@ -126,11 +126,15 @@ date_default_timezone_set('America/Mexico_City');
         <li class="nav-item"><a class="bn bloqueo w-95">CLIENTES <span class="barra">DIVISIÓN 2</span></a></li>
       <?php endif; ?>
 
-      <?php if ($admin || $tc_ver ==1 || $tcxp_ver == 1 || $tm_ver ==1 || $tr_ver ==1): ?>
+
+
+      <?php if ($admin || $tc_ver ==1 || $tcxp_ver == 1 || $tm_ver ==1 || $tr_ver ==1 || $pro_miVer == 1): ?>
         <li class="nav-item"><a class="bn" href="/fitcoControl/Ubicaciones/Cobranza/menuTesoreria.php">TESORERÍA <span class="barra">DIVISIÓN 3</span></a></li>
       <?php else: ?>
         <li class="nav-item"><a class="bn bloqueo w-95">TESORERÍA <span class="barra">DIVISIÓN 3</span></a></li>
       <?php endif; ?>
+
+
 
       <?php if ($admin || $pro_pgVer ==1 || $pro_miVer == 1 || $pro_pdver == 1 || $pro_corVer ==1 || $pro_liVer == 1  || $en_ver ==1 || $dis_ver == 1 || $mat_ver == 1 || $pro_corVerCal == 1 || $pro_invVer == 1): ?>
         <!-- <li class="nav-item">
@@ -151,7 +155,7 @@ date_default_timezone_set('America/Mexico_City');
       <?php endif; ?>
 
       <?php if ($admin || $ve_ver == 1): ?>
-        <li class="nav-item"><a class="bn" href="/fitcoControl/Ubicaciones/Ventas1/Ventas.php">VENTAS <span class="barra">DIVISIÓN 6</span></a></li>
+        <li class="nav-item"><a class="bn" href="/fitcoControl/Ubicaciones/Ventas/menuVentas.php">VENTAS <span class="barra">DIVISIÓN 6</span></a></li>
         <!-- <li class="nav-item"><a class="bn" href="/fitcoControl/Ubicaciones/Ventas/Ventas.php">VENTAS <span class="barra">DIVISIÓN 6</span></a></li> -->
       <?php else: ?>
         <li class="nav-item"><a class="bn bloqueo w-95">VENTAS <span class="barra">DIVISIÓN 6</span></a></li>

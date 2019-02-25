@@ -123,7 +123,7 @@ $ve_ver = $_SESSION['user']['ve_ver'];
       <?php endif; ?>
 
 
-      <?php if ($admin || $tc_ver ==1 || $tcxp_ver == 1 || $tm_ver ==1 || $tr_ver ==1): ?>
+      <?php if ($admin || $tc_ver ==1 || $tcxp_ver == 1 || $tm_ver ==1 || $tr_ver ==1 || $pro_miVer == 1): ?>
         <li class="nav-item">
           <a href="/fitcoControl/Ubicaciones/Cobranza/menuTesoreria.php" class="bn transicion">TESORERÍA<span class="barra gris">DIVISION 3</span></a>
         </li>
@@ -155,7 +155,7 @@ $ve_ver = $_SESSION['user']['ve_ver'];
 
       <?php if ($admin || $ve_ver == 1): ?>
         <li class="nav-item">
-          <a href="/fitcoControl/Ubicaciones/Ventas1/Ventas.php" class="bn transicion">VENTAS<span class="barra gris">DIVISION 6</span></a>
+          <a href="/fitcoControl/Ubicaciones/Ventas/menuVentas.php" class="bn transicion">VENTAS<span class="barra gris">DIVISION 6</span></a>
           <!-- <a href="/fitcoControl/Ubicaciones/Ventas/Ventas.php" class="bn transicion">VENTAS<span class="barra gris">DIVISION 6</span></a> -->
         </li>
       <?php else: ?>

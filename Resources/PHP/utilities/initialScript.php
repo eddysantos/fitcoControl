@@ -1,6 +1,7 @@
 <?php
 
 error_reporting(E_ALL);
+// error_reporting(E_ALL ^ E_NOTICE);
 
 include($root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php");
 date_default_timezone_set('America/Monterrey');
