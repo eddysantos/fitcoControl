@@ -40,8 +40,11 @@ if ($rslt->num_rows == 0) {
 }
 
 while ($row = $rslt->fetch_assoc()) {
+  $pk_empleado = utf8_encode($row['pk_empleado']);
+  $nombre = utf8_encode($row['nombre']);
+  $apellido = utf8_encode($row['apellido']);
   $system_callback['data'] .=
-  "<p db-id='$row[pk_empleado]'>$row[nombre] $row[apellido]</p>";
+  "<p db-id='$pk_empleado'>$nombre $apellido</p>";
 }
 
 $system_callback['code'] = 1;

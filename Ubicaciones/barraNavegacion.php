@@ -39,6 +39,9 @@ $pro_pdver = $_SESSION['user']['pro_pdVer'];
 $pro_corVer = $_SESSION['user']['pro_corVer'];
 //**************** LINEAS
 $pro_liVer = $_SESSION['user']['pro_liVer'];
+//**************** INVENTARIO
+$pro_invVer = $_SESSION['user']['pro_invVer'];
+
 //**************** DISEÑO
 $dis_ver = $_SESSION['user']['dis_ver'];
 //**************** DISEÑO
@@ -56,12 +59,18 @@ $cc_ver = $_SESSION['user']['cc_ver'];
 $ve_ver = $_SESSION['user']['ve_ver'];
 
 $admin = $_SESSION['user']['privilegiosUsuario']== "Administrador";
+$adminGlobal = $_SESSION['user']['correoUsuario']== "epinales@prolog-mex.com";
+
+$admonGlobal = $_SESSION['user']['admonGlobal'];
+$dejecutivo = $_SESSION['user']['dejecutivo'];
+date_default_timezone_set('America/Mexico_City');
+
 ?>
   <head>
     <meta charset="utf-8">
     <title>Fit&amp;Co Solutions</title>
     <link rel="stylesheet" href="/fitcoControl/Resources/bootstrap/css/reset.css">
-    <!-- <link rel="stylesheet" href="/fitcoControl/Resources/bootstrap/css/bootstrap-toggle.css"> -->
+    <link rel="stylesheet" href="/fitcoControl/Resources/bootstrap/css/bootstrap-toggle.css">
 
     <link rel="stylesheet" href="/fitcoControl/Resources/css/barranavegacion.css">
     <link rel="stylesheet" href="/fitcoControl/Resources/fontAwesome/css/font-awesome.min.css">
@@ -72,7 +81,7 @@ $admin = $_SESSION['user']['privilegiosUsuario']== "Administrador";
     <link rel="stylesheet" href="/fitcoControl/Resources/css/sweetalert.css">
     <link rel="stylesheet" href="/fitcoControl/Resources/bootstrap/alertifyjs/css/alertify.min.css">
     <link rel="stylesheet" href="/fitcoControl/Resources/bootstrap/alertifyjs/css/themes/default.css">
-
+    <link rel="icon" href="/fitcoControl/Resources/iconos/fit.ico">
 
 
 
@@ -85,7 +94,9 @@ $admin = $_SESSION['user']['privilegiosUsuario']== "Administrador";
     <script src="/fitcoControl/Resources/jquery/tether.min.js"></script>
     <script src="/fitcoControl/Resources/librerias/dataTables/jquery.DataTable.min.js"></script>
     <script src="/fitcoControl/Resources/librerias/dataTables/dataTables.bootstrap4.min.js"></script>
+
     <script type="text/javascript">
+
       $(document).ready(function(){
         $('.importeClass').keyup(function (){
           this.value = (this.value + '').replace(/[^0-9-.]/g, '');
@@ -98,13 +109,13 @@ $admin = $_SESSION['user']['privilegiosUsuario']== "Administrador";
     </script>
   </head>
 
-  <!-- <div id="nav_wrap" class="sticky" style="background-color:black"> -->
-<div id="nav_wrap" class="sticky">
+  <div id="nav_wrap" class="sticky" style="background-color:black">
+<!-- <div id="nav_wrap" class="sticky"> -->
   <nav class="nav_animate">
     <ul class="nav nav-pills nav-fill">
 
       <?php if ($admin || $e_ventas == 1 || $e_tesoreria == 1 || $e_produc == 1 || $e_rhVer == 1 || $e_usVer == 1): ?>
-        <li class="nav-item"><a class="bn" href="/fitcoControl/Ubicaciones/Comunicaciones/pagina.php">COMUNICACION <span class="barra">DIVISIÓN 1</span></a></li>
+        <li class="nav-item"><a class="bn" href="/fitcoControl/Ubicaciones/Comunicaciones/menuComunicaciones.php">COMUNICACION <span class="barra">DIVISIÓN 1</span></a></li>
       <?php else: ?>
         <li class="nav-item"><a class="bn bloqueo w-95">COMUNICACION <span class="barra">DIVISIÓN 1</span></a></li>
       <?php endif;?>
@@ -115,14 +126,22 @@ $admin = $_SESSION['user']['privilegiosUsuario']== "Administrador";
         <li class="nav-item"><a class="bn bloqueo w-95">CLIENTES <span class="barra">DIVISIÓN 2</span></a></li>
       <?php endif; ?>
 
-      <?php if ($admin || $tc_ver ==1 || $tcxp_ver == 1 || $tm_ver ==1 || $tr_ver ==1): ?>
-        <li class="nav-item"><a class="bn" href="/fitcoControl/Ubicaciones/Cobranza/tesoreria.php">TESORERÍA <span class="barra">DIVISIÓN 3</span></a></li>
+
+
+      <?php if ($admin || $tc_ver ==1 || $tcxp_ver == 1 || $tm_ver ==1 || $tr_ver ==1 || $pro_miVer == 1): ?>
+        <li class="nav-item"><a class="bn" href="/fitcoControl/Ubicaciones/Cobranza/menuTesoreria.php">TESORERÍA <span class="barra">DIVISIÓN 3</span></a></li>
       <?php else: ?>
         <li class="nav-item"><a class="bn bloqueo w-95">TESORERÍA <span class="barra">DIVISIÓN 3</span></a></li>
       <?php endif; ?>
 
-      <?php if ($admin || $pro_pgVer ==1 || $pro_miVer == 1 || $pro_pdver == 1 || $pro_corVer ==1 || $pro_liVer == 1  || $en_ver ==1 || $dis_ver == 1 || $mat_ver == 1 || $pro_corVerCal == 1): ?>
-        <li class="nav-item"><a class="bn" href="/fitcoControl/Ubicaciones/Produccion/produccion.php">PRODUCCIÓN <span class="barra">DIVISIÓN 4</span></a></li>
+
+
+      <?php if ($admin || $pro_pgVer ==1 || $pro_miVer == 1 || $pro_pdver == 1 || $pro_corVer ==1 || $pro_liVer == 1  || $en_ver ==1 || $dis_ver == 1 || $mat_ver == 1 || $pro_corVerCal == 1 || $pro_invVer == 1): ?>
+        <!-- <li class="nav-item">
+          <a class="bn" href="/fitcoControl/Ubicaciones/Produccion/produccion.php">PRODUCCIÓN <span class="barra">DIVISIÓN 4</span>
+          </a>
+        </li> -->
+        <li class="nav-item"><a class="bn" href="/fitcoControl/Ubicaciones/Produccion/menuProduccion.php">PRODUCCIÓN <span class="barra">DIVISIÓN 4</span></a></li>
       <?php else: ?>
         <li class="nav-item"><a class="bn bloqueo w-95">PRODUCCIÓN <span class="barra">DIVISIÓN 4</span></a></li>
       <?php endif; ?>
@@ -136,7 +155,8 @@ $admin = $_SESSION['user']['privilegiosUsuario']== "Administrador";
       <?php endif; ?>
 
       <?php if ($admin || $ve_ver == 1): ?>
-        <li class="nav-item"><a class="bn" href="/fitcoControl/Ubicaciones/Ventas/Ventas.php">VENTAS <span class="barra">DIVISIÓN 6</span></a></li>
+        <li class="nav-item"><a class="bn" href="/fitcoControl/Ubicaciones/Ventas/menuVentas.php">VENTAS <span class="barra">DIVISIÓN 6</span></a></li>
+        <!-- <li class="nav-item"><a class="bn" href="/fitcoControl/Ubicaciones/Ventas/Ventas.php">VENTAS <span class="barra">DIVISIÓN 6</span></a></li> -->
       <?php else: ?>
         <li class="nav-item"><a class="bn bloqueo w-95">VENTAS <span class="barra">DIVISIÓN 6</span></a></li>
       <?php endif; ?>

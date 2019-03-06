@@ -54,7 +54,8 @@ input:-webkit-autofill {
     position: absolute;
     left: 2%;
     right: 2%;
-    top: 14%;
+    top: 4%;
+    margin-top: 130px;
     background-color: rgba(255, 255, 255, 0.4);
     border-radius: 8px;
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.7);
@@ -582,6 +583,13 @@ div.submenuMed {
 .font12{
   font-size: 13px;
 }
+.font14{
+  font-size: 14px!important;
+}
+
+.font16{
+  font-size: 16px!important;
+}
 .priv{
   background-color: rgba(47, 89, 119, 0.63);
   color: white;
@@ -648,6 +656,16 @@ div.submenuMed {
 
 /* Hide default HTML checkbox */
 .switch input {display:none;}
+
+.switch2 {
+  position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+}
+
+/* Hide default HTML checkbox */
+.switch2 input {display:none;}
 
 /* The slider */
 .slider {
@@ -749,4 +767,101 @@ input:checked + .slider:before {
   height: 30;
   letter-spacing:3px;
   color: rgba(62, 109, 140, 0.85);
+}
+
+.read-only{
+ background: #ccc!important;
+}
+
+.sub-grafica{
+  margin-top: 8rem!important;
+  text-align: center;
+  margin: 20px;
+  background: rgba(62, 109, 140, 0.25);
+  padding: 5px;
+}
+
+
+.sub-gris{
+  text-align: center;
+  background: rgba(0, 0, 0, .15);
+  color: white;
+}
+
+.sub-azul{
+  text-align: center;
+  background: rgba(62, 109, 140, 0.25);
+  color: white;
+}
+
+
+
+
+/* ORDEN DE COMPRA */
+
+.add{
+  width: 70%;
+  height: 50%;
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+  position: absolute;
+  left: 14%;
+  top: 20%;
+}
+
+
+.addCot{
+  width: 40%;
+  height: 50%;
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+  position: absolute;
+  left: 1%;
+  top: 20%;
+  float: left
+}
+.width50{
+  width: 50%;
+  height: 70%;
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+  position: absolute;
+  left: 45%;
+  top: 20%;
+  float: left
+}
+
+.borderblue{
+  border-top: 2px solid rgba(62, 109, 140, 0.45);
+}
+
+.borderblue-bottom{
+  border-bottom: 2px solid rgba(62, 109, 140, 0.45);
+}
+
+#padre{
+  position:relative;
+  /* background-color: green; */
+}
+
+#uno {
+  position: absolute;
+  background-color: white;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: auto;
+  height: 185px;
+}
+
+.h20{
+  height: 20px;
+}
+
+.bt{
+  background-color: transparent;
 }

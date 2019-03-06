@@ -33,7 +33,6 @@ $tr_ver = $_SESSION['user']['tr_ver'];
 
 // DIVISION 4 //
 //**************** PROGRAMACIÓN
-//**************** PROGRAMACIÓN
 $pro_pgVer = $_SESSION['user']['pro_pgVer'];
 $pro_corVerCal = $_SESSION['user']['pro_corVerCal'];
 //**************** MANTENIMIENTO E INVERSIONES
@@ -44,6 +43,9 @@ $pro_pdver = $_SESSION['user']['pro_pdVer'];
 $pro_corVer = $_SESSION['user']['pro_corVer'];
 //**************** LINEAS
 $pro_liVer = $_SESSION['user']['pro_liVer'];
+
+//**************** INVENTARIO
+$pro_invVer = $_SESSION['user']['pro_invVer'];
 //**************** DISEÑO
 $dis_ver = $_SESSION['user']['dis_ver'];
 //**************** DISEÑO
@@ -59,8 +61,6 @@ $cc_ver = $_SESSION['user']['cc_ver'];
 // DIVISION 6 //
 //**************** VENTAS
 $ve_ver = $_SESSION['user']['ve_ver'];
-
-
   // cliente
   // $cliente = $_SESSION['user']['c_ver'];
 
@@ -73,6 +73,10 @@ $ve_ver = $_SESSION['user']['ve_ver'];
 
   // ventas
   $admin = $_SESSION['user']['privilegiosUsuario']== "Administrador";
+  $admonGlobal = $_SESSION['user']['admonGlobal'];
+  $dejecutivo = $_SESSION['user']['dejecutivo'];
+  date_default_timezone_set('America/Mexico_City');
+
 ?>
 
 <!DOCTYPE html>
@@ -99,7 +103,7 @@ $ve_ver = $_SESSION['user']['ve_ver'];
         <!-- <li class="nav-item"><h1 id="logo">FIT&amp;CO</h1></li> -->
       <?php if ($admin || $e_ventas == 1 || $e_tesoreria == 1 || $e_produc == 1 || $e_rhVer == 1 || $e_usVer == 1): ?>
         <li class="nav-item">
-          <a href="/fitcoControl/Ubicaciones/Comunicaciones/pagina.php" class="bn transicion">COMUNICACION<span class="barra gris">DIVISION 1</span></a>
+          <a href="/fitcoControl/Ubicaciones/Comunicaciones/menuComunicaciones.php" class="bn transicion">COMUNICACION<span class="barra gris">DIVISION 1</span></a>
         </li>
       <?php else: ?>
         <li class="nav-item">
@@ -119,9 +123,9 @@ $ve_ver = $_SESSION['user']['ve_ver'];
       <?php endif; ?>
 
 
-      <?php if ($admin || $tc_ver ==1 || $tcxp_ver == 1 || $tm_ver ==1 || $tr_ver ==1): ?>
+      <?php if ($admin || $tc_ver ==1 || $tcxp_ver == 1 || $tm_ver ==1 || $tr_ver ==1 || $pro_miVer == 1): ?>
         <li class="nav-item">
-          <a href="/fitcoControl/Ubicaciones/Cobranza/tesoreria.php" class="bn transicion">TESORERÍA<span class="barra gris">DIVISION 3</span></a>
+          <a href="/fitcoControl/Ubicaciones/Cobranza/menuTesoreria.php" class="bn transicion">TESORERÍA<span class="barra gris">DIVISION 3</span></a>
         </li>
       <?php else: ?>
         <li class="nav-item">
@@ -130,9 +134,11 @@ $ve_ver = $_SESSION['user']['ve_ver'];
       <?php endif; ?>
 
 
-      <?php if ($admin || $pro_pgVer ==1 || $pro_miVer == 1 || $pro_pdver == 1 || $pro_corVer ==1 || $pro_liVer == 1  || $en_ver ==1 || $dis_ver == 1 || $mat_ver == 1 || $pro_corVerCal == 1): ?>
+      <?php if ($admin || $pro_pgVer ==1 || $pro_miVer == 1 || $pro_pdver == 1 || $pro_corVer == 1 || $pro_liVer == 1  || $en_ver == 1 || $dis_ver == 1 || $mat_ver == 1 || $pro_corVerCal == 1 || $pro_invVer == 1): ?>
+
         <li class="nav-item">
-          <a href="/fitcoControl/Ubicaciones/Produccion/produccion.php" class="bn transicion">PRODUCCIÓN<span class="barra gris">DIVISION 4</span></a>
+          <!-- <a href="/fitcoControl/Ubicaciones/Produccion/produccion.php" class="bn transicion">PRODUCCIÓN<span class="barra gris">DIVISION 4</span></a> -->
+          <a href="/fitcoControl/Ubicaciones/Produccion/menuProduccion.php" class="bn transicion">PRODUCCIÓN<span class="barra gris">DIVISION 4</span></a>
         </li>
       <?php else: ?>
         <li class="nav-item">
@@ -149,7 +155,8 @@ $ve_ver = $_SESSION['user']['ve_ver'];
 
       <?php if ($admin || $ve_ver == 1): ?>
         <li class="nav-item">
-          <a href="/fitcoControl/Ubicaciones/Ventas/Ventas.php" class="bn transicion">VENTAS<span class="barra gris">DIVISION 6</span></a>
+          <a href="/fitcoControl/Ubicaciones/Ventas/menuVentas.php" class="bn transicion">VENTAS<span class="barra gris">DIVISION 6</span></a>
+          <!-- <a href="/fitcoControl/Ubicaciones/Ventas/Ventas.php" class="bn transicion">VENTAS<span class="barra gris">DIVISION 6</span></a> -->
         </li>
       <?php else: ?>
         <li class="nav-item">

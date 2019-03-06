@@ -1,58 +1,92 @@
 $(document).ready(function(){
-ventas_Det();
-graficaVentasMensual();
-graficaVentasSemanal();
+tablaVentas();
 
-  $('.selectVentas').change(function(){
-    var vendedor = $('#selectVentas').val();
-    var data = {};
-    if (vendedor != "" && vendedor != 'undefined') {
-      var data = {vendedor: vendedor};
-    }
+$(function(){
+  data = {
+    period: $('#ven_periodo').val(),
+    grafico: $('#ven_grafico').val(),
+    date_from: $('#dates_ven_chart').find('.date-from').val(),
+    date_to: $('#dates_ven_chart').find('.date-to').val(),
+  };
 
-    var pull_ventasMensual = $.ajax({
-      method: 'POST',
-      url: 'actions/graficaVentasMensual.php',
-      data: data
-    });
 
-    pull_ventasMensual.done(function(r){
-      r = JSON.parse(r);
-      console.log(r);
-      if (r.code == 1) {
-        ventasMensual.load({
-          columns: r.to_chart
-        });
-      }
-    });
+  var pull_chart = $.ajax({
+    method: 'POST',
+    data: data,
+    url: 'actions/grafica.php'
   });
 
-
-
-  $('.selectVentasSemana').change(function(){
-    var vendedor = $('#selectVentasSemana').val();
-    var data = {};
-    if (vendedor != "" && vendedor != 'undefined') {
-      var data = {vendedor: vendedor};
+  pull_chart.done(function(r){
+    r = JSON.parse(r);
+    console.log(r);
+    if (r.code == '2') {
+      r.to_chart = {};
     }
-
-    var pull_ventasSemanal = $.ajax({
-      method: 'POST',
-      url: 'actions/graficaVentasSemanal.php',
-      data: data
-    });
-
-    pull_ventasSemanal.done(function(r){
-      r = JSON.parse(r);
-      console.log(r);
-      if (r.code == 1) {
-        ventasSemanal.load({
-          columns: r.to_chart
-        });
-      }
+    ven_chart = c3.generate({
+      bindto: '#g-ventas',
+      data:{
+        x: "x",
+        columns: r.to_chart,
+        labels: true,
+      },
+      axis: {
+        x: {
+          type: 'category',
+          tick: {
+            format: '%Y-%m-%d',
+          }
+        }
+      },
     });
   });
+});
 
+$('.ven_vendedores').change(function(){
+  var vendedor = $('#ven_vendedores').val();
+
+  var data = {};
+  if (vendedor != "" && vendedor != 'undefined') {
+    var data = {vendedor: vendedor,
+      period: $('#ven_periodo').val(),
+      grafico: $('#ven_grafico').val(),
+      date_from: $('#dates_ven_chart').find('.date-from').val(),
+      date_to: $('#dates_ven_chart').find('.date-to').val()};
+  }
+
+  var pull_chart = $.ajax({
+    method: 'POST',
+    url: 'actions/grafica.php',
+    data: data
+  });
+
+  pull_chart.done(function(r){
+    r = JSON.parse(r);
+    console.log(r);
+    ven_chart.load({columns: r.to_chart});
+  });
+});
+
+$('.reload-chart').click(function(){
+  var vendedor = $('#ven_vendedores').val("Vendedores");
+  data = {
+    period: $('#ven_periodo').val(),
+    grafico: $('#ven_grafico').val(),
+    date_from: $('#dates_ven_chart').find('.date-from').val(),
+    date_to: $('#dates_ven_chart').find('.date-to').val(),
+  };
+
+  var pull_chart = $.ajax({
+    method: 'POST',
+    data: data,
+    url: 'actions/grafica.php'
+  });
+
+  pull_chart.done(function(r){
+    r = JSON.parse(r);
+    console.log(r);
+    ven_chart.load({columns: r.to_chart});
+  });
+});
 
 
   $('.buscador').hover(function(){
@@ -114,7 +148,6 @@ graficaVentasSemanal();
     }
   });
 
-
   $('#add-Vendedor').click(function(){
     var data = {
   		vendedor: $('#nVendedor').val()
@@ -141,305 +174,188 @@ graficaVentasSemanal();
     	});
     }
   });
-});
 
-
-function ventas_Det(){
-  $.ajax({
-    method: 'POST',
-    url:'/fitcoControl/Ubicaciones/Ventas/actions/Mostrar.php',
-    success: function(r){
-      r = JSON.parse(r);
-      if (r.code == 1) {
-        $('#tabla_Ventas').html(r.data);
-          ActivarBotonesVentas();
-      } else {
-        console.error(r.message);
-      }
-    }
-  })
-}
-
-  $('#NuevoRegistroVentas').click(function(){
+  $('#agregar').click(function(){
     var data = {
-      cliente: $('#vts_nombreCliente').val(),
-      vendedor: $('#vts_vendedor').val(),
-      nprendas: $('#vts_nprendas').val(),
-      precio: $('#vts_precio').val(),
-      acuerdo: $('#vts_Apago').val(),
-      fingreso: $('#vts_fingreso').val(),
-      fbaja: $('#vts_fingreso').val()
+      vts_nombreCliente: $('#vts_nombreCliente').val(),
+      vts_vendedor: $('#vts_vendedor').val(),
+      vts_nprendas: $('#vts_nprendas').val(),
+      vts_precio: $('#vts_precio').val(),
+      vts_Apago: $('#vts_Apago').val(),
+      vts_costoPrenda: $('#vts_costoPrenda').val(),
+      vts_ingresoBanco: $('#vts_ingresoBanco').val(),
+  		vts_fingreso: $('#vts_fingreso').val()
     }
-
-    validacion =
-    $('#vts_nombreCliente').val() == "" ||
-    $('#vts_vendedor').val() == "" ||
-    $('#vts_nprendas').val() == "" ||
-    $('#vts_precio').val() == "" ||
-    $('#vts_Apago').val() == "" ||
-    $('#vts_fingreso').val() == "";
+    validacion = $('#vts_nombreCliente').val() == "" ||
+                 $('#vts_vendedor').val() == "" ||
+                 $('#vts_nprendas').val() == "" ||
+                 $('#vts_precio').val() == "" ||
+                 $('#vts_Apago').val() == "" ||
+                 $('#vts_costoPrenda').val() == "" ||
+                 $('#vts_fingreso').val() == "";
 
     if (validacion) {
       swal("NO PUEDE CONTINUAR","Necesita llenar todos los campos","error");
     }else {
-      $.ajax({
-        method: 'POST',
-        url: '/fitcoControl/Ubicaciones/Ventas/actions/AgregarVenta.php',
-        data: data,
-        success:function(result){
-          r = JSON.parse(result);
-          if (r.code != 1) {
-            swal("FALLO AL REGISTRAR","No se agregó el registro","error");
-            console.error(r.response);
-            $('#NuevaVenta').hide();
-            $('.spanV').css('display', '');
-            ventas_Det();
-            graficaVentasMensual();
-            graficaVentasSemanal();
-
-          } else {
-            $('#NuevaVenta').hide();
-            $('.spanV').css('display', '');
-            ventas_Det();
-            graficaVentasMensual();
-            graficaVentasSemanal();
-
+    	$.ajax({
+    		type: "POST",
+    		url: "actions/agregar.php",
+    		data: data,
+    		success: 	function(r){
+    			r = JSON.parse(r);
+          console.log(r);
+          if (r.code == 1) {
             alertify.success('SE AGREGÓ CORRECTAMENTE');
-          }
-        },
-        error:function(exception){
-          console.error(exception)
-        }
-      })
+    			} else {
+            swal("FALLO AL REGISTRAR","No se agregó el registro","error");
+    				console.error(r.message);
+    			}
+    		}
+    	});
     }
   });
 
 
 
-
-function ActivarBotonesVentas(){
-
-  // PARA VISUALIZAR DATOS EN EL MODAL//
-  $('.EditVentas').unbind();
-  $('.EditVentas').click(function(){
+  $('tbody').on('click', '.EditVentas', function(){
     var dbid = $(this).attr('db-id');
+    var tar_modal = $($(this).attr('href'));
 
-    $.ajax({
+    var fetch_ventas = $.ajax({
       method: 'POST',
-      url: '/fitcoControl/Ubicaciones/Ventas/actions/fetchVentaData.php',
       data: {dbid: dbid},
+      url: 'actions/fetch.php'
+    });
 
-      success: function(r){
-        r = JSON.parse(r);
-        console.log(r);
-        if (r.code == 1) {
-          $('#pk_ventas').val(r.response.pk_ventas);
-          $('#nombreCliente').val(r.response.nombreCliente);
-          $('#nombreVendedor').val(r.response.nombreVendedor);
-          $('#numeroPrendas').val(r.response.numeroPrendas);
-          $('#precioXprenda').val(r.response.precioXprenda);
-          $('#acuerdoPago').val(r.response.acuerdoPago);
-          $('#fechaIngreso').val(r.response.fechaIngreso);
-          $('#fechaBaja').val(r.response.fechaBaja);
-        }else {
-          console.error("Hubo un error al jalar la informacion del usuario.");
-          console.error(r.message);
+    fetch_ventas.done(function(r){
+      r = JSON.parse(r);
+
+      if (r.code == 1) {
+      for (var key in r.data) {
+        if (r.data.hasOwnProperty(key)) {
+          var iterated_element = $('#' + key);
+          var element_type = iterated_element.prop('nodeName');
+          var dbid = iterated_element.attr('db-id');
+          var value = r.data[key];
+
+          iterated_element.val(value).addClass('has-content');
+          if (typeof dbid !== undefined && dbid !== false) {
+            iterated_element.attr('db-id', value)
+          }
         }
-      },
-      error: function(exception){
-        console.error(exception);
+      }
+      tar_modal.modal('show');
+      } else {
+        console.error(r);
       }
     })
-  });
+  })
 
-  $('.ActualizarVenta').unbind();
-  $('.ActualizarVenta').click(function(){
-    var idVentas = $('#pk_ventas').val();
-    var nombreCliente = $('#nombreCliente').val();
-    var vendedor = $('#nombreVendedor').val();
-    var prendas = $('#numeroPrendas').val();
-    var precio = $('#precioXprenda').val();
-    var pago = $('#acuerdoPago').val();
-    var fingreso = $('#fechaIngreso').val();
-    var fbaja = $('#fechaBaja').val();
 
-    $.ajax({
-      method: 'POST',
-      url: '/fitcoControl/Ubicaciones/Ventas/actions/EditVenta.php',
-      data: {
-        idVentas: idVentas,
-        nombreCliente: nombreCliente,
-        vendedor: vendedor,
-        prendas: prendas,
-        precio: precio,
-        pago: pago,
-        fingreso: fingreso,
-        fbaja: fbaja
-      },
-      success:function(result){
-        if (result != 1) {
-          alertify.error('NO SE MODIFICÓ NINGUN REGISTRO');
-          $('#EditarVentas').modal('hide');
-          $('#NuevaVenta').hide();
-          $('.spanV').css('display', '');
-          ventas_Det();
-          graficaVentasMensual();
-          graficaVentasSemanal();
+  $('#ActualizarVenta').click(function(){
+    validacion = $('#pk_ventas').val() == "" ||
+                 $('#nombreCliente').val() == "" ||
+                 $('#nombreVendedor').val() == "" ||
+                 $('#numeroPrendas').val() == "" ||
+                 $('#precioXprenda').val() == "" ||
+                 $('#costoPrenda').val() == "" ||
+                 $('#ingresoBanco').val() == "" ||
+                 $('#acuerdoPago').val() == "" ||
+                 $('#fecha').val() == "";
 
-        }else {
-          $('#EditarVentas').modal('hide');
-          $('#NuevaVenta').hide();
-          $('.spanV').css('display', '');
-          ventas_Det();
-          graficaVentasMensual();
-          graficaVentasSemanal();
-
-          alertify.success('SE MODIFICÓ CORRECTAMENTE');
+      var data = {
+        pk_ventas: $('#pk_ventas').val(),
+        nombreCliente: $('#nombreCliente').val(),
+        nombreVendedor: $('#nombreVendedor').val(),
+        numeroPrendas: $('#numeroPrendas').val(),
+        precioXprenda: $('#precioXprenda').val(),
+        costoPrenda: $('#costoPrenda').val(),
+        ingresoBanco: $('#ingresoBanco').val(),
+        acuerdoPago: $('#acuerdoPago').val(),
+        fechaIngreso: $('#fecha').val()
+      }
+      if (validacion) {
+        swal("NO PUEDE CONTINUAR","Necesita llenar todos los campos","error");
+      }else {
+      $.ajax({
+        type: "POST",
+        url: "actions/editar.php",
+        data: data,
+        success: 	function(r){
+          console.log(r);
+          r = JSON.parse(r);
+          if (r.code == 1) {
+            tablaVentas();
+            swal("Exito", "La cuenta se actualizó correctamente.", "success");
+            $('.modal').modal('hide');
+          } else {
+            console.error(r.message);
+            $('.modal').modal('hide');
+          }
+        },
+        error: function(x){
+          console.error(x);
         }
-      },
-      error:function(exception){
-        console.error(exception)
+      });
+    }
+  })
+});
+
+
+function tablaVentas(){
+  $.ajax({
+    method: 'POST',
+    url:'actions/Mostrar.php',
+  }).done(function(r) {
+    r = JSON.parse(r);
+    if (r.code == 1) {
+      $('#tabla_Ventas').html(r.data);
+        Eliminar();
+    } else {
+      console.error(r.message);
+    }
+  });
+}
+
+
+function Eliminar(){
+  $('.EliminarVenta').click(function(){
+    var pk_ventas = $(this).attr('db-id');
+    swal({
+      title: "Estas Seguro?",
+      text: "Ya no se podra recuperar el registro!",
+      type: "warning",
+      showCancelButton: true,
+      confirmButtonClass: "btn-danger",
+      confirmButtonText: "Si, Eliminar",
+      cancelButtonText: "No, cancelar",
+      closeOnConfirm: false,
+      closeOnCancel: false
+    },
+    function(isConfirm) {
+      if (isConfirm) {
+        $.ajax({
+          method: 'POST',
+          url: 'actions/eliminar.php',
+          data: {pk_ventas: pk_ventas},
+          success: function(r){
+            tablaVentas();
+          },
+          error: function(exception){
+            console.error(exception)
+            alertify.error('NO SE PUDO ELIMINAR');
+            tablaVentas();
+          }
+        });
+        swal("Eliminado!", "Se elimino correctamente.", "success");
+        tablaVentas();
+        $('#NuevaVenta').hide();
+      } else {
+        swal("Cancelado", "El registro esta a salvo :)", "error");
+        tablaVentas();
+        $('#NuevaVenta').hide();
+        $('.spanV').css('display', '');
       }
     });
   });
-
-
-  $('.EliminarVenta').unbind();
-  $('.EliminarVenta').click(function(){
-    var ventasId = $(this).attr('db-id');
-    swal({
-    title: "Estas Seguro?",
-    text: "Ya no se podra recuperar el registro!",
-    type: "warning",
-    showCancelButton: true,
-    confirmButtonClass: "btn-danger",
-    confirmButtonText: "Si, Eliminar",
-    cancelButtonText: "No, cancelar",
-    closeOnConfirm: false,
-    closeOnCancel: false
-  },
-  function(isConfirm) {
-    if (isConfirm) {
-      $.ajax({
-        method: 'POST',
-        url: '/fitcoControl/Ubicaciones/Ventas/actions/EliminarVenta.php',
-        data: {ventasId: ventasId},
-
-        success: function(result){
-          console.log(result);
-          if (result != 1) {
-            alertify.error('NO SE PUDO ELIMINAR');
-          }else if (result == 1){
-            ventas_Det();
-            graficaVentasMensual();
-            graficaVentasSemanal();
-
-          }
-        },
-        error: function(exception){
-          console.error(exception)
-        }
-      });
-      swal("Eliminado!", "Se elimino correctamente.", "success");
-      $('#NuevaVenta').hide();
-      $('.spanV').css('display', '');
-      ventas_Det();
-      graficaVentasMensual();
-      graficaVentasSemanal();
-
-    } else {
-      swal("Cancelado", "El registro esta a salvo :)", "error");
-      $('#NuevaVenta').hide();
-      $('.spanV').css('display', '');
-      ventas_Det();
-      graficaVentasMensual();
-      graficaVentasSemanal();
-
-    }
-  });
-});
-}
-
-function graficaVentasMensual(){
-  var pull_ventasMensual = $.ajax({
-    method: 'POST',
-    url: 'actions/graficaVentasMensual.php'
-  });
-    pull_ventasMensual.done(function(r){
-      r = JSON.parse(r);
-      console.log("Variable r:");
-      console.log(r);
-      if (r.code == 1) {
-        ventasMensual = c3.generate({
-          bindto: '#graficasVentasMensual',
-          data: {
-            x: 'x',
-            columns: r.to_chart
-          },
-          size: {
-            width: 1280,
-            height: 480
-          },
-          axis: {
-            x: {
-             type: 'category'
-            }
-          },
-          legend: {
-            position: 'right'
-          },
-          subchart: {
-            show: true,
-            size: {
-            height: 30
-          }
-        }
-      });
-    }
-  }).fail(function(x){
-    console.warn(x);
-  })
-}
-
-
-
-function graficaVentasSemanal(){
-  var pull_ventasSemanal = $.ajax({
-    method: 'POST',
-    url: 'actions/graficaVentasSemanal.php'
-  });
-    pull_ventasSemanal.done(function(r){
-      r = JSON.parse(r);
-      console.log("Variable r:");
-      console.log(r);
-      if (r.code == 1) {
-        ventasSemanal = c3.generate({
-          bindto: '#graficasVentasSemanal',
-          data: {
-            x: 'x',
-            columns: r.to_chart
-          },
-          size: {
-            width: 1280,
-            height: 480
-          },
-          axis: {
-            x: {
-             type: 'category'
-            }
-          },
-          legend: {
-            position: 'right'
-          },
-          subchart: {
-            show: true,
-            size: {
-            height: 30
-          }
-        }
-      });
-    }
-  }).fail(function(x){
-    console.warn(x);
-  })
 }

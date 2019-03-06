@@ -26,6 +26,12 @@ if ($admin || $pro_miVer == 1):
         <span class="spanA">Terminado</span>
       </a>
 
+      <a id="correo" href="#"
+       class="consultar rotate-link ancla" style="text-decoration:none;">
+        <img  src="/fitcoControl/Resources/iconos/mail.svg" class="icon rotate-icon" style="width:30px">
+        <span class="spanA">Enviar Correo</span>
+      </a>
+
       <a class="rotate-link buscador ancla">
         <img src="/fitcoControl/Resources/iconos/search.svg" class="icon rotate-icon" style="width:30px">
         <span class="spanB"><input class="effect-17 real-time-search" type="text" name="search"  placeholder="Buscar..." table-body="#tabla_Mantenimiento" action="mostrar"></span>

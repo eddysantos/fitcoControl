@@ -1,9 +1,74 @@
 $(document).ready(function(){
   fetchCobranza();
-  graficaTes();
-  graficaTesSem();
+  // graficaTes();
+  // graficaTesSem();
   // fetchTablaCobranza();
+      $(function(){
+        data = {
+          period: $('#cob_periodo').val(),
+          date_from: $('#dates_cob_chart').find('.date-from').val(),
+          date_to: $('#dates_cob_chart').find('.date-to').val(),
+        };
 
+      console.log('hola');
+        var pull_chart = $.ajax({
+          method: 'POST',
+          data: data,
+          url: '/fitcoControl/Ubicaciones/Cobranza/actions/grafica.php'
+        });
+
+        pull_chart.done(function(r){
+          r = JSON.parse(r);
+          console.log(r);
+          if (r.code == '2') {
+            r.to_chart = {};
+            // swal("NO HAY REGISTROS","verifica el rango de fecha seleccionado","error");
+
+          }
+          cob_chart = c3.generate({
+            bindto: '#g-cobranza',
+            data:{
+              x: "x",
+              columns: r.to_chart,
+              labels: true,
+            },
+            axis: {
+              x: {
+                type: 'category',
+                tick: {
+                  format: '%Y-%m-%d',
+                }
+              }
+            },
+          });
+        });
+      });
+
+
+    $('.reload-chart').click(function(){
+      // alert("presiono cob_load");
+      data = {
+        period: $('#cob_periodo').val(),
+        date_from: $('#dates_cob_chart').find('.date-from').val(),
+        date_to: $('#dates_cob_chart').find('.date-to').val(),
+      };
+
+      var pull_chart = $.ajax({
+        method: 'POST',
+        data: data,
+        url: '/fitcoControl/Ubicaciones/Cobranza/actions/grafica.php'
+      });
+
+      pull_chart.done(function(r){
+        r = JSON.parse(r);
+        console.log(r);
+        if (r.code == '2') {
+          r.to_chart = {};
+          swal("NO HAY REGISTROS","verifica el rango de fecha seleccionado","error");
+        }
+        cob_chart.load({columns: r.to_chart});
+      });
+    });
   });
 
   //BUSCADOR TIEMPO REAL PARA CAMPO LISTA
@@ -623,78 +688,78 @@ $('.comentCobranza').click(function(){
 }
 
 
-function graficaTes(){
-  var chart = c3.generate({
-    bindto: '#graficamensualTes',
-    data: {
-      x: 'x',
+// function graficaTes(){
+//   var chart = c3.generate({
+//     bindto: '#graficamensualTes',
+//     data: {
+//       x: 'x',
+//
+//       columns: [
+//         Mes,
+//         facturado,
+//         pendientepago,
+//         pagado
+//       ],
+//     },
+//
+//     size: {
+//       width: 1280,
+//       height: 480
+//     },
+//     axis: {
+//       x: {
+//        type: 'category'
+//      },
+//       y : {
+//         tick: {
+//           format: d3.format("$,")
+//         }
+//       }
+//     },
+//
+//     legend: {
+//         position: 'right'
+//     },
+//     subchart: {
+//       show: true,
+//     }
+//   });
+// }
 
-      columns: [
-        Mes,
-        facturado,
-        pendientepago,
-        pagado
-      ],
-    },
-
-    size: {
-      width: 1280,
-      height: 480
-    },
-    axis: {
-      x: {
-       type: 'category'
-     },
-      y : {
-        tick: {
-          format: d3.format("$,")
-        }
-      }
-    },
-
-    legend: {
-        position: 'right'
-    },
-    subchart: {
-      show: true,
-    }
-  });
-}
-
-function graficaTesSem(){
-  var graficaSem = c3.generate({
-    bindto: '#graficasemanalTes',
-    data: {
-      x: 'x',
-
-      columns: [
-        Sem,
-        facturadoTSem,
-        pendienteTSem,
-        pagadoTSem
-      ],
-    },
-
-    size: {
-      width: 1280,
-      height: 480
-    },
-    axis: {
-      x: {
-       type: 'category'
-     },
-      y : {
-        tick: {
-          format: d3.format("$,")
-        }
-      }
-    },
-
-    legend: {
-        position: 'right'
-    },
-    subchart: {
-      show: true,
-    }
-  });
-}
+// function graficaTesSem(){
+//   var graficaSem = c3.generate({
+//     bindto: '#graficasemanalTes',
+//     data: {
+//       x: 'x',
+//
+//       columns: [
+//         Sem,
+//         facturadoTSem,
+//         pendienteTSem,
+//         pagadoTSem
+//       ],
+//     },
+//
+//     size: {
+//       width: 1280,
+//       height: 480
+//     },
+//     axis: {
+//       x: {
+//        type: 'category'
+//      },
+//       y : {
+//         tick: {
+//           format: d3.format("$,")
+//         }
+//       }
+//     },
+//
+//     legend: {
+//         position: 'right'
+//     },
+//     subchart: {
+//       show: true,
+//     }
+//   });
+// }

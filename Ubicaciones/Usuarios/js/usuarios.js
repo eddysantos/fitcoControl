@@ -102,7 +102,9 @@ $('.NuevoRegistroUsuario').click(function(){
     dis_ver : checkPrivilege($('#priv_dis_ver')),
     dis_editar : checkPrivilege($('#priv_dis_editar')),
     mat_ver : checkPrivilege($('#priv_mat_ver')),
-    mat_editar : checkPrivilege($('#priv_mat_editar'))
+    mat_editar : checkPrivilege($('#priv_mat_editar')),
+    pro_invVer : checkPrivilege($('#priv_pro_invVer')),
+    pro_invEditar : checkPrivilege($('#priv_pro_invEditar'))
   }
 
   validacion = $('#usr_nombre').val() == "" ||
@@ -205,6 +207,8 @@ function ActivarBotonesUsuario(){
           markCheckbox($('#dis_editar'), rsp.response.dis_editar);
           markCheckbox($('#mat_ver'), rsp.response.mat_ver);
           markCheckbox($('#mat_editar'), rsp.response.mat_editar);
+          markCheckbox($('#pro_invVer'), rsp.response.pro_invVer);
+          markCheckbox($('#pro_invEditar'), rsp.response.pro_invEditar);
         }else {
           console.error("Hubo un error al jalar la informacion del usuario.");
           console.error(rsp.response);
@@ -266,7 +270,9 @@ function ActivarBotonesUsuario(){
       dis_ver : checkPrivilege($('#dis_ver')),
       dis_editar : checkPrivilege($('#dis_editar')),
       mat_ver : checkPrivilege($('#mat_ver')),
-      mat_editar : checkPrivilege($('#mat_editar'))
+      mat_editar : checkPrivilege($('#mat_editar')),
+      pro_invVer : checkPrivilege($('#pro_invVer')),
+      pro_invEditar : checkPrivilege($('#pro_invEditar'))
     }
     $.ajax({
       type: "POST",

@@ -10,4 +10,7 @@
   <script src="/fitcoControl/Resources/js/Cobranza/Cobranza.js"></script>
   <script src="/fitcoControl/Resources/js/Inputs.js"></script>
   <script src="/fitcoControl/Resources/js/MostrarDivsAgregar.js"></script>
+  <link href="/fitcoControl/Resources/c3/c3.css" rel="stylesheet">
+  <script src="/fitcoControl/Resources/c3/d3.v5.min.js"></script>
+  <script src="/fitcoControl/Resources/c3/c3.min.js"></script>
 </footer>

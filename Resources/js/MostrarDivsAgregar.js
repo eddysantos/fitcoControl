@@ -271,6 +271,19 @@ $(document).ready(function(){
       }
       break;
 
+
+      case "ordencompraLink":
+      if (status == 'cerrado') {
+        $(this).attr('status', 'abierto');
+        $(this).css('cssText', 'color: rgb(120, 153, 179) !important');
+        $(this).css('font-size', '14px');
+        $('#dropOrden').fadeIn(2500);
+      }else {
+        $(this).attr('status', 'cerrado');
+        $('#dropOrden').hide();
+      }
+      break;
+
       case "programLink":
       if (status == 'cerrado') {
         $(this).attr('status', 'abierto');

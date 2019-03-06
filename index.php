@@ -8,12 +8,20 @@
     <link rel="icon" href="/fitcoControl/Resources/iconos/fit.ico">
 
 
+
   </head>
   <body>
     <div id="login-button">
       <img src="/fitcoControl/Resources/iconos/002-user.svg">
       </img>
     </div>
+
+    <div style="align:center">
+      <div style="width:25%;float:right">
+        <a href='/fitcoControl/Ubicaciones/OrdenCompra/OrdendeCompra.php'>Orden de Compra</a>
+      </div>
+    </div>
+
     <div id="container">
       <h1>Fit&Co</h1>
       <span class="close-btn">
@@ -29,6 +37,8 @@
         <input type="submit" value="Ingresar">
       </form>
     </div>
+
+
 
     <script src="/fitcoControl/Resources/jquery/jquery.min.js"></script>
     <script src="/fitcoControl/Resources/jquery/sweetalert.min.js"></script>

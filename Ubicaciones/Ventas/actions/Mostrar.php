@@ -14,15 +14,14 @@ $query = "SELECT
 pk_ventas AS idVentas,
 nombreCliente AS cliente,
 nombreVendedor AS vendedor,
-fechaIngreso AS ingreso,
-fechaBaja AS baja,
+fecha AS ingreso,
 precioXprenda AS precioXprenda,
 acuerdoPago AS acuerdo,
 numeroPrendas AS prendas
 
-FROM ct_ventas v
-WHERE (nombrecliente LIKE ?)  OR (nombrevendedor LIKE ?) OR (fechaIngreso LIKE ?)
-ORDER BY ingreso";
+FROM ct_ventas_copy1 v
+WHERE (nombrecliente LIKE ?)  OR (nombrevendedor LIKE ?) OR (fecha LIKE ?)
+ORDER BY ingreso DESC";
 
 
 $stmt = $conn->prepare($query);
@@ -71,7 +70,7 @@ while ($row = $rslt->fetch_assoc()) {
 
 
  if ($admin || $ve_editar == 1) {
-   $editar = "href='#EditarVentas' class='EditVentas spand-link' data-toggle='modal'";
+   $editar = "href='#EditarVentas' class='EditVentas spand-link'";
    $eliminar = "href='#' class='EliminarVenta spand-link'";
    $bloqueo="";
  }else {
@@ -103,7 +102,6 @@ $system_callback['data'] .="
     </td>
     <td class='col-md-2 text-center'>
       <h4><b>$fechaIngreso</b></h4>
-      <p class='visibilidad'>Baja: $fechaBaja</p>
     </td>
     <td class='col-md-1'></td>
     <td class='col-md-2 text-right'>

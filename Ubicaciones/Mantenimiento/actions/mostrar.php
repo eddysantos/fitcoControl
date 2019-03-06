@@ -85,7 +85,7 @@ while ($row = $rslt->fetch_assoc()) {
     $display = "";
   }
   $id = $idMant;
-  
+
 
     $system_callback['data'] .=
     "<div class='$color  bordelateral m-0 font12 bordebottom' style='$display'>

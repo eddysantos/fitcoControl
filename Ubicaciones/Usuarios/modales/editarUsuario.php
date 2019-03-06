@@ -67,8 +67,6 @@
                   <input class="w-100 modal-efecto-17 has-content" id="privilegiosUsuario" list="priv">
                   <datalist id="priv">
                     <option value="Usuario"></option>
-
-
                     <option value="Administrador"></option>
                   </datalist>
                     <label>Privilegios</label>

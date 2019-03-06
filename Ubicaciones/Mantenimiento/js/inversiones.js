@@ -3,6 +3,23 @@ $(document).ready(function(){
   fetchTerminado();
 
 
+  $('#correo').click(function(){
+    $.ajax({
+      method: 'POST',
+      url:'actions/notificar_autorizaciones.php',
+      success: function(r){
+        console.log(r);
+        r = JSON.parse(r);
+        if (r.code == 1) {
+          swal("Enviado!", "El correo se envio correctamente.", "success");
+        } else {
+          console.error(r.message);
+        }
+      }
+    })
+  })
+
+
   $('.consultar').click(function(){
     var accion = $(this).attr('accion');
     var status = $(this).attr('status');

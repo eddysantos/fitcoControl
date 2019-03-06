@@ -1,6 +1,4 @@
 <?php
-
-
 $root = $_SERVER['DOCUMENT_ROOT'];
 require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
 
@@ -108,7 +106,7 @@ $query = "SELECT sum(dis_requerido) requeridos, sum(dis_entregados) entregados, 
 $stmt = $conn->prepare($query);
 if (!($stmt)) {
   $system_callback['code'] = "500";
-  $system_callback['message'] = "Error durante preparacion de query GRAPH DISENO [$db->errno]: $db->error";
+  $system_callback['message'] = "Error durante preparacion de query GRAPH DISENO [$conn->errno]: $conn->error";
   exit_script($system_callback);
 }
 
