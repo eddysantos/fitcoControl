@@ -87,7 +87,7 @@ if (($aprobado == 1) && ($pagado == 1)) {
 
 
 
-  $system_callback['data'] .="<tr style='$displaynone' class='row m-0 bordeblue'>
+  $system_callback['data'] .="<tr style='$displaynone' class='row m-0 borderblue-bottom'>
     <td class='p-1 col-md-1 text-right'><b>Item :</b></td> <td class='p-1 col-md-5 text-left' style='border-right: 2px solid #ccc;'><b>#$pk_orden</b>  -- $item</td>
     <td class='p-1 col-md-1 text-right'><b>Razón Social : </b></td> <td class='p-1 col-md-4 text-left'>$razonSocial</td>    <td class='p-1 col-md-1'></td>
 

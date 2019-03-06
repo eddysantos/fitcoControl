@@ -30,6 +30,11 @@ if ($admin || $pro_miVer == 1):
         <img src="/fitcoControl/Resources/iconos/search.svg" class="icon rotate-icon" style="width:30px">
         <span class="spanB"><input class="effect-17 real-time-search" type="text" name="search"  placeholder="Buscar..." table-body="#tabla_OrdenCompra" action="mostrar"></span>
       </a>
+
+<!--
+      <button type='button' class='btn btn-secondary' data-toggle='tooltip' data-placement='top' title='Tooltip on top'>
+        Tooltip on top
+      </button> -->
     </div>
   </div>
 </div>

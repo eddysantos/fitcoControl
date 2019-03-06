@@ -86,7 +86,25 @@ while ($row = $rslt->fetch_assoc()) {
   }
 
 
-  $system_callback['data'] .="<tr style='$displaynone' class='$background row text-center m-0 borderojo'>
+  // $system_callback['data'] .="<tr style='$displaynone' class='$background row text-center m-0 borderojo'>
+  //   <td class='col-md-3'>
+  //     <b>#$pk_orden -- $item</b>
+  //     <p class='visibilidad'><b>Persona que Solicita:</b> $usuarioSolicitud</p>
+  //   </td>
+  //   <td class='col-md-4'>$descripcion</td>
+  //   <td class='col-md-2'>$fechaRequerido</td>
+  //   <td class='col-md-1'>$cantidad</td>
+  //   <td class='col-md-2 text-right'>
+  //     <a $editar  db-id='$pk_orden'><img src='/fitcoControl/Resources/iconos/magnifier.svg' class='spand-icon'></a>
+  //
+  //     <label style='$nomostrar' class='switch ml-4' data-container='body' data-toggle='tooltip' data-placement='top' title='Pagado?' style='white-space: nowrap; '>
+  //       <input  db-id='$pk_orden' id='_pagado' value='$pagado' type='checkbox' class='success select-pagado'>
+  //       <span class='slider round'></span>
+  //     </label>
+  //   </td>
+  // </tr>";
+
+  $system_callback['data'] .="<tr style='$displaynone' class='$background row text-center m-0 align-items-center'>
     <td class='col-md-3'>
       <b>#$pk_orden -- $item</b>
       <p class='visibilidad'><b>Persona que Solicita:</b> $usuarioSolicitud</p>
@@ -94,15 +112,16 @@ while ($row = $rslt->fetch_assoc()) {
     <td class='col-md-4'>$descripcion</td>
     <td class='col-md-2'>$fechaRequerido</td>
     <td class='col-md-1'>$cantidad</td>
-    <td class='col-md-2 text-right'>
+    <td class='col-md-1 text-right'>
       <a $editar  db-id='$pk_orden'><img src='/fitcoControl/Resources/iconos/magnifier.svg' class='spand-icon'></a>
-
-      <label style='$nomostrar' class='switch ml-4'>
-        <input db-id='$pk_orden' id='_pagado' value='$pagado' type='checkbox' class='success select-pagado'>
+    </td>
+    <td class='col-md-1' style='$nomostrar'>
+      Comprado?
+      <label  class='switch2'>
+        <input  db-id='$pk_orden' id='_pagado' value='$pagado' type='checkbox' class='success select-pagado'>
         <span class='slider round'></span>
       </label>
     </td>
-
   </tr>";
 
 }

@@ -6,8 +6,10 @@
       </div>
     </div>
   </li>
-    <script src="/fitcoControl/Resources/js/Inputs.js"></script>
-    <!-- <script src="/fitcoControl/Resources/js/Corte/Corte.js"></script> -->
-    <script src="/fitcoControl/Resources/js/Corte/seccionCorte.js"></script>
-    <script src="/fitcoControl/Resources/js/MostrarDivsAgregar.js"></script>
+
+
+  <script src="/fitcoControl/Ubicaciones/OrdenCompra/js/ordencompra.js"></script>
+  <script src="/fitcoControl/Resources/js/Inputs.js"></script>
+  <script src="/fitcoControl/Resources/js/popup-list-plugin.js"></script>
+  <script src="/fitcoControl/Resources/js/table-fetch-plugin.js"></script>
 </footer>

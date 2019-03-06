@@ -12,6 +12,7 @@ $clabe = trim($_POST['clabe']);
 $nombreBanco = trim($_POST['nombreBanco']);
 $condicionPago = trim($_POST['condicionPago']);
 $sugerencia = trim($_POST['sugerencia']);
+$razonSugerencia = trim($_POST['razonSugerencia']);
 $opcion = trim($_POST['opcion']);
 
 
@@ -24,8 +25,9 @@ $query = "INSERT INTO ct_ordenCotizaciones (fk_orden,
                                             clabe,
                                             nombreBanco,
                                             sugerencia,
+                                            razonSugerencia,
                                             condicionPago,
-                                            opcion_cot) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+                                            opcion_cot) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
 
 $stmt = $conn->prepare($query);
 if (!($stmt)) {
@@ -34,7 +36,7 @@ if (!($stmt)) {
   exit_script($system_callback);
 }
 
-$stmt->bind_param('sssssssssss',$fk_orden,$precio,$iva,$razonSocial,$rfc,$numCuenta,$clabe,$nombreBanco,$sugerencia,$condicionPago,$opcion);
+$stmt->bind_param('ssssssssssss',$fk_orden,$precio,$iva,$razonSocial,$rfc,$numCuenta,$clabe,$nombreBanco,$sugerencia,$razonSugerencia,$condicionPago,$opcion);
 if (!($stmt)) {
   $system_callback['code'] = "500";
   $system_callback['message'] = "Error during variables binding [$stmt->errno]: $stmt->error";

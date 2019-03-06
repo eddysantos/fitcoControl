@@ -14,13 +14,6 @@ $fecha_reg =  date("Y-m-d h:i:s");
   </div>
 
 
-  <!-- <div class="row justify-content-center modal-footer m-0" id='generarOrden'>
-    <div class="col-md-3">
-      <button type="submit" class="generarOrden btnsub btn btn-block">GENERAR ORDEN DE COMPRA</button>
-    </div>
-  </div> -->
-
-
 
   <form id="NuevaOrden" onsubmit="return false" class="m-5" style="margin-bottom:80px;">
     <table class="table">
@@ -51,7 +44,7 @@ $fecha_reg =  date("Y-m-d h:i:s");
             <input id="_vitalDesechable" class="w-100 effect-17" list="importancia" type="text">
             <datalist id="importancia">
               <option value="Vital">Vital</option>
-              <option value="Desechable">Desechable</option>
+              <option value="Deseable">Deseable</option>
             </datalist>
             <label>Importancia</label>
             <span class="focus-border"></span>
@@ -144,15 +137,23 @@ $fecha_reg =  date("Y-m-d h:i:s");
           </td>
         </tr>
         <tr class="row m20">
-          <td class="col-md-5 input-effect p-0">
+          <td class="col-md-3 input-effect p-0">
             <input id="_condicionPago" class="effect-17" type="text">
               <label>Condicion de Pago</label>
               <span class="focus-border"></span>
           </td>
           <td class="col-md-1"></td>
-          <td class="col-md-6 input-effect p-0">
-            <input id="_sugerencia" class="effect-17" type="text">
-              <label>Sugerencia</label>
+          <td class="col-md-3 pr-0 pl-0 pb-0">
+            <label>Sugiero que se compre esta opción?</label>
+            <select id="_sugerencia" style="width:18%" class='custom-select'>
+              <option value="--">--</option>
+              <option value="si">Si</option>
+            </select>
+          </td>
+          <td class="col-md-1"></td>
+          <td  class="col-md-4 input-effect p-0 razonSugerencia" style="display:none">
+            <input id="_razonSugerencia" class="effect-17" type="text">
+              <label>Porque? (razones de sugerencia)</label>
               <span class="focus-border"></span>
           </td>
         </tr>

@@ -47,6 +47,7 @@ while ($row = $rslt->fetch_assoc()) {
   $clabe = $row['clabe'];
   $nombreBanco = $row['nombreBanco'];
   $sugerencia = $row['sugerencia'];
+  $razonSugerencia = $row['razonSugerencia'];
   $condicionPago = $row['condicionPago'];
   $id = $row['pk_cotizacion'];
   $aprobado = $row['aprobado'];
@@ -75,7 +76,7 @@ while ($row = $rslt->fetch_assoc()) {
     <div class='col-md-4 text-left'>$rfc</div>
     <div class='col-md-2 text-right'><b>CLABE :</b></div>
     <div class='col-md-3 text-left'>$clabe</div>
-    <div class='col-md-1  pr-2 p-0' style='$invisible'>
+    <div class='col-md-1  pr-2 p-0' style='$invisible;height:10px'>
       <a href='#actualizarCot' opcion='$opcion' db-id='$id' pk-orden='$pk_orden' class='actualizarCot btnsub btn btn-block '>AUTORIZAR</a>
     </div>
   </div>
@@ -89,8 +90,8 @@ while ($row = $rslt->fetch_assoc()) {
   <div class='row text-center m-0'>
     <div class='col-md-2 text-right'><b>Precio :</b></div>
     <div class='col-md-4 text-left'>$precio $iva</div>
-    <div class='col-md-2 text-right'><b>Sugerencia :</b></div>
-    <div class='col-md-3 text-left'>$sugerencia</div>
+    <div class='col-md-2 text-right'><b>Sugieres esta opción? :</b></div>
+    <div class='col-md-3 text-left'>$sugerencia -- $razonSugerencia</div>
   </div>
   ";
 

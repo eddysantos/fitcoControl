@@ -47,6 +47,7 @@ while ($row = $rslt->fetch_assoc()) {
   $clabe = $row['clabe'];
   $nombreBanco = $row['nombreBanco'];
   $sugerencia = $row['sugerencia'];
+  $razonSugerencia = $row['razonSugerencia'];
   $condicionPago = $row['condicionPago'];
   $id = $row['pk_cotizacion'];
   // $aprobado = $row['aprobado'];
@@ -83,7 +84,7 @@ while ($row = $rslt->fetch_assoc()) {
     <div class='col-md-2 text-right'><b>Precio :</b></div>
     <div class='col-md-4 text-left'>$precio $iva</div>
     <div class='col-md-2 text-right'><b>Sugerencia :</b></div>
-    <div class='col-md-3 text-left'>$sugerencia</div>
+    <div class='col-md-3 text-left'>$razonSugerencia</div>
   </div>
   <div class='row sub-grafica text-center m-0' style='margin-top:0px!important'>COMENTARIOS</div>
   <div class='row m-0'>

@@ -2,6 +2,12 @@ $(document).ready(function(){
   mostrarOrdenes();
   mostrarReporte();
 
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip();
+});
+
+
+
   $('#correo').click(function(){
     $.ajax({
       method: 'POST',
@@ -18,6 +24,13 @@ $(document).ready(function(){
     })
   })
 
+  $('#_sugerencia').change(function(){
+    if ($('#_sugerencia').val() ==  "si") {
+      $('.razonSugerencia').show();
+    }else{
+      $('.razonSugerencia').hide();
+    }
+  });
 
   $('.consultar').click(function(){
     var accion = $(this).attr('accion');
@@ -106,6 +119,7 @@ $(document).ready(function(){
      nombreBanco: $('#_nombreBanco').val(),
      condicionPago: $('#_condicionPago').val(),
      sugerencia: $('#_sugerencia').val(),
+     razonSugerencia: $('#_razonSugerencia').val(),
      opcion : opcion
     }
 
@@ -134,6 +148,7 @@ $(document).ready(function(){
         if (r.code == 1) {
           swal("Exito", "Se guardo correctamente.", "success");
           $('#cot1, #op1').hide();
+          $('.razonSugerencia').hide();
           $('#cot2, #op2').show();
           $("#NuevaCotizacion")[0].reset();
         } else {
@@ -159,6 +174,7 @@ $('.ultima_cot').click(function(){
    nombreBanco: $('#_nombreBanco').val(),
    condicionPago: $('#_condicionPago').val(),
    sugerencia: $('#_sugerencia').val(),
+   razonSugerencia: $('#_razonSugerencia').val(),
    opcion : opcion
   }
 
