@@ -102,7 +102,12 @@ $query = "INSERT INTO usuarios_1 (nombreUsuario,
                                   mat_editar,
                                   pro_invVer,
                                   pro_invEditar)
-                                  VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                                  VALUES (?,?,?,?,?,?,?,?,?,
+                                          ?,?,?,?,?,?,?,?,?,
+                                          ?,?,?,?,?,?,?,?,?,
+                                          ?,?,?,?,?,?,?,?,?,
+                                          ?,?,?,?,?,?,?,?,?,
+                                          ?,?,?,?)";
 
 $stmt = $conn->prepare($query);
 if (!($stmt)) {
@@ -111,7 +116,13 @@ if (!($stmt)) {
   exit_script($system_callback);
 }
 
-$stmt->bind_param('sssssssssssssssssssssssssssssssssssssssssssssssss',$nom,$ape,$correo,$dep,$puesto,$usr,$contra,$priv,$e_ventas,$e_tesoreria,$e_produc,$e_rhVer,$e_rhEditar,$e_usVer,$e_usEditar,$c_ver,$c_editar,$tc_ver,$tc_editar,$tcxp_ver,$tcxp_editar,$tm_ver,$tm_editar,$tr_ver,$tr_editar,$pro_pgVer,$pro_pgEditar,$pro_miVer,$pro_miEditar,$pro_pdVer,$pro_pdEditar,$pro_corVer,$pro_corEditar,$pro_liVer,$pro_liEditar,$en_ver,$en_editar,$cc_ver,$cc_editar,$ve_ver,$ve_editar,$pro_corVerCal,$pro_corEditarCal,$dis_ver,$dis_editar,$mat_ver,$mat_editar,$pro_invVer,$pro_invEditar);
+$stmt->bind_param('sssssssssssssssssssssssssssssssssssssssssssssssss',$nom,$ape,$correo,$dep,$puesto,$usr,$contra,$priv,$e_ventas,$e_tesoreria,
+                                                                      $e_produc,$e_rhVer,$e_rhEditar,$e_usVer,$e_usEditar,$c_ver,$c_editar,$tc_ver,
+                                                                      $tc_editar,$tcxp_ver,$tcxp_editar,$tm_ver,$tm_editar,$tr_ver,$tr_editar,
+                                                                      $pro_pgVer,$pro_pgEditar,$pro_miVer,$pro_miEditar,$pro_pdVer,$pro_pdEditar,
+                                                                      $pro_corVer,$pro_corEditar,$pro_liVer,$pro_liEditar,$en_ver,$en_editar,$cc_ver,
+                                                                      $cc_editar,$ve_ver,$ve_editar,$pro_corVerCal,$pro_corEditarCal,$dis_ver,
+                                                                      $dis_editar,$mat_ver,$mat_editar,$pro_invVer,$pro_invEditar);
 if (!($stmt)) {
   $system_callback['code'] = "500";
   $system_callback['message'] = "Error during variables binding [$stmt->errno]: $stmt->error";

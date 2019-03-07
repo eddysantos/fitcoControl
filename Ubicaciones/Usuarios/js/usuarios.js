@@ -40,7 +40,7 @@ function Usuarios_Det(){
     method: 'POST',
     url:'/fitcoControl/Ubicaciones/Usuarios/actions/mostrar.php',
     success: function(r){
-      console.log(r);
+      // console.log(r);
       r = JSON.parse(r);
       if (r.code == 1) {
         $('#mostrarUsuarios1').html(r.data);
@@ -321,7 +321,7 @@ function ActivarBotonesUsuario(){
           data: {usuarioId: usuarioId},
 
           success: function(result){
-            console.log(result);
+            // console.log(result);
             if (result != 1) {
               alertify.error('NO SE PUDO ELIMINAR');
             }else if (result == 1){

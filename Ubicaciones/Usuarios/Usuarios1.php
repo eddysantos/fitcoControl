@@ -24,7 +24,7 @@ if (!isset($_SESSION['user'])) {
         <span class="spanA">Agregar Usuario</span>
       </a>
 
-      <a class="rotate-link buscador ancla">
+      <a class="rotate-link buscador ancla" accion="busc" status="cerrado">
         <img src="/fitcoControl/Resources/iconos/search.svg" class="icon rotate-icon" style="width:30px">
         <span class="spanB"><input class="effect-17 real-time-search" type="text" name="search"  placeholder="Buscar..." table-body="#mostrarUsuarios1" action="mostrar"></span>
       </a>

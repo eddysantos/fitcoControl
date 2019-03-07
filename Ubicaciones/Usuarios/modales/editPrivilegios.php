@@ -126,6 +126,18 @@
               </td>
             </tr>
 
+            <tr class="row">
+              <td class="col-md-12 text-left privsub">---- Ordenes de Compra</td>
+            </tr>
+            <tr class="row">
+              <td class="col-md-6">
+                <input type="checkbox" class="check" id="pro_miVer">Ver y Agregar
+              </td>
+              <td class="col-md-6">
+                <input type="checkbox" class="check" id="pro_miEditar">Editar / Eliminar
+              </td>
+            </tr>
+
 
             <tr class="row text-center">
               <td class="col-md-12 priv"> **P R O D U C C I O N** </td>
@@ -189,18 +201,6 @@
               </td>
             </tr>
 
-
-            <tr class="row">
-              <td class="col-md-12 text-left privsub">---- Mantenimineto e Inversiones</td>
-            </tr>
-            <tr class="row">
-              <td class="col-md-6">
-                <input type="checkbox" class="check" id="pro_miVer">Ver y Agregar
-              </td>
-              <td class="col-md-6">
-                <input type="checkbox" class="check" id="pro_miEditar">Editar / Eliminar
-              </td>
-            </tr>
 
             <tr class="row">
               <td class="col-md-12 text-left privsub">---- Diseño</td>

@@ -69,42 +69,33 @@ while ($row = $rslt->fetch_assoc()) {
     $bloqueo = "bn bloqueo";
   }
 
- $system_callback['echo'][] = "This is a test.";
 
-    $system_callback['data'] .=
-    "<p db-id='$idusuario'>$idusuario - $nombreUsuario</p>";
-    $id = $idusuario;
+  $id = $idusuario;
 
-    $system_callback['data'] .=
-    "<tr class='row bordelateral m-0' id='item'>
-        <td class='col-md-1'>
-          <img src='/fitcoControl/Resources/iconos/users.svg' class='icono'>
-        </td>
-        <td class='col-md-4'>
-          <h4><b>$nombreUsuario  $apellidosUsuario</b></h4>
-          <a class='visibilidad' href='mailto:$correoUsuario'>$correoUsuario</a>
-        </td>
-        <td class='col-md-3 text-center'>
-          <h4><b>$puestoUsuario</b></h4>
-          <p class='visibilidad'>$departamentoUsuario</p>
-        </td>
-        <td class='col-md-2 text-center'>
-          <h4><b>$privilegiosUsuario</b></h4>
-        </td>
-        <td class='col-md-2 text-right'>
-          <a $editar db-id='$id'><img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='$bloqueo spand-icon'></a>
+  $system_callback['data'] .=
+  "<tr class='row bordelateral m-0' id='item'>
+      <td class='col-md-1'>
+        <img src='/fitcoControl/Resources/iconos/users.svg' class='icono'>
+      </td>
+      <td class='col-md-4'>
+        <h4><b>$nombreUsuario  $apellidosUsuario</b></h4>
+        <a class='visibilidad' href='mailto:$correoUsuario'>$correoUsuario</a>
+      </td>
+      <td class='col-md-3 text-center'>
+        <h4><b>$puestoUsuario</b></h4>
+        <p class='visibilidad'>$departamentoUsuario</p>
+      </td>
+      <td class='col-md-2 text-center'>
+        <h4><b>$privilegiosUsuario</b></h4>
+      </td>
+      <td class='col-md-2 text-right'>
+        <a $editar db-id='$id'><img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='$bloqueo spand-icon'></a>
 
-            <a $eliminar db-id='$id'><img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='$bloqueo spand-icon'></a>
-        </td>
-      </tr>";
+          <a $eliminar db-id='$id'><img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='$bloqueo spand-icon'></a>
+      </td>
+    </tr>";
 }
 
-// var_dump($system_callback);
-// echo json_encode($system_callback);
-// $conn->close();
-// die();
-//
-// exit_script($system_callback);
 
 
 $system_callback['code'] = 1;

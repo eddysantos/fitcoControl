@@ -86,6 +86,8 @@ $ve_ver = $_SESSION['user']['ve_ver'];
     <title>Fit&amp;Co Solutions</title>
     <link rel="stylesheet" href="/fitcoControl/Resources/css/barranavegacion.css">
     <link rel="stylesheet" href="/fitcoControl/Resources/bootstrap/css/bootstrap.min.css">
+    <link rel="icon" href="/fitcoControl/Resources/iconos/fit.ico">
+
 
 
   </head>
@@ -134,7 +136,7 @@ $ve_ver = $_SESSION['user']['ve_ver'];
       <?php endif; ?>
 
 
-      <?php if ($admin || $pro_pgVer ==1 || $pro_miVer == 1 || $pro_pdver == 1 || $pro_corVer == 1 || $pro_liVer == 1  || $en_ver == 1 || $dis_ver == 1 || $mat_ver == 1 || $pro_corVerCal == 1 || $pro_invVer == 1): ?>
+      <?php if ($admin || $pro_pgVer ==1 ||  $pro_pdver == 1 || $pro_corVer == 1 || $pro_liVer == 1  || $en_ver == 1 || $dis_ver == 1 || $mat_ver == 1 || $pro_corVerCal == 1 || $pro_invVer == 1): ?>
 
         <li class="nav-item">
           <!-- <a href="/fitcoControl/Ubicaciones/Produccion/produccion.php" class="bn transicion">PRODUCCIÓN<span class="barra gris">DIVISION 4</span></a> -->
