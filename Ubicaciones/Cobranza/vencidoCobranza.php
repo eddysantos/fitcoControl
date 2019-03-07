@@ -23,6 +23,7 @@ if (!isset($_SESSION['user'])) {
   <link rel="stylesheet" href="/fitcoControl/Resources/css/sweetalert.css">
   <link rel="stylesheet" href="/fitcoControl/Resources/bootstrap/alertifyjs/css/alertify.min.css">
   <link rel="stylesheet" href="/fitcoControl/Resources/bootstrap/alertifyjs/css/themes/default.css">
+  <link rel="icon" href="/fitcoControl/Resources/iconos/fit.ico">
 
 
   <script src="/fitcoControl/Resources/bootstrap/alertifyjs/alertify.min.js"></script>
@@ -31,8 +32,8 @@ if (!isset($_SESSION['user'])) {
   <script src="/fitcoControl/Resources/jquery/popper.min.js"></script>
   <script src="/fitcoControl/Resources/bootstrap/js/bootstrap.min.js"></script>
   <script src="/fitcoControl/Resources/jquery/tether.min.js"></script>
-  <script src="/fitcoControl/Resources/librerias/dataTables/jquery.DataTable.min.js"></script>
-  <script src="/fitcoControl/Resources/librerias/dataTables/dataTables.bootstrap4.min.js"></script>
+  <!-- <script src="/fitcoControl/Resources/librerias/dataTables/jquery.DataTable.min.js"></script>
+  <script src="/fitcoControl/Resources/librerias/dataTables/dataTables.bootstrap4.min.js"></script> -->
 
 </head>
 
@@ -58,7 +59,7 @@ if (!isset($_SESSION['user'])) {
           <td width='10%'>VENCIMIENTO</td>
         </tr>
       </thead>
-      <tbody id="mostrarCobranza" class="font12">
+      <tbody id="mostrarReporte" class="font12">
         <tr>
           <td colspan="9">No hay resultados</td>
         </tr>
@@ -75,9 +76,6 @@ if (!isset($_SESSION['user'])) {
 
 
 <?php
-  require $root . '/fitcoControl/Ubicaciones/Cobranza/actions/footer.php';
-  require $root . '/fitcoControl/Ubicaciones/Cobranza/modales/comentarios.php';
-  // require $root . '/fitcoControl/Ubicaciones/Modales/Cobranza/ModalGraficaCobranza.php';
-  // require $root . '/fitcoControl/Ubicaciones/Modales/Cobranza/ModalCobranza.php';
-  // require $root . '/fitcoControl/Ubicaciones/Modales/Cobranza/ModalPagos.php';
+  require $root . '/fitcoControl/Ubicaciones/Cobranza/Cobranza/actions/footer.php';
+  require $root . '/fitcoControl/Ubicaciones/Cobranza/Comentarios/modales/comentarios.php';
 ?>
