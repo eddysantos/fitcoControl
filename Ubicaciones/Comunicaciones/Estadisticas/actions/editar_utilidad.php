@@ -1,6 +1,6 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
-require $root . '/fitcoControl/Resources/PHP/Utilities/initialScript.php';
+require $root . '/fitcoControl/Resources/PHP/utilities/initialScript.php';
 
 $pk_utilidad = trim($_POST['id']);
 $fecha = trim($_POST['fecha']);
