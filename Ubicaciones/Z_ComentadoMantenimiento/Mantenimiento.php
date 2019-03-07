@@ -1,15 +1,15 @@
 <?php
-session_start();
-
-if (!isset($_SESSION['user'])) {
-  header("Location: /fitcoControl/index.php");
-}
-$root = $_SERVER['DOCUMENT_ROOT'];
-require  $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
-
-if ($admin || $pro_miVer == 1):
+// session_start();
+//
+// if (!isset($_SESSION['user'])) {
+//   header("Location: /fitcoControl/index.php");
+// }
+// $root = $_SERVER['DOCUMENT_ROOT'];
+// require  $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
+//
+// if ($admin || $pro_miVer == 1):
 ?>
-
+<!--
 
 <div class="container-fluid pl-75 pr-57">
   <div class="row clt_usr  mt-5 mb-5">
@@ -40,7 +40,6 @@ if ($admin || $pro_miVer == 1):
 </div>
 
 
-<!--MOSTRAR TABLA  -->
 <form class="page p-0" id="tablaMantenimiento" onsubmit="return false">
   <table class="table table-hover fixed-table">
     <thead>
@@ -59,7 +58,6 @@ if ($admin || $pro_miVer == 1):
   </table>
 </form>
 
-<!-- AGREGAR REGISTRO  -->
 <form id="NuevoMantenimiento" onsubmit="return false" class="agregarnuevo" style="display:none;margin-bottom:80px">
   <table class="table">
     <tbody>
@@ -122,20 +120,24 @@ if ($admin || $pro_miVer == 1):
       </tr>
     </tbody>
   </table>
-</form>
+</form> -->
 
 
-<?php else:?>
-  <div id='SinRegistros' class='container-fluid pantallaRegistros'>
+<?php
+// else:
+  ?>
+  <!-- <div id='SinRegistros' class='container-fluid pantallaRegistros'>
     <div class='tituloSinRegistros' style="font-size:25px; color:red">SOLICITA PERMISO PARA ENTRAR EN ESTA SECCIÓN</div>
-  </div>
-<?php endif; ?>
+  </div> -->
+<?php
+// endif; 
+?>
 
 
 
 
 <?php
   // $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/fitcoControl/Ubicaciones/Mantenimiento/modales/editar.php';
-  require $root . '/fitcoControl/Ubicaciones/Mantenimiento/actions/footer.php';
+  // require $root . '/fitcoControl/Ubicaciones/Mantenimiento/modales/editar.php';
+  // require $root . '/fitcoControl/Ubicaciones/Mantenimiento/actions/footer.php';
 ?>

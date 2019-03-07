@@ -7,12 +7,12 @@ if (!isset($_SESSION['user'])) {
 $root = $_SERVER['DOCUMENT_ROOT'];
 require  $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
 
-if ($admin || $pro_pgVer == 1  || $pro_miVer == 1 || $pro_pdver == 1 || $pro_corVer == 1 || $pro_liVer == 1 || $en_ver == 1 || $dis_ver == 1 || $mat_ver == 1 || $pro_corVerCal == 1 || $pro_invVer == 1):
+if ($admin || $pro_pgVer == 1  ||  $pro_pdver == 1 || $pro_corVer == 1 || $pro_liVer == 1 || $en_ver == 1 || $dis_ver == 1 || $mat_ver == 1 || $pro_corVerCal == 1 || $pro_invVer == 1):
 ?>
 
 <div class="container mt-100">
   <div class="row  mb-5 mt-5" style="margin-bottom:100px!important">
-  <?php if ($pro_pgVer == 1 || $pro_corVerCal == 1 || $pro_miVer == 1 || $mat_ver == 1 || $dis_ver == 1 ||  $admin): ?>
+  <?php if ($pro_pgVer == 1 || $pro_corVerCal == 1 ||  $mat_ver == 1 || $dis_ver == 1 ||  $admin): ?>
     <div class="col-md-4">
       <div class="card">
         <img class="w-25 align-self-center m-5" src="/fitcoControl/Resources/iconos/programar.svg">
@@ -44,15 +44,21 @@ if ($admin || $pro_pgVer == 1  || $pro_miVer == 1 || $pro_pdver == 1 || $pro_cor
           </a>
         <?php endif; ?>
 
-        <?php if ($pro_miVer == 1 || $admin): ?>
-          <a href="/fitcoControl/Ubicaciones/Mantenimiento/Mantenimiento.php" class="linkboton btn-block p-2">Mantenimineto e Inversiones
+        <?php
+        // if ($pro_miVer == 1 || $admin):
+          ?>
+          <!-- <a href="/fitcoControl/Ubicaciones/Mantenimiento/Mantenimiento.php" class="linkboton btn-block p-2">Mantenimineto e Inversiones
             <span class="a top"></span>
-          </a>
-        <?php else: ?>
-          <a href="#" class="bn bloqueo linkboton btn-block p-2">Mantenimineto e Inversiones
+          </a> -->
+        <?php
+      // else:
+         ?>
+          <!-- <a href="#" class="bn bloqueo linkboton btn-block p-2">Mantenimineto e Inversiones
             <span class="a top"></span>
-          </a>
-        <?php endif; ?>
+          </a> -->
+        <?php
+      // endif;
+      ?>
 
         <?php if ($dis_ver == 1 || $admin): ?>
           <a href="/fitcoControl/Ubicaciones/Diseno/Diseno.php" class="linkboton btn-block p-2">Diseño

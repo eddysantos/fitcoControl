@@ -1,4 +1,4 @@
-<div class="modal fade" id="EditarMantenimiento">
+<!-- <div class="modal fade" id="EditarRepo">
   <div class="modal-dialog modal-med">
     <div class="modal-content">
       <div class="modal-header">
@@ -12,50 +12,50 @@
           <tbody>
             <tr class="row m20">
               <td class="col-md-12 input-effect p-0">
-                <input id="pk_mantenimiento" type="hidden">
-                <input id="orden" class="modal-efecto-17 has-content numeroClass" type="text">
+                <input id="r_pk_mantenimiento" type="hidden">
+                <input id="r_orden" class="modal-efecto-17 has-content" type="text">
                   <label>Orden de Importancia</label>
                   <span class="focus-border"></span>
               </td>
             </tr>
             <tr class="row m20">
               <td class="col-md-12 input-effect p-0">
-                <input id="mant_Inv" class="modal-efecto-17 has-content" type="text">
+                <input id="r_mant_Inv" class="modal-efecto-17 has-content" type="text">
                   <label>Mantenimiento / Inversión</label>
                   <span class="focus-border"></span>
               </td>
             </tr>
             <tr class="row m20">
               <td class="col-md-12 input-effect p-0">
-                <input id="area" class="modal-efecto-17 has-content" type="text">
+                <input id="r_area" class="modal-efecto-17 has-content" type="text">
                   <label>Area</label>
                   <span class="focus-border"></span>
               </td>
             </tr>
             <tr class="row m20">
               <td class="col-md-12 input-effect p-0">
-                <input id="descripcion" class="modal-efecto-17 has-content" type="text">
+                <input id="r_descripcion" class="modal-efecto-17 has-content" type="text">
                   <label>Descripción</label>
                   <span class="focus-border"></span>
               </td>
             </tr>
             <tr class="row m20">
               <td class="col-md-12 input-effect p-0">
-                <input id="proveedor" class="modal-efecto-17 has-content" type="text">
+                <input id="r_proveedor" class="modal-efecto-17 has-content" type="text">
                   <label>Proveedor</label>
                   <span class="focus-border"></span>
               </td>
             </tr>
             <tr class="row m20">
               <td class="col-md-12 input-effect p-0">
-                <input id="costo" class="modal-efecto-17 has-content importeClass" type="text">
+                <input id="r_costo" class="modal-efecto-17 has-content" type="text">
                   <label>Costo con IVA</label>
                   <span class="focus-border"></span>
               </td>
             </tr>
             <tr class="row m20">
               <td class="col-md-12 input-effect p-0">
-                <input id="fechaRequerido" class="modal-efecto-17 has-content has-content" type="date">
+                <input id="r_fechaRequerido" class="modal-efecto-17 has-content has-content" type="date">
                   <label>Fecha Requerido</label>
                   <span class="focus-border"></span>
               </td>
@@ -63,7 +63,7 @@
             <tr class="row m20 justify-content-center ">
               <td class="col-md-1 p-0 pt-2">
                 <label class='switch'>
-                  <input id="pagado" type='checkbox' class='success'>
+                  <input id="r_pagado" type='checkbox' class='success'>
                   <span class='slider round'></span>
                 </label>
               </td>
@@ -73,7 +73,7 @@
               <tr class="row m20 justify-content-center ">
                 <td class="col-md-1  p-0 pt-2">
                   <label class='switch'>
-                    <input id="autorizacion" type='checkbox' class='success'>
+                    <input id="r_autorizacion" type='checkbox' class='success'>
                     <span class='slider round'></span>
                   </label>
                 </td>
@@ -92,4 +92,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
