@@ -75,7 +75,6 @@
               <td class="col-md-2">Fecha</td>
               <td class="col-md-2">Horas</td>
               <td class="col-md-3">Nota</td>
-
             </tr>
           </thead>
           <tbody id="tablaEnvios"></tbody>
@@ -102,7 +101,7 @@
           <tbody>
             <tr class="row m20">
               <td class="col-md-12 input-effect p-0">
-                <input id="menv_status1" class="w-100 modal-efecto-17 has-content" list="descEnvios" type="text">
+                <input id="descripcion" class="w-100 modal-efecto-17 has-content" list="descEnvios" type="text">
                 <datalist id="descEnvios">
                   <option value="Salida de Fitco">Salida de Fitco</option>
                   <option value="Arribo Nuevo Laredo">Arribo Nuevo Laredo</option>
@@ -116,21 +115,21 @@
             </tr>
             <tr class="row m20">
               <td class="col-md-5 input-effect p-0">
-                <input type="hidden" id="menv_id1">
-                <input class="modal-efecto-17 has-content w-100" id="menv_fecha1" type="date" style="letter-spacing:3px">
+                <input type="hidden" id="pk_envios">
+                <input class="modal-efecto-17 has-content w-100" id="fechaEnvio" type="date" style="letter-spacing:3px">
                 <label style="top:-16;font-size: 12px;color: #014c8c;">Fecha</label>
                 <span class="focus-border"></span>
               </td>
               <td class="col-md-2"></td>
               <td class="col-md-5 input-effect p-0">
-                <input type="time" class="modal-efecto-17 has-content w-100" id="menv_hora1">
+                <input type="time" class="modal-efecto-17 has-content w-100" id="horaEnvio">
                   <label style="top:-16;font-size: 12px;color: #014c8c;">Hora</label>
                   <span class="focus-border"></span>
               </td>
             </tr>
             <tr class="row m20">
               <td class="col-md-12 input-effect p-0">
-                <input class="modal-efecto-17 has-content" id="menv_notas1" type="text">
+                <input class="modal-efecto-17 has-content" id="notas" type="text">
                   <label>Notas</label>
                   <span class="focus-border"></span>
               </td>

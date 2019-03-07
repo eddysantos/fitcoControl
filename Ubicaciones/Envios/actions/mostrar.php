@@ -21,7 +21,7 @@ $query = "CALL pruebaEnvios($q)";
 
 $buscarDatos = $conn->query($query);
 
-if (true) { 
+if (true) {
   $tabla.="
   <form class='page p-0'>
   <table class='table table-hover fixed-table'>
@@ -71,9 +71,9 @@ if (true) {
 
 
        <td class='col-md-1 text-right'>
-         <a href='#' class='aEnvio spand-link mr-3' envio-id='$idEnvios'><img src='/fitcoControl/Resources/iconos/003-add.svg' class='spand-icon'></a>
+         <a href='#' class='aEnvio spand-link mr-3' db-id='$idEnvios'><img src='/fitcoControl/Resources/iconos/003-add.svg' class='spand-icon'></a>
 
-         <a href='#' class='aVerTabla spand-link mr-3'  data-toggle='modal' data-target='#VisualizarEnvio' envio-id='$idEnvios'><img src='/fitcoControl/Resources/iconos/magnifier.svg' class='spand-icon'></a>
+         <a href='#' class='aVerTabla spand-link mr-3'  data-toggle='modal' data-target='#VisualizarEnvio' db-id='$idEnvios'><img src='/fitcoControl/Resources/iconos/magnifier.svg' class='spand-icon'></a>
        </td>
      </tr>";
     }
@@ -85,5 +85,8 @@ if (true) {
   $tabla= "No se encontraron coincidencias";
 }
 echo $tabla;
+
+
+
 
 ?>

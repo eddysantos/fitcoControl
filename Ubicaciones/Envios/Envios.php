@@ -40,7 +40,6 @@ if (!isset($_SESSION['user'])) {
 
 
 <?php
-  $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/fitcoControl/Ubicaciones/Modales/Envios/ModalEnvios.php';
-  require $root . '/fitcoControl/Resources/PHP/Envios/pieEnvios.php';
+  require $root . '/fitcoControl/Ubicaciones/Envios/modales/ModalEnvios.php';
+  require $root . '/fitcoControl/Ubicaciones/Envios/actions/footer.php';
 ?>
