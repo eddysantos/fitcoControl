@@ -1,43 +1,46 @@
 <?php
 session_start();
-
 $root = $_SERVER['DOCUMENT_ROOT'];
 require $root . '/fitcoControl/Resources/PHP/utilities/initialScript.php';
 
-if ($_POST['request']) {
 $system_callback = [];
 $data = $_POST;
-$request = $data['request'];
+
 $data['string'];
 $text = "%" . $data['string'] . "%";
+// $variable = $data['variable']; // en caso de pasar una variable
+$andWhere = 'WHERE (proveedor LIKE ?)  OR (factura LIKE ?) OR (montoPago LIKE ?) OR (fechaVencimiento LIKE ?)'; // en caso de que haya buscador y variable
 $query = "SELECT
-cxp.pk_cuentasPagar AS idCuentas,
-cxp.proveedor AS proveedor,
-cxp.descripcion AS descripcion,
-cxp.montoPago AS total,
-cxp.fechaVencimiento AS vencimiento,
-cxp.pagado AS pagado,
-cxp.factura AS factura
+pk_cuentasPagar AS idCuentas,
+proveedor AS proveedor,
+descripcion AS descripcion,
+montoPago AS total,
+fechaVencimiento AS vencimiento,
+pagado AS pagado,
+factura AS factura
 
- FROM ct_CuentasxPagar cxp
-
- WHERE cxp.proveedor = '$request'
-
-
- ORDER BY vencimiento ASC";
-
+FROM ct_CuentasxPagar
+$andWhere AND fechaVencimiento BETWEEN '2018-01-01' AND '2019-12-31'
+ORDER BY vencimiento DESC,proveedor ASC";
 
 
 $stmt = $conn->prepare($query);
 if (!($stmt)) {
   $system_callback['code'] = "500";
-  $system_callback['message'] = "Error during query prepare [$conn->errno]: $conn->error";
+  $system_callback['message'] = "Error durante la preparacion del query [$conn->errno]: $conn->error";
+  exit_script($system_callback);
+}
+
+$stmt->bind_param('ssss',$text,$text,$text,$text);
+if (!($stmt)) {
+  $system_callback['code'] = "500";
+  $system_callback['message'] = "Error al pasar variables [$stmt->errno]: $stmt->error";
   exit_script($system_callback);
 }
 
 if (!($stmt->execute())) {
   $system_callback['code'] = "500";
-  $system_callback['message'] = "Error during query execution [$stmt->errno]: $stmt->error";
+  $system_callback['message'] = "Error durante la ejecucion [$stmt->errno]: $stmt->error";
   exit_script($system_callback);
 }
 
@@ -50,23 +53,16 @@ if ($rslt->num_rows == 0) {
   exit_script($system_callback);
 }
 
-
-
 while ($row = $rslt->fetch_assoc()) {
-
-
-  $idCuentas = $row['idCuentas'];
-  $proveedor = $row['proveedor'];
-  $descripcion = $row['descripcion'];
-  $factura = $row['factura'];
-  $vencimiento = $row['vencimiento'];
-  $pagado = $row['pagado'];
-  $total = $row['total'];
-  $ce = $_SESSION['user']['cobranza_editar'];
-  $admin = $_SESSION['user']['privilegiosUsuario'];
+  $id = $row['idCuentas'];
+  $proveedor = utf8_encode($row['proveedor']);
+  $descripcion = utf8_encode($row['descripcion']);
+  $factura = utf8_encode($row['factura']);
+  $vencimiento = utf8_encode($row['vencimiento']);
+  $pagado = utf8_encode($row['pagado']);
+  $total = utf8_encode($row['total']);
   $hoy = date('Y-m-d');
   $pendiente = $total - $pagado;
-  $background = "";
 
 
   if (($total == $pagado) && ($vencimiento == $hoy)) {
@@ -79,30 +75,52 @@ while ($row = $rslt->fetch_assoc()) {
     $background = "rojo";
   }
 
-  if ($total == $pagado || $vencimiento > $hoy) {
-    $vervencido = "display:none";
+  $tcxp_editar = $_SESSION['user']['tcxp_editar'];
+  $admin = $_SESSION['user']['privilegiosUsuario'] == 'Administrador';
+
+
+  if ($admin || $tcxp_editar == 1) {
+    $editar = "href='#EditarCuenta' class='EditCuenta spand-link' data-toggle='modal'";
+    $eliminar = "href='#'  class='eliminarCuenta spand-link ml-3'";
+    $bloqueo="";
   }else {
-    $vervencido = "";
+    $editar = "href='#' class='bn bloqueo'";
+    $eliminar = "href='#' class='bn bloqueo'";
+    $bloqueo = "bn bloqueo";
   }
 
- $system_callback['data'] .=
- "<p db-id='$idCuentas'>$idCuentas - $proveedor</p>";
- $id = $idCuentas;
+  $system_callback['data'] .="<tr class='$background row bordelateral m-0' id='item'>
+    <td class='col-md-1'>
+      <img src='/fitcoControl/Resources/iconos/team.svg' class='icono'>
+    </td>
+    <td class='col-md-4'>
+      <h2><b>$proveedor</a></b></h2>
+      <p class='visibilidad'>Fact: $factura</p>
+    </td>
+    <td class='col-md-2'>
+    <h2><b>$descripcion</a></b></h2>
+    <p class='visibilidad'>$vencimiento</p>
+    </td>
+    <td class='col-md-2 text-center'>
+      <h2><b>$ $total</a></b></h2>
+    </td>
+    <td class='col-md-2 text-center'>
+      <h2><b>$ $pagado</a></b></h2>
+      <p class='visibilidad'>pendiente: $ $pendiente</p>
+    </td>
 
-  $system_callback['data'] .=
-  "<tr class='$background font12' id='item' style='$vervencido'>
-      <td with='20%'>$proveedor</td>
-      <td with='10%'>$factura</td>
-      <td with='10%'>$descripcion</td>
-      <td with='10%'>$ $total</td>
-      <td with='10%'>$ $pagado</td>
-      <td with='10%'>$ $pendiente</td>
-      <td with='10%'>$vencimiento</td>
-    </tr>";
+    <td class='col-md-1 text-right'>
+      <a $editar db-id='$id'><img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='$bloqueo img spand-icon'></a>
+
+        <a $eliminar db-id='$id'><img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='$bloqueo img spand-icon'></a>
+    </td>
+  </tr>";
+
 }
 
 $system_callback['code'] = 1;
 $system_callback['message'] = "Script called successfully!";
 exit_script($system_callback);
-};
-?>
+
+
+ ?>

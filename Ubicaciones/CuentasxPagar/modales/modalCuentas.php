@@ -14,48 +14,47 @@
             <tbody>
               <tr class="row m20">
                 <td class="col-md-12 input-effect p-0">
-                  <input type="hidden" id="mcxp_id">
-                  <input id="mcxp_proveedor" class="modal-efecto-17 has-content" type="text" required>
+                  <input type="hidden" id="pk_cuentasPagar">
+                  <input id="proveedor" class="modal-efecto-17 has-content" type="text" required>
                     <label>Proveedor</label>
                     <span class="focus-border"></span>
                 </td>
               </tr>
               <tr class="row m20">
                 <td class="col-md-12 input-effect p-0">
-                  <input id="mcxp_desc" class="modal-efecto-17 has-content" type="text" required>
+                  <input id="descripcion" class="modal-efecto-17 has-content" type="text" required>
                     <label>Descripción de Servicio</label>
                     <span class="focus-border"></span>
                 </td>
               </tr>
               <tr class="row m20">
                 <td class="col-md-12 input-effect p-0">
-                  <input id="mcxp_factura" class="modal-efecto-17 has-content" type="text" required>
+                  <input id="factura" class="modal-efecto-17 has-content" type="text" required>
                     <label>Factura</label>
                     <span class="focus-border"></span>
                 </td>
               </tr>
               <tr class="row m20">
                 <td class="col-md-12 input-effect p-0">
-                  <input id="mcxp_total" class="modal-efecto-17 has-content importeClass" type="text" required>
+                  <input id="montoPago" class="modal-efecto-17 has-content importeClass" type="text" required>
                     <label>Monto a Pagar</label>
                     <span class="focus-border"></span>
                 </td>
               </tr>
               <tr class="row m20">
                 <td class="col-md-12 input-effect p-0">
-                  <input id="mcxp_vencimiento" class="modal-efecto-17 has-content" type="date" required>
+                  <input id="fechaVencimiento" class="modal-efecto-17 has-content" type="date" required>
                     <label>Fecha Vencimiento</label>
                     <span class="focus-border"></span>
                 </td>
               </tr>
               <tr class="row m20">
                 <td class="col-md-12 input-effect p-0">
-                  <input id="mcxp_pagado" class="modal-efecto-17 has-content importeClass" type="text" required>
+                  <input id="pagado" class="modal-efecto-17 has-content importeClass" type="text" required>
                     <label>Pagado</label>
                     <span class="focus-border"></span>
                 </td>
               </tr>
-
             </tbody>
           </table>
 

@@ -5,7 +5,6 @@ if (!isset($_SESSION['user'])) {
   header("Location: /fitcoControl/index.php");
 }
   $root = $_SERVER['DOCUMENT_ROOT'];
-  // require $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
   $tcxp_ver = $_SESSION['user']['tcxp_ver'];
   $admin = $_SESSION['user']['privilegiosUsuario'] == "Administrador";
 ?>
@@ -14,6 +13,8 @@ if (!isset($_SESSION['user'])) {
 <link rel="stylesheet" href="/fitcoControl/Resources/css/Pagina.css">
 <link rel="stylesheet" href="/fitcoControl/Resources/bootstrap/css/bootstrap.min.css">
 <script src="/fitcoControl/Resources/jquery/jquery.min.js"></script>
+<link rel="icon" href="/fitcoControl/Resources/iconos/fit.ico">
+
 
 <?php if ($tcxp_ver == 1 || $admin): ?>
   <div class="container-fluid mt-4">

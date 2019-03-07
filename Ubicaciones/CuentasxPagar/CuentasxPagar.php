@@ -22,17 +22,34 @@
         <span class="spanM">Vencido</span>
       </a>
 
-      <a class="rotate-link buscador ancla" accion="busc" status="cerrado">
+      <!-- <a class="rotate-link buscador ancla" accion="busc" status="cerrado">
         <img src="/fitcoControl/Resources/iconos/search.svg" class="icon rotate-icon" style="width:30px">
         <span class="spanB"><input class="buscar" type="text" name="busqueda"  id="busqueda" placeholder="Buscar"></span>
+      </a> -->
+
+      <a class="rotate-link buscador ancla"  accion="msearch" status="cerrado">
+        <img src="/fitcoControl/Resources/iconos/search.svg" class="icon rotate-icon" style="width:30px">
+        <span class="spanB"><input class="effect-17 real-time-search" type="text" name="search"  placeholder="Buscar..." table-body="#mostrarCuentas" action="mostrar"></span>
       </a>
     </div>
   </div>
 </div>
 
-  <div class="container-fluid mt-4">
-    <section id="mostrarCuentas"></section>
-  </div>
+  <form id='Ecuentas' class='page p-0'>
+   <table class='table table-hover table-fixed'>
+    <thead id='font'>
+        <tr class='row m-0 encabezado text-center' style='letter-spacing:1px'>
+          <td class='col-md-1'></td>
+          <td class='col-md-4'><p>PROVEEDOR</p></td>
+          <td class='col-md-2'><p>DESCRIPCION</p></td>
+          <td class='col-md-2'><p>TOTAL</p></td>
+          <td class='col-md-2'><p>PAGADO/PENDIENTE</p></td>
+          <td class='col-md-1'></td>
+        </tr>
+      </thead>
+      <tbody id='mostrarCuentas'></body>
+    </table>
+  </form>
 
   <form  id="NuevaCuenta" class="agregarnuevo" onsubmit="return false" style="display:none;margin-bottom:80px">
     <table class="table">
@@ -100,7 +117,6 @@
 
 
 <?php
-  $root = $_SERVER['DOCUMENT_ROOT'];
+  require $root . '/fitcoControl/Ubicaciones/CuentasxPagar/actions/footer.php';
   require $root . '/fitcoControl/Ubicaciones/CuentasxPagar/modales/modalCuentas.php';
-  require $root . '/fitcoControl/Resources/PHP/CuentasxPagar/pieCuentas.php';
 ?>
