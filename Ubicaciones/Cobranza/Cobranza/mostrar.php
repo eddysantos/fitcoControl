@@ -4,10 +4,12 @@ session_start();
 $root = $_SERVER['DOCUMENT_ROOT'];
 require $root . '/fitcoControl/Resources/PHP/utilities/initialScript.php';
 
-if ($_POST['request']) {
 $system_callback = [];
 $data = $_POST;
-$request = $data['request'];
+
+$suma = 0;
+$total = 0;
+$diferencia = 0;
 $data['string'];
 $text = "%" . $data['string'] . "%";
 $query = "SELECT
@@ -29,7 +31,7 @@ $query = "SELECT
   LEFT JOIN ct_cliente ct ON co.fk_cliente = ct.pk_cliente
   LEFT JOIN ct_pagos pg ON co.pk_cobranza = pg.fk_cobranza
 
-  WHERE ct.nombreCliente = '$request'
+  WHERE (ct.nombreCliente LIKE ?)  OR (co.facturaCobranza LIKE ?) OR (co.importeCobranza LIKE ?) OR (co.vencimientoCobranza LIKE ?)
 
   GROUP BY co.pk_cobranza
 
@@ -39,6 +41,13 @@ $stmt = $conn->prepare($query);
 if (!($stmt)) {
   $system_callback['code'] = "500";
   $system_callback['message'] = "Error during query prepare [$conn->errno]: $conn->error";
+  exit_script($system_callback);
+}
+
+$stmt->bind_param('ssss', $text,$text,$text,$text);
+if (!($stmt)) {
+  $system_callback['code'] = "500";
+  $system_callback['message'] = "Error during variables binding [$stmt->errno]: $stmt->error";
   exit_script($system_callback);
 }
 
@@ -83,7 +92,6 @@ while ($row = $rslt->fetch_assoc()) {
   $vencido = number_format($row['importe'] -$row['pagado'], 2);
 
 
-
   if ($dia == 1) {
     $dia = "Lun";
   }elseif ($dia == 2) {
@@ -106,7 +114,8 @@ while ($row = $rslt->fetch_assoc()) {
     $background = "verde";
   }elseif (($vencimientoCobranza > $hoy) && ($importeCobranza == $pagado)) {
     $background = "verde";
-  }elseif (($vencimientoCobranza < $hoy) && ($importeCobranza <> $pagado)) {
+  }
+  elseif (($vencimientoCobranza < $hoy) && ($importeCobranza <> $pagado)) {
     $background = "rojo";
   }
 
@@ -117,7 +126,7 @@ while ($row = $rslt->fetch_assoc()) {
  }
 
  // si funciona filtro de solo vencido
-   if ($importeCobranza == $pagado || $vencimientoCobranza > $hoy ) {
+   if ($importeCobranza == $pagado || $vencimientoCobranza > $hoy) {
      $vervencido = "display:none";
    }else {
      $vervencido = "";
@@ -128,22 +137,21 @@ while ($row = $rslt->fetch_assoc()) {
  $id = $idCobranza;
 
   $system_callback['data'] .=
-
-  "
-  <tr class='$background' id='item' style='$vervencido'>
+  "<tr class='$background' id='item' style='$vervencido'>
     <td width='20%'><a href='#coment' data-toggle='modal' class='comentCobranza spand-link mr-3' cobranza-id='$id'>$clienteCobranza</a></td>
-    <td width='8%'>$facturaCobranza</td>
-    <td width='8%'>$concepto</td>
+    <td with='8%'>$facturaCobranza</td>
+    <td with='8%'>$concepto</td>
     <td width='10%'> $ $importeCobranza </td>
     <td width='10%'> $ $pagado </td>
-    <td width='10%' style='color:red'> $ $vencido </td>
-    <td width='10%'>$dia $vencimientoCobranza</td>
-    </a>
+    <td with='10%' style='color:red'>$ $vencido</td>
+    <td with='10%'>$dia $vencimientoCobranza</td>
   </tr>";
+  $suma += $row['importe'];
+  $total += $row['pagado'];
+  $diferencia += $row['importe']-$row['pagado'];
 }
 
 $system_callback['code'] = 1;
 $system_callback['message'] = "Script called successfully!";
 exit_script($system_callback);
-};
 ?>

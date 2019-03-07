@@ -47,9 +47,6 @@
           </table>
         </div>
       </div><!--termina el Cuerpo del Modal-->
-      <!-- <div class="justify-content-center modal-footer">
-        <button  id="comCobranza" type="submit" class="comCobranza w-50 btnsub btn boton btn-block ">AGREGAR</button>
-      </div> -->
     </div><!--termina el COntenido del Modal-->
   </div>
 </div>
@@ -69,25 +66,28 @@
       <div class="modal-body">
 
         <table class="table">
-          <tr class="row m20">
-            <td class="col-md-3 input-effect p-0">
-              <input type="hidden"  id="ed_com_id">
-              <input class="modal-efecto-17 has-content" id="ed_com_fecha" type="date">
-                <label for="ed_com_fecha">Fecha</label>
-                <span class="focus-border"></span>
-            </td>
-            <td class="col"></td>
-            <td class="col-md-7 input-effect p-0">
-              <input class="modal-efecto-17 has-content" id="ed_com_comentario" type="text">
-                <label for="ed_com_comentario">Comentario</label>
-                <span class="focus-border"></span>
-            </td>
-          </tr>
+          <tbody>
+            <tr class="row m20">
+              <td class="col-md-3 input-effect p-0">
+                <input type="hidden"  id="pk_coment">
+                <!-- <input type="hidden"  id="fk_cobranza"> -->
+                <input class="modal-efecto-17 has-content" id="fecha" type="date">
+                  <label>Fecha</label>
+                  <span class="focus-border"></span>
+              </td>
+              <td class="col"></td>
+              <td class="col-md-7 input-effect p-0">
+                <input class="modal-efecto-17 has-content" id="comentario" type="text">
+                  <label>Comentario</label>
+                  <span class="focus-border"></span>
+              </td>
+            </tr>
+          </tbody>
         </table>
 
       </div><!--termina el Cuerpo del Modal-->
       <div class="justify-content-center modal-footer">
-        <button  id="EditcomCobranza" type="submit" class="EditComCobranza w-50 btnsub btn boton btn-block ">ACTUALIZAR</button>
+        <button  id="actualizarComentario" type="submit" class="actualizarComentario w-50 btnsub btn boton btn-block ">ACTUALIZAR</button>
       </div>
     </div><!--termina el COntenido del Modal-->
   </div>

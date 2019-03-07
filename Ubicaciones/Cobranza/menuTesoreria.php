@@ -9,26 +9,26 @@ require  $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
 ?>
 
 
-<?php if ($admin || $tc_ver == 1  || $tcxp_ver == 1 || $tm_ver == 1 || $tr_ver == 1): ?>
+<?php if ($admin || $tc_ver == 1  || $tcxp_ver == 1 || $tm_ver == 1 || $tr_ver == 1 || $pro_miVer == 1): ?>
 <div class="container mt-100">
   <div class="row  mb-20 mt-5">
     <?php if ($tc_ver == 1 || $admin): ?>
-    <div class="col-md-4">
+    <div class="col-md-3">
       <div class="card">
-        <img class="w-35 align-self-center m-5" src="/fitcoControl/Resources/iconos/001-cobranza.svg">
+        <img class="w-50 align-self-center m-5" src="/fitcoControl/Resources/iconos/001-cobranza.svg">
         <div class="card-body">
-          <a href="/fitcoControl/Ubicaciones/Cobranza/cobranza.php" class="linkboton btn-block">Departamento de Cobranza
+          <a href="/fitcoControl/Ubicaciones/Cobranza/cobranza.php" class="linkboton btn-block p-1">Departamento de Cobranza
             <span class="a top"></span>
           </a>
         </div>
       </div>
     </div>
     <?php else: ?>
-      <div class="col-md-4">
+      <div class="col-md-3">
         <div class="card" style="background-color:rgba(190, 190, 190, 0.28);">
-          <img class="w-35 align-self-center m-5" src="/fitcoControl/Resources/iconos/001-cobranza.svg">
+          <img class="w-50 align-self-center m-5" src="/fitcoControl/Resources/iconos/001-cobranza.svg">
           <div class="card-body">
-            <a href="#" class="bn bloqueo linkboton btn-block">Departamento de Cobranza
+            <a href="#" class="bn bloqueo linkboton btn-block p-1">Departamento de Cobranza
               <span class="a top"></span>
             </a>
           </div>
@@ -36,23 +36,25 @@ require  $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
       </div>
       <?php endif; ?>
 
+
+
     <?php if ($tcxp_ver == 1 || $admin): ?>
-    <div class="col-md-4">
+    <div class="col-md-3">
       <div class="card">
-        <img class="card-img-top w-35 align-self-center m-5" src="/fitcoControl/Resources/iconos/002-cuentasxpagar.svg">
+        <img class="card-img-top w-50 align-self-center m-5" src="/fitcoControl/Resources/iconos/002-cuentasxpagar.svg">
         <div class="card-body">
-          <a href="/fitcoControl/Ubicaciones/CuentasxPagar/CuentasxPagar.php" class="linkboton btn-block">Departamento Cuentas x pagar
+          <a href="/fitcoControl/Ubicaciones/CuentasxPagar/CuentasxPagar.php" class="linkboton btn-block p-1">Dep. Cuentas x pagar
             <span class="top"></span>
           </a>
         </div>
       </div>
     </div>
   <?php else: ?>
-    <div class="col-md-4">
+    <div class="col-md-3">
       <div class="card" style="background-color:rgba(190, 190, 190, 0.28);">
-        <img class="w-35 align-self-center m-5" src="/fitcoControl/Resources/iconos/001-cobranza.svg">
+        <img class="w-50 align-self-center m-5" src="/fitcoControl/Resources/iconos/001-cobranza.svg">
         <div class="card-body">
-          <a href="#" class="bn bloqueo linkboton btn-block">Departamento Cuentas x pagar
+          <a href="#" class="bn bloqueo linkboton btn-block p-1">Dep. Cuentas x pagar
             <span class="top"></span>
           </a>
         </div>
@@ -61,12 +63,14 @@ require  $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
     <?php endif; ?>
 
 
+
+
     <?php if ($tm_ver == 1 || $tr_ver == 1 || $admin): ?>
-    <div class="col-md-4">
+    <div class="col-md-3">
       <div class="card">
-        <img class="card-img-top w-35 align-self-center m-5" src="/fitcoControl/Resources/iconos/006-materiales.svg">
+        <img class="card-img-top w-50 align-self-center m-5" src="/fitcoControl/Resources/iconos/006-materiales.svg">
         <div class="card-body">
-          <a href="#" accion="produccionLink" status="cerrado" class="consultar linkboton btn-block">Materiales y Records <img style="width:20px" src="/fitcoControl/Resources/iconos/arrowdown.svg">
+          <a href="#" accion="produccionLink" status="cerrado" class="consultar linkboton btn-block p-1">Materiales y Records <img style="width:20px" src="/fitcoControl/Resources/iconos/arrowdown.svg">
             <span class="top"></span>
           </a>
         </div>
@@ -74,12 +78,12 @@ require  $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
 
       <div id="dropProduccion" style="display:none" class="mt-3 text-left">
         <?php if ($tm_ver == 1 || $admin): ?>
-          <a href="/fitcoControl/Ubicaciones/Materiales/Materiales.php" class="linkboton  btn-block">
+          <a href="/fitcoControl/Ubicaciones/Materiales/Materiales.php" class="linkboton  btn-block p-1">
             <img style="width:30px" src="/fitcoControl/Resources/iconos/006-materiales.svg"> Materiales
             <span class="a top"></span>
           </a>
         <?php else: ?>
-          <a href="#" class="bn bloqueo linkboton btn-block">
+          <a href="#" class="bn bloqueo linkboton btn-block p-1">
             <img style="width:30px" src="/fitcoControl/Resources/iconos/006-materiales.svg"> Materiales
             <span class="a top"></span>
           </a>
@@ -87,12 +91,12 @@ require  $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
 
 
         <?php if ($tr_ver == 1 || $admin): ?>
-        <a href="/fitcoControl/Ubicaciones/Nomina/nomina.php" class="linkboton  btn-block">
+        <a href="/fitcoControl/Ubicaciones/Nomina/nomina.php" class="linkboton  btn-block p-1">
           <img style="width:30px" src="/fitcoControl/Resources/iconos/money.svg"> Nomina
           <span class="top"></span>
         </a>
         <?php else: ?>
-          <a href="#" class="bn bloqueo linkboton btn-block">
+          <a href="#" class="bn bloqueo linkboton btn-block p-1">
             <img style="width:30px" src="/fitcoControl/Resources/iconos/money.svg"> Nomina
             <span class="top"></span>
           </a>
@@ -100,17 +104,80 @@ require  $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
       </div>
     </div>
     <?php else: ?>
-      <div class="col-md-4" style="background-color:rgba(190, 190, 190, 0.28);">
-        <div class="card">
-          <img class="card-img-top w-35 align-self-center m-5" src="/fitcoControl/Resources/iconos/006-materiales.svg">
+      <div class="col-md-3">
+        <div class="card" style="background-color:rgba(190, 190, 190, 0.28);">
+          <img class="card-img-top w-50 align-self-center m-5" src="/fitcoControl/Resources/iconos/006-materiales.svg">
           <div class="card-body">
-            <a href="#" class="bn bloqueo linkboton btn-block">Materiales y Records <img style="width:20px" src="/fitcoControl/Resources/iconos/arrowdown.svg">
+            <a href="#" class="bn bloqueo linkboton btn-block p-1">Materiales y Records <img style="width:20px" src="/fitcoControl/Resources/iconos/arrowdown.svg">
               <span class="top"></span>
             </a>
           </div>
         </div>
       </div>
     <?php endif; ?>
+
+
+
+
+    <?php if ($pro_miVer == 1 || $admin): ?>
+    <div class="col-md-3">
+      <div class="card">
+        <img class="card-img-top w-50 align-self-center m-5" src="/fitcoControl/Resources/iconos/001-timeline.svg">
+        <div class="card-body">
+          <a href="#" accion="ordencompraLink" status="cerrado" class="consultar linkboton btn-block p-1">Orden de Compra <img style="width:20px" src="/fitcoControl/Resources/iconos/arrowdown.svg">
+            <span class="top"></span>
+          </a>
+        </div>
+      </div>
+
+      <div id="dropOrden" style="display:none" class="mt-3 text-left">
+        <a href="/fitcoControl/Ubicaciones/OrdenCompra/OrdendeCompra.php" class="linkboton btn-block p-1">Crear Orden
+          <span class="a top"></span>
+        </a>
+
+
+        <?php if ($pro_miVer == 1 || $admin): ?>
+        <a href="/fitcoControl/Ubicaciones/OrdenCompra/OrdenesCompra.php" class="linkboton  btn-block p-1">
+          <img style="width:30px" src="/fitcoControl/Resources/iconos/002-checklist.svg"> Ordenes de Compra
+          <span class="top"></span>
+        </a>
+        <?php else: ?>
+          <a href="#" class="bn bloqueo linkboton btn-block p-1">
+            <img style="width:30px" src="/fitcoControl/Resources/iconos/002-checklist.svg"> Ordenes de Compra
+            <span class="top"></span>
+          </a>
+        <?php endif; ?>
+      </div>
+    </div>
+    <?php else: ?>
+      <div class="col-md-3">
+        <div class="card" style="background-color:rgba(190, 190, 190, 0.28);">
+          <img class="card-img-top w-50 align-self-center m-5" src="/fitcoControl/Resources/iconos/001-timeline.svg">
+          <div class="card-body">
+            <a href="#" class="bn bloqueo linkboton btn-block p-1">Orden de Compra <img style="width:20px" src="/fitcoControl/Resources/iconos/arrowdown.svg">
+              <span class="top"></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    <?php endif; ?>
+
+
+
+
+
+
+
+    <!-- <div class="col-md-3">
+      <div class="card">
+        <img class="card-img-top w-50 align-self-center m-5" src="/fitcoControl/Resources/iconos/001-timeline.svg">
+        <div class="card-body">
+          <a href="/fitcoControl/Ubicaciones/OrdenCompra/OrdenesCompra.php" class="linkboton btn-block p-1">Orden de Compra
+            <span class="top"></span>
+          </a>
+        </div>
+      </div>
+    </div> -->
   </div>
 </div>
 
