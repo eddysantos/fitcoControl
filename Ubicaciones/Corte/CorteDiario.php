@@ -51,6 +51,6 @@ if (!isset($_SESSION['user'])) {
 <?php endif;
 
 require $root . '/fitcoControl/Ubicaciones/Corte/actions/footer.php';
-require $root . '/fitcoControl/Ubicaciones/Corte/modales/agregarCorteDiario.php';
+require $root . '/fitcoControl/Ubicaciones/Corte/modales/corteDiario.php';
 
 ?>

@@ -104,32 +104,32 @@
           <tbody>
             <tr class="row m20">
               <td class="col-md-12 input-effect p-0">
-                <input type="hidden" id="Emcor_id">
-                <input class="modal-efecto-17 has-content" id="Emcor_fint" type="date">
-                <label>Fecha</label>
+                <input type="hidden" id="pk_CorteDiario">
+                <input class="modal-efecto-17 has-content" id="fechaIntroduccion" type="date">
+                <label>Fecha <span>*</span></label>
                 <span class="focus-border"></span>
               </td>
             </tr>
 
             <tr class="row m20">
               <td class="col-md-12 input-effect p-0">
-                <input class="modal-efecto-17 has-content numeroClass" id="Emcor_meta" type="text">
-                <label>Meta</label>
+                <input class="modal-efecto-17 has-content numeroClass" id="metaCorte" type="text">
+                <label>Meta <span>*</span></label>
                 <span class="focus-border"></span>
               </td>
             </tr>
 
             <tr class="row m20">
               <td class="col-md-12 input-effect p-0">
-                <input class="modal-efecto-17 has-content numeroClass" id="Emcor_cant" type="text">
-                <label>Elaborado</label>
+                <input class="modal-efecto-17 has-content numeroClass" id="cantidadCorte" type="text">
+                <label>Elaborado <span>*</span></label>
                 <span class="focus-border"></span>
               </td>
             </tr>
 
             <tr class="row m20">
               <td class="col-md-12 input-effect p-0">
-                <input class="modal-efecto-17 has-content" id="Emcor_not" type="text">
+                <input class="modal-efecto-17 has-content" id="notas" type="text">
                 <label>Nota</label>
                 <span class="focus-border"></span>
               </td>

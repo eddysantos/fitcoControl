@@ -1,39 +1,90 @@
 <?php
+// $root = $_SERVER['DOCUMENT_ROOT'];
+// $data = array(
+//   'code'=>"",
+//   'response'=>array()
+// );
+//
+// function parseDate($dv){
+//   return date('Y-m-d', strtotime($dv));
+// }
+//
+// require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
+// $query =
+// "UPDATE ct_CorteDiario
+// SET fechaIntroduccion = ?,
+// metaCorte = ?,
+// cantidadCorte =?,
+// notas =?
+// WHERE pk_CorteDiario = ?";
+//
+// $fintro = parseDate($_POST['ff']);
+//
+// $stmt = $conn->prepare($query);
+// $stmt->bind_param('sssss',
+//   $fintro,
+//   $_POST['mm'],
+//   $_POST['cc'],
+//   $_POST['nt'],
+//   $_POST['id']
+// );
+// $stmt->execute();
+//
+// $aff_rows = $conn->affected_rows;
+//
+// $json = json_encode($aff_rows);
+//
+// echo $json;
+
+
 $root = $_SERVER['DOCUMENT_ROOT'];
-$data = array(
-  'code'=>"",
-  'response'=>array()
-);
+require $root . '/fitcoControl/Resources/PHP/utilities/initialScript.php';
 
-function parseDate($dv){
-  return date('Y-m-d', strtotime($dv));
-}
+$pk_CorteDiario = trim($_POST['pk_CorteDiario']);
+$fechaIntroduccion = trim($_POST['fechaIntroduccion']);
+$metaCorte = trim($_POST['metaCorte']);
+$cantidadCorte = trim($_POST['cantidadCorte']);
+$notas = trim($_POST['notas']);
 
-require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
-$query =
-"UPDATE ct_CorteDiario
+$query = "UPDATE ct_CorteDiario
 SET fechaIntroduccion = ?,
 metaCorte = ?,
 cantidadCorte =?,
 notas =?
 WHERE pk_CorteDiario = ?";
 
-$fintro = parseDate($_POST['ff']);
-
 $stmt = $conn->prepare($query);
-$stmt->bind_param('sssss',
-  $fintro,
-  $_POST['mm'],
-  $_POST['cc'],
-  $_POST['nt'],
-  $_POST['id']
-);
-$stmt->execute();
+if (!($stmt)) {
+  $system_callback['code'] = "500";
+  $system_callback['message'] = "Error during query prepare [$conn->errno]: $conn->error";
+  exit_script($system_callback);
+}
 
-$aff_rows = $conn->affected_rows;
+$stmt->bind_param('sssss',$fechaIntroduccion,$metaCorte,$cantidadCorte,$notas,$pk_CorteDiario);
+if (!($stmt)) {
+  $system_callback['code'] = "500";
+  $system_callback['message'] = "Error during variables binding [$stmt->errno]: $stmt->error";
+  exit_script($system_callback);
+}
 
-$json = json_encode($aff_rows);
+if (!($stmt->execute())) {
+  $system_callback['code'] = "500";
+  $system_callback['message'] = "Error during query execution [$stmt->errno]: $stmt->error";
+  exit_script($system_callback);
+}
 
-echo $json;
+$affected = $stmt->affected_rows;
+$system_callback['affected'] = $affected;
+$system_callback['datos'] = $_POST;
+
+if ($affected == 0) {
+  $system_callback['code'] = 2;
+  $system_callback['message'] = "El query no hizo ningún cambio a la base de datos";
+  exit_script($system_callback);
+}
+
+$system_callback['code'] = 1;
+$system_callback['message'] = "Script called successfully!";
+exit_script($system_callback);
 
 ?>

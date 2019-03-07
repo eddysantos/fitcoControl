@@ -35,14 +35,6 @@
                 <span class="focus-border"></span>
               </td>
 
-              <!-- <td class="col-md-6 input-effect p-0">
-                <input class="modal-efecto-17 w-100 has-content" id="_cliente" type="text">
-                <label for="_cliente">Cliente</label>
-                <span class="focus-border"></span>
-                <div class="client-list" id="mpgr_ClientList" style="display: none"></div>
-              </td> -->
-
-
               <td class="col-md-1"></td>
 
               <td class="col-md-5 input-effect p-0">

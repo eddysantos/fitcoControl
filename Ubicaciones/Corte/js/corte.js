@@ -202,13 +202,13 @@ $(document).ready(function(){
 
 
 
-
+//CORTE DIARIO
 function CorteDiario(){
   $.ajax({
     method: 'POST',
     url:'/fitcoControl/Ubicaciones/Corte/actions/mostrar.php',
     success: function(r){
-      console.log(r);
+      // console.log(r);
       r = JSON.parse(r);
       if (r.code == 1) {
         $('#mostrarCorte').html(r.data);
@@ -229,11 +229,8 @@ function ActivarBotones(){
     $('#agregarCorte').modal('show');
   });
 
-
-
   $('.AgregarCor').unbind();
   $('.AgregarCor').click(function(){
-
     var data = {
   		fk_CorteCalendario: $('#mcor_id').val(),
       fechaIntroduccion: $('#mcor_fint').val(),
@@ -252,13 +249,13 @@ function ActivarBotones(){
     }else {
       $.ajax({
         method: 'POST',
-        url: '/fitcoControl/Ubicaciones/Corte/actions/agregar.php',
+        url: 'actions/agregar.php',
         data: data,
-        success:function(result){
-          var rsp = JSON.parse(result);
-          if (rsp.code != 1) {
+        success:function(r){
+          var r = JSON.parse(r);
+          if (r.code != 1) {
             swal("FALLO AL REGISTRAR","No se agregó el registro","error");
-            console.error(rsp.response);
+            console.error(r.response);
           } else {
             $('.modal').modal('hide');
             alertify.success('SE AGREGÓ CORRECTAMENTE');
@@ -275,132 +272,140 @@ function ActivarBotones(){
 
 
   $('.visualizarCorte').click(function(){
-    var idCor = $(this).attr('db-id');
-    $.ajax({
-      method: 'POST',
-      url:'/fitcoControl/Ubicaciones/Corte/actions/tablaCorte.php',
-      data:{idCor:idCor},
-      success:function(result){
-        var rsp = JSON.parse(result);
-        console.log(rsp);
-        $('#visualizarCorte').html(rsp.infoTabla);
-        ActivarBotones();
-      },
-      error:function(exception){
-        console.error(exception)
-      }
-    })
-  });
-
-
-  $('.editarCor').unbind();
-  $('.editarCor').click(function(){
     var dbid = $(this).attr('db-id');
-    $.ajax({
+    var ajaxCall = $.ajax({
+        method: 'POST',
+        data:{dbid:dbid},
+        url: 'actions/tablaCorte.php'
+    });
 
-      method: 'POST',
-      url: '/fitcoControl/Ubicaciones/Corte/actions/fetch.php',
-      data: {dbid: dbid},
-
-      success: function(result){
-        var rsp = JSON.parse(result);
-        console.log(rsp);
-        if (rsp.code == 1) {
-          $('#Emcor_id').val(rsp.response.pk_CorteDiario);
-          $('#Emcor_fint').val(rsp.response.fechaIntroduccion);
-          $('#Emcor_meta').val(rsp.response.metaCorte);
-          $('#Emcor_cant').val(rsp.response.cantidadCorte);
-          $('#Emcor_not').val(rsp.response.notas);
-
-        } else {
-          console.error("Hubo un error al jalar la informacion del cliente.");
-          console.error(rsp.response);
-        }
-      },
-      error: function(exception){
-        console.error(exception);
-      }
-    })
-  });
-
-  $('.Actualizarcor').unbind();
-  $('.Actualizarcor').click(function(){
-    var id = $('#Emcor_id').val();
-    var ff = $('#Emcor_fint').val();
-    var mm = $('#Emcor_meta').val();
-    var cc = $('#Emcor_cant').val();
-    var nt = $('#Emcor_not').val();
-
-    $.ajax({
-      method: 'POST',
-      url: '/fitcoControl/Ubicaciones/Corte/actions/editar.php',
-      data: {
-        id: id,
-        ff: ff,
-        mm: mm,
-        cc: cc,
-        nt: nt
-      },
-      success:function(result){
-        console.log(result);
-        if (result != 1) {
-          alertify.error('NO SE MODIFICÓ NINGUN REGISTRO');
-          $('.modal').modal('hide');
-          // $('.visualizarCorte').click();
-          CorteDiario();
-        }else {
-          $('.modal').modal('hide');
-          CorteDiario();
-          alertify.success('SE MODIFICÓ CORRECTAMENTE');
-        }
-      },
-      error:function(exception){
-        console.error(exception)
+    ajaxCall.done(function(r) {
+      r = JSON.parse(r);
+      if (r.code == 1) {
+        $('#visualizarCorte').html(r.data);
+        ActivarBotones();
+      } else {
+        console.error(r.message);
       }
     });
   });
 
 
-  $('.eliminarCor').unbind();
-  $('.eliminarCor').click(function(){
-    var dbId = $(this).attr('db-id');
-    swal({
-    title: "Estas Seguro?",
-    text: "Ya no se podra recuperar el registro!",
-    type: "warning",
-    showCancelButton: true,
-    confirmButtonClass: "btn-danger",
-    confirmButtonText: "Si, Eliminar",
-    cancelButtonText: "No, cancelar",
-    closeOnConfirm: false,
-    closeOnCancel: false
-  },
-  function(isConfirm) {
-    if (isConfirm) {
-      $.ajax({
-        method: 'POST',
-        url: '/fitcoControl/Ubicaciones/Corte/actions/eliminar.php',
-        data: {dbId: dbId},
+  $('tbody').on('click', '.editarCor', function(){
+    var dbid = $(this).attr('db-id');
+    var tar_modal = $($(this).attr('href'));
 
-        success: function(result){
-          console.log(result);
-          if (result != 1) {
-            $('.modal').modal('hide');
-            alertify.error('NO SE PUDO ELIMINAR');
-          }else if (result == 1){
-            CorteDiario();
-            $('.modal').modal('hide');
+    var fetch_corte = $.ajax({
+      method: 'POST',
+      data: {dbid: dbid},
+      url: 'actions/fetch.php'
+    });
+
+    fetch_corte.done(function(r){
+      r = JSON.parse(r);
+
+      if (r.code == 1) {
+        for (var key in r.data) {
+
+        if (r.data.hasOwnProperty(key)) {
+          var iterated_element = $('#' + key);
+          var element_type = iterated_element.prop('nodeName');
+          var dbid = iterated_element.attr('db-id');
+          var value = r.data[key];
+
+          iterated_element.val(value).addClass('has-content');
+          if (typeof dbid !== undefined && dbid !== false) {
+            iterated_element.attr('db-id', value)
           }
-        },
-        error: function(exception){
-          console.error(exception)
+        }
+      }
+      tar_modal.modal('show');
+      } else {
+        console.error(r);
+      }
+    })
+  })
+
+  $('.Actualizarcor').unbind();
+  $('.Actualizarcor').click(function(){
+
+
+    var data = {
+      pk_CorteDiario : $('#pk_CorteDiario').val(),
+      fechaIntroduccion : $('#fechaIntroduccion').val(),
+      metaCorte : $('#metaCorte').val(),
+      cantidadCorte : $('#cantidadCorte').val(),
+      notas : $('#notas').val()
+    }
+
+    validar = $('#fechaIntroduccion').val() == "" ||
+              $('#metaCorte').val() == "" ||
+              $('#cantidadCorte').val() == "";
+
+    if (validar) {
+      swal("Error","Los campos marcados con (*), son obligatorios","error");
+    }else{
+
+      var ajaxCall = $.ajax({
+          method: 'POST',
+          data: data,
+          url: 'actions/editar.php'
+      });
+
+      ajaxCall.done(function(r) {
+        r = JSON.parse(r);
+        if (r.code == 1) {
+          CorteDiario();
+          swal("Exito", "Se actualizo.", "success");
+          $('.modal').modal('hide');
+        } else {
+          console.error(r.message);
         }
       });
-      swal("Eliminado!", "Se elimino correctamente.", "success");
-    } else {
-      swal("Cancelado", "El registro esta a salvo :)", "error");
     }
+  })
+
+
+    $('.eliminarCor').unbind();
+    $('.eliminarCor').click(function(){
+      var dbId = $(this).attr('db-id');
+      swal({
+      title: "Estas Seguro?",
+      text: "Ya no se podra recuperar el registro!",
+      type: "warning",
+      showCancelButton: true,
+      confirmButtonClass: "btn-danger",
+      confirmButtonText: "Si, Eliminar",
+      cancelButtonText: "No, cancelar",
+      closeOnConfirm: false,
+      closeOnCancel: false
+    },
+    function(isConfirm) {
+      if (isConfirm) {
+        $.ajax({
+          method: 'POST',
+          url: 'actions/eliminar.php',
+          data: {dbId: dbId},
+
+          success: function(r){
+            if (r.code != 1) {
+              $('.modal').modal('hide');
+              CorteDiario();
+            }else if (r.code == 1){
+              CorteDiario();
+              $('.modal').modal('hide');
+            }
+          },
+          error: function(exception){
+            console.error(exception)
+          }
+        });
+        CorteDiario();
+        swal("Eliminado!", "Se elimino correctamente.", "success");
+      } else {
+        swal("Cancelado", "El registro esta a salvo :)", "error");
+      }
+    });
   });
-});
 
 }
