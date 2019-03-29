@@ -45,9 +45,13 @@ require  $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
       <div class="card">
         <img class="card-img-top w-50 align-self-center m-5" src="/fitcoControl/Resources/iconos/grafica2.svg">
         <div class="card-body">
-          <a href="/fitcoControl/Ubicaciones/Ventas/Ventas.php" class="linkboton btn-block p-1">Metricas Ventas
+          <a href="/fitcoControl/Ubicaciones/MetricasVentas/metricasVentas.php" class="linkboton btn-block p-1">Metricas Ventas
             <span class="a top"></span>
           </a>
+
+          <!-- <a href="/fitcoControl/Ubicaciones/Ventas/Ventas.php" class="linkboton btn-block p-1">Metricas Ventas
+            <span class="a top"></span>
+          </a> -->
         </div>
       </div>
     </div>
