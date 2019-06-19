@@ -3,92 +3,123 @@ mostrarMetrica();
 // calculos();
 
 
-// $(function(){
-//   data = {
-//     period: $('#ven_periodo').val(),
-//     grafico: $('#ven_grafico').val(),
-//     date_from: $('#dates_ven_chart').find('.date-from').val(),
-//     date_to: $('#dates_ven_chart').find('.date-to').val(),
-//   };
-//
-//
-//   var pull_chart = $.ajax({
-//     method: 'POST',
-//     data: data,
-//     url: 'actions/grafica.php'
-//   });
-//
-//   pull_chart.done(function(r){
-//     r = JSON.parse(r);
-//     console.log(r);
-//     if (r.code == '2') {
-//       r.to_chart = {};
-//     }
-//     ven_chart = c3.generate({
-//       bindto: '#g-ventas',
-//       data:{
-//         x: "x",
-//         columns: r.to_chart,
-//         labels: true,
-//       },
-//       axis: {
-//         x: {
-//           type: 'category',
-//           tick: {
-//             format: '%Y-%m-%d',
-//           }
-//         }
-//       },
-//     });
-//   });
-// });
-//
-// $('.ven_vendedores').change(function(){
-//   var vendedor = $('#ven_vendedores').val();
-//
-//   var data = {};
-//   if (vendedor != "" && vendedor != 'undefined') {
-//     var data = {vendedor: vendedor,
-//       period: $('#ven_periodo').val(),
-//       grafico: $('#ven_grafico').val(),
-//       date_from: $('#dates_ven_chart').find('.date-from').val(),
-//       date_to: $('#dates_ven_chart').find('.date-to').val()};
-//   }
-//
-//   var pull_chart = $.ajax({
-//     method: 'POST',
-//     url: 'actions/grafica.php',
-//     data: data
-//   });
-//
-//   pull_chart.done(function(r){
-//     r = JSON.parse(r);
-//     console.log(r);
-//     ven_chart.load({columns: r.to_chart});
-//   });
-// });
-//
-// $('.reload-chart').click(function(){
-//   var vendedor = $('#ven_vendedores').val("Vendedores");
-//   data = {
-//     period: $('#ven_periodo').val(),
-//     grafico: $('#ven_grafico').val(),
-//     date_from: $('#dates_ven_chart').find('.date-from').val(),
-//     date_to: $('#dates_ven_chart').find('.date-to').val(),
-//   };
-//
-//   var pull_chart = $.ajax({
-//     method: 'POST',
-//     data: data,
-//     url: 'actions/grafica.php'
-//   });
-//
-//   pull_chart.done(function(r){
-//     r = JSON.parse(r);
-//     console.log(r);
-//     ven_chart.load({columns: r.to_chart});
-//   });
-// });
+$(function(){
+  data = {
+    // period: $('#ven_periodo').val(),
+    grafico: $('#ven_grafico').val(),
+    date_from: $('#dates_ven_chart').find('.date-from').val(),
+    date_to: $('#dates_ven_chart').find('.date-to').val(),
+  };
+
+
+  var pull_chart = $.ajax({
+    method: 'POST',
+    data: data,
+    url: 'actions/grafica.php'
+  });
+
+  pull_chart.done(function(r){
+    r = JSON.parse(r);
+    // console.log(r);
+    if (r.code == '2') {
+      r.to_chart = {};
+    }
+    ven_chart = c3.generate({
+      bindto: '#g-metricas',
+      data:{
+        x: "x",
+        columns: r.to_chart,
+        labels: true,
+      },
+      axis: {
+        x: {
+          type: 'category',
+          tick: {
+            format: '%Y-%m-%d',
+          }
+        }
+      },
+    });
+  });
+});
+
+$('.reload-chart').click(function(){
+  data = {
+    period: $('#ven_periodo').val(),
+    grafico: $('#ven_grafico').val(),
+    date_from: $('#dates_ven_chart').find('.date-from').val(),
+    date_to: $('#dates_ven_chart').find('.date-to').val(),
+  };
+
+  var pull_chart = $.ajax({
+    method: 'POST',
+    data: data,
+    url: 'actions/grafica.php'
+  });
+
+  pull_chart.done(function(r){
+    r = JSON.parse(r);
+    console.log(r);
+    ven_chart.load({columns: r.to_chart});
+  });
+});
+
+$('.add_mes').change(function(){
+  var mes = $(this).val();
+  var fecha = new Date();
+  var anio = fecha.getFullYear();
+
+  if (mes == 'Enero' ) {
+    $('#add_fecha').val(anio+'-01-01');
+    $('#a_fecha').val(anio+'-01-01');
+    $('#fecha').val(anio+'-01-01');
+  }else if (mes == 'Febrero') {
+    $('#add_fecha').val(anio+'-02-01');
+    $('#a_fecha').val(anio+'-02-01');
+    $('#fecha').val(anio+'-02-01');
+  }else if (mes == 'Marzo') {
+    $('#add_fecha').val(anio+'-03-01');
+    $('#a_fecha').val(anio+'-03-01');
+    $('#fecha').val(anio+'-03-01');
+  }else if (mes == 'Abril') {
+    $('#add_fecha').val(anio+'-04-01');
+    $('#a_fecha').val(anio+'-04-01');
+    $('#fecha').val(anio+'-04-01');
+  }else if (mes == 'Mayo') {
+    $('#add_fecha').val(anio+'-05-01');
+    $('#a_fecha').val(anio+'-05-01');
+    $('#fecha').val(anio+'-05-01');
+  }else if (mes == 'Junio') {
+    $('#add_fecha').val(anio+'-06-01');
+    $('#a_fecha').val(anio+'-06-01');
+    $('#fecha').val(anio+'-06-01');
+  }else if (mes == 'Julio') {
+    $('#add_fecha').val(anio+'-07-01');
+    $('#a_fecha').val(anio+'-07-01');
+    $('#fecha').val(anio+'-07-01');
+  }else if (mes == 'Agosto') {
+    $('#add_fecha').val(anio+'-08-01');
+    $('#a_fecha').val(anio+'-08-01');
+    $('#fecha').val(anio+'-08-01');
+  }else if (mes == 'Septiembre') {
+    $('#add_fecha').val(anio+'-09-01');
+    $('#a_fecha').val(anio+'-09-01');
+    $('#fecha').val(anio+'-09-01');
+  }else if (mes == 'Octubre') {
+    $('#add_fecha').val(anio+'-10-01');
+    $('#a_fecha').val(anio+'-10-01');
+    $('#fecha').val(anio+'-10-01');
+  }else if (mes == 'Noviembre') {
+    $('#add_fecha').val(anio+'-11-01');
+    $('#a_fecha').val(anio+'-11-01');
+    $('#fecha').val(anio+'-11-01');
+  }else if (mes == 'Diciembre') {
+    $('#add_fecha').val(anio+'-12-01');
+    $('#a_fecha').val(anio+'-12-01');
+    $('#fecha').val(anio+'-12-01');
+  }
+});
+
 
 
   $('.add-vendedor').click(function(){
@@ -97,6 +128,7 @@ mostrarMetrica();
       add_fecha_add: $('#add_fecha_add').val(),
       add_vendedor: $('#add_vendedor').val(),
       add_mes: $('#add_mes').val(),
+      add_fecha: $('#add_fecha').val(),
       add_tipoCambio: $('#add_tipoCambio').val(),
       add_clt_metaClientes: $('#add_clt_metaClientes').val(),
       add_clt_prospectos: $('#add_clt_prospectos').val(),
@@ -373,7 +405,7 @@ mostrarMetrica();
 
    ajaxCall.done(function(r) {
      r = JSON.parse(r);
-     console.log(r);
+     // console.log(r);
      if (r.code == 1) {
        $('#tabla_metrica').html(r.data);
        botones();
@@ -385,6 +417,80 @@ mostrarMetrica();
 
 
 function botones(){
+
+$('.eliminarVendedor').click(function(){
+  var pk_venMet = $(this).attr('db-id');
+  swal({
+    title: "Estas Seguro?",
+    text: "Ya no se podra recuperar la informacion de vendedor ni las mensuales!",
+    type: "warning",
+    showCancelButton: true,
+    confirmButtonClass: "btn-danger",
+    confirmButtonText: "Si, Eliminar",
+    cancelButtonText: "No, cancelar",
+    closeOnConfirm: false,
+    closeOnCancel: false
+  },
+  function(isConfirm) {
+    if (isConfirm) {
+      $.ajax({
+        method: 'POST',
+        url: 'actions/eliminar.php',
+        data: {pk_venMet: pk_venMet},
+        success: function(r){
+          mostrarMetrica();
+        },
+        error: function(x){
+          console.error(x)
+          alertify.error('NO SE PUDO ELIMINAR');
+          mostrarMetrica();
+        }
+      });
+      swal("Eliminado!", "Se elimino correctamente.", "success");
+      mostrarMetrica();
+    } else {
+      swal("Cancelado", "El registro esta a salvo :)", "error");
+      mostrarMetrica();
+    }
+  });
+});
+
+$('.eliminarMetrica').click(function(){
+  var pk_metrica = $(this).attr('db-id');
+  swal({
+    title: "Estas Seguro?",
+    text: "Ya no se podra recuperar el registro!",
+    type: "warning",
+    showCancelButton: true,
+    confirmButtonClass: "btn-danger",
+    confirmButtonText: "Si, Eliminar",
+    cancelButtonText: "No, cancelar",
+    closeOnConfirm: false,
+    closeOnCancel: false
+  },
+  function(isConfirm) {
+    if (isConfirm) {
+      $.ajax({
+        method: 'POST',
+        url: 'actions/eliminarMetrica.php',
+        data: {pk_metrica: pk_metrica},
+        success: function(r){
+          mostrarMetrica();
+        },
+        error: function(x){
+          console.error(x)
+          alertify.error('NO SE PUDO ELIMINAR');
+          mostrarMetrica();
+        }
+      });
+      swal("Eliminado!", "Se elimino correctamente.", "success");
+      mostrarMetrica();
+    } else {
+      swal("Cancelado", "El registro esta a salvo :)", "error");
+      mostrarMetrica();
+    }
+  });
+});
 
 $('.agregarMetrica').click(function(){
   var dbid = $(this).attr('db-id');
@@ -398,6 +504,7 @@ $('.agregarMetrica').click(function(){
    var data = {
      a_fk_venMet: $('#a_fk_venMet').val(),
      a_mes: $('#a_mes').val(),
+     a_fecha: $('#a_fecha').val(),
      a_tipoCambio: $('#a_tipoCambio').val(),
      a_clt_metaClientes: $('#a_clt_metaClientes').val(),
      a_clt_prospectos: $('#a_clt_prospectos').val(),
@@ -509,6 +616,7 @@ $('.agregarMetrica').click(function(){
      pk_metrica: $('#pk_metrica').val(),
      fk_venMet: $('#fk_venMet').val(),
      mes: $('#mes').val(),
+     fecha: $('#fecha').val(),
      tipoCambio: $('#tipoCambio').val(),
      clt_metaClientes: $('#clt_metaClientes').val(),
      clt_prospectos: $('#clt_prospectos').val(),

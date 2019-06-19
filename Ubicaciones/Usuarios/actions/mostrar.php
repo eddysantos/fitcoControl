@@ -89,7 +89,7 @@ while ($row = $rslt->fetch_assoc()) {
         <h4><b>$privilegiosUsuario</b></h4>
       </td>
       <td class='col-md-2 text-right'>
-        <a $editar db-id='$id'><img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='$bloqueo spand-icon'></a>
+          <a $editar db-id='$id'><img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='$bloqueo spand-icon'></a>
 
           <a $eliminar db-id='$id'><img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='$bloqueo spand-icon'></a>
       </td>

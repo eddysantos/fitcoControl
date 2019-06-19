@@ -2,6 +2,8 @@
 $root = $_SERVER['DOCUMENT_ROOT'];
 require $root . '/fitcoControl/Resources/PHP/utilities/initialScript.php';
 
+
+
 function numberify($number){
   return number_format($number, 2);
 }
@@ -21,30 +23,13 @@ function get_monday($year, $week){
 
 $system_callback = [];
 $data = $_POST;
-// $chart_data = array(['x'],['Total']);
 
 $b_date = date('Y-m-d', strtotime($data['date_from']));
 $e_date = date('Y-m-d', strtotime($data['date_to']));
-// $peroid = "";
+// $period = $data['period'];
 $consulta = "";
 
-// switch ($data['period']) {
-//   case 0:
-//     $period = 'DATE(fecha)';
-//     break
-//
-//   case 1:
-//     $period = "WEEK(fecha, 1)";
-//     break;
-//
-//   case 2:
-//     $period = "MONTH(fecha)";
-//     break;
-//
-//   default:
-//     $period = "DATE(fecha)";
-//     break;
-// }
+
 
 
 switch ($data['grafico']) {
@@ -54,7 +39,7 @@ switch ($data['grafico']) {
     break;
 
   case 1:
-    $consulta = "sum(clt_cotizadas)";
+    $consulta = "sum(clt_cotizados)";
     $x_tag = "Cotizaciones Enviadas";
     break;
 
@@ -71,18 +56,14 @@ switch ($data['grafico']) {
 }
 
 $and_where = "";
-$vendedor = $_POST['vendedor'];
-if (isset($_POST['vendedor'])) {
-  $and_where = "WHERE nombreVendedor = ? AND fecha BETWEEN ? AND ?";
-}else {
-  $and_where = "WHERE fecha BETWEEN ? AND ?";
-}
+$and_where = "WHERE fecha BETWEEN ? AND ?";
 
 
-$query = "SELECT  $consulta total, mes mes  FROM ct_ventas_copy1 $and_where GROUP BY mes";
+$query = "SELECT  $consulta total, mes agrupamiento FROM ct_ventasMetricas  $and_where GROUP BY agrupamiento";
 
 
 $stmt = $conn->prepare($query);
+
 if (!($stmt)) {
   $system_callback['code'] = "500";
   $system_callback['message'] = "Error durante preparacion de query GRAPH DISENO [$conn->errno]: $conn->error";
@@ -90,11 +71,7 @@ if (!($stmt)) {
 }
 
 
-if (isset($_POST['vendedor'])) {
-  $stmt->bind_param('sss', $vendedor,$b_date, $e_date);
-}else {
-  $stmt->bind_param('ss', $b_date, $e_date);
-}
+$stmt->bind_param('ss', $b_date,$e_date);
 
 
 if (!($stmt)) {
@@ -121,47 +98,19 @@ if ($rslt->num_rows == 0) {
 }
 
 while ($row = $rslt->fetch_assoc()) {
-  $results[$row['agrupamiento']]['fecha'] = $row['fecha'];
+  $results[$row['agrupamiento']]['mes'] = $row['mes'];
   $results[$row['agrupamiento']]['total'] += $row['total'];
 }
 
-$var = $arrayName = array('agrupamiento' => ['fecha', 'total']);
+$var = $arrayName = array('agrupamiento' => ['mes', 'total']);
 $chart_data = array(['x'],[$x_tag]);
 
 
-
-switch ($data['period']) {
-  case 0:
-    foreach ($results as $date_group => $result) {
-      $total = $result['total'];
-      array_push($chart_data[0], $date_group);
-      array_push($chart_data[1], $total);
-    }
-    break;
-
-
-  case 1:
-    foreach ($results as $date_grouping => $result) {
-      $total = $result['total'];
-      $year = date('Y', strtotime($result['fecha']));
-      $week_day = get_monday($year, $date_grouping);
-      array_push($chart_data[0], $week_day);
-      array_push($chart_data[1], $total);
-
-    }
-    break;
-
-  case 2:
-  foreach ($results as $date_grouping => $result) {
-    $total = $result['total'];
-    $month = date('M', strtotime($result['fecha']));
-    array_push($chart_data[0], $month);
-    array_push($chart_data[1], $total);
-
-  }
-    break;
+foreach ($results as $date_group => $result) {
+  $total = $result['total'];
+  array_push($chart_data[0], $date_group);
+  array_push($chart_data[1], $total);
 }
-
 
 
 

@@ -7,6 +7,7 @@ $pk_metrica = trim($_POST['pk_metrica']);
 $fk_venMet = trim($_POST['fk_venMet']);
 $tipoCambio = trim($_POST['tipoCambio']);
 $mes = trim($_POST['mes']);
+$fecha = trim($_POST['fecha']);
 $clt_metaClientes = trim($_POST['clt_metaClientes']);
 $clt_prospectos = trim($_POST['clt_prospectos']);
 $clt_cotizados = trim($_POST['clt_cotizados']);
@@ -30,7 +31,7 @@ $ven_reales = trim($_POST['ven_reales']);
 $ven_balance = trim($_POST['ven_balance']);
 
 $query = "UPDATE ct_ventasMetricas
-SET fk_venMet = ?, tipoCambio = ?, mes = ?,
+SET fk_venMet = ?, tipoCambio = ?, mes = ?, fecha = ?,
 clt_metaClientes = ?, clt_prospectos = ?, clt_cotizados = ?, clt_nuevo = ?, clt_factor = ?, clt_meta = ?,
 ccot_emitidas = ?,  ccot_pedidos = ?, ccot_factor = ?, ccot_meta = ?,
 mcot_emTotal = ?,  mcot_emPesos = ?, mcot_emUsd = ?,
@@ -47,7 +48,7 @@ if (!($stmt)) {
   exit_script($system_callback);
 }
 
-$stmt->bind_param('sssssssssssssssssssssssss',$fk_venMet,$tipoCambio,$mes,
+$stmt->bind_param('ssssssssssssssssssssssssss',$fk_venMet,$tipoCambio,$mes, $fecha,
                                               $clt_metaClientes,$clt_prospectos,$clt_cotizados,$clt_nuevo,$clt_factor,$clt_meta,
                                               $ccot_emitidas,$ccot_pedidos,$ccot_factor,$ccot_meta,
                                               $mcot_emTotal,$mcot_emPesos,$mcot_emUsd,

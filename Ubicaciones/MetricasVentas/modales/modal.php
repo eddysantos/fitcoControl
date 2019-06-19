@@ -21,8 +21,9 @@
                   <span class="focus-border"></span>
               </td>
               <td class="col-md-1"></td>
-              <td class="col-md-3 input-effect p-0">
-                <input class="modal-efecto-17 has-content" id="add_mes" type="text" list="month">
+              <td class="col-md-3 input-effect align-self-center p-0">
+                <input id="add_fecha" type="hidden">
+                <!-- <input class="modal-efecto-17 has-content add_mes" id="add_mes" type="text" list="month">
                 <datalist id="month">
                   <option value="Enero">Enero</option>
                   <option value="Febrero">Febrero</option>
@@ -38,7 +39,23 @@
                   <option value="Diciembre">Diciembre</option>
                 </datalist>
                   <label for="add_mes">Mes</label>
-                  <span class="focus-border"></span>
+                  <span class="focus-border"></span> -->
+
+                  <select class="add_mes w-100" id="add_mes">
+                    <option value="">Seleccione un mes</option>
+                    <option value="Enero">Enero</option>
+                    <option value="Febrero">Febrero</option>
+                    <option value="Marzo">Marzo</option>
+                    <option value="Abril">Abril</option>
+                    <option value="Mayo">Mayo</option>
+                    <option value="Junio">Junio</option>
+                    <option value="Julio">Julio</option>
+                    <option value="Agosto">Agosto</option>
+                    <option value="Septiembre">Septiembre</option>
+                    <option value="Octubre">Octubre</option>
+                    <option value="Noviembre">Noviembre</option>
+                    <option value="Diciembre">Diciembre</option>
+                  </select>
               </td>
 
               <td class="col-md-1"></td>
@@ -245,9 +262,11 @@
           <tbody id="contenidosubmodal">
             <tr class="row m20 justify-content-center">
               <td class="col-md-1"></td>
-              <td class="col-md-3 input-effect p-0">
+              <td class="col-md-3 input-effect p-0 align-self-center">
                 <input id="a_fk_venMet" type="hidden">
-                <input class="modal-efecto-17 has-content" id="a_mes" type="text" list="month">
+                <input id="a_fecha" type="hidden">
+
+                <!-- <input class="modal-efecto-17 has-content add_mes" id="a_mes" type="text" list="month">
                 <datalist id="month">
                   <option value="Enero">Enero</option>
                   <option value="Febrero">Febrero</option>
@@ -263,7 +282,23 @@
                   <option value="Diciembre">Diciembre</option>
                 </datalist>
                   <label for="add_mes">Mes</label>
-                  <span class="focus-border"></span>
+                  <span class="focus-border"></span> -->
+
+                  <select class="add_mes w-100" id="a_mes">
+                    <option value="">Seleccione un mes</option>
+                    <option value="Enero">Enero</option>
+                    <option value="Febrero">Febrero</option>
+                    <option value="Marzo">Marzo</option>
+                    <option value="Abril">Abril</option>
+                    <option value="Mayo">Mayo</option>
+                    <option value="Junio">Junio</option>
+                    <option value="Julio">Julio</option>
+                    <option value="Agosto">Agosto</option>
+                    <option value="Septiembre">Septiembre</option>
+                    <option value="Octubre">Octubre</option>
+                    <option value="Noviembre">Noviembre</option>
+                    <option value="Diciembre">Diciembre</option>
+                  </select>
               </td>
 
               <td class="col-md-1"></td>
@@ -470,10 +505,11 @@
           <tbody id="contenidoEditmodal">
             <tr class="row m20 justify-content-center">
               <td class="col-md-1"></td>
-              <td class="col-md-3 input-effect p-0">
+              <td class="col-md-3 input-effect p-0 align-self-center">
                 <input id="pk_metrica" type="hidden">
                 <input id="fk_venMet" type="hidden">
-                <input class="modal-efecto-17" id="mes" type="text" list="month">
+                <input id="fecha" type="hidden">
+                <!-- <input class="modal-efecto-17 add_mes" id="mes" type="text" list="month">
                 <datalist id="month">
                   <option value="Enero">Enero</option>
                   <option value="Febrero">Febrero</option>
@@ -489,7 +525,21 @@
                   <option value="Diciembre">Diciembre</option>
                 </datalist>
                   <label for="mes">Mes</label>
-                  <span class="focus-border"></span>
+                  <span class="focus-border"></span> -->
+                  <select class="add_mes w-100" id="mes">
+                    <option value="Enero">Enero</option>
+                    <option value="Febrero">Febrero</option>
+                    <option value="Marzo">Marzo</option>
+                    <option value="Abril">Abril</option>
+                    <option value="Mayo">Mayo</option>
+                    <option value="Junio">Junio</option>
+                    <option value="Julio">Julio</option>
+                    <option value="Agosto">Agosto</option>
+                    <option value="Septiembre">Septiembre</option>
+                    <option value="Octubre">Octubre</option>
+                    <option value="Noviembre">Noviembre</option>
+                    <option value="Diciembre">Diciembre</option>
+                  </select>
               </td>
 
               <td class="col-md-1"></td>

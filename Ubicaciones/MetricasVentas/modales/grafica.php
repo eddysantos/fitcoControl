@@ -2,7 +2,6 @@
 $root = $_SERVER['DOCUMENT_ROOT'];
 require $root . '/fitcoControl/Resources/PHP/utilities/initialScript.php';
 
-
 $queryMes = "SELECT * FROM ct_ventasVendedor";
 $stmt = $conn->prepare($queryMes);
 if (!($stmt)) {
@@ -28,8 +27,10 @@ if ($rows > 0) {
   }
 }
 
-$date_from = date('Y-m-d', strtotime('last month monday'));
-$date_to = date('Y-m-d', strtotime('today'));
+$date_from = date('Y-m-d', strtotime('first day of january 2019'));
+$date_to = date('Y-m-d', strtotime('first day of this month'));
+
+
  ?>
 
 <div class="modal fade" id="ModalGraficaVentas">
@@ -45,27 +46,30 @@ $date_to = date('Y-m-d', strtotime('today'));
         <div class="container border" style='border-radius:10px;margin-top:2rem!important'>
           <div class="d-flex justify-content-between font12 m-0 py-3" style="border-radius:10px">
             <div class="">
-              <select class="c-select efecto" id="ven_periodo">
+              <!-- <select class="c-select efecto" id="ven_periodo">
                 <option value="">Mes</option>
-                <option value="Enero" selected>Enero</option>
-                <option value="Febrero">Febrero</option>
-                <option value="Marzo">Marzo</option>
-                <option value="Abril">Abril</option>
-                <option value="Mayo">Mayo</option>
-                <option value="Junio">Junio</option>
-                <option value="Julio">Julio</option>
-                <option value="Agosto">Agosto</option>
-                <option value="Septiembre">Septiembre</option>
-                <option value="Octubre">Octubre</option>
-                <option value="Noviembre">Noviembre</option>
-                <option value="Diciembre">Diciembre</option>
-              </select>
+                <option value="enero" selected>enero</option>
+                <option value="febrero">febrero</option>
+                <option value="marzo">marzo</option>
+                <option value="abril">abril</option>
+                <option value="mayo">mayo</option>
+                <option value="junio">junio</option>
+                <option value="julio">julio</option>
+                <option value="agosto">agosto</option>
+                <option value="septiembre">septiembre</option>
+                <option value="octubre">octubre</option>
+                <option value="noviembre">noviembre</option>
+                <option value="diciembre">diciembre</option>
+              </select> -->
+
               <select class="c-select efecto" id="ven_grafico">
                 <option value="">Graficas</option>
-                <option value="0" selected>Citas Semanales</option>
-                <option value="1">Cotizaciones Enviadas</option>
+                <option value="0">Citas Semanales</option>
+                <option value="1" selected>Cotizaciones Enviadas</option>
                 <option value="2">Total Ventas en Dinero</option>
               </select>
+
+
               <div id="dates_ven_chart" class='d-inline'>
                 <div class="d-inline">
                   <input id="" class="efecto date-from" type="date" style="width: auto" value="<?php echo $date_from ?>">
@@ -78,13 +82,13 @@ $date_to = date('Y-m-d', strtotime('today'));
                 <img src="/fitcoControl/Resources/iconos/refresh.svg" class="icon1 rotate-icon" style="width:30px;">
               </a>
             </div>
-            <div class="justify-content-end">
+            <!-- <div class="justify-content-end">
               <select class="c-select efecto ven_vendedores" id="ven_vendedores">
                 <?php echo $option ?>
               </select>
-            </div>
+            </div> -->
           </div>
-          <div id="g-ventas" style="margin-top:100px"></div>
+          <div id="g-metricas" style="margin-top:100px"></div>
         </div>
       </div>
     </div>

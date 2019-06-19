@@ -82,3 +82,10 @@
 .spand-linkm:hover .spand-iconm{
   width: 25px;
 }
+
+.spand-iconxs {
+  width: 15px;
+}
+.spand-linkm:hover .spand-iconxs{
+  width: 20px;
+}

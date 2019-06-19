@@ -16,6 +16,7 @@ $add_vendedor = trim($_POST['add_vendedor']);
 $add_usuario_add = trim($_POST['add_usuario_add']);
 $add_fecha_add = trim($_POST['add_fecha_add']);
 $add_mes = trim($_POST['add_mes']);
+$add_fecha = trim($_POST['add_fecha']);
 $add_tipoCambio = trim($_POST['add_tipoCambio']);
 
 $add_clt_metaClientes = trim($_POST['add_clt_metaClientes']);
@@ -87,6 +88,7 @@ $fk_venMet = $conn->insert_id;
 $query = "INSERT INTO ct_ventasMetricas (fk_venMet,
                                          tipoCambio,
                                          mes,
+                                         fecha,
                                          clt_metaClientes,
                                          clt_prospectos,
                                          clt_cotizados,
@@ -108,7 +110,7 @@ $query = "INSERT INTO ct_ventasMetricas (fk_venMet,
                                          ven_meta,
                                          ven_reales,
                                          ven_balance)
-                                         VALUES (?,?,?,?,?,?,?,?,?,?,
+                                         VALUES (?,?,?,?,?,?,?,?,?,?,?,
                                          ?,?,?,?,?,?,?,?,?,?,
                                          ?,?,?,?)";
 $stmt = $conn->prepare($query);
@@ -118,9 +120,10 @@ if (!($stmt)) {
   exit_script($system_callback);
 }
 
-$stmt->bind_param('ssssssssssssssssssssssss',$fk_venMet,
+$stmt->bind_param('sssssssssssssssssssssssss',$fk_venMet,
                                              $add_tipoCambio,
                                              $add_mes,
+                                             $add_fecha,
                                              $add_clt_meta,
                                              $add_clt_prospectos,
                                              $add_clt_cotizados,

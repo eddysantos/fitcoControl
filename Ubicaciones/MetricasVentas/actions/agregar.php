@@ -5,6 +5,7 @@ require $root . '/fitcoControl/Resources/PHP/utilities/initialScript.php';
 
 $a_fk_venMet = trim($_POST['a_fk_venMet']);
 $a_mes = trim($_POST['a_mes']);
+$a_fecha = trim($_POST['a_fecha']);
 $a_tipoCambio = trim($_POST['a_tipoCambio']);
 
 $a_clt_metaClientes = trim($_POST['a_clt_metaClientes']);
@@ -38,6 +39,7 @@ $a_ven_balance = trim($_POST['a_ven_balance']);
 $query = "INSERT INTO ct_ventasMetricas (fk_venMet,
                                          tipoCambio,
                                          mes,
+                                         fecha,
                                          clt_metaClientes,
                                          clt_prospectos,
                                          clt_cotizados,
@@ -59,7 +61,7 @@ $query = "INSERT INTO ct_ventasMetricas (fk_venMet,
                                          ven_meta,
                                          ven_reales,
                                          ven_balance)
-                                         VALUES (?,?,?,?,?,?,?,?,?,?,
+                                         VALUES (?,?,?,?,?,?,?,?,?,?,?,
                                          ?,?,?,?,?,?,?,?,?,?,
                                          ?,?,?,?)";
 $stmt = $conn->prepare($query);
@@ -69,9 +71,10 @@ if (!($stmt)) {
   exit_script($system_callback);
 }
 
-$stmt->bind_param('ssssssssssssssssssssssss',$a_fk_venMet,
+$stmt->bind_param('sssssssssssssssssssssssss',$a_fk_venMet,
                                              $a_tipoCambio,
                                              $a_mes,
+                                             $a_fecha,
                                              $a_clt_meta,
                                              $a_clt_prospectos,
                                              $a_clt_cotizados,

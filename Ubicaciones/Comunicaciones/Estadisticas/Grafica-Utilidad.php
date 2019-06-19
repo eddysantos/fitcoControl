@@ -11,7 +11,7 @@ $date_from = date('Y-m-d', strtotime('last week monday'));
 $date_to = date('Y-m-d', strtotime('today'));
 ?>
 
-<?php if ($dejecutivo == 1 || $admonGlobal == 1): ?>
+<?php if ($dejecutivo == 1 || $admonGlobal == 1 || $gerenteGeneral): ?>
 <h4 class="sub-grafica">UTILIDAD DE LA EMPRESA</h4>
 <div class="container border" style='border-radius:10px;margin-bottom:100px!important'>
   <div class="d-flex justify-content-between font12 m-0 py-3" style="border-radius:10px">

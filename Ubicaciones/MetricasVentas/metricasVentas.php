@@ -21,10 +21,10 @@ if (!isset($_SESSION['user'])) {
         <span class="spanB">Agregar Vendedor</span>
       </a>
 
-      <!-- <a href="#ModalGraficaVentas" class="rotate-link consultar ancla graficaVentas" data-toggle='modal' style="text-decoration:none">
+      <a href="#ModalGraficaVentas" class="rotate-link consultar ancla graficaVentas" data-toggle='modal' style="text-decoration:none">
         <img src="/fitcoControl/Resources/iconos/grafica2.svg" class="icon rotate-icon" style="width:30px;">
         <span class="spanE">Grafica Metrica</span>
-      </a> -->
+      </a>
 
       <!-- <a class="rotate-link buscador ancla"  accion="msearch" status="cerrado">
         <img src="/fitcoControl/Resources/iconos/search.svg" class="icon rotate-icon" style="width:30px">
@@ -36,10 +36,9 @@ if (!isset($_SESSION['user'])) {
   </div>
 </div>
 
-  <!--MOSTRAR TABLA  -->
-  <form class="dt-page p-0" id="tablaMetrica" style="margin-bottom: 80px;">
-    <div id="tabla_metrica" class="font12"></div>
-  </form>
+<form class="dt-page p-0" id="tablaMetrica" style="margin-bottom: 80px;">
+  <div id="tabla_metrica" class="font12"></div>
+</form>
 
 
 <?php

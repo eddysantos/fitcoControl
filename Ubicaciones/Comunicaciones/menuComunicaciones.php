@@ -71,7 +71,7 @@ require  $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
         <?php endif; ?>
 
 
-      <?php if ($dejecutivo == 1 || $admonGlobal == 1): ?>
+      <?php if ($dejecutivo == 1 || $admonGlobal == 1 || $_SESSION['user']['correoUsuario']== "hector.aguirre@fitco.com.mx"): ?>
         <a href="/fitcoControl/Ubicaciones/Comunicaciones/Estadisticas/Grafica-Utilidad.php" class="linkboton btn-block p-2"> Utilidad
           <span class="a top"></span>
         </a>

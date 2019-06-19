@@ -60,6 +60,8 @@ $ve_ver = $_SESSION['user']['ve_ver'];
 
 $admin = $_SESSION['user']['privilegiosUsuario']== "Administrador";
 $adminGlobal = $_SESSION['user']['correoUsuario']== "epinales@prolog-mex.com";
+$gerenteGeneral = $_SESSION['user']['correoUsuario']== "hector.aguirre@fitco.com.mx";
+
 
 $admonGlobal = $_SESSION['user']['admonGlobal'];
 $dejecutivo = $_SESSION['user']['dejecutivo'];
@@ -109,8 +111,8 @@ date_default_timezone_set('America/Mexico_City');
     </script>
   </head>
 
-  <div id="nav_wrap" class="sticky" style="background-color:black">
-<!-- <div id="nav_wrap" class="sticky"> -->
+  <!-- <div id="nav_wrap" class="sticky" style="background-color:black"> -->
+<div id="nav_wrap" class="sticky">
   <nav class="nav_animate">
     <ul class="nav nav-pills nav-fill">
 

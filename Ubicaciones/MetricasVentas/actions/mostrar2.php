@@ -3,7 +3,7 @@ $root = $_SERVER['DOCUMENT_ROOT'];
 require $root . '/fitcoControl/Resources/PHP/utilities/initialScript.php';
 
 $system_callback = [];
-$query = "SELECT * FROM ct_ventasMetricas LEFT JOIN ct_ventasVendedor ON pk_venMet = fk_venMet";
+$query = "SELECT * FROM ct_ventasMetricas LEFT JOIN ct_ventasVendedor ON pk_venMet = fk_venMet ORDER BY fecha";
 
 $stmt = $conn->prepare($query);
 if (!($stmt)) {
@@ -30,7 +30,6 @@ if ($rslt->num_rows == 0) {
 $row_count = 0;
 $vendedores = array();
 while ($row = $rslt->fetch_assoc()) {
-  //$vendedores[$row['pk_venMet']] = array();
   $vendedores[$row['pk_venMet']]['datos_generales'] = array(
     'nombre' => $row['nombreVendedor'],
     'id' => $row['pk_venMet']
@@ -64,10 +63,15 @@ while ($row = $rslt->fetch_assoc()) {
 
 foreach ($vendedores as $vendedor) {
   $data .= "<div class='row text-center m-0'>
-      <div class='col-md-12 text-left' style='background-color: #eee;'>
+      <div class='col-md-11 text-left' style='background-color: #eee;'>
         <a href='#agregarMetrica' data-toggle='modal' class='agregarMetrica spand-link' db-id='".$vendedor['datos_generales']['id']."'><img src='/fitcoControl/Resources/iconos/003-add.svg' class=' spand-icon '></a>
 
         <b style='color:#2a608e;font-size:18px!important'>".$vendedor['datos_generales']['nombre']."</b>
+      </div>
+      <div class='col-md-1' style='background-color: #eee;'>
+        <a href='#' class='eliminarVendedor spand-link ml-3' db-id='".$vendedor['datos_generales']['id']."'>
+          <img src='/fitcoControl/Resources/iconos/004-delete-1.svg' class='img spand-icon'>
+        </a>
       </div>
     </div> ";
 
@@ -80,7 +84,9 @@ foreach ($vendedores as $vendedor) {
         </div>
 
         <div class='col-md-6 text-left p-0' style='background-color: whitesmoke;'>
-          <a href='#editarMetrica' class='editarMetrica spand-link' db-id='".$mes['id']."'><img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='ml-4 spand-iconm'></a>
+          <a href='#editarMetrica' class='editarMetrica spand-linkm' db-id='".$mes['id']."'><img src='/fitcoControl/Resources/iconos/001-edit-1.svg' class='ml-4 spand-iconxs'></a>
+
+          <a href='#' class='eliminarMetrica spand-linkm' db-id='".$mes['id']."'><img src='/fitcoControl/Resources/iconos/delete.svg' class='ml-2 spand-iconxs'></a>
         </div>
       </div>
 
