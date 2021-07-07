@@ -21,6 +21,19 @@
   margin-top: 100px!important;
 }
 
+.modal-med1{
+  max-width: 800px!important;
+  margin-top: 100px!important;
+}
+.modal-grande{
+  max-width: 1100px!important;
+  /* margin-top: 100px!important; */
+}
+
+.modal-xl{
+  max-width: 1300px!important;
+}
+
 .modal-efecto-17{
   border: 0;
   padding: 4px 0;
@@ -61,4 +74,11 @@
 }
 .close{
   color: dimgrey;
+}
+
+.spand-iconm {
+  width: 20px;
+}
+.spand-linkm:hover .spand-iconm{
+  width: 25px;
 }

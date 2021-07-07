@@ -5484,7 +5484,8 @@ a.bg-dark:focus, a.bg-dark:hover {
 
 .align-self-end {
   -ms-flex-item-align: end!important;
-  align-self: flex-end!important
+  /* align-self: flex-end!important; */
+  align-self: self-end!important;
 }
 
 .align-self-center {
@@ -6094,10 +6095,15 @@ a.bg-dark:focus, a.bg-dark:hover {
   width: 25%!important
 }
 
+.w-35 {
+  width: 35%!important
+}
 .w-50 {
   width: 50%!important
 }
-
+.w-65 {
+  width: 65%!important
+}
 .w-75 {
   width: 75%!important
 }
@@ -6221,6 +6227,10 @@ a.bg-dark:focus, a.bg-dark:hover {
   margin-bottom: .5rem!important
 }
 
+.mb-20 {
+  margin-bottom: 10rem!important
+}
+
 .ml-2 {
   margin-left: .5rem!important
 }
@@ -6313,6 +6323,9 @@ a.bg-dark:focus, a.bg-dark:hover {
 .mb-5 {
   margin-bottom: 3rem!important
 }
+.mb-10 {
+  margin-bottom: 10rem!important
+}
 
 .ml-5 {
   margin-left: 3rem!important
@@ -6349,6 +6362,15 @@ a.bg-dark:focus, a.bg-dark:hover {
 }
 .pr-50 {
   padding-right: 50px!important
+}
+.pr-57 {
+  padding-right: 57px!important
+}
+.pl-80 {
+  padding-left: 80px!important
+}
+.pl-75 {
+  padding-left: 75px!important
 }
 
 .pb-0 {

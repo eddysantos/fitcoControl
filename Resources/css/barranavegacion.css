@@ -1,6 +1,20 @@
+@import url('https://fonts.googleapis.com/css?family=Encode+Sans+Condensed');
+
 * {
   box-sizing: border-box;
   -mox-box-sizing: border-box;
+}
+
+span.barra{
+  color: #fff;
+  letter-spacing: 4px;
+  font-size: 15px;
+  display: block;
+  
+}
+span.barra:hover{
+  /*color: rgba(97, 97, 97, 0.62);*/
+  /*letter-spacing: 4px;*/
 }
 
 body {
@@ -19,10 +33,14 @@ body {
   font-family: helvetica, arial, sans-serif;
 }
 
+.gris{
+  color: rgba(89, 117, 156, 0.6)!important;
+}
+
 #nav_wrap {
   background: white;
   width: 100%;
-  height: 65px;
+  /*height: 65px;*/
   /*position: absolute;*/
   bottom: 0;
   overflow: hidden;
@@ -46,16 +64,13 @@ body {
 nav {
   font-family: 'Encode Sans Condensed', sans-serif;
   font-weight: bolder;
-  width: 100%;
+  width: 90%;
   margin: 0 auto;
   transition: .5s;
 }
 
-
-
-
 .nav_animate {
-  width: 70%;
+  /*width: 70%;*/
   transition: .5s;
 }
 
@@ -66,7 +81,7 @@ nav a{
   color: #505050;
   width: 19.81%;
   text-align: center;
-  line-height: 65px;
+  /*line-height: 65px;*/
   text-transform: uppercase;
   border-top: 5px solid #0056b3;
 }
@@ -78,26 +93,29 @@ nav a:hover {
   background-color: rgb(201, 201, 201);
 }
 
+li a.noborder{
+  border-top: 0px!important;
+}
 
-li{
+
+/*comentado por datatable   */
+li.bn{
   font-family: 'Encode Sans Condensed', sans-serif;
   font-weight: bolder;
-  /*width: 100%;*/
   margin: 0 auto;
   transition: .5s;
 }
-li a{
+li a.bn{
   display: inline-block;
   font-size: 21px;
   text-decoration: none!important;
   color: #505050;
-  width: 99%;
+  width: 97%;
   text-align: center;
-  line-height: 65px;
   text-transform: uppercase;
   border-top: 5px solid #0056b3;
 }
-li a:hover{
+li a.bn:hover{
   border-top: 5px solid #4a4a4a;
   transition: .4s;
   letter-spacing: 4px;
@@ -110,7 +128,7 @@ li a:hover{
 }
 
 #logo{
-  position: absolute;
+  /*position: absolute;*/
   color: black;
   z-index: 100;
   transition: 1s;
@@ -118,15 +136,15 @@ li a:hover{
 }
 
 #logo {
-  left: -150px;
-  font-size: 25px;
+  /*left: -150px;*/
+  /*font-size: 25px;*/
   background: #4a4a4a;
-  height: 65px;
+  height: 67px;
   line-height: 65px;
   padding: 0 10px;
   margin: 0;
   color: #fff;
-  cursor: pointer;
+  /*cursor: pointer;*/
   font-weight: bolder;
 }
 

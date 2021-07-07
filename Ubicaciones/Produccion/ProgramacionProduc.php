@@ -1,22 +1,22 @@
 
 <?php
-session_start();
-
-if (!isset($_SESSION['user'])) {
-  header("Location: /fitcoControl/index.php");
-}
-
-  $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
-  require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
+// session_start();
+//
+// if (!isset($_SESSION['user'])) {
+//   header("Location: /fitcoControl/index.php");
+// }
+//
+//   $root = $_SERVER['DOCUMENT_ROOT'];
+//   require $root . '/fitcoControl/Ubicaciones/barraNavegacion.php';
+  // require $root . "/fitcoControl/Resources/PHP/DataBases/Conexion.php";
 ?>
 
 
 
-<div class="clt_usr  mr-5 mt-5">
+<!-- <div class="clt_usr  mr-5 mt-5">
   <a class="rotate-link consultar ancla" style="font-size: larger;" accion="eproduccion" status="cerrado">
     <img src="/fitcoControl/Resources/iconos/pencil1.svg" class="icon rotate-icon" style="width:30px;">
-    <span class="span">Editar Producción</span>
+    <span class="spanP">Editar Producción</span>
   </a>
 </div>
 
@@ -38,9 +38,9 @@ if (!isset($_SESSION['user'])) {
               <td class="col-md-1"></td>
               <td class="col-md-3">CLIENTE</td>
               <td class="col-md-2">FECHA INICIO</td>
-              <td class="col-md-2">FECHA FINAL</td>
-              <td class="col-md-2">PIEZAS REQUERIDAS</td>
-              <td class="col-md-1">META</td>
+              <td class="col-md-2">ENTREGA</td>
+              <td class="col-md-2">REQUERIDO</td>
+              <td class="col-md-1"></td>
               <td class="col-md-1"></td>
               </tr>
             </thead>
@@ -54,7 +54,7 @@ if (!isset($_SESSION['user'])) {
   </div>
 
 
-  <div class="align-items-center">
+  <div class="align-items-center" style="margin-bottom:100px">
     <div class="colapso mt-3">
       <a class="boton-colapso d-flex p-2" data-toggle="collapse" href="#colapsoNuevaProduc">
         <h3>| Programar Nueva Producción</h3>
@@ -73,17 +73,22 @@ if (!isset($_SESSION['user'])) {
                       </div>
                   </td>
                 </tr>
-                </tr>
                 <tr class="row m20 mt-40">
-                  <td class="col-md-3 input-effect p-0">
+                  <td class="col-md-2 input-effect p-0">
                     <input class="effect-17 has-content w-100" type="date" required id="produccionFI">
                       <label>Fecha de Inicio</label>
                       <span class="focus-border"></span>
                   </td>
                   <td class="col-md-1"></td>
-                  <td class="col-md-3 input-effect p-0">
+                  <td class="col-md-2 input-effect p-0">
                     <input class="effect-17 has-content w-100" type="date" required id="produccionFF">
                       <label>Fecha Final</label>
+                      <span class="focus-border"></span>
+                  </td>
+                  <td class="col-md-1"></td>
+                  <td class="col-md-2 input-effect p-0">
+                    <input class="effect-17 has-content w-100" type="time" required id="produccionHR">
+                      <label>Hora de Entrega</label>
                       <span class="focus-border"></span>
                   </td>
                   <td class="col-md-1"></td>
@@ -92,11 +97,10 @@ if (!isset($_SESSION['user'])) {
                       <label>Piezas Requeridas</label>
                       <span class="focus-border"></span>
                   </td>
-                  <td class="col-md-1"></td>
-                  <td class="col-md-1 input-effect p-0">
-                    <input class="effect-17" type="text" id="produccionMD">
-                      <label>Meta Diaria</label>
-                      <span class="focus-border"></span>
+                </tr>
+                <tr class="mt-5 row justify-content-center">
+                  <td class="col-md-3 mt-3 mb-2">
+                    <a href="#" class="linkboton agregar-programacion btn-block">AGREGAR<span class="top"></span></a>
                   </td>
                 </tr>
               </tbody>
@@ -105,17 +109,12 @@ if (!isset($_SESSION['user'])) {
         </div>
       </div>
     </div>
-    <div class="mt-5 row justify-content-center">
-      <div class="col-md-6 mt-3 mb-2">
-        <a class="linkboton agregar-programacion btn-block">AGREGAR<span class="top"></span></a>
-      </div>
-    </div>
   </div>
-</div>
+</div> -->
 
 
 <?php
-  $root = $_SERVER['DOCUMENT_ROOT'];
-  require $root . '/fitcoControl/Ubicaciones/Modales/Produccion/EditarProduccion.php';
-  require $root . '/fitcoControl/Resources/PHP/Programacion/pieProgramacion.php';
+  // $root = $_SERVER['DOCUMENT_ROOT'];
+  // require $root . '/fitcoControl/Ubicaciones/Modales/Produccion/EditarProduccion.php';
+  // require $root . '/fitcoControl/Resources/PHP/Programacion/pieProgramacion.php';
 ?>

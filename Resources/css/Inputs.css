@@ -8,14 +8,14 @@ input[type="text"]{
   width: 100%;
   box-sizing:
   border-box;
-  letter-spacing: 4px;
+  letter-spacing: 3px;
 }
 input[type="date"]{
   letter-spacing: 4px;
     width: 100%;
 }
 
-button[type=submit].btnsub{
+.btnsub{
   border: 2px solid black;
   color:black;
   border-radius:5px;
@@ -26,11 +26,11 @@ button[type=submit].btnsub{
   font-size: 15px;
   background: white
 }
-button[type=submit].btnsub:hover{
+.btnsub:hover{
   background: rgba(47, 89, 119, 0.63);
   color:white!important;
 	border: 2px solid rgba(117, 117, 117, 0.49);
-  letter-spacing:5px;
+  /* letter-spacing:5px; */
 }
 
 input[type="color"]{
@@ -40,6 +40,17 @@ input[type="color"]{
   padding: 0px!important;
   margin: 0px!important;
 }
+
+
+input[type="color"].dt{
+  /* border: 0px!important;
+  background-color: transparent;
+  width: 10%;
+  padding: 0px!important; */
+  margin-left: 4rem!important;
+}
+
+
 
 .effect-17{
   border: 0;
@@ -80,31 +91,3 @@ input[type="color"]{
   color: #014c8c;
   transition: 0.3s;
 }
-
-/* ELIMINADOS
-.effect-1{
-  border: 0;
-  padding: 7px 0;
-  border-bottom: 1px solid #ccc;
-}
-
-.effect-1 ~ .focus-border{
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background-color: #014c8c;
-  transition: 0.4s;
-}
-.effect-1:focus ~ .focus-border{
-  width: 100%;
-  transition: 0.4s;
-}*/
-
-/*.col-3{
-  float: left;
-  width: 27.33%;
-  margin: 40px 3%;
-  position: relative;
-  }*/
